@@ -13,11 +13,19 @@
 //tools
 #import "UIView+CurrentViewController.h"
 
-@interface SubCategate_BrandViewController ()<LeftSideSegmentViewDelegate>
+//cells
+#import "Categate_BrandCollectionCell.h"
+
+//views
+#import "Categate_Brand_HeaderView.h"
+
+@interface SubCategate_BrandViewController ()<LeftSideSegmentViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong)NSArray *dataArray;
 @property (nonatomic, strong)LeftSideSegmentView *leftSegment;
 @property (nonatomic, strong)UIView *brandBGView;
+@property (nonatomic, strong)UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong)UICollectionView *rightCollectionView;
 
 @end
 
@@ -30,6 +38,7 @@
     
     [self addBrandView];
     [self initLeftSideSegmentView];
+    [self initRightContentView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,12 +63,13 @@
     UIView *brandBGView = [[UIView alloc]init];
     [self.view addSubview:brandBGView];
     brandBGView.backgroundColor = kColorFromRGB(kLightGray);
-    brandBGView.layer.cornerRadius = 2;
+    brandBGView.layer.cornerRadius = 3;
+    brandBGView.layer.masksToBounds = YES;
     [brandBGView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(20);
         make.right.mas_equalTo(-20);
         make.top.mas_equalTo(10);
-        make.height.mas_equalTo(35);
+        make.height.mas_equalTo(38);
     }];
     self.brandBGView = brandBGView;
     
@@ -125,8 +135,37 @@
     self.leftSegment = leftSegment;
 }
 
-
-
+#pragma mark - <初始化rightContentView>
+-(void)initRightContentView
+{
+    self.flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    self.flowLayout.minimumLineSpacing = 5;
+    self.flowLayout.minimumInteritemSpacing = 5;
+    self.flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
+//    CGFloat itemWidth = self.leftSegment.rightContentView.frame.size.width/3.2;
+//    CGFloat itemHeight = itemWidth/2.0*3.0;
+//    self.flowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    
+//    CGFloat headerWidth = self.leftSegment.rightContentView.frame.size.width;
+//    CGFloat headerHeight = (headerWidth-10)/3.0*2.0 + 100;
+//    self.flowLayout.headerReferenceSize = CGSizeMake(headerWidth, headerHeight);
+    
+    self.rightCollectionView = [[UICollectionView alloc]initWithFrame:self.leftSegment.rightContentView.bounds collectionViewLayout:self.flowLayout];
+    self.rightCollectionView.showsVerticalScrollIndicator = NO;
+    self.rightCollectionView.backgroundColor = kColorFromRGB(kWhite);
+    self.rightCollectionView.delegate = self;
+    self.rightCollectionView.dataSource = self;
+    [self.leftSegment.rightContentView addSubview:self.rightCollectionView];
+    [self.rightCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    
+    UINib *nibNormalCell = [UINib nibWithNibName:NSStringFromClass([Categate_BrandCollectionCell class]) bundle:nil];
+    [self.rightCollectionView registerNib:nibNormalCell forCellWithReuseIdentifier:NSStringFromClass([Categate_BrandCollectionCell class])];
+    
+    UINib *nibHeaderView = [UINib nibWithNibName:NSStringFromClass([Categate_Brand_HeaderView class]) bundle:nil];
+    [self.rightCollectionView registerNib:nibHeaderView forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([Categate_Brand_HeaderView class])];
+}
 
 
 
@@ -142,5 +181,41 @@
         self.view.backgroundColor = kColorFromRGB(kLightGray);
     }
 }
+
+
+#pragma mark - **** UICollectionViewDelegate,UICollectionViewDataSource ***
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 8;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    Categate_BrandCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([Categate_BrandCollectionCell class]) forIndexPath:indexPath];
+    return cell;
+}
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    Categate_Brand_HeaderView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([Categate_Brand_HeaderView class]) forIndexPath:indexPath];
+    return view;
+}
+
+
+#pragma mark - *** UICollectionViewDelegateFlowLayout ***
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    CGFloat headerWidth = self.leftSegment.rightContentView.frame.size.width;
+    CGFloat headerHeight = (headerWidth-10)/3.0*2.0 + 100;
+    return CGSizeMake(headerWidth, headerHeight);
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat itemWidth = (self.leftSegment.rightContentView.frame.size.width-20)/3.2;
+    CGFloat itemHeight = itemWidth/2.0*3.0;
+    return CGSizeMake(itemWidth, itemHeight);
+}
+
 
 @end

@@ -104,7 +104,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 2;
+        return 5;
     }else{
         return 1;
     }
@@ -115,7 +115,7 @@
     if (indexPath.section == 0) {
         return 100;
     }else{
-        return 500;
+        return 1000;
     }
 }
 

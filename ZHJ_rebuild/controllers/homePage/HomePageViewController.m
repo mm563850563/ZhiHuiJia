@@ -545,6 +545,12 @@
     }
 }
 
+//#pragma mark - **  **
+//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+//{
+//    
+//}
+
 #pragma mark - ***** UIScrollViewDelegate ******
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

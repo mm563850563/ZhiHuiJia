@@ -7,13 +7,18 @@
 //
 
 #import "SubCategate_CategateViewController.h"
+
+//views
 #import "LeftSideSegmentView.h"
 
-@interface SubCategate_CategateViewController ()<LeftSideSegmentViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
+//cells
+#import "Categate_CategateTableViewCell.h"
+
+@interface SubCategate_CategateViewController ()<LeftSideSegmentViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong)NSArray *dataArray;
 @property (nonatomic, strong)LeftSideSegmentView *leftSegment;
-@property (nonatomic, strong)UICollectionView *rightCollectionView;
+@property (nonatomic, strong)UITableView *rightTableView;
 
 @end
 
@@ -23,7 +28,7 @@
     [super viewDidLoad];
     
     [self initLeftSideSegmentView];
-    [self initRightCollectionView];
+    [self initRightTableViewView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,30 +67,24 @@
 }
 
 #pragma mark - <初始化右侧collectionView>
--(void)initRightCollectionView
+-(void)initRightTableViewView
 {
-    CGFloat width = self.leftSegment.rightContentView.frame.size.width;
-    
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-    flowLayout.headerReferenceSize = CGSizeMake(width, 30);
-    flowLayout.itemSize = CGSizeMake(width/3.5, 60);
-    flowLayout.minimumInteritemSpacing = 5;
-    flowLayout.minimumLineSpacing = 5;
-    
-    self.rightCollectionView = [[UICollectionView alloc]initWithFrame:self.leftSegment.rightContentView.bounds collectionViewLayout:flowLayout];
-    self.rightCollectionView.backgroundColor = kClearColor;
-    self.rightCollectionView.delegate = self;
-    self.rightCollectionView.dataSource = self;
-    
-    [self.leftSegment.rightContentView addSubview:self.rightCollectionView];
-    [self.rightCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    self.rightTableView = [[UITableView alloc]initWithFrame:self.leftSegment.rightContentView.bounds style:UITableViewStyleGrouped];
+    [self.leftSegment.rightContentView addSubview:self.rightTableView];
+    [self.rightTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_offset(UIEdgeInsetsMake(0, 5, 0, 5));
     }];
     
-    //注册分区头cell
-    [self.rightCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
-    //注册cell
-    [self.rightCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    self.rightTableView.showsVerticalScrollIndicator = NO;
+    self.rightTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.rightTableView.backgroundColor = kColorFromRGB(kLightGray);
+    
+    self.rightTableView.delegate = self;
+    self.rightTableView.dataSource = self;
+    
+    [self.rightTableView registerClass:[Categate_CategateTableViewCell class] forCellReuseIdentifier:NSStringFromClass([Categate_CategateTableViewCell class])];
+    
+    [self.rightTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"test"];
 }
 
 
@@ -99,45 +98,55 @@
 }
 
 
-#pragma mark - ****** UICollectionViewDataSource,UICollectionViewDelegate ******
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+#pragma mark - ****** UITableViewDelegate,UITableViewDataSource ******
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    return 3;
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 1;
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    cell.backgroundColor = kColorFromRGB(0x000567);
+    return 260;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1f;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Categate_CategateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([Categate_CategateTableViewCell class])];
     return cell;
 }
 
--(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
-//    view.backgroundColor = kColorFromRGB(kBlack);
-    UILabel *label=[[UILabel alloc]init];
+//    UITableViewHeaderFooterView *
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 10, 100, 30)];
+    headerView.backgroundColor = kColorFromRGB( kLightGray);
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:headerView.bounds];
+    titleLabel.text = @"我的滑板鞋";
+    titleLabel.font = [UIFont systemFontOfSize:13];
+    titleLabel.textAlignment = NSTextAlignmentLeft;
+    [headerView addSubview:titleLabel];
     
-    [view addSubview:label];
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
-    }];
-    label.font = [UIFont systemFontOfSize:12];
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        label.text = @"小电器";
-    }
-    return view;
+    return headerView;
 }
 
 
 
-
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"%ld",(long)indexPath.row);
 }

@@ -53,6 +53,13 @@
 		DDFB826B1F187A7900AEAAA7 /* SSCheckBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82551F187A7900AEAAA7 /* SSCheckBoxView.m */; };
 		DDFB826F1F18BC4500AEAAA7 /* PersonalCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB826D1F18BC4500AEAAA7 /* PersonalCollectCell.m */; };
 		DDFB82701F18BC4500AEAAA7 /* PersonalCollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB826E1F18BC4500AEAAA7 /* PersonalCollectCell.xib */; };
+		DDFB82741F19B18800AEAAA7 /* Categate_CategateCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82721F19B18800AEAAA7 /* Categate_CategateCollectCell.m */; };
+		DDFB82751F19B18800AEAAA7 /* Categate_CategateCollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82731F19B18800AEAAA7 /* Categate_CategateCollectCell.xib */; };
+		DDFB82781F19B98E00AEAAA7 /* Categate_CategateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82771F19B98E00AEAAA7 /* Categate_CategateTableViewCell.m */; };
+		DDFB827C1F19F38000AEAAA7 /* Categate_BrandCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB827A1F19F38000AEAAA7 /* Categate_BrandCollectionCell.m */; };
+		DDFB827D1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB827B1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib */; };
+		DDFB82811F19F97900AEAAA7 /* Categate_Brand_HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB827F1F19F97900AEAAA7 /* Categate_Brand_HeaderView.m */; };
+		DDFB82821F19F97900AEAAA7 /* Categate_Brand_HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82801F19F97900AEAAA7 /* Categate_Brand_HeaderView.xib */; };
 		EC4BA05A1F13562700B9BE1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4BA0591F13562700B9BE1A /* main.m */; };
 		EC4BA05D1F13562700B9BE1A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4BA05C1F13562700B9BE1A /* AppDelegate.m */; };
 		EC4BA0631F13562700B9BE1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC4BA0611F13562700B9BE1A /* Main.storyboard */; };
@@ -176,6 +183,17 @@
 		DDFB826C1F18BC4500AEAAA7 /* PersonalCollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalCollectCell.h; path = cells/PersonalCollectCell.h; sourceTree = "<group>"; };
 		DDFB826D1F18BC4500AEAAA7 /* PersonalCollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalCollectCell.m; path = cells/PersonalCollectCell.m; sourceTree = "<group>"; };
 		DDFB826E1F18BC4500AEAAA7 /* PersonalCollectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PersonalCollectCell.xib; path = cells/PersonalCollectCell.xib; sourceTree = "<group>"; };
+		DDFB82711F19B18800AEAAA7 /* Categate_CategateCollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Categate_CategateCollectCell.h; path = cells/Categate_CategateCollectCell.h; sourceTree = "<group>"; };
+		DDFB82721F19B18800AEAAA7 /* Categate_CategateCollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Categate_CategateCollectCell.m; path = cells/Categate_CategateCollectCell.m; sourceTree = "<group>"; };
+		DDFB82731F19B18800AEAAA7 /* Categate_CategateCollectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Categate_CategateCollectCell.xib; path = cells/Categate_CategateCollectCell.xib; sourceTree = "<group>"; };
+		DDFB82761F19B98E00AEAAA7 /* Categate_CategateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Categate_CategateTableViewCell.h; path = cells/Categate_CategateTableViewCell.h; sourceTree = "<group>"; };
+		DDFB82771F19B98E00AEAAA7 /* Categate_CategateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Categate_CategateTableViewCell.m; path = cells/Categate_CategateTableViewCell.m; sourceTree = "<group>"; };
+		DDFB82791F19F38000AEAAA7 /* Categate_BrandCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Categate_BrandCollectionCell.h; path = cells/Categate_BrandCollectionCell.h; sourceTree = "<group>"; };
+		DDFB827A1F19F38000AEAAA7 /* Categate_BrandCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Categate_BrandCollectionCell.m; path = cells/Categate_BrandCollectionCell.m; sourceTree = "<group>"; };
+		DDFB827B1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Categate_BrandCollectionCell.xib; path = cells/Categate_BrandCollectionCell.xib; sourceTree = "<group>"; };
+		DDFB827E1F19F97900AEAAA7 /* Categate_Brand_HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Categate_Brand_HeaderView.h; path = views/Categate_Brand_HeaderView.h; sourceTree = "<group>"; };
+		DDFB827F1F19F97900AEAAA7 /* Categate_Brand_HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Categate_Brand_HeaderView.m; path = views/Categate_Brand_HeaderView.m; sourceTree = "<group>"; };
+		DDFB82801F19F97900AEAAA7 /* Categate_Brand_HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Categate_Brand_HeaderView.xib; path = views/Categate_Brand_HeaderView.xib; sourceTree = "<group>"; };
 		EC4BA0551F13562700B9BE1A /* ZHJ_rebuild.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHJ_rebuild.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC4BA0591F13562700B9BE1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EC4BA05B1F13562700B9BE1A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -458,6 +476,14 @@
 				DDFB826C1F18BC4500AEAAA7 /* PersonalCollectCell.h */,
 				DDFB826D1F18BC4500AEAAA7 /* PersonalCollectCell.m */,
 				DDFB826E1F18BC4500AEAAA7 /* PersonalCollectCell.xib */,
+				DDFB82711F19B18800AEAAA7 /* Categate_CategateCollectCell.h */,
+				DDFB82721F19B18800AEAAA7 /* Categate_CategateCollectCell.m */,
+				DDFB82731F19B18800AEAAA7 /* Categate_CategateCollectCell.xib */,
+				DDFB82761F19B98E00AEAAA7 /* Categate_CategateTableViewCell.h */,
+				DDFB82771F19B98E00AEAAA7 /* Categate_CategateTableViewCell.m */,
+				DDFB82791F19F38000AEAAA7 /* Categate_BrandCollectionCell.h */,
+				DDFB827A1F19F38000AEAAA7 /* Categate_BrandCollectionCell.m */,
+				DDFB827B1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -475,6 +501,9 @@
 				EC4BA0C61F1359DF00B9BE1A /* SelectThemeColorView.h */,
 				EC4BA0C71F1359DF00B9BE1A /* SelectThemeColorView.m */,
 				EC4BA0C81F1359DF00B9BE1A /* SelectThemeColorView.xib */,
+				DDFB827E1F19F97900AEAAA7 /* Categate_Brand_HeaderView.h */,
+				DDFB827F1F19F97900AEAAA7 /* Categate_Brand_HeaderView.m */,
+				DDFB82801F19F97900AEAAA7 /* Categate_Brand_HeaderView.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -708,6 +737,7 @@
 				EC4BA2501F15D43600B9BE1A /* BrandRulesViewController.xib in Resources */,
 				EC4BA0681F13562700B9BE1A /* LaunchScreen.storyboard in Resources */,
 				DDFB82641F187A7900AEAAA7 /* cb_green_on.png in Resources */,
+				DDFB827D1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib in Resources */,
 				EC4BA2481F14DFE900B9BE1A /* BrandApplyViewController.xib in Resources */,
 				DDFB82681F187A7900AEAAA7 /* cb_mono_on.png in Resources */,
 				DDFB825E1F187A7900AEAAA7 /* cb_glossy_off.png in Resources */,
@@ -715,8 +745,10 @@
 				DDFB82701F18BC4500AEAAA7 /* PersonalCollectCell.xib in Resources */,
 				EC4BA2551F15EDF000B9BE1A /* DiscoverHeaderCell.xib in Resources */,
 				DDFB82631F187A7900AEAAA7 /* cb_green_off@2x.png in Resources */,
+				DDFB82751F19B18800AEAAA7 /* Categate_CategateCollectCell.xib in Resources */,
 				DDFB82601F187A7900AEAAA7 /* cb_glossy_on.png in Resources */,
 				DDFB82651F187A7900AEAAA7 /* cb_green_on@2x.png in Resources */,
+				DDFB82821F19F97900AEAAA7 /* Categate_Brand_HeaderView.xib in Resources */,
 				DD40B7361F17485500839748 /* HomeCollectCell2.xib in Resources */,
 				DD40B73E1F1788B000839748 /* HomeCollectCell3.xib in Resources */,
 				DDFB82621F187A7900AEAAA7 /* cb_green_off.png in Resources */,
@@ -821,6 +853,7 @@
 				DD40B7391F176E8600839748 /* EqualSpaceFlowLayout.m in Sources */,
 				EC4BA0E91F136C8100B9BE1A /* FeedbackViewController.m in Sources */,
 				DDFB81F11F18686A00AEAAA7 /* CartProductListCell.m in Sources */,
+				DDFB82811F19F97900AEAAA7 /* Categate_Brand_HeaderView.m in Sources */,
 				EC4BA0F21F136CA400B9BE1A /* CategateViewController.m in Sources */,
 				DDFB826F1F18BC4500AEAAA7 /* PersonalCollectCell.m in Sources */,
 				EC4BA0891F1359A900B9BE1A /* BaseModel.m in Sources */,
@@ -828,7 +861,9 @@
 				EC4BA1151F136CBD00B9BE1A /* SubNotification_OtherViewController.m in Sources */,
 				EC4BA1131F136CBD00B9BE1A /* SubNotification_AnnouncementViewController.m in Sources */,
 				EC4BA24B1F14F85000B9BE1A /* UIView+CurrentViewController.m in Sources */,
+				DDFB82781F19B98E00AEAAA7 /* Categate_CategateTableViewCell.m in Sources */,
 				DD40B7281F17250B00839748 /* HomeLeftImageCell.m in Sources */,
+				DDFB82741F19B18800AEAAA7 /* Categate_CategateCollectCell.m in Sources */,
 				EC4BA0DC1F1359EC00B9BE1A /* FactoryTableViewCell.m in Sources */,
 				EC4BA10B1F136CBD00B9BE1A /* HomePageViewController.m in Sources */,
 				EC4BA1101F136CBD00B9BE1A /* SubMessage_PrivateLetterViewController.m in Sources */,
@@ -849,6 +884,7 @@
 				EC4BA10D1F136CBD00B9BE1A /* SubMessage_AboutMeViewController.m in Sources */,
 				DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */,
 				EC4BA1111F136CBD00B9BE1A /* SubNotifi_MessageViewController.m in Sources */,
+				DDFB827C1F19F38000AEAAA7 /* Categate_BrandCollectionCell.m in Sources */,
 				EC4BA0CB1F1359DF00B9BE1A /* SegmentTapView.m in Sources */,
 				EC4BA0F31F136CA400B9BE1A /* SubCategate_BrandViewController.m in Sources */,
 				EC4BA1401F14997800B9BE1A /* CycleScrollViewCell.m in Sources */,

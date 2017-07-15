@@ -42,6 +42,7 @@ NSInteger leftCellWidth = 100;
     if (!_LeftTableView) {
         _LeftTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, leftCellWidth, self.frame.size.height)];
         _LeftTableView.showsVerticalScrollIndicator = NO;
+        _LeftTableView.bounces = NO;
         [self addSubview:_LeftTableView];
         [_LeftTableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.bottom.mas_equalTo(0);
@@ -55,7 +56,7 @@ NSInteger leftCellWidth = 100;
 {
     if (!_rightContentView) {
         _rightContentView = [[UIView alloc]initWithFrame:CGRectMake(leftCellWidth, 0, self.frame.size.width-leftCellWidth, self.frame.size.height)];
-        _rightContentView.backgroundColor = kColorFromRGB(kWhite);
+        _rightContentView.backgroundColor = kColorFromRGB(kLightGray);
         [self addSubview:_rightContentView];
         __weak typeof(self) weakSelf = self;
         [_rightContentView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -94,6 +95,7 @@ NSInteger leftCellWidth = 100;
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseID];
+    cell.backgroundColor = kColorFromRGB(kLightGray);
     cell.textLabel.text = self.dataArray[indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:12];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
