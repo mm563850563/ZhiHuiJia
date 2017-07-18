@@ -10,10 +10,10 @@
 
 @implementation UIImage (Color)
 
-+(UIImage *)imageWithColor:(UIColor *)color
++(UIImage *)imageWithColor:(UIColor *)color height:(CGFloat)height
 {
     //描述矩形
-    CGRect rect = CGRectMake(0, 0, 1, 1);
+    CGRect rect = CGRectMake(0, 0, 1, height);
     
     //开启位图上下文
     UIGraphicsBeginImageContext(rect.size);

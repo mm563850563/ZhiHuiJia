@@ -11,6 +11,9 @@
 //cells
 #import "HomeCollectCell1.h"
 
+//model
+#import "YouthColorModel.h"
+
 @interface YouthColorCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -32,6 +35,14 @@
 }
 
 
+
+
+//-(void)setNumberOfCell:(NSInteger)numberOfCell
+//{
+//    self.numberOfCell = numberOfCell;
+//}
+
+
 -(UICollectionView *)collectionView
 {
     if (!_collectionView) {
@@ -41,6 +52,7 @@
         flowLayout.sectionInset = UIEdgeInsetsMake(5, 0, 5, 0);
         CGFloat itemWidth = self.contentView.frame.size.width/2.02;
         CGFloat itemHeight = itemWidth/2.0*3.0;
+//        self.height = itemHeight * 8;
         if (itemHeight > (itemWidth+90)) {
             itemHeight = itemWidth+90;
         }
@@ -48,6 +60,7 @@
         flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
         
         _collectionView = [[UICollectionView alloc]initWithFrame:self.contentView.bounds collectionViewLayout:flowLayout];
+        _collectionView.scrollEnabled = NO;
         _collectionView.backgroundColor = kColorFromRGB(kWhite);
 //        [self.contentView addSubview:_collectionView];
 //        [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -63,6 +76,13 @@
     return _collectionView;
 }
 
+-(void)setNumberOfCell:(NSInteger)numberOfCell
+{
+    _numberOfCell = numberOfCell;
+}
+
+
+
 
 -(void)drawRect:(CGRect)rect
 {
@@ -74,7 +94,7 @@
 #pragma mark - ******* UICollectionViewDelegate,UICollectionViewDataSource *******
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 8;
+    return 6;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath

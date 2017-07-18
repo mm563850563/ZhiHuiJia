@@ -51,7 +51,7 @@
     if (!_collectionView) {
         _collectionView = [[UICollectionView alloc]initWithFrame:self.contentView.bounds collectionViewLayout:self.flowLayout];
         _collectionView.backgroundColor = kColorFromRGB(kWhite);
-        
+        _collectionView.scrollEnabled = NO;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         
@@ -65,6 +65,11 @@
         [_collectionView registerNib:nibCell3 forCellWithReuseIdentifier:NSStringFromClass([HomeCollectCell3 class])];
     }
     return _collectionView;
+}
+
+-(void)setNumberOfCell:(NSInteger)numberOfCell
+{
+    _numberOfCell = numberOfCell;
 }
 
 
@@ -107,7 +112,7 @@
 #pragma mark - *** UICollectionViewDelegate,UICollectionViewDataSource *****
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 4;
+    return 6;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -126,7 +131,10 @@
     return cell;
 }
 
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"%ld",(long)indexPath.row);
+}
 
 
 @end

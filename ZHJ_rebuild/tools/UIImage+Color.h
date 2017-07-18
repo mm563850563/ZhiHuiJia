@@ -10,6 +10,6 @@
 
 @interface UIImage (Color)
 
-+(UIImage *)imageWithColor:(UIColor *)color;
++(UIImage *)imageWithColor:(UIColor *)color height:(CGFloat)height;
 
 @end

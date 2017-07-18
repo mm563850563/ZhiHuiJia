@@ -79,6 +79,24 @@ EOM
       ;;
   esac
 }
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle"
+  install_resource "STPickerView/STPickerView/Resource/area.plist"
+  install_resource "XHImageViewer/Source/Resources/1_1280x800-1.jpeg"
+  install_resource "XHImageViewer/Source/Resources/1_1280x800.jpeg"
+  install_resource "XHImageViewer/Source/Resources/4_1366x768.jpeg"
+  install_resource "XHImageViewer/Source/Resources/5_1280x800.jpeg"
+  install_resource "XHImageViewer/Source/Resources/placeholder.jpeg"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle"
+  install_resource "STPickerView/STPickerView/Resource/area.plist"
+  install_resource "XHImageViewer/Source/Resources/1_1280x800-1.jpeg"
+  install_resource "XHImageViewer/Source/Resources/1_1280x800.jpeg"
+  install_resource "XHImageViewer/Source/Resources/4_1366x768.jpeg"
+  install_resource "XHImageViewer/Source/Resources/5_1280x800.jpeg"
+  install_resource "XHImageViewer/Source/Resources/placeholder.jpeg"
+fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

@@ -1,5 +1,8 @@
 PODS:
+  - CXPhotoBrowser (1.1.1)
+  - IQKeyboardManager (4.0.10)
   - Masonry (1.0.2)
+  - MLTransition (2.1.2)
   - RatingBar (0.0.2)
   - ReactiveObjC (2.1.2)
   - SDCycleScrollView (1.66):
@@ -7,20 +10,32 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
+  - STPickerView (2.1)
+  - XHImageViewer (0.1.2)
 
 DEPENDENCIES:
-  - Masonry
-  - RatingBar
-  - ReactiveObjC (= 2.1.2)
-  - SDCycleScrollView
+  - CXPhotoBrowser
+  - IQKeyboardManager (~> 4.0.10)
+  - Masonry (~> 1.0.2)
+  - MLTransition (~> 2.1.2)
+  - RatingBar (~> 0.0.2)
+  - ReactiveObjC (~> 2.1.2)
+  - SDCycleScrollView (~> 1.66)
+  - STPickerView (~> 2.1)
+  - XHImageViewer
 
 SPEC CHECKSUMS:
+  CXPhotoBrowser: 33d91a9def828f6fde8cdc03b9f7e6cc7e337ab0
+  IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MLTransition: 26751adac088c07e4df48c9f605cfdd767bb8afa
   RatingBar: de58108078acfd63ccc2853d9a7efbfef42b521e
   ReactiveObjC: 7b6782ae39f9ac0f57205c3b0c0b69b9dd7048c0
   SDCycleScrollView: e3ade90e9b3159bec04330b208fbfd81c3f3b671
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  STPickerView: 9bfbb827de31d4807424454296ade35a85c21f9e
+  XHImageViewer: 7b275d2aa829e56761c30303b9d51cae086a90b9
 
-PODFILE CHECKSUM: 872c0238e18beebcbd7a5c91da78511deb800842
+PODFILE CHECKSUM: 357b753eba81cf0a6a3ca368774c40067f56cbca
 
 COCOAPODS: 1.2.1

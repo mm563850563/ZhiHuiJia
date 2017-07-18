@@ -17,9 +17,7 @@
 #import "DiscoverHotTopicViewController.h"
 #import "DiscoverRecommendViewController.h"
 
-@interface DiscoverCell ()<SegmentTapViewDelegate>
-
-@property (weak, nonatomic) IBOutlet UIView *segmentBGView;
+@interface DiscoverCell ()<FlipTableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *flipBGView;
 
 @property (nonatomic, strong)SegmentTapView *segmentView;
@@ -32,7 +30,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    
+    [self respondWithRAC];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -45,16 +43,6 @@
 
 -(void)drawRect:(CGRect)rect
 {
-    NSLog(@"%f",self.segmentBGView.frame.size.width);
-    //segmentView
-    NSArray *titleArray = @[@"精选动态",@"热门话题",@"活动推荐"];
-    self.segmentView = [[SegmentTapView alloc]initWithFrame:self.segmentBGView.bounds withDataArray:titleArray withFont:14];
-    self.segmentView.delegate = self;
-    [self.segmentBGView addSubview:self.segmentView];
-    [self.segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
-    }];
-    
     //flipView
     DiscoverDynamicViewController *vc1 = [[DiscoverDynamicViewController alloc]init];
     DiscoverHotTopicViewController *vc2 = [[DiscoverHotTopicViewController alloc]init];
@@ -66,22 +54,34 @@
     [vcArray addObject:vc3];
     
     self.flipView = [[FlipTableView alloc]initWithFrame:self.flipBGView.bounds withArray:vcArray];
-    self.flipView.scrollEnabled = NO;
+    self.flipView.scrollEnabled = YES;
+    self.flipView.delegate = self;
     [self.flipBGView addSubview:self.flipView];
+    [self.flipView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
 }
 
 
-
-
-
-
-
-
-#pragma mark - ****** SegmentTapViewDelegate *******
--(void)selectedIndex:(NSInteger)index
+-(void)respondWithRAC
 {
-    [self.flipView selectIndex:index];
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"Discover_Segment" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSNumber *num = x.object;
+        NSInteger index = [num integerValue];
+        [self.flipView selectIndex:index];
+    }];
 }
+
+-(void)scrollChangeToIndex:(NSInteger)index
+{
+    NSNumber *indexNum = [NSNumber numberWithInteger:index];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"Discover_Filp" object:indexNum];
+}
+
+
+
+
+
 
 
 @end

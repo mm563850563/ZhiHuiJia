@@ -83,5 +83,10 @@
     return cell;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"SameHobbyCell" object:nil];
+}
+
 
 @end

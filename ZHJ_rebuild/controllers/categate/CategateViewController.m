@@ -16,7 +16,7 @@
 #import "BrandApplyViewController.h"
 #import "BrandRulesViewController.h"
 
-@interface CategateViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate>
+@interface CategateViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,UISearchBarDelegate>
 
 @property (nonatomic, strong)SegmentTapView *segment;
 @property (nonatomic, strong)FlipTableView *flipView;
@@ -39,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    [self settingNavigation];
     [self initSegment];
     [self initFlipTableView];
     [self respondWithRAC];
@@ -59,6 +59,29 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <配置navigation>
+-(void)settingNavigation
+{
+    UIColor *color = kColorFromRGBAndAlpha(kThemeYellow, 1.0);
+    UIImage *image = [UIImage imageWithColor:color height:1.0];
+    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    
+    [self addSearchBarIntoNavigationBar];
+}
+
+#pragma mark - <添加searchBar到navigationBar>
+-(void)addSearchBarIntoNavigationBar
+{
+    UISearchBar *searchBar = [[UISearchBar alloc]init];
+    searchBar.delegate = self;
+    UIColor *color = kColorFromRGBAndAlpha(kWhite, 1.0);
+    UIImage *image = [UIImage imageWithColor:color height:30.0];
+    [searchBar setSearchFieldBackgroundImage:image forState:UIControlStateNormal];
+    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    searchBar.placeholder = @"请输入关键字或商品名称";
+    self.navigationItem.titleView = searchBar;
+}
 
 
 #pragma mark - <添加segmentView>

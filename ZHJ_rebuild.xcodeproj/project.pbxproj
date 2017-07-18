@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D1D955B979DE8D35224ADE29 /* libPods-ZHJ_rebuild.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD93DCFFD638B72FEA7D72DC /* libPods-ZHJ_rebuild.a */; };
+		B822B7179385E475CA42C7AE /* libPods-ZHJ_rebuild.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6362BF3062F7C9A408E5716D /* libPods-ZHJ_rebuild.a */; };
 		DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B7191F164CE000839748 /* HomePageMainCell.m */; };
 		DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD40B71A1F164CE000839748 /* HomePageMainCell.xib */; };
 		DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B71E1F17027E00839748 /* YouthColorCell.m */; };
@@ -24,6 +24,10 @@
 		DD40B73D1F1788B000839748 /* HomeCollectCell3.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B73B1F1788B000839748 /* HomeCollectCell3.m */; };
 		DD40B73E1F1788B000839748 /* HomeCollectCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD40B73C1F1788B000839748 /* HomeCollectCell3.xib */; };
 		DD40B7411F179C3100839748 /* SameHobbyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B7401F179C3100839748 /* SameHobbyCell.m */; };
+		DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */; };
+		DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */; };
+		DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */; };
+		DD6287001F1E405A0030331D /* Discover_RecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286FE1F1E405A0030331D /* Discover_RecommendCell.xib */; };
 		DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */; };
 		DDFB81C01F18475700AEAAA7 /* SameHobbyPersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */; };
 		DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81C21F184B7600AEAAA7 /* CALayer+XIBUIColor.m */; };
@@ -60,6 +64,27 @@
 		DDFB827D1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB827B1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib */; };
 		DDFB82811F19F97900AEAAA7 /* Categate_Brand_HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB827F1F19F97900AEAAA7 /* Categate_Brand_HeaderView.m */; };
 		DDFB82821F19F97900AEAAA7 /* Categate_Brand_HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82801F19F97900AEAAA7 /* Categate_Brand_HeaderView.xib */; };
+		DDFB82851F1A14A800AEAAA7 /* YouthColorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82841F1A14A800AEAAA7 /* YouthColorModel.m */; };
+		DDFB828E1F1C5E3900AEAAA7 /* MoreProductListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB828C1F1C5E3900AEAAA7 /* MoreProductListCell.m */; };
+		DDFB828F1F1C5E3900AEAAA7 /* MoreProductListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB828D1F1C5E3900AEAAA7 /* MoreProductListCell.xib */; };
+		DDFB82931F1C699D00AEAAA7 /* MoreProductListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82911F1C699D00AEAAA7 /* MoreProductListViewController.m */; };
+		DDFB82981F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82961F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m */; };
+		DDFB82991F1C6A8900AEAAA7 /* MoreProductList_HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82971F1C6A8900AEAAA7 /* MoreProductList_HeaderView.xib */; };
+		DDFB829C1F1C78FD00AEAAA7 /* MoreProduct_SortView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB829B1F1C78FD00AEAAA7 /* MoreProduct_SortView.m */; };
+		DDFB829E1F1C791800AEAAA7 /* MoreProduct_SortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB829D1F1C791800AEAAA7 /* MoreProduct_SortView.xib */; };
+		DDFB82A21F1C81E300AEAAA7 /* PersonalFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82A01F1C81E300AEAAA7 /* PersonalFileViewController.m */; };
+		DDFB82A31F1C81E300AEAAA7 /* PersonalFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82A11F1C81E300AEAAA7 /* PersonalFileViewController.xib */; };
+		DDFB82B31F1D931500AEAAA7 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82A61F1D931500AEAAA7 /* NSBundle+PYSearchExtension.m */; };
+		DDFB82B41F1D931500AEAAA7 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82A71F1D931500AEAAA7 /* PYSearch.bundle */; };
+		DDFB82B51F1D931500AEAAA7 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82AA1F1D931500AEAAA7 /* PYSearchConst.m */; };
+		DDFB82B61F1D931500AEAAA7 /* PYSearchSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82AC1F1D931500AEAAA7 /* PYSearchSuggestionViewController.m */; };
+		DDFB82B71F1D931500AEAAA7 /* PYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82AE1F1D931500AEAAA7 /* PYSearchViewController.m */; };
+		DDFB82B81F1D931500AEAAA7 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82B01F1D931500AEAAA7 /* UIColor+PYSearchExtension.m */; };
+		DDFB82B91F1D931500AEAAA7 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82B21F1D931500AEAAA7 /* UIView+PYSearchExtension.m */; };
+		DDFB82C01F1E059A00AEAAA7 /* DiscoverDynamicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82BE1F1E059A00AEAAA7 /* DiscoverDynamicCell.m */; };
+		DDFB82C11F1E059A00AEAAA7 /* DiscoverDynamicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82BF1F1E059A00AEAAA7 /* DiscoverDynamicCell.xib */; };
+		DDFB82C51F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82C31F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m */; };
+		DDFB82C61F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82C41F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib */; };
 		EC4BA05A1F13562700B9BE1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4BA0591F13562700B9BE1A /* main.m */; };
 		EC4BA05D1F13562700B9BE1A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4BA05C1F13562700B9BE1A /* AppDelegate.m */; };
 		EC4BA0631F13562700B9BE1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC4BA0611F13562700B9BE1A /* Main.storyboard */; };
@@ -120,7 +145,7 @@
 /* Begin PBXFileReference section */
 		452A45259DE5E7099BAE637E /* Pods-ZHJ_rebuild.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHJ_rebuild.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHJ_rebuild/Pods-ZHJ_rebuild.release.xcconfig"; sourceTree = "<group>"; };
 		63013718528BCE08784575AC /* Pods-ZHJ_rebuild.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHJ_rebuild.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHJ_rebuild/Pods-ZHJ_rebuild.debug.xcconfig"; sourceTree = "<group>"; };
-		BD93DCFFD638B72FEA7D72DC /* libPods-ZHJ_rebuild.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHJ_rebuild.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6362BF3062F7C9A408E5716D /* libPods-ZHJ_rebuild.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHJ_rebuild.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD40B7181F164CE000839748 /* HomePageMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomePageMainCell.h; path = cells/HomePageMainCell.h; sourceTree = "<group>"; };
 		DD40B7191F164CE000839748 /* HomePageMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomePageMainCell.m; path = cells/HomePageMainCell.m; sourceTree = "<group>"; };
 		DD40B71A1F164CE000839748 /* HomePageMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomePageMainCell.xib; path = cells/HomePageMainCell.xib; sourceTree = "<group>"; };
@@ -147,6 +172,12 @@
 		DD40B73C1F1788B000839748 /* HomeCollectCell3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeCollectCell3.xib; path = cells/HomeCollectCell3.xib; sourceTree = "<group>"; };
 		DD40B73F1F179C3100839748 /* SameHobbyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameHobbyCell.h; path = cells/SameHobbyCell.h; sourceTree = "<group>"; };
 		DD40B7401F179C3100839748 /* SameHobbyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameHobbyCell.m; path = cells/SameHobbyCell.m; sourceTree = "<group>"; };
+		DD6286F71F1E398C0030331D /* Discover_HotTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_HotTopicCell.h; path = cells/Discover_HotTopicCell.h; sourceTree = "<group>"; };
+		DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_HotTopicCell.m; path = cells/Discover_HotTopicCell.m; sourceTree = "<group>"; };
+		DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_HotTopicCell.xib; path = cells/Discover_HotTopicCell.xib; sourceTree = "<group>"; };
+		DD6286FC1F1E405A0030331D /* Discover_RecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_RecommendCell.h; path = cells/Discover_RecommendCell.h; sourceTree = "<group>"; };
+		DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_RecommendCell.m; path = cells/Discover_RecommendCell.m; sourceTree = "<group>"; };
+		DD6286FE1F1E405A0030331D /* Discover_RecommendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_RecommendCell.xib; path = cells/Discover_RecommendCell.xib; sourceTree = "<group>"; };
 		DDFB81BC1F18475700AEAAA7 /* SameHobbyPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameHobbyPersonCell.h; path = cells/SameHobbyPersonCell.h; sourceTree = "<group>"; };
 		DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameHobbyPersonCell.m; path = cells/SameHobbyPersonCell.m; sourceTree = "<group>"; };
 		DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SameHobbyPersonCell.xib; path = cells/SameHobbyPersonCell.xib; sourceTree = "<group>"; };
@@ -194,6 +225,42 @@
 		DDFB827E1F19F97900AEAAA7 /* Categate_Brand_HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Categate_Brand_HeaderView.h; path = views/Categate_Brand_HeaderView.h; sourceTree = "<group>"; };
 		DDFB827F1F19F97900AEAAA7 /* Categate_Brand_HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Categate_Brand_HeaderView.m; path = views/Categate_Brand_HeaderView.m; sourceTree = "<group>"; };
 		DDFB82801F19F97900AEAAA7 /* Categate_Brand_HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Categate_Brand_HeaderView.xib; path = views/Categate_Brand_HeaderView.xib; sourceTree = "<group>"; };
+		DDFB82831F1A14A800AEAAA7 /* YouthColorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YouthColorModel.h; path = models/YouthColorModel.h; sourceTree = "<group>"; };
+		DDFB82841F1A14A800AEAAA7 /* YouthColorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YouthColorModel.m; path = models/YouthColorModel.m; sourceTree = "<group>"; };
+		DDFB828B1F1C5E3900AEAAA7 /* MoreProductListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreProductListCell.h; path = cells/MoreProductListCell.h; sourceTree = "<group>"; };
+		DDFB828C1F1C5E3900AEAAA7 /* MoreProductListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreProductListCell.m; path = cells/MoreProductListCell.m; sourceTree = "<group>"; };
+		DDFB828D1F1C5E3900AEAAA7 /* MoreProductListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreProductListCell.xib; path = cells/MoreProductListCell.xib; sourceTree = "<group>"; };
+		DDFB82901F1C699D00AEAAA7 /* MoreProductListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreProductListViewController.h; path = controllers/homePage/MoreProductListViewController.h; sourceTree = "<group>"; };
+		DDFB82911F1C699D00AEAAA7 /* MoreProductListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreProductListViewController.m; path = controllers/homePage/MoreProductListViewController.m; sourceTree = "<group>"; };
+		DDFB82951F1C6A8900AEAAA7 /* MoreProductList_HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreProductList_HeaderView.h; path = views/MoreProductList_HeaderView.h; sourceTree = "<group>"; };
+		DDFB82961F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreProductList_HeaderView.m; path = views/MoreProductList_HeaderView.m; sourceTree = "<group>"; };
+		DDFB82971F1C6A8900AEAAA7 /* MoreProductList_HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreProductList_HeaderView.xib; path = views/MoreProductList_HeaderView.xib; sourceTree = "<group>"; };
+		DDFB829A1F1C78FD00AEAAA7 /* MoreProduct_SortView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreProduct_SortView.h; path = views/MoreProduct_SortView.h; sourceTree = "<group>"; };
+		DDFB829B1F1C78FD00AEAAA7 /* MoreProduct_SortView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreProduct_SortView.m; path = views/MoreProduct_SortView.m; sourceTree = "<group>"; };
+		DDFB829D1F1C791800AEAAA7 /* MoreProduct_SortView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreProduct_SortView.xib; path = views/MoreProduct_SortView.xib; sourceTree = "<group>"; };
+		DDFB829F1F1C81E300AEAAA7 /* PersonalFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalFileViewController.h; path = controllers/homePage/PersonalFileViewController.h; sourceTree = "<group>"; };
+		DDFB82A01F1C81E300AEAAA7 /* PersonalFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalFileViewController.m; path = controllers/homePage/PersonalFileViewController.m; sourceTree = "<group>"; };
+		DDFB82A11F1C81E300AEAAA7 /* PersonalFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PersonalFileViewController.xib; path = controllers/homePage/PersonalFileViewController.xib; sourceTree = "<group>"; };
+		DDFB82A51F1D931500AEAAA7 /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
+		DDFB82A61F1D931500AEAAA7 /* NSBundle+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PYSearchExtension.m"; sourceTree = "<group>"; };
+		DDFB82A71F1D931500AEAAA7 /* PYSearch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYSearch.bundle; sourceTree = "<group>"; };
+		DDFB82A81F1D931500AEAAA7 /* PYSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearch.h; sourceTree = "<group>"; };
+		DDFB82A91F1D931500AEAAA7 /* PYSearchConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchConst.h; sourceTree = "<group>"; };
+		DDFB82AA1F1D931500AEAAA7 /* PYSearchConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchConst.m; sourceTree = "<group>"; };
+		DDFB82AB1F1D931500AEAAA7 /* PYSearchSuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchSuggestionViewController.h; sourceTree = "<group>"; };
+		DDFB82AC1F1D931500AEAAA7 /* PYSearchSuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchSuggestionViewController.m; sourceTree = "<group>"; };
+		DDFB82AD1F1D931500AEAAA7 /* PYSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchViewController.h; sourceTree = "<group>"; };
+		DDFB82AE1F1D931500AEAAA7 /* PYSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchViewController.m; sourceTree = "<group>"; };
+		DDFB82AF1F1D931500AEAAA7 /* UIColor+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PYSearchExtension.h"; sourceTree = "<group>"; };
+		DDFB82B01F1D931500AEAAA7 /* UIColor+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PYSearchExtension.m"; sourceTree = "<group>"; };
+		DDFB82B11F1D931500AEAAA7 /* UIView+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PYSearchExtension.h"; sourceTree = "<group>"; };
+		DDFB82B21F1D931500AEAAA7 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
+		DDFB82BD1F1E059A00AEAAA7 /* DiscoverDynamicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoverDynamicCell.h; path = cells/DiscoverDynamicCell.h; sourceTree = "<group>"; };
+		DDFB82BE1F1E059A00AEAAA7 /* DiscoverDynamicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoverDynamicCell.m; path = cells/DiscoverDynamicCell.m; sourceTree = "<group>"; };
+		DDFB82BF1F1E059A00AEAAA7 /* DiscoverDynamicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscoverDynamicCell.xib; path = cells/DiscoverDynamicCell.xib; sourceTree = "<group>"; };
+		DDFB82C21F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_Dynamic_imageViewCell.h; path = cells/Discover_Dynamic_imageViewCell.h; sourceTree = "<group>"; };
+		DDFB82C31F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_Dynamic_imageViewCell.m; path = cells/Discover_Dynamic_imageViewCell.m; sourceTree = "<group>"; };
+		DDFB82C41F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_Dynamic_imageViewCell.xib; path = cells/Discover_Dynamic_imageViewCell.xib; sourceTree = "<group>"; };
 		EC4BA0551F13562700B9BE1A /* ZHJ_rebuild.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHJ_rebuild.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC4BA0591F13562700B9BE1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EC4BA05B1F13562700B9BE1A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -302,7 +369,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1D955B979DE8D35224ADE29 /* libPods-ZHJ_rebuild.a in Frameworks */,
+				B822B7179385E475CA42C7AE /* libPods-ZHJ_rebuild.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +379,7 @@
 		5D002E95C2F28AA7C7D9B17E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BD93DCFFD638B72FEA7D72DC /* libPods-ZHJ_rebuild.a */,
+				6362BF3062F7C9A408E5716D /* libPods-ZHJ_rebuild.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -373,6 +440,27 @@
 				DDFB82531F187A7900AEAAA7 /* UIHelpers.m */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DDFB82A41F1D931500AEAAA7 /* PYSearch */ = {
+			isa = PBXGroup;
+			children = (
+				DDFB82A51F1D931500AEAAA7 /* NSBundle+PYSearchExtension.h */,
+				DDFB82A61F1D931500AEAAA7 /* NSBundle+PYSearchExtension.m */,
+				DDFB82A71F1D931500AEAAA7 /* PYSearch.bundle */,
+				DDFB82A81F1D931500AEAAA7 /* PYSearch.h */,
+				DDFB82A91F1D931500AEAAA7 /* PYSearchConst.h */,
+				DDFB82AA1F1D931500AEAAA7 /* PYSearchConst.m */,
+				DDFB82AB1F1D931500AEAAA7 /* PYSearchSuggestionViewController.h */,
+				DDFB82AC1F1D931500AEAAA7 /* PYSearchSuggestionViewController.m */,
+				DDFB82AD1F1D931500AEAAA7 /* PYSearchViewController.h */,
+				DDFB82AE1F1D931500AEAAA7 /* PYSearchViewController.m */,
+				DDFB82AF1F1D931500AEAAA7 /* UIColor+PYSearchExtension.h */,
+				DDFB82B01F1D931500AEAAA7 /* UIColor+PYSearchExtension.m */,
+				DDFB82B11F1D931500AEAAA7 /* UIView+PYSearchExtension.h */,
+				DDFB82B21F1D931500AEAAA7 /* UIView+PYSearchExtension.m */,
+			);
+			path = PYSearch;
 			sourceTree = "<group>";
 		};
 		EC4BA04C1F13562700B9BE1A = {
@@ -451,6 +539,9 @@
 				DD40B7201F1705A000839748 /* HomeCollectCell1.h */,
 				DD40B7211F1705A000839748 /* HomeCollectCell1.m */,
 				DD40B7221F1705A000839748 /* HomeCollectCell1.xib */,
+				DDFB828B1F1C5E3900AEAAA7 /* MoreProductListCell.h */,
+				DDFB828C1F1C5E3900AEAAA7 /* MoreProductListCell.m */,
+				DDFB828D1F1C5E3900AEAAA7 /* MoreProductListCell.xib */,
 				DD40B7251F17250B00839748 /* HomeLeftImageCell.h */,
 				DD40B7261F17250B00839748 /* HomeLeftImageCell.m */,
 				DD40B7271F17250B00839748 /* HomeLeftImageCell.xib */,
@@ -484,6 +575,18 @@
 				DDFB82791F19F38000AEAAA7 /* Categate_BrandCollectionCell.h */,
 				DDFB827A1F19F38000AEAAA7 /* Categate_BrandCollectionCell.m */,
 				DDFB827B1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib */,
+				DDFB82BD1F1E059A00AEAAA7 /* DiscoverDynamicCell.h */,
+				DDFB82BE1F1E059A00AEAAA7 /* DiscoverDynamicCell.m */,
+				DDFB82BF1F1E059A00AEAAA7 /* DiscoverDynamicCell.xib */,
+				DDFB82C21F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.h */,
+				DDFB82C31F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m */,
+				DDFB82C41F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib */,
+				DD6286F71F1E398C0030331D /* Discover_HotTopicCell.h */,
+				DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */,
+				DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */,
+				DD6286FC1F1E405A0030331D /* Discover_RecommendCell.h */,
+				DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */,
+				DD6286FE1F1E405A0030331D /* Discover_RecommendCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -504,6 +607,12 @@
 				DDFB827E1F19F97900AEAAA7 /* Categate_Brand_HeaderView.h */,
 				DDFB827F1F19F97900AEAAA7 /* Categate_Brand_HeaderView.m */,
 				DDFB82801F19F97900AEAAA7 /* Categate_Brand_HeaderView.xib */,
+				DDFB82951F1C6A8900AEAAA7 /* MoreProductList_HeaderView.h */,
+				DDFB82961F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m */,
+				DDFB82971F1C6A8900AEAAA7 /* MoreProductList_HeaderView.xib */,
+				DDFB829A1F1C78FD00AEAAA7 /* MoreProduct_SortView.h */,
+				DDFB829B1F1C78FD00AEAAA7 /* MoreProduct_SortView.m */,
+				DDFB829D1F1C791800AEAAA7 /* MoreProduct_SortView.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -511,6 +620,7 @@
 		EC4BA07F1F1357BF00B9BE1A /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DDFB82A41F1D931500AEAAA7 /* PYSearch */,
 				EC4BA1211F1380ED00B9BE1A /* basicNavigation */,
 				EC4BA1161F136DA700B9BE1A /* mainTabBar */,
 				EC4BA0E31F13600800B9BE1A /* personal */,
@@ -529,6 +639,8 @@
 				EC4BA0861F1359A900B9BE1A /* BaseModel.m */,
 				EC4BA0871F1359A900B9BE1A /* CycleScrollModel.h */,
 				EC4BA0881F1359A900B9BE1A /* CycleScrollModel.m */,
+				DDFB82831F1A14A800AEAAA7 /* YouthColorModel.h */,
+				DDFB82841F1A14A800AEAAA7 /* YouthColorModel.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -554,6 +666,11 @@
 			children = (
 				EC4BA0F51F136CBD00B9BE1A /* HomePageViewController.h */,
 				EC4BA0F61F136CBD00B9BE1A /* HomePageViewController.m */,
+				DDFB829F1F1C81E300AEAAA7 /* PersonalFileViewController.h */,
+				DDFB82A01F1C81E300AEAAA7 /* PersonalFileViewController.m */,
+				DDFB82A11F1C81E300AEAAA7 /* PersonalFileViewController.xib */,
+				DDFB82901F1C699D00AEAAA7 /* MoreProductListViewController.h */,
+				DDFB82911F1C699D00AEAAA7 /* MoreProductListViewController.m */,
 				EC4BA1361F14693F00B9BE1A /* ProductDetailViewController.h */,
 				EC4BA1371F14693F00B9BE1A /* ProductDetailViewController.m */,
 				EC4BA1381F14693F00B9BE1A /* ProductDetailViewController.xib */,
@@ -734,8 +851,11 @@
 				DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */,
 				DDFB825F1F187A7900AEAAA7 /* cb_glossy_off@2x.png in Resources */,
 				DDFB82671F187A7900AEAAA7 /* cb_mono_off@2x.png in Resources */,
+				DD6287001F1E405A0030331D /* Discover_RecommendCell.xib in Resources */,
+				DDFB82C61F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib in Resources */,
 				EC4BA2501F15D43600B9BE1A /* BrandRulesViewController.xib in Resources */,
 				EC4BA0681F13562700B9BE1A /* LaunchScreen.storyboard in Resources */,
+				DDFB82C11F1E059A00AEAAA7 /* DiscoverDynamicCell.xib in Resources */,
 				DDFB82641F187A7900AEAAA7 /* cb_green_on.png in Resources */,
 				DDFB827D1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib in Resources */,
 				EC4BA2481F14DFE900B9BE1A /* BrandApplyViewController.xib in Resources */,
@@ -743,14 +863,19 @@
 				DDFB825E1F187A7900AEAAA7 /* cb_glossy_off.png in Resources */,
 				DDFB82611F187A7900AEAAA7 /* cb_glossy_on@2x.png in Resources */,
 				DDFB82701F18BC4500AEAAA7 /* PersonalCollectCell.xib in Resources */,
+				DDFB82991F1C6A8900AEAAA7 /* MoreProductList_HeaderView.xib in Resources */,
 				EC4BA2551F15EDF000B9BE1A /* DiscoverHeaderCell.xib in Resources */,
+				DDFB82B41F1D931500AEAAA7 /* PYSearch.bundle in Resources */,
 				DDFB82631F187A7900AEAAA7 /* cb_green_off@2x.png in Resources */,
 				DDFB82751F19B18800AEAAA7 /* Categate_CategateCollectCell.xib in Resources */,
 				DDFB82601F187A7900AEAAA7 /* cb_glossy_on.png in Resources */,
+				DDFB828F1F1C5E3900AEAAA7 /* MoreProductListCell.xib in Resources */,
 				DDFB82651F187A7900AEAAA7 /* cb_green_on@2x.png in Resources */,
 				DDFB82821F19F97900AEAAA7 /* Categate_Brand_HeaderView.xib in Resources */,
 				DD40B7361F17485500839748 /* HomeCollectCell2.xib in Resources */,
+				DDFB829E1F1C791800AEAAA7 /* MoreProduct_SortView.xib in Resources */,
 				DD40B73E1F1788B000839748 /* HomeCollectCell3.xib in Resources */,
+				DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */,
 				DDFB82621F187A7900AEAAA7 /* cb_green_off.png in Resources */,
 				EC4BA2661F160F1F00B9BE1A /* DiscoverCell.xib in Resources */,
 				DD40B7241F1705A000839748 /* HomeCollectCell1.xib in Resources */,
@@ -765,6 +890,7 @@
 				EC4BA0CD1F1359DF00B9BE1A /* SelectThemeColorView.xib in Resources */,
 				EC4BA0EA1F136C8100B9BE1A /* FeedbackViewController.xib in Resources */,
 				DDFB82571F187A7900AEAAA7 /* cb_box_off@2x.png in Resources */,
+				DDFB82A31F1C81E300AEAAA7 /* PersonalFileViewController.xib in Resources */,
 				DDFB82591F187A7900AEAAA7 /* cb_box_on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -824,6 +950,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFB82B51F1D931500AEAAA7 /* PYSearchConst.m in Sources */,
 				EC4BA0DB1F1359EC00B9BE1A /* FactoryCollectionViewCell.m in Sources */,
 				EC4BA0C91F1359DF00B9BE1A /* FlipTableView.m in Sources */,
 				EC4BA10F1F136CBD00B9BE1A /* SubMessage_LikedViewController.m in Sources */,
@@ -833,8 +960,10 @@
 				DD40B7351F17485500839748 /* HomeCollectCell2.m in Sources */,
 				EC4BA05D1F13562700B9BE1A /* AppDelegate.m in Sources */,
 				EC4BA0CC1F1359DF00B9BE1A /* SelectThemeColorView.m in Sources */,
+				DDFB82851F1A14A800AEAAA7 /* YouthColorModel.m in Sources */,
 				DD40B73D1F1788B000839748 /* HomeCollectCell3.m in Sources */,
 				EC4BA1341F1462F100B9BE1A /* GiftSendingTableViewCell.m in Sources */,
+				DDFB828E1F1C5E3900AEAAA7 /* MoreProductListCell.m in Sources */,
 				DD40B7311F17437100839748 /* IntellectWearsCell.m in Sources */,
 				DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */,
 				EC4BA1141F136CBD00B9BE1A /* SubNotification_DiscountViewController.m in Sources */,
@@ -844,17 +973,26 @@
 				EC4BA2611F15FE2200B9BE1A /* DiscoverRecommendViewController.m in Sources */,
 				DD40B7411F179C3100839748 /* SameHobbyCell.m in Sources */,
 				EC4BA1191F136DBB00B9BE1A /* MainTabBarViewController.m in Sources */,
+				DDFB82981F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m in Sources */,
 				DD40B7231F1705A000839748 /* HomeCollectCell1.m in Sources */,
 				EC4BA0D81F1359EC00B9BE1A /* BaseCollectionViewCell.m in Sources */,
+				DDFB82B31F1D931500AEAAA7 /* NSBundle+PYSearchExtension.m in Sources */,
+				DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */,
 				DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */,
 				EC4BA2431F14B05E00B9BE1A /* CategateNavigationController.m in Sources */,
+				DDFB82B71F1D931500AEAAA7 /* PYSearchViewController.m in Sources */,
 				EC4BA1391F14693F00B9BE1A /* ProductDetailViewController.m in Sources */,
+				DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */,
 				EC4BA2471F14DFE900B9BE1A /* BrandApplyViewController.m in Sources */,
 				DD40B7391F176E8600839748 /* EqualSpaceFlowLayout.m in Sources */,
+				DDFB82931F1C699D00AEAAA7 /* MoreProductListViewController.m in Sources */,
 				EC4BA0E91F136C8100B9BE1A /* FeedbackViewController.m in Sources */,
 				DDFB81F11F18686A00AEAAA7 /* CartProductListCell.m in Sources */,
+				DDFB82B81F1D931500AEAAA7 /* UIColor+PYSearchExtension.m in Sources */,
 				DDFB82811F19F97900AEAAA7 /* Categate_Brand_HeaderView.m in Sources */,
+				DDFB82C51F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m in Sources */,
 				EC4BA0F21F136CA400B9BE1A /* CategateViewController.m in Sources */,
+				DDFB82C01F1E059A00AEAAA7 /* DiscoverDynamicCell.m in Sources */,
 				DDFB826F1F18BC4500AEAAA7 /* PersonalCollectCell.m in Sources */,
 				EC4BA0891F1359A900B9BE1A /* BaseModel.m in Sources */,
 				DDFB826A1F187A7900AEAAA7 /* UIHelpers.m in Sources */,
@@ -863,6 +1001,7 @@
 				EC4BA24B1F14F85000B9BE1A /* UIView+CurrentViewController.m in Sources */,
 				DDFB82781F19B98E00AEAAA7 /* Categate_CategateTableViewCell.m in Sources */,
 				DD40B7281F17250B00839748 /* HomeLeftImageCell.m in Sources */,
+				DDFB829C1F1C78FD00AEAAA7 /* MoreProduct_SortView.m in Sources */,
 				DDFB82741F19B18800AEAAA7 /* Categate_CategateCollectCell.m in Sources */,
 				EC4BA0DC1F1359EC00B9BE1A /* FactoryTableViewCell.m in Sources */,
 				EC4BA10B1F136CBD00B9BE1A /* HomePageViewController.m in Sources */,
@@ -871,10 +1010,13 @@
 				EC4BA0CA1F1359DF00B9BE1A /* LeftSideSegmentView.m in Sources */,
 				EC4BA1121F136CBD00B9BE1A /* SubNotifi_NotificationViewController.m in Sources */,
 				EC4BA05A1F13562700B9BE1A /* main.m in Sources */,
+				DDFB82B61F1D931500AEAAA7 /* PYSearchSuggestionViewController.m in Sources */,
+				DDFB82B91F1D931500AEAAA7 /* UIView+PYSearchExtension.m in Sources */,
 				EC4BA0D91F1359EC00B9BE1A /* BaseTableViewCell.m in Sources */,
 				EC4BA10E1F136CBD00B9BE1A /* SubMessage_CommentViewController.m in Sources */,
 				EC4BA11C1F1376F600B9BE1A /* CartViewController.m in Sources */,
 				DDFB826B1F187A7900AEAAA7 /* SSCheckBoxView.m in Sources */,
+				DDFB82A21F1C81E300AEAAA7 /* PersonalFileViewController.m in Sources */,
 				EC4BA2541F15EDF000B9BE1A /* DiscoverHeaderCell.m in Sources */,
 				DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */,
 				EC4BA10C1F136CBD00B9BE1A /* NotificationViewController.m in Sources */,
@@ -1013,7 +1155,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CATY6HDQZF;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/zhj/Desktop/ZHJ_rebuild/ZHJ_rebuild/tools/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/zhj/Desktop/ZhiHuiJia/ZHJ_rebuild/tools/PrefixHeader.pch;
 				INFOPLIST_FILE = ZHJ_rebuild/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhiHuiJia.ZHJ-rebuild";
@@ -1030,7 +1172,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CATY6HDQZF;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/zhj/Desktop/ZHJ_rebuild/ZHJ_rebuild/tools/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/zhj/Desktop/ZhiHuiJia/ZHJ_rebuild/tools/PrefixHeader.pch;
 				INFOPLIST_FILE = ZHJ_rebuild/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhiHuiJia.ZHJ-rebuild";

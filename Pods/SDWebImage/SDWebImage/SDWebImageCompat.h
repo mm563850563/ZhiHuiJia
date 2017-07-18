@@ -62,7 +62,7 @@
     #endif
 #else
     #if __IPHONE_OS_VERSION_MIN_REQUIRED != 20000 && __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_5_0
-        #error SDWebImage doesn't support Deployment Target version < 5.0
+//        #error SDWebImage doesn't support Deployment Target version < 5.0
     #endif
 
     #if SD_UIKIT

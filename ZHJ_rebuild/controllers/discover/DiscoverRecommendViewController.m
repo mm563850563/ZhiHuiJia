@@ -8,7 +8,12 @@
 
 #import "DiscoverRecommendViewController.h"
 
-@interface DiscoverRecommendViewController ()
+//cells
+#import "Discover_RecommendCell.h"
+
+@interface DiscoverRecommendViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic, strong)UITableView *tableView;
 
 @end
 
@@ -18,6 +23,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = kColorFromRGB(kBlack);
+    [self initTableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,5 +40,35 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void)initTableView
+{
+    self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView.delegate =self;
+    self.tableView.dataSource = self;
+    self.tableView.rowHeight = 100;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.tableView];
+    
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([Discover_RecommendCell class]) bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([Discover_RecommendCell class])];
+}
+
+
+
+
+
+#pragma mark - **** UITableViewDelegate,UITableViewDataSource *****
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Discover_RecommendCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([Discover_RecommendCell class])];
+    return cell;
+}
+
 
 @end

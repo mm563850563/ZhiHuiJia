@@ -10,4 +10,6 @@
 
 @interface IntellectWearsCell : UITableViewCell
 
+@property (nonatomic, assign)NSInteger numberOfCell;
+
 @end

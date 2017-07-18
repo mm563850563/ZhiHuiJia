@@ -8,13 +8,21 @@
 
 #import "DiscoverViewController.h"
 
+//views
+#import "SegmentTapView.h"
+#import "FlipTableView.h"
+
 //cells
 #import "DiscoverHeaderCell.h"
 #import "DiscoverCell.h"
 
-@interface DiscoverViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface DiscoverViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,SegmentTapViewDelegate>
 
 @property (nonatomic, strong)UITableView *mainTableView;
+
+@property (nonatomic, strong)SegmentTapView *segmentView;
+@property (nonatomic, strong)FlipTableView *flipView;
+
 
 @end
 
@@ -25,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self settingNavigation];
     [self initMianTableView];
 }
 
@@ -42,6 +51,29 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <配置navigation>
+-(void)settingNavigation
+{
+    UIColor *color = kColorFromRGBAndAlpha(kThemeYellow, 1.0);
+    UIImage *image = [UIImage imageWithColor:color height:1.0];
+    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    
+    [self addSearchBarIntoNavigationBar];
+}
+
+#pragma mark - <添加searchBar到navigationBar>
+-(void)addSearchBarIntoNavigationBar
+{
+    UISearchBar *searchBar = [[UISearchBar alloc]init];
+    searchBar.delegate = self;
+    UIColor *color = kColorFromRGBAndAlpha(kWhite, 1.0);
+    UIImage *image = [UIImage imageWithColor:color height:30.0];
+    [searchBar setSearchFieldBackgroundImage:image forState:UIControlStateNormal];
+    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    searchBar.placeholder = @"查找话题或用户";
+    self.navigationItem.titleView = searchBar;
+}
 
 
 #pragma mark - <初始化mainTableView>
@@ -66,31 +98,61 @@
     [self.mainTableView registerNib:nibDiscoverCell forCellReuseIdentifier:NSStringFromClass([DiscoverCell class])];
 }
 
+#pragma mark - <响应RAC>
+-(void)respondWithRAC
+{
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"Discover_Flip" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSNumber *num = x.object;
+        NSInteger index = [num integerValue];
+        [self.segmentView selectIndex:index];
+    }];
+}
 
 
 
 
+
+
+
+
+#pragma mark - ****** SegmentTapViewDelegate *******
+-(void)selectedIndex:(NSInteger)index
+{
+    NSNumber *indexNum = [NSNumber numberWithInteger:index];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"Discover_Segment" object:indexNum];
+}
 
 #pragma mark - ********* UITableViewDelegate,UITableViewDataSource ********
-
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 2;
 }
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         return 320;
     }
-    return 300;
+    return 2500;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 0.1f;
+    }
+    return 40;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc]init];
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         DiscoverHeaderCell *cell1 = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DiscoverHeaderCell class])];
         cell = cell1;
     }else{
@@ -101,6 +163,20 @@
     return cell;
 }
 
-
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 40)];
+    if (section == 1) {
+        //segmentView
+        NSArray *titleArray = @[@"精选动态",@"热门话题",@"活动推荐"];
+        self.segmentView = [[SegmentTapView alloc]initWithFrame:headerView.bounds withDataArray:titleArray withFont:14];
+        self.segmentView.delegate = self;
+        [headerView addSubview:self.segmentView];
+        [self.segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+        }];
+    }
+    return headerView;
+}
 
 @end

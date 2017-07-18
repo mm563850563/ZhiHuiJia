@@ -8,12 +8,14 @@
 
 #import "HomePageViewController.h"
 
-//categate
-#import "UIImage+Color.h"
+
 
 //controllers
 #import "NotificationViewController.h"
+#import "PersonalFileViewController.h"
 #import "ProductDetailViewController.h"
+#import "MoreProductListViewController.h"
+#import "PYSearchViewController.h"
 
 //cells
 //#import "BaseTableViewCell.h"
@@ -30,13 +32,14 @@
 //models
 #import "CycleScrollModel.h"
 
-@interface HomePageViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,UINavigationControllerDelegate,CycleScrollViewCellDelegate>
+@interface HomePageViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,CycleScrollViewCellDelegate,UISearchBarDelegate>
 
 @property (nonatomic, strong)UISearchBar *searchBarHomePage;
 
 @property (nonatomic, strong)UITableView *tableView;
 
 @property (nonatomic, strong)NSMutableArray *dataArray;
+@property (nonatomic, strong)NSArray *sectionTitleArray;
 
 @end
 
@@ -51,6 +54,14 @@
     return _dataArray;
 }
 
+-(NSArray *)sectionTitleArray
+{
+    if (!_sectionTitleArray) {
+        _sectionTitleArray = [[NSArray alloc]initWithObjects:@"青春色彩",@"智能出行",@"智能健康",@"智能穿戴",@"智能娱乐",@"智能生活",@"电脑周边",@"手机周边",@"数码新科技",@"创意潮品",@"大牌低价专区",@"品质生活",@"为您精心推荐",@"发现同趣的人", nil];
+    }
+    return _sectionTitleArray;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -58,6 +69,7 @@
     [self getTestData];
     [self initTableView];
     [self addSearchBarIntoNavigationBar];
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,11 +138,11 @@
 #pragma mark - <配置navigationBar>
 -(void)settingNavigationBar
 {
-    self.navigationController.delegate = self;
-    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+//    self.navigationController.delegate = self;
+//    self.navigationController.interactivePopGestureRecognizer.delegate = self;
     //    self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithTitle:@"左按钮" style:UIBarButtonItemStylePlain target:self action:nil];
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithTitle:@"左按钮" style:UIBarButtonItemStylePlain target:self action:@selector(jumpToPersonalFileVC)];
     self.navigationItem.leftBarButtonItem = leftBtn;
     
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithTitle:@"右按钮" style:UIBarButtonItemStylePlain target:self action:@selector(jumpToNotificationVC)];
@@ -138,7 +150,7 @@
     
     //设置navigationBar背景图
     UIColor *color = [UIColor colorWithRed:0/255.f green:0/255.f blue:0/255.f alpha:0];
-    UIImage *image = [UIImage imageWithColor:color];
+    UIImage *image = [UIImage imageWithColor:color height:1.0];
     [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
 }
 
@@ -160,7 +172,22 @@
     notificationVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:notificationVC animated:YES];
 }
+#pragma mark - <跳转个人资料页面>
+-(void)jumpToPersonalFileVC
+{
+    PersonalFileViewController *personalFileVC = [[PersonalFileViewController alloc]initWithNibName:NSStringFromClass([PersonalFileViewController class]) bundle:nil];
+    personalFileVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:personalFileVC animated:YES];
+}
 
+#pragma mark - <rac响应>
+-(void)respondWithRAC
+{
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"SameHobbyCell"object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        UIViewController *vc = [[UIViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
+}
 
 
 
@@ -217,6 +244,7 @@
             cell = cellHomeMain;
         }else if (indexPath.row == 1){
             YouthColorCell *cellYouthColor = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([YouthColorCell class])];
+            cellYouthColor.numberOfCell = 6;
             cell = cellYouthColor;
         }else if (indexPath.row == 2){
             UITableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:@"more"];
@@ -231,6 +259,7 @@
             cell = cellHomeMain;
         }else if (indexPath.row == 1){
             YouthColorCell *cellYouthColor = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([YouthColorCell class])];
+            cellYouthColor.numberOfCell = 6;
             cell = cellYouthColor;
         }else if (indexPath.row == 2){
             UITableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:@"more"];
@@ -264,6 +293,7 @@
             cell = cellHomeMain;
         }else if (indexPath.row == 1){
             IntellectWearsCell *cellIntellectWears = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([IntellectWearsCell class])];
+            cellIntellectWears.numberOfCell = 6;
             cell = cellIntellectWears;
         }else if (indexPath.row == 2){
             UITableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:@"more"];
@@ -278,6 +308,7 @@
             cell = cellHomeMain;
         }else if (indexPath.row == 1){
             YouthColorCell *cellYouthColor = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([YouthColorCell class])];
+            cellYouthColor.numberOfCell = 6;
             cell = cellYouthColor;
         }else if (indexPath.row == 2){
             UITableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:@"more"];
@@ -311,6 +342,7 @@
             cell = cellHomeMain;
         }else if (indexPath.row == 1){
             IntellectWearsCell *cellIntellectWears = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([IntellectWearsCell class])];
+            cellIntellectWears.numberOfCell = 6;
             cell = cellIntellectWears;
         }else if (indexPath.row == 2){
             UITableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:@"more"];
@@ -325,6 +357,7 @@
             cell = cellHomeMain;
         }else if (indexPath.row == 1){
             YouthColorCell *cellYouthColor = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([YouthColorCell class])];
+            cellYouthColor.numberOfCell = 6;
             cell = cellYouthColor;
         }else if (indexPath.row == 2){
             UITableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:@"more"];
@@ -333,7 +366,7 @@
             cellMore.textLabel.font = [UIFont systemFontOfSize:13];
             cell = cellMore;
         }
-    }else if (indexPath.section == 9){//数码新生活
+    }else if (indexPath.section == 9){//数码新科技
         if (indexPath.row == 0) {
             HomePageMainCell *cellHomeMain = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HomePageMainCell class])];
             cell = cellHomeMain;
@@ -358,6 +391,7 @@
             cell = cellHomeMain;
         }else if (indexPath.row == 1){
             YouthColorCell *cellYouthColor = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([YouthColorCell class])];
+            cellYouthColor.numberOfCell = 6;
             cell = cellYouthColor;
         }else if (indexPath.row == 2){
             UITableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:@"more"];
@@ -372,6 +406,7 @@
             cell = cellHomeMain;
         }else if (indexPath.row == 1){
             YouthColorCell *cellYouthColor = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([YouthColorCell class])];
+            cellYouthColor.numberOfCell = 6;
             cell = cellYouthColor;
         }else if (indexPath.row == 2){
             UITableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:@"more"];
@@ -386,6 +421,7 @@
             cell = cellHomeMain;
         }else if (indexPath.row == 1){
             YouthColorCell *cellYouthColor = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([YouthColorCell class])];
+            cellYouthColor.numberOfCell = 6;
             cell = cellYouthColor;
         }else if (indexPath.row == 2){
             UITableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:@"more"];
@@ -396,6 +432,7 @@
         }
     }else if (indexPath.section == 13){//为你精心推荐
         YouthColorCell *cellYouthColor = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([YouthColorCell class])];
+        cellYouthColor.numberOfCell = 6;
         cell = cellYouthColor;
     }else if (indexPath.section == 14){//发现同趣的人
         if (indexPath.row == 0) {
@@ -414,19 +451,21 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
+    if (indexPath.section == 1) {//青春色彩
         if (indexPath.row == 1) {
-            return 300;
+            CGFloat cellHeight = kSCREEN_WIDTH/2.0/2.0*3.0*3;
+            return cellHeight;
         }else if (indexPath.row == 2){
             return 40;
         }
-    }else if (indexPath.section == 2){
+    }else if (indexPath.section == 2){//智能出行
         if (indexPath.row == 1) {
-            return 300;
+            CGFloat cellHeight = kSCREEN_WIDTH/2.0/2.0*3.0*3;
+            return cellHeight;
         }else if (indexPath.row == 2){
             return 40;
         }
-    }else if (indexPath.section == 3){
+    }else if (indexPath.section == 3){//智能健康
         if (indexPath.row == 0) {
             
         }else if (indexPath.row == 5){
@@ -434,19 +473,21 @@
         }else{
             return kSCREEN_WIDTH/2.0;
         }
-    }else if (indexPath.section == 4){
+    }else if (indexPath.section == 4){//智能穿戴
         if (indexPath.row == 1) {
-            return 300;
+            CGFloat cellHeight = kSCREEN_WIDTH/2.0/2.0*3.0*3;
+            return cellHeight;
         }else if (indexPath.row == 2){
             return 40;
         }
-    }else if (indexPath.section == 5){
+    }else if (indexPath.section == 5){//智能娱乐
         if (indexPath.row == 1) {
-            return 300;
+            CGFloat cellHeight = kSCREEN_WIDTH/2.0/2.0*3.0*3;
+            return cellHeight;
         }else if (indexPath.row == 2){
             return 40;
         }
-    }else if (indexPath.section == 6){
+    }else if (indexPath.section == 6){//智能生活
         if (indexPath.row == 0) {
             
         }else if (indexPath.row == 4){
@@ -454,19 +495,21 @@
         }else{
             return kSCREEN_WIDTH/2.0;
         }
-    }else if (indexPath.section == 7){
+    }else if (indexPath.section == 7){//电脑周边
         if (indexPath.row == 1) {
-            return 300;
+            CGFloat cellHeight = kSCREEN_WIDTH/2.0/2.0*3.0*3;
+            return cellHeight;
         }else if (indexPath.row == 2){
             return 40;
         }
-    }else if (indexPath.section == 8){
+    }else if (indexPath.section == 8){//手机周边
         if (indexPath.row == 1) {
-            return 300;
+            CGFloat cellHeight = kSCREEN_WIDTH/2.0/2.0*3.0*3;
+            return cellHeight;
         }else if (indexPath.row == 2){
             return 40;
         }
-    }else if (indexPath.section == 9){
+    }else if (indexPath.section == 9){//数码新科技
         if (indexPath.row == 0) {
             
         }else if (indexPath.row == 5){
@@ -474,26 +517,30 @@
         }else{
             return kSCREEN_WIDTH/2.0;
         }
-    }else if (indexPath.section == 10){
+    }else if (indexPath.section == 10){//创意潮品
         if (indexPath.row == 1) {
-            return 300;
+            CGFloat cellHeight = kSCREEN_WIDTH/2.0/2.0*3.0*3;
+            return cellHeight;
         }else if (indexPath.row == 2){
             return 40;
         }
-    }else if (indexPath.section == 11){
+    }else if (indexPath.section == 11){//大牌低价专区
         if (indexPath.row == 1) {
-            return 300;
+            CGFloat cellHeight = kSCREEN_WIDTH/2.0/2.0*3.0*3;
+            return cellHeight;
         }else if (indexPath.row == 2){
             return 40;
         }
-    }else if (indexPath.section == 12){
+    }else if (indexPath.section == 12){//品质生活
         if (indexPath.row == 1) {
-            return 300;
+            CGFloat cellHeight = kSCREEN_WIDTH/2.0/2.0*3.0*3;
+            return cellHeight;
         }else if (indexPath.row == 2){
             return 40;
         }
-    }else if (indexPath.section == 13){
-        return 300;
+    }else if (indexPath.section == 13){//为您精心推荐
+        CGFloat cellHeight = kSCREEN_WIDTH/2.0/2.0*3.0*3;
+        return cellHeight;
     }else if (indexPath.section == 14){
         if (indexPath.row == 0) {
             return 230;
@@ -523,32 +570,48 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section != 0) {
-        UIView *headerView = [[UIView alloc]init];
-        headerView.backgroundColor = [UIColor redColor];
+        UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
+        headerView.backgroundColor = [UIColor purpleColor];
+        UILabel *label = [[UILabel alloc]initWithFrame:headerView.bounds];
+        label.text = self.sectionTitleArray[section-1];
+        label.textColor = kColorFromRGB(kWhite);
+        [headerView addSubview:label];
         return headerView;
     }
     return nil;
 }
 
-
-
-#pragma mark - ****** UINavigationControllerDelegate *******
--(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([viewController isKindOfClass:[NotificationViewController class]]) {
-        [navigationController setNavigationBarHidden:YES animated:YES];
-    }else if ([viewController isKindOfClass:[self class]]){
-        navigationController.navigationBar.translucent = YES;
-        [navigationController setNavigationBarHidden:NO animated:YES];
+    if (indexPath.section != 0) {
+        if (indexPath.section == 1) {
+            if (indexPath.row == 2) {
+                MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
+                moreProductListVC.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:moreProductListVC animated:YES];
+            }
+        }
     }else{
-        [navigationController setNavigationBarHidden:NO animated:YES];
+        ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
+        productDetailVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:productDetailVC animated:YES];
     }
+    
 }
 
-//#pragma mark - **  **
-//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+
+
+//#pragma mark - ****** UINavigationControllerDelegate *******
+//-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 //{
-//    
+//    if ([viewController isKindOfClass:[NotificationViewController class]]) {
+//        [navigationController setNavigationBarHidden:YES animated:YES];
+//    }else if ([viewController isKindOfClass:[self class]]){
+//        navigationController.navigationBar.translucent = YES;
+//        [navigationController setNavigationBarHidden:NO animated:YES];
+//    }else{
+//        [navigationController setNavigationBarHidden:NO animated:YES];
+//    }
 //}
 
 #pragma mark - ***** UIScrollViewDelegate ******
@@ -557,10 +620,9 @@
     //根据scrollView的偏移量使navigationBar的背景色渐变
     CGFloat offsetY = scrollView.contentOffset.y;
     CGFloat alpha = offsetY/(100.0);
-    UIColor *color = [UIColor colorWithRed:0/255.f green:0/255.f blue:0/255.f alpha:alpha];
-    UIImage *image = [UIImage imageWithColor:color];
+    UIColor *color = kColorFromRGBAndAlpha(kThemeYellow, alpha);
+    UIImage *image = [UIImage imageWithColor:color height:1.0];
     [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-    
 }
 
 
@@ -572,8 +634,18 @@
     [self.navigationController pushViewController:productDetailVC animated:YES];
 }
 
-
-
+#pragma mark - **** UISearchBarDelegate ****
+-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    NSArray *array = @[@"杯子",@"背包",@"运动鞋",@"Nike",@"珠穆朗玛峰",@"约翰尼德普"];
+    PYSearchViewController *searchVC = [PYSearchViewController searchViewControllerWithHotSearches:array searchBarPlaceholder:@"请输入关键字" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+        MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
+        [searchViewController.navigationController pushViewController:moreProductListVC animated:YES];
+    }];
+    searchVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:searchVC animated:YES];
+    return NO;
+}
 
 
 
