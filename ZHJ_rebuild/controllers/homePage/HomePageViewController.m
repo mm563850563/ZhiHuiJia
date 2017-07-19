@@ -16,6 +16,8 @@
 #import "ProductDetailViewController.h"
 #import "MoreProductListViewController.h"
 #import "PYSearchViewController.h"
+#import "FocusPersonFileViewController.h"
+#import "GetGiftViewController.h"
 
 //cells
 //#import "BaseTableViewCell.h"
@@ -32,7 +34,7 @@
 //models
 #import "CycleScrollModel.h"
 
-@interface HomePageViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,CycleScrollViewCellDelegate,UISearchBarDelegate>
+@interface HomePageViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,CycleScrollViewCellDelegate,UISearchBarDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong)UISearchBar *searchBarHomePage;
 
@@ -87,12 +89,18 @@
 }
 */
 
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    self.navigationController.navigationBar.hidden = NO;
+//    self.navigationController.navigationBar.translucent = YES;
+//}
+
 #pragma mark - <获取数据>
 -(void)getTestData
 {
-    UIImage *img1 = [UIImage imageNamed:@"huantu"];
-    UIImage *img2 = [UIImage imageNamed:@"huantu"];
-    UIImage *img3 = [UIImage imageNamed:@"huantu"];
+    UIImage *img1 = [UIImage imageNamed:@"fxdl"];
+    UIImage *img2 = [UIImage imageNamed:@"fenxiangdali"];
+    UIImage *img3 = [UIImage imageNamed:@"tongzzhi2"];
     NSArray *imgArray = @[img1,img2,img3];
     CycleScrollModel *model = [[CycleScrollModel alloc]init];
     model.arrayImage = imgArray;
@@ -138,7 +146,7 @@
 #pragma mark - <配置navigationBar>
 -(void)settingNavigationBar
 {
-//    self.navigationController.delegate = self;
+    self.navigationController.delegate = self;
 //    self.navigationController.interactivePopGestureRecognizer.delegate = self;
     //    self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -183,9 +191,34 @@
 #pragma mark - <rac响应>
 -(void)respondWithRAC
 {
+    //点击同趣的人
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"SameHobbyCell"object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        UIViewController *vc = [[UIViewController alloc]init];
-        [self.navigationController pushViewController:vc animated:YES];
+        FocusPersonFileViewController *focusPersonFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
+        focusPersonFileVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:focusPersonFileVC animated:YES];
+    }];
+    
+    //点击”拿好礼“按钮
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"RegisterGiftAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        UIButton *button = x.object;
+        GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
+        getGiftVC.hidesBottomBarWhenPushed = YES;
+        getGiftVC.category = button.tag;
+        [self.navigationController pushViewController:getGiftVC animated:YES];
+    }];
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"ShareGiftAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        UIButton *button = x.object;
+        GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
+        getGiftVC.hidesBottomBarWhenPushed = YES;
+        getGiftVC.category = button.tag;
+        [self.navigationController pushViewController:getGiftVC animated:YES];
+    }];
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"BuyGiftAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        UIButton *button = x.object;
+        GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
+        getGiftVC.hidesBottomBarWhenPushed = YES;
+        getGiftVC.category = button.tag;
+        [self.navigationController pushViewController:getGiftVC animated:YES];
     }];
 }
 
@@ -601,18 +634,20 @@
 
 
 
-//#pragma mark - ****** UINavigationControllerDelegate *******
-//-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-//{
-//    if ([viewController isKindOfClass:[NotificationViewController class]]) {
-//        [navigationController setNavigationBarHidden:YES animated:YES];
-//    }else if ([viewController isKindOfClass:[self class]]){
-//        navigationController.navigationBar.translucent = YES;
-//        [navigationController setNavigationBarHidden:NO animated:YES];
-//    }else{
-//        [navigationController setNavigationBarHidden:NO animated:YES];
-//    }
-//}
+#pragma mark - ****** UINavigationControllerDelegate *******
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if ([viewController isKindOfClass:[NotificationViewController class]]) {
+        [navigationController setNavigationBarHidden:YES animated:YES];
+    }else if ([viewController isKindOfClass:[self class]]){
+        navigationController.navigationBar.translucent = YES;
+        [navigationController setNavigationBarHidden:NO animated:YES];
+    }else if ([viewController isKindOfClass:[FocusPersonFileViewController class]]){
+        [navigationController setNavigationBarHidden:YES];
+    }else if ([viewController isKindOfClass:[GetGiftViewController class]]){
+        [navigationController setNavigationBarHidden:YES animated:YES];
+    }
+}
 
 #pragma mark - ***** UIScrollViewDelegate ******
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView

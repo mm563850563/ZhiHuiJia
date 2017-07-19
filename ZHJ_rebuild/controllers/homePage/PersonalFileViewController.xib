@@ -27,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4f-Hv-lsc">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="622"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="olA-9d-kBw">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="450"/>
@@ -428,23 +428,30 @@
                     </constraints>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q18-d7-gGt">
-                    <rect key="frame" x="0.0" y="622" width="375" height="45"/>
-                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="10" y="617" width="355" height="45"/>
+                    <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="zhb-4K-CvR"/>
+                    </constraints>
                     <state key="normal" title="保存">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="a4f-Hv-lsc" secondAttribute="trailing" id="G2A-Qe-bss"/>
-                <constraint firstAttribute="trailing" secondItem="Q18-d7-gGt" secondAttribute="trailing" id="NMW-E6-gKc"/>
-                <constraint firstAttribute="bottom" secondItem="a4f-Hv-lsc" secondAttribute="bottom" constant="45" id="RrD-sP-77p"/>
+                <constraint firstAttribute="trailing" secondItem="Q18-d7-gGt" secondAttribute="trailing" constant="10" id="NMW-E6-gKc"/>
+                <constraint firstAttribute="bottom" secondItem="a4f-Hv-lsc" secondAttribute="bottom" constant="50" id="RrD-sP-77p"/>
                 <constraint firstItem="a4f-Hv-lsc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="akL-VQ-2BL"/>
-                <constraint firstItem="Q18-d7-gGt" firstAttribute="top" secondItem="a4f-Hv-lsc" secondAttribute="bottom" id="b9W-rS-OlC"/>
                 <constraint firstItem="a4f-Hv-lsc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="m22-w9-5So"/>
-                <constraint firstAttribute="bottom" secondItem="Q18-d7-gGt" secondAttribute="bottom" id="nk3-Xy-onB"/>
-                <constraint firstItem="Q18-d7-gGt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tVd-mc-McJ"/>
+                <constraint firstAttribute="bottom" secondItem="Q18-d7-gGt" secondAttribute="bottom" constant="5" id="nk3-Xy-onB"/>
+                <constraint firstItem="Q18-d7-gGt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="tVd-mc-McJ"/>
             </constraints>
             <point key="canvasLocation" x="36.5" y="86.5"/>
         </view>

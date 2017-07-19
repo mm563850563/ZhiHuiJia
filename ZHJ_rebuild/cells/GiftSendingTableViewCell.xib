@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,25 +18,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="169.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YgF-Fm-pEQ">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hao_bao_bg" translatesAutoresizingMaskIntoConstraints="NO" id="YgF-Fm-pEQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="169.5"/>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfd-Y6-Xhs">
                         <rect key="frame" x="45" y="79.5" width="50" height="50"/>
                         <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="btnRegisterGiftAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wpa-1j-O91"/>
+                        </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHU-zo-K00">
+                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHU-zo-K00">
                         <rect key="frame" x="135" y="79.5" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="MZt-KA-SN2"/>
                             <constraint firstAttribute="height" constant="50" id="vZM-oH-XV5"/>
                         </constraints>
                         <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="btnShareGiftAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Hp1-xY-F8L"/>
+                        </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zE-zQ-qdo">
+                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zE-zQ-qdo">
                         <rect key="frame" x="225" y="79.5" width="50" height="50"/>
                         <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="btnBuyGiftAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4Df-jK-cK2"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册礼" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AyP-mr-chY">
                         <rect key="frame" x="45" y="129.5" width="50" height="20"/>
@@ -95,4 +104,7 @@
             <point key="canvasLocation" x="32" y="19"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="hao_bao_bg" width="540" height="348"/>
+    </resources>
 </document>

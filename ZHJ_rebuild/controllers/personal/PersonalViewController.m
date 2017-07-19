@@ -7,10 +7,14 @@
 //
 
 #import "PersonalViewController.h"
+
+//cells
+#import "ConfigurationViewController.h"
 #import "FeedbackViewController.h"
 
 //cells
 #import "PersonalCollectCell.h"
+
 
 @interface PersonalViewController ()<UINavigationControllerDelegate,UIGestureRecognizerDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForHeaderView;
@@ -63,7 +67,8 @@
 -(void)initCollectionView
 {
     NSArray *arrayTitle = @[@"购物车",@"我的收藏",@"我的余额",@"优惠券",@"客服中心",@"分享邀请",@"关注公众号",@"关于智惠加",@"意见反馈"];
-    self.arrayCollection = @[arrayTitle];
+    NSArray *arrayPhoto = @[@"car",@"shouc",@"zj",@"quan",@"wdkf",@"liwu",@"gzh",@"LOGO",@"fk"];
+    self.arrayCollection = @[arrayTitle,arrayPhoto];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
     flowLayout.minimumLineSpacing = 1;
@@ -83,6 +88,15 @@
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([PersonalCollectCell class]) bundle:nil];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([PersonalCollectCell class])];
 }
+
+#pragma mark - <设置按钮响应>
+- (IBAction)btnConfigurationAction:(UIButton *)sender
+{
+    ConfigurationViewController *configVC = [[ConfigurationViewController alloc]init];
+    configVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:configVC animated:YES];
+}
+
 
 
 #pragma mark - <计算页面高度>
@@ -135,8 +149,8 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     PersonalCollectCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([PersonalCollectCell class]) forIndexPath:indexPath];
-//    cell.labelTitle.text = self.arrayCollection[0][indexPath.row];
-    
+    cell.labelTitle.text = self.arrayCollection[0][indexPath.row];
+    [cell.imageView setImage:[UIImage imageNamed:self.arrayCollection[1][indexPath.row]]];
     return cell;
 }
 

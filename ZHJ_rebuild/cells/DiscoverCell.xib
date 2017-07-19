@@ -33,7 +33,7 @@
             <connections>
                 <outlet property="flipBGView" destination="2ux-N3-M6U" id="PfG-Vf-eiv"/>
             </connections>
-            <point key="canvasLocation" x="64" y="152.5"/>
+            <point key="canvasLocation" x="55" y="42"/>
         </tableViewCell>
     </objects>
 </document>

@@ -28,6 +28,31 @@
 		DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */; };
 		DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */; };
 		DD6287001F1E405A0030331D /* Discover_RecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286FE1F1E405A0030331D /* Discover_RecommendCell.xib */; };
+		DD6287041F1EE19C0030331D /* FocusPersonFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287021F1EE19C0030331D /* FocusPersonFileViewController.m */; };
+		DD6287051F1EE19C0030331D /* FocusPersonFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287031F1EE19C0030331D /* FocusPersonFileViewController.xib */; };
+		DD6287091F1EE3210030331D /* FocusPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287071F1EE3210030331D /* FocusPersonCell.m */; };
+		DD62870A1F1EE3210030331D /* FocusPersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287081F1EE3210030331D /* FocusPersonCell.xib */; };
+		DD62870E1F1EEE1B0030331D /* FocusPersonHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62870C1F1EEE1B0030331D /* FocusPersonHeaderCell.m */; };
+		DD62870F1F1EEE1B0030331D /* FocusPersonHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62870D1F1EEE1B0030331D /* FocusPersonHeaderCell.xib */; };
+		DD6287181F1F32010030331D /* DynamicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287161F1F32010030331D /* DynamicDetailViewController.m */; };
+		DD6287191F1F32010030331D /* DynamicDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287171F1F32010030331D /* DynamicDetailViewController.xib */; };
+		DD62871D1F1F3D8B0030331D /* PriaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62871B1F1F3D8B0030331D /* PriaseTableViewCell.m */; };
+		DD62871E1F1F3D8B0030331D /* PriaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62871C1F1F3D8B0030331D /* PriaseTableViewCell.xib */; };
+		DD6287221F1F41BF0030331D /* DynamicWithoutCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287201F1F41BF0030331D /* DynamicWithoutCommentCell.m */; };
+		DD6287231F1F41BF0030331D /* DynamicWithoutCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287211F1F41BF0030331D /* DynamicWithoutCommentCell.xib */; };
+		DD6287271F1F48000030331D /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287251F1F48000030331D /* CommentTableViewCell.m */; };
+		DD6287281F1F48000030331D /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287261F1F48000030331D /* CommentTableViewCell.xib */; };
+		DD62872B1F1F4EC20030331D /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62872A1F1F4EC20030331D /* ConfigurationViewController.m */; };
+		DD62872F1F1F51BA0030331D /* ConfigurationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62872D1F1F51BA0030331D /* ConfigurationCell.m */; };
+		DD6287301F1F51BA0030331D /* ConfigurationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62872E1F1F51BA0030331D /* ConfigurationCell.xib */; };
+		DD6287341F1F52BE0030331D /* Configuration_ButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287321F1F52BE0030331D /* Configuration_ButtonCell.m */; };
+		DD6287351F1F52BE0030331D /* Configuration_ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287331F1F52BE0030331D /* Configuration_ButtonCell.xib */; };
+		DD62873E1F1F5FA20030331D /* GetGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62873C1F1F5FA20030331D /* GetGiftViewController.m */; };
+		DD62873F1F1F5FA20030331D /* GetGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62873D1F1F5FA20030331D /* GetGiftViewController.xib */; };
+		DD6287431F1F8C1E0030331D /* MyAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287411F1F8C1E0030331D /* MyAddressViewController.m */; };
+		DD6287441F1F8C1E0030331D /* MyAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287421F1F8C1E0030331D /* MyAddressViewController.xib */; };
+		DD6287481F1F90E80030331D /* GiftListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287461F1F90E80030331D /* GiftListCell.m */; };
+		DD6287491F1F90E80030331D /* GiftListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287471F1F90E80030331D /* GiftListCell.xib */; };
 		DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */; };
 		DDFB81C01F18475700AEAAA7 /* SameHobbyPersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */; };
 		DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81C21F184B7600AEAAA7 /* CALayer+XIBUIColor.m */; };
@@ -178,6 +203,44 @@
 		DD6286FC1F1E405A0030331D /* Discover_RecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_RecommendCell.h; path = cells/Discover_RecommendCell.h; sourceTree = "<group>"; };
 		DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_RecommendCell.m; path = cells/Discover_RecommendCell.m; sourceTree = "<group>"; };
 		DD6286FE1F1E405A0030331D /* Discover_RecommendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_RecommendCell.xib; path = cells/Discover_RecommendCell.xib; sourceTree = "<group>"; };
+		DD6287011F1EE19C0030331D /* FocusPersonFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FocusPersonFileViewController.h; path = controllers/homePage/FocusPersonFileViewController.h; sourceTree = "<group>"; };
+		DD6287021F1EE19C0030331D /* FocusPersonFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FocusPersonFileViewController.m; path = controllers/homePage/FocusPersonFileViewController.m; sourceTree = "<group>"; };
+		DD6287031F1EE19C0030331D /* FocusPersonFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FocusPersonFileViewController.xib; path = controllers/homePage/FocusPersonFileViewController.xib; sourceTree = "<group>"; };
+		DD6287061F1EE3210030331D /* FocusPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FocusPersonCell.h; path = cells/FocusPersonCell.h; sourceTree = "<group>"; };
+		DD6287071F1EE3210030331D /* FocusPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FocusPersonCell.m; path = cells/FocusPersonCell.m; sourceTree = "<group>"; };
+		DD6287081F1EE3210030331D /* FocusPersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FocusPersonCell.xib; path = cells/FocusPersonCell.xib; sourceTree = "<group>"; };
+		DD62870B1F1EEE1B0030331D /* FocusPersonHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FocusPersonHeaderCell.h; path = cells/FocusPersonHeaderCell.h; sourceTree = "<group>"; };
+		DD62870C1F1EEE1B0030331D /* FocusPersonHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FocusPersonHeaderCell.m; path = cells/FocusPersonHeaderCell.m; sourceTree = "<group>"; };
+		DD62870D1F1EEE1B0030331D /* FocusPersonHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FocusPersonHeaderCell.xib; path = cells/FocusPersonHeaderCell.xib; sourceTree = "<group>"; };
+		DD6287151F1F32010030331D /* DynamicDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynamicDetailViewController.h; path = controllers/discover/DynamicDetailViewController.h; sourceTree = "<group>"; };
+		DD6287161F1F32010030331D /* DynamicDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DynamicDetailViewController.m; path = controllers/discover/DynamicDetailViewController.m; sourceTree = "<group>"; };
+		DD6287171F1F32010030331D /* DynamicDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DynamicDetailViewController.xib; path = controllers/discover/DynamicDetailViewController.xib; sourceTree = "<group>"; };
+		DD62871A1F1F3D8B0030331D /* PriaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PriaseTableViewCell.h; path = cells/PriaseTableViewCell.h; sourceTree = "<group>"; };
+		DD62871B1F1F3D8B0030331D /* PriaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PriaseTableViewCell.m; path = cells/PriaseTableViewCell.m; sourceTree = "<group>"; };
+		DD62871C1F1F3D8B0030331D /* PriaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PriaseTableViewCell.xib; path = cells/PriaseTableViewCell.xib; sourceTree = "<group>"; };
+		DD62871F1F1F41BF0030331D /* DynamicWithoutCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynamicWithoutCommentCell.h; path = cells/DynamicWithoutCommentCell.h; sourceTree = "<group>"; };
+		DD6287201F1F41BF0030331D /* DynamicWithoutCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DynamicWithoutCommentCell.m; path = cells/DynamicWithoutCommentCell.m; sourceTree = "<group>"; };
+		DD6287211F1F41BF0030331D /* DynamicWithoutCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DynamicWithoutCommentCell.xib; path = cells/DynamicWithoutCommentCell.xib; sourceTree = "<group>"; };
+		DD6287241F1F48000030331D /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentTableViewCell.h; path = cells/CommentTableViewCell.h; sourceTree = "<group>"; };
+		DD6287251F1F48000030331D /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewCell.m; path = cells/CommentTableViewCell.m; sourceTree = "<group>"; };
+		DD6287261F1F48000030331D /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentTableViewCell.xib; path = cells/CommentTableViewCell.xib; sourceTree = "<group>"; };
+		DD6287291F1F4EC20030331D /* ConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigurationViewController.h; path = controllers/personal/ConfigurationViewController.h; sourceTree = "<group>"; };
+		DD62872A1F1F4EC20030331D /* ConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigurationViewController.m; path = controllers/personal/ConfigurationViewController.m; sourceTree = "<group>"; };
+		DD62872C1F1F51BA0030331D /* ConfigurationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigurationCell.h; path = cells/ConfigurationCell.h; sourceTree = "<group>"; };
+		DD62872D1F1F51BA0030331D /* ConfigurationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigurationCell.m; path = cells/ConfigurationCell.m; sourceTree = "<group>"; };
+		DD62872E1F1F51BA0030331D /* ConfigurationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfigurationCell.xib; path = cells/ConfigurationCell.xib; sourceTree = "<group>"; };
+		DD6287311F1F52BE0030331D /* Configuration_ButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Configuration_ButtonCell.h; path = cells/Configuration_ButtonCell.h; sourceTree = "<group>"; };
+		DD6287321F1F52BE0030331D /* Configuration_ButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Configuration_ButtonCell.m; path = cells/Configuration_ButtonCell.m; sourceTree = "<group>"; };
+		DD6287331F1F52BE0030331D /* Configuration_ButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Configuration_ButtonCell.xib; path = cells/Configuration_ButtonCell.xib; sourceTree = "<group>"; };
+		DD62873B1F1F5FA20030331D /* GetGiftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetGiftViewController.h; path = controllers/homePage/GetGiftViewController.h; sourceTree = "<group>"; };
+		DD62873C1F1F5FA20030331D /* GetGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetGiftViewController.m; path = controllers/homePage/GetGiftViewController.m; sourceTree = "<group>"; };
+		DD62873D1F1F5FA20030331D /* GetGiftViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GetGiftViewController.xib; path = controllers/homePage/GetGiftViewController.xib; sourceTree = "<group>"; };
+		DD6287401F1F8C1E0030331D /* MyAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAddressViewController.h; path = controllers/personal/MyAddressViewController.h; sourceTree = "<group>"; };
+		DD6287411F1F8C1E0030331D /* MyAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAddressViewController.m; path = controllers/personal/MyAddressViewController.m; sourceTree = "<group>"; };
+		DD6287421F1F8C1E0030331D /* MyAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyAddressViewController.xib; path = controllers/personal/MyAddressViewController.xib; sourceTree = "<group>"; };
+		DD6287451F1F90E80030331D /* GiftListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiftListCell.h; path = cells/GiftListCell.h; sourceTree = "<group>"; };
+		DD6287461F1F90E80030331D /* GiftListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GiftListCell.m; path = cells/GiftListCell.m; sourceTree = "<group>"; };
+		DD6287471F1F90E80030331D /* GiftListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GiftListCell.xib; path = cells/GiftListCell.xib; sourceTree = "<group>"; };
 		DDFB81BC1F18475700AEAAA7 /* SameHobbyPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameHobbyPersonCell.h; path = cells/SameHobbyPersonCell.h; sourceTree = "<group>"; };
 		DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameHobbyPersonCell.m; path = cells/SameHobbyPersonCell.m; sourceTree = "<group>"; };
 		DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SameHobbyPersonCell.xib; path = cells/SameHobbyPersonCell.xib; sourceTree = "<group>"; };
@@ -587,6 +650,30 @@
 				DD6286FC1F1E405A0030331D /* Discover_RecommendCell.h */,
 				DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */,
 				DD6286FE1F1E405A0030331D /* Discover_RecommendCell.xib */,
+				DD6287061F1EE3210030331D /* FocusPersonCell.h */,
+				DD6287071F1EE3210030331D /* FocusPersonCell.m */,
+				DD6287081F1EE3210030331D /* FocusPersonCell.xib */,
+				DD62870B1F1EEE1B0030331D /* FocusPersonHeaderCell.h */,
+				DD62870C1F1EEE1B0030331D /* FocusPersonHeaderCell.m */,
+				DD62870D1F1EEE1B0030331D /* FocusPersonHeaderCell.xib */,
+				DD62871A1F1F3D8B0030331D /* PriaseTableViewCell.h */,
+				DD62871B1F1F3D8B0030331D /* PriaseTableViewCell.m */,
+				DD62871C1F1F3D8B0030331D /* PriaseTableViewCell.xib */,
+				DD62871F1F1F41BF0030331D /* DynamicWithoutCommentCell.h */,
+				DD6287201F1F41BF0030331D /* DynamicWithoutCommentCell.m */,
+				DD6287211F1F41BF0030331D /* DynamicWithoutCommentCell.xib */,
+				DD6287241F1F48000030331D /* CommentTableViewCell.h */,
+				DD6287251F1F48000030331D /* CommentTableViewCell.m */,
+				DD6287261F1F48000030331D /* CommentTableViewCell.xib */,
+				DD62872C1F1F51BA0030331D /* ConfigurationCell.h */,
+				DD62872D1F1F51BA0030331D /* ConfigurationCell.m */,
+				DD62872E1F1F51BA0030331D /* ConfigurationCell.xib */,
+				DD6287311F1F52BE0030331D /* Configuration_ButtonCell.h */,
+				DD6287321F1F52BE0030331D /* Configuration_ButtonCell.m */,
+				DD6287331F1F52BE0030331D /* Configuration_ButtonCell.xib */,
+				DD6287451F1F90E80030331D /* GiftListCell.h */,
+				DD6287461F1F90E80030331D /* GiftListCell.m */,
+				DD6287471F1F90E80030331D /* GiftListCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -666,6 +753,12 @@
 			children = (
 				EC4BA0F51F136CBD00B9BE1A /* HomePageViewController.h */,
 				EC4BA0F61F136CBD00B9BE1A /* HomePageViewController.m */,
+				DD62873B1F1F5FA20030331D /* GetGiftViewController.h */,
+				DD62873C1F1F5FA20030331D /* GetGiftViewController.m */,
+				DD62873D1F1F5FA20030331D /* GetGiftViewController.xib */,
+				DD6287011F1EE19C0030331D /* FocusPersonFileViewController.h */,
+				DD6287021F1EE19C0030331D /* FocusPersonFileViewController.m */,
+				DD6287031F1EE19C0030331D /* FocusPersonFileViewController.xib */,
 				DDFB829F1F1C81E300AEAAA7 /* PersonalFileViewController.h */,
 				DDFB82A01F1C81E300AEAAA7 /* PersonalFileViewController.m */,
 				DDFB82A11F1C81E300AEAAA7 /* PersonalFileViewController.xib */,
@@ -728,6 +821,9 @@
 				EC4BA25D1F15FE0900B9BE1A /* DiscoverHotTopicViewController.m */,
 				EC4BA25F1F15FE2200B9BE1A /* DiscoverRecommendViewController.h */,
 				EC4BA2601F15FE2200B9BE1A /* DiscoverRecommendViewController.m */,
+				DD6287151F1F32010030331D /* DynamicDetailViewController.h */,
+				DD6287161F1F32010030331D /* DynamicDetailViewController.m */,
+				DD6287171F1F32010030331D /* DynamicDetailViewController.xib */,
 			);
 			name = discover;
 			sourceTree = "<group>";
@@ -746,6 +842,11 @@
 			children = (
 				EC4BA0E71F136C8100B9BE1A /* PersonalViewController.h */,
 				EC4BA0E81F136C8100B9BE1A /* PersonalViewController.m */,
+				DD6287291F1F4EC20030331D /* ConfigurationViewController.h */,
+				DD62872A1F1F4EC20030331D /* ConfigurationViewController.m */,
+				DD6287401F1F8C1E0030331D /* MyAddressViewController.h */,
+				DD6287411F1F8C1E0030331D /* MyAddressViewController.m */,
+				DD6287421F1F8C1E0030331D /* MyAddressViewController.xib */,
 				EC4BA0E41F136C8100B9BE1A /* FeedbackViewController.h */,
 				EC4BA0E51F136C8100B9BE1A /* FeedbackViewController.m */,
 				EC4BA0E61F136C8100B9BE1A /* FeedbackViewController.xib */,
@@ -841,6 +942,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDFB825D1F187A7900AEAAA7 /* cb_dark_on@2x.png in Resources */,
+				DD6287351F1F52BE0030331D /* Configuration_ButtonCell.xib in Resources */,
 				DDFB81F21F18686A00AEAAA7 /* CartProductListCell.xib in Resources */,
 				DD40B72E1F173B5300839748 /* HomeRightImageCell.xib in Resources */,
 				DDFB825A1F187A7900AEAAA7 /* cb_dark_off.png in Resources */,
@@ -848,12 +950,14 @@
 				DDFB82581F187A7900AEAAA7 /* cb_box_on.png in Resources */,
 				DDFB825B1F187A7900AEAAA7 /* cb_dark_off@2x.png in Resources */,
 				DDFB82691F187A7900AEAAA7 /* cb_mono_on@2x.png in Resources */,
+				DD6287051F1EE19C0030331D /* FocusPersonFileViewController.xib in Resources */,
 				DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */,
 				DDFB825F1F187A7900AEAAA7 /* cb_glossy_off@2x.png in Resources */,
 				DDFB82671F187A7900AEAAA7 /* cb_mono_off@2x.png in Resources */,
 				DD6287001F1E405A0030331D /* Discover_RecommendCell.xib in Resources */,
 				DDFB82C61F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib in Resources */,
 				EC4BA2501F15D43600B9BE1A /* BrandRulesViewController.xib in Resources */,
+				DD62870A1F1EE3210030331D /* FocusPersonCell.xib in Resources */,
 				EC4BA0681F13562700B9BE1A /* LaunchScreen.storyboard in Resources */,
 				DDFB82C11F1E059A00AEAAA7 /* DiscoverDynamicCell.xib in Resources */,
 				DDFB82641F187A7900AEAAA7 /* cb_green_on.png in Resources */,
@@ -865,8 +969,10 @@
 				DDFB82701F18BC4500AEAAA7 /* PersonalCollectCell.xib in Resources */,
 				DDFB82991F1C6A8900AEAAA7 /* MoreProductList_HeaderView.xib in Resources */,
 				EC4BA2551F15EDF000B9BE1A /* DiscoverHeaderCell.xib in Resources */,
+				DD62871E1F1F3D8B0030331D /* PriaseTableViewCell.xib in Resources */,
 				DDFB82B41F1D931500AEAAA7 /* PYSearch.bundle in Resources */,
 				DDFB82631F187A7900AEAAA7 /* cb_green_off@2x.png in Resources */,
+				DD6287301F1F51BA0030331D /* ConfigurationCell.xib in Resources */,
 				DDFB82751F19B18800AEAAA7 /* Categate_CategateCollectCell.xib in Resources */,
 				DDFB82601F187A7900AEAAA7 /* cb_glossy_on.png in Resources */,
 				DDFB828F1F1C5E3900AEAAA7 /* MoreProductListCell.xib in Resources */,
@@ -874,20 +980,27 @@
 				DDFB82821F19F97900AEAAA7 /* Categate_Brand_HeaderView.xib in Resources */,
 				DD40B7361F17485500839748 /* HomeCollectCell2.xib in Resources */,
 				DDFB829E1F1C791800AEAAA7 /* MoreProduct_SortView.xib in Resources */,
+				DD6287491F1F90E80030331D /* GiftListCell.xib in Resources */,
+				DD62873F1F1F5FA20030331D /* GetGiftViewController.xib in Resources */,
 				DD40B73E1F1788B000839748 /* HomeCollectCell3.xib in Resources */,
 				DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */,
 				DDFB82621F187A7900AEAAA7 /* cb_green_off.png in Resources */,
+				DD6287191F1F32010030331D /* DynamicDetailViewController.xib in Resources */,
 				EC4BA2661F160F1F00B9BE1A /* DiscoverCell.xib in Resources */,
 				DD40B7241F1705A000839748 /* HomeCollectCell1.xib in Resources */,
 				DDFB825C1F187A7900AEAAA7 /* cb_dark_on.png in Resources */,
 				DDFB82661F187A7900AEAAA7 /* cb_mono_off.png in Resources */,
+				DD6287281F1F48000030331D /* CommentTableViewCell.xib in Resources */,
 				DDFB82561F187A7900AEAAA7 /* cb_box_off.png in Resources */,
+				DD6287231F1F41BF0030331D /* DynamicWithoutCommentCell.xib in Resources */,
 				EC4BA0651F13562700B9BE1A /* Assets.xcassets in Resources */,
+				DD6287441F1F8C1E0030331D /* MyAddressViewController.xib in Resources */,
 				DD40B7291F17250B00839748 /* HomeLeftImageCell.xib in Resources */,
 				EC4BA1351F1462F100B9BE1A /* GiftSendingTableViewCell.xib in Resources */,
 				EC4BA13A1F14693F00B9BE1A /* ProductDetailViewController.xib in Resources */,
 				EC4BA0631F13562700B9BE1A /* Main.storyboard in Resources */,
 				EC4BA0CD1F1359DF00B9BE1A /* SelectThemeColorView.xib in Resources */,
+				DD62870F1F1EEE1B0030331D /* FocusPersonHeaderCell.xib in Resources */,
 				EC4BA0EA1F136C8100B9BE1A /* FeedbackViewController.xib in Resources */,
 				DDFB82571F187A7900AEAAA7 /* cb_box_off@2x.png in Resources */,
 				DDFB82A31F1C81E300AEAAA7 /* PersonalFileViewController.xib in Resources */,
@@ -952,8 +1065,10 @@
 			files = (
 				DDFB82B51F1D931500AEAAA7 /* PYSearchConst.m in Sources */,
 				EC4BA0DB1F1359EC00B9BE1A /* FactoryCollectionViewCell.m in Sources */,
+				DD6287341F1F52BE0030331D /* Configuration_ButtonCell.m in Sources */,
 				EC4BA0C91F1359DF00B9BE1A /* FlipTableView.m in Sources */,
 				EC4BA10F1F136CBD00B9BE1A /* SubMessage_LikedViewController.m in Sources */,
+				DD6287271F1F48000030331D /* CommentTableViewCell.m in Sources */,
 				EC4BA25E1F15FE0900B9BE1A /* DiscoverHotTopicViewController.m in Sources */,
 				EC4BA24F1F15D43600B9BE1A /* BrandRulesViewController.m in Sources */,
 				EC4BA0841F13599A00B9BE1A /* UIImage+Color.m in Sources */,
@@ -962,6 +1077,7 @@
 				EC4BA0CC1F1359DF00B9BE1A /* SelectThemeColorView.m in Sources */,
 				DDFB82851F1A14A800AEAAA7 /* YouthColorModel.m in Sources */,
 				DD40B73D1F1788B000839748 /* HomeCollectCell3.m in Sources */,
+				DD6287221F1F41BF0030331D /* DynamicWithoutCommentCell.m in Sources */,
 				EC4BA1341F1462F100B9BE1A /* GiftSendingTableViewCell.m in Sources */,
 				DDFB828E1F1C5E3900AEAAA7 /* MoreProductListCell.m in Sources */,
 				DD40B7311F17437100839748 /* IntellectWearsCell.m in Sources */,
@@ -979,6 +1095,7 @@
 				DDFB82B31F1D931500AEAAA7 /* NSBundle+PYSearchExtension.m in Sources */,
 				DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */,
 				DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */,
+				DD62871D1F1F3D8B0030331D /* PriaseTableViewCell.m in Sources */,
 				EC4BA2431F14B05E00B9BE1A /* CategateNavigationController.m in Sources */,
 				DDFB82B71F1D931500AEAAA7 /* PYSearchViewController.m in Sources */,
 				EC4BA1391F14693F00B9BE1A /* ProductDetailViewController.m in Sources */,
@@ -1001,16 +1118,24 @@
 				EC4BA24B1F14F85000B9BE1A /* UIView+CurrentViewController.m in Sources */,
 				DDFB82781F19B98E00AEAAA7 /* Categate_CategateTableViewCell.m in Sources */,
 				DD40B7281F17250B00839748 /* HomeLeftImageCell.m in Sources */,
+				DD6287181F1F32010030331D /* DynamicDetailViewController.m in Sources */,
 				DDFB829C1F1C78FD00AEAAA7 /* MoreProduct_SortView.m in Sources */,
 				DDFB82741F19B18800AEAAA7 /* Categate_CategateCollectCell.m in Sources */,
 				EC4BA0DC1F1359EC00B9BE1A /* FactoryTableViewCell.m in Sources */,
 				EC4BA10B1F136CBD00B9BE1A /* HomePageViewController.m in Sources */,
+				DD6287091F1EE3210030331D /* FocusPersonCell.m in Sources */,
 				EC4BA1101F136CBD00B9BE1A /* SubMessage_PrivateLetterViewController.m in Sources */,
 				EC4BA0F41F136CA400B9BE1A /* SubCategate_CategateViewController.m in Sources */,
+				DD6287431F1F8C1E0030331D /* MyAddressViewController.m in Sources */,
 				EC4BA0CA1F1359DF00B9BE1A /* LeftSideSegmentView.m in Sources */,
 				EC4BA1121F136CBD00B9BE1A /* SubNotifi_NotificationViewController.m in Sources */,
 				EC4BA05A1F13562700B9BE1A /* main.m in Sources */,
+				DD62873E1F1F5FA20030331D /* GetGiftViewController.m in Sources */,
 				DDFB82B61F1D931500AEAAA7 /* PYSearchSuggestionViewController.m in Sources */,
+				DD62870E1F1EEE1B0030331D /* FocusPersonHeaderCell.m in Sources */,
+				DD6287041F1EE19C0030331D /* FocusPersonFileViewController.m in Sources */,
+				DD6287481F1F90E80030331D /* GiftListCell.m in Sources */,
+				DD62872F1F1F51BA0030331D /* ConfigurationCell.m in Sources */,
 				DDFB82B91F1D931500AEAAA7 /* UIView+PYSearchExtension.m in Sources */,
 				EC4BA0D91F1359EC00B9BE1A /* BaseTableViewCell.m in Sources */,
 				EC4BA10E1F136CBD00B9BE1A /* SubMessage_CommentViewController.m in Sources */,
@@ -1022,6 +1147,7 @@
 				EC4BA10C1F136CBD00B9BE1A /* NotificationViewController.m in Sources */,
 				EC4BA2651F160F1F00B9BE1A /* DiscoverCell.m in Sources */,
 				EC4BA0EB1F136C8100B9BE1A /* PersonalViewController.m in Sources */,
+				DD62872B1F1F4EC20030331D /* ConfigurationViewController.m in Sources */,
 				EC4BA08A1F1359A900B9BE1A /* CycleScrollModel.m in Sources */,
 				EC4BA10D1F136CBD00B9BE1A /* SubMessage_AboutMeViewController.m in Sources */,
 				DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */,

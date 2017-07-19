@@ -16,6 +16,9 @@
 #import "DiscoverHeaderCell.h"
 #import "DiscoverCell.h"
 
+//controllers
+#import "DynamicDetailViewController.h"
+
 @interface DiscoverViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,SegmentTapViewDelegate>
 
 @property (nonatomic, strong)UITableView *mainTableView;
@@ -35,6 +38,8 @@
     
     [self settingNavigation];
     [self initMianTableView];
+    
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,6 +110,13 @@
         NSNumber *num = x.object;
         NSInteger index = [num integerValue];
         [self.segmentView selectIndex:index];
+    }];
+    
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"didSelectDynamicItem" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSIndexPath *indexPath = x.object;
+        DynamicDetailViewController *dynamicDetailVC = [[DynamicDetailViewController alloc]initWithNibName:NSStringFromClass([DynamicDetailViewController class]) bundle:nil];
+        dynamicDetailVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:dynamicDetailVC animated:YES];
     }];
 }
 
@@ -177,6 +189,13 @@
         }];
     }
     return headerView;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    if (indexPath.section == 1) {
+//        <#statements#>
+//    }
 }
 
 @end

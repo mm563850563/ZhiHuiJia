@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iko-6u-NRl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="332.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gWL-UA-WDl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huodong" translatesAutoresizingMaskIntoConstraints="NO" id="gWL-UA-WDl">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -38,12 +38,18 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nO6-oQ-UBV">
                                                 <rect key="frame" x="23" y="10" width="60" height="90"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ML8-oP-bdB">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="ML8-oP-bdB">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="width" constant="60" id="2KZ-FQ-GBd"/>
                                                             <constraint firstAttribute="height" constant="60" id="jGy-Qz-5xQ"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="30"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="圈  子" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn6-Oh-7Dq">
                                                         <rect key="frame" x="0.0" y="65" width="60" height="25"/>
@@ -61,7 +67,6 @@
                                                     <constraint firstAttribute="trailing" secondItem="bn6-Oh-7Dq" secondAttribute="trailing" id="6JE-2v-511"/>
                                                     <constraint firstItem="bn6-Oh-7Dq" firstAttribute="top" secondItem="ML8-oP-bdB" secondAttribute="bottom" constant="5" id="PNI-qn-GYO"/>
                                                     <constraint firstAttribute="width" constant="60" id="T02-vL-s5J"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ML8-oP-bdB" secondAttribute="trailing" id="U0X-YU-ArW"/>
                                                     <constraint firstItem="ML8-oP-bdB" firstAttribute="top" secondItem="nO6-oQ-UBV" secondAttribute="top" id="d3L-2g-6Q8"/>
                                                     <constraint firstItem="bn6-Oh-7Dq" firstAttribute="leading" secondItem="nO6-oQ-UBV" secondAttribute="leading" id="jQc-wG-Fbw"/>
                                                 </constraints>
@@ -80,12 +85,18 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSo-ka-yAf">
                                                 <rect key="frame" x="22.5" y="10" width="60" height="90"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GZE-wV-PLo">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="GZE-wV-PLo">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="width" constant="60" id="OKf-1l-yr9"/>
                                                             <constraint firstAttribute="height" constant="60" id="fvL-K4-h39"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="30"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="同  城" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uft-C2-SsP">
                                                         <rect key="frame" x="0.0" y="65" width="60" height="25"/>
@@ -102,7 +113,6 @@
                                                     <constraint firstItem="GZE-wV-PLo" firstAttribute="top" secondItem="rSo-ka-yAf" secondAttribute="top" id="Bg1-8F-FqL"/>
                                                     <constraint firstItem="GZE-wV-PLo" firstAttribute="leading" secondItem="rSo-ka-yAf" secondAttribute="leading" id="H2h-2R-Dm1"/>
                                                     <constraint firstItem="Uft-C2-SsP" firstAttribute="top" secondItem="GZE-wV-PLo" secondAttribute="bottom" constant="5" id="ToU-Sa-Ncx"/>
-                                                    <constraint firstAttribute="trailing" secondItem="GZE-wV-PLo" secondAttribute="trailing" id="fm7-yB-57r"/>
                                                     <constraint firstAttribute="trailing" secondItem="Uft-C2-SsP" secondAttribute="trailing" id="msb-Kc-7Ta"/>
                                                     <constraint firstAttribute="width" constant="60" id="tIR-Ks-APo"/>
                                                     <constraint firstItem="Uft-C2-SsP" firstAttribute="leading" secondItem="rSo-ka-yAf" secondAttribute="leading" id="ywI-4V-OsB"/>
@@ -122,12 +132,18 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q5h-RA-55r">
                                                 <rect key="frame" x="23" y="10" width="60" height="90"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nf0-91-3gk">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="Nf0-91-3gk">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="XKP-Kx-7qZ"/>
+                                                            <constraint firstAttribute="width" constant="60" id="Zdw-r0-Cd9"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="30"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地  盘" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HY0-C6-tcb">
                                                         <rect key="frame" x="0.0" y="65" width="60" height="25"/>
@@ -143,7 +159,6 @@
                                                 <constraints>
                                                     <constraint firstItem="HY0-C6-tcb" firstAttribute="leading" secondItem="Q5h-RA-55r" secondAttribute="leading" id="1PN-2r-Bbo"/>
                                                     <constraint firstItem="HY0-C6-tcb" firstAttribute="top" secondItem="Nf0-91-3gk" secondAttribute="bottom" constant="5" id="CQ0-ps-HMh"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Nf0-91-3gk" secondAttribute="trailing" id="N76-JS-Ibi"/>
                                                     <constraint firstAttribute="trailing" secondItem="HY0-C6-tcb" secondAttribute="trailing" id="alD-Hn-j2Q"/>
                                                     <constraint firstAttribute="width" constant="60" id="dVw-cx-BzX"/>
                                                     <constraint firstItem="Nf0-91-3gk" firstAttribute="top" secondItem="Q5h-RA-55r" secondAttribute="top" id="fSa-01-LrH"/>
@@ -198,4 +213,8 @@
             <point key="canvasLocation" x="33" y="45.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="bgbg" width="540" height="325"/>
+        <image name="huodong" width="553" height="318"/>
+    </resources>
 </document>

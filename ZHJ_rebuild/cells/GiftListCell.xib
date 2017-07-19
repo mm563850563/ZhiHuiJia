@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GiftListCell" id="gTV-IL-0wX" customClass="GiftListCell">
+            <rect key="frame" x="0.0" y="0.0" width="121" height="157"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="121" height="157"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BfI-mE-UkR">
+                        <rect key="frame" x="0.0" y="0.0" width="121" height="157"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FF9-PT-eHw">
+                                <rect key="frame" x="0.0" y="0.0" width="121" height="121"/>
+                                <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FF9-PT-eHw" secondAttribute="height" multiplier="1:1" id="Hy7-t3-b8I"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品名称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuJ-ks-m5Z">
+                                <rect key="frame" x="3" y="121" width="115" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="oi6-CA-8td"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FF9-PT-eHw" secondAttribute="trailing" id="27K-C9-pgt"/>
+                            <constraint firstItem="FF9-PT-eHw" firstAttribute="leading" secondItem="BfI-mE-UkR" secondAttribute="leading" id="4fp-ce-Nza"/>
+                            <constraint firstItem="FF9-PT-eHw" firstAttribute="top" secondItem="BfI-mE-UkR" secondAttribute="top" id="9DX-rn-2pf"/>
+                            <constraint firstAttribute="trailing" secondItem="AuJ-ks-m5Z" secondAttribute="trailing" constant="3" id="A5Q-oT-3hr"/>
+                            <constraint firstItem="AuJ-ks-m5Z" firstAttribute="leading" secondItem="BfI-mE-UkR" secondAttribute="leading" constant="3" id="ADo-x8-x4X"/>
+                            <constraint firstItem="AuJ-ks-m5Z" firstAttribute="top" secondItem="FF9-PT-eHw" secondAttribute="bottom" id="h4Y-7o-Pqy"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="BfI-mE-UkR" secondAttribute="bottom" id="FX9-1j-xF2"/>
+                <constraint firstItem="BfI-mE-UkR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="LAR-dR-vwn"/>
+                <constraint firstItem="BfI-mE-UkR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="PIB-PE-vqh"/>
+                <constraint firstAttribute="trailing" secondItem="BfI-mE-UkR" secondAttribute="trailing" id="XOQ-Kb-GIX"/>
+            </constraints>
+            <size key="customSize" width="121" height="157"/>
+            <point key="canvasLocation" x="95.5" y="33.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
