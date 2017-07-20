@@ -13,17 +13,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeLeftImageCell" rowHeight="136" id="KGk-i7-Jjw" userLabel="HomeLeftImageCell" customClass="HomeLeftImageCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeLeftImageCell" rowHeight="164" id="KGk-i7-Jjw" userLabel="HomeLeftImageCell" customClass="HomeLeftImageCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="135.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="163.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rAY-Lo-R1O">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="135.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="163.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2aF-M9-JLh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ddtu" translatesAutoresizingMaskIntoConstraints="NO" id="2aF-M9-JLh">
                                 <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -31,7 +31,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kxv-dA-jmz">
-                                <rect key="frame" x="175" y="37" width="135" height="60"/>
+                                <rect key="frame" x="175" y="51" width="135" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qob-hJ-hTm">
                                         <rect key="frame" x="0.0" y="0.0" width="135" height="20"/>
@@ -118,7 +118,10 @@
                     <constraint firstItem="rAY-Lo-R1O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="uh1-Ac-RoK"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="34" y="8"/>
+            <point key="canvasLocation" x="34" y="22"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ddtu" width="120" height="121"/>
+    </resources>
 </document>

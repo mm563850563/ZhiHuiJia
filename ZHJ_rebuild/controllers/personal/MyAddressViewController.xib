@@ -26,7 +26,9 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="v1X-1n-m3e"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="新增地址">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                             <integer key="value" value="5"/>

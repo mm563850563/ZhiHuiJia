@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUy-am-x0v">
                         <rect key="frame" x="0.0" y="0.0" width="228" height="328"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ICg-7k-0M6">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ddtu" translatesAutoresizingMaskIntoConstraints="NO" id="ICg-7k-0M6">
                                 <rect key="frame" x="0.0" y="0.0" width="228" height="228"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -104,4 +104,7 @@
             <point key="canvasLocation" x="40" y="51"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ddtu" width="120" height="121"/>
+    </resources>
 </document>

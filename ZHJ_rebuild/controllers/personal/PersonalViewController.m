@@ -8,15 +8,20 @@
 
 #import "PersonalViewController.h"
 
-//cells
+//controllers
 #import "ConfigurationViewController.h"
 #import "FeedbackViewController.h"
+#import "MyCollectProductViewController.h"
+#import "MyBalanceViewController.h"
+#import "FeedbackViewController.h"
+#import "GetGiftViewController.h"
+#import "CustomerServiceCenterViewController.h"
 
 //cells
 #import "PersonalCollectCell.h"
 
 
-@interface PersonalViewController ()<UINavigationControllerDelegate,UIGestureRecognizerDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface PersonalViewController ()<UINavigationControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForHeaderView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForCollectBGView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForScrollView;
@@ -59,8 +64,6 @@
 -(void)setNavigationController
 {
     self.navigationController.delegate = self;
-    self.navigationController.interactivePopGestureRecognizer.delegate = self;
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 #pragma mark - <初始化collectionView>
@@ -134,8 +137,11 @@
     NSLog(@"%@",[self class]);
     if ([viewController isKindOfClass:[self class]]) {
         [navigationController setNavigationBarHidden:YES animated:YES];
+    }else if ([viewController isKindOfClass:[GetGiftViewController class]]){
+        [navigationController setNavigationBarHidden:YES animated:YES];
     }else{
         [navigationController setNavigationBarHidden:NO animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
     }
 }
 
@@ -152,6 +158,40 @@
     cell.labelTitle.text = self.arrayCollection[0][indexPath.row];
     [cell.imageView setImage:[UIImage imageNamed:self.arrayCollection[1][indexPath.row]]];
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.item == 0) {//购物车
+        self.tabBarController.selectedIndex = 3;
+    }else if (indexPath.item == 1){//我的收藏
+        MyCollectProductViewController *myCollectProductVC = [[MyCollectProductViewController alloc]initWithNibName:NSStringFromClass([MyCollectProductViewController class]) bundle:nil];
+        myCollectProductVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:myCollectProductVC animated:YES];
+    }else if (indexPath.item == 2){//我的余额
+        MyBalanceViewController *myBalanceVC = [[MyBalanceViewController alloc]initWithNibName:NSStringFromClass([MyBalanceViewController class]) bundle:nil];
+        myBalanceVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:myBalanceVC animated:YES];
+    }else if (indexPath.item == 3){//优惠券
+        
+    }else if (indexPath.item == 4){//客服中心
+        CustomerServiceCenterViewController *customerCenterVC = [[CustomerServiceCenterViewController alloc]initWithNibName:NSStringFromClass([CustomerServiceCenterViewController class]) bundle:nil];
+        customerCenterVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:customerCenterVC animated:YES];
+    }else if (indexPath.item == 5){//分享邀请
+        GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
+        getGiftVC.category = 1;
+        getGiftVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:getGiftVC animated:YES];
+    }else if (indexPath.item == 6){//关注公众号
+        
+    }else if (indexPath.item == 7){//关于智惠加
+        
+    }else if (indexPath.item == 8){//意见反馈
+        FeedbackViewController *feedBackVC = [[FeedbackViewController alloc]initWithNibName:NSStringFromClass([FeedbackViewController class]) bundle:nil];
+        feedBackVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:feedBackVC animated:YES];
+    }
 }
 
 

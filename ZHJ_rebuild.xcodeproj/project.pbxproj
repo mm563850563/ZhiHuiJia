@@ -53,6 +53,32 @@
 		DD6287441F1F8C1E0030331D /* MyAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287421F1F8C1E0030331D /* MyAddressViewController.xib */; };
 		DD6287481F1F90E80030331D /* GiftListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287461F1F90E80030331D /* GiftListCell.m */; };
 		DD6287491F1F90E80030331D /* GiftListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287471F1F90E80030331D /* GiftListCell.xib */; };
+		DD62874D1F2032220030331D /* MyAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62874B1F2032220030331D /* MyAddressCell.m */; };
+		DD62874E1F2032220030331D /* MyAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62874C1F2032220030331D /* MyAddressCell.xib */; };
+		DD6287521F203C030030331D /* MyAddressIncreaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287501F203C030030331D /* MyAddressIncreaseViewController.m */; };
+		DD6287531F203C030030331D /* MyAddressIncreaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287511F203C030030331D /* MyAddressIncreaseViewController.xib */; };
+		DD6287571F2049A10030331D /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287551F2049A10030331D /* ModifyPasswordViewController.m */; };
+		DD6287581F2049A10030331D /* ModifyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287561F2049A10030331D /* ModifyPasswordViewController.xib */; };
+		DD62875C1F20522F0030331D /* MyCollectProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62875A1F20522F0030331D /* MyCollectProductViewController.m */; };
+		DD62875D1F20522F0030331D /* MyCollectProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62875B1F20522F0030331D /* MyCollectProductViewController.xib */; };
+		DD6287611F2053750030331D /* MyCollectProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62875F1F2053750030331D /* MyCollectProductCell.m */; };
+		DD6287621F2053750030331D /* MyCollectProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287601F2053750030331D /* MyCollectProductCell.xib */; };
+		DD6287661F2059F70030331D /* MyBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287641F2059F70030331D /* MyBalanceViewController.m */; };
+		DD6287671F2059F70030331D /* MyBalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287651F2059F70030331D /* MyBalanceViewController.xib */; };
+		DD62876B1F207A850030331D /* CustomerServiceCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287691F207A850030331D /* CustomerServiceCenterViewController.m */; };
+		DD62876C1F207A850030331D /* CustomerServiceCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62876A1F207A850030331D /* CustomerServiceCenterViewController.xib */; };
+		DD6287751F208C0B0030331D /* HotCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287731F208C0B0030331D /* HotCircleViewController.m */; };
+		DD6287761F208C0B0030331D /* HotCircleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287741F208C0B0030331D /* HotCircleViewController.xib */; };
+		DD62877A1F208CA40030331D /* MyCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287781F208CA40030331D /* MyCircleViewController.m */; };
+		DD62877B1F208CA40030331D /* MyCircleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287791F208CA40030331D /* MyCircleViewController.xib */; };
+		DD62877F1F208CE60030331D /* RankingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62877D1F208CE60030331D /* RankingListViewController.m */; };
+		DD6287801F208CE60030331D /* RankingListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62877E1F208CE60030331D /* RankingListViewController.xib */; };
+		DD6287841F2097940030331D /* HotCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287821F2097940030331D /* HotCircleCell.m */; };
+		DD6287851F2097940030331D /* HotCircleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287831F2097940030331D /* HotCircleCell.xib */; };
+		DD6287891F20B0BA0030331D /* MainCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287871F20B0BA0030331D /* MainCircleViewController.m */; };
+		DD62878A1F20B0BA0030331D /* MainCircleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287881F20B0BA0030331D /* MainCircleViewController.xib */; };
+		DD62878E1F20C2290030331D /* MyCircleHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62878C1F20C2290030331D /* MyCircleHeaderCell.m */; };
+		DD62878F1F20C2290030331D /* MyCircleHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62878D1F20C2290030331D /* MyCircleHeaderCell.xib */; };
 		DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */; };
 		DDFB81C01F18475700AEAAA7 /* SameHobbyPersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */; };
 		DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81C21F184B7600AEAAA7 /* CALayer+XIBUIColor.m */; };
@@ -241,6 +267,45 @@
 		DD6287451F1F90E80030331D /* GiftListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiftListCell.h; path = cells/GiftListCell.h; sourceTree = "<group>"; };
 		DD6287461F1F90E80030331D /* GiftListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GiftListCell.m; path = cells/GiftListCell.m; sourceTree = "<group>"; };
 		DD6287471F1F90E80030331D /* GiftListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GiftListCell.xib; path = cells/GiftListCell.xib; sourceTree = "<group>"; };
+		DD62874A1F2032220030331D /* MyAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAddressCell.h; path = cells/MyAddressCell.h; sourceTree = "<group>"; };
+		DD62874B1F2032220030331D /* MyAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAddressCell.m; path = cells/MyAddressCell.m; sourceTree = "<group>"; };
+		DD62874C1F2032220030331D /* MyAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyAddressCell.xib; path = cells/MyAddressCell.xib; sourceTree = "<group>"; };
+		DD62874F1F203C030030331D /* MyAddressIncreaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAddressIncreaseViewController.h; path = controllers/personal/MyAddressIncreaseViewController.h; sourceTree = "<group>"; };
+		DD6287501F203C030030331D /* MyAddressIncreaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAddressIncreaseViewController.m; path = controllers/personal/MyAddressIncreaseViewController.m; sourceTree = "<group>"; };
+		DD6287511F203C030030331D /* MyAddressIncreaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyAddressIncreaseViewController.xib; path = controllers/personal/MyAddressIncreaseViewController.xib; sourceTree = "<group>"; };
+		DD6287541F2049A10030331D /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModifyPasswordViewController.h; path = controllers/personal/ModifyPasswordViewController.h; sourceTree = "<group>"; };
+		DD6287551F2049A10030331D /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModifyPasswordViewController.m; path = controllers/personal/ModifyPasswordViewController.m; sourceTree = "<group>"; };
+		DD6287561F2049A10030331D /* ModifyPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModifyPasswordViewController.xib; path = controllers/personal/ModifyPasswordViewController.xib; sourceTree = "<group>"; };
+		DD6287591F20522F0030331D /* MyCollectProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCollectProductViewController.h; path = controllers/personal/MyCollectProductViewController.h; sourceTree = "<group>"; };
+		DD62875A1F20522F0030331D /* MyCollectProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCollectProductViewController.m; path = controllers/personal/MyCollectProductViewController.m; sourceTree = "<group>"; };
+		DD62875B1F20522F0030331D /* MyCollectProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyCollectProductViewController.xib; path = controllers/personal/MyCollectProductViewController.xib; sourceTree = "<group>"; };
+		DD62875E1F2053750030331D /* MyCollectProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCollectProductCell.h; path = cells/MyCollectProductCell.h; sourceTree = "<group>"; };
+		DD62875F1F2053750030331D /* MyCollectProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCollectProductCell.m; path = cells/MyCollectProductCell.m; sourceTree = "<group>"; };
+		DD6287601F2053750030331D /* MyCollectProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyCollectProductCell.xib; path = cells/MyCollectProductCell.xib; sourceTree = "<group>"; };
+		DD6287631F2059F70030331D /* MyBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyBalanceViewController.h; path = controllers/personal/MyBalanceViewController.h; sourceTree = "<group>"; };
+		DD6287641F2059F70030331D /* MyBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyBalanceViewController.m; path = controllers/personal/MyBalanceViewController.m; sourceTree = "<group>"; };
+		DD6287651F2059F70030331D /* MyBalanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyBalanceViewController.xib; path = controllers/personal/MyBalanceViewController.xib; sourceTree = "<group>"; };
+		DD6287681F207A850030331D /* CustomerServiceCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomerServiceCenterViewController.h; path = controllers/personal/CustomerServiceCenterViewController.h; sourceTree = "<group>"; };
+		DD6287691F207A850030331D /* CustomerServiceCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomerServiceCenterViewController.m; path = controllers/personal/CustomerServiceCenterViewController.m; sourceTree = "<group>"; };
+		DD62876A1F207A850030331D /* CustomerServiceCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomerServiceCenterViewController.xib; path = controllers/personal/CustomerServiceCenterViewController.xib; sourceTree = "<group>"; };
+		DD6287721F208C0B0030331D /* HotCircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotCircleViewController.h; path = controllers/discover/HotCircleViewController.h; sourceTree = "<group>"; };
+		DD6287731F208C0B0030331D /* HotCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotCircleViewController.m; path = controllers/discover/HotCircleViewController.m; sourceTree = "<group>"; };
+		DD6287741F208C0B0030331D /* HotCircleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotCircleViewController.xib; path = controllers/discover/HotCircleViewController.xib; sourceTree = "<group>"; };
+		DD6287771F208CA40030331D /* MyCircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCircleViewController.h; path = controllers/discover/MyCircleViewController.h; sourceTree = "<group>"; };
+		DD6287781F208CA40030331D /* MyCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCircleViewController.m; path = controllers/discover/MyCircleViewController.m; sourceTree = "<group>"; };
+		DD6287791F208CA40030331D /* MyCircleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyCircleViewController.xib; path = controllers/discover/MyCircleViewController.xib; sourceTree = "<group>"; };
+		DD62877C1F208CE60030331D /* RankingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankingListViewController.h; path = controllers/discover/RankingListViewController.h; sourceTree = "<group>"; };
+		DD62877D1F208CE60030331D /* RankingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RankingListViewController.m; path = controllers/discover/RankingListViewController.m; sourceTree = "<group>"; };
+		DD62877E1F208CE60030331D /* RankingListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RankingListViewController.xib; path = controllers/discover/RankingListViewController.xib; sourceTree = "<group>"; };
+		DD6287811F2097940030331D /* HotCircleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotCircleCell.h; path = cells/HotCircleCell.h; sourceTree = "<group>"; };
+		DD6287821F2097940030331D /* HotCircleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotCircleCell.m; path = cells/HotCircleCell.m; sourceTree = "<group>"; };
+		DD6287831F2097940030331D /* HotCircleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotCircleCell.xib; path = cells/HotCircleCell.xib; sourceTree = "<group>"; };
+		DD6287861F20B0B90030331D /* MainCircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainCircleViewController.h; path = controllers/discover/MainCircleViewController.h; sourceTree = "<group>"; };
+		DD6287871F20B0BA0030331D /* MainCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainCircleViewController.m; path = controllers/discover/MainCircleViewController.m; sourceTree = "<group>"; };
+		DD6287881F20B0BA0030331D /* MainCircleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainCircleViewController.xib; path = controllers/discover/MainCircleViewController.xib; sourceTree = "<group>"; };
+		DD62878B1F20C2290030331D /* MyCircleHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCircleHeaderCell.h; path = cells/MyCircleHeaderCell.h; sourceTree = "<group>"; };
+		DD62878C1F20C2290030331D /* MyCircleHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCircleHeaderCell.m; path = cells/MyCircleHeaderCell.m; sourceTree = "<group>"; };
+		DD62878D1F20C2290030331D /* MyCircleHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyCircleHeaderCell.xib; path = cells/MyCircleHeaderCell.xib; sourceTree = "<group>"; };
 		DDFB81BC1F18475700AEAAA7 /* SameHobbyPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameHobbyPersonCell.h; path = cells/SameHobbyPersonCell.h; sourceTree = "<group>"; };
 		DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameHobbyPersonCell.m; path = cells/SameHobbyPersonCell.m; sourceTree = "<group>"; };
 		DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SameHobbyPersonCell.xib; path = cells/SameHobbyPersonCell.xib; sourceTree = "<group>"; };
@@ -674,6 +739,18 @@
 				DD6287451F1F90E80030331D /* GiftListCell.h */,
 				DD6287461F1F90E80030331D /* GiftListCell.m */,
 				DD6287471F1F90E80030331D /* GiftListCell.xib */,
+				DD62874A1F2032220030331D /* MyAddressCell.h */,
+				DD62874B1F2032220030331D /* MyAddressCell.m */,
+				DD62874C1F2032220030331D /* MyAddressCell.xib */,
+				DD62875E1F2053750030331D /* MyCollectProductCell.h */,
+				DD62875F1F2053750030331D /* MyCollectProductCell.m */,
+				DD6287601F2053750030331D /* MyCollectProductCell.xib */,
+				DD6287811F2097940030331D /* HotCircleCell.h */,
+				DD6287821F2097940030331D /* HotCircleCell.m */,
+				DD6287831F2097940030331D /* HotCircleCell.xib */,
+				DD62878B1F20C2290030331D /* MyCircleHeaderCell.h */,
+				DD62878C1F20C2290030331D /* MyCircleHeaderCell.m */,
+				DD62878D1F20C2290030331D /* MyCircleHeaderCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -815,6 +892,18 @@
 			children = (
 				EC4BA11D1F13771100B9BE1A /* DiscoverViewController.h */,
 				EC4BA11E1F13771100B9BE1A /* DiscoverViewController.m */,
+				DD6287861F20B0B90030331D /* MainCircleViewController.h */,
+				DD6287871F20B0BA0030331D /* MainCircleViewController.m */,
+				DD6287881F20B0BA0030331D /* MainCircleViewController.xib */,
+				DD6287721F208C0B0030331D /* HotCircleViewController.h */,
+				DD6287731F208C0B0030331D /* HotCircleViewController.m */,
+				DD6287741F208C0B0030331D /* HotCircleViewController.xib */,
+				DD6287771F208CA40030331D /* MyCircleViewController.h */,
+				DD6287781F208CA40030331D /* MyCircleViewController.m */,
+				DD6287791F208CA40030331D /* MyCircleViewController.xib */,
+				DD62877C1F208CE60030331D /* RankingListViewController.h */,
+				DD62877D1F208CE60030331D /* RankingListViewController.m */,
+				DD62877E1F208CE60030331D /* RankingListViewController.xib */,
 				EC4BA2591F15FDE400B9BE1A /* DiscoverDynamicViewController.h */,
 				EC4BA25A1F15FDE400B9BE1A /* DiscoverDynamicViewController.m */,
 				EC4BA25C1F15FE0900B9BE1A /* DiscoverHotTopicViewController.h */,
@@ -842,11 +931,26 @@
 			children = (
 				EC4BA0E71F136C8100B9BE1A /* PersonalViewController.h */,
 				EC4BA0E81F136C8100B9BE1A /* PersonalViewController.m */,
+				DD6287681F207A850030331D /* CustomerServiceCenterViewController.h */,
+				DD6287691F207A850030331D /* CustomerServiceCenterViewController.m */,
+				DD62876A1F207A850030331D /* CustomerServiceCenterViewController.xib */,
+				DD6287591F20522F0030331D /* MyCollectProductViewController.h */,
+				DD62875A1F20522F0030331D /* MyCollectProductViewController.m */,
+				DD62875B1F20522F0030331D /* MyCollectProductViewController.xib */,
+				DD6287631F2059F70030331D /* MyBalanceViewController.h */,
+				DD6287641F2059F70030331D /* MyBalanceViewController.m */,
+				DD6287651F2059F70030331D /* MyBalanceViewController.xib */,
 				DD6287291F1F4EC20030331D /* ConfigurationViewController.h */,
 				DD62872A1F1F4EC20030331D /* ConfigurationViewController.m */,
 				DD6287401F1F8C1E0030331D /* MyAddressViewController.h */,
 				DD6287411F1F8C1E0030331D /* MyAddressViewController.m */,
 				DD6287421F1F8C1E0030331D /* MyAddressViewController.xib */,
+				DD62874F1F203C030030331D /* MyAddressIncreaseViewController.h */,
+				DD6287501F203C030030331D /* MyAddressIncreaseViewController.m */,
+				DD6287511F203C030030331D /* MyAddressIncreaseViewController.xib */,
+				DD6287541F2049A10030331D /* ModifyPasswordViewController.h */,
+				DD6287551F2049A10030331D /* ModifyPasswordViewController.m */,
+				DD6287561F2049A10030331D /* ModifyPasswordViewController.xib */,
 				EC4BA0E41F136C8100B9BE1A /* FeedbackViewController.h */,
 				EC4BA0E51F136C8100B9BE1A /* FeedbackViewController.m */,
 				EC4BA0E61F136C8100B9BE1A /* FeedbackViewController.xib */,
@@ -943,6 +1047,7 @@
 			files = (
 				DDFB825D1F187A7900AEAAA7 /* cb_dark_on@2x.png in Resources */,
 				DD6287351F1F52BE0030331D /* Configuration_ButtonCell.xib in Resources */,
+				DD62877B1F208CA40030331D /* MyCircleViewController.xib in Resources */,
 				DDFB81F21F18686A00AEAAA7 /* CartProductListCell.xib in Resources */,
 				DD40B72E1F173B5300839748 /* HomeRightImageCell.xib in Resources */,
 				DDFB825A1F187A7900AEAAA7 /* cb_dark_off.png in Resources */,
@@ -973,11 +1078,13 @@
 				DDFB82B41F1D931500AEAAA7 /* PYSearch.bundle in Resources */,
 				DDFB82631F187A7900AEAAA7 /* cb_green_off@2x.png in Resources */,
 				DD6287301F1F51BA0030331D /* ConfigurationCell.xib in Resources */,
+				DD6287851F2097940030331D /* HotCircleCell.xib in Resources */,
 				DDFB82751F19B18800AEAAA7 /* Categate_CategateCollectCell.xib in Resources */,
 				DDFB82601F187A7900AEAAA7 /* cb_glossy_on.png in Resources */,
 				DDFB828F1F1C5E3900AEAAA7 /* MoreProductListCell.xib in Resources */,
 				DDFB82651F187A7900AEAAA7 /* cb_green_on@2x.png in Resources */,
 				DDFB82821F19F97900AEAAA7 /* Categate_Brand_HeaderView.xib in Resources */,
+				DD62874E1F2032220030331D /* MyAddressCell.xib in Resources */,
 				DD40B7361F17485500839748 /* HomeCollectCell2.xib in Resources */,
 				DDFB829E1F1C791800AEAAA7 /* MoreProduct_SortView.xib in Resources */,
 				DD6287491F1F90E80030331D /* GiftListCell.xib in Resources */,
@@ -987,6 +1094,7 @@
 				DDFB82621F187A7900AEAAA7 /* cb_green_off.png in Resources */,
 				DD6287191F1F32010030331D /* DynamicDetailViewController.xib in Resources */,
 				EC4BA2661F160F1F00B9BE1A /* DiscoverCell.xib in Resources */,
+				DD6287581F2049A10030331D /* ModifyPasswordViewController.xib in Resources */,
 				DD40B7241F1705A000839748 /* HomeCollectCell1.xib in Resources */,
 				DDFB825C1F187A7900AEAAA7 /* cb_dark_on.png in Resources */,
 				DDFB82661F187A7900AEAAA7 /* cb_mono_off.png in Resources */,
@@ -994,15 +1102,24 @@
 				DDFB82561F187A7900AEAAA7 /* cb_box_off.png in Resources */,
 				DD6287231F1F41BF0030331D /* DynamicWithoutCommentCell.xib in Resources */,
 				EC4BA0651F13562700B9BE1A /* Assets.xcassets in Resources */,
+				DD62878F1F20C2290030331D /* MyCircleHeaderCell.xib in Resources */,
+				DD62875D1F20522F0030331D /* MyCollectProductViewController.xib in Resources */,
+				DD6287761F208C0B0030331D /* HotCircleViewController.xib in Resources */,
 				DD6287441F1F8C1E0030331D /* MyAddressViewController.xib in Resources */,
 				DD40B7291F17250B00839748 /* HomeLeftImageCell.xib in Resources */,
 				EC4BA1351F1462F100B9BE1A /* GiftSendingTableViewCell.xib in Resources */,
+				DD6287621F2053750030331D /* MyCollectProductCell.xib in Resources */,
+				DD62878A1F20B0BA0030331D /* MainCircleViewController.xib in Resources */,
 				EC4BA13A1F14693F00B9BE1A /* ProductDetailViewController.xib in Resources */,
 				EC4BA0631F13562700B9BE1A /* Main.storyboard in Resources */,
+				DD62876C1F207A850030331D /* CustomerServiceCenterViewController.xib in Resources */,
+				DD6287531F203C030030331D /* MyAddressIncreaseViewController.xib in Resources */,
+				DD6287671F2059F70030331D /* MyBalanceViewController.xib in Resources */,
 				EC4BA0CD1F1359DF00B9BE1A /* SelectThemeColorView.xib in Resources */,
 				DD62870F1F1EEE1B0030331D /* FocusPersonHeaderCell.xib in Resources */,
 				EC4BA0EA1F136C8100B9BE1A /* FeedbackViewController.xib in Resources */,
 				DDFB82571F187A7900AEAAA7 /* cb_box_off@2x.png in Resources */,
+				DD6287801F208CE60030331D /* RankingListViewController.xib in Resources */,
 				DDFB82A31F1C81E300AEAAA7 /* PersonalFileViewController.xib in Resources */,
 				DDFB82591F187A7900AEAAA7 /* cb_box_on@2x.png in Resources */,
 			);
@@ -1076,10 +1193,12 @@
 				EC4BA05D1F13562700B9BE1A /* AppDelegate.m in Sources */,
 				EC4BA0CC1F1359DF00B9BE1A /* SelectThemeColorView.m in Sources */,
 				DDFB82851F1A14A800AEAAA7 /* YouthColorModel.m in Sources */,
+				DD6287521F203C030030331D /* MyAddressIncreaseViewController.m in Sources */,
 				DD40B73D1F1788B000839748 /* HomeCollectCell3.m in Sources */,
 				DD6287221F1F41BF0030331D /* DynamicWithoutCommentCell.m in Sources */,
 				EC4BA1341F1462F100B9BE1A /* GiftSendingTableViewCell.m in Sources */,
 				DDFB828E1F1C5E3900AEAAA7 /* MoreProductListCell.m in Sources */,
+				DD62876B1F207A850030331D /* CustomerServiceCenterViewController.m in Sources */,
 				DD40B7311F17437100839748 /* IntellectWearsCell.m in Sources */,
 				DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */,
 				EC4BA1141F136CBD00B9BE1A /* SubNotification_DiscountViewController.m in Sources */,
@@ -1091,6 +1210,8 @@
 				EC4BA1191F136DBB00B9BE1A /* MainTabBarViewController.m in Sources */,
 				DDFB82981F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m in Sources */,
 				DD40B7231F1705A000839748 /* HomeCollectCell1.m in Sources */,
+				DD62878E1F20C2290030331D /* MyCircleHeaderCell.m in Sources */,
+				DD62875C1F20522F0030331D /* MyCollectProductViewController.m in Sources */,
 				EC4BA0D81F1359EC00B9BE1A /* BaseCollectionViewCell.m in Sources */,
 				DDFB82B31F1D931500AEAAA7 /* NSBundle+PYSearchExtension.m in Sources */,
 				DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */,
@@ -1101,6 +1222,7 @@
 				EC4BA1391F14693F00B9BE1A /* ProductDetailViewController.m in Sources */,
 				DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */,
 				EC4BA2471F14DFE900B9BE1A /* BrandApplyViewController.m in Sources */,
+				DD62877A1F208CA40030331D /* MyCircleViewController.m in Sources */,
 				DD40B7391F176E8600839748 /* EqualSpaceFlowLayout.m in Sources */,
 				DDFB82931F1C699D00AEAAA7 /* MoreProductListViewController.m in Sources */,
 				EC4BA0E91F136C8100B9BE1A /* FeedbackViewController.m in Sources */,
@@ -1110,19 +1232,24 @@
 				DDFB82C51F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m in Sources */,
 				EC4BA0F21F136CA400B9BE1A /* CategateViewController.m in Sources */,
 				DDFB82C01F1E059A00AEAAA7 /* DiscoverDynamicCell.m in Sources */,
+				DD6287661F2059F70030331D /* MyBalanceViewController.m in Sources */,
 				DDFB826F1F18BC4500AEAAA7 /* PersonalCollectCell.m in Sources */,
 				EC4BA0891F1359A900B9BE1A /* BaseModel.m in Sources */,
 				DDFB826A1F187A7900AEAAA7 /* UIHelpers.m in Sources */,
+				DD6287571F2049A10030331D /* ModifyPasswordViewController.m in Sources */,
 				EC4BA1151F136CBD00B9BE1A /* SubNotification_OtherViewController.m in Sources */,
 				EC4BA1131F136CBD00B9BE1A /* SubNotification_AnnouncementViewController.m in Sources */,
 				EC4BA24B1F14F85000B9BE1A /* UIView+CurrentViewController.m in Sources */,
 				DDFB82781F19B98E00AEAAA7 /* Categate_CategateTableViewCell.m in Sources */,
+				DD62874D1F2032220030331D /* MyAddressCell.m in Sources */,
 				DD40B7281F17250B00839748 /* HomeLeftImageCell.m in Sources */,
 				DD6287181F1F32010030331D /* DynamicDetailViewController.m in Sources */,
 				DDFB829C1F1C78FD00AEAAA7 /* MoreProduct_SortView.m in Sources */,
 				DDFB82741F19B18800AEAAA7 /* Categate_CategateCollectCell.m in Sources */,
 				EC4BA0DC1F1359EC00B9BE1A /* FactoryTableViewCell.m in Sources */,
 				EC4BA10B1F136CBD00B9BE1A /* HomePageViewController.m in Sources */,
+				DD62877F1F208CE60030331D /* RankingListViewController.m in Sources */,
+				DD6287611F2053750030331D /* MyCollectProductCell.m in Sources */,
 				DD6287091F1EE3210030331D /* FocusPersonCell.m in Sources */,
 				EC4BA1101F136CBD00B9BE1A /* SubMessage_PrivateLetterViewController.m in Sources */,
 				EC4BA0F41F136CA400B9BE1A /* SubCategate_CategateViewController.m in Sources */,
@@ -1130,8 +1257,10 @@
 				EC4BA0CA1F1359DF00B9BE1A /* LeftSideSegmentView.m in Sources */,
 				EC4BA1121F136CBD00B9BE1A /* SubNotifi_NotificationViewController.m in Sources */,
 				EC4BA05A1F13562700B9BE1A /* main.m in Sources */,
+				DD6287841F2097940030331D /* HotCircleCell.m in Sources */,
 				DD62873E1F1F5FA20030331D /* GetGiftViewController.m in Sources */,
 				DDFB82B61F1D931500AEAAA7 /* PYSearchSuggestionViewController.m in Sources */,
+				DD6287751F208C0B0030331D /* HotCircleViewController.m in Sources */,
 				DD62870E1F1EEE1B0030331D /* FocusPersonHeaderCell.m in Sources */,
 				DD6287041F1EE19C0030331D /* FocusPersonFileViewController.m in Sources */,
 				DD6287481F1F90E80030331D /* GiftListCell.m in Sources */,
@@ -1139,6 +1268,7 @@
 				DDFB82B91F1D931500AEAAA7 /* UIView+PYSearchExtension.m in Sources */,
 				EC4BA0D91F1359EC00B9BE1A /* BaseTableViewCell.m in Sources */,
 				EC4BA10E1F136CBD00B9BE1A /* SubMessage_CommentViewController.m in Sources */,
+				DD6287891F20B0BA0030331D /* MainCircleViewController.m in Sources */,
 				EC4BA11C1F1376F600B9BE1A /* CartViewController.m in Sources */,
 				DDFB826B1F187A7900AEAAA7 /* SSCheckBoxView.m in Sources */,
 				DDFB82A21F1C81E300AEAAA7 /* PersonalFileViewController.m in Sources */,

@@ -25,7 +25,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7rD-lf-4ft">
                                 <rect key="frame" x="0.0" y="0.0" width="204" height="130.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VTm-Tc-ygv">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huodong" translatesAutoresizingMaskIntoConstraints="NO" id="VTm-Tc-ygv">
                                         <rect key="frame" x="0.0" y="0.0" width="204" height="130.5"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
@@ -103,7 +103,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UG5-sF-4rI">
                                 <rect key="frame" x="0.0" y="132.5" width="204" height="130.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PZJ-tG-ohg">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="PZJ-tG-ohg">
                                         <rect key="frame" x="0.0" y="0.0" width="204" height="130.5"/>
                                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
@@ -215,4 +215,8 @@
             <point key="canvasLocation" x="19" y="80.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="bgbg" width="540" height="325"/>
+        <image name="huodong" width="553" height="318"/>
+    </resources>
 </document>

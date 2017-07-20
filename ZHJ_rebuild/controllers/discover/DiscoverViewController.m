@@ -18,8 +18,9 @@
 
 //controllers
 #import "DynamicDetailViewController.h"
+#import "MainCircleViewController.h"
 
-@interface DiscoverViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,SegmentTapViewDelegate>
+@interface DiscoverViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,SegmentTapViewDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong)UITableView *mainTableView;
 
@@ -60,6 +61,7 @@
 #pragma mark - <配置navigation>
 -(void)settingNavigation
 {
+    self.navigationController.delegate = self;
     UIColor *color = kColorFromRGBAndAlpha(kThemeYellow, 1.0);
     UIImage *image = [UIImage imageWithColor:color height:1.0];
     [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
@@ -118,6 +120,24 @@
         dynamicDetailVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:dynamicDetailVC animated:YES];
     }];
+    
+    //点击圈子
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickCircleAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        MainCircleViewController *mainCircleVC = [[MainCircleViewController alloc]initWithNibName:NSStringFromClass([MainCircleViewController class]) bundle:nil];
+        mainCircleVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:mainCircleVC animated:YES];
+    }];
+    
+    //点击同城
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickSameTownAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        
+    }];
+    
+    //点击地盘
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickDomainAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        
+    }];
+    
 }
 
 
@@ -125,7 +145,15 @@
 
 
 
-
+#pragma mark - *** UINavigationControllerDelegate ******
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+//    if ([viewController isKindOfClass:[self class]]) {
+//        [navigationController.navigationBar setTranslucent:NO];
+//    }else{
+//        
+//    }
+}
 
 #pragma mark - ****** SegmentTapViewDelegate *******
 -(void)selectedIndex:(NSInteger)index

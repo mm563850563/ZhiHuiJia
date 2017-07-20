@@ -60,15 +60,25 @@
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUd-BH-8Oz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="90"/>
+                                                        <connections>
+                                                            <action selector="btnCircleAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3IT-5w-AeQ"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="ML8-oP-bdB" firstAttribute="leading" secondItem="nO6-oQ-UBV" secondAttribute="leading" id="1zB-Vs-ev2"/>
                                                     <constraint firstAttribute="trailing" secondItem="bn6-Oh-7Dq" secondAttribute="trailing" id="6JE-2v-511"/>
                                                     <constraint firstItem="bn6-Oh-7Dq" firstAttribute="top" secondItem="ML8-oP-bdB" secondAttribute="bottom" constant="5" id="PNI-qn-GYO"/>
+                                                    <constraint firstItem="fUd-BH-8Oz" firstAttribute="top" secondItem="nO6-oQ-UBV" secondAttribute="top" id="RUF-zE-axd"/>
                                                     <constraint firstAttribute="width" constant="60" id="T02-vL-s5J"/>
+                                                    <constraint firstAttribute="bottom" secondItem="fUd-BH-8Oz" secondAttribute="bottom" id="Tr5-De-Qek"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fUd-BH-8Oz" secondAttribute="trailing" id="UIc-qO-16W"/>
                                                     <constraint firstItem="ML8-oP-bdB" firstAttribute="top" secondItem="nO6-oQ-UBV" secondAttribute="top" id="d3L-2g-6Q8"/>
                                                     <constraint firstItem="bn6-Oh-7Dq" firstAttribute="leading" secondItem="nO6-oQ-UBV" secondAttribute="leading" id="jQc-wG-Fbw"/>
+                                                    <constraint firstItem="fUd-BH-8Oz" firstAttribute="leading" secondItem="nO6-oQ-UBV" secondAttribute="leading" id="tLg-aC-y5j"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -107,13 +117,23 @@
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LnN-iL-lw0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="90"/>
+                                                        <connections>
+                                                            <action selector="btnSameTownAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="da3-Oj-TyX"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="GZE-wV-PLo" firstAttribute="top" secondItem="rSo-ka-yAf" secondAttribute="top" id="Bg1-8F-FqL"/>
+                                                    <constraint firstAttribute="trailing" secondItem="LnN-iL-lw0" secondAttribute="trailing" id="DPw-0H-cB8"/>
+                                                    <constraint firstItem="LnN-iL-lw0" firstAttribute="top" secondItem="rSo-ka-yAf" secondAttribute="top" id="FAe-dN-gdh"/>
                                                     <constraint firstItem="GZE-wV-PLo" firstAttribute="leading" secondItem="rSo-ka-yAf" secondAttribute="leading" id="H2h-2R-Dm1"/>
                                                     <constraint firstItem="Uft-C2-SsP" firstAttribute="top" secondItem="GZE-wV-PLo" secondAttribute="bottom" constant="5" id="ToU-Sa-Ncx"/>
+                                                    <constraint firstItem="LnN-iL-lw0" firstAttribute="leading" secondItem="rSo-ka-yAf" secondAttribute="leading" id="gCf-N9-UAf"/>
                                                     <constraint firstAttribute="trailing" secondItem="Uft-C2-SsP" secondAttribute="trailing" id="msb-Kc-7Ta"/>
+                                                    <constraint firstAttribute="bottom" secondItem="LnN-iL-lw0" secondAttribute="bottom" id="t0k-Fq-Hyf"/>
                                                     <constraint firstAttribute="width" constant="60" id="tIR-Ks-APo"/>
                                                     <constraint firstItem="Uft-C2-SsP" firstAttribute="leading" secondItem="rSo-ka-yAf" secondAttribute="leading" id="ywI-4V-OsB"/>
                                                 </constraints>
@@ -154,14 +174,24 @@
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OeO-pe-Kn2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="90"/>
+                                                        <connections>
+                                                            <action selector="btnDomainAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Hb3-Hf-zjd"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="HY0-C6-tcb" firstAttribute="leading" secondItem="Q5h-RA-55r" secondAttribute="leading" id="1PN-2r-Bbo"/>
+                                                    <constraint firstItem="OeO-pe-Kn2" firstAttribute="top" secondItem="Q5h-RA-55r" secondAttribute="top" id="8h2-hQ-ZEx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="OeO-pe-Kn2" secondAttribute="trailing" id="9E2-Vl-19E"/>
+                                                    <constraint firstItem="OeO-pe-Kn2" firstAttribute="leading" secondItem="Q5h-RA-55r" secondAttribute="leading" id="B9a-Sd-a2E"/>
                                                     <constraint firstItem="HY0-C6-tcb" firstAttribute="top" secondItem="Nf0-91-3gk" secondAttribute="bottom" constant="5" id="CQ0-ps-HMh"/>
                                                     <constraint firstAttribute="trailing" secondItem="HY0-C6-tcb" secondAttribute="trailing" id="alD-Hn-j2Q"/>
                                                     <constraint firstAttribute="width" constant="60" id="dVw-cx-BzX"/>
                                                     <constraint firstItem="Nf0-91-3gk" firstAttribute="top" secondItem="Q5h-RA-55r" secondAttribute="top" id="fSa-01-LrH"/>
+                                                    <constraint firstAttribute="bottom" secondItem="OeO-pe-Kn2" secondAttribute="bottom" id="h94-qC-7mr"/>
                                                     <constraint firstItem="Nf0-91-3gk" firstAttribute="leading" secondItem="Q5h-RA-55r" secondAttribute="leading" id="llX-gD-GSG"/>
                                                 </constraints>
                                             </view>

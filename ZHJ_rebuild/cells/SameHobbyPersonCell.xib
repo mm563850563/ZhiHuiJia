@@ -21,9 +21,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t6a-pf-45J">
                         <rect key="frame" x="0.0" y="0.0" width="96" height="220"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="brF-nb-r5m">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tx" translatesAutoresizingMaskIntoConstraints="NO" id="brF-nb-r5m">
                                 <rect key="frame" x="23" y="10" width="50" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="XYX-08-55x"/>
                                     <constraint firstAttribute="width" constant="50" id="h7K-kJ-kAf"/>
@@ -87,4 +86,7 @@
             <point key="canvasLocation" x="55" y="172"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="tx" width="123" height="123"/>
+    </resources>
 </document>

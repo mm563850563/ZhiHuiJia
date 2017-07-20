@@ -24,7 +24,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrv-vk-1EE">
                                 <rect key="frame" x="10" y="40" width="134" height="80"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bdv-uF-7Sw">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sctu1" translatesAutoresizingMaskIntoConstraints="NO" id="Bdv-uF-7Sw">
                                         <rect key="frame" x="47" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="kEC-vT-u8p"/>
@@ -74,4 +74,7 @@
             <point key="canvasLocation" x="110" y="65"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="sctu1" width="142" height="142"/>
+    </resources>
 </document>

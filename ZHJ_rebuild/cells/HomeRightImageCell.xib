@@ -23,7 +23,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kls-D6-hdh">
                         <rect key="frame" x="0.0" y="0.0" width="333" height="163.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y4e-7c-59t">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sctu1" translatesAutoresizingMaskIntoConstraints="NO" id="Y4e-7c-59t">
                                 <rect key="frame" x="166.5" y="0.0" width="166.5" height="166.5"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -121,4 +121,7 @@
             <point key="canvasLocation" x="27.5" y="114"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="sctu1" width="142" height="142"/>
+    </resources>
 </document>
