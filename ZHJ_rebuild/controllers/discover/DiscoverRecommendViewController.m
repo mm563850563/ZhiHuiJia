@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = kColorFromRGB(kBlack);
     [self initTableView];
 }
 
@@ -48,6 +47,7 @@
     self.tableView.dataSource = self;
     self.tableView.scrollEnabled = NO;
     self.tableView.rowHeight = 100;
+    self.tableView.backgroundColor = kColorFromRGB(kWhite);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
     

@@ -11,6 +11,7 @@
 //cells
 #import "MyCircleHeaderCell.h"
 #import "FocusPersonCell.h"
+#import "JoinedCircleCell.h"
 
 @interface MyCircleViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -54,6 +55,9 @@
     
     UINib *nibFocusDynamic = [UINib nibWithNibName:NSStringFromClass([FocusPersonCell class]) bundle:nil];
     [self.tableView registerNib:nibFocusDynamic forCellReuseIdentifier:NSStringFromClass([FocusPersonCell class])];
+    
+    UINib *nibJoinCircle = [UINib nibWithNibName:NSStringFromClass([JoinedCircleCell class]) bundle:nil];
+    [self.tableView registerNib:nibJoinCircle forCellReuseIdentifier:NSStringFromClass([JoinedCircleCell class])];
 }
 
 
@@ -73,29 +77,35 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 1;
+        return 5;
     }
     return 5;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
-        return 120;
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            return 150;
+        }
+        return 60;
     }
-    return 150;
+    return 120;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 1) {
-        return 40;
+        return 30;
     }
     return 0.1f;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+    if (section == 1) {
+        return 100;
+    }
     return 10;
 }
 
@@ -103,8 +113,14 @@
 {
     UITableViewCell *cell = [[UITableViewCell alloc]init];
     if (indexPath.section == 0) {
-        MyCircleHeaderCell * cellHeader = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyCircleHeaderCell class])];
-        cell = cellHeader;
+        if (indexPath.row == 0) {
+            MyCircleHeaderCell * cellHeader = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyCircleHeaderCell class])];
+            cell = cellHeader;
+        }else{
+            JoinedCircleCell *cellJoined = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([JoinedCircleCell class])];
+            cell = cellJoined;
+        }
+        
     }else{
         FocusPersonCell *cellFocusDynamic = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([FocusPersonCell class])];
         cell = cellFocusDynamic;

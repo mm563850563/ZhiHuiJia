@@ -19,6 +19,9 @@
 //controllers
 #import "DynamicDetailViewController.h"
 #import "MainCircleViewController.h"
+#import "SameTownViewController.h"
+#import "DomainViewController.h"
+#import "NotificationViewController.h"
 
 @interface DiscoverViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,SegmentTapViewDelegate,UINavigationControllerDelegate>
 
@@ -130,12 +133,16 @@
     
     //点击同城
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickSameTownAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        
+        SameTownViewController *sameTownVC = [[SameTownViewController alloc]initWithNibName:NSStringFromClass([SameTownViewController class]) bundle:nil];
+        sameTownVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:sameTownVC animated:YES];
     }];
     
     //点击地盘
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickDomainAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        
+        DomainViewController *domainVC = [[DomainViewController alloc]initWithNibName:NSStringFromClass([DomainViewController class]) bundle:nil];
+        domainVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:domainVC animated:YES];
     }];
     
 }
@@ -146,13 +153,19 @@
 
 
 #pragma mark - *** UINavigationControllerDelegate ******
+//-(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+//{
+//    
+//}
 -(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-//    if ([viewController isKindOfClass:[self class]]) {
-//        [navigationController.navigationBar setTranslucent:NO];
-//    }else{
-//        
-//    }
+    if ([viewController isKindOfClass:[DomainViewController class]]) {
+        [navigationController setNavigationBarHidden:YES animated:YES];
+    }else if ([viewController isKindOfClass:[NotificationViewController class]]) {
+        [navigationController setNavigationBarHidden:YES animated:YES];
+    }else{
+        [navigationController setNavigationBarHidden:NO animated:YES];
+    }
 }
 
 #pragma mark - ****** SegmentTapViewDelegate *******

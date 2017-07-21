@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RankingListViewController">
             <connections>
+                <outlet property="tableView" destination="Jr2-Em-3Ks" id="gsb-hm-Mff"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,7 +23,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeg-Nw-ay6">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                     <subviews>
-                        <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Tg-wO-U14">
+                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Tg-wO-U14">
                             <rect key="frame" x="0.0" y="120" width="375" height="30"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rae-Ij-hFq">
@@ -38,7 +39,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="h9O-L8-idc"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -98,11 +99,19 @@
                         <constraint firstItem="Mdr-Ph-HDi" firstAttribute="centerX" secondItem="yeg-Nw-ay6" secondAttribute="centerX" id="oXz-R0-7zl"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Jr2-Em-3Ks">
+                    <rect key="frame" x="0.0" y="150" width="375" height="517"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                </tableView>
             </subviews>
             <constraints>
                 <constraint firstItem="yeg-Nw-ay6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2Ge-LS-b2b"/>
                 <constraint firstItem="yeg-Nw-ay6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="RmN-eK-yhq"/>
+                <constraint firstItem="Jr2-Em-3Ks" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YV0-Rb-JdS"/>
+                <constraint firstAttribute="bottom" secondItem="Jr2-Em-3Ks" secondAttribute="bottom" id="ZPj-8I-Ben"/>
+                <constraint firstItem="Jr2-Em-3Ks" firstAttribute="top" secondItem="yeg-Nw-ay6" secondAttribute="bottom" id="aBH-yw-ZEb"/>
                 <constraint firstAttribute="trailing" secondItem="yeg-Nw-ay6" secondAttribute="trailing" id="csy-RX-lD3"/>
+                <constraint firstAttribute="trailing" secondItem="Jr2-Em-3Ks" secondAttribute="trailing" id="rO2-GL-2qL"/>
             </constraints>
         </view>
     </objects>

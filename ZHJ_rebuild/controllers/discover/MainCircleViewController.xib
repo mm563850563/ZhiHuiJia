@@ -29,7 +29,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LEe-Zv-8fJ">
-                    <rect key="frame" x="0.0" y="40" width="375" height="567"/>
+                    <rect key="frame" x="0.0" y="40" width="375" height="627"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
@@ -41,7 +41,7 @@
                 <constraint firstAttribute="trailing" secondItem="LEe-Zv-8fJ" secondAttribute="trailing" id="Rw8-5o-hhZ"/>
                 <constraint firstItem="JRz-QP-FlN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aDl-th-uTy"/>
                 <constraint firstItem="LEe-Zv-8fJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pc8-uO-xPh"/>
-                <constraint firstAttribute="bottom" secondItem="LEe-Zv-8fJ" secondAttribute="bottom" constant="60" id="yRQ-lJ-5CS"/>
+                <constraint firstAttribute="bottom" secondItem="LEe-Zv-8fJ" secondAttribute="bottom" id="yRQ-lJ-5CS"/>
             </constraints>
         </view>
     </objects>

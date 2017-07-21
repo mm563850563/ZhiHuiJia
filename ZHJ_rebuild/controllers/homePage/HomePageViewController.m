@@ -639,12 +639,15 @@
 {
     if ([viewController isKindOfClass:[NotificationViewController class]]) {
         [navigationController setNavigationBarHidden:YES animated:YES];
-    }else if ([viewController isKindOfClass:[self class]]){
+    }
+    else if ([viewController isKindOfClass:[self class]]){
         navigationController.navigationBar.translucent = YES;
         [navigationController setNavigationBarHidden:NO animated:YES];
-    }else if ([viewController isKindOfClass:[FocusPersonFileViewController class]]){
-        [navigationController setNavigationBarHidden:YES];
-    }else if ([viewController isKindOfClass:[GetGiftViewController class]]){
+    }
+    else if ([viewController isKindOfClass:[FocusPersonFileViewController class]]){
+        [navigationController setNavigationBarHidden:YES animated:YES];
+    }
+    else if ([viewController isKindOfClass:[GetGiftViewController class]]){
         [navigationController setNavigationBarHidden:YES animated:YES];
     }
 }

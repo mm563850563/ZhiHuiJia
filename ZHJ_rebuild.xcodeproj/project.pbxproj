@@ -79,6 +79,46 @@
 		DD62878A1F20B0BA0030331D /* MainCircleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287881F20B0BA0030331D /* MainCircleViewController.xib */; };
 		DD62878E1F20C2290030331D /* MyCircleHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62878C1F20C2290030331D /* MyCircleHeaderCell.m */; };
 		DD62878F1F20C2290030331D /* MyCircleHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62878D1F20C2290030331D /* MyCircleHeaderCell.xib */; };
+		DD6287931F2185A10030331D /* JoinedCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287911F2185A10030331D /* JoinedCircleCell.m */; };
+		DD6287941F2185A10030331D /* JoinedCircleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287921F2185A10030331D /* JoinedCircleCell.xib */; };
+		DD62879D1F2191A90030331D /* ActivityRankFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62879B1F2191A90030331D /* ActivityRankFirstCell.m */; };
+		DD62879E1F2191A90030331D /* ActivityRankFirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62879C1F2191A90030331D /* ActivityRankFirstCell.xib */; };
+		DD6287A21F2191C90030331D /* ActivityRankNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287A01F2191C90030331D /* ActivityRankNormalCell.m */; };
+		DD6287A31F2191C90030331D /* ActivityRankNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287A11F2191C90030331D /* ActivityRankNormalCell.xib */; };
+		DD6287A71F2198FC0030331D /* SameTownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287A51F2198FC0030331D /* SameTownViewController.m */; };
+		DD6287A81F2198FC0030331D /* SameTownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287A61F2198FC0030331D /* SameTownViewController.xib */; };
+		DD6287AC1F219ADA0030331D /* SameTownTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287AA1F219ADA0030331D /* SameTownTopicViewController.m */; };
+		DD6287AD1F219ADA0030331D /* SameTownTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287AB1F219ADA0030331D /* SameTownTopicViewController.xib */; };
+		DD6287B11F219BA50030331D /* HandpickActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287AF1F219BA50030331D /* HandpickActivitiesViewController.m */; };
+		DD6287B21F219BA50030331D /* HandpickActivitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287B01F219BA50030331D /* HandpickActivitiesViewController.xib */; };
+		DD6287BB1F21A3700030331D /* LookAroundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287B91F21A3700030331D /* LookAroundCell.m */; };
+		DD6287BC1F21A3700030331D /* LookAroundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287BA1F21A3700030331D /* LookAroundCell.xib */; };
+		DD6287C01F21AB890030331D /* HandpickActivitiesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287BE1F21AB890030331D /* HandpickActivitiesCell.m */; };
+		DD6287C11F21AB890030331D /* HandpickActivitiesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287BF1F21AB890030331D /* HandpickActivitiesCell.xib */; };
+		DD6287C51F21AE580030331D /* LookAroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287C31F21AE580030331D /* LookAroundViewController.m */; };
+		DD6287C61F21AE580030331D /* LookAroundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287C41F21AE580030331D /* LookAroundViewController.xib */; };
+		DD6287CA1F21AF900030331D /* LookAroundTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287C81F21AF900030331D /* LookAroundTableCell.m */; };
+		DD6287CB1F21AF900030331D /* LookAroundTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287C91F21AF900030331D /* LookAroundTableCell.xib */; };
+		DD6287CF1F21C26C0030331D /* DomainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287CD1F21C26C0030331D /* DomainViewController.m */; };
+		DD6287D01F21C26C0030331D /* DomainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287CE1F21C26C0030331D /* DomainViewController.xib */; };
+		DD6287D31F21C96F0030331D /* DomainHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287D21F21C96F0030331D /* DomainHeaderView.m */; };
+		DD6287D51F21C9930030331D /* DomainHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287D41F21C9930030331D /* DomainHeaderView.xib */; };
+		DD6287D91F21DE0C0030331D /* MyFocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287D71F21DE0C0030331D /* MyFocusViewController.m */; };
+		DD6287DA1F21DE0C0030331D /* MyFocusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287D81F21DE0C0030331D /* MyFocusViewController.xib */; };
+		DD6287DE1F21E3B20030331D /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287DC1F21E3B20030331D /* ActivityViewController.m */; };
+		DD6287DF1F21E3B20030331D /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287DD1F21E3B20030331D /* ActivityViewController.xib */; };
+		DD6287E31F21E8120030331D /* WaitForReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287E11F21E8120030331D /* WaitForReviewViewController.m */; };
+		DD6287E41F21E8120030331D /* WaitForReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287E21F21E8120030331D /* WaitForReviewViewController.xib */; };
+		DD6287E81F21E85D0030331D /* AlreadyPassedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287E61F21E85D0030331D /* AlreadyPassedViewController.m */; };
+		DD6287E91F21E85D0030331D /* AlreadyPassedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287E71F21E85D0030331D /* AlreadyPassedViewController.xib */; };
+		DD6287ED1F21E8C00030331D /* FailureReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287EB1F21E8C00030331D /* FailureReviewViewController.m */; };
+		DD6287EE1F21E8C00030331D /* FailureReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287EC1F21E8C00030331D /* FailureReviewViewController.xib */; };
+		DD6287F21F21ED4F0030331D /* PersonalRankActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287F01F21ED4F0030331D /* PersonalRankActivityViewController.m */; };
+		DD6287F31F21ED4F0030331D /* PersonalRankActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287F11F21ED4F0030331D /* PersonalRankActivityViewController.xib */; };
+		DD6287F71F21EE4C0030331D /* PersonalActivityRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287F51F21EE4C0030331D /* PersonalActivityRankCell.m */; };
+		DD6287F81F21EE4C0030331D /* PersonalActivityRankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287F61F21EE4C0030331D /* PersonalActivityRankCell.xib */; };
+		DD6287FB1F21F2C30030331D /* PersonalActivityRankFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287FA1F21F2C30030331D /* PersonalActivityRankFooterView.m */; };
+		DD6287FF1F21F2F70030331D /* PersonalActivityRankFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287FE1F21F2F70030331D /* PersonalActivityRankFooterView.xib */; };
 		DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */; };
 		DDFB81C01F18475700AEAAA7 /* SameHobbyPersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */; };
 		DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81C21F184B7600AEAAA7 /* CALayer+XIBUIColor.m */; };
@@ -306,6 +346,66 @@
 		DD62878B1F20C2290030331D /* MyCircleHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCircleHeaderCell.h; path = cells/MyCircleHeaderCell.h; sourceTree = "<group>"; };
 		DD62878C1F20C2290030331D /* MyCircleHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCircleHeaderCell.m; path = cells/MyCircleHeaderCell.m; sourceTree = "<group>"; };
 		DD62878D1F20C2290030331D /* MyCircleHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyCircleHeaderCell.xib; path = cells/MyCircleHeaderCell.xib; sourceTree = "<group>"; };
+		DD6287901F2185A10030331D /* JoinedCircleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JoinedCircleCell.h; path = cells/JoinedCircleCell.h; sourceTree = "<group>"; };
+		DD6287911F2185A10030331D /* JoinedCircleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JoinedCircleCell.m; path = cells/JoinedCircleCell.m; sourceTree = "<group>"; };
+		DD6287921F2185A10030331D /* JoinedCircleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JoinedCircleCell.xib; path = cells/JoinedCircleCell.xib; sourceTree = "<group>"; };
+		DD62879A1F2191A90030331D /* ActivityRankFirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityRankFirstCell.h; path = cells/ActivityRankFirstCell.h; sourceTree = "<group>"; };
+		DD62879B1F2191A90030331D /* ActivityRankFirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityRankFirstCell.m; path = cells/ActivityRankFirstCell.m; sourceTree = "<group>"; };
+		DD62879C1F2191A90030331D /* ActivityRankFirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityRankFirstCell.xib; path = cells/ActivityRankFirstCell.xib; sourceTree = "<group>"; };
+		DD62879F1F2191C90030331D /* ActivityRankNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityRankNormalCell.h; path = cells/ActivityRankNormalCell.h; sourceTree = "<group>"; };
+		DD6287A01F2191C90030331D /* ActivityRankNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityRankNormalCell.m; path = cells/ActivityRankNormalCell.m; sourceTree = "<group>"; };
+		DD6287A11F2191C90030331D /* ActivityRankNormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityRankNormalCell.xib; path = cells/ActivityRankNormalCell.xib; sourceTree = "<group>"; };
+		DD6287A41F2198FC0030331D /* SameTownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameTownViewController.h; path = controllers/discover/SameTownViewController.h; sourceTree = "<group>"; };
+		DD6287A51F2198FC0030331D /* SameTownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameTownViewController.m; path = controllers/discover/SameTownViewController.m; sourceTree = "<group>"; };
+		DD6287A61F2198FC0030331D /* SameTownViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SameTownViewController.xib; path = controllers/discover/SameTownViewController.xib; sourceTree = "<group>"; };
+		DD6287A91F219ADA0030331D /* SameTownTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameTownTopicViewController.h; path = controllers/discover/SameTownTopicViewController.h; sourceTree = "<group>"; };
+		DD6287AA1F219ADA0030331D /* SameTownTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameTownTopicViewController.m; path = controllers/discover/SameTownTopicViewController.m; sourceTree = "<group>"; };
+		DD6287AB1F219ADA0030331D /* SameTownTopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SameTownTopicViewController.xib; path = controllers/discover/SameTownTopicViewController.xib; sourceTree = "<group>"; };
+		DD6287AE1F219BA50030331D /* HandpickActivitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HandpickActivitiesViewController.h; path = controllers/discover/HandpickActivitiesViewController.h; sourceTree = "<group>"; };
+		DD6287AF1F219BA50030331D /* HandpickActivitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HandpickActivitiesViewController.m; path = controllers/discover/HandpickActivitiesViewController.m; sourceTree = "<group>"; };
+		DD6287B01F219BA50030331D /* HandpickActivitiesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HandpickActivitiesViewController.xib; path = controllers/discover/HandpickActivitiesViewController.xib; sourceTree = "<group>"; };
+		DD6287B81F21A3700030331D /* LookAroundCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LookAroundCell.h; path = cells/LookAroundCell.h; sourceTree = "<group>"; };
+		DD6287B91F21A3700030331D /* LookAroundCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LookAroundCell.m; path = cells/LookAroundCell.m; sourceTree = "<group>"; };
+		DD6287BA1F21A3700030331D /* LookAroundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LookAroundCell.xib; path = cells/LookAroundCell.xib; sourceTree = "<group>"; };
+		DD6287BD1F21AB890030331D /* HandpickActivitiesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HandpickActivitiesCell.h; path = cells/HandpickActivitiesCell.h; sourceTree = "<group>"; };
+		DD6287BE1F21AB890030331D /* HandpickActivitiesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HandpickActivitiesCell.m; path = cells/HandpickActivitiesCell.m; sourceTree = "<group>"; };
+		DD6287BF1F21AB890030331D /* HandpickActivitiesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HandpickActivitiesCell.xib; path = cells/HandpickActivitiesCell.xib; sourceTree = "<group>"; };
+		DD6287C21F21AE580030331D /* LookAroundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LookAroundViewController.h; path = controllers/discover/LookAroundViewController.h; sourceTree = "<group>"; };
+		DD6287C31F21AE580030331D /* LookAroundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LookAroundViewController.m; path = controllers/discover/LookAroundViewController.m; sourceTree = "<group>"; };
+		DD6287C41F21AE580030331D /* LookAroundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LookAroundViewController.xib; path = controllers/discover/LookAroundViewController.xib; sourceTree = "<group>"; };
+		DD6287C71F21AF900030331D /* LookAroundTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LookAroundTableCell.h; path = cells/LookAroundTableCell.h; sourceTree = "<group>"; };
+		DD6287C81F21AF900030331D /* LookAroundTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LookAroundTableCell.m; path = cells/LookAroundTableCell.m; sourceTree = "<group>"; };
+		DD6287C91F21AF900030331D /* LookAroundTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LookAroundTableCell.xib; path = cells/LookAroundTableCell.xib; sourceTree = "<group>"; };
+		DD6287CC1F21C26C0030331D /* DomainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DomainViewController.h; path = controllers/discover/DomainViewController.h; sourceTree = "<group>"; };
+		DD6287CD1F21C26C0030331D /* DomainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DomainViewController.m; path = controllers/discover/DomainViewController.m; sourceTree = "<group>"; };
+		DD6287CE1F21C26C0030331D /* DomainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DomainViewController.xib; path = controllers/discover/DomainViewController.xib; sourceTree = "<group>"; };
+		DD6287D11F21C96F0030331D /* DomainHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DomainHeaderView.h; path = views/DomainHeaderView.h; sourceTree = "<group>"; };
+		DD6287D21F21C96F0030331D /* DomainHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DomainHeaderView.m; path = views/DomainHeaderView.m; sourceTree = "<group>"; };
+		DD6287D41F21C9930030331D /* DomainHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DomainHeaderView.xib; path = views/DomainHeaderView.xib; sourceTree = "<group>"; };
+		DD6287D61F21DE0C0030331D /* MyFocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyFocusViewController.h; path = controllers/discover/MyFocusViewController.h; sourceTree = "<group>"; };
+		DD6287D71F21DE0C0030331D /* MyFocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyFocusViewController.m; path = controllers/discover/MyFocusViewController.m; sourceTree = "<group>"; };
+		DD6287D81F21DE0C0030331D /* MyFocusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyFocusViewController.xib; path = controllers/discover/MyFocusViewController.xib; sourceTree = "<group>"; };
+		DD6287DB1F21E3B20030331D /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityViewController.h; path = controllers/discover/ActivityViewController.h; sourceTree = "<group>"; };
+		DD6287DC1F21E3B20030331D /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityViewController.m; path = controllers/discover/ActivityViewController.m; sourceTree = "<group>"; };
+		DD6287DD1F21E3B20030331D /* ActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityViewController.xib; path = controllers/discover/ActivityViewController.xib; sourceTree = "<group>"; };
+		DD6287E01F21E8120030331D /* WaitForReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitForReviewViewController.h; path = controllers/discover/WaitForReviewViewController.h; sourceTree = "<group>"; };
+		DD6287E11F21E8120030331D /* WaitForReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaitForReviewViewController.m; path = controllers/discover/WaitForReviewViewController.m; sourceTree = "<group>"; };
+		DD6287E21F21E8120030331D /* WaitForReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WaitForReviewViewController.xib; path = controllers/discover/WaitForReviewViewController.xib; sourceTree = "<group>"; };
+		DD6287E51F21E85D0030331D /* AlreadyPassedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlreadyPassedViewController.h; path = controllers/discover/AlreadyPassedViewController.h; sourceTree = "<group>"; };
+		DD6287E61F21E85D0030331D /* AlreadyPassedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlreadyPassedViewController.m; path = controllers/discover/AlreadyPassedViewController.m; sourceTree = "<group>"; };
+		DD6287E71F21E85D0030331D /* AlreadyPassedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AlreadyPassedViewController.xib; path = controllers/discover/AlreadyPassedViewController.xib; sourceTree = "<group>"; };
+		DD6287EA1F21E8C00030331D /* FailureReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FailureReviewViewController.h; path = controllers/discover/FailureReviewViewController.h; sourceTree = "<group>"; };
+		DD6287EB1F21E8C00030331D /* FailureReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FailureReviewViewController.m; path = controllers/discover/FailureReviewViewController.m; sourceTree = "<group>"; };
+		DD6287EC1F21E8C00030331D /* FailureReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FailureReviewViewController.xib; path = controllers/discover/FailureReviewViewController.xib; sourceTree = "<group>"; };
+		DD6287EF1F21ED4F0030331D /* PersonalRankActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalRankActivityViewController.h; path = controllers/discover/PersonalRankActivityViewController.h; sourceTree = "<group>"; };
+		DD6287F01F21ED4F0030331D /* PersonalRankActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalRankActivityViewController.m; path = controllers/discover/PersonalRankActivityViewController.m; sourceTree = "<group>"; };
+		DD6287F11F21ED4F0030331D /* PersonalRankActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PersonalRankActivityViewController.xib; path = controllers/discover/PersonalRankActivityViewController.xib; sourceTree = "<group>"; };
+		DD6287F41F21EE4C0030331D /* PersonalActivityRankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalActivityRankCell.h; path = cells/PersonalActivityRankCell.h; sourceTree = "<group>"; };
+		DD6287F51F21EE4C0030331D /* PersonalActivityRankCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalActivityRankCell.m; path = cells/PersonalActivityRankCell.m; sourceTree = "<group>"; };
+		DD6287F61F21EE4C0030331D /* PersonalActivityRankCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PersonalActivityRankCell.xib; path = cells/PersonalActivityRankCell.xib; sourceTree = "<group>"; };
+		DD6287F91F21F2C30030331D /* PersonalActivityRankFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalActivityRankFooterView.h; path = views/PersonalActivityRankFooterView.h; sourceTree = "<group>"; };
+		DD6287FA1F21F2C30030331D /* PersonalActivityRankFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalActivityRankFooterView.m; path = views/PersonalActivityRankFooterView.m; sourceTree = "<group>"; };
+		DD6287FE1F21F2F70030331D /* PersonalActivityRankFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PersonalActivityRankFooterView.xib; path = views/PersonalActivityRankFooterView.xib; sourceTree = "<group>"; };
 		DDFB81BC1F18475700AEAAA7 /* SameHobbyPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameHobbyPersonCell.h; path = cells/SameHobbyPersonCell.h; sourceTree = "<group>"; };
 		DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameHobbyPersonCell.m; path = cells/SameHobbyPersonCell.m; sourceTree = "<group>"; };
 		DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SameHobbyPersonCell.xib; path = cells/SameHobbyPersonCell.xib; sourceTree = "<group>"; };
@@ -751,6 +851,27 @@
 				DD62878B1F20C2290030331D /* MyCircleHeaderCell.h */,
 				DD62878C1F20C2290030331D /* MyCircleHeaderCell.m */,
 				DD62878D1F20C2290030331D /* MyCircleHeaderCell.xib */,
+				DD6287901F2185A10030331D /* JoinedCircleCell.h */,
+				DD6287911F2185A10030331D /* JoinedCircleCell.m */,
+				DD6287921F2185A10030331D /* JoinedCircleCell.xib */,
+				DD62879A1F2191A90030331D /* ActivityRankFirstCell.h */,
+				DD62879B1F2191A90030331D /* ActivityRankFirstCell.m */,
+				DD62879C1F2191A90030331D /* ActivityRankFirstCell.xib */,
+				DD62879F1F2191C90030331D /* ActivityRankNormalCell.h */,
+				DD6287A01F2191C90030331D /* ActivityRankNormalCell.m */,
+				DD6287A11F2191C90030331D /* ActivityRankNormalCell.xib */,
+				DD6287B81F21A3700030331D /* LookAroundCell.h */,
+				DD6287B91F21A3700030331D /* LookAroundCell.m */,
+				DD6287BA1F21A3700030331D /* LookAroundCell.xib */,
+				DD6287BD1F21AB890030331D /* HandpickActivitiesCell.h */,
+				DD6287BE1F21AB890030331D /* HandpickActivitiesCell.m */,
+				DD6287BF1F21AB890030331D /* HandpickActivitiesCell.xib */,
+				DD6287C71F21AF900030331D /* LookAroundTableCell.h */,
+				DD6287C81F21AF900030331D /* LookAroundTableCell.m */,
+				DD6287C91F21AF900030331D /* LookAroundTableCell.xib */,
+				DD6287F41F21EE4C0030331D /* PersonalActivityRankCell.h */,
+				DD6287F51F21EE4C0030331D /* PersonalActivityRankCell.m */,
+				DD6287F61F21EE4C0030331D /* PersonalActivityRankCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -777,6 +898,12 @@
 				DDFB829A1F1C78FD00AEAAA7 /* MoreProduct_SortView.h */,
 				DDFB829B1F1C78FD00AEAAA7 /* MoreProduct_SortView.m */,
 				DDFB829D1F1C791800AEAAA7 /* MoreProduct_SortView.xib */,
+				DD6287D11F21C96F0030331D /* DomainHeaderView.h */,
+				DD6287D21F21C96F0030331D /* DomainHeaderView.m */,
+				DD6287D41F21C9930030331D /* DomainHeaderView.xib */,
+				DD6287F91F21F2C30030331D /* PersonalActivityRankFooterView.h */,
+				DD6287FA1F21F2C30030331D /* PersonalActivityRankFooterView.m */,
+				DD6287FE1F21F2F70030331D /* PersonalActivityRankFooterView.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -892,6 +1019,27 @@
 			children = (
 				EC4BA11D1F13771100B9BE1A /* DiscoverViewController.h */,
 				EC4BA11E1F13771100B9BE1A /* DiscoverViewController.m */,
+				DD6287EF1F21ED4F0030331D /* PersonalRankActivityViewController.h */,
+				DD6287F01F21ED4F0030331D /* PersonalRankActivityViewController.m */,
+				DD6287F11F21ED4F0030331D /* PersonalRankActivityViewController.xib */,
+				DD6287E01F21E8120030331D /* WaitForReviewViewController.h */,
+				DD6287E11F21E8120030331D /* WaitForReviewViewController.m */,
+				DD6287E21F21E8120030331D /* WaitForReviewViewController.xib */,
+				DD6287E51F21E85D0030331D /* AlreadyPassedViewController.h */,
+				DD6287E61F21E85D0030331D /* AlreadyPassedViewController.m */,
+				DD6287E71F21E85D0030331D /* AlreadyPassedViewController.xib */,
+				DD6287EA1F21E8C00030331D /* FailureReviewViewController.h */,
+				DD6287EB1F21E8C00030331D /* FailureReviewViewController.m */,
+				DD6287EC1F21E8C00030331D /* FailureReviewViewController.xib */,
+				DD6287DB1F21E3B20030331D /* ActivityViewController.h */,
+				DD6287DC1F21E3B20030331D /* ActivityViewController.m */,
+				DD6287DD1F21E3B20030331D /* ActivityViewController.xib */,
+				DD6287CC1F21C26C0030331D /* DomainViewController.h */,
+				DD6287CD1F21C26C0030331D /* DomainViewController.m */,
+				DD6287CE1F21C26C0030331D /* DomainViewController.xib */,
+				DD6287D61F21DE0C0030331D /* MyFocusViewController.h */,
+				DD6287D71F21DE0C0030331D /* MyFocusViewController.m */,
+				DD6287D81F21DE0C0030331D /* MyFocusViewController.xib */,
 				DD6287861F20B0B90030331D /* MainCircleViewController.h */,
 				DD6287871F20B0BA0030331D /* MainCircleViewController.m */,
 				DD6287881F20B0BA0030331D /* MainCircleViewController.xib */,
@@ -904,6 +1052,18 @@
 				DD62877C1F208CE60030331D /* RankingListViewController.h */,
 				DD62877D1F208CE60030331D /* RankingListViewController.m */,
 				DD62877E1F208CE60030331D /* RankingListViewController.xib */,
+				DD6287A41F2198FC0030331D /* SameTownViewController.h */,
+				DD6287A51F2198FC0030331D /* SameTownViewController.m */,
+				DD6287A61F2198FC0030331D /* SameTownViewController.xib */,
+				DD6287A91F219ADA0030331D /* SameTownTopicViewController.h */,
+				DD6287AA1F219ADA0030331D /* SameTownTopicViewController.m */,
+				DD6287AB1F219ADA0030331D /* SameTownTopicViewController.xib */,
+				DD6287AE1F219BA50030331D /* HandpickActivitiesViewController.h */,
+				DD6287AF1F219BA50030331D /* HandpickActivitiesViewController.m */,
+				DD6287B01F219BA50030331D /* HandpickActivitiesViewController.xib */,
+				DD6287C21F21AE580030331D /* LookAroundViewController.h */,
+				DD6287C31F21AE580030331D /* LookAroundViewController.m */,
+				DD6287C41F21AE580030331D /* LookAroundViewController.xib */,
 				EC4BA2591F15FDE400B9BE1A /* DiscoverDynamicViewController.h */,
 				EC4BA25A1F15FDE400B9BE1A /* DiscoverDynamicViewController.m */,
 				EC4BA25C1F15FE0900B9BE1A /* DiscoverHotTopicViewController.h */,
@@ -1045,6 +1205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD6287941F2185A10030331D /* JoinedCircleCell.xib in Resources */,
 				DDFB825D1F187A7900AEAAA7 /* cb_dark_on@2x.png in Resources */,
 				DD6287351F1F52BE0030331D /* Configuration_ButtonCell.xib in Resources */,
 				DD62877B1F208CA40030331D /* MyCircleViewController.xib in Resources */,
@@ -1057,8 +1218,10 @@
 				DDFB82691F187A7900AEAAA7 /* cb_mono_on@2x.png in Resources */,
 				DD6287051F1EE19C0030331D /* FocusPersonFileViewController.xib in Resources */,
 				DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */,
+				DD6287C11F21AB890030331D /* HandpickActivitiesCell.xib in Resources */,
 				DDFB825F1F187A7900AEAAA7 /* cb_glossy_off@2x.png in Resources */,
 				DDFB82671F187A7900AEAAA7 /* cb_mono_off@2x.png in Resources */,
+				DD6287D01F21C26C0030331D /* DomainViewController.xib in Resources */,
 				DD6287001F1E405A0030331D /* Discover_RecommendCell.xib in Resources */,
 				DDFB82C61F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib in Resources */,
 				EC4BA2501F15D43600B9BE1A /* BrandRulesViewController.xib in Resources */,
@@ -1066,13 +1229,19 @@
 				EC4BA0681F13562700B9BE1A /* LaunchScreen.storyboard in Resources */,
 				DDFB82C11F1E059A00AEAAA7 /* DiscoverDynamicCell.xib in Resources */,
 				DDFB82641F187A7900AEAAA7 /* cb_green_on.png in Resources */,
+				DD6287AD1F219ADA0030331D /* SameTownTopicViewController.xib in Resources */,
 				DDFB827D1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib in Resources */,
 				EC4BA2481F14DFE900B9BE1A /* BrandApplyViewController.xib in Resources */,
 				DDFB82681F187A7900AEAAA7 /* cb_mono_on.png in Resources */,
 				DDFB825E1F187A7900AEAAA7 /* cb_glossy_off.png in Resources */,
 				DDFB82611F187A7900AEAAA7 /* cb_glossy_on@2x.png in Resources */,
+				DD6287CB1F21AF900030331D /* LookAroundTableCell.xib in Resources */,
+				DD6287EE1F21E8C00030331D /* FailureReviewViewController.xib in Resources */,
 				DDFB82701F18BC4500AEAAA7 /* PersonalCollectCell.xib in Resources */,
+				DD6287FF1F21F2F70030331D /* PersonalActivityRankFooterView.xib in Resources */,
 				DDFB82991F1C6A8900AEAAA7 /* MoreProductList_HeaderView.xib in Resources */,
+				DD6287E41F21E8120030331D /* WaitForReviewViewController.xib in Resources */,
+				DD6287DF1F21E3B20030331D /* ActivityViewController.xib in Resources */,
 				EC4BA2551F15EDF000B9BE1A /* DiscoverHeaderCell.xib in Resources */,
 				DD62871E1F1F3D8B0030331D /* PriaseTableViewCell.xib in Resources */,
 				DDFB82B41F1D931500AEAAA7 /* PYSearch.bundle in Resources */,
@@ -1080,6 +1249,7 @@
 				DD6287301F1F51BA0030331D /* ConfigurationCell.xib in Resources */,
 				DD6287851F2097940030331D /* HotCircleCell.xib in Resources */,
 				DDFB82751F19B18800AEAAA7 /* Categate_CategateCollectCell.xib in Resources */,
+				DD62879E1F2191A90030331D /* ActivityRankFirstCell.xib in Resources */,
 				DDFB82601F187A7900AEAAA7 /* cb_glossy_on.png in Resources */,
 				DDFB828F1F1C5E3900AEAAA7 /* MoreProductListCell.xib in Resources */,
 				DDFB82651F187A7900AEAAA7 /* cb_green_on@2x.png in Resources */,
@@ -1091,9 +1261,13 @@
 				DD62873F1F1F5FA20030331D /* GetGiftViewController.xib in Resources */,
 				DD40B73E1F1788B000839748 /* HomeCollectCell3.xib in Resources */,
 				DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */,
+				DD6287BC1F21A3700030331D /* LookAroundCell.xib in Resources */,
 				DDFB82621F187A7900AEAAA7 /* cb_green_off.png in Resources */,
 				DD6287191F1F32010030331D /* DynamicDetailViewController.xib in Resources */,
+				DD6287DA1F21DE0C0030331D /* MyFocusViewController.xib in Resources */,
 				EC4BA2661F160F1F00B9BE1A /* DiscoverCell.xib in Resources */,
+				DD6287C61F21AE580030331D /* LookAroundViewController.xib in Resources */,
+				DD6287B21F219BA50030331D /* HandpickActivitiesViewController.xib in Resources */,
 				DD6287581F2049A10030331D /* ModifyPasswordViewController.xib in Resources */,
 				DD40B7241F1705A000839748 /* HomeCollectCell1.xib in Resources */,
 				DDFB825C1F187A7900AEAAA7 /* cb_dark_on.png in Resources */,
@@ -1101,9 +1275,13 @@
 				DD6287281F1F48000030331D /* CommentTableViewCell.xib in Resources */,
 				DDFB82561F187A7900AEAAA7 /* cb_box_off.png in Resources */,
 				DD6287231F1F41BF0030331D /* DynamicWithoutCommentCell.xib in Resources */,
+				DD6287D51F21C9930030331D /* DomainHeaderView.xib in Resources */,
+				DD6287A81F2198FC0030331D /* SameTownViewController.xib in Resources */,
 				EC4BA0651F13562700B9BE1A /* Assets.xcassets in Resources */,
 				DD62878F1F20C2290030331D /* MyCircleHeaderCell.xib in Resources */,
 				DD62875D1F20522F0030331D /* MyCollectProductViewController.xib in Resources */,
+				DD6287F81F21EE4C0030331D /* PersonalActivityRankCell.xib in Resources */,
+				DD6287A31F2191C90030331D /* ActivityRankNormalCell.xib in Resources */,
 				DD6287761F208C0B0030331D /* HotCircleViewController.xib in Resources */,
 				DD6287441F1F8C1E0030331D /* MyAddressViewController.xib in Resources */,
 				DD40B7291F17250B00839748 /* HomeLeftImageCell.xib in Resources */,
@@ -1117,10 +1295,12 @@
 				DD6287671F2059F70030331D /* MyBalanceViewController.xib in Resources */,
 				EC4BA0CD1F1359DF00B9BE1A /* SelectThemeColorView.xib in Resources */,
 				DD62870F1F1EEE1B0030331D /* FocusPersonHeaderCell.xib in Resources */,
+				DD6287E91F21E85D0030331D /* AlreadyPassedViewController.xib in Resources */,
 				EC4BA0EA1F136C8100B9BE1A /* FeedbackViewController.xib in Resources */,
 				DDFB82571F187A7900AEAAA7 /* cb_box_off@2x.png in Resources */,
 				DD6287801F208CE60030331D /* RankingListViewController.xib in Resources */,
 				DDFB82A31F1C81E300AEAAA7 /* PersonalFileViewController.xib in Resources */,
+				DD6287F31F21ED4F0030331D /* PersonalRankActivityViewController.xib in Resources */,
 				DDFB82591F187A7900AEAAA7 /* cb_box_on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1198,12 +1378,14 @@
 				DD6287221F1F41BF0030331D /* DynamicWithoutCommentCell.m in Sources */,
 				EC4BA1341F1462F100B9BE1A /* GiftSendingTableViewCell.m in Sources */,
 				DDFB828E1F1C5E3900AEAAA7 /* MoreProductListCell.m in Sources */,
+				DD6287F71F21EE4C0030331D /* PersonalActivityRankCell.m in Sources */,
 				DD62876B1F207A850030331D /* CustomerServiceCenterViewController.m in Sources */,
 				DD40B7311F17437100839748 /* IntellectWearsCell.m in Sources */,
 				DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */,
 				EC4BA1141F136CBD00B9BE1A /* SubNotification_DiscountViewController.m in Sources */,
 				DD40B72D1F173B5300839748 /* HomeRightImageCell.m in Sources */,
 				EC4BA25B1F15FDE400B9BE1A /* DiscoverDynamicViewController.m in Sources */,
+				DD6287FB1F21F2C30030331D /* PersonalActivityRankFooterView.m in Sources */,
 				EC4BA11F1F13771100B9BE1A /* DiscoverViewController.m in Sources */,
 				EC4BA2611F15FE2200B9BE1A /* DiscoverRecommendViewController.m in Sources */,
 				DD40B7411F179C3100839748 /* SameHobbyCell.m in Sources */,
@@ -1218,17 +1400,22 @@
 				DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */,
 				DD62871D1F1F3D8B0030331D /* PriaseTableViewCell.m in Sources */,
 				EC4BA2431F14B05E00B9BE1A /* CategateNavigationController.m in Sources */,
+				DD6287931F2185A10030331D /* JoinedCircleCell.m in Sources */,
 				DDFB82B71F1D931500AEAAA7 /* PYSearchViewController.m in Sources */,
 				EC4BA1391F14693F00B9BE1A /* ProductDetailViewController.m in Sources */,
 				DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */,
+				DD6287C01F21AB890030331D /* HandpickActivitiesCell.m in Sources */,
 				EC4BA2471F14DFE900B9BE1A /* BrandApplyViewController.m in Sources */,
 				DD62877A1F208CA40030331D /* MyCircleViewController.m in Sources */,
 				DD40B7391F176E8600839748 /* EqualSpaceFlowLayout.m in Sources */,
 				DDFB82931F1C699D00AEAAA7 /* MoreProductListViewController.m in Sources */,
+				DD6287A21F2191C90030331D /* ActivityRankNormalCell.m in Sources */,
+				DD6287CF1F21C26C0030331D /* DomainViewController.m in Sources */,
 				EC4BA0E91F136C8100B9BE1A /* FeedbackViewController.m in Sources */,
 				DDFB81F11F18686A00AEAAA7 /* CartProductListCell.m in Sources */,
 				DDFB82B81F1D931500AEAAA7 /* UIColor+PYSearchExtension.m in Sources */,
 				DDFB82811F19F97900AEAAA7 /* Categate_Brand_HeaderView.m in Sources */,
+				DD6287E81F21E85D0030331D /* AlreadyPassedViewController.m in Sources */,
 				DDFB82C51F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m in Sources */,
 				EC4BA0F21F136CA400B9BE1A /* CategateViewController.m in Sources */,
 				DDFB82C01F1E059A00AEAAA7 /* DiscoverDynamicCell.m in Sources */,
@@ -1242,9 +1429,11 @@
 				EC4BA24B1F14F85000B9BE1A /* UIView+CurrentViewController.m in Sources */,
 				DDFB82781F19B98E00AEAAA7 /* Categate_CategateTableViewCell.m in Sources */,
 				DD62874D1F2032220030331D /* MyAddressCell.m in Sources */,
+				DD62879D1F2191A90030331D /* ActivityRankFirstCell.m in Sources */,
 				DD40B7281F17250B00839748 /* HomeLeftImageCell.m in Sources */,
 				DD6287181F1F32010030331D /* DynamicDetailViewController.m in Sources */,
 				DDFB829C1F1C78FD00AEAAA7 /* MoreProduct_SortView.m in Sources */,
+				DD6287F21F21ED4F0030331D /* PersonalRankActivityViewController.m in Sources */,
 				DDFB82741F19B18800AEAAA7 /* Categate_CategateCollectCell.m in Sources */,
 				EC4BA0DC1F1359EC00B9BE1A /* FactoryTableViewCell.m in Sources */,
 				EC4BA10B1F136CBD00B9BE1A /* HomePageViewController.m in Sources */,
@@ -1254,6 +1443,7 @@
 				EC4BA1101F136CBD00B9BE1A /* SubMessage_PrivateLetterViewController.m in Sources */,
 				EC4BA0F41F136CA400B9BE1A /* SubCategate_CategateViewController.m in Sources */,
 				DD6287431F1F8C1E0030331D /* MyAddressViewController.m in Sources */,
+				DD6287DE1F21E3B20030331D /* ActivityViewController.m in Sources */,
 				EC4BA0CA1F1359DF00B9BE1A /* LeftSideSegmentView.m in Sources */,
 				EC4BA1121F136CBD00B9BE1A /* SubNotifi_NotificationViewController.m in Sources */,
 				EC4BA05A1F13562700B9BE1A /* main.m in Sources */,
@@ -1266,20 +1456,30 @@
 				DD6287481F1F90E80030331D /* GiftListCell.m in Sources */,
 				DD62872F1F1F51BA0030331D /* ConfigurationCell.m in Sources */,
 				DDFB82B91F1D931500AEAAA7 /* UIView+PYSearchExtension.m in Sources */,
+				DD6287E31F21E8120030331D /* WaitForReviewViewController.m in Sources */,
+				DD6287C51F21AE580030331D /* LookAroundViewController.m in Sources */,
 				EC4BA0D91F1359EC00B9BE1A /* BaseTableViewCell.m in Sources */,
 				EC4BA10E1F136CBD00B9BE1A /* SubMessage_CommentViewController.m in Sources */,
+				DD6287BB1F21A3700030331D /* LookAroundCell.m in Sources */,
 				DD6287891F20B0BA0030331D /* MainCircleViewController.m in Sources */,
 				EC4BA11C1F1376F600B9BE1A /* CartViewController.m in Sources */,
+				DD6287D31F21C96F0030331D /* DomainHeaderView.m in Sources */,
+				DD6287ED1F21E8C00030331D /* FailureReviewViewController.m in Sources */,
 				DDFB826B1F187A7900AEAAA7 /* SSCheckBoxView.m in Sources */,
 				DDFB82A21F1C81E300AEAAA7 /* PersonalFileViewController.m in Sources */,
+				DD6287CA1F21AF900030331D /* LookAroundTableCell.m in Sources */,
+				DD6287B11F219BA50030331D /* HandpickActivitiesViewController.m in Sources */,
 				EC4BA2541F15EDF000B9BE1A /* DiscoverHeaderCell.m in Sources */,
 				DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */,
+				DD6287D91F21DE0C0030331D /* MyFocusViewController.m in Sources */,
 				EC4BA10C1F136CBD00B9BE1A /* NotificationViewController.m in Sources */,
 				EC4BA2651F160F1F00B9BE1A /* DiscoverCell.m in Sources */,
 				EC4BA0EB1F136C8100B9BE1A /* PersonalViewController.m in Sources */,
+				DD6287A71F2198FC0030331D /* SameTownViewController.m in Sources */,
 				DD62872B1F1F4EC20030331D /* ConfigurationViewController.m in Sources */,
 				EC4BA08A1F1359A900B9BE1A /* CycleScrollModel.m in Sources */,
 				EC4BA10D1F136CBD00B9BE1A /* SubMessage_AboutMeViewController.m in Sources */,
+				DD6287AC1F219ADA0030331D /* SameTownTopicViewController.m in Sources */,
 				DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */,
 				EC4BA1111F136CBD00B9BE1A /* SubNotifi_MessageViewController.m in Sources */,
 				DDFB827C1F19F38000AEAAA7 /* Categate_BrandCollectionCell.m in Sources */,
