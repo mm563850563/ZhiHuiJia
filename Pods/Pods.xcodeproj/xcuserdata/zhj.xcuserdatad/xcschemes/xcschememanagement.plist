@@ -29,11 +29,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RatingBar.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>ReactiveObjC.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,17 +57,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>082F076B411A9FD2FB7A8BC7C5D99DC2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2274E07F37635C099356B48341ACA7CA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4485A963D09DA3DF0B7E8CDDF87C7300</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>56758A2F85C0A2D7EB5D8E6C8521DE99</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,7 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D406672461C68B66C3330FCF3DAC58A</key>
+		<key>6964085B0EC5B0A8DDCCE9B8687ABB5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,22 +87,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF801EE804156122153A9E9D0986927E</key>
+		<key>D15BDE4C84750B7D238C55F46F9F37B4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BD572160BE14F7997184DF06B7AC20B9</key>
+		<key>EA4B6551D68C71E544AFDA6CB2B5BFE5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D201EE12CE82B8ACBA71005B5AA150D9</key>
+		<key>EDF560422B1295BF227CA2984A8A7E03</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F6DC60D5560469DE3D9648CA0A1E75F6</key>
+		<key>FFEE2706DAA1967B98F69A3CC1B0E90A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

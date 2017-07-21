@@ -7,14 +7,19 @@
 //
 
 #import "ProductDetailViewController.h"
-#import <RatingBar.h>
+#import "RatingBar.h"
+#import <STPickerArea.h>
 
-@interface ProductDetailViewController ()
+@interface ProductDetailViewController ()<STPickerAreaDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *starBarBGView;
+@property (weak, nonatomic) IBOutlet UIView *cycleScrollBGView;
+@property (weak, nonatomic) IBOutlet UILabel *labelArea;
+
 @property (nonatomic, strong)RatingBar *starBar;
+@property (nonatomic, strong)STPickerArea *areaPicker;
 
 @end
 
@@ -24,6 +29,7 @@
     [super viewDidLoad];
     
     [self addRatingBar];
+    [self addCycleScollView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,18 +47,59 @@
 }
 */
 
+#pragma mark - <添加cycleScrollView>
+-(void)addCycleScollView
+{
+    
+}
 
 #pragma mark - <添加ratingBar>
 -(void)addRatingBar
 {
-    self.starBar = [[RatingBar alloc]init];
+    self.starBar = [[RatingBar alloc]initWithFrame:self.starBarBGView.bounds];
     [self.starBarBGView addSubview:self.starBar];
     self.starBar.starNumber = 3;
-    self.starBar.viewColor = [UIColor yellowColor];
-    __weak typeof(self) weakSelf = self;
+    self.starBar.enable = NO;
     [self.starBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.bottom.equalTo(weakSelf.starBarBGView);
+        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
 }
+
+#pragma mark - <选择送货地点>
+- (IBAction)btnSelectArea:(UIButton *)sender
+{
+    self.areaPicker = [[STPickerArea alloc]init];
+    self.areaPicker.delegate = self;
+    [self.areaPicker show];
+}
+
+
+
+
+
+
+
+#pragma mark - **** STPickerAreaDelegate ****
+-(void)pickerArea:(STPickerArea *)pickerArea province:(NSString *)province city:(NSString *)city area:(NSString *)area
+{
+    NSMutableArray *array = [NSMutableArray array];
+    if (![province isEqualToString:@""]) {
+        [array addObject:province];
+    }
+    if (![city isEqualToString:@""]){
+        [array addObject:city];
+    }
+    if (![area isEqualToString:@""]){
+        [array addObject:area];
+    }
+    
+    NSString *string = province;
+    for (int i = 1; i < array.count; i++) {
+        string = [string stringByAppendingFormat:@">%@",array[i]];
+    }
+    self.labelArea.text = string;
+}
+
+
 
 @end

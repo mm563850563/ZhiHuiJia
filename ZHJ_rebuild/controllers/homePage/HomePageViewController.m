@@ -150,10 +150,15 @@
 //    self.navigationController.interactivePopGestureRecognizer.delegate = self;
     //    self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithTitle:@"左按钮" style:UIBarButtonItemStylePlain target:self action:@selector(jumpToPersonalFileVC)];
+    UIView *leftButtonView = [self createLeftNavigationButton];
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithCustomView:leftButtonView];
     self.navigationItem.leftBarButtonItem = leftBtn;
     
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithTitle:@"右按钮" style:UIBarButtonItemStylePlain target:self action:@selector(jumpToNotificationVC)];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 20, 20);
+    [button setImage:[UIImage imageNamed:@"message"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(jumpToNotificationVC) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = rightBtn;
     
     //设置navigationBar背景图
@@ -162,15 +167,48 @@
     [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
 }
 
+#pragma mark - <创建左按钮>
+-(UIView *)createLeftNavigationButton
+{
+    UIView *BGView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, 40)];
+    UIImageView *imgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"appLogo"]];
+    imgView.frame = CGRectMake(10, 0, 30, 30);
+    [BGView addSubview:imgView];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 30, 50, 10)];
+    label.text = @"因你而不同";
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:9];
+    [BGView addSubview:label];
+    
+    BGView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(jumpToPersonalFileVC)];
+    [BGView addGestureRecognizer:tap];
+    
+    return BGView;
+}
+
 #pragma mark - <添加searchBar到navigationBar>
 -(void)addSearchBarIntoNavigationBar
 {
     UISearchBar *searchBar = [[UISearchBar alloc]init];
     searchBar.delegate = self;
+    UIColor *color = kColorFromRGBAndAlpha(kWhite, 1.0);
+    UIImage *image = [UIImage imageWithColor:color height:30.0];
+    [searchBar setSearchFieldBackgroundImage:image forState:UIControlStateNormal];
     searchBar.searchBarStyle = UISearchBarStyleMinimal;
     searchBar.placeholder = @"搜索";
     self.navigationItem.titleView = searchBar;
     self.searchBarHomePage = searchBar;
+    
+    
+    /*UISearchBar *searchBar = [[UISearchBar alloc]init];
+     searchBar.delegate = self;
+     UIColor *color = kColorFromRGBAndAlpha(kWhite, 1.0);
+     UIImage *image = [UIImage imageWithColor:color height:30.0];
+     [searchBar setSearchFieldBackgroundImage:image forState:UIControlStateNormal];
+     searchBar.searchBarStyle = UISearchBarStyleMinimal;
+     searchBar.placeholder = @"请输入关键字或商品名称";
+     self.navigationItem.titleView = searchBar;*/
 }
 
 #pragma mark - <跳转NotificationViewController>

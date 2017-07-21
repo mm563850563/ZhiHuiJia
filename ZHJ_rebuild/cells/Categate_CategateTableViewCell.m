@@ -40,7 +40,7 @@
         _flowLayout.minimumLineSpacing = 0;
         
         CGFloat itemWidth = self.contentView.frame.size.width/3.0;
-        CGFloat itemHeight = itemWidth/3.0*4.0;
+        CGFloat itemHeight = itemWidth/3.0*3.5;
         _flowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
     }
     return _flowLayout;
@@ -94,6 +94,11 @@
 {
     Categate_CategateCollectCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([Categate_CategateCollectCell class]) forIndexPath:indexPath];
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectCategory_Category_item" object:indexPath];
 }
 
 @end

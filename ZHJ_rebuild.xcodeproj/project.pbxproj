@@ -119,6 +119,7 @@
 		DD6287F81F21EE4C0030331D /* PersonalActivityRankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287F61F21EE4C0030331D /* PersonalActivityRankCell.xib */; };
 		DD6287FB1F21F2C30030331D /* PersonalActivityRankFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287FA1F21F2C30030331D /* PersonalActivityRankFooterView.m */; };
 		DD6287FF1F21F2F70030331D /* PersonalActivityRankFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287FE1F21F2F70030331D /* PersonalActivityRankFooterView.xib */; };
+		DD6288051F2214F40030331D /* RatingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6288031F2214F40030331D /* RatingBar.m */; };
 		DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */; };
 		DDFB81C01F18475700AEAAA7 /* SameHobbyPersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */; };
 		DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81C21F184B7600AEAAA7 /* CALayer+XIBUIColor.m */; };
@@ -406,6 +407,8 @@
 		DD6287F91F21F2C30030331D /* PersonalActivityRankFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalActivityRankFooterView.h; path = views/PersonalActivityRankFooterView.h; sourceTree = "<group>"; };
 		DD6287FA1F21F2C30030331D /* PersonalActivityRankFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalActivityRankFooterView.m; path = views/PersonalActivityRankFooterView.m; sourceTree = "<group>"; };
 		DD6287FE1F21F2F70030331D /* PersonalActivityRankFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PersonalActivityRankFooterView.xib; path = views/PersonalActivityRankFooterView.xib; sourceTree = "<group>"; };
+		DD6288021F2214F40030331D /* RatingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingBar.h; sourceTree = "<group>"; };
+		DD6288031F2214F40030331D /* RatingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingBar.m; sourceTree = "<group>"; };
 		DDFB81BC1F18475700AEAAA7 /* SameHobbyPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameHobbyPersonCell.h; path = cells/SameHobbyPersonCell.h; sourceTree = "<group>"; };
 		DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameHobbyPersonCell.m; path = cells/SameHobbyPersonCell.m; sourceTree = "<group>"; };
 		DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SameHobbyPersonCell.xib; path = cells/SameHobbyPersonCell.xib; sourceTree = "<group>"; };
@@ -619,6 +622,15 @@
 				452A45259DE5E7099BAE637E /* Pods-ZHJ_rebuild.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DD6288001F2214F40030331D /* RatingBar */ = {
+			isa = PBXGroup;
+			children = (
+				DD6288021F2214F40030331D /* RatingBar.h */,
+				DD6288031F2214F40030331D /* RatingBar.m */,
+			);
+			path = RatingBar;
 			sourceTree = "<group>";
 		};
 		DDFB823A1F187A7900AEAAA7 /* SSCheckBoxView */ = {
@@ -879,6 +891,7 @@
 		EC4BA07E1F1357B700B9BE1A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				DD6288001F2214F40030331D /* RatingBar */,
 				DDFB823A1F187A7900AEAAA7 /* SSCheckBoxView */,
 				EC4BA0C01F1359DF00B9BE1A /* FlipTableView.h */,
 				EC4BA0C11F1359DF00B9BE1A /* FlipTableView.m */,
@@ -1390,6 +1403,7 @@
 				EC4BA2611F15FE2200B9BE1A /* DiscoverRecommendViewController.m in Sources */,
 				DD40B7411F179C3100839748 /* SameHobbyCell.m in Sources */,
 				EC4BA1191F136DBB00B9BE1A /* MainTabBarViewController.m in Sources */,
+				DD6288051F2214F40030331D /* RatingBar.m in Sources */,
 				DDFB82981F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m in Sources */,
 				DD40B7231F1705A000839748 /* HomeCollectCell1.m in Sources */,
 				DD62878E1F20C2290030331D /* MyCircleHeaderCell.m in Sources */,

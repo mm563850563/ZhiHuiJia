@@ -1,1 +1,0 @@
-../../../RatingBar/RatingBar/RatingBar.h

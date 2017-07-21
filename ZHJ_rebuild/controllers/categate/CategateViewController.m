@@ -16,6 +16,8 @@
 #import "BrandApplyViewController.h"
 #import "BrandRulesViewController.h"
 
+#import "ProductDetailViewController.h"
+
 @interface CategateViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,UISearchBarDelegate>
 
 @property (nonatomic, strong)SegmentTapView *segment;
@@ -125,6 +127,14 @@
         BrandRulesViewController *brandRulesVC = [[BrandRulesViewController alloc]init];
         brandRulesVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:brandRulesVC animated:YES];
+    }];
+    
+    //点击分类选项卡中的产品
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectCategory_Category_item" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSIndexPath *indexPath = x.object;
+        ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]init];
+        productDetailVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:productDetailVC animated:YES];
     }];
 }
 
