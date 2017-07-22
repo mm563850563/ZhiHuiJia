@@ -71,9 +71,9 @@
 #pragma mark - <初始化flipTableView>
 -(void)initFlipTaleView
 {
-    SubNotification_AnnouncementViewController *subNotification_AnnoucementVC = [[SubNotification_AnnouncementViewController alloc]init];
-    SubNotification_DiscountViewController *subNotification_DiscountVC = [[SubNotification_DiscountViewController alloc]init];
-    SubNotification_OtherViewController *subNotification_OtherVC = [[SubNotification_OtherViewController alloc]init];
+    SubNotification_AnnouncementViewController *subNotification_AnnoucementVC = [[SubNotification_AnnouncementViewController alloc]initWithNibName:NSStringFromClass([SubNotification_AnnouncementViewController class]) bundle:nil];
+    SubNotification_DiscountViewController *subNotification_DiscountVC = [[SubNotification_DiscountViewController alloc]initWithNibName:NSStringFromClass([SubNotification_DiscountViewController class]) bundle:nil];
+    SubNotification_OtherViewController *subNotification_OtherVC = [[SubNotification_OtherViewController alloc]initWithNibName:NSStringFromClass([SubNotification_OtherViewController class]) bundle:nil];
     
     [self.controllersArray addObject:subNotification_AnnoucementVC];
     [self.controllersArray addObject:subNotification_DiscountVC];

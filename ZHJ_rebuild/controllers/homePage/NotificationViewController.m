@@ -69,8 +69,8 @@
     //返回按钮
     UIButton *btnGoback = [UIButton buttonWithType:UIButtonTypeCustom];
     [placeNaviView addSubview:btnGoback];
-    [btnGoback setTitle:@"back" forState:UIControlStateNormal];
-    btnGoback.titleLabel.font = [UIFont systemFontOfSize:12];
+    [btnGoback setTitle:@"返回" forState:UIControlStateNormal];
+    btnGoback.titleLabel.font = [UIFont systemFontOfSize:13];
     [btnGoback mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_offset(10);
         make.bottom.mas_equalTo(-10);
@@ -83,12 +83,13 @@
     self.segmentView = [[SegmentTapView alloc]initWithFrame:CGRectMake(0, placeNaviView.frame.size.height-40, kSCREEN_WIDTH/2.0, 30) withDataArray:array withFont:15];
     self.segmentView.dataArray = array;
     [placeNaviView addSubview:self.segmentView];
+    [placeNaviView setBackgroundColor:kColorFromRGB(kThemeYellow)];
     self.segmentView.delegate = self;
     
     CGPoint center = self.segmentView.center;
     center.x = placeNaviView.center.x;
     self.segmentView.center = center;
-    [self.segmentView setBackgroundColor:[UIColor grayColor]];
+    [self.segmentView setBackgroundColor:kColorFromRGB(kThemeYellow)];
 }
 
 #pragma mark - <添加flipTableView>

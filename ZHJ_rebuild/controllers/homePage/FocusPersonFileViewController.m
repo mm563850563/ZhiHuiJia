@@ -12,6 +12,9 @@
 #import "FocusPersonHeaderCell.h"
 #import "FocusPersonCell.h"
 
+//controllers
+#import "DynamicDetailViewController.h"
+
 @interface FocusPersonFileViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -108,6 +111,13 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row != 0) {
+        DynamicDetailViewController *dynamicDetailVC = [[DynamicDetailViewController alloc]initWithNibName:NSStringFromClass([DynamicDetailViewController class]) bundle:nil];
+        [self.navigationController pushViewController:dynamicDetailVC animated:YES];
+    }
+}
 
 
 @end

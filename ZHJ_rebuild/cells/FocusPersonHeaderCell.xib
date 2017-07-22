@@ -25,9 +25,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="2PL-7n-k3U">
                                 <rect key="frame" x="0.0" y="0.0" width="338" height="170.5"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iRK-hv-yPw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gxq" translatesAutoresizingMaskIntoConstraints="NO" id="iRK-hv-yPw">
                                 <rect key="frame" x="129" y="30" width="80" height="80"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="40G-Kk-1eS"/>
                                     <constraint firstAttribute="height" constant="80" id="wQV-ZM-JVC"/>
@@ -172,5 +171,6 @@
     </objects>
     <resources>
         <image name="bgbg" width="540" height="325"/>
+        <image name="gxq" width="75" height="75"/>
     </resources>
 </document>

@@ -71,10 +71,10 @@
 #pragma mark - <初始化flipTableView>
 -(void)initFlipTableView
 {
-    SubMessage_AboutMeViewController *subMessage_AboutMeViewVC = [[SubMessage_AboutMeViewController alloc]init];
-    SubMessage_CommentViewController *subMessage_CommentVC = [[SubMessage_CommentViewController alloc]init];
-    SubMessage_LikedViewController *subMessage_LikedVC = [[SubMessage_LikedViewController alloc]init];
-    SubMessage_PrivateLetterViewController *subMessage_PrivateVC = [[SubMessage_PrivateLetterViewController alloc]init];
+    SubMessage_AboutMeViewController *subMessage_AboutMeViewVC = [[SubMessage_AboutMeViewController alloc]initWithNibName:NSStringFromClass([SubMessage_AboutMeViewController class]) bundle:nil];
+    SubMessage_CommentViewController *subMessage_CommentVC = [[SubMessage_CommentViewController alloc]initWithNibName:NSStringFromClass([SubMessage_CommentViewController class]) bundle:nil];
+    SubMessage_LikedViewController *subMessage_LikedVC = [[SubMessage_LikedViewController alloc]initWithNibName:NSStringFromClass([SubMessage_LikedViewController class]) bundle:nil];
+    SubMessage_PrivateLetterViewController *subMessage_PrivateVC = [[SubMessage_PrivateLetterViewController alloc]initWithNibName:NSStringFromClass([SubMessage_PrivateLetterViewController class]) bundle:nil];
     
     [self.controllersArray addObject:subMessage_CommentVC];
     [self.controllersArray addObject:subMessage_AboutMeViewVC];

@@ -24,8 +24,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -61,7 +59,7 @@
         
         _collectionView = [[UICollectionView alloc]initWithFrame:self.contentView.bounds collectionViewLayout:flowLayout];
         _collectionView.scrollEnabled = NO;
-        _collectionView.backgroundColor = kColorFromRGB(kWhite);
+        _collectionView.backgroundColor = kColorFromRGB(kLightGray);
 //        [self.contentView addSubview:_collectionView];
 //        [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));

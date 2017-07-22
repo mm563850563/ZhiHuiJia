@@ -8,4 +8,5 @@ target 'ZHJ_rebuild' do
     pod 'IQKeyboardManager', '~> 4.0.10'
     pod 'CXPhotoBrowser'
     pod 'XHImageViewer'
+    pod 'TTTAttributedLabel'
 end

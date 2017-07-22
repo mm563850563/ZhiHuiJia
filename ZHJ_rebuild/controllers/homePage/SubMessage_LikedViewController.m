@@ -1,9 +1,9 @@
 //
 //  SubMessage_LikedViewController.m
-//  ZhiHuiJia
+//  ZHJ_rebuild
 //
-//  Created by sophia on 17/7/7.
-//  Copyright (c) 2017年 sophia. All rights reserved.
+//  Created by ZHJ on 2017/7/22.
+//  Copyright © 2017年 sophia. All rights reserved.
 //
 
 #import "SubMessage_LikedViewController.h"
@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {

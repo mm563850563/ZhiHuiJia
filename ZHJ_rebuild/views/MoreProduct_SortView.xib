@@ -25,11 +25,14 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推荐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3Z-xB-YMV">
                                     <rect key="frame" x="0.0" y="0.0" width="75" height="667"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01g-Xz-dsA">
                                     <rect key="frame" x="0.0" y="0.0" width="75" height="667"/>
+                                    <connections>
+                                        <action selector="btnRecommendAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="JnX-B6-Rqe"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,6 +58,9 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wof-U7-i3Z">
                                     <rect key="frame" x="0.0" y="0.0" width="75" height="667"/>
+                                    <connections>
+                                        <action selector="btnMostNewAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="AKc-bM-ZkT"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -102,6 +108,9 @@
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7WJ-jN-bC0">
                                     <rect key="frame" x="0.0" y="0.0" width="75" height="667"/>
+                                    <connections>
+                                        <action selector="btnSalesVolumeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="JpF-eb-J4q"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -147,6 +156,9 @@
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGE-sa-dcH">
                                     <rect key="frame" x="0.0" y="0.0" width="75" height="667"/>
+                                    <connections>
+                                        <action selector="btnPriceAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="pd2-7k-dAr"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -172,6 +184,9 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUN-pC-vHZ">
                                     <rect key="frame" x="0.0" y="0.0" width="75" height="667"/>
+                                    <connections>
+                                        <action selector="btnLayoutAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="ikg-Jz-Xnn"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -217,6 +232,20 @@
                 <constraint firstItem="sOH-6E-Jd4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XtK-to-jXa"/>
                 <constraint firstItem="sOH-6E-Jd4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dJZ-77-8T2"/>
             </constraints>
+            <connections>
+                <outlet property="btnLayout" destination="dUN-pC-vHZ" id="Yib-62-OBm"/>
+                <outlet property="btnMostNew" destination="wof-U7-i3Z" id="cHW-xK-t6h"/>
+                <outlet property="btnPrice" destination="ZGE-sa-dcH" id="HKV-i8-7dB"/>
+                <outlet property="btnRecommend" destination="01g-Xz-dsA" id="2ec-lv-CuG"/>
+                <outlet property="btnSalesVolume" destination="7WJ-jN-bC0" id="Xuw-l6-Sjk"/>
+                <outlet property="imgViewLayout" destination="bPc-FH-hjJ" id="UHk-wG-ghO"/>
+                <outlet property="imgViewPrice" destination="pUd-8u-ruR" id="Fpx-Sk-cEA"/>
+                <outlet property="imgViewSalesVolume" destination="8t4-e0-NT9" id="Uq8-gw-ldy"/>
+                <outlet property="labelMostNew" destination="E3Y-N4-9tR" id="c9f-a5-qTd"/>
+                <outlet property="labelPrice" destination="73Q-A1-zPf" id="aTX-8F-Y2c"/>
+                <outlet property="labelRecommend" destination="T3Z-xB-YMV" id="ljZ-5a-w0W"/>
+                <outlet property="labelSalesVolume" destination="oem-Q3-U3m" id="Mv1-kC-iah"/>
+            </connections>
         </view>
     </objects>
 </document>

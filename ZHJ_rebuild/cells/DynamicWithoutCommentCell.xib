@@ -18,9 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="169.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0qL-gm-QqP">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tx" translatesAutoresizingMaskIntoConstraints="NO" id="0qL-gm-QqP">
                         <rect key="frame" x="15" y="15" width="50" height="50"/>
-                        <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="1fU-6t-hPH"/>
                             <constraint firstAttribute="width" constant="50" id="KH1-re-4jY"/>
@@ -181,4 +180,7 @@
             <point key="canvasLocation" x="72" y="117"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="tx" width="123" height="123"/>
+    </resources>
 </document>

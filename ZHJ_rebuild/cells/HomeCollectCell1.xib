@@ -24,7 +24,6 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ddtu" translatesAutoresizingMaskIntoConstraints="NO" id="ICg-7k-0M6">
                                 <rect key="frame" x="0.0" y="0.0" width="228" height="228"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ICg-7k-0M6" secondAttribute="height" multiplier="1:1" id="Ojf-m8-taO"/>
                                 </constraints>
@@ -67,7 +66,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Jzi-kh-90I" firstAttribute="leading" secondItem="IUy-am-x0v" secondAttribute="leading" constant="5" id="2OA-Gs-2Oc"/>
                             <constraint firstItem="42z-xJ-zub" firstAttribute="leading" secondItem="IUy-am-x0v" secondAttribute="leading" constant="5" id="4Dp-mw-eno"/>

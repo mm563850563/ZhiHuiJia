@@ -18,6 +18,8 @@
 #import "PYSearchViewController.h"
 #import "FocusPersonFileViewController.h"
 #import "GetGiftViewController.h"
+#import "SameHobbyPersonListViewController.h"
+#import "DynamicDetailViewController.h"
 
 //cells
 //#import "BaseTableViewCell.h"
@@ -293,6 +295,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc]init];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             //        CycleScrollModel *model = self.dataArray[0];
@@ -654,19 +657,38 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section != 0) {
-        if (indexPath.section == 1) {
-            if (indexPath.row == 2) {
-                MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
-                moreProductListVC.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:moreProductListVC animated:YES];
-            }
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
+            productDetailVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:productDetailVC animated:YES];
+        }
+    }else if (indexPath.section == 14){
+        if (indexPath.row == 1) {
+            SameHobbyPersonListViewController *sameHobbyPersonListVC = [[SameHobbyPersonListViewController alloc]initWithNibName:NSStringFromClass([SameHobbyPersonListViewController class]) bundle:nil];
+            sameHobbyPersonListVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:sameHobbyPersonListVC animated:YES];
         }
     }else{
-        ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
-        productDetailVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:productDetailVC animated:YES];
+        if (indexPath.row == 2) {
+            MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
+            moreProductListVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:moreProductListVC animated:YES];
+        }
     }
+//    if (indexPath.section != 0) {
+//        if (indexPath.section == 1) {
+//            if (indexPath.row == 2) {
+//                MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
+//                moreProductListVC.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:moreProductListVC animated:YES];
+//            }
+//        }
+//    }else{
+//        ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
+//        productDetailVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:productDetailVC animated:YES];
+//    }
     
 }
 
@@ -679,13 +701,25 @@
         [navigationController setNavigationBarHidden:YES animated:YES];
     }
     else if ([viewController isKindOfClass:[self class]]){
-        navigationController.navigationBar.translucent = YES;
+        [navigationController.navigationBar setTranslucent:YES];
         [navigationController setNavigationBarHidden:NO animated:YES];
     }
     else if ([viewController isKindOfClass:[FocusPersonFileViewController class]]){
+        [navigationController.navigationBar setTranslucent:YES];
         [navigationController setNavigationBarHidden:YES animated:YES];
     }
     else if ([viewController isKindOfClass:[GetGiftViewController class]]){
+        [navigationController.navigationBar setTranslucent:YES];
+        [navigationController setNavigationBarHidden:YES animated:YES];
+    }
+    else if ([viewController isKindOfClass:[DynamicDetailViewController class]]){
+        [navigationController.navigationBar setTranslucent:NO];
+        [navigationController setNavigationBarHidden:NO animated:YES];
+    }
+    else if ([viewController isKindOfClass:[SameHobbyPersonListViewController class]]){
+        [navigationController.navigationBar setTranslucent:NO];
+        [navigationController setNavigationBarHidden:NO animated:YES];
+    }else if ([viewController isKindOfClass:[FocusPersonFileViewController class]]){
         [navigationController setNavigationBarHidden:YES animated:YES];
     }
 }

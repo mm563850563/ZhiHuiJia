@@ -88,7 +88,11 @@
     }else if (indexPath.section == 1){
         height = 45;
     }else if (indexPath.section == 2){
-        height = 100;
+//        height = 100;
+        CommentTableViewCell *cell = [[CommentTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([CommentTableViewCell class])];
+        cell.replyArray = [NSMutableArray arrayWithArray:@[@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧叽叽叽叽叽急急急急急急急急",@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧",@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧",@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧",@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧",@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧",@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧"]];
+
+        height = cell.cellHeight;
     }
     return height;
 }
@@ -113,6 +117,7 @@
     }
     if (section == 2) {
         height = 30;
+
     }
     return height;
 }
@@ -146,6 +151,7 @@
         cell = cellPriase;
     }else if (indexPath.section == 2){
         CommentTableViewCell *cellComment = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CommentTableViewCell class])];
+        cellComment.replyArray = [NSMutableArray arrayWithArray:@[@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧叽叽叽叽叽急急急急急急急急",@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧",@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧",@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧",@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧",@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧",@"逗呢 回复 黄飞鸿：唧唧唧唧唧唧唧唧唧唧"]];
         cell = cellComment;
     }
     return cell;

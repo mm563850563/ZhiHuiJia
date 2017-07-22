@@ -1,9 +1,9 @@
 //
 //  SubNotification_DiscountViewController.h
-//  ZhiHuiJia
+//  ZHJ_rebuild
 //
-//  Created by sophia on 17/7/7.
-//  Copyright (c) 2017年 sophia. All rights reserved.
+//  Created by ZHJ on 2017/7/22.
+//  Copyright © 2017年 sophia. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
