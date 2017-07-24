@@ -71,10 +71,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="3Uk-Jf-qKB">
-                        <rect key="frame" x="15" y="90" width="296" height="0.0"/>
+                        <rect key="frame" x="15" y="90" width="296" height="1"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" id="Qyn-y0-RRW"/>
+                            <constraint firstAttribute="height" constant="1" id="Qyn-y0-RRW"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xLc-xo-Osk">
                             <size key="itemSize" width="50" height="50"/>
@@ -84,7 +84,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFr-Wg-kNA">
-                        <rect key="frame" x="15" y="95" width="296" height="30"/>
+                        <rect key="frame" x="15" y="96" width="296" height="30"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mg6-Jk-KFh">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>
@@ -159,14 +159,14 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dz4-q4-6gP">
-                        <rect key="frame" x="0.0" y="125" width="326" height="1"/>
+                        <rect key="frame" x="0.0" y="126" width="326" height="1"/>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="f5A-cy-Hue"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azr-9Z-P56">
-                        <rect key="frame" x="0.0" y="126" width="326" height="80"/>
+                        <rect key="frame" x="0.0" y="127" width="326" height="80"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd1-G2-WYQ">
                                 <rect key="frame" x="15" y="5" width="301" height="15"/>

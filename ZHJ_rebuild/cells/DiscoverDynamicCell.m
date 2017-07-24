@@ -53,6 +53,29 @@
     // Configure the view for the selected state
 }
 
+-(void)setDataArray:(NSMutableArray *)dataArray
+{
+    _dataArray = dataArray;
+    
+    [self.collectionView reloadData];
+    //强制刷新图片页面
+    [self.collectionView layoutIfNeeded];
+    
+    __weak typeof(self) weakSelf = self;
+    [self.collectionView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.labelDescription.mas_bottom).with.offset(5);
+        make.leading.trailing.mas_equalTo(15);
+        make.height.mas_equalTo(weakSelf.collectionView.contentSize.height);
+    }];
+    
+    self.cellHeight = 120 + self.collectionView.frame.origin.y + self.collectionView.contentSize.height + 100;
+    
+    
+    
+}
+
+
+
 -(void)settingCollectionView
 {
     CGFloat itemWidth = self.collectionView.frame.size.width/3.1;
@@ -70,13 +93,13 @@
 #pragma mark - *** UICollectionViewDelegate,UICollectionViewDataSource ****
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 9;
+    return self.dataArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Discover_Dynamic_imageViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([Discover_Dynamic_imageViewCell class]) forIndexPath:indexPath];
-    
+    cell.imgView.image = [UIImage imageNamed:self.dataArray[indexPath.row]];
     return cell;
 }
 

@@ -227,6 +227,20 @@
     personalFileVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:personalFileVC animated:YES];
 }
+#pragma mark - <跳转产品详情页面>
+-(void)jumpToProductDetailVC
+{
+    ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
+    productDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:productDetailVC animated:YES];
+}
+#pragma mark - <跳转更多产品页面>
+-(void)jumpToMoreProductListVC
+{
+    MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
+    moreProductListVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:moreProductListVC animated:YES];
+}
 
 #pragma mark - <rac响应>
 -(void)respondWithRAC
@@ -260,6 +274,12 @@
         getGiftVC.category = button.tag;
         [self.navigationController pushViewController:getGiftVC animated:YES];
     }];
+    
+    //点击YouthColorCell中的item
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectYouthItem" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSIndexPath *indePath = x.object;
+        [self jumpToProductDetailVC];
+    }];
 }
 
 
@@ -281,7 +301,7 @@
     }else if (section == 3){
         return 6;
     }else if (section == 6){
-        return 5;
+        return 6;
     }else if (section == 9){
         return 6;
     }else if (section == 13){
@@ -395,7 +415,7 @@
         if (indexPath.row == 0) {
             HomePageMainCell *cellHomeMain = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HomePageMainCell class])];
             cell = cellHomeMain;
-        }else if (indexPath.row == 4){
+        }else if (indexPath.row == 5){
             UITableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:@"more"];
             cellMore.textLabel.text = @"更多新品>";
             cellMore.textLabel.textAlignment = 1;
@@ -564,7 +584,7 @@
     }else if (indexPath.section == 6){//智能生活
         if (indexPath.row == 0) {
             
-        }else if (indexPath.row == 4){
+        }else if (indexPath.row == 5){
             return 40;
         }else{
             return kSCREEN_WIDTH/2.0;
@@ -659,10 +679,10 @@
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
-            productDetailVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:productDetailVC animated:YES];
+            [self jumpToProductDetailVC];
         }
+    }else if (indexPath.section == 13){
+        return;
     }else if (indexPath.section == 14){
         if (indexPath.row == 1) {
             SameHobbyPersonListViewController *sameHobbyPersonListVC = [[SameHobbyPersonListViewController alloc]initWithNibName:NSStringFromClass([SameHobbyPersonListViewController class]) bundle:nil];
@@ -670,26 +690,20 @@
             [self.navigationController pushViewController:sameHobbyPersonListVC animated:YES];
         }
     }else{
-        if (indexPath.row == 2) {
-            MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
-            moreProductListVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:moreProductListVC animated:YES];
+        if (indexPath.section == 3 || indexPath.section == 6 || indexPath.section == 9) {
+            if (indexPath.row == 5) {
+                [self jumpToMoreProductListVC];
+            }else{
+                [self jumpToProductDetailVC];
+            }
+        }else{
+            if (indexPath.row == 0) {
+                [self jumpToProductDetailVC];
+            }else if (indexPath.row == 2){
+                [self jumpToMoreProductListVC];
+            }
         }
     }
-//    if (indexPath.section != 0) {
-//        if (indexPath.section == 1) {
-//            if (indexPath.row == 2) {
-//                MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
-//                moreProductListVC.hidesBottomBarWhenPushed = YES;
-//                [self.navigationController pushViewController:moreProductListVC animated:YES];
-//            }
-//        }
-//    }else{
-//        ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
-//        productDetailVC.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:productDetailVC animated:YES];
-//    }
-    
 }
 
 
@@ -721,6 +735,9 @@
         [navigationController setNavigationBarHidden:NO animated:YES];
     }else if ([viewController isKindOfClass:[FocusPersonFileViewController class]]){
         [navigationController setNavigationBarHidden:YES animated:YES];
+    }else if ([viewController isKindOfClass:[ProductDetailViewController class]]){
+        [navigationController.navigationBar setTranslucent:NO];
+        [navigationController setNavigationBarHidden:NO animated:YES];
     }
 }
 

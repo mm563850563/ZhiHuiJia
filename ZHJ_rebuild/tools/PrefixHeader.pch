@@ -23,8 +23,10 @@
 
 //十六进制颜色
 #define kLightGray 0xE6E6E6
+#define kDeepGray 0x686868
 #define kWhite 0xffffff
 #define kBlack 0x000000
+#define kRed 0xFF0000
 
 //主题色
 #define kThemeYellow 0xffda44

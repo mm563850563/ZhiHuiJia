@@ -7,10 +7,17 @@
 //
 
 #import "ProductDetailViewController.h"
+
+//views
 #import "RatingBar.h"
 #import <STPickerArea.h>
+#import <SDCycleScrollView.h>
+#import "ProductColorAndCountView.h"
 
-@interface ProductDetailViewController ()<STPickerAreaDelegate>
+//controllers
+#import "CommentListViewController.h"
+
+@interface ProductDetailViewController ()<STPickerAreaDelegate,SDCycleScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -20,6 +27,9 @@
 
 @property (nonatomic, strong)RatingBar *starBar;
 @property (nonatomic, strong)STPickerArea *areaPicker;
+@property (nonatomic, strong)SDCycleScrollView *cycleScrollView;
+@property (nonatomic, strong)ProductColorAndCountView *productMessageView;
+@property (nonatomic, strong)UIView *cloudGlassBGView;
 
 @end
 
@@ -30,6 +40,7 @@
     
     [self addRatingBar];
     [self addCycleScollView];
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,7 +61,14 @@
 #pragma mark - <添加cycleScrollView>
 -(void)addCycleScollView
 {
-    
+    self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:self.cycleScrollBGView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"chang"]];
+    self.cycleScrollView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
+    UIImage *img1 = [UIImage imageNamed:@"fxdl"];
+    UIImage *img2 = [UIImage imageNamed:@"fenxiangdali"];
+    UIImage *img3 = [UIImage imageNamed:@"tongzzhi2"];
+    NSArray *imgArray = @[img1,img2,img3];
+    self.cycleScrollView.localizationImageNamesGroup = imgArray;
+    [self.cycleScrollBGView addSubview:self.cycleScrollView];
 }
 
 #pragma mark - <添加ratingBar>
@@ -73,6 +91,46 @@
     [self.areaPicker show];
 }
 
+#pragma mark - <选择产品颜色和数量>
+- (IBAction)btnSelectProductCountAndCountAction:(UIButton *)sender
+{
+    self.cloudGlassBGView = [[UIView alloc]initWithFrame:self.view.bounds];
+    self.cloudGlassBGView.backgroundColor = kColorFromRGBAndAlpha(kBlack, 0.4);
+    [self.view addSubview:self.cloudGlassBGView];
+    
+    self.productMessageView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([ProductColorAndCountView class]) owner:nil options:nil].lastObject;
+    [self.cloudGlassBGView addSubview:self.productMessageView];
+    [self.productMessageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.cloudGlassBGView.mas_bottom).with.offset(-330);
+        make.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(300);
+    }];
+    
+    [UIView animateWithDuration:2 animations:^{
+        
+        [self.productMessageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(0);
+        }];
+    }];
+}
+
+#pragma mark - <查看更多评价>
+- (IBAction)btnMoreCommentAction:(UIButton *)sender
+{
+    CommentListViewController *commentListVC = [[CommentListViewController alloc]initWithNibName:NSStringFromClass([CommentListViewController class]) bundle:nil];
+    [self.navigationController pushViewController:commentListVC animated:YES];
+}
+
+#pragma mark - <RAC响应>
+-(void)respondWithRAC
+{
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"removeTheView" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+//        CGRect frame = self.productMessageView.frame;
+//        frame.size.height = 0;
+//        self.productMessageView.frame = frame;
+        [self.cloudGlassBGView removeFromSuperview];
+    }];
+}
 
 
 
@@ -101,5 +159,10 @@
 }
 
 
+#pragma mark - ***** SDCycleScrollViewDelegate *****
+-(void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
+{
+    
+}
 
 @end

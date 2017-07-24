@@ -54,7 +54,7 @@
     [vcArray addObject:vc3];
     
     self.flipView = [[FlipTableView alloc]initWithFrame:self.flipBGView.bounds withArray:vcArray];
-    self.flipView.scrollEnabled = YES;
+//    self.flipView.scrollEnabled = YES;
     self.flipView.delegate = self;
     [self.flipBGView addSubview:self.flipView];
     [self.flipView mas_makeConstraints:^(MASConstraintMaker *make) {

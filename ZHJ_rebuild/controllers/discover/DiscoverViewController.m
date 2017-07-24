@@ -111,7 +111,7 @@
 #pragma mark - <响应RAC>
 -(void)respondWithRAC
 {
-    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"Discover_Flip" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"Discover_Filp" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         NSNumber *num = x.object;
         NSInteger index = [num integerValue];
         [self.segmentView selectIndex:index];

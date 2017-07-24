@@ -10,4 +10,7 @@
 
 @interface DiscoverDynamicCell : UITableViewCell
 
+@property (nonatomic, assign)CGFloat cellHeight;
+@property (nonatomic, strong)NSMutableArray *dataArray;
+
 @end

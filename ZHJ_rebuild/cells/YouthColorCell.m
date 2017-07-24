@@ -101,6 +101,11 @@
     return cell;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectYouthItem" object:indexPath];
+}
+
 
 
 @end

@@ -101,10 +101,14 @@
     label1.font = [UIFont systemFontOfSize:13];
     [headerView addSubview:label1];
     
-    UILabel *label2 = [[UILabel alloc]initWithFrame:CGRectMake(headerView.frame.size.width-60, 0, 50, headerView.frame.size.height)];
-    label2.text = @"更多>";
-    label2.font = [UIFont systemFontOfSize:13];
-    [headerView addSubview:label2];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(headerView.frame.size.width-60, 0, 50, headerView.frame.size.height);
+    [button setTitle:@"更多>" forState:UIControlStateNormal];
+    [button setTitleColor:kColorFromRGB( kBlack) forState:UIControlStateNormal];
+    [button.titleLabel setFont:[UIFont systemFontOfSize:13]];
+//    button 
+    
+    [headerView addSubview:button];
     
     return headerView;
 }

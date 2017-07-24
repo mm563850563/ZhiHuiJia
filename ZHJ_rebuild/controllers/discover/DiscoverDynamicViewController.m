@@ -71,12 +71,15 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DiscoverDynamicCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DiscoverDynamicCell class])];
+    cell.dataArray = [NSMutableArray arrayWithArray:@[@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu"]];
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 250;
+    DiscoverDynamicCell *cell = [[DiscoverDynamicCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([DiscoverDynamicCell class])];
+    cell.dataArray = [NSMutableArray arrayWithArray:@[@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu"]];
+    return cell.cellHeight;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

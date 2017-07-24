@@ -50,7 +50,7 @@
 }
 */
 
-
+#pragma mark - <settingOutlets>
 -(void)settingOutlets
 {
     self.headerImgArray = @[@"zhuce",@"fenxiangdali",@"gouwuhaoli"];
