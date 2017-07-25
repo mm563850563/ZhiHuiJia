@@ -15,7 +15,8 @@
 #import "SubCategate_BrandViewController.h"
 #import "BrandApplyViewController.h"
 #import "BrandRulesViewController.h"
-
+#import "ProductDetailViewController.h"
+#import "BrandDetailViewController.h"
 #import "MoreProductListViewController.h"
 
 @interface CategateViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,UISearchBarDelegate>
@@ -109,9 +110,28 @@
         make.left.right.bottom.mas_equalTo(0);
         make.top.mas_equalTo(40);
     }];
-    
-    
-   
+}
+
+#pragma mark - <跳转产品详情页面>
+-(void)jumpToProductDetailVC
+{
+    ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
+    productDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:productDetailVC animated:YES];
+}
+#pragma mark - <跳转更多产品页面>
+-(void)jumpToMoreProductVC
+{
+    MoreProductListViewController *moreProductVC = [[MoreProductListViewController alloc]init];
+    moreProductVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:moreProductVC animated:YES];
+}
+#pragma mark - <跳转品牌详情页面>
+-(void)jumpToBrandDetailVC
+{
+    BrandDetailViewController *brandDetailVC = [[BrandDetailViewController alloc]initWithNibName:NSStringFromClass([BrandDetailViewController class]) bundle:nil];
+    brandDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:brandDetailVC animated:YES];
 }
 
 #pragma mark - <RAC响应>
@@ -132,9 +152,32 @@
     //点击分类选项卡中的产品
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectCategory_Category_item" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         NSIndexPath *indexPath = x.object;
-        MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
-        moreProductListVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:moreProductListVC animated:YES];
+        [self jumpToMoreProductVC];
+    }];
+    
+    //点击品牌馆-入驻品牌图片
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickImgBrandApply" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [self jumpToProductDetailVC];
+    }];
+    
+    //点击品牌馆-热卖商品item
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectHotSalesProductItem" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSIndexPath *indexPath = x.object;
+        [self jumpToProductDetailVC];
+    }];
+    
+    //点击品牌
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnBrand1" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        UIButton *button = x.object;
+        [self jumpToBrandDetailVC];
+    }];
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnBrand2" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        UIButton *button = x.object;
+        [self jumpToBrandDetailVC];
+    }];
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnBrand3" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        UIButton *button = x.object;
+        [self jumpToBrandDetailVC];
     }];
 }
 

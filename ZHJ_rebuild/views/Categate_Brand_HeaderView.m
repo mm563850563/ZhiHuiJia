@@ -12,7 +12,31 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    [self imgHeaderAddInteraction];
+}
+
+-(void)imgHeaderAddInteraction
+{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(postNotificationWithRAC)];
+    [self.imgHeader addGestureRecognizer:tap];
+}
+-(void)postNotificationWithRAC
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickImgBrandApply" object:nil];
+}
+
+- (IBAction)btnBrand1Action:(UIButton *)sender
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand1" object:sender];
+}
+- (IBAction)btnBrand2Action:(UIButton *)sender
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand2" object:sender];
+}
+- (IBAction)btnBrand3Action:(UIButton *)sender
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand3" object:sender];
 }
 
 @end

@@ -1,6 +1,9 @@
 PODS:
   - CXPhotoBrowser (1.1.1)
   - IQKeyboardManager (4.0.10)
+  - MarqueeLabel (3.1.0):
+    - MarqueeLabel/ObjC (= 3.1.0)
+  - MarqueeLabel/ObjC (3.1.0)
   - Masonry (1.0.2)
   - MLTransition (2.1.2)
   - ReactiveObjC (2.1.2)
@@ -16,6 +19,7 @@ PODS:
 DEPENDENCIES:
   - CXPhotoBrowser
   - IQKeyboardManager (~> 4.0.10)
+  - MarqueeLabel
   - Masonry (~> 1.0.2)
   - MLTransition (~> 2.1.2)
   - ReactiveObjC (~> 2.1.2)
@@ -27,6 +31,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   CXPhotoBrowser: 33d91a9def828f6fde8cdc03b9f7e6cc7e337ab0
   IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
+  MarqueeLabel: 061d04687ee5485ac035b45c8e292274a87afe01
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MLTransition: 26751adac088c07e4df48c9f605cfdd767bb8afa
   ReactiveObjC: 7b6782ae39f9ac0f57205c3b0c0b69b9dd7048c0
@@ -36,6 +41,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   XHImageViewer: 7b275d2aa829e56761c30303b9d51cae086a90b9
 
-PODFILE CHECKSUM: f6cc16e6b9a36dee6b9dda78b5e4a1727e4708eb
+PODFILE CHECKSUM: 47e548e05aeb22c40bc12b8e8f11dbbda302dbba
 
 COCOAPODS: 1.2.1

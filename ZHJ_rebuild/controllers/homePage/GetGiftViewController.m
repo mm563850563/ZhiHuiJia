@@ -11,6 +11,9 @@
 //cells
 #import "GiftListCell.h"
 
+//controllers
+#import "ShakeAndWinViewController.h"
+
 @interface GetGiftViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 //outlets
@@ -107,6 +110,14 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark - <摇一摇 拿大礼>
+- (IBAction)shakeAndWinAction:(UIButton *)sender
+{
+    ShakeAndWinViewController *shakeAndWinVC = [[ShakeAndWinViewController alloc]initWithNibName:NSStringFromClass([ShakeAndWinViewController class]) bundle:nil];
+    [self.navigationController pushViewController:shakeAndWinVC animated:YES];
+}
+
 
 
 

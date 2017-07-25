@@ -25,8 +25,16 @@
     
     //全局键盘自动管理
     [self settingIQKeyBoardManager];
+    //支持摇一摇
+    [self settingShake];
     
     return YES;
+}
+
+#pragma mark - <支持摇一摇功能>
+-(void)settingShake
+{
+    [UIApplication sharedApplication].applicationSupportsShakeToEdit = YES;
 }
 
 

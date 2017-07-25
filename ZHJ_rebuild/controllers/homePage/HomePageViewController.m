@@ -20,6 +20,7 @@
 #import "GetGiftViewController.h"
 #import "SameHobbyPersonListViewController.h"
 #import "DynamicDetailViewController.h"
+#import "ShakeAndWinViewController.h"
 
 //cells
 //#import "BaseTableViewCell.h"
@@ -736,6 +737,9 @@
     }else if ([viewController isKindOfClass:[FocusPersonFileViewController class]]){
         [navigationController setNavigationBarHidden:YES animated:YES];
     }else if ([viewController isKindOfClass:[ProductDetailViewController class]]){
+        [navigationController.navigationBar setTranslucent:NO];
+        [navigationController setNavigationBarHidden:NO animated:YES];
+    }else if ([viewController isKindOfClass:[ShakeAndWinViewController class]]){
         [navigationController.navigationBar setTranslucent:NO];
         [navigationController setNavigationBarHidden:NO animated:YES];
     }

@@ -9,4 +9,5 @@ target 'ZHJ_rebuild' do
     pod 'CXPhotoBrowser'
     pod 'XHImageViewer'
     pod 'TTTAttributedLabel'
+    pod 'MarqueeLabel'
 end

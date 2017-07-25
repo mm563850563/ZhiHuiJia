@@ -173,6 +173,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 #pragma mark - ******** LeftSideSegmentViewDelegate ********
 -(void)leftSideSegmentView:(LeftSideSegmentView *)leftSideSegmentView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -199,6 +210,11 @@
 {
     Categate_Brand_HeaderView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([Categate_Brand_HeaderView class]) forIndexPath:indexPath];
     return view;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectHotSalesProductItem" object:indexPath];
 }
 
 

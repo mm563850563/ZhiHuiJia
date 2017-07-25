@@ -10,4 +10,6 @@
 
 @interface Categate_Brand_HeaderView : UICollectionReusableView
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgHeader;
+
 @end

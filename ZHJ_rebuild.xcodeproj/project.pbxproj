@@ -31,6 +31,15 @@
 		DD4CEFD71F25DD3A0024156F /* CommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CEFD51F25DD3A0024156F /* CommentListViewController.m */; };
 		DD4CEFD81F25DD3A0024156F /* CommentListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4CEFD61F25DD3A0024156F /* CommentListViewController.xib */; };
 		DD4CEFDB1F25E08D0024156F /* CommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CEFDA1F25E08D0024156F /* CommentListCell.m */; };
+		DD4CEFDF1F26CD0F0024156F /* BrandDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CEFDD1F26CD0F0024156F /* BrandDetailViewController.m */; };
+		DD4CEFE01F26CD0F0024156F /* BrandDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4CEFDE1F26CD0F0024156F /* BrandDetailViewController.xib */; };
+		DD4CEFE31F26D9A60024156F /* BrandDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CEFE21F26D9A60024156F /* BrandDetailCell.m */; };
+		DD4CEFEC1F26DEDA0024156F /* BrandDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CEFEA1F26DEDA0024156F /* BrandDetailHeaderCell.m */; };
+		DD4CEFED1F26DEDA0024156F /* BrandDetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4CEFEB1F26DEDA0024156F /* BrandDetailHeaderCell.xib */; };
+		DD4CEFF91F2732210024156F /* AllProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CEFF81F2732210024156F /* AllProductViewController.m */; };
+		DD4CEFFC1F2732370024156F /* BrandStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CEFFB1F2732370024156F /* BrandStoryViewController.m */; };
+		DD4CF0001F274B480024156F /* ShakeAndWinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CEFFE1F274B480024156F /* ShakeAndWinViewController.m */; };
+		DD4CF0011F274B480024156F /* ShakeAndWinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4CEFFF1F274B480024156F /* ShakeAndWinViewController.xib */; };
 		DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */; };
 		DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */; };
 		DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */; };
@@ -296,6 +305,21 @@
 		DD4CEFD61F25DD3A0024156F /* CommentListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentListViewController.xib; path = controllers/homePage/CommentListViewController.xib; sourceTree = "<group>"; };
 		DD4CEFD91F25E08D0024156F /* CommentListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentListCell.h; path = cells/CommentListCell.h; sourceTree = "<group>"; };
 		DD4CEFDA1F25E08D0024156F /* CommentListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentListCell.m; path = cells/CommentListCell.m; sourceTree = "<group>"; };
+		DD4CEFDC1F26CD0F0024156F /* BrandDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrandDetailViewController.h; path = controllers/categate/BrandDetailViewController.h; sourceTree = "<group>"; };
+		DD4CEFDD1F26CD0F0024156F /* BrandDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrandDetailViewController.m; path = controllers/categate/BrandDetailViewController.m; sourceTree = "<group>"; };
+		DD4CEFDE1F26CD0F0024156F /* BrandDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BrandDetailViewController.xib; path = controllers/categate/BrandDetailViewController.xib; sourceTree = "<group>"; };
+		DD4CEFE11F26D9A60024156F /* BrandDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrandDetailCell.h; path = cells/BrandDetailCell.h; sourceTree = "<group>"; };
+		DD4CEFE21F26D9A60024156F /* BrandDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrandDetailCell.m; path = cells/BrandDetailCell.m; sourceTree = "<group>"; };
+		DD4CEFE91F26DEDA0024156F /* BrandDetailHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrandDetailHeaderCell.h; path = cells/BrandDetailHeaderCell.h; sourceTree = "<group>"; };
+		DD4CEFEA1F26DEDA0024156F /* BrandDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrandDetailHeaderCell.m; path = cells/BrandDetailHeaderCell.m; sourceTree = "<group>"; };
+		DD4CEFEB1F26DEDA0024156F /* BrandDetailHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BrandDetailHeaderCell.xib; path = cells/BrandDetailHeaderCell.xib; sourceTree = "<group>"; };
+		DD4CEFF71F2732210024156F /* AllProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllProductViewController.h; path = controllers/categate/AllProductViewController.h; sourceTree = "<group>"; };
+		DD4CEFF81F2732210024156F /* AllProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllProductViewController.m; path = controllers/categate/AllProductViewController.m; sourceTree = "<group>"; };
+		DD4CEFFA1F2732370024156F /* BrandStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrandStoryViewController.h; path = controllers/categate/BrandStoryViewController.h; sourceTree = "<group>"; };
+		DD4CEFFB1F2732370024156F /* BrandStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrandStoryViewController.m; path = controllers/categate/BrandStoryViewController.m; sourceTree = "<group>"; };
+		DD4CEFFD1F274B480024156F /* ShakeAndWinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShakeAndWinViewController.h; path = controllers/homePage/ShakeAndWinViewController.h; sourceTree = "<group>"; };
+		DD4CEFFE1F274B480024156F /* ShakeAndWinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShakeAndWinViewController.m; path = controllers/homePage/ShakeAndWinViewController.m; sourceTree = "<group>"; };
+		DD4CEFFF1F274B480024156F /* ShakeAndWinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShakeAndWinViewController.xib; path = controllers/homePage/ShakeAndWinViewController.xib; sourceTree = "<group>"; };
 		DD6286F71F1E398C0030331D /* Discover_HotTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_HotTopicCell.h; path = cells/Discover_HotTopicCell.h; sourceTree = "<group>"; };
 		DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_HotTopicCell.m; path = cells/Discover_HotTopicCell.m; sourceTree = "<group>"; };
 		DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_HotTopicCell.xib; path = cells/Discover_HotTopicCell.xib; sourceTree = "<group>"; };
@@ -945,6 +969,11 @@
 				DD4CEFD11F25D1B90024156F /* ProductStyleSelectionCell.xib */,
 				DD4CEFD91F25E08D0024156F /* CommentListCell.h */,
 				DD4CEFDA1F25E08D0024156F /* CommentListCell.m */,
+				DD4CEFE11F26D9A60024156F /* BrandDetailCell.h */,
+				DD4CEFE21F26D9A60024156F /* BrandDetailCell.m */,
+				DD4CEFE91F26DEDA0024156F /* BrandDetailHeaderCell.h */,
+				DD4CEFEA1F26DEDA0024156F /* BrandDetailHeaderCell.m */,
+				DD4CEFEB1F26DEDA0024156F /* BrandDetailHeaderCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -1045,6 +1074,9 @@
 				DD62873B1F1F5FA20030331D /* GetGiftViewController.h */,
 				DD62873C1F1F5FA20030331D /* GetGiftViewController.m */,
 				DD62873D1F1F5FA20030331D /* GetGiftViewController.xib */,
+				DD4CEFFD1F274B480024156F /* ShakeAndWinViewController.h */,
+				DD4CEFFE1F274B480024156F /* ShakeAndWinViewController.m */,
+				DD4CEFFF1F274B480024156F /* ShakeAndWinViewController.xib */,
 				DD6287011F1EE19C0030331D /* FocusPersonFileViewController.h */,
 				DD6287021F1EE19C0030331D /* FocusPersonFileViewController.m */,
 				DD6287031F1EE19C0030331D /* FocusPersonFileViewController.xib */,
@@ -1102,6 +1134,13 @@
 				EC4BA2441F14DFE900B9BE1A /* BrandApplyViewController.h */,
 				EC4BA2451F14DFE900B9BE1A /* BrandApplyViewController.m */,
 				EC4BA2461F14DFE900B9BE1A /* BrandApplyViewController.xib */,
+				DD4CEFDC1F26CD0F0024156F /* BrandDetailViewController.h */,
+				DD4CEFDD1F26CD0F0024156F /* BrandDetailViewController.m */,
+				DD4CEFDE1F26CD0F0024156F /* BrandDetailViewController.xib */,
+				DD4CEFF71F2732210024156F /* AllProductViewController.h */,
+				DD4CEFF81F2732210024156F /* AllProductViewController.m */,
+				DD4CEFFA1F2732370024156F /* BrandStoryViewController.h */,
+				DD4CEFFB1F2732370024156F /* BrandStoryViewController.m */,
 			);
 			name = categate;
 			sourceTree = "<group>";
@@ -1336,6 +1375,7 @@
 				DDFB82701F18BC4500AEAAA7 /* PersonalCollectCell.xib in Resources */,
 				DD6287FF1F21F2F70030331D /* PersonalActivityRankFooterView.xib in Resources */,
 				DDFB82991F1C6A8900AEAAA7 /* MoreProductList_HeaderView.xib in Resources */,
+				DD4CF0011F274B480024156F /* ShakeAndWinViewController.xib in Resources */,
 				DD6287E41F21E8120030331D /* WaitForReviewViewController.xib in Resources */,
 				DD6287DF1F21E3B20030331D /* ActivityViewController.xib in Resources */,
 				EC4BA2551F15EDF000B9BE1A /* DiscoverHeaderCell.xib in Resources */,
@@ -1390,6 +1430,7 @@
 				DD40B7291F17250B00839748 /* HomeLeftImageCell.xib in Resources */,
 				EC4BA1351F1462F100B9BE1A /* GiftSendingTableViewCell.xib in Resources */,
 				DD6287621F2053750030331D /* MyCollectProductCell.xib in Resources */,
+				DD4CEFED1F26DEDA0024156F /* BrandDetailHeaderCell.xib in Resources */,
 				DD62878A1F20B0BA0030331D /* MainCircleViewController.xib in Resources */,
 				DD6288191F22EB740030331D /* SubMessage_PrivateLetterViewController.xib in Resources */,
 				EC4BA13A1F14693F00B9BE1A /* ProductDetailViewController.xib in Resources */,
@@ -1397,6 +1438,7 @@
 				DD62876C1F207A850030331D /* CustomerServiceCenterViewController.xib in Resources */,
 				DD6287531F203C030030331D /* MyAddressIncreaseViewController.xib in Resources */,
 				DD6287671F2059F70030331D /* MyBalanceViewController.xib in Resources */,
+				DD4CEFE01F26CD0F0024156F /* BrandDetailViewController.xib in Resources */,
 				EC4BA0CD1F1359DF00B9BE1A /* SelectThemeColorView.xib in Resources */,
 				DD62870F1F1EEE1B0030331D /* FocusPersonHeaderCell.xib in Resources */,
 				DD62880F1F22EB090030331D /* SubMessage_CommentViewController.xib in Resources */,
@@ -1466,6 +1508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDFB82B51F1D931500AEAAA7 /* PYSearchConst.m in Sources */,
+				DD4CF0001F274B480024156F /* ShakeAndWinViewController.m in Sources */,
 				EC4BA0DB1F1359EC00B9BE1A /* FactoryCollectionViewCell.m in Sources */,
 				DD6287341F1F52BE0030331D /* Configuration_ButtonCell.m in Sources */,
 				EC4BA0C91F1359DF00B9BE1A /* FlipTableView.m in Sources */,
@@ -1483,6 +1526,7 @@
 				DD6287221F1F41BF0030331D /* DynamicWithoutCommentCell.m in Sources */,
 				EC4BA1341F1462F100B9BE1A /* GiftSendingTableViewCell.m in Sources */,
 				DDFB828E1F1C5E3900AEAAA7 /* MoreProductListCell.m in Sources */,
+				DD4CEFF91F2732210024156F /* AllProductViewController.m in Sources */,
 				DD6287F71F21EE4C0030331D /* PersonalActivityRankCell.m in Sources */,
 				DD62876B1F207A850030331D /* CustomerServiceCenterViewController.m in Sources */,
 				DD40B7311F17437100839748 /* IntellectWearsCell.m in Sources */,
@@ -1538,6 +1582,7 @@
 				EC4BA24B1F14F85000B9BE1A /* UIView+CurrentViewController.m in Sources */,
 				DDFB82781F19B98E00AEAAA7 /* Categate_CategateTableViewCell.m in Sources */,
 				DD62874D1F2032220030331D /* MyAddressCell.m in Sources */,
+				DD4CEFEC1F26DEDA0024156F /* BrandDetailHeaderCell.m in Sources */,
 				DD62879D1F2191A90030331D /* ActivityRankFirstCell.m in Sources */,
 				DD40B7281F17250B00839748 /* HomeLeftImageCell.m in Sources */,
 				DD6287181F1F32010030331D /* DynamicDetailViewController.m in Sources */,
@@ -1555,6 +1600,7 @@
 				DD6288341F233EE00030331D /* SameHobbyPersonListViewController.m in Sources */,
 				DD6287431F1F8C1E0030331D /* MyAddressViewController.m in Sources */,
 				DD6288221F22EC7A0030331D /* SubNotification_DiscountViewController.m in Sources */,
+				DD4CEFFC1F2732370024156F /* BrandStoryViewController.m in Sources */,
 				DD6287DE1F21E3B20030331D /* ActivityViewController.m in Sources */,
 				EC4BA0CA1F1359DF00B9BE1A /* LeftSideSegmentView.m in Sources */,
 				EC4BA1121F136CBD00B9BE1A /* SubNotifi_NotificationViewController.m in Sources */,
@@ -1584,10 +1630,12 @@
 				DD6288301F232E970030331D /* GetHeightOfText.m in Sources */,
 				EC4BA2541F15EDF000B9BE1A /* DiscoverHeaderCell.m in Sources */,
 				DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */,
+				DD4CEFDF1F26CD0F0024156F /* BrandDetailViewController.m in Sources */,
 				DD6288391F233FA30030331D /* SameHobbyPersonListCell.m in Sources */,
 				DD4CEFD21F25D1B90024156F /* ProductStyleSelectionCell.m in Sources */,
 				DD6287D91F21DE0C0030331D /* MyFocusViewController.m in Sources */,
 				EC4BA10C1F136CBD00B9BE1A /* NotificationViewController.m in Sources */,
+				DD4CEFE31F26D9A60024156F /* BrandDetailCell.m in Sources */,
 				EC4BA2651F160F1F00B9BE1A /* DiscoverCell.m in Sources */,
 				EC4BA0EB1F136C8100B9BE1A /* PersonalViewController.m in Sources */,
 				DD6287A71F2198FC0030331D /* SameTownViewController.m in Sources */,

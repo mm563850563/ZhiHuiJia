@@ -59,7 +59,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="btnShakeAction:" destination="-1" eventType="touchUpInside" id="JP1-wS-8z6"/>
+                                                        <action selector="btnShakeAction:" destination="-1" eventType="touchUpInside" id="oFM-QO-dAa"/>
+                                                        <action selector="shakeAndWinAction:" destination="-1" eventType="touchUpInside" id="qSp-F2-3gU"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSm-J4-0sS">
