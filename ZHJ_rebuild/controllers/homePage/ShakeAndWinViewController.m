@@ -8,16 +8,23 @@
 
 #import "ShakeAndWinViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
-#import <QuartzCore/QuartzCore.h>
 
 //pods
 #import <MarqueeLabel.h>
+
+//tools
+#import "HWPopTool.h"
+
+//views
+#import "ActivityRuleView.h"
 
 
 @interface ShakeAndWinViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *scrollLabelBGView;
 @property (nonatomic, strong)MarqueeLabel *scrollLabel;
+@property (nonatomic, strong)ActivityRuleView *ruleView;
+@property (nonatomic, strong)UIView *popContentView;
 
 @end
 
@@ -29,6 +36,7 @@
     
     [self settingScrollLabel];
     [self settingSelfBecomeFirstResponder];
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,15 +49,6 @@
     [self settingSelfResignFirstResponder];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - <实现摇一摇功能,使self成为第一响应>
 -(void)settingSelfBecomeFirstResponder
@@ -66,23 +65,43 @@
 #pragma mark - <设置文字滚动>
 -(void)settingScrollLabel
 {
-//    MarqueeLabel *lengthyLabel = [[MarqueeLabel alloc] initWithFrame:self.scrollLabelBGView.bounds duration:8.0 andFadeLength:10.0f];
-//    [self.scrollLabelBGView addSubview:lengthyLabel];
-//    lengthyLabel.text = @"开始觉得可能打开 空 空i 我 口肉文i u 各位 i 俄 u 如何iu肉文 i 我哦 ii 我。 uui 为 i 哦额为了论文啦；我 京味儿看了五块。我3i哦 in 尼玛尼玛。快哦 阿里点就起来 哦吉欧欧哦哦片哦opines口哦饭离开哦 欧哦。";
-    
     self.scrollLabel = [[MarqueeLabel alloc] initWithFrame:self.scrollLabelBGView.bounds duration:8.0 andFadeLength:10.0f];
-    self.scrollLabel.marqueeType = MLContinuous;
-//    self.scrollLabel.scrollDuration = 5;
-    self.scrollLabel.animationCurve = UIViewAnimationOptionRepeat;
-//    self.scrollLabel.fadeLength = 1.0f;
+    self.scrollLabel.marqueeType = MLContinuous;    self.scrollLabel.animationCurve = UIViewAnimationOptionRepeat;
     self.scrollLabel.textColor = kColorFromRGB( kWhite);
     self.scrollLabel.continuousMarqueeExtraBuffer = 1.0f;
     self.scrollLabel.text = @"我滚，我滚，我滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚滚";
+    self.scrollLabel.font = [UIFont systemFontOfSize:14];
     self.scrollLabel.tag = 101;
     [self.scrollLabelBGView addSubview:self.scrollLabel];
 }
 
+#pragma mark - <点击“活动规则”按钮>
+- (IBAction)btnMyRulesAction:(UIButton *)sender
+{
+    self.popContentView = [[UIView alloc]initWithFrame:CGRectMake(40, 200, kSCREEN_WIDTH-80, kSCREENH_HEIGHT-250)];
+    self.popContentView.backgroundColor = kColorFromRGB(kWhite);
+    
+    self.ruleView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([ActivityRuleView class]) owner:nil options:nil].lastObject;
+    self.ruleView.frame = self.popContentView.bounds;
+    self.ruleView.layer.cornerRadius = 5;
+    self.ruleView.layer.masksToBounds = YES;
+    
+    [self.popContentView addSubview:self.ruleView];
+    
+    
 
+    [HWPopTool sharedInstance].shadeBackgroundType = ShadeBackgroundTypeSolid;
+    [HWPopTool sharedInstance].closeButtonType = ButtonPositionTypeNone;
+    [[HWPopTool sharedInstance] showWithPresentView:self.popContentView animated:YES];
+}
+
+#pragma mark - <RAC响应>
+-(void)respondWithRAC
+{
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"closeRuleViewAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [[HWPopTool sharedInstance]closeWithBlcok:nil];
+    }];
+}
 
 
 
@@ -108,15 +127,9 @@
     if (event.subtype == UIEventSubtypeMotionShake) {//判断是否摇动结束
         NSLog(@"end");
         
-        // 2.设置播放音效
-//        SystemSoundID soundID;
-//        NSString *path = [[NSBundle mainBundle ] pathForResource:@"shake_sound_male" ofType:@"wav"];
-//        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path], &soundID);
-//        // 添加摇动声音
+//        // 2.设置播放音效
+//        SystemSoundID soundID = 1000;
 //        AudioServicesPlaySystemSound (soundID);
-//        
-//        // 3.设置震动
-//        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }else{
         return;
     }

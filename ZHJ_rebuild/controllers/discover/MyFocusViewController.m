@@ -9,7 +9,7 @@
 #import "MyFocusViewController.h"
 
 //cells
-#import "LookAroundTableCell.h"
+#import "MyOnFocusCell.h"
 
 @interface MyFocusViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -49,8 +49,8 @@
     self.tableView.rowHeight = 70;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    UINib *nib = [UINib nibWithNibName:NSStringFromClass([LookAroundTableCell class]) bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([LookAroundTableCell class])];
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([MyOnFocusCell class]) bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([MyOnFocusCell class])];
 }
 
 
@@ -65,7 +65,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LookAroundTableCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([LookAroundTableCell class])];
+    MyOnFocusCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyOnFocusCell class])];
     return cell;
 }
 

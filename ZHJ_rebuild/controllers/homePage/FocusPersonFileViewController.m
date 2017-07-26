@@ -14,6 +14,7 @@
 
 //controllers
 #import "DynamicDetailViewController.h"
+#import "PersonalRankActivityViewController.h"
 
 @interface FocusPersonFileViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -62,6 +63,14 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([FocusPersonCell class])];
 }
 
+#pragma mark - <跳转“个人活跃度排名”页面>
+-(void)jumpToPersonalRankVC
+{
+    PersonalRankActivityViewController *personalRankVC = [[PersonalRankActivityViewController alloc]initWithNibName:NSStringFromClass([PersonalRankActivityViewController class]) bundle:nil];
+    personalRankVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:personalRankVC animated:YES];
+}
+
 #pragma mark - <响应RAC>
 -(void)respondWithRAC
 {
@@ -74,8 +83,20 @@
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickPersonActivitySort" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        NSLog(@"个人活跃度排名");
+        [self jumpToPersonalRankVC];
     }];
+    
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickOnFocus" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSLog(@"+关注");
+    }];
+    
+//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"CheckFocusAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+//        NS
+//    }];
+//    
+//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"CheckFansAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+//        
+//    }];
 }
 
 

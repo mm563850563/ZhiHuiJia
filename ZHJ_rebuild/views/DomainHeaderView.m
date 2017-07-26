@@ -20,7 +20,6 @@
 
 
 
-
 - (IBAction)btnBackAction:(UIButton *)sender
 {
     [[NSNotificationCenter defaultCenter]postNotificationName:@"backToDiscover" object:nil];

@@ -17,6 +17,7 @@
 
 //controllers
 #import "FocusPersonFileViewController.h"
+#import "PersonalActivitilyRuleViewController.h"
 
 @interface PersonalRankActivityViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -61,6 +62,13 @@
     [self.tableView registerNib:nibNormal forCellReuseIdentifier:NSStringFromClass([PersonalActivityRankCell class])];
 }
 
+#pragma mark - <跳转“活跃度规则”页面>
+-(void)jumpToPersonalActivitilyRuleVC
+{
+    PersonalActivitilyRuleViewController *personalActivitilyRuleVC = [[PersonalActivitilyRuleViewController alloc]initWithNibName:NSStringFromClass([PersonalActivitilyRuleViewController class]) bundle:nil];
+    personalActivitilyRuleVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:personalActivitilyRuleVC animated:YES];
+}
 
 
 
@@ -120,7 +128,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        
+        [self jumpToPersonalActivitilyRuleVC];
     }else{
         FocusPersonFileViewController *focusPersonFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
         [self.navigationController pushViewController:focusPersonFileVC animated:YES];

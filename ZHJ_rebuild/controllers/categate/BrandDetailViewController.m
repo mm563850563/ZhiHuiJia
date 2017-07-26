@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong)SegmentTapView *segmentView;
+@property (nonatomic, strong)UIView *headerView;
+
 @end
 
 @implementation BrandDetailViewController
@@ -27,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [self initHeaderView];
     [self settingTableView];
     [self respondWithRAC];
 }
@@ -46,6 +48,16 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <初始化headerView>
+-(void)initHeaderView
+{
+    self.headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 40)];
+    NSArray *titles = @[@"全部商品",@"品牌故事"];
+    self.segmentView = [[SegmentTapView alloc]initWithFrame:self.headerView.bounds withDataArray:titles withFont:14];
+    self.segmentView.delegate = self;
+    [self.headerView addSubview:self.segmentView];
+}
 
 #pragma mark - <settingTableView>
 -(void)settingTableView
@@ -129,13 +141,9 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 40)];
-    NSArray *titles = @[@"全部商品",@"品牌故事"];
-    self.segmentView = [[SegmentTapView alloc]initWithFrame:headerView.bounds withDataArray:titles withFont:14];
-    self.segmentView.delegate = self;
-    [headerView addSubview:self.segmentView];
+    
     if (section == 1) {
-        return headerView;
+        return self.headerView;
     }
     return nil;
 }

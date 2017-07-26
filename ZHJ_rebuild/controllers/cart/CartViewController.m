@@ -124,7 +124,7 @@
     if (section == 0) {
         return 0.1f;
     }
-    return 0;
+    return 30;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -143,8 +143,12 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section == 1) {
-        UIView *headerView = [[UIView alloc]init];
-        headerView.backgroundColor = [UIColor redColor];
+        UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 30)];
+        UIImageView *imgView = [[UIImageView alloc]initWithFrame:headerView.bounds];
+        imgView.image = [UIImage imageNamed:@"0youLike"];
+        imgView.contentMode = UIViewContentModeScaleAspectFit;
+        [headerView addSubview:imgView];
+//        headerView.backgroundColor = [UIColor redColor];
         return headerView;
     }
     return nil;

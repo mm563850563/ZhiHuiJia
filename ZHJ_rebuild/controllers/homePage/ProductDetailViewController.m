@@ -17,7 +17,10 @@
 //controllers
 #import "CommentListViewController.h"
 
-@interface ProductDetailViewController ()<STPickerAreaDelegate,SDCycleScrollViewDelegate>
+//cells
+#import "ProductDetailImageCell.h"
+
+@interface ProductDetailViewController ()<STPickerAreaDelegate,SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -40,7 +43,9 @@
     
     [self addRatingBar];
     [self addCycleScollView];
+    [self settingTableView];
     [self respondWithRAC];
+    [self settingHeightForScrollView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +86,18 @@
     [self.starBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
+}
+
+#pragma mark - <配置tableView>
+-(void)settingTableView
+{
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.rowHeight = 200;
+    
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([ProductDetailImageCell class]) bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([ProductDetailImageCell class])];
 }
 
 #pragma mark - <选择送货地点>
@@ -132,6 +149,23 @@
     }];
 }
 
+#pragma mark - <计算页面高度>
+-(void)settingHeightForScrollView
+{
+    [self.tableView reloadData];
+    self.heightForScrollView.constant = self.tableView.contentSize.height + 500;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -164,5 +198,18 @@
 {
     
 }
+
+
+#pragma mark - <UITableViewDelegate,UITableViewDataSource>
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProductDetailImageCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ProductDetailImageCell class])];
+    return cell;
+}
+
 
 @end

@@ -71,5 +71,10 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectActivityRecommend" object:indexPath];
+}
+
 
 @end

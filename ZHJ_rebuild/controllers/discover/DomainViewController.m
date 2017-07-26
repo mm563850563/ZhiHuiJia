@@ -63,6 +63,42 @@
     [self.tableView registerNib:nibDynamic forCellReuseIdentifier:NSStringFromClass([FocusPersonCell class])];
 }
 
+#pragma mark - <跳转“我的关注”页面>
+-(void)jumpToMyOnFocusVC
+{
+    MyFocusViewController *myFocusVC = [[MyFocusViewController alloc]initWithNibName:NSStringFromClass([MyFocusViewController class]) bundle:nil];
+    [self.navigationController pushViewController:myFocusVC animated:YES];
+}
+
+#pragma mark - <跳转“消息通知”页面>
+-(void)jumpToMessageVC
+{
+    NotificationViewController *notificationVC = [[NotificationViewController alloc]init];
+    [self.navigationController pushViewController:notificationVC animated:YES];
+}
+
+#pragma mark - <跳转“个人资料”页面>
+-(void)jumpToPersonalFileVC
+{
+    PersonalFileViewController *personalFileVC = [[PersonalFileViewController alloc]init];
+    [self.navigationController pushViewController:personalFileVC animated:YES];
+}
+
+#pragma mark - <跳转“我的活动”页面>
+-(void)jumpToMyActivitiesVC
+{
+    ActivityViewController *activityVC = [[ActivityViewController alloc]initWithNibName:NSStringFromClass([ActivityViewController class]) bundle:nil];
+    [self.navigationController pushViewController:activityVC animated:YES];
+}
+
+#pragma mark - <跳转“参与的活动”页面>
+#pragma mark - <跳转“个人活跃度排名”页面>
+-(void)jumpToPersonalRankVC
+{
+    PersonalRankActivityViewController *personalRankVC = [[PersonalRankActivityViewController alloc]initWithNibName:NSStringFromClass([PersonalRankActivityViewController class]) bundle:nil];
+    [self.navigationController pushViewController:personalRankVC animated:YES];
+}
+
 #pragma mark - <RAC响应>
 -(void)respondWithRAC
 {
@@ -71,41 +107,35 @@
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToMessage" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        NotificationViewController *notificationVC = [[NotificationViewController alloc]init];
-        [self.navigationController pushViewController:notificationVC animated:YES];
+        [self jumpToMessageVC];
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToEdit" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        PersonalFileViewController *personalFileVC = [[PersonalFileViewController alloc]init];
-        [self.navigationController pushViewController:personalFileVC animated:YES];
+        [self jumpToPersonalFileVC];
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToMyFocus" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        MyFocusViewController *myFocusVC = [[MyFocusViewController alloc]initWithNibName:NSStringFromClass([MyFocusViewController class]) bundle:nil];
-        [self.navigationController pushViewController:myFocusVC animated:YES];
+        [self jumpToMyOnFocusVC];
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToMyFans" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        
+        [self jumpToMyOnFocusVC];
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToMyActivities" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        ActivityViewController *activityVC = [[ActivityViewController alloc]initWithNibName:NSStringFromClass([ActivityViewController class]) bundle:nil];
-        [self.navigationController pushViewController:activityVC animated:YES];
+        [self jumpToMyActivitiesVC];
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToJoinedActivities" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        ActivityViewController *activityVC = [[ActivityViewController alloc]initWithNibName:NSStringFromClass([ActivityViewController class]) bundle:nil];
-        [self.navigationController pushViewController:activityVC animated:YES];
+        [self jumpToMyActivitiesVC];
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToRankActivity" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        PersonalRankActivityViewController *personalRankVC = [[PersonalRankActivityViewController alloc]initWithNibName:NSStringFromClass([PersonalRankActivityViewController class]) bundle:nil];
-        [self.navigationController pushViewController:personalRankVC animated:YES];
+        [self jumpToPersonalRankVC];
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToRelease" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        
+        ll
     }];
 }
 

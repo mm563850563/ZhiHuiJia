@@ -22,6 +22,7 @@
 #import "SameTownViewController.h"
 #import "DomainViewController.h"
 #import "NotificationViewController.h"
+#import "ActivityRecommendDetailViewController.h"
 
 @interface DiscoverViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,SegmentTapViewDelegate,UINavigationControllerDelegate>
 
@@ -108,6 +109,42 @@
     [self.mainTableView registerNib:nibDiscoverCell forCellReuseIdentifier:NSStringFromClass([DiscoverCell class])];
 }
 
+#pragma mark - <跳转dynamicDetailVC>
+-(void)jumpToDynamicDetailVC
+{
+    DynamicDetailViewController *dynamicDetailVC = [[DynamicDetailViewController alloc]initWithNibName:NSStringFromClass([DynamicDetailViewController class]) bundle:nil];
+    dynamicDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:dynamicDetailVC animated:YES];
+}
+#pragma mark - <跳转mainCircleVC>
+-(void)jumpToMainCircleVC
+{
+    MainCircleViewController *mainCircleVC = [[MainCircleViewController alloc]initWithNibName:NSStringFromClass([MainCircleViewController class]) bundle:nil];
+    mainCircleVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:mainCircleVC animated:YES];
+}
+#pragma mark - <跳转sameTownVC>
+-(void)jumpToSameTownVC
+{
+    SameTownViewController *sameTownVC = [[SameTownViewController alloc]initWithNibName:NSStringFromClass([SameTownViewController class]) bundle:nil];
+    sameTownVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:sameTownVC animated:YES];
+}
+#pragma mark - <跳转domainVC>
+-(void)jumpToDomainVC
+{
+    DomainViewController *domainVC = [[DomainViewController alloc]initWithNibName:NSStringFromClass([DomainViewController class]) bundle:nil];
+    domainVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:domainVC animated:YES];
+}
+#pragma mark - <跳转activityRecommendDetailVC>
+-(void)jumpToActivityRecommendDetailVC
+{
+    ActivityRecommendDetailViewController *activityRecommendDetailVC = [[ActivityRecommendDetailViewController alloc]initWithNibName:NSStringFromClass([ActivityRecommendDetailViewController class]) bundle:nil];
+    activityRecommendDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:activityRecommendDetailVC animated:YES];
+}
+
 #pragma mark - <响应RAC>
 -(void)respondWithRAC
 {
@@ -119,30 +156,28 @@
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"didSelectDynamicItem" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         NSIndexPath *indexPath = x.object;
-        DynamicDetailViewController *dynamicDetailVC = [[DynamicDetailViewController alloc]initWithNibName:NSStringFromClass([DynamicDetailViewController class]) bundle:nil];
-        dynamicDetailVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:dynamicDetailVC animated:YES];
+        [self jumpToDynamicDetailVC];
     }];
     
     //点击圈子
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickCircleAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        MainCircleViewController *mainCircleVC = [[MainCircleViewController alloc]initWithNibName:NSStringFromClass([MainCircleViewController class]) bundle:nil];
-        mainCircleVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:mainCircleVC animated:YES];
+        [self jumpToMainCircleVC];
     }];
     
     //点击同城
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickSameTownAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        SameTownViewController *sameTownVC = [[SameTownViewController alloc]initWithNibName:NSStringFromClass([SameTownViewController class]) bundle:nil];
-        sameTownVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:sameTownVC animated:YES];
+        [self jumpToSameTownVC];
     }];
     
     //点击地盘
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickDomainAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        DomainViewController *domainVC = [[DomainViewController alloc]initWithNibName:NSStringFromClass([DomainViewController class]) bundle:nil];
-        domainVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:domainVC animated:YES];
+        [self jumpToDomainVC];
+    }];
+    
+    //点击活动推荐cell
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectActivityRecommend" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSIndexPath *indexPath = x.object;
+        [self jumpToActivityRecommendDetailVC];
     }];
     
 }
