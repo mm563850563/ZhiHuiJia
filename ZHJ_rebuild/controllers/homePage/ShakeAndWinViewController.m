@@ -130,6 +130,7 @@
 //        // 2.设置播放音效
 //        SystemSoundID soundID = 1000;
 //        AudioServicesPlaySystemSound (soundID);
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }else{
         return;
     }

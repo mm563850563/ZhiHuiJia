@@ -40,5 +40,35 @@
 #import <ReactiveObjC.h>
 #import <UIImageView+WebCache.h>
 #import "GetHeightOfText.h"
+#import "YQNetworking.h"
+#import <JSONModel.h>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - <Domain_Base>
+#define kDomainBase @"http://www.havshark.com/api"
+
+#pragma mark - <Domain_Image>
+#define kDomainImage @"http://www.havshark.com"
+
+#pragma mark - <分类页面分类>
+#define kGetAllClassify @"/classify/getAllClassify"
+
+
+
+
+
 
 #endif

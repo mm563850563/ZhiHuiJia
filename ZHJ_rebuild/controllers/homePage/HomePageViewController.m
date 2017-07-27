@@ -202,16 +202,6 @@
     searchBar.placeholder = @"搜索";
     self.navigationItem.titleView = searchBar;
     self.searchBarHomePage = searchBar;
-    
-    
-    /*UISearchBar *searchBar = [[UISearchBar alloc]init];
-     searchBar.delegate = self;
-     UIColor *color = kColorFromRGBAndAlpha(kWhite, 1.0);
-     UIImage *image = [UIImage imageWithColor:color height:30.0];
-     [searchBar setSearchFieldBackgroundImage:image forState:UIControlStateNormal];
-     searchBar.searchBarStyle = UISearchBarStyleMinimal;
-     searchBar.placeholder = @"请输入关键字或商品名称";
-     self.navigationItem.titleView = searchBar;*/
 }
 
 #pragma mark - <跳转NotificationViewController>

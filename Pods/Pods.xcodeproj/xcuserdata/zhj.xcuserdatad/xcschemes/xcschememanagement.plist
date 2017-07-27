@@ -4,12 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CXPhotoBrowser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSONModel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -59,6 +74,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TZImagePickerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>XHImageViewer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,12 +87,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>26A5AB1B2E051C588C33507866A8A91A</key>
+		<key>13F01DC534B09915DF136CB56C0292BF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29A95F34A8249D7274DF933A87503AA2</key>
+		<key>18122C429B2CE3968F3C5AF4518E4A0F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2BC5C0365C4256E51567D55E50A4EF23</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,7 +107,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>57AE1C551D73A647D55475771E27703A</key>
+		<key>4AFAC47E8E16F97C899E714F55F6BD9F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4E5D32424B9CC05D596336AA0B262387</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>55E3CFFEDC2629EE0C17B343EC00595B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,17 +137,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>92F6606AF865E98BD24120688CF38973</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>9DC8D9E02903E93BD0B2FEC9D846EA20</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CEAD9E267DC01CEFBE33AE8ECFB210B1</key>
+		<key>9E033EDB5EC0819481B0546434FA577B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A354D386EBB966A8717E34F2F7CED85B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BE27E82893F27C2F7D2F971829E6205F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,12 +162,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D4A51C89BE1A3FE8108A8B0F3211EE7F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F6F3475402664E2E98E34A7DBFDAB2FB</key>
+		<key>FC4213257F3F851654D1D0D0C1BB29AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

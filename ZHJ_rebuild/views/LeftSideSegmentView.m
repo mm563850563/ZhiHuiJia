@@ -8,6 +8,9 @@
 
 #import "LeftSideSegmentView.h"
 
+//models
+#import "AllClassifyResultModel.h"
+
 
 #define kReuseID @"leftTableViewCell"
 
@@ -96,7 +99,8 @@ NSInteger leftCellWidth = 100;
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseID];
     cell.backgroundColor = kColorFromRGB(kLightGray);
-    cell.textLabel.text = self.dataArray[indexPath.row];
+//    AllClassifyResultModel *model = self.dataArray[indexPath.row];
+//    cell.textLabel.text = model.name;
     cell.textLabel.font = [UIFont systemFontOfSize:12];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -111,6 +115,7 @@ NSInteger leftCellWidth = 100;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kReuseID];
     cell.textLabel.textColor = [UIColor redColor];
     
     if ([self.delegate respondsToSelector:@selector(leftSideSegmentView:didSelectRowAtIndexPath:)]) {

@@ -20,6 +20,7 @@
 #import "MyFocusViewController.h"
 #import "ActivityViewController.h"
 #import "PersonalRankActivityViewController.h"
+#import "NewPostViewController.h"
 
 @interface DomainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -99,6 +100,14 @@
     [self.navigationController pushViewController:personalRankVC animated:YES];
 }
 
+#pragma mark - <跳转发布新帖子页面>
+-(void)jumpToReleaseNewPostVC
+{
+    NewPostViewController *newPostVC = [[NewPostViewController alloc]initWithNibName:NSStringFromClass([NewPostViewController class]) bundle:nil];
+    newPostVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:newPostVC animated:YES];
+}
+
 #pragma mark - <RAC响应>
 -(void)respondWithRAC
 {
@@ -135,7 +144,7 @@
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToRelease" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        ll
+        [self jumpToReleaseNewPostVC];
     }];
 }
 

@@ -46,10 +46,15 @@
 */
 
 
+
+
+
+
+
+
+#pragma mark - ***** UITextViewDelegate ******
 - (void)textViewDidChange:(UITextView *)textView
 {
-//    FDLog(@"%@", textView.text);
-    
     self.placeholder.hidden = YES;
     //允许提交按钮点击操作
 //    self.commitButton.backgroundColor = FDMainColor;

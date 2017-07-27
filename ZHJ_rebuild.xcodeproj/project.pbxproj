@@ -65,6 +65,25 @@
 		DD4CF03C1F289FB20024156F /* MyOnFocusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4CF03A1F289FB20024156F /* MyOnFocusCell.xib */; };
 		DD4CF0401F28A43E0024156F /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF03E1F28A43E0024156F /* NewPostViewController.m */; };
 		DD4CF0411F28A43E0024156F /* NewPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4CF03F1F28A43E0024156F /* NewPostViewController.xib */; };
+		DD4CF09F1F2975880024156F /* NewPostImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF09D1F2975880024156F /* NewPostImageCell.m */; };
+		DD4CF0A01F2975880024156F /* NewPostImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4CF09E1F2975880024156F /* NewPostImageCell.xib */; };
+		DD4CF0A41F2996B60024156F /* MoreCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF0A21F2996B60024156F /* MoreCycleViewController.m */; };
+		DD4CF0A51F2996B60024156F /* MoreCycleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4CF0A31F2996B60024156F /* MoreCycleViewController.xib */; };
+		DD4CF0A91F299A7C0024156F /* AtSomeOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF0A71F299A7C0024156F /* AtSomeOneViewController.m */; };
+		DD4CF0AA1F299A7C0024156F /* AtSomeOneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4CF0A81F299A7C0024156F /* AtSomeOneViewController.xib */; };
+		DD4CF0AE1F29A8FC0024156F /* AtSomeOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF0AC1F29A8FC0024156F /* AtSomeOneCell.m */; };
+		DD4CF0AF1F29A8FC0024156F /* AtSomeOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4CF0AD1F29A8FC0024156F /* AtSomeOneCell.xib */; };
+		DD4CF0E61F29BF850024156F /* YQCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF0B61F29BF850024156F /* YQCacheManager.m */; };
+		DD4CF0E71F29BF850024156F /* YQDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF0B81F29BF850024156F /* YQDiskCache.m */; };
+		DD4CF0E81F29BF850024156F /* YQLRUManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF0BA1F29BF850024156F /* YQLRUManager.m */; };
+		DD4CF0E91F29BF850024156F /* YQMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF0BC1F29BF850024156F /* YQMemoryCache.m */; };
+		DD4CF0EA1F29BF850024156F /* YQNetworking+RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF0BF1F29BF850024156F /* YQNetworking+RequestManager.m */; };
+		DD4CF0FA1F29BF850024156F /* YQNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF0E51F29BF850024156F /* YQNetworking.m */; };
+		DD4CF1061F29EDD80024156F /* AllClassifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF1051F29EDD80024156F /* AllClassifyModel.m */; };
+		DD4CF1091F29EE010024156F /* AllClassifyDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF1081F29EE010024156F /* AllClassifyDataModel.m */; };
+		DD4CF10C1F29EE250024156F /* AllClassifyResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF10B1F29EE250024156F /* AllClassifyResultModel.m */; };
+		DD4CF1121F29F22E0024156F /* AllClassifyChidrenFirstModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF1111F29F22E0024156F /* AllClassifyChidrenFirstModel.m */; };
+		DD4CF1151F29F2D00024156F /* AllClassifyChildrenSecondModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF1141F29F2D00024156F /* AllClassifyChildrenSecondModel.m */; };
 		DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */; };
 		DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */; };
 		DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */; };
@@ -383,6 +402,40 @@
 		DD4CF03D1F28A43E0024156F /* NewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPostViewController.h; path = controllers/discover/NewPostViewController.h; sourceTree = "<group>"; };
 		DD4CF03E1F28A43E0024156F /* NewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewPostViewController.m; path = controllers/discover/NewPostViewController.m; sourceTree = "<group>"; };
 		DD4CF03F1F28A43E0024156F /* NewPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewPostViewController.xib; path = controllers/discover/NewPostViewController.xib; sourceTree = "<group>"; };
+		DD4CF09C1F2975880024156F /* NewPostImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPostImageCell.h; path = cells/NewPostImageCell.h; sourceTree = "<group>"; };
+		DD4CF09D1F2975880024156F /* NewPostImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewPostImageCell.m; path = cells/NewPostImageCell.m; sourceTree = "<group>"; };
+		DD4CF09E1F2975880024156F /* NewPostImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewPostImageCell.xib; path = cells/NewPostImageCell.xib; sourceTree = "<group>"; };
+		DD4CF0A11F2996B60024156F /* MoreCycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreCycleViewController.h; path = controllers/discover/MoreCycleViewController.h; sourceTree = "<group>"; };
+		DD4CF0A21F2996B60024156F /* MoreCycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreCycleViewController.m; path = controllers/discover/MoreCycleViewController.m; sourceTree = "<group>"; };
+		DD4CF0A31F2996B60024156F /* MoreCycleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreCycleViewController.xib; path = controllers/discover/MoreCycleViewController.xib; sourceTree = "<group>"; };
+		DD4CF0A61F299A7C0024156F /* AtSomeOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AtSomeOneViewController.h; path = controllers/discover/AtSomeOneViewController.h; sourceTree = "<group>"; };
+		DD4CF0A71F299A7C0024156F /* AtSomeOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AtSomeOneViewController.m; path = controllers/discover/AtSomeOneViewController.m; sourceTree = "<group>"; };
+		DD4CF0A81F299A7C0024156F /* AtSomeOneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AtSomeOneViewController.xib; path = controllers/discover/AtSomeOneViewController.xib; sourceTree = "<group>"; };
+		DD4CF0AB1F29A8FC0024156F /* AtSomeOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AtSomeOneCell.h; path = cells/AtSomeOneCell.h; sourceTree = "<group>"; };
+		DD4CF0AC1F29A8FC0024156F /* AtSomeOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AtSomeOneCell.m; path = cells/AtSomeOneCell.m; sourceTree = "<group>"; };
+		DD4CF0AD1F29A8FC0024156F /* AtSomeOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AtSomeOneCell.xib; path = cells/AtSomeOneCell.xib; sourceTree = "<group>"; };
+		DD4CF0B51F29BF850024156F /* YQCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQCacheManager.h; sourceTree = "<group>"; };
+		DD4CF0B61F29BF850024156F /* YQCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQCacheManager.m; sourceTree = "<group>"; };
+		DD4CF0B71F29BF850024156F /* YQDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQDiskCache.h; sourceTree = "<group>"; };
+		DD4CF0B81F29BF850024156F /* YQDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQDiskCache.m; sourceTree = "<group>"; };
+		DD4CF0B91F29BF850024156F /* YQLRUManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQLRUManager.h; sourceTree = "<group>"; };
+		DD4CF0BA1F29BF850024156F /* YQLRUManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQLRUManager.m; sourceTree = "<group>"; };
+		DD4CF0BB1F29BF850024156F /* YQMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQMemoryCache.h; sourceTree = "<group>"; };
+		DD4CF0BC1F29BF850024156F /* YQMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQMemoryCache.m; sourceTree = "<group>"; };
+		DD4CF0BE1F29BF850024156F /* YQNetworking+RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YQNetworking+RequestManager.h"; sourceTree = "<group>"; };
+		DD4CF0BF1F29BF850024156F /* YQNetworking+RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YQNetworking+RequestManager.m"; sourceTree = "<group>"; };
+		DD4CF0E41F29BF850024156F /* YQNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQNetworking.h; sourceTree = "<group>"; };
+		DD4CF0E51F29BF850024156F /* YQNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQNetworking.m; sourceTree = "<group>"; };
+		DD4CF1041F29EDD80024156F /* AllClassifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllClassifyModel.h; path = models/AllClassifyModel.h; sourceTree = "<group>"; };
+		DD4CF1051F29EDD80024156F /* AllClassifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllClassifyModel.m; path = models/AllClassifyModel.m; sourceTree = "<group>"; };
+		DD4CF1071F29EE010024156F /* AllClassifyDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllClassifyDataModel.h; path = models/AllClassifyDataModel.h; sourceTree = "<group>"; };
+		DD4CF1081F29EE010024156F /* AllClassifyDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllClassifyDataModel.m; path = models/AllClassifyDataModel.m; sourceTree = "<group>"; };
+		DD4CF10A1F29EE250024156F /* AllClassifyResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllClassifyResultModel.h; path = models/AllClassifyResultModel.h; sourceTree = "<group>"; };
+		DD4CF10B1F29EE250024156F /* AllClassifyResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllClassifyResultModel.m; path = models/AllClassifyResultModel.m; sourceTree = "<group>"; };
+		DD4CF1101F29F22E0024156F /* AllClassifyChidrenFirstModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllClassifyChidrenFirstModel.h; path = models/AllClassifyChidrenFirstModel.h; sourceTree = "<group>"; };
+		DD4CF1111F29F22E0024156F /* AllClassifyChidrenFirstModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllClassifyChidrenFirstModel.m; path = models/AllClassifyChidrenFirstModel.m; sourceTree = "<group>"; };
+		DD4CF1131F29F2D00024156F /* AllClassifyChildrenSecondModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllClassifyChildrenSecondModel.h; path = models/AllClassifyChildrenSecondModel.h; sourceTree = "<group>"; };
+		DD4CF1141F29F2D00024156F /* AllClassifyChildrenSecondModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllClassifyChildrenSecondModel.m; path = models/AllClassifyChildrenSecondModel.m; sourceTree = "<group>"; };
 		DD6286F71F1E398C0030331D /* Discover_HotTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_HotTopicCell.h; path = cells/Discover_HotTopicCell.h; sourceTree = "<group>"; };
 		DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_HotTopicCell.m; path = cells/Discover_HotTopicCell.m; sourceTree = "<group>"; };
 		DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_HotTopicCell.xib; path = cells/Discover_HotTopicCell.xib; sourceTree = "<group>"; };
@@ -770,6 +823,41 @@
 			path = HWPoTools;
 			sourceTree = "<group>";
 		};
+		DD4CF0B31F29BF850024156F /* YQNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				DD4CF0B41F29BF850024156F /* Cache */,
+				DD4CF0BD1F29BF850024156F /* RequestManager */,
+				DD4CF0E41F29BF850024156F /* YQNetworking.h */,
+				DD4CF0E51F29BF850024156F /* YQNetworking.m */,
+			);
+			path = YQNetworking;
+			sourceTree = "<group>";
+		};
+		DD4CF0B41F29BF850024156F /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				DD4CF0B51F29BF850024156F /* YQCacheManager.h */,
+				DD4CF0B61F29BF850024156F /* YQCacheManager.m */,
+				DD4CF0B71F29BF850024156F /* YQDiskCache.h */,
+				DD4CF0B81F29BF850024156F /* YQDiskCache.m */,
+				DD4CF0B91F29BF850024156F /* YQLRUManager.h */,
+				DD4CF0BA1F29BF850024156F /* YQLRUManager.m */,
+				DD4CF0BB1F29BF850024156F /* YQMemoryCache.h */,
+				DD4CF0BC1F29BF850024156F /* YQMemoryCache.m */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		DD4CF0BD1F29BF850024156F /* RequestManager */ = {
+			isa = PBXGroup;
+			children = (
+				DD4CF0BE1F29BF850024156F /* YQNetworking+RequestManager.h */,
+				DD4CF0BF1F29BF850024156F /* YQNetworking+RequestManager.m */,
+			);
+			path = RequestManager;
+			sourceTree = "<group>";
+		};
 		DD6288001F2214F40030331D /* RatingBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1055,6 +1143,12 @@
 				DD4CF0381F289FB20024156F /* MyOnFocusCell.h */,
 				DD4CF0391F289FB20024156F /* MyOnFocusCell.m */,
 				DD4CF03A1F289FB20024156F /* MyOnFocusCell.xib */,
+				DD4CF09C1F2975880024156F /* NewPostImageCell.h */,
+				DD4CF09D1F2975880024156F /* NewPostImageCell.m */,
+				DD4CF09E1F2975880024156F /* NewPostImageCell.xib */,
+				DD4CF0AB1F29A8FC0024156F /* AtSomeOneCell.h */,
+				DD4CF0AC1F29A8FC0024156F /* AtSomeOneCell.m */,
+				DD4CF0AD1F29A8FC0024156F /* AtSomeOneCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -1122,6 +1216,16 @@
 				EC4BA0881F1359A900B9BE1A /* CycleScrollModel.m */,
 				DDFB82831F1A14A800AEAAA7 /* YouthColorModel.h */,
 				DDFB82841F1A14A800AEAAA7 /* YouthColorModel.m */,
+				DD4CF1041F29EDD80024156F /* AllClassifyModel.h */,
+				DD4CF1051F29EDD80024156F /* AllClassifyModel.m */,
+				DD4CF1071F29EE010024156F /* AllClassifyDataModel.h */,
+				DD4CF1081F29EE010024156F /* AllClassifyDataModel.m */,
+				DD4CF10A1F29EE250024156F /* AllClassifyResultModel.h */,
+				DD4CF10B1F29EE250024156F /* AllClassifyResultModel.m */,
+				DD4CF1101F29F22E0024156F /* AllClassifyChidrenFirstModel.h */,
+				DD4CF1111F29F22E0024156F /* AllClassifyChidrenFirstModel.m */,
+				DD4CF1131F29F2D00024156F /* AllClassifyChildrenSecondModel.h */,
+				DD4CF1141F29F2D00024156F /* AllClassifyChildrenSecondModel.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -1129,6 +1233,7 @@
 		EC4BA0811F13581D00B9BE1A /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				DD4CF0B31F29BF850024156F /* YQNetworking */,
 				DD4CF0021F28219F0024156F /* HWPoTools */,
 				DD62882E1F232E970030331D /* GetHeightOfText.h */,
 				DD62882F1F232E970030331D /* GetHeightOfText.m */,
@@ -1238,6 +1343,9 @@
 				DD4CF03D1F28A43E0024156F /* NewPostViewController.h */,
 				DD4CF03E1F28A43E0024156F /* NewPostViewController.m */,
 				DD4CF03F1F28A43E0024156F /* NewPostViewController.xib */,
+				DD4CF0A61F299A7C0024156F /* AtSomeOneViewController.h */,
+				DD4CF0A71F299A7C0024156F /* AtSomeOneViewController.m */,
+				DD4CF0A81F299A7C0024156F /* AtSomeOneViewController.xib */,
 				DD6287EF1F21ED4F0030331D /* PersonalRankActivityViewController.h */,
 				DD6287F01F21ED4F0030331D /* PersonalRankActivityViewController.m */,
 				DD6287F11F21ED4F0030331D /* PersonalRankActivityViewController.xib */,
@@ -1268,6 +1376,9 @@
 				DD6287721F208C0B0030331D /* HotCircleViewController.h */,
 				DD6287731F208C0B0030331D /* HotCircleViewController.m */,
 				DD6287741F208C0B0030331D /* HotCircleViewController.xib */,
+				DD4CF0A11F2996B60024156F /* MoreCycleViewController.h */,
+				DD4CF0A21F2996B60024156F /* MoreCycleViewController.m */,
+				DD4CF0A31F2996B60024156F /* MoreCycleViewController.xib */,
 				DD6287771F208CA40030331D /* MyCircleViewController.h */,
 				DD6287781F208CA40030331D /* MyCircleViewController.m */,
 				DD6287791F208CA40030331D /* MyCircleViewController.xib */,
@@ -1486,6 +1597,7 @@
 				DD6287EE1F21E8C00030331D /* FailureReviewViewController.xib in Resources */,
 				DDFB82701F18BC4500AEAAA7 /* PersonalCollectCell.xib in Resources */,
 				DD6287FF1F21F2F70030331D /* PersonalActivityRankFooterView.xib in Resources */,
+				DD4CF0AF1F29A8FC0024156F /* AtSomeOneCell.xib in Resources */,
 				DDFB82991F1C6A8900AEAAA7 /* MoreProductList_HeaderView.xib in Resources */,
 				DD4CF0011F274B480024156F /* ShakeAndWinViewController.xib in Resources */,
 				DD6287E41F21E8120030331D /* WaitForReviewViewController.xib in Resources */,
@@ -1499,6 +1611,7 @@
 				DDFB82631F187A7900AEAAA7 /* cb_green_off@2x.png in Resources */,
 				DD6287301F1F51BA0030331D /* ConfigurationCell.xib in Resources */,
 				DD4CEFD81F25DD3A0024156F /* CommentListViewController.xib in Resources */,
+				DD4CF0AA1F299A7C0024156F /* AtSomeOneViewController.xib in Resources */,
 				DD4CF0141F285C020024156F /* ActivityRecommendDetailViewController.xib in Resources */,
 				DD6287851F2097940030331D /* HotCircleCell.xib in Resources */,
 				DDFB82751F19B18800AEAAA7 /* Categate_CategateCollectCell.xib in Resources */,
@@ -1537,8 +1650,10 @@
 				DD6287D51F21C9930030331D /* DomainHeaderView.xib in Resources */,
 				DD6287A81F2198FC0030331D /* SameTownViewController.xib in Resources */,
 				EC4BA0651F13562700B9BE1A /* Assets.xcassets in Resources */,
+				DD4CF0A01F2975880024156F /* NewPostImageCell.xib in Resources */,
 				DD4CEFCE1F25B38B0024156F /* ProductColorAndCountView.xib in Resources */,
 				DD62878F1F20C2290030331D /* MyCircleHeaderCell.xib in Resources */,
+				DD4CF0A51F2996B60024156F /* MoreCycleViewController.xib in Resources */,
 				DD62875D1F20522F0030331D /* MyCollectProductViewController.xib in Resources */,
 				DD6287F81F21EE4C0030331D /* PersonalActivityRankCell.xib in Resources */,
 				DD6287A31F2191C90030331D /* ActivityRankNormalCell.xib in Resources */,
@@ -1629,6 +1744,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDFB82B51F1D931500AEAAA7 /* PYSearchConst.m in Sources */,
+				DD4CF0AE1F29A8FC0024156F /* AtSomeOneCell.m in Sources */,
 				DD4CF0001F274B480024156F /* ShakeAndWinViewController.m in Sources */,
 				EC4BA0DB1F1359EC00B9BE1A /* FactoryCollectionViewCell.m in Sources */,
 				DD4CF0311F2885660024156F /* ActivityApplyViewController.m in Sources */,
@@ -1637,6 +1753,7 @@
 				DD4CF0361F2895680024156F /* PersonalActivitilyRuleViewController.m in Sources */,
 				DD6287271F1F48000030331D /* CommentTableViewCell.m in Sources */,
 				EC4BA25E1F15FE0900B9BE1A /* DiscoverHotTopicViewController.m in Sources */,
+				DD4CF1061F29EDD80024156F /* AllClassifyModel.m in Sources */,
 				EC4BA24F1F15D43600B9BE1A /* BrandRulesViewController.m in Sources */,
 				EC4BA0841F13599A00B9BE1A /* UIImage+Color.m in Sources */,
 				DD40B7351F17485500839748 /* HomeCollectCell2.m in Sources */,
@@ -1648,6 +1765,7 @@
 				DD4CF0081F2824A10024156F /* ActivityRuleView.m in Sources */,
 				DD40B73D1F1788B000839748 /* HomeCollectCell3.m in Sources */,
 				DD6287221F1F41BF0030331D /* DynamicWithoutCommentCell.m in Sources */,
+				DD4CF0E91F29BF850024156F /* YQMemoryCache.m in Sources */,
 				EC4BA1341F1462F100B9BE1A /* GiftSendingTableViewCell.m in Sources */,
 				DDFB828E1F1C5E3900AEAAA7 /* MoreProductListCell.m in Sources */,
 				DD4CEFF91F2732210024156F /* AllProductViewController.m in Sources */,
@@ -1667,13 +1785,16 @@
 				DDFB82981F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m in Sources */,
 				DD40B7231F1705A000839748 /* HomeCollectCell1.m in Sources */,
 				DD62878E1F20C2290030331D /* MyCircleHeaderCell.m in Sources */,
+				DD4CF0E81F29BF850024156F /* YQLRUManager.m in Sources */,
 				DD62875C1F20522F0030331D /* MyCollectProductViewController.m in Sources */,
 				EC4BA0D81F1359EC00B9BE1A /* BaseCollectionViewCell.m in Sources */,
 				DD4CF0131F285C020024156F /* ActivityRecommendDetailViewController.m in Sources */,
 				DDFB82B31F1D931500AEAAA7 /* NSBundle+PYSearchExtension.m in Sources */,
 				DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */,
+				DD4CF1151F29F2D00024156F /* AllClassifyChildrenSecondModel.m in Sources */,
 				DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */,
 				DD62871D1F1F3D8B0030331D /* PriaseTableViewCell.m in Sources */,
+				DD4CF0A41F2996B60024156F /* MoreCycleViewController.m in Sources */,
 				EC4BA2431F14B05E00B9BE1A /* CategateNavigationController.m in Sources */,
 				DD6287931F2185A10030331D /* JoinedCircleCell.m in Sources */,
 				DDFB82B71F1D931500AEAAA7 /* PYSearchViewController.m in Sources */,
@@ -1693,8 +1814,11 @@
 				DD4CF00E1F283D500024156F /* ProductDetailImageCell.m in Sources */,
 				DDFB81F11F18686A00AEAAA7 /* CartProductListCell.m in Sources */,
 				DDFB82B81F1D931500AEAAA7 /* UIColor+PYSearchExtension.m in Sources */,
+				DD4CF0E61F29BF850024156F /* YQCacheManager.m in Sources */,
 				DDFB82811F19F97900AEAAA7 /* Categate_Brand_HeaderView.m in Sources */,
+				DD4CF10C1F29EE250024156F /* AllClassifyResultModel.m in Sources */,
 				DD6287E81F21E85D0030331D /* AlreadyPassedViewController.m in Sources */,
+				DD4CF1091F29EE010024156F /* AllClassifyDataModel.m in Sources */,
 				DDFB82C51F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m in Sources */,
 				EC4BA0F21F136CA400B9BE1A /* CategateViewController.m in Sources */,
 				DD4CEFCC1F25B3720024156F /* ProductColorAndCountView.m in Sources */,
@@ -1718,12 +1842,14 @@
 				DDFB829C1F1C78FD00AEAAA7 /* MoreProduct_SortView.m in Sources */,
 				DD6287F21F21ED4F0030331D /* PersonalRankActivityViewController.m in Sources */,
 				DD4CF0221F286E9E0024156F /* ActivityRecommendDetailCell.m in Sources */,
+				DD4CF0EA1F29BF850024156F /* YQNetworking+RequestManager.m in Sources */,
 				DDFB82741F19B18800AEAAA7 /* Categate_CategateCollectCell.m in Sources */,
 				EC4BA0DC1F1359EC00B9BE1A /* FactoryTableViewCell.m in Sources */,
 				EC4BA10B1F136CBD00B9BE1A /* HomePageViewController.m in Sources */,
 				DD62877F1F208CE60030331D /* RankingListViewController.m in Sources */,
 				DD62881D1F22EC5F0030331D /* SubNotification_AnnouncementViewController.m in Sources */,
 				DD6287611F2053750030331D /* MyCollectProductCell.m in Sources */,
+				DD4CF09F1F2975880024156F /* NewPostImageCell.m in Sources */,
 				DD6287091F1EE3210030331D /* FocusPersonCell.m in Sources */,
 				DD62880E1F22EB090030331D /* SubMessage_CommentViewController.m in Sources */,
 				EC4BA0F41F136CA400B9BE1A /* SubCategate_CategateViewController.m in Sources */,
@@ -1736,6 +1862,7 @@
 				DD4CF0401F28A43E0024156F /* NewPostViewController.m in Sources */,
 				EC4BA1121F136CBD00B9BE1A /* SubNotifi_NotificationViewController.m in Sources */,
 				EC4BA05A1F13562700B9BE1A /* main.m in Sources */,
+				DD4CF0A91F299A7C0024156F /* AtSomeOneViewController.m in Sources */,
 				DD6287841F2097940030331D /* HotCircleCell.m in Sources */,
 				DD6288181F22EB740030331D /* SubMessage_PrivateLetterViewController.m in Sources */,
 				DD62873E1F1F5FA20030331D /* GetGiftViewController.m in Sources */,
@@ -1751,6 +1878,7 @@
 				EC4BA0D91F1359EC00B9BE1A /* BaseTableViewCell.m in Sources */,
 				DD6287BB1F21A3700030331D /* LookAroundCell.m in Sources */,
 				DD6287891F20B0BA0030331D /* MainCircleViewController.m in Sources */,
+				DD4CF1121F29F22E0024156F /* AllClassifyChidrenFirstModel.m in Sources */,
 				EC4BA11C1F1376F600B9BE1A /* CartViewController.m in Sources */,
 				DD6287D31F21C96F0030331D /* DomainHeaderView.m in Sources */,
 				DD6287ED1F21E8C00030331D /* FailureReviewViewController.m in Sources */,
@@ -1767,7 +1895,9 @@
 				DD6287D91F21DE0C0030331D /* MyFocusViewController.m in Sources */,
 				EC4BA10C1F136CBD00B9BE1A /* NotificationViewController.m in Sources */,
 				DD4CEFE31F26D9A60024156F /* BrandDetailCell.m in Sources */,
+				DD4CF0FA1F29BF850024156F /* YQNetworking.m in Sources */,
 				EC4BA2651F160F1F00B9BE1A /* DiscoverCell.m in Sources */,
+				DD4CF0E71F29BF850024156F /* YQDiskCache.m in Sources */,
 				EC4BA0EB1F136C8100B9BE1A /* PersonalViewController.m in Sources */,
 				DD4CF0271F2877EC0024156F /* ActivityRecommendApplyCell.m in Sources */,
 				DD6287A71F2198FC0030331D /* SameTownViewController.m in Sources */,

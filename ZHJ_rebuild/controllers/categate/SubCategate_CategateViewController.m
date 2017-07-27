@@ -14,21 +14,37 @@
 //cells
 #import "Categate_CategateTableViewCell.h"
 
+//models
+#import "AllClassifyModel.h"
+
 @interface SubCategate_CategateViewController ()<LeftSideSegmentViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong)NSArray *dataArray;
 @property (nonatomic, strong)LeftSideSegmentView *leftSegment;
 @property (nonatomic, strong)UITableView *rightTableView;
+@property (nonatomic, strong)AllClassifyModel *model;
 
 @end
 
 @implementation SubCategate_CategateViewController
 
+#pragma mark - <懒加载>
+//-(NSMutableArray *)dataArray
+//{
+//    if (!_dataArray) {
+//        _dataArray = [[NSMutableArray alloc]init];
+//    }
+//    return _dataArray;
+//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initLeftSideSegmentView];
-    [self initRightTableViewView];
+    
+    [self receiveData];
+    
+//    [self respondWithRAC];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,9 +69,11 @@
 #pragma mark - <初始化左侧segmentView>
 -(void)initLeftSideSegmentView
 {
-    NSArray *array = @[@"123",@"345",@"46465",@"3436",@"8578",@"6345",@"345",@"46465",@"3436",@"8578",@"6345",@"345",@"46465",@"3436",@"8578",@"6345"];
-    self.dataArray = array;
-    LeftSideSegmentView *leftSegment = [[LeftSideSegmentView alloc]initWithFrame:self.view.bounds dataArray:array];
+//    NSArray *array = @[@"123",@"345",@"46465",@"3436",@"8578",@"6345",@"345",@"46465",@"3436",@"8578",@"6345",@"345",@"46465",@"3436",@"8578",@"6345"];
+//    self.dataArray = array;
+    NSArray *resultArray = (NSArray *)self.model.data.result;
+    
+    LeftSideSegmentView *leftSegment = [[LeftSideSegmentView alloc]initWithFrame:self.view.bounds dataArray:resultArray];
     leftSegment.delegate = self;
     [self.view addSubview:leftSegment];
     __weak typeof(self) weakSelf = self;
@@ -86,6 +104,38 @@
     
     [self.rightTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"test"];
 }
+
+#pragma mark - <接收数据>
+-(void)receiveData
+{
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"postData_classify" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        
+        AllClassifyModel *model = x.object;
+        self.model = model;
+//        NSLog(@"%@",x.object);
+        
+        //回到主线程初始化
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self initLeftSideSegmentView];
+            [self initRightTableViewView];
+        });
+    }];
+}
+
+#pragma mark - <RAC响应>
+-(void)respondWithRAC
+{
+    
+}
+
+
+
+
+
+
+
+
+
 
 
 

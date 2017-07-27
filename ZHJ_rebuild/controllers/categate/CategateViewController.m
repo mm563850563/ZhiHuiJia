@@ -19,6 +19,9 @@
 #import "BrandDetailViewController.h"
 #import "MoreProductListViewController.h"
 
+//models
+#import "AllClassifyModel.h"
+
 @interface CategateViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,UISearchBarDelegate>
 
 @property (nonatomic, strong)SegmentTapView *segment;
@@ -42,10 +45,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    [self getMainData];
     [self settingNavigation];
     [self initSegment];
     [self initFlipTableView];
-    [self respondWithRAC];
+//    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,6 +67,19 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <请求数据>
+-(void)getMainData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetAllClassify];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:nil progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            AllClassifyModel *model = [[AllClassifyModel alloc]initWithDictionary:dataDict error:nil];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"postData_classify" object:model];
+        }
+    } failBlock:nil];
+}
 
 #pragma mark - <配置navigation>
 -(void)settingNavigation
