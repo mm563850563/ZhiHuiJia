@@ -21,6 +21,9 @@
 // clear背景颜色
 #define kClearColor [UIColor clearColor]
 
+//placeholder
+#define kPlaceholder [UIImage imageNamed:@"huantu"]
+
 //十六进制颜色
 #define kLightGray 0xE6E6E6
 #define kDeepGray 0x686868

@@ -27,12 +27,12 @@
                                     <constraint firstAttribute="height" constant="60" id="1Wo-4s-Kfx"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="平衡车" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSi-EA-YBR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSi-EA-YBR">
                                 <rect key="frame" x="5" y="70" width="140" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="MzA-sc-Fnu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -55,6 +55,10 @@
                 <constraint firstAttribute="trailing" secondItem="h60-Ka-Ztz" secondAttribute="trailing" id="wCv-RV-u9x"/>
             </constraints>
             <size key="customSize" width="150" height="141"/>
+            <connections>
+                <outlet property="imgProduct" destination="RRA-XJ-sVK" id="Q7x-Gz-chi"/>
+                <outlet property="labelProductName" destination="TSi-EA-YBR" id="xhR-MN-ncx"/>
+            </connections>
             <point key="canvasLocation" x="94" y="99.5"/>
         </collectionViewCell>
     </objects>

@@ -46,7 +46,7 @@
     [super viewDidLoad];
     
     
-    [self getMainData];
+//    [self getMainData];
     [self settingNavigation];
     [self initSegment];
     [self initFlipTableView];

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class AllClassifyChidrenFirstModel;
 
 @interface Categate_CategateTableViewCell : UITableViewCell
+
+@property (nonatomic, strong)AllClassifyChidrenFirstModel *model;
 
 @end

@@ -84,6 +84,8 @@
 		DD4CF10C1F29EE250024156F /* AllClassifyResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF10B1F29EE250024156F /* AllClassifyResultModel.m */; };
 		DD4CF1121F29F22E0024156F /* AllClassifyChidrenFirstModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF1111F29F22E0024156F /* AllClassifyChidrenFirstModel.m */; };
 		DD4CF1151F29F2D00024156F /* AllClassifyChildrenSecondModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF1141F29F2D00024156F /* AllClassifyChildrenSecondModel.m */; };
+		DD4CF1191F2AFB9E0024156F /* CategoryProductNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF1171F2AFB9E0024156F /* CategoryProductNameCell.m */; };
+		DD4CF11A1F2AFB9E0024156F /* CategoryProductNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4CF1181F2AFB9E0024156F /* CategoryProductNameCell.xib */; };
 		DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */; };
 		DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */; };
 		DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */; };
@@ -436,6 +438,9 @@
 		DD4CF1111F29F22E0024156F /* AllClassifyChidrenFirstModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllClassifyChidrenFirstModel.m; path = models/AllClassifyChidrenFirstModel.m; sourceTree = "<group>"; };
 		DD4CF1131F29F2D00024156F /* AllClassifyChildrenSecondModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllClassifyChildrenSecondModel.h; path = models/AllClassifyChildrenSecondModel.h; sourceTree = "<group>"; };
 		DD4CF1141F29F2D00024156F /* AllClassifyChildrenSecondModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllClassifyChildrenSecondModel.m; path = models/AllClassifyChildrenSecondModel.m; sourceTree = "<group>"; };
+		DD4CF1161F2AFB9E0024156F /* CategoryProductNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryProductNameCell.h; path = cells/CategoryProductNameCell.h; sourceTree = "<group>"; };
+		DD4CF1171F2AFB9E0024156F /* CategoryProductNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryProductNameCell.m; path = cells/CategoryProductNameCell.m; sourceTree = "<group>"; };
+		DD4CF1181F2AFB9E0024156F /* CategoryProductNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryProductNameCell.xib; path = cells/CategoryProductNameCell.xib; sourceTree = "<group>"; };
 		DD6286F71F1E398C0030331D /* Discover_HotTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_HotTopicCell.h; path = cells/Discover_HotTopicCell.h; sourceTree = "<group>"; };
 		DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_HotTopicCell.m; path = cells/Discover_HotTopicCell.m; sourceTree = "<group>"; };
 		DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_HotTopicCell.xib; path = cells/Discover_HotTopicCell.xib; sourceTree = "<group>"; };
@@ -1149,6 +1154,9 @@
 				DD4CF0AB1F29A8FC0024156F /* AtSomeOneCell.h */,
 				DD4CF0AC1F29A8FC0024156F /* AtSomeOneCell.m */,
 				DD4CF0AD1F29A8FC0024156F /* AtSomeOneCell.xib */,
+				DD4CF1161F2AFB9E0024156F /* CategoryProductNameCell.h */,
+				DD4CF1171F2AFB9E0024156F /* CategoryProductNameCell.m */,
+				DD4CF1181F2AFB9E0024156F /* CategoryProductNameCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -1572,6 +1580,7 @@
 				DDFB82691F187A7900AEAAA7 /* cb_mono_on@2x.png in Resources */,
 				DD4CF00F1F283D500024156F /* ProductDetailImageCell.xib in Resources */,
 				DD6287051F1EE19C0030331D /* FocusPersonFileViewController.xib in Resources */,
+				DD4CF11A1F2AFB9E0024156F /* CategoryProductNameCell.xib in Resources */,
 				DD4CF0191F285E7D0024156F /* ActivityRecommendImageCell.xib in Resources */,
 				DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */,
 				DD6287C11F21AB890030331D /* HandpickActivitiesCell.xib in Resources */,
@@ -1781,6 +1790,7 @@
 				DD40B7411F179C3100839748 /* SameHobbyCell.m in Sources */,
 				EC4BA1191F136DBB00B9BE1A /* MainTabBarViewController.m in Sources */,
 				DD6288091F22EA510030331D /* SubMessage_AboutMeViewController.m in Sources */,
+				DD4CF1191F2AFB9E0024156F /* CategoryProductNameCell.m in Sources */,
 				DD6288051F2214F40030331D /* RatingBar.m in Sources */,
 				DDFB82981F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m in Sources */,
 				DD40B7231F1705A000839748 /* HomeCollectCell1.m in Sources */,

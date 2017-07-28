@@ -69,8 +69,8 @@
 #pragma mark - <初始化collectionView>
 -(void)initCollectionView
 {
-    NSArray *arrayTitle = @[@"购物车",@"我的收藏",@"我的余额",@"优惠券",@"客服中心",@"分享邀请",@"关注公众号",@"关于智惠加",@"意见反馈"];
-    NSArray *arrayPhoto = @[@"car",@"shouc",@"zj",@"quan",@"wdkf",@"liwu",@"gzh",@"LOGO",@"fk"];
+    NSArray *arrayTitle = @[@"我的钱包",@"优惠券",@"我的收藏",@"分享邀请",@"客服中心",@"足迹",@"关注公众号",@"关于我们",@"意见反馈"];
+    NSArray *arrayPhoto = @[@"my_ wallet",@"discount",@"my_collection",@"share_invite",@"customer_center",@"footprint",@"focus_public",@"about_us",@"feedback"];
     self.arrayCollection = @[arrayTitle,arrayPhoto];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];

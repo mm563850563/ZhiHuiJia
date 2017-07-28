@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class AllClassifyChildrenSecondModel;
+
 @interface Categate_CategateCollectCell : UICollectionViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgProduct;
+@property (weak, nonatomic) IBOutlet UILabel *labelProductName;
+@property (nonatomic, strong)AllClassifyChildrenSecondModel *model;
 
 @end
