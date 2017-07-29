@@ -24,7 +24,7 @@
     if (_model != model) {
         _model = model;
         
-        NSString *urlStr  = [NSString stringWithFormat:@"%@%@",kDomainImage,model.image];
+        NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainImage,model.image];
         NSURL *url = [NSURL URLWithString:urlStr];
         [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
         

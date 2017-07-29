@@ -12,5 +12,6 @@
 @interface Categate_CategateTableViewCell : UITableViewCell
 
 @property (nonatomic, strong)AllClassifyChidrenFirstModel *model;
+@property (nonatomic, assign)CGFloat cellHeight;
 
 @end

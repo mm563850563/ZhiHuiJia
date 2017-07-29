@@ -203,6 +203,14 @@
 		DD6288351F233EE00030331D /* SameHobbyPersonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6288331F233EDF0030331D /* SameHobbyPersonListViewController.xib */; };
 		DD6288391F233FA30030331D /* SameHobbyPersonListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6288371F233FA30030331D /* SameHobbyPersonListCell.m */; };
 		DD62883A1F233FA30030331D /* SameHobbyPersonListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6288381F233FA30030331D /* SameHobbyPersonListCell.xib */; };
+		DDDD17B91F2C5194006BE206 /* ProgressHUDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17B81F2C5194006BE206 /* ProgressHUDManager.m */; };
+		DDDD17BF1F2C6B11006BE206 /* IndexCarouselDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17BE1F2C6B11006BE206 /* IndexCarouselDataModel.m */; };
+		DDDD17C21F2C6B54006BE206 /* IndexCarouselResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17C11F2C6B54006BE206 /* IndexCarouselResultModel.m */; };
+		DDDD17C51F2C6C06006BE206 /* IndexCarouselModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17C41F2C6C06006BE206 /* IndexCarouselModel.m */; };
+		DDDD17C91F2C9141006BE206 /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17C71F2C9141006BE206 /* MyOrderViewController.m */; };
+		DDDD17CA1F2C9141006BE206 /* MyOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDDD17C81F2C9141006BE206 /* MyOrderViewController.xib */; };
+		DDDD17CE1F2C93A2006BE206 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17CC1F2C93A2006BE206 /* OrderListViewController.m */; };
+		DDDD17CF1F2C93A2006BE206 /* OrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDDD17CD1F2C93A2006BE206 /* OrderListViewController.xib */; };
 		DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */; };
 		DDFB81C01F18475700AEAAA7 /* SameHobbyPersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */; };
 		DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81C21F184B7600AEAAA7 /* CALayer+XIBUIColor.m */; };
@@ -618,6 +626,20 @@
 		DD6288361F233FA30030331D /* SameHobbyPersonListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameHobbyPersonListCell.h; path = cells/SameHobbyPersonListCell.h; sourceTree = "<group>"; };
 		DD6288371F233FA30030331D /* SameHobbyPersonListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameHobbyPersonListCell.m; path = cells/SameHobbyPersonListCell.m; sourceTree = "<group>"; };
 		DD6288381F233FA30030331D /* SameHobbyPersonListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SameHobbyPersonListCell.xib; path = cells/SameHobbyPersonListCell.xib; sourceTree = "<group>"; };
+		DDDD17B71F2C5194006BE206 /* ProgressHUDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressHUDManager.h; path = tools/ProgressHUDManager.h; sourceTree = "<group>"; };
+		DDDD17B81F2C5194006BE206 /* ProgressHUDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressHUDManager.m; path = tools/ProgressHUDManager.m; sourceTree = "<group>"; };
+		DDDD17BD1F2C6B11006BE206 /* IndexCarouselDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexCarouselDataModel.h; path = models/IndexCarouselDataModel.h; sourceTree = "<group>"; };
+		DDDD17BE1F2C6B11006BE206 /* IndexCarouselDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexCarouselDataModel.m; path = models/IndexCarouselDataModel.m; sourceTree = "<group>"; };
+		DDDD17C01F2C6B54006BE206 /* IndexCarouselResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexCarouselResultModel.h; path = models/IndexCarouselResultModel.h; sourceTree = "<group>"; };
+		DDDD17C11F2C6B54006BE206 /* IndexCarouselResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexCarouselResultModel.m; path = models/IndexCarouselResultModel.m; sourceTree = "<group>"; };
+		DDDD17C31F2C6C06006BE206 /* IndexCarouselModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexCarouselModel.h; path = models/IndexCarouselModel.h; sourceTree = "<group>"; };
+		DDDD17C41F2C6C06006BE206 /* IndexCarouselModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexCarouselModel.m; path = models/IndexCarouselModel.m; sourceTree = "<group>"; };
+		DDDD17C61F2C9141006BE206 /* MyOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyOrderViewController.h; path = controllers/personal/MyOrderViewController.h; sourceTree = "<group>"; };
+		DDDD17C71F2C9141006BE206 /* MyOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyOrderViewController.m; path = controllers/personal/MyOrderViewController.m; sourceTree = "<group>"; };
+		DDDD17C81F2C9141006BE206 /* MyOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyOrderViewController.xib; path = controllers/personal/MyOrderViewController.xib; sourceTree = "<group>"; };
+		DDDD17CB1F2C93A2006BE206 /* OrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListViewController.h; path = controllers/personal/OrderListViewController.h; sourceTree = "<group>"; };
+		DDDD17CC1F2C93A2006BE206 /* OrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListViewController.m; path = controllers/personal/OrderListViewController.m; sourceTree = "<group>"; };
+		DDDD17CD1F2C93A2006BE206 /* OrderListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListViewController.xib; path = controllers/personal/OrderListViewController.xib; sourceTree = "<group>"; };
 		DDFB81BC1F18475700AEAAA7 /* SameHobbyPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameHobbyPersonCell.h; path = cells/SameHobbyPersonCell.h; sourceTree = "<group>"; };
 		DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameHobbyPersonCell.m; path = cells/SameHobbyPersonCell.m; sourceTree = "<group>"; };
 		DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SameHobbyPersonCell.xib; path = cells/SameHobbyPersonCell.xib; sourceTree = "<group>"; };
@@ -1234,6 +1256,12 @@
 				DD4CF1111F29F22E0024156F /* AllClassifyChidrenFirstModel.m */,
 				DD4CF1131F29F2D00024156F /* AllClassifyChildrenSecondModel.h */,
 				DD4CF1141F29F2D00024156F /* AllClassifyChildrenSecondModel.m */,
+				DDDD17C31F2C6C06006BE206 /* IndexCarouselModel.h */,
+				DDDD17C41F2C6C06006BE206 /* IndexCarouselModel.m */,
+				DDDD17BD1F2C6B11006BE206 /* IndexCarouselDataModel.h */,
+				DDDD17BE1F2C6B11006BE206 /* IndexCarouselDataModel.m */,
+				DDDD17C01F2C6B54006BE206 /* IndexCarouselResultModel.h */,
+				DDDD17C11F2C6B54006BE206 /* IndexCarouselResultModel.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -1254,6 +1282,8 @@
 				DD40B7381F176E8600839748 /* EqualSpaceFlowLayout.m */,
 				DDFB81C11F184B7600AEAAA7 /* CALayer+XIBUIColor.h */,
 				DDFB81C21F184B7600AEAAA7 /* CALayer+XIBUIColor.m */,
+				DDDD17B71F2C5194006BE206 /* ProgressHUDManager.h */,
+				DDDD17B81F2C5194006BE206 /* ProgressHUDManager.m */,
 			);
 			name = tools;
 			sourceTree = "<group>";
@@ -1450,6 +1480,12 @@
 			children = (
 				EC4BA0E71F136C8100B9BE1A /* PersonalViewController.h */,
 				EC4BA0E81F136C8100B9BE1A /* PersonalViewController.m */,
+				DDDD17C61F2C9141006BE206 /* MyOrderViewController.h */,
+				DDDD17C71F2C9141006BE206 /* MyOrderViewController.m */,
+				DDDD17C81F2C9141006BE206 /* MyOrderViewController.xib */,
+				DDDD17CB1F2C93A2006BE206 /* OrderListViewController.h */,
+				DDDD17CC1F2C93A2006BE206 /* OrderListViewController.m */,
+				DDDD17CD1F2C93A2006BE206 /* OrderListViewController.xib */,
 				DD6287681F207A850030331D /* CustomerServiceCenterViewController.h */,
 				DD6287691F207A850030331D /* CustomerServiceCenterViewController.m */,
 				DD62876A1F207A850030331D /* CustomerServiceCenterViewController.xib */,
@@ -1581,6 +1617,7 @@
 				DD4CF00F1F283D500024156F /* ProductDetailImageCell.xib in Resources */,
 				DD6287051F1EE19C0030331D /* FocusPersonFileViewController.xib in Resources */,
 				DD4CF11A1F2AFB9E0024156F /* CategoryProductNameCell.xib in Resources */,
+				DDDD17CA1F2C9141006BE206 /* MyOrderViewController.xib in Resources */,
 				DD4CF0191F285E7D0024156F /* ActivityRecommendImageCell.xib in Resources */,
 				DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */,
 				DD6287C11F21AB890030331D /* HandpickActivitiesCell.xib in Resources */,
@@ -1614,6 +1651,7 @@
 				EC4BA2551F15EDF000B9BE1A /* DiscoverHeaderCell.xib in Resources */,
 				DD62871E1F1F3D8B0030331D /* PriaseTableViewCell.xib in Resources */,
 				DDFB82B41F1D931500AEAAA7 /* PYSearch.bundle in Resources */,
+				DDDD17CF1F2C93A2006BE206 /* OrderListViewController.xib in Resources */,
 				DD6288231F22EC7A0030331D /* SubNotification_DiscountViewController.xib in Resources */,
 				DD4CF03C1F289FB20024156F /* MyOnFocusCell.xib in Resources */,
 				DD6288351F233EE00030331D /* SameHobbyPersonListViewController.xib in Resources */,
@@ -1779,6 +1817,7 @@
 				DDFB828E1F1C5E3900AEAAA7 /* MoreProductListCell.m in Sources */,
 				DD4CEFF91F2732210024156F /* AllProductViewController.m in Sources */,
 				DD6287F71F21EE4C0030331D /* PersonalActivityRankCell.m in Sources */,
+				DDDD17C91F2C9141006BE206 /* MyOrderViewController.m in Sources */,
 				DD62876B1F207A850030331D /* CustomerServiceCenterViewController.m in Sources */,
 				DD40B7311F17437100839748 /* IntellectWearsCell.m in Sources */,
 				DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */,
@@ -1788,11 +1827,13 @@
 				EC4BA11F1F13771100B9BE1A /* DiscoverViewController.m in Sources */,
 				EC4BA2611F15FE2200B9BE1A /* DiscoverRecommendViewController.m in Sources */,
 				DD40B7411F179C3100839748 /* SameHobbyCell.m in Sources */,
+				DDDD17C51F2C6C06006BE206 /* IndexCarouselModel.m in Sources */,
 				EC4BA1191F136DBB00B9BE1A /* MainTabBarViewController.m in Sources */,
 				DD6288091F22EA510030331D /* SubMessage_AboutMeViewController.m in Sources */,
 				DD4CF1191F2AFB9E0024156F /* CategoryProductNameCell.m in Sources */,
 				DD6288051F2214F40030331D /* RatingBar.m in Sources */,
 				DDFB82981F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m in Sources */,
+				DDDD17CE1F2C93A2006BE206 /* OrderListViewController.m in Sources */,
 				DD40B7231F1705A000839748 /* HomeCollectCell1.m in Sources */,
 				DD62878E1F20C2290030331D /* MyCircleHeaderCell.m in Sources */,
 				DD4CF0E81F29BF850024156F /* YQLRUManager.m in Sources */,
@@ -1819,6 +1860,7 @@
 				DD40B7391F176E8600839748 /* EqualSpaceFlowLayout.m in Sources */,
 				DDFB82931F1C699D00AEAAA7 /* MoreProductListViewController.m in Sources */,
 				DD6287A21F2191C90030331D /* ActivityRankNormalCell.m in Sources */,
+				DDDD17BF1F2C6B11006BE206 /* IndexCarouselDataModel.m in Sources */,
 				DD6287CF1F21C26C0030331D /* DomainViewController.m in Sources */,
 				EC4BA0E91F136C8100B9BE1A /* FeedbackViewController.m in Sources */,
 				DD4CF00E1F283D500024156F /* ProductDetailImageCell.m in Sources */,
@@ -1878,6 +1920,8 @@
 				DD62873E1F1F5FA20030331D /* GetGiftViewController.m in Sources */,
 				DDFB82B61F1D931500AEAAA7 /* PYSearchSuggestionViewController.m in Sources */,
 				DD6287751F208C0B0030331D /* HotCircleViewController.m in Sources */,
+				DDDD17B91F2C5194006BE206 /* ProgressHUDManager.m in Sources */,
+				DDDD17C21F2C6B54006BE206 /* IndexCarouselResultModel.m in Sources */,
 				DD62870E1F1EEE1B0030331D /* FocusPersonHeaderCell.m in Sources */,
 				DD6287041F1EE19C0030331D /* FocusPersonFileViewController.m in Sources */,
 				DD6287481F1F90E80030331D /* GiftListCell.m in Sources */,

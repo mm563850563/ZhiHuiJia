@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 @class CycleScrollViewCell;
-@class CycleScrollModel;
 
 @protocol CycleScrollViewCellDelegate <NSObject>
 
@@ -19,6 +18,6 @@
 @interface CycleScrollViewCell : UITableViewCell
 
 @property (nonatomic, weak)id<CycleScrollViewCellDelegate> delegate;
-@property (nonatomic, strong)CycleScrollModel *model;
+@property (nonatomic, strong)NSArray *carouselModels;
 
 @end

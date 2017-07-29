@@ -42,9 +42,12 @@
 #import <Masonry/Masonry.h>
 #import <ReactiveObjC.h>
 #import <UIImageView+WebCache.h>
+#import <UIImage+GIF.h>
 #import "GetHeightOfText.h"
 #import "YQNetworking.h"
 #import <JSONModel.h>
+#import <MBProgressHUD.h>
+#import "ProgressHUDManager.h"
 
 
 
@@ -59,7 +62,7 @@
 
 
 
-
+//api
 #pragma mark - <Domain_Base>
 #define kDomainBase @"http://www.havshark.com/api"
 
@@ -69,6 +72,8 @@
 #pragma mark - <分类页面分类>
 #define kGetAllClassify @"/classify/getAllClassify"
 
+#pragma mark - <首页轮播图>
+#define kIndexCarousel @"/Index/carousel"
 
 
 

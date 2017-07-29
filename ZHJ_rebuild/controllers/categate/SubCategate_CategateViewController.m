@@ -17,6 +17,8 @@
 #import "AllClassifyResultModel.h"
 #import "AllClassifyChidrenFirstModel.h"
 
+
+
 @interface SubCategate_CategateViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong)NSArray *dataResultArray;
@@ -26,6 +28,8 @@
 @property (nonatomic, strong)UITableView *leftTableView;
 @property (nonatomic, strong)UITableView *rightTableView;
 @property (nonatomic, strong)AllClassifyModel *model;
+
+@property (nonatomic, strong)MBProgressHUD *hud;
 
 @end
 
@@ -42,8 +46,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
+
+    [self initLeftTableView];
+    [self initRightTableView];
     [self getMainData];
 }
 
@@ -59,27 +64,47 @@
 //        [self.leftTableView.delegate tableView:self.leftTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 //    }
 //}
+//任务，测试进度显示
+- (void)myProgressTask {
+    // This just increases the progress indicator in a loop
+    float progress = 0.0f;
+    while (progress < 1.0f) {
+        progress += 0.01f;
+        self.hud.progress = progress;
+        usleep(50000);
+    }
+}
 
 #pragma mark - <请求数据>
 -(void)getMainData
 {
+//    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    self.hud.mode = MBProgressHUDModeAnnularDeterminate;
+//    self.hud.animationType = MBProgressHUDAnimationZoomIn;
+//    [self.hud showAnimated:YES];
+//    self.hud.dimBackground = NO;
+    
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetAllClassify];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:nil progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             AllClassifyModel *model = [[AllClassifyModel alloc]initWithDictionary:dataDict error:nil];
-            self.model = model;
-            self.dataResultArray = model.data.result;
-            AllClassifyResultModel *resultModel = self.dataResultArray[0];
-            self.dataChildFirstArray = resultModel.children;
+            if ([model.code isEqualToString:@"200"]) {
+                self.model = model;
+                self.dataResultArray = model.data.result;
+                AllClassifyResultModel *resultModel = self.dataResultArray[0];
+                self.dataChildFirstArray = resultModel.children;
+                
+                //回到主线程初始化
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //                [self.hud hideAnimated:YES];
+                    [self.leftTableView reloadData];
+                    [self.rightTableView reloadData];
+                });
+            }else{
+//                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:<#(UIView *)#> animated:<#(BOOL)#> warningMessage:<#(NSString *)#>]
+            }
             
-            //回到主线程初始化
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [self initLeftTableView];
-                [self initRightTableView];
-                
-            });
         }
     } failBlock:nil];
     
@@ -182,14 +207,18 @@
     }
 }
 
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (tableView == self.leftTableView) {
-//        return 50;
-//    }else{
-//        return 230;
-//    }
-//}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == self.leftTableView) {
+        return 50;
+    }else{
+        Categate_CategateTableViewCell *cell = [[Categate_CategateTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([Categate_CategateTableViewCell class])];
+        AllClassifyChidrenFirstModel *modelFirst = self.dataChildFirstArray[indexPath.section];
+        
+        cell.model = modelFirst;
+        return cell.cellHeight;
+    }
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

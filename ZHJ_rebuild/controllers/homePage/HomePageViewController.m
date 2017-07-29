@@ -35,7 +35,9 @@
 #import "SameHobbyCell.h"//发现同趣的人的大cell
 
 //models
-#import "CycleScrollModel.h"
+//#import "CycleScrollModel.h"
+#import "IndexCarouselModel.h"
+#import "IndexCarouselResultModel.h"
 
 @interface HomePageViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,CycleScrollViewCellDelegate,UISearchBarDelegate,UINavigationControllerDelegate>
 
@@ -45,6 +47,7 @@
 
 @property (nonatomic, strong)NSMutableArray *dataArray;
 @property (nonatomic, strong)NSArray *sectionTitleArray;
+@property (nonatomic, strong)NSArray *carouselResultArray;
 
 @end
 
@@ -70,8 +73,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self getIndexCarouselData];
     [self settingNavigationBar];
-    [self getTestData];
     [self initTableView];
     [self addSearchBarIntoNavigationBar];
     [self respondWithRAC];
@@ -98,17 +101,35 @@
 //    self.navigationController.navigationBar.translucent = YES;
 //}
 
-#pragma mark - <获取数据>
--(void)getTestData
+#pragma mark - <获取轮播图数据>
+-(void)getIndexCarouselData
 {
-    UIImage *img1 = [UIImage imageNamed:@"fxdl"];
-    UIImage *img2 = [UIImage imageNamed:@"fenxiangdali"];
-    UIImage *img3 = [UIImage imageNamed:@"tongzzhi2"];
-    NSArray *imgArray = @[img1,img2,img3];
-    CycleScrollModel *model = [[CycleScrollModel alloc]init];
-    model.arrayImage = imgArray;
-    [self.dataArray addObject:model];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kIndexCarousel];
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.navigationController.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:nil progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            IndexCarouselModel *model = [[IndexCarouselModel alloc]initWithDictionary:dataDict error:nil];
+            if ([model.code isEqualToString: @"200"]) {
+                self.carouselResultArray = model.data.result;
+                //回到主线程刷新数据
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }else{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:error.description];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }];
 }
+
 
 #pragma mark - <初始化tableView>
 -(void)initTableView
@@ -125,7 +146,7 @@
     //注册cell
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"more"];
     
-    [self.tableView registerClass:[CycleScrollViewCell class] forCellReuseIdentifier:NSStringFromClass([CycleScrollModel class])];
+    [self.tableView registerClass:[CycleScrollViewCell class] forCellReuseIdentifier:NSStringFromClass([IndexCarouselModel class])];
     
     UINib *nibGiftSending = [UINib nibWithNibName:NSStringFromClass([GiftSendingTableViewCell class]) bundle:nil];
     [self.tableView registerNib:nibGiftSending forCellReuseIdentifier:NSStringFromClass([GiftSendingTableViewCell class])];
@@ -309,15 +330,11 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            //        CycleScrollModel *model = self.dataArray[0];
-            //        BaseTableViewCell *baseCell = [FactoryTableViewCell createTableViewCellWithModel:model tableView:tableView indexPath:indexPath];
-            //        [baseCell setDataWithModel:model];
-            //        cell = baseCell;
             
-            CycleScrollModel *model = self.dataArray[indexPath.row];
-            CycleScrollViewCell *cycleCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CycleScrollModel class])];
+//            IndexCarouselResultModel *model = self.carouselResultArray[indexPath.row];
+            CycleScrollViewCell *cycleCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([IndexCarouselModel class])];
             cycleCell.delegate = self;
-            cycleCell.model = model;
+            cycleCell.carouselModels = self.carouselResultArray;
             cell = cycleCell;
         }else if (indexPath.row == 1){
             GiftSendingTableViewCell *giftCell = [tableView dequeueReusableCellWithIdentifier:@"GiftSendingTableViewCell"];
@@ -633,7 +650,7 @@
             return 40;
         }
     }
-    return 200;
+    return 250;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

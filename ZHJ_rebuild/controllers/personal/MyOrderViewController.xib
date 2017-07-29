@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12121"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyOrderViewController">
+            <connections>
+                <outlet property="flipBGView" destination="u4y-Cs-ZeM" id="vMU-oR-SIk"/>
+                <outlet property="segmentBGView" destination="uZM-bu-3YK" id="t69-3e-vOh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZM-bu-3YK">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="3bv-mm-i6y"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4y-Cs-ZeM">
+                    <rect key="frame" x="0.0" y="45" width="375" height="622"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="u4y-Cs-ZeM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Arb-Op-5YL"/>
+                <constraint firstItem="u4y-Cs-ZeM" firstAttribute="top" secondItem="uZM-bu-3YK" secondAttribute="bottom" id="SpF-VJ-Y3K"/>
+                <constraint firstAttribute="bottom" secondItem="u4y-Cs-ZeM" secondAttribute="bottom" id="U1m-kL-EV4"/>
+                <constraint firstItem="uZM-bu-3YK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UXS-Oi-Pij"/>
+                <constraint firstAttribute="trailing" secondItem="uZM-bu-3YK" secondAttribute="trailing" id="nyQ-fm-XHq"/>
+                <constraint firstItem="uZM-bu-3YK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qlo-j0-Jgj"/>
+                <constraint firstAttribute="trailing" secondItem="u4y-Cs-ZeM" secondAttribute="trailing" id="yfX-3w-WrN"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

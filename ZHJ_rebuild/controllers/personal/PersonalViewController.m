@@ -16,6 +16,7 @@
 #import "FeedbackViewController.h"
 #import "GetGiftViewController.h"
 #import "CustomerServiceCenterViewController.h"
+#import "MyOrderViewController.h"
 
 //cells
 #import "PersonalCollectCell.h"
@@ -92,12 +93,56 @@
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([PersonalCollectCell class])];
 }
 
+#pragma mark - <跳转“我的订单”页面>
+-(void)jumpToMyOrderVC
+{
+    MyOrderViewController *myOrderVC = [[MyOrderViewController alloc]initWithNibName:NSStringFromClass([MyOrderViewController class]) bundle:nil];
+    myOrderVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:myOrderVC animated:YES];
+}
+
 #pragma mark - <设置按钮响应>
 - (IBAction)btnConfigurationAction:(UIButton *)sender
 {
     ConfigurationViewController *configVC = [[ConfigurationViewController alloc]init];
     configVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:configVC animated:YES];
+}
+
+#pragma mark - <设置“我的订单”响应>
+- (IBAction)btnMyOrderAction:(UIButton *)sender
+{
+    [self jumpToMyOrderVC];
+}
+
+#pragma mark - <设置“待付款”响应>
+- (IBAction)btnWaitToPayAction:(UIButton *)sender
+{
+    [self jumpToMyOrderVC];
+}
+
+#pragma mark - <设置“待发货”响应>
+- (IBAction)btnWaitToSendOutAction:(UIButton *)sender
+{
+    [self jumpToMyOrderVC];
+}
+
+#pragma mark - <设置“已发货”响应>
+- (IBAction)btnsendedGoodsAction:(UIButton *)sender
+{
+    [self jumpToMyOrderVC];
+}
+
+#pragma mark - <设置“待评价”响应>
+- (IBAction)btnWaitToCommentAction:(UIButton *)sender
+{
+    [self jumpToMyOrderVC];
+}
+
+#pragma mark - <设置“退换／售后”响应>
+- (IBAction)btnAfterSalesAction:(UIButton *)sender
+{
+    
 }
 
 
@@ -108,7 +153,7 @@
     self.heightForCollectBGView.constant = kSCREEN_WIDTH;
     CGFloat height1 = self.heightForHeaderView.constant;
     CGFloat height2 = self.heightForCollectBGView.constant;
-    self.heightForScrollView.constant = height1 + height2 + 10;
+    self.heightForScrollView.constant = height1 + height2 + 60;
     
     [self.collectionView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));

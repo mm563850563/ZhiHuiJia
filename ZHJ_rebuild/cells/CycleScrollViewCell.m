@@ -7,8 +7,8 @@
 //
 
 #import "CycleScrollViewCell.h"
-#import "CycleScrollModel.h"
 #import <SDCycleScrollView.h>
+#import "IndexCarouselResultModel.h"
 
 
 @interface CycleScrollViewCell ()<SDCycleScrollViewDelegate>
@@ -35,7 +35,9 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:self.contentView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"huantu"]];
+        self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:self.contentView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"chang"]];
+        self.cycleScrollView.autoScrollTimeInterval = 3.0;
+        self.cycleScrollView.backgroundColor = kColorFromRGB(kWhite);
         self.cycleScrollView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
         self.cycleScrollView.delegate = self;
         [self.contentView addSubview:self.cycleScrollView];
@@ -61,12 +63,17 @@
 //}
 
 
-
--(void)setModel:(CycleScrollModel *)model
+-(void)setCarouselModels:(NSArray *)carouselModels
 {
-    if (_model != model) {
-        _model = model;
-        self.cycleScrollView.localizationImageNamesGroup = model.arrayImage;
+    if (_carouselModels != carouselModels) {
+        _carouselModels = carouselModels;
+        
+        NSMutableArray *imgLinkArray = [NSMutableArray array];
+        for (IndexCarouselResultModel *model in _carouselModels) {
+            NSString *imgLinkStr = [NSString stringWithFormat:@"%@%@",kDomainImage,model.ad_code];
+            [imgLinkArray addObject:imgLinkStr];
+        }
+        self.cycleScrollView.imageURLStringsGroup = imgLinkArray;
     }
 }
 
