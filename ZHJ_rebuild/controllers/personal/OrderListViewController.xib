@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderListViewController">
             <connections>
+                <outlet property="tableView" destination="Zep-6u-4pR" id="TyC-9m-28F"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,30 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="null" translatesAutoresizingMaskIntoConstraints="NO" id="6y0-Gq-R0g">
+                    <rect key="frame" x="87.5" y="50" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="EAk-IT-jid"/>
+                        <constraint firstAttribute="height" constant="200" id="W3S-O8-MgS"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Zep-6u-4pR">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                </tableView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Zep-6u-4pR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5gi-bs-v9h"/>
+                <constraint firstItem="Zep-6u-4pR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6zd-jz-9XL"/>
+                <constraint firstAttribute="trailing" secondItem="Zep-6u-4pR" secondAttribute="trailing" id="UIa-RM-m6T"/>
+                <constraint firstAttribute="bottom" secondItem="Zep-6u-4pR" secondAttribute="bottom" id="guT-Uk-A9C"/>
+                <constraint firstItem="6y0-Gq-R0g" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="hkc-WW-inY"/>
+                <constraint firstItem="6y0-Gq-R0g" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ysa-tp-J8a"/>
+            </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="null" width="433" height="432"/>
+    </resources>
 </document>

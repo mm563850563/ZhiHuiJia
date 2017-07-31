@@ -10,6 +10,7 @@
 
 //models
 #import "AllClassifyResultModel.h"
+#import "AllBrandResultModel.h"
 
 @implementation CategoryProductNameCell
 
@@ -33,6 +34,14 @@
     if (_model != model) {
         _model = model;
         self.labelName.text = model.name;
+    }
+}
+
+-(void)setBrandResultModel:(AllBrandResultModel *)brandResultModel
+{
+    if (_brandResultModel != brandResultModel) {
+        _brandResultModel = brandResultModel;
+        self.labelName.text = brandResultModel.name;
     }
 }
 

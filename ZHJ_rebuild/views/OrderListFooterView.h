@@ -1,0 +1,16 @@
+//
+//  OrderListFooterView.h
+//  ZHJ_rebuild
+//
+//  Created by ZHJ on 2017/7/31.
+//  Copyright © 2017年 sophia. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface OrderListFooterView : UIView
+
+@property (weak, nonatomic) IBOutlet UILabel *labelProductCount;
+@property (weak, nonatomic) IBOutlet UILabel *labelTotalPrice;
+
+@end

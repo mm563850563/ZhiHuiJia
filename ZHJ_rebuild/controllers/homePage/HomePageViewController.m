@@ -35,7 +35,8 @@
 #import "SameHobbyCell.h"//发现同趣的人的大cell
 
 //models
-//#import "CycleScrollModel.h"
+#import "HomeGoodsModel.h"
+#import "HomeGoodsResultModel.h"
 #import "IndexCarouselModel.h"
 #import "IndexCarouselResultModel.h"
 
@@ -46,8 +47,8 @@
 @property (nonatomic, strong)UITableView *tableView;
 
 @property (nonatomic, strong)NSMutableArray *dataArray;
-@property (nonatomic, strong)NSArray *sectionTitleArray;
 @property (nonatomic, strong)NSArray *carouselResultArray;
+@property (nonatomic, strong)NSArray *homeGoodsResultArray;
 
 @end
 
@@ -62,18 +63,13 @@
     return _dataArray;
 }
 
--(NSArray *)sectionTitleArray
-{
-    if (!_sectionTitleArray) {
-        _sectionTitleArray = [[NSArray alloc]initWithObjects:@"青春色彩",@"智能出行",@"智能健康",@"智能穿戴",@"智能娱乐",@"智能生活",@"电脑周边",@"手机周边",@"数码新科技",@"创意潮品",@"大牌低价专区",@"品质生活",@"为您精心推荐",@"发现同趣的人", nil];
-    }
-    return _sectionTitleArray;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self getIndexCarouselData];
+    [self managerRequestWithGCD];
+//    [self getIndexCarouselData];
+//    [self getHomeGoodsData];
     [self settingNavigationBar];
     [self initTableView];
     [self addSearchBarIntoNavigationBar];
@@ -101,11 +97,33 @@
 //    self.navigationController.navigationBar.translucent = YES;
 //}
 
+#pragma mark - <GCD管理多线程>
+-(void)managerRequestWithGCD
+{
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.navigationController.view animated:YES];
+    
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
+    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
+    
+    dispatch_group_async(group, queue1, ^{
+        [self getIndexCarouselData];
+    });
+    dispatch_group_async(group, queue2, ^{
+        [self getHomeGoodsData];
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+        [hud hideAnimated:YES afterDelay:1.0];
+    });
+}
+
 #pragma mark - <获取轮播图数据>
 -(void)getIndexCarouselData
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kIndexCarousel];
-    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.navigationController.view animated:YES];
+//    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.navigationController.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:nil progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
@@ -115,14 +133,41 @@
                 //回到主线程刷新数据
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
+                    //开始加载首页产品数据
+//                    [self getHomeGoodsDataWithHUD:hud];
                 });
             }else{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [hud hideAnimated:YES afterDelay:1.0];
-            });
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [hud hideAnimated:YES afterDelay:1.0];
+//            });
+        }
+    } failBlock:^(NSError *error) {
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:error.description];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }];
+}
+
+#pragma mark - <获取主页产品数据>
+-(void)getHomeGoodsData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kHomeGoods];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:nil progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            HomeGoodsModel *model = [[HomeGoodsModel alloc]initWithDictionary:dataDict error:nil];
+            
+            if ([model.code isEqualToString:@"200"]) {
+                self.homeGoodsResultArray = model.data.result;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }else{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
         }
     } failBlock:^(NSError *error) {
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:error.description];
@@ -303,35 +348,39 @@
 #pragma mark - ******** UITableViewDataSource,UITableViewDelegate ********
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 15;
+    return self.homeGoodsResultArray.count + 3;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 2;
-    }else if (section == 3){
-        return 6;
-    }else if (section == 6){
-        return 6;
-    }else if (section == 9){
-        return 6;
-    }else if (section == 13){
-        return 1;
-    }else if (section == 14){
-        return 2;
-    }
-    return 3;
+//    NSInteger sectionCount = 3;
+//    if (section < 12) {
+//        HomeGoodsResultModel *model = self.homeGoodsResultArray[section];
+//        NSString *modelID = model.id;
+//        if ([modelID isEqualToString:@"1"] || [modelID isEqualToString:@"4"] || [modelID isEqualToString:@"8"]) {
+//            sectionCount = model.goods_list.count;
+//        }
+//    }
+//    
+//    if (section == 0) {
+//        return 2;
+//    }else if (section == 13){
+//        return 1;
+//    }else if (section == 14){
+//        return 2;
+//    }
+//    return sectionCount;
+    
+    return 1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     UITableViewCell *cell = [[UITableViewCell alloc]init];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            
-//            IndexCarouselResultModel *model = self.carouselResultArray[indexPath.row];
             CycleScrollViewCell *cycleCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([IndexCarouselModel class])];
             cycleCell.delegate = self;
             cycleCell.carouselModels = self.carouselResultArray;
@@ -548,6 +597,17 @@
             cell = cellMore;
         }
     }
+    
+    if (indexPath.section > 0 && indexPath.section < self.homeGoodsResultArray.count+1) {
+        
+        if (indexPath.row == 0) {
+            HomeGoodsResultModel *model = self.homeGoodsResultArray[indexPath.section-1];
+            HomePageMainCell *cellHomeMain = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HomePageMainCell class])];
+            cellHomeMain.imgString = model.big_img.image;
+            cell = cellHomeMain;
+        }
+    }
+    
     return cell;
 }
 
@@ -650,15 +710,17 @@
             return 40;
         }
     }
-    return 250;
+    
+    CGFloat height = kSCREEN_WIDTH/5.2*3.0;
+    return height;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 0.1f;
+    if (section > self.homeGoodsResultArray.count) {
+        return 50;
     }
-    return 50;
+    return 0.1f;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -671,13 +733,17 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (section != 0) {
-        UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
-        headerView.backgroundColor = [UIColor purpleColor];
-        UILabel *label = [[UILabel alloc]initWithFrame:headerView.bounds];
-        label.text = self.sectionTitleArray[section-1];
-        label.textColor = kColorFromRGB(kWhite);
-        [headerView addSubview:label];
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
+    headerView.backgroundColor = [UIColor purpleColor];
+    UILabel *label = [[UILabel alloc]initWithFrame:headerView.bounds];
+    label.textColor = kColorFromRGB(kWhite);
+    [headerView addSubview:label];
+    if (section == self.homeGoodsResultArray.count + 1) {
+        label.text = @"为你精心推荐";
+        return headerView;
+    }
+    if (section == self.homeGoodsResultArray.count + 2) {
+        label.text = @"发现同趣的人";
         return headerView;
     }
     return nil;

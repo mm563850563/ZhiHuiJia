@@ -24,7 +24,6 @@
 @property (nonatomic, strong)NSArray *dataResultArray;
 @property (nonatomic, strong)NSArray *dataChildFirstArray;
 @property (nonatomic, strong)NSArray *dataChildSecondArray;
-//@property (nonatomic, strong)LeftSideSegmentView *leftSegment;
 @property (nonatomic, strong)UITableView *leftTableView;
 @property (nonatomic, strong)UITableView *rightTableView;
 @property (nonatomic, strong)AllClassifyModel *model;
@@ -78,17 +77,14 @@
 #pragma mark - <请求数据>
 -(void)getMainData
 {
-//    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    self.hud.mode = MBProgressHUDModeAnnularDeterminate;
-//    self.hud.animationType = MBProgressHUDAnimationZoomIn;
-//    [self.hud showAnimated:YES];
-//    self.hud.dimBackground = NO;
-    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetAllClassify];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:nil progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             AllClassifyModel *model = [[AllClassifyModel alloc]initWithDictionary:dataDict error:nil];
+            [hud hideAnimated:YES afterDelay:1.0];
+            
             if ([model.code isEqualToString:@"200"]) {
                 self.model = model;
                 self.dataResultArray = model.data.result;
@@ -97,16 +93,18 @@
                 
                 //回到主线程初始化
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    //                [self.hud hideAnimated:YES];
                     [self.leftTableView reloadData];
                     [self.rightTableView reloadData];
                 });
             }else{
-//                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:<#(UIView *)#> animated:<#(BOOL)#> warningMessage:<#(NSString *)#>]
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
             }
-            
         }
-    } failBlock:nil];
+    } failBlock:^(NSError *error) {
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }];
     
     
 }
@@ -136,7 +134,7 @@
     [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
 
-#pragma mark - <初始化右侧collectionView>
+#pragma mark - <初始化右侧tableView>
 -(void)initRightTableView
 {
     self.rightTableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
@@ -305,11 +303,4 @@
 }
 
 
-
-
-#pragma mark - *** Categate_CategateTableViewCellDelegate ***
--(void)shouldReloadData
-{
-    [self.rightTableView reloadData];
-}
 @end

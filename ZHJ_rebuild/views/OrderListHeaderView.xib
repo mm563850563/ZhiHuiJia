@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OrderListHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGz-ci-MI3">
+                    <rect key="frame" x="0.0" y="10" width="375" height="657"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已付款" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DkT-YC-q3K">
+                            <rect key="frame" x="295" y="318" width="70" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="1Sv-op-h4L"/>
+                                <constraint firstAttribute="height" constant="20" id="tuq-8u-EXz"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单号：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0M-ae-HwU">
+                            <rect key="frame" x="10" y="318" width="70" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="YmR-RY-iBv"/>
+                                <constraint firstAttribute="width" constant="70" id="nGt-6b-9LW"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34634652262456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czB-V2-LMx">
+                            <rect key="frame" x="80" y="318.5" width="215" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="WG2-A0-TK1"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="DkT-YC-q3K" secondAttribute="trailing" constant="10" id="2FM-ot-JUn"/>
+                        <constraint firstItem="DkT-YC-q3K" firstAttribute="leading" secondItem="czB-V2-LMx" secondAttribute="trailing" id="Oca-0G-sb1"/>
+                        <constraint firstItem="V0M-ae-HwU" firstAttribute="centerY" secondItem="bGz-ci-MI3" secondAttribute="centerY" id="bbj-gc-PwG"/>
+                        <constraint firstItem="czB-V2-LMx" firstAttribute="leading" secondItem="V0M-ae-HwU" secondAttribute="trailing" id="oNG-dH-dlq"/>
+                        <constraint firstItem="V0M-ae-HwU" firstAttribute="leading" secondItem="bGz-ci-MI3" secondAttribute="leading" constant="10" id="pZ9-D5-sEo"/>
+                        <constraint firstItem="czB-V2-LMx" firstAttribute="centerY" secondItem="bGz-ci-MI3" secondAttribute="centerY" id="sG5-kU-eky"/>
+                        <constraint firstItem="DkT-YC-q3K" firstAttribute="centerY" secondItem="bGz-ci-MI3" secondAttribute="centerY" id="vrZ-qa-fbn"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="bGz-ci-MI3" secondAttribute="trailing" id="0gH-iK-1Wc"/>
+                <constraint firstItem="bGz-ci-MI3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5dN-OW-uaa"/>
+                <constraint firstAttribute="bottom" secondItem="bGz-ci-MI3" secondAttribute="bottom" id="GKG-fF-rNl"/>
+                <constraint firstItem="bGz-ci-MI3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="o2H-Vg-1gS"/>
+            </constraints>
+            <connections>
+                <outlet property="labelOrderCode" destination="czB-V2-LMx" id="pwD-03-9Uj"/>
+                <outlet property="labelOrderState" destination="DkT-YC-q3K" id="xWc-tB-aCd"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="125.5"/>
+        </view>
+    </objects>
+</document>

@@ -203,6 +203,28 @@
 		DD6288351F233EE00030331D /* SameHobbyPersonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6288331F233EDF0030331D /* SameHobbyPersonListViewController.xib */; };
 		DD6288391F233FA30030331D /* SameHobbyPersonListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6288371F233FA30030331D /* SameHobbyPersonListCell.m */; };
 		DD62883A1F233FA30030331D /* SameHobbyPersonListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6288381F233FA30030331D /* SameHobbyPersonListCell.xib */; };
+		DD6897F61F2F0E88008B6A8F /* HomeGoodsBigImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6897F51F2F0E88008B6A8F /* HomeGoodsBigImageModel.m */; };
+		DD6897F91F2F0F88008B6A8F /* HomeGoodsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6897F81F2F0F88008B6A8F /* HomeGoodsListModel.m */; };
+		DD6897FC1F2F2647008B6A8F /* AllBrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6897FB1F2F2647008B6A8F /* AllBrandModel.m */; };
+		DD6897FF1F2F276C008B6A8F /* AllBrandDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6897FE1F2F276C008B6A8F /* AllBrandDataModel.m */; };
+		DD6898021F2F279A008B6A8F /* AllBrandResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6898011F2F279A008B6A8F /* AllBrandResultModel.m */; };
+		DD6898051F2F2847008B6A8F /* AllBrandListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6898041F2F2847008B6A8F /* AllBrandListModel.m */; };
+		DD6898081F2F2861008B6A8F /* AllBrandGoodsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6898071F2F2861008B6A8F /* AllBrandGoodsListModel.m */; };
+		DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63981F2EB56800611FA8 /* OrderListCell.m */; };
+		DD9A639B1F2EB56800611FA8 /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A63991F2EB56800611FA8 /* OrderListCell.xib */; };
+		DD9A639E1F2ECEE400611FA8 /* OrderListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A639D1F2ECEE400611FA8 /* OrderListHeaderView.m */; };
+		DD9A63A01F2ECEF700611FA8 /* OrderListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A639F1F2ECEF700611FA8 /* OrderListHeaderView.xib */; };
+		DD9A63A31F2ECF1C00611FA8 /* OrderListFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63A21F2ECF1C00611FA8 /* OrderListFooterView.m */; };
+		DD9A63A51F2ECF3300611FA8 /* OrderListFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A63A41F2ECF3300611FA8 /* OrderListFooterView.xib */; };
+		DD9A63A91F2EE20100611FA8 /* AfterSalesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63A71F2EE20100611FA8 /* AfterSalesViewController.m */; };
+		DD9A63AA1F2EE20100611FA8 /* AfterSalesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A63A81F2EE20100611FA8 /* AfterSalesViewController.xib */; };
+		DD9A63AE1F2EE29C00611FA8 /* AfterSalesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63AC1F2EE29C00611FA8 /* AfterSalesCell.m */; };
+		DD9A63AF1F2EE29C00611FA8 /* AfterSalesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A63AD1F2EE29C00611FA8 /* AfterSalesCell.xib */; };
+		DD9A63B21F2EE84400611FA8 /* AfterSalesHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63B11F2EE84400611FA8 /* AfterSalesHeaderView.m */; };
+		DD9A63B41F2EE86700611FA8 /* AfterSalesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A63B31F2EE86700611FA8 /* AfterSalesHeaderView.xib */; };
+		DD9A63B71F2EF31900611FA8 /* HomeGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63B61F2EF31900611FA8 /* HomeGoodsModel.m */; };
+		DD9A63BA1F2EF3B600611FA8 /* HomeGoodsDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63B91F2EF3B600611FA8 /* HomeGoodsDataModel.m */; };
+		DD9A63BD1F2EF3D900611FA8 /* HomeGoodsResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63BC1F2EF3D900611FA8 /* HomeGoodsResultModel.m */; };
 		DDDD17B91F2C5194006BE206 /* ProgressHUDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17B81F2C5194006BE206 /* ProgressHUDManager.m */; };
 		DDDD17BF1F2C6B11006BE206 /* IndexCarouselDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17BE1F2C6B11006BE206 /* IndexCarouselDataModel.m */; };
 		DDDD17C21F2C6B54006BE206 /* IndexCarouselResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17C11F2C6B54006BE206 /* IndexCarouselResultModel.m */; };
@@ -626,6 +648,44 @@
 		DD6288361F233FA30030331D /* SameHobbyPersonListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameHobbyPersonListCell.h; path = cells/SameHobbyPersonListCell.h; sourceTree = "<group>"; };
 		DD6288371F233FA30030331D /* SameHobbyPersonListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameHobbyPersonListCell.m; path = cells/SameHobbyPersonListCell.m; sourceTree = "<group>"; };
 		DD6288381F233FA30030331D /* SameHobbyPersonListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SameHobbyPersonListCell.xib; path = cells/SameHobbyPersonListCell.xib; sourceTree = "<group>"; };
+		DD6897F41F2F0E88008B6A8F /* HomeGoodsBigImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeGoodsBigImageModel.h; path = models/HomeGoodsBigImageModel.h; sourceTree = "<group>"; };
+		DD6897F51F2F0E88008B6A8F /* HomeGoodsBigImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeGoodsBigImageModel.m; path = models/HomeGoodsBigImageModel.m; sourceTree = "<group>"; };
+		DD6897F71F2F0F88008B6A8F /* HomeGoodsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeGoodsListModel.h; path = models/HomeGoodsListModel.h; sourceTree = "<group>"; };
+		DD6897F81F2F0F88008B6A8F /* HomeGoodsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeGoodsListModel.m; path = models/HomeGoodsListModel.m; sourceTree = "<group>"; };
+		DD6897FA1F2F2647008B6A8F /* AllBrandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllBrandModel.h; path = models/AllBrandModel.h; sourceTree = "<group>"; };
+		DD6897FB1F2F2647008B6A8F /* AllBrandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllBrandModel.m; path = models/AllBrandModel.m; sourceTree = "<group>"; };
+		DD6897FD1F2F276C008B6A8F /* AllBrandDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllBrandDataModel.h; path = models/AllBrandDataModel.h; sourceTree = "<group>"; };
+		DD6897FE1F2F276C008B6A8F /* AllBrandDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllBrandDataModel.m; path = models/AllBrandDataModel.m; sourceTree = "<group>"; };
+		DD6898001F2F279A008B6A8F /* AllBrandResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllBrandResultModel.h; path = models/AllBrandResultModel.h; sourceTree = "<group>"; };
+		DD6898011F2F279A008B6A8F /* AllBrandResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllBrandResultModel.m; path = models/AllBrandResultModel.m; sourceTree = "<group>"; };
+		DD6898031F2F2847008B6A8F /* AllBrandListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllBrandListModel.h; path = models/AllBrandListModel.h; sourceTree = "<group>"; };
+		DD6898041F2F2847008B6A8F /* AllBrandListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllBrandListModel.m; path = models/AllBrandListModel.m; sourceTree = "<group>"; };
+		DD6898061F2F2861008B6A8F /* AllBrandGoodsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllBrandGoodsListModel.h; path = models/AllBrandGoodsListModel.h; sourceTree = "<group>"; };
+		DD6898071F2F2861008B6A8F /* AllBrandGoodsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllBrandGoodsListModel.m; path = models/AllBrandGoodsListModel.m; sourceTree = "<group>"; };
+		DD9A63971F2EB56800611FA8 /* OrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListCell.h; path = cells/OrderListCell.h; sourceTree = "<group>"; };
+		DD9A63981F2EB56800611FA8 /* OrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListCell.m; path = cells/OrderListCell.m; sourceTree = "<group>"; };
+		DD9A63991F2EB56800611FA8 /* OrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListCell.xib; path = cells/OrderListCell.xib; sourceTree = "<group>"; };
+		DD9A639C1F2ECEE400611FA8 /* OrderListHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListHeaderView.h; path = views/OrderListHeaderView.h; sourceTree = "<group>"; };
+		DD9A639D1F2ECEE400611FA8 /* OrderListHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListHeaderView.m; path = views/OrderListHeaderView.m; sourceTree = "<group>"; };
+		DD9A639F1F2ECEF700611FA8 /* OrderListHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListHeaderView.xib; path = views/OrderListHeaderView.xib; sourceTree = "<group>"; };
+		DD9A63A11F2ECF1C00611FA8 /* OrderListFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListFooterView.h; path = views/OrderListFooterView.h; sourceTree = "<group>"; };
+		DD9A63A21F2ECF1C00611FA8 /* OrderListFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListFooterView.m; path = views/OrderListFooterView.m; sourceTree = "<group>"; };
+		DD9A63A41F2ECF3300611FA8 /* OrderListFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListFooterView.xib; path = views/OrderListFooterView.xib; sourceTree = "<group>"; };
+		DD9A63A61F2EE20100611FA8 /* AfterSalesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AfterSalesViewController.h; path = controllers/personal/AfterSalesViewController.h; sourceTree = "<group>"; };
+		DD9A63A71F2EE20100611FA8 /* AfterSalesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AfterSalesViewController.m; path = controllers/personal/AfterSalesViewController.m; sourceTree = "<group>"; };
+		DD9A63A81F2EE20100611FA8 /* AfterSalesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AfterSalesViewController.xib; path = controllers/personal/AfterSalesViewController.xib; sourceTree = "<group>"; };
+		DD9A63AB1F2EE29C00611FA8 /* AfterSalesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AfterSalesCell.h; path = cells/AfterSalesCell.h; sourceTree = "<group>"; };
+		DD9A63AC1F2EE29C00611FA8 /* AfterSalesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AfterSalesCell.m; path = cells/AfterSalesCell.m; sourceTree = "<group>"; };
+		DD9A63AD1F2EE29C00611FA8 /* AfterSalesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AfterSalesCell.xib; path = cells/AfterSalesCell.xib; sourceTree = "<group>"; };
+		DD9A63B01F2EE84400611FA8 /* AfterSalesHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AfterSalesHeaderView.h; path = views/AfterSalesHeaderView.h; sourceTree = "<group>"; };
+		DD9A63B11F2EE84400611FA8 /* AfterSalesHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AfterSalesHeaderView.m; path = views/AfterSalesHeaderView.m; sourceTree = "<group>"; };
+		DD9A63B31F2EE86700611FA8 /* AfterSalesHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AfterSalesHeaderView.xib; path = views/AfterSalesHeaderView.xib; sourceTree = "<group>"; };
+		DD9A63B51F2EF31900611FA8 /* HomeGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeGoodsModel.h; path = models/HomeGoodsModel.h; sourceTree = "<group>"; };
+		DD9A63B61F2EF31900611FA8 /* HomeGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeGoodsModel.m; path = models/HomeGoodsModel.m; sourceTree = "<group>"; };
+		DD9A63B81F2EF3B600611FA8 /* HomeGoodsDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeGoodsDataModel.h; path = models/HomeGoodsDataModel.h; sourceTree = "<group>"; };
+		DD9A63B91F2EF3B600611FA8 /* HomeGoodsDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeGoodsDataModel.m; path = models/HomeGoodsDataModel.m; sourceTree = "<group>"; };
+		DD9A63BB1F2EF3D900611FA8 /* HomeGoodsResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeGoodsResultModel.h; path = models/HomeGoodsResultModel.h; sourceTree = "<group>"; };
+		DD9A63BC1F2EF3D900611FA8 /* HomeGoodsResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeGoodsResultModel.m; path = models/HomeGoodsResultModel.m; sourceTree = "<group>"; };
 		DDDD17B71F2C5194006BE206 /* ProgressHUDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressHUDManager.h; path = tools/ProgressHUDManager.h; sourceTree = "<group>"; };
 		DDDD17B81F2C5194006BE206 /* ProgressHUDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressHUDManager.m; path = tools/ProgressHUDManager.m; sourceTree = "<group>"; };
 		DDDD17BD1F2C6B11006BE206 /* IndexCarouselDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexCarouselDataModel.h; path = models/IndexCarouselDataModel.h; sourceTree = "<group>"; };
@@ -1179,6 +1239,12 @@
 				DD4CF1161F2AFB9E0024156F /* CategoryProductNameCell.h */,
 				DD4CF1171F2AFB9E0024156F /* CategoryProductNameCell.m */,
 				DD4CF1181F2AFB9E0024156F /* CategoryProductNameCell.xib */,
+				DD9A63971F2EB56800611FA8 /* OrderListCell.h */,
+				DD9A63981F2EB56800611FA8 /* OrderListCell.m */,
+				DD9A63991F2EB56800611FA8 /* OrderListCell.xib */,
+				DD9A63AB1F2EE29C00611FA8 /* AfterSalesCell.h */,
+				DD9A63AC1F2EE29C00611FA8 /* AfterSalesCell.m */,
+				DD9A63AD1F2EE29C00611FA8 /* AfterSalesCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -1218,6 +1284,15 @@
 				DD4CF0061F2824A10024156F /* ActivityRuleView.h */,
 				DD4CF0071F2824A10024156F /* ActivityRuleView.m */,
 				DD4CF0091F2824B30024156F /* ActivityRuleView.xib */,
+				DD9A639C1F2ECEE400611FA8 /* OrderListHeaderView.h */,
+				DD9A639D1F2ECEE400611FA8 /* OrderListHeaderView.m */,
+				DD9A639F1F2ECEF700611FA8 /* OrderListHeaderView.xib */,
+				DD9A63A11F2ECF1C00611FA8 /* OrderListFooterView.h */,
+				DD9A63A21F2ECF1C00611FA8 /* OrderListFooterView.m */,
+				DD9A63A41F2ECF3300611FA8 /* OrderListFooterView.xib */,
+				DD9A63B01F2EE84400611FA8 /* AfterSalesHeaderView.h */,
+				DD9A63B11F2EE84400611FA8 /* AfterSalesHeaderView.m */,
+				DD9A63B31F2EE86700611FA8 /* AfterSalesHeaderView.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -1256,12 +1331,32 @@
 				DD4CF1111F29F22E0024156F /* AllClassifyChidrenFirstModel.m */,
 				DD4CF1131F29F2D00024156F /* AllClassifyChildrenSecondModel.h */,
 				DD4CF1141F29F2D00024156F /* AllClassifyChildrenSecondModel.m */,
+				DD6897FA1F2F2647008B6A8F /* AllBrandModel.h */,
+				DD6897FB1F2F2647008B6A8F /* AllBrandModel.m */,
+				DD6897FD1F2F276C008B6A8F /* AllBrandDataModel.h */,
+				DD6897FE1F2F276C008B6A8F /* AllBrandDataModel.m */,
+				DD6898001F2F279A008B6A8F /* AllBrandResultModel.h */,
+				DD6898011F2F279A008B6A8F /* AllBrandResultModel.m */,
+				DD6898031F2F2847008B6A8F /* AllBrandListModel.h */,
+				DD6898041F2F2847008B6A8F /* AllBrandListModel.m */,
+				DD6898061F2F2861008B6A8F /* AllBrandGoodsListModel.h */,
+				DD6898071F2F2861008B6A8F /* AllBrandGoodsListModel.m */,
 				DDDD17C31F2C6C06006BE206 /* IndexCarouselModel.h */,
 				DDDD17C41F2C6C06006BE206 /* IndexCarouselModel.m */,
 				DDDD17BD1F2C6B11006BE206 /* IndexCarouselDataModel.h */,
 				DDDD17BE1F2C6B11006BE206 /* IndexCarouselDataModel.m */,
 				DDDD17C01F2C6B54006BE206 /* IndexCarouselResultModel.h */,
 				DDDD17C11F2C6B54006BE206 /* IndexCarouselResultModel.m */,
+				DD9A63B51F2EF31900611FA8 /* HomeGoodsModel.h */,
+				DD9A63B61F2EF31900611FA8 /* HomeGoodsModel.m */,
+				DD9A63B81F2EF3B600611FA8 /* HomeGoodsDataModel.h */,
+				DD9A63B91F2EF3B600611FA8 /* HomeGoodsDataModel.m */,
+				DD9A63BB1F2EF3D900611FA8 /* HomeGoodsResultModel.h */,
+				DD9A63BC1F2EF3D900611FA8 /* HomeGoodsResultModel.m */,
+				DD6897F41F2F0E88008B6A8F /* HomeGoodsBigImageModel.h */,
+				DD6897F51F2F0E88008B6A8F /* HomeGoodsBigImageModel.m */,
+				DD6897F71F2F0F88008B6A8F /* HomeGoodsListModel.h */,
+				DD6897F81F2F0F88008B6A8F /* HomeGoodsListModel.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -1480,6 +1575,9 @@
 			children = (
 				EC4BA0E71F136C8100B9BE1A /* PersonalViewController.h */,
 				EC4BA0E81F136C8100B9BE1A /* PersonalViewController.m */,
+				DD9A63A61F2EE20100611FA8 /* AfterSalesViewController.h */,
+				DD9A63A71F2EE20100611FA8 /* AfterSalesViewController.m */,
+				DD9A63A81F2EE20100611FA8 /* AfterSalesViewController.xib */,
 				DDDD17C61F2C9141006BE206 /* MyOrderViewController.h */,
 				DDDD17C71F2C9141006BE206 /* MyOrderViewController.m */,
 				DDDD17C81F2C9141006BE206 /* MyOrderViewController.xib */,
@@ -1613,6 +1711,7 @@
 				DD6288281F22ECBC0030331D /* SubNotification_OtherViewController.xib in Resources */,
 				DDFB82581F187A7900AEAAA7 /* cb_box_on.png in Resources */,
 				DDFB825B1F187A7900AEAAA7 /* cb_dark_off@2x.png in Resources */,
+				DD9A639B1F2EB56800611FA8 /* OrderListCell.xib in Resources */,
 				DDFB82691F187A7900AEAAA7 /* cb_mono_on@2x.png in Resources */,
 				DD4CF00F1F283D500024156F /* ProductDetailImageCell.xib in Resources */,
 				DD6287051F1EE19C0030331D /* FocusPersonFileViewController.xib in Resources */,
@@ -1637,8 +1736,11 @@
 				EC4BA2481F14DFE900B9BE1A /* BrandApplyViewController.xib in Resources */,
 				DD62880A1F22EA510030331D /* SubMessage_AboutMeViewController.xib in Resources */,
 				DDFB82681F187A7900AEAAA7 /* cb_mono_on.png in Resources */,
+				DD9A63AA1F2EE20100611FA8 /* AfterSalesViewController.xib in Resources */,
+				DD9A63AF1F2EE29C00611FA8 /* AfterSalesCell.xib in Resources */,
 				DDFB825E1F187A7900AEAAA7 /* cb_glossy_off.png in Resources */,
 				DDFB82611F187A7900AEAAA7 /* cb_glossy_on@2x.png in Resources */,
+				DD9A63A01F2ECEF700611FA8 /* OrderListHeaderView.xib in Resources */,
 				DD6287CB1F21AF900030331D /* LookAroundTableCell.xib in Resources */,
 				DD6287EE1F21E8C00030331D /* FailureReviewViewController.xib in Resources */,
 				DDFB82701F18BC4500AEAAA7 /* PersonalCollectCell.xib in Resources */,
@@ -1647,6 +1749,7 @@
 				DDFB82991F1C6A8900AEAAA7 /* MoreProductList_HeaderView.xib in Resources */,
 				DD4CF0011F274B480024156F /* ShakeAndWinViewController.xib in Resources */,
 				DD6287E41F21E8120030331D /* WaitForReviewViewController.xib in Resources */,
+				DD9A63B41F2EE86700611FA8 /* AfterSalesHeaderView.xib in Resources */,
 				DD6287DF1F21E3B20030331D /* ActivityViewController.xib in Resources */,
 				EC4BA2551F15EDF000B9BE1A /* DiscoverHeaderCell.xib in Resources */,
 				DD62871E1F1F3D8B0030331D /* PriaseTableViewCell.xib in Resources */,
@@ -1705,6 +1808,7 @@
 				DD6287F81F21EE4C0030331D /* PersonalActivityRankCell.xib in Resources */,
 				DD6287A31F2191C90030331D /* ActivityRankNormalCell.xib in Resources */,
 				DD6287761F208C0B0030331D /* HotCircleViewController.xib in Resources */,
+				DD9A63A51F2ECF3300611FA8 /* OrderListFooterView.xib in Resources */,
 				DD6287441F1F8C1E0030331D /* MyAddressViewController.xib in Resources */,
 				DD62882D1F2317E60030331D /* ReplyCommentCell.xib in Resources */,
 				DD40B7291F17250B00839748 /* HomeLeftImageCell.xib in Resources */,
@@ -1793,6 +1897,7 @@
 				DDFB82B51F1D931500AEAAA7 /* PYSearchConst.m in Sources */,
 				DD4CF0AE1F29A8FC0024156F /* AtSomeOneCell.m in Sources */,
 				DD4CF0001F274B480024156F /* ShakeAndWinViewController.m in Sources */,
+				DD9A63B21F2EE84400611FA8 /* AfterSalesHeaderView.m in Sources */,
 				EC4BA0DB1F1359EC00B9BE1A /* FactoryCollectionViewCell.m in Sources */,
 				DD4CF0311F2885660024156F /* ActivityApplyViewController.m in Sources */,
 				DD6287341F1F52BE0030331D /* Configuration_ButtonCell.m in Sources */,
@@ -1831,6 +1936,7 @@
 				EC4BA1191F136DBB00B9BE1A /* MainTabBarViewController.m in Sources */,
 				DD6288091F22EA510030331D /* SubMessage_AboutMeViewController.m in Sources */,
 				DD4CF1191F2AFB9E0024156F /* CategoryProductNameCell.m in Sources */,
+				DD9A63BD1F2EF3D900611FA8 /* HomeGoodsResultModel.m in Sources */,
 				DD6288051F2214F40030331D /* RatingBar.m in Sources */,
 				DDFB82981F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m in Sources */,
 				DDDD17CE1F2C93A2006BE206 /* OrderListViewController.m in Sources */,
@@ -1855,6 +1961,7 @@
 				DD6287C01F21AB890030331D /* HandpickActivitiesCell.m in Sources */,
 				DD4CF02C1F2882AF0024156F /* DisclaimerViewController.m in Sources */,
 				DD6288131F22EB440030331D /* SubMessage_LikedViewController.m in Sources */,
+				DD6897F61F2F0E88008B6A8F /* HomeGoodsBigImageModel.m in Sources */,
 				EC4BA2471F14DFE900B9BE1A /* BrandApplyViewController.m in Sources */,
 				DD62877A1F208CA40030331D /* MyCircleViewController.m in Sources */,
 				DD40B7391F176E8600839748 /* EqualSpaceFlowLayout.m in Sources */,
@@ -1873,8 +1980,10 @@
 				DD4CF1091F29EE010024156F /* AllClassifyDataModel.m in Sources */,
 				DDFB82C51F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m in Sources */,
 				EC4BA0F21F136CA400B9BE1A /* CategateViewController.m in Sources */,
+				DD9A63A31F2ECF1C00611FA8 /* OrderListFooterView.m in Sources */,
 				DD4CEFCC1F25B3720024156F /* ProductColorAndCountView.m in Sources */,
 				DD4CEFDB1F25E08D0024156F /* CommentListCell.m in Sources */,
+				DD9A63BA1F2EF3B600611FA8 /* HomeGoodsDataModel.m in Sources */,
 				DDFB82C01F1E059A00AEAAA7 /* DiscoverDynamicCell.m in Sources */,
 				DD6287661F2059F70030331D /* MyBalanceViewController.m in Sources */,
 				DDFB826F1F18BC4500AEAAA7 /* PersonalCollectCell.m in Sources */,
@@ -1891,8 +2000,10 @@
 				DD40B7281F17250B00839748 /* HomeLeftImageCell.m in Sources */,
 				DD4CF01D1F2868490024156F /* ActivityRecommendInformationCell.m in Sources */,
 				DD6287181F1F32010030331D /* DynamicDetailViewController.m in Sources */,
+				DD9A63B71F2EF31900611FA8 /* HomeGoodsModel.m in Sources */,
 				DDFB829C1F1C78FD00AEAAA7 /* MoreProduct_SortView.m in Sources */,
 				DD6287F21F21ED4F0030331D /* PersonalRankActivityViewController.m in Sources */,
+				DD9A63AE1F2EE29C00611FA8 /* AfterSalesCell.m in Sources */,
 				DD4CF0221F286E9E0024156F /* ActivityRecommendDetailCell.m in Sources */,
 				DD4CF0EA1F29BF850024156F /* YQNetworking+RequestManager.m in Sources */,
 				DDFB82741F19B18800AEAAA7 /* Categate_CategateCollectCell.m in Sources */,
@@ -1903,13 +2014,16 @@
 				DD6287611F2053750030331D /* MyCollectProductCell.m in Sources */,
 				DD4CF09F1F2975880024156F /* NewPostImageCell.m in Sources */,
 				DD6287091F1EE3210030331D /* FocusPersonCell.m in Sources */,
+				DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */,
 				DD62880E1F22EB090030331D /* SubMessage_CommentViewController.m in Sources */,
 				EC4BA0F41F136CA400B9BE1A /* SubCategate_CategateViewController.m in Sources */,
 				DD6288341F233EE00030331D /* SameHobbyPersonListViewController.m in Sources */,
 				DD6287431F1F8C1E0030331D /* MyAddressViewController.m in Sources */,
 				DD6288221F22EC7A0030331D /* SubNotification_DiscountViewController.m in Sources */,
+				DD6897F91F2F0F88008B6A8F /* HomeGoodsListModel.m in Sources */,
 				DD4CEFFC1F2732370024156F /* BrandStoryViewController.m in Sources */,
 				DD6287DE1F21E3B20030331D /* ActivityViewController.m in Sources */,
+				DD9A63A91F2EE20100611FA8 /* AfterSalesViewController.m in Sources */,
 				EC4BA0CA1F1359DF00B9BE1A /* LeftSideSegmentView.m in Sources */,
 				DD4CF0401F28A43E0024156F /* NewPostViewController.m in Sources */,
 				EC4BA1121F136CBD00B9BE1A /* SubNotifi_NotificationViewController.m in Sources */,
@@ -1942,9 +2056,11 @@
 				DD6287B11F219BA50030331D /* HandpickActivitiesViewController.m in Sources */,
 				DD6288301F232E970030331D /* GetHeightOfText.m in Sources */,
 				EC4BA2541F15EDF000B9BE1A /* DiscoverHeaderCell.m in Sources */,
+				DD6897FF1F2F276C008B6A8F /* AllBrandDataModel.m in Sources */,
 				DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */,
 				DD4CEFDF1F26CD0F0024156F /* BrandDetailViewController.m in Sources */,
 				DD6288391F233FA30030331D /* SameHobbyPersonListCell.m in Sources */,
+				DD6898021F2F279A008B6A8F /* AllBrandResultModel.m in Sources */,
 				DD4CEFD21F25D1B90024156F /* ProductStyleSelectionCell.m in Sources */,
 				DD6287D91F21DE0C0030331D /* MyFocusViewController.m in Sources */,
 				EC4BA10C1F136CBD00B9BE1A /* NotificationViewController.m in Sources */,
@@ -1955,16 +2071,20 @@
 				EC4BA0EB1F136C8100B9BE1A /* PersonalViewController.m in Sources */,
 				DD4CF0271F2877EC0024156F /* ActivityRecommendApplyCell.m in Sources */,
 				DD6287A71F2198FC0030331D /* SameTownViewController.m in Sources */,
+				DD6897FC1F2F2647008B6A8F /* AllBrandModel.m in Sources */,
 				DD62872B1F1F4EC20030331D /* ConfigurationViewController.m in Sources */,
 				EC4BA08A1F1359A900B9BE1A /* CycleScrollModel.m in Sources */,
 				DD6287AC1F219ADA0030331D /* SameTownTopicViewController.m in Sources */,
 				DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */,
 				EC4BA1111F136CBD00B9BE1A /* SubNotifi_MessageViewController.m in Sources */,
 				DD4CF03B1F289FB20024156F /* MyOnFocusCell.m in Sources */,
+				DD9A639E1F2ECEE400611FA8 /* OrderListHeaderView.m in Sources */,
 				DDFB827C1F19F38000AEAAA7 /* Categate_BrandCollectionCell.m in Sources */,
 				EC4BA0CB1F1359DF00B9BE1A /* SegmentTapView.m in Sources */,
 				EC4BA0F31F136CA400B9BE1A /* SubCategate_BrandViewController.m in Sources */,
+				DD6898081F2F2861008B6A8F /* AllBrandGoodsListModel.m in Sources */,
 				DD4CF0051F28219F0024156F /* HWPopTool.m in Sources */,
+				DD6898051F2F2847008B6A8F /* AllBrandListModel.m in Sources */,
 				EC4BA1401F14997800B9BE1A /* CycleScrollViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

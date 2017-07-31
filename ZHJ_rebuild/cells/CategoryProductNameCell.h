@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class AllClassifyResultModel;
+@class AllBrandResultModel;
 
 @interface CategoryProductNameCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 @property (nonatomic, strong)AllClassifyResultModel *model;
+@property (nonatomic, strong)AllBrandResultModel *brandResultModel;
 
 @end

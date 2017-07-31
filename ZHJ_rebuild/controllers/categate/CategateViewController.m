@@ -50,7 +50,7 @@
     [self settingNavigation];
     [self initSegment];
     [self initFlipTableView];
-//    [self respondWithRAC];
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {

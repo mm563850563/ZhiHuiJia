@@ -21,4 +21,15 @@
     // Configure the view for the selected state
 }
 
+
+-(void)setImgString:(NSString *)imgString
+{
+    if (_imgString != imgString) {
+//        _imgString = imgString;
+        _imgString = [NSString stringWithFormat:@"%@%@",kDomainImage,imgString];
+        NSURL *url = [NSURL URLWithString:_imgString];
+        [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
+    }
+}
+
 @end

@@ -15,17 +15,23 @@
 
 //cells
 #import "Categate_BrandCollectionCell.h"
+#import "CategoryProductNameCell.h"
 
 //views
 #import "Categate_Brand_HeaderView.h"
 
-@interface SubCategate_BrandViewController ()<LeftSideSegmentViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+//models
+#import "AllBrandModel.h"
+#import "AllBrandResultModel.h"
+
+@interface SubCategate_BrandViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong)NSArray *dataArray;
-@property (nonatomic, strong)LeftSideSegmentView *leftSegment;
 @property (nonatomic, strong)UIView *brandBGView;
 @property (nonatomic, strong)UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong)UICollectionView *rightCollectionView;
+@property (nonatomic, strong)UITableView *leftTableView;
+@property (nonatomic, strong)NSArray *allBrandResultArray;
 
 @end
 
@@ -55,6 +61,35 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <获取allBrand数据>
+-(void)getAllBrandData
+{
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetAllBrand];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:nil progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            AllBrandModel *model = [[AllBrandModel alloc]initWithDictionary:dataDict error:nil];
+            
+            if ([model.code isEqualToString:@"200"]) {
+                self.allBrandResultArray = model.data.result;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.leftTableView reloadData];
+                });
+            }else{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+        }
+        [hud hideAnimated:YES afterDelay:1.0];
+    } failBlock:^(NSError *error) {
+        [hud hideAnimated:YES afterDelay:1.0];
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }];
+}
 
 
 #pragma mark - <添加“品牌申请入住”和“入驻品牌细则”>
@@ -121,18 +156,23 @@
 #pragma mark - <初始化左侧segmentView>
 -(void)initLeftSideSegmentView
 {
-    NSArray *array = @[@"123",@"345",@"46465",@"3436",@"8578",@"6345",@"tr",@"rfvs",@"sfdf",@"6565",@"dfdf",@"8578",@"6345",@"tr"];
-    self.dataArray = array;
-    LeftSideSegmentView *leftSegment = [[LeftSideSegmentView alloc]initWithFrame:self.view.bounds dataArray:array];
-    leftSegment.delegate = self;
-    [self.view addSubview:leftSegment];
-    __weak typeof(self) weakSelf = self;
-    [leftSegment mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(weakSelf.view);
-        make.top.equalTo(weakSelf.brandBGView.mas_bottom).with.offset(10);
+    self.leftTableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    [self.view addSubview:self.leftTableView];
+    [self.leftTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.bottom.mas_equalTo(0);
+        make.width.mas_equalTo(110);
     }];
     
-    self.leftSegment = leftSegment;
+    self.leftTableView.delegate = self;
+    self.leftTableView.dataSource = self;
+    self.leftTableView.showsVerticalScrollIndicator = NO;
+    self.leftTableView.backgroundColor = kColorFromRGB(kLightGray);
+    self.leftTableView.rowHeight = 50;
+    
+    UINib *nibProductNameCell = [UINib nibWithNibName:NSStringFromClass([CategoryProductNameCell class]) bundle:nil];
+    [self.leftTableView registerNib:nibProductNameCell forCellReuseIdentifier:NSStringFromClass([CategoryProductNameCell class])];
+    
+    [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
 
 #pragma mark - <初始化rightContentView>
@@ -142,22 +182,18 @@
     self.flowLayout.minimumLineSpacing = 5;
     self.flowLayout.minimumInteritemSpacing = 5;
     self.flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
-//    CGFloat itemWidth = self.leftSegment.rightContentView.frame.size.width/3.2;
-//    CGFloat itemHeight = itemWidth/2.0*3.0;
-//    self.flowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
     
-//    CGFloat headerWidth = self.leftSegment.rightContentView.frame.size.width;
-//    CGFloat headerHeight = (headerWidth-10)/3.0*2.0 + 100;
-//    self.flowLayout.headerReferenceSize = CGSizeMake(headerWidth, headerHeight);
-    
-    self.rightCollectionView = [[UICollectionView alloc]initWithFrame:self.leftSegment.rightContentView.bounds collectionViewLayout:self.flowLayout];
+    self.rightCollectionView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:self.flowLayout];
     self.rightCollectionView.showsVerticalScrollIndicator = NO;
     self.rightCollectionView.backgroundColor = kColorFromRGB(kWhite);
     self.rightCollectionView.delegate = self;
     self.rightCollectionView.dataSource = self;
-    [self.leftSegment.rightContentView addSubview:self.rightCollectionView];
+    [self.view addSubview:self.rightCollectionView];
+    __weak typeof(self) weakSelf = self;
     [self.rightCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+        make.left.mas_equalTo(weakSelf.leftTableView.mas_right);
+        make.bottom.right.mas_equalTo(0);
+        make.top.mas_equalTo(0);
     }];
     
     UINib *nibNormalCell = [UINib nibWithNibName:NSStringFromClass([Categate_BrandCollectionCell class]) bundle:nil];
@@ -221,17 +257,94 @@
 #pragma mark - *** UICollectionViewDelegateFlowLayout ***
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    CGFloat headerWidth = self.leftSegment.rightContentView.frame.size.width;
+    CGFloat headerWidth = kSCREEN_WIDTH-110;
     CGFloat headerHeight = (headerWidth-10)/3.0*2.0 + 100;
     return CGSizeMake(headerWidth, headerHeight);
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat itemWidth = (self.leftSegment.rightContentView.frame.size.width-20)/3.2;
+    CGFloat itemWidth = (kSCREEN_WIDTH-110-20)/3.2;
     CGFloat itemHeight = itemWidth/2.0*3.0;
     return CGSizeMake(itemWidth, itemHeight);
 }
+
+#pragma mark - *** UITableViewDelegate,UITableViewDataSource ***
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.allBrandResultArray.count;
+}
+
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (tableView == self.leftTableView) {
+//        return 50;
+//    }else{
+//        Categate_CategateTableViewCell *cell = [[Categate_CategateTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([Categate_CategateTableViewCell class])];
+//        AllClassifyChidrenFirstModel *modelFirst = self.dataChildFirstArray[indexPath.section];
+//        
+//        cell.model = modelFirst;
+//        return cell.cellHeight;
+//    }
+//}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (tableView == self.leftTableView) {
+        return 0.1f;
+    }else{
+        return 30;
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1f;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CategoryProductNameCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CategoryProductNameCell class])];
+    cell.backgroundColor = kColorFromRGB(kLightGray);
+    AllBrandResultModel *model = self.allBrandResultArray[indexPath.row];
+    if (indexPath.row == 0) {
+        cell.labelName.textColor = kColorFromRGB(kThemeYellow);
+    }else{
+        cell.labelName.textColor = kColorFromRGB(kBlack);
+    }
+    
+    cell.brandResultModel = model;
+    return cell;
+    
+}
+
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.textLabel.textColor = kColorFromRGB(kThemeYellow);
+
+//    AllBrandResultModel *modelResult = self.allBrandResultArray[indexPath.row];
+//    self.dataChildFirstArray = modelResult.children;
+//    //刷新右边tableView 的数据
+//    [self.rightTableView reloadData];
+//    //右边tableview滚回顶部
+//    [self.rightTableView setScrollsToTop:YES];
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == self.leftTableView) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.textLabel.textColor = kColorFromRGB(kBlack);
+    }
+}
+
+
+
+
+
 
 
 @end

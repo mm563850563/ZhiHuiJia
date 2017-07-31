@@ -72,8 +72,14 @@
 #pragma mark - <分类页面分类>
 #define kGetAllClassify @"/classify/getAllClassify"
 
+#pragma mark - <所有品牌>
+#define kGetAllBrand @"/brand/getAllbrand"
+
 #pragma mark - <首页轮播图>
 #define kIndexCarousel @"/Index/carousel"
+
+#pragma mark - <首页产品数据>
+#define kHomeGoods @"/Index/getHomeGoods"
 
 
 

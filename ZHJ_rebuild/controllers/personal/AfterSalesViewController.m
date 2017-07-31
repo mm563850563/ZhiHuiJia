@@ -1,33 +1,31 @@
 //
-//  OrderListViewController.m
+//  AfterSalesViewController.m
 //  ZHJ_rebuild
 //
-//  Created by ZHJ on 2017/7/29.
+//  Created by ZHJ on 2017/7/31.
 //  Copyright © 2017年 sophia. All rights reserved.
 //
 
-#import "OrderListViewController.h"
+#import "AfterSalesViewController.h"
 
 //cells
-#import "OrderListCell.h"
+#import "AfterSalesCell.h"
 
 //views
-#import "OrderListHeaderView.h"
-#import "OrderListFooterView.h"
+#import "AfterSalesHeaderView.h"
 
-@interface OrderListViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface AfterSalesViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation OrderListViewController
+@implementation AfterSalesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-
     [self initTableView];
 }
 
@@ -54,9 +52,11 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.rowHeight = 100;
     
-    UINib *nib = [UINib nibWithNibName:NSStringFromClass([OrderListCell class]) bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([OrderListCell class])];
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([AfterSalesCell class]) bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([AfterSalesCell class])];
 }
+
+
 
 
 
@@ -82,35 +82,27 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 45;
+    return 50;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-//    if (section == 4) {
-//        return 100;
-//    }
-    return 70;
+    //    if (section == 4) {
+    //        return 100;
+    //    }
+    return 10;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    OrderListHeaderView *headerView  = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([OrderListHeaderView class]) owner:nil options:nil].lastObject;
+    AfterSalesHeaderView *headerView  = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([AfterSalesHeaderView class]) owner:nil options:nil].lastObject;
     return headerView;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    OrderListFooterView *footerView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([OrderListFooterView class]) owner:nil options:nil].lastObject;
-    return footerView;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    OrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OrderListCell class])];
+    AfterSalesCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AfterSalesCell class])];
     return cell;
 }
-
-
 
 @end

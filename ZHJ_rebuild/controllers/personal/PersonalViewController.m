@@ -13,10 +13,10 @@
 #import "FeedbackViewController.h"
 #import "MyCollectProductViewController.h"
 #import "MyBalanceViewController.h"
-#import "FeedbackViewController.h"
 #import "GetGiftViewController.h"
 #import "CustomerServiceCenterViewController.h"
 #import "MyOrderViewController.h"
+#import "AfterSalesViewController.h"
 
 //cells
 #import "PersonalCollectCell.h"
@@ -94,11 +94,20 @@
 }
 
 #pragma mark - <跳转“我的订单”页面>
--(void)jumpToMyOrderVC
+-(void)jumpToMyOrderVCWithSelectedIndex:(NSInteger)selectedIndex
 {
     MyOrderViewController *myOrderVC = [[MyOrderViewController alloc]initWithNibName:NSStringFromClass([MyOrderViewController class]) bundle:nil];
+    myOrderVC.selectedIndex = selectedIndex;
     myOrderVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:myOrderVC animated:YES];
+}
+
+#pragma mark - <跳转“售后”页面>
+-(void)jumpToAfterSalesVC
+{
+    AfterSalesViewController *afterSalesVC = [[AfterSalesViewController alloc]initWithNibName:NSStringFromClass([AfterSalesViewController class]) bundle:nil];
+    afterSalesVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:afterSalesVC animated:YES];
 }
 
 #pragma mark - <设置按钮响应>
@@ -112,37 +121,37 @@
 #pragma mark - <设置“我的订单”响应>
 - (IBAction)btnMyOrderAction:(UIButton *)sender
 {
-    [self jumpToMyOrderVC];
+    [self jumpToMyOrderVCWithSelectedIndex:1];
 }
 
 #pragma mark - <设置“待付款”响应>
 - (IBAction)btnWaitToPayAction:(UIButton *)sender
 {
-    [self jumpToMyOrderVC];
+    [self jumpToMyOrderVCWithSelectedIndex:2];
 }
 
 #pragma mark - <设置“待发货”响应>
 - (IBAction)btnWaitToSendOutAction:(UIButton *)sender
 {
-    [self jumpToMyOrderVC];
+    [self jumpToMyOrderVCWithSelectedIndex:3];
 }
 
 #pragma mark - <设置“已发货”响应>
 - (IBAction)btnsendedGoodsAction:(UIButton *)sender
 {
-    [self jumpToMyOrderVC];
+    [self jumpToMyOrderVCWithSelectedIndex:4];
 }
 
 #pragma mark - <设置“待评价”响应>
 - (IBAction)btnWaitToCommentAction:(UIButton *)sender
 {
-    [self jumpToMyOrderVC];
+    [self jumpToMyOrderVCWithSelectedIndex:5];
 }
 
 #pragma mark - <设置“退换／售后”响应>
 - (IBAction)btnAfterSalesAction:(UIButton *)sender
 {
-    
+    [self jumpToAfterSalesVC];
 }
 
 
@@ -182,8 +191,15 @@
     NSLog(@"%@",[self class]);
     if ([viewController isKindOfClass:[self class]]) {
         [navigationController setNavigationBarHidden:YES animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
     }else if ([viewController isKindOfClass:[GetGiftViewController class]]){
         [navigationController setNavigationBarHidden:YES animated:YES];
+    }else if ([viewController isKindOfClass:[MyOrderViewController class]]){
+        [navigationController setNavigationBarHidden:NO animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[AfterSalesViewController class]]){
+        [navigationController setNavigationBarHidden:NO animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
     }else{
         [navigationController setNavigationBarHidden:NO animated:YES];
         [navigationController.navigationBar setTranslucent:NO];
@@ -207,30 +223,30 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.item == 0) {//购物车
-        self.tabBarController.selectedIndex = 3;
-    }else if (indexPath.item == 1){//我的收藏
-        MyCollectProductViewController *myCollectProductVC = [[MyCollectProductViewController alloc]initWithNibName:NSStringFromClass([MyCollectProductViewController class]) bundle:nil];
-        myCollectProductVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:myCollectProductVC animated:YES];
-    }else if (indexPath.item == 2){//我的余额
+    if (indexPath.item == 0) {//我的钱包
         MyBalanceViewController *myBalanceVC = [[MyBalanceViewController alloc]initWithNibName:NSStringFromClass([MyBalanceViewController class]) bundle:nil];
         myBalanceVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:myBalanceVC animated:YES];
-    }else if (indexPath.item == 3){//优惠券
+    }else if (indexPath.item == 1){//优惠券
+        MyCollectProductViewController *myCollectProductVC = [[MyCollectProductViewController alloc]initWithNibName:NSStringFromClass([MyCollectProductViewController class]) bundle:nil];
+        myCollectProductVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:myCollectProductVC animated:YES];
+    }else if (indexPath.item == 2){//我的收藏
+        
+    }else if (indexPath.item == 3){//分享邀请
         
     }else if (indexPath.item == 4){//客服中心
         CustomerServiceCenterViewController *customerCenterVC = [[CustomerServiceCenterViewController alloc]initWithNibName:NSStringFromClass([CustomerServiceCenterViewController class]) bundle:nil];
         customerCenterVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:customerCenterVC animated:YES];
-    }else if (indexPath.item == 5){//分享邀请
+    }else if (indexPath.item == 5){//足迹
         GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
         getGiftVC.category = 1;
         getGiftVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:getGiftVC animated:YES];
     }else if (indexPath.item == 6){//关注公众号
         
-    }else if (indexPath.item == 7){//关于智惠加
+    }else if (indexPath.item == 7){//关于我们
         
     }else if (indexPath.item == 8){//意见反馈
         FeedbackViewController *feedBackVC = [[FeedbackViewController alloc]initWithNibName:NSStringFromClass([FeedbackViewController class]) bundle:nil];

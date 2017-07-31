@@ -21,28 +21,41 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZM-bu-3YK">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kym-EJ-Isb">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZM-bu-3YK">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="3bv-mm-i6y"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4y-Cs-ZeM">
+                            <rect key="frame" x="0.0" y="40" width="375" height="563"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="3bv-mm-i6y"/>
+                        <constraint firstItem="uZM-bu-3YK" firstAttribute="top" secondItem="kym-EJ-Isb" secondAttribute="top" id="79H-Gb-n3e"/>
+                        <constraint firstItem="u4y-Cs-ZeM" firstAttribute="top" secondItem="uZM-bu-3YK" secondAttribute="bottom" id="BU9-jb-s46"/>
+                        <constraint firstAttribute="trailing" secondItem="u4y-Cs-ZeM" secondAttribute="trailing" id="NuY-co-aER"/>
+                        <constraint firstAttribute="bottom" secondItem="u4y-Cs-ZeM" secondAttribute="bottom" constant="64" id="Vev-ZJ-H1G"/>
+                        <constraint firstItem="u4y-Cs-ZeM" firstAttribute="leading" secondItem="kym-EJ-Isb" secondAttribute="leading" id="Yh5-8y-C1R"/>
+                        <constraint firstItem="uZM-bu-3YK" firstAttribute="leading" secondItem="kym-EJ-Isb" secondAttribute="leading" id="acM-s3-2Pw"/>
+                        <constraint firstAttribute="trailing" secondItem="uZM-bu-3YK" secondAttribute="trailing" id="c2w-xx-1bX"/>
                     </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4y-Cs-ZeM">
-                    <rect key="frame" x="0.0" y="45" width="375" height="622"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="u4y-Cs-ZeM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Arb-Op-5YL"/>
-                <constraint firstItem="u4y-Cs-ZeM" firstAttribute="top" secondItem="uZM-bu-3YK" secondAttribute="bottom" id="SpF-VJ-Y3K"/>
-                <constraint firstAttribute="bottom" secondItem="u4y-Cs-ZeM" secondAttribute="bottom" id="U1m-kL-EV4"/>
-                <constraint firstItem="uZM-bu-3YK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UXS-Oi-Pij"/>
-                <constraint firstAttribute="trailing" secondItem="uZM-bu-3YK" secondAttribute="trailing" id="nyQ-fm-XHq"/>
-                <constraint firstItem="uZM-bu-3YK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qlo-j0-Jgj"/>
-                <constraint firstAttribute="trailing" secondItem="u4y-Cs-ZeM" secondAttribute="trailing" id="yfX-3w-WrN"/>
+                <constraint firstAttribute="trailing" secondItem="kym-EJ-Isb" secondAttribute="trailing" id="b3O-vB-pAi"/>
+                <constraint firstItem="kym-EJ-Isb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bTM-sV-jeC"/>
+                <constraint firstAttribute="bottom" secondItem="kym-EJ-Isb" secondAttribute="bottom" id="jNZ-mp-AVz"/>
+                <constraint firstItem="kym-EJ-Isb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xAE-s0-E8s"/>
             </constraints>
+            <point key="canvasLocation" x="71.5" y="125.5"/>
         </view>
     </objects>
 </document>
