@@ -7,22 +7,12 @@
 //
 
 #import <JSONModel/JSONModel.h>
-#import "AllBrandListModel.h"
-#import "AllBrandGoodsListModel.h"
-
-@protocol AllBrandListModel <NSObject>
-@end
-
-@protocol AllBrandGoodsListModel <NSObject>
-@end
+#import "AllBrandContentModel.h"
 
 @interface AllBrandResultModel : JSONModel
 
 @property (nonatomic, strong)NSString *id;
 @property (nonatomic, strong)NSString *name;
-@property (nonatomic, strong)NSString *goods_id;
-@property (nonatomic, strong)NSString *banner;
-@property (nonatomic, strong)NSArray<AllBrandListModel> *brand_list;
-@property (nonatomic, strong)NSArray<AllBrandGoodsListModel> *goods_list;
+@property (nonatomic, strong)AllBrandContentModel *content;
 
 @end

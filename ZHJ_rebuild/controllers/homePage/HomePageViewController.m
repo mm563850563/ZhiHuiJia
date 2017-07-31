@@ -128,7 +128,7 @@
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             IndexCarouselModel *model = [[IndexCarouselModel alloc]initWithDictionary:dataDict error:nil];
-            if ([model.code isEqualToString: @"200"]) {
+            if ([model.code isEqualToNumber:[NSNumber numberWithInteger:200]]) {
                 self.carouselResultArray = model.data.result;
                 //回到主线程刷新数据
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -159,7 +159,7 @@
             NSDictionary *dataDict = (NSDictionary *)response;
             HomeGoodsModel *model = [[HomeGoodsModel alloc]initWithDictionary:dataDict error:nil];
             
-            if ([model.code isEqualToString:@"200"]) {
+            if ([model.code isEqualToNumber:[NSNumber numberWithInteger:200]]) {
                 self.homeGoodsResultArray = model.data.result;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];

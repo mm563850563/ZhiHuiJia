@@ -85,7 +85,7 @@
             AllClassifyModel *model = [[AllClassifyModel alloc]initWithDictionary:dataDict error:nil];
             [hud hideAnimated:YES afterDelay:1.0];
             
-            if ([model.code isEqualToString:@"200"]) {
+            if ([model.code isEqualToNumber:[NSNumber numberWithInteger:200]]) {
                 self.model = model;
                 self.dataResultArray = model.data.result;
                 AllClassifyResultModel *resultModel = self.dataResultArray[0];

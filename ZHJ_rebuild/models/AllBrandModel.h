@@ -11,7 +11,7 @@
 
 @interface AllBrandModel : JSONModel
 
-@property (nonatomic, strong)NSString *code;
+@property (nonatomic, strong)NSNumber *code;
 @property (nonatomic, strong)NSString *msg;
 @property (nonatomic, strong)AllBrandDataModel *data;
 

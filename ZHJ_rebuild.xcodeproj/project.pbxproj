@@ -210,6 +210,7 @@
 		DD6898021F2F279A008B6A8F /* AllBrandResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6898011F2F279A008B6A8F /* AllBrandResultModel.m */; };
 		DD6898051F2F2847008B6A8F /* AllBrandListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6898041F2F2847008B6A8F /* AllBrandListModel.m */; };
 		DD6898081F2F2861008B6A8F /* AllBrandGoodsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6898071F2F2861008B6A8F /* AllBrandGoodsListModel.m */; };
+		DD68980B1F2F5C22008B6A8F /* AllBrandContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD68980A1F2F5C22008B6A8F /* AllBrandContentModel.m */; };
 		DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63981F2EB56800611FA8 /* OrderListCell.m */; };
 		DD9A639B1F2EB56800611FA8 /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A63991F2EB56800611FA8 /* OrderListCell.xib */; };
 		DD9A639E1F2ECEE400611FA8 /* OrderListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A639D1F2ECEE400611FA8 /* OrderListHeaderView.m */; };
@@ -662,6 +663,8 @@
 		DD6898041F2F2847008B6A8F /* AllBrandListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllBrandListModel.m; path = models/AllBrandListModel.m; sourceTree = "<group>"; };
 		DD6898061F2F2861008B6A8F /* AllBrandGoodsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllBrandGoodsListModel.h; path = models/AllBrandGoodsListModel.h; sourceTree = "<group>"; };
 		DD6898071F2F2861008B6A8F /* AllBrandGoodsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllBrandGoodsListModel.m; path = models/AllBrandGoodsListModel.m; sourceTree = "<group>"; };
+		DD6898091F2F5C22008B6A8F /* AllBrandContentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllBrandContentModel.h; path = models/AllBrandContentModel.h; sourceTree = "<group>"; };
+		DD68980A1F2F5C22008B6A8F /* AllBrandContentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllBrandContentModel.m; path = models/AllBrandContentModel.m; sourceTree = "<group>"; };
 		DD9A63971F2EB56800611FA8 /* OrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListCell.h; path = cells/OrderListCell.h; sourceTree = "<group>"; };
 		DD9A63981F2EB56800611FA8 /* OrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListCell.m; path = cells/OrderListCell.m; sourceTree = "<group>"; };
 		DD9A63991F2EB56800611FA8 /* OrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListCell.xib; path = cells/OrderListCell.xib; sourceTree = "<group>"; };
@@ -1337,6 +1340,8 @@
 				DD6897FE1F2F276C008B6A8F /* AllBrandDataModel.m */,
 				DD6898001F2F279A008B6A8F /* AllBrandResultModel.h */,
 				DD6898011F2F279A008B6A8F /* AllBrandResultModel.m */,
+				DD6898091F2F5C22008B6A8F /* AllBrandContentModel.h */,
+				DD68980A1F2F5C22008B6A8F /* AllBrandContentModel.m */,
 				DD6898031F2F2847008B6A8F /* AllBrandListModel.h */,
 				DD6898041F2F2847008B6A8F /* AllBrandListModel.m */,
 				DD6898061F2F2861008B6A8F /* AllBrandGoodsListModel.h */,
@@ -2032,6 +2037,7 @@
 				DD6287841F2097940030331D /* HotCircleCell.m in Sources */,
 				DD6288181F22EB740030331D /* SubMessage_PrivateLetterViewController.m in Sources */,
 				DD62873E1F1F5FA20030331D /* GetGiftViewController.m in Sources */,
+				DD68980B1F2F5C22008B6A8F /* AllBrandContentModel.m in Sources */,
 				DDFB82B61F1D931500AEAAA7 /* PYSearchSuggestionViewController.m in Sources */,
 				DD6287751F208C0B0030331D /* HotCircleViewController.m in Sources */,
 				DDDD17B91F2C5194006BE206 /* ProgressHUDManager.m in Sources */,

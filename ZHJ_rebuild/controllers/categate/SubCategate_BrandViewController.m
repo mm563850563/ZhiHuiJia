@@ -23,6 +23,9 @@
 //models
 #import "AllBrandModel.h"
 #import "AllBrandResultModel.h"
+#import "AllBrandGoodsListModel.h"
+#import "AllBrandListModel.h"
+#import "AllBrandContentModel.h"
 
 @interface SubCategate_BrandViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -32,6 +35,8 @@
 @property (nonatomic, strong)UICollectionView *rightCollectionView;
 @property (nonatomic, strong)UITableView *leftTableView;
 @property (nonatomic, strong)NSArray *allBrandResultArray;
+@property (nonatomic, strong)NSArray *allBrandListArray;
+@property (nonatomic, strong)NSArray *allBrandGoodsListArray;
 
 @end
 
@@ -45,6 +50,7 @@
     [self addBrandView];
     [self initLeftSideSegmentView];
     [self initRightContentView];
+    [self getAllBrandData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,12 +77,18 @@
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:nil progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
-            AllBrandModel *model = [[AllBrandModel alloc]initWithDictionary:dataDict error:nil];
+            NSError *error = nil;
+            AllBrandModel *model = [[AllBrandModel alloc]initWithDictionary:dataDict error:&error];
+            NSLog(@"%@",error.description);
             
-            if ([model.code isEqualToString:@"200"]) {
+            if ([model.code isEqualToNumber:[NSNumber numberWithInteger:200]]) {
                 self.allBrandResultArray = model.data.result;
+                AllBrandResultModel *modelResult = self.allBrandResultArray[0];
+                self.allBrandListArray = modelResult.content.brand_list;
+                self.allBrandGoodsListArray = modelResult.content.goods_list;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.leftTableView reloadData];
+                    [self.rightCollectionView reloadData];
                 });
             }else{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
@@ -219,26 +231,18 @@
 
 
 
-
-#pragma mark - ******** LeftSideSegmentViewDelegate ********
--(void)leftSideSegmentView:(LeftSideSegmentView *)leftSideSegmentView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"%@",self.dataArray[indexPath.row]);
-    if (indexPath.row == 0) {
-        self.view.backgroundColor = kColorFromRGB(kLightGray);
-    }
-}
-
-
 #pragma mark - **** UICollectionViewDelegate,UICollectionViewDataSource ***
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 8;
+    AllBrandResultModel *model = self.allBrandResultArray[section];
+    return model.content.goods_list.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    AllBrandGoodsListModel *model = self.allBrandGoodsListArray[indexPath.row];
     Categate_BrandCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([Categate_BrandCollectionCell class]) forIndexPath:indexPath];
+    cell.model = model;
     return cell;
 }
 
@@ -275,37 +279,11 @@
     return self.allBrandResultArray.count;
 }
 
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (tableView == self.leftTableView) {
-//        return 50;
-//    }else{
-//        Categate_CategateTableViewCell *cell = [[Categate_CategateTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([Categate_CategateTableViewCell class])];
-//        AllClassifyChidrenFirstModel *modelFirst = self.dataChildFirstArray[indexPath.section];
-//        
-//        cell.model = modelFirst;
-//        return cell.cellHeight;
-//    }
-//}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (tableView == self.leftTableView) {
-        return 0.1f;
-    }else{
-        return 30;
-    }
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.1f;
-}
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CategoryProductNameCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CategoryProductNameCell class])];
     cell.backgroundColor = kColorFromRGB(kLightGray);
+    
     AllBrandResultModel *model = self.allBrandResultArray[indexPath.row];
     if (indexPath.row == 0) {
         cell.labelName.textColor = kColorFromRGB(kThemeYellow);
@@ -325,20 +303,19 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.textLabel.textColor = kColorFromRGB(kThemeYellow);
 
-//    AllBrandResultModel *modelResult = self.allBrandResultArray[indexPath.row];
-//    self.dataChildFirstArray = modelResult.children;
-//    //刷新右边tableView 的数据
-//    [self.rightTableView reloadData];
-//    //右边tableview滚回顶部
-//    [self.rightTableView setScrollsToTop:YES];
+    AllBrandResultModel *modelResult = self.allBrandResultArray[indexPath.row];
+    self.allBrandListArray = modelResult.content.brand_list;
+    self.allBrandGoodsListArray = modelResult.content.goods_list;
+    //刷新右边tableView 的数据
+    [self.rightCollectionView reloadData];
+    //右边tableview滚回顶部
+    [self.rightCollectionView setScrollsToTop:YES];
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == self.leftTableView) {
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        cell.textLabel.textColor = kColorFromRGB(kBlack);
-    }
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.textLabel.textColor = kColorFromRGB(kBlack);
 }
 
 

@@ -13,6 +13,5 @@
 @property (nonatomic, strong)NSString *brand_id;
 @property (nonatomic, strong)NSString *name;
 @property (nonatomic, strong)NSString *logo;
-@property (nonatomic, strong)NSString *desc;
 
 @end

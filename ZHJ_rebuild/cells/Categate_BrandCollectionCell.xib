@@ -22,9 +22,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYB-1T-X11">
                         <rect key="frame" x="0.0" y="0.0" width="142" height="192"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EmE-CG-J7D">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EmE-CG-J7D">
                                 <rect key="frame" x="0.0" y="0.0" width="142" height="142"/>
-                                <color key="backgroundColor" red="0.773043650641837" green="0.92145264148712158" blue="0.64438628032248246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="EmE-CG-J7D" secondAttribute="height" multiplier="1:1" id="wi2-mJ-qnn"/>
                                 </constraints>
@@ -34,7 +33,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="BX3-of-x1F"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -43,7 +42,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="mH6-k2-bjw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -70,6 +69,11 @@
                 <constraint firstAttribute="trailing" secondItem="nYB-1T-X11" secondAttribute="trailing" id="r8L-i2-LNP"/>
             </constraints>
             <size key="customSize" width="142" height="192"/>
+            <connections>
+                <outlet property="imgProduct" destination="EmE-CG-J7D" id="uTq-vY-tcM"/>
+                <outlet property="labelProductName" destination="aCW-hB-gEa" id="VJl-A0-Yqb"/>
+                <outlet property="labelProductPrice" destination="2w7-WJ-HHl" id="4zZ-Ge-Wrl"/>
+            </connections>
             <point key="canvasLocation" x="90" y="-17"/>
         </collectionViewCell>
     </objects>
