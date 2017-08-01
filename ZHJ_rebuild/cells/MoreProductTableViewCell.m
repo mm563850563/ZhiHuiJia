@@ -1,13 +1,12 @@
 //
-//  MoreProductListCell.m
+//  MoreProductTableViewCell.m
 //  ZHJ_rebuild
 //
-//  Created by ZHJ on 2017/7/17.
+//  Created by ZHJ on 2017/8/1.
 //  Copyright © 2017年 sophia. All rights reserved.
 //
 
-#import "MoreProductListCell.h"
-
+#import "MoreProductTableViewCell.h"
 #import "RatingBar.h"
 
 //models
@@ -16,7 +15,7 @@
 //tools
 #import "NSMutableAttributedString+ThroughLine.h"
 
-@interface MoreProductListCell ()
+@interface MoreProductTableViewCell ()
 
 @property (nonatomic, strong)RatingBar *ratingBar;
 @property (weak, nonatomic) IBOutlet UIView *ratingBarBGView;
@@ -29,11 +28,17 @@
 
 @end
 
-@implementation MoreProductListCell
+@implementation MoreProductTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
 }
 
 -(RatingBar *)ratingBar
@@ -50,7 +55,6 @@
 {
     [self.ratingBarBGView addSubview:self.ratingBar];
 }
-
 
 -(void)setModelClassifyList:(ClassifyListResultModel *)modelClassifyList
 {
@@ -70,6 +74,5 @@
         self.ratingBar.starNumber = [modelClassifyList.average_score integerValue];
     }
 }
-
 
 @end

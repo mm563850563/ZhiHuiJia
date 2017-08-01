@@ -21,6 +21,7 @@
 
 //models
 #import "AllClassifyModel.h"
+#import "AllClassifyChildrenSecondModel.h"
 
 @interface CategateViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,UISearchBarDelegate>
 
@@ -138,10 +139,11 @@
     [self.navigationController pushViewController:productDetailVC animated:YES];
 }
 #pragma mark - <跳转更多产品页面>
--(void)jumpToMoreProductVC
+-(void)jumpToMoreProductVCWithCategory_id:(NSString *)id
 {
     MoreProductListViewController *moreProductVC = [[MoreProductListViewController alloc]init];
     moreProductVC.hidesBottomBarWhenPushed = YES;
+    moreProductVC.category_id = id;
     [self.navigationController pushViewController:moreProductVC animated:YES];
 }
 #pragma mark - <跳转品牌详情页面>
@@ -169,8 +171,9 @@
     
     //点击分类选项卡中的产品
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectCategory_Category_item" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        NSIndexPath *indexPath = x.object;
-        [self jumpToMoreProductVC];
+        AllClassifyChildrenSecondModel *model = x.object;
+        
+        [self jumpToMoreProductVCWithCategory_id:model.id];
     }];
     
     //点击品牌馆-入驻品牌图片

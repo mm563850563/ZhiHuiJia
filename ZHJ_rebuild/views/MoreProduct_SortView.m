@@ -69,7 +69,9 @@
 }
 - (IBAction)btnLayoutAction:(UIButton *)sender
 {
+    sender.selected = !sender.selected;
     
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"changeLayout" object:sender];
 }
 
 

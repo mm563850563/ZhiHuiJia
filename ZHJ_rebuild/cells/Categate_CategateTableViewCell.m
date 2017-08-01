@@ -21,7 +21,6 @@
 
 @property (nonatomic, strong)UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong)UICollectionView *collectionView;
-//@property (nonatomic, strong)UIView *contentBGView;
 @property (nonatomic, strong)NSArray *dataArray;
 
 @end
@@ -42,21 +41,11 @@
         _model = model;
         self.dataArray = model.children;
         [self.collectionView reloadData];
-        //强制刷新回复界面，然后更新回复区域高度
+        //强制刷新界面高度
         [self.collectionView layoutIfNeeded];
-//        [self setNeedsLayout];
-//        
-//        [self layoutIfNeeded];
-//        
-//        [self.collectionView reloadData];
         
         CGFloat itemWidth = self.contentView.frame.size.width/4.0;
         CGFloat itemHeight = itemWidth/3.0*3.5;
-
-//        __weak typeof(self) weakSelf = self;
-//        [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.height.mas_equalTo(weakSelf.collectionView.collectionViewLayout.collectionViewContentSize.height);
-//        }];
         
         NSInteger count  = self.dataArray.count/3;
         if (self.dataArray.count%3 != 0) {
@@ -143,7 +132,8 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectCategory_Category_item" object:indexPath];
+    AllClassifyChildrenSecondModel *model = self.dataArray[indexPath.item];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectCategory_Category_item" object:model];
 }
 
 @end

@@ -10,4 +10,6 @@
 
 @interface MoreProductListViewController : UIViewController
 
+@property (nonatomic, strong)NSString *category_id;
+
 @end

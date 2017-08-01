@@ -37,6 +37,7 @@
 @property (nonatomic, strong)NSArray *allBrandResultArray;
 @property (nonatomic, strong)NSArray *allBrandListArray;
 @property (nonatomic, strong)NSArray *allBrandGoodsListArray;
+@property (nonatomic, strong)AllBrandContentModel *modelContent;
 
 @end
 
@@ -84,11 +85,14 @@
             if ([model.code isEqualToNumber:[NSNumber numberWithInteger:200]]) {
                 self.allBrandResultArray = model.data.result;
                 AllBrandResultModel *modelResult = self.allBrandResultArray[0];
+                self.modelContent = modelResult.content;
                 self.allBrandListArray = modelResult.content.brand_list;
                 self.allBrandGoodsListArray = modelResult.content.goods_list;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.leftTableView reloadData];
                     [self.rightCollectionView reloadData];
+                    //默认选中第一个cell
+                    [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
                 });
             }else{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
@@ -170,8 +174,11 @@
 {
     self.leftTableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [self.view addSubview:self.leftTableView];
+    
+    __weak typeof(self) weakSelf = self;
     [self.leftTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.bottom.mas_equalTo(0);
+        make.top.mas_equalTo(weakSelf.brandBGView.mas_bottom);
+        make.left.bottom.mas_equalTo(0);
         make.width.mas_equalTo(110);
     }];
     
@@ -205,7 +212,7 @@
     [self.rightCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.leftTableView.mas_right);
         make.bottom.right.mas_equalTo(0);
-        make.top.mas_equalTo(0);
+        make.top.mas_equalTo(weakSelf.brandBGView.mas_bottom).with.offset(10);
     }];
     
     UINib *nibNormalCell = [UINib nibWithNibName:NSStringFromClass([Categate_BrandCollectionCell class]) bundle:nil];
@@ -234,8 +241,7 @@
 #pragma mark - **** UICollectionViewDelegate,UICollectionViewDataSource ***
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    AllBrandResultModel *model = self.allBrandResultArray[section];
-    return model.content.goods_list.count;
+    return self.allBrandGoodsListArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -249,6 +255,7 @@
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     Categate_Brand_HeaderView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([Categate_Brand_HeaderView class]) forIndexPath:indexPath];
+    view.model = self.modelContent;
     return view;
 }
 
@@ -300,23 +307,18 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.textLabel.textColor = kColorFromRGB(kThemeYellow);
-
     AllBrandResultModel *modelResult = self.allBrandResultArray[indexPath.row];
-    self.allBrandListArray = modelResult.content.brand_list;
-    self.allBrandGoodsListArray = modelResult.content.goods_list;
+    AllBrandContentModel *modelContent = modelResult.content;
+    self.allBrandListArray = modelContent.brand_list;
+    self.allBrandGoodsListArray = modelContent.goods_list;
+    self.modelContent = modelContent;
     //刷新右边tableView 的数据
     [self.rightCollectionView reloadData];
     //右边tableview滚回顶部
     [self.rightCollectionView setScrollsToTop:YES];
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.textLabel.textColor = kColorFromRGB(kBlack);
-}
+
 
 
 

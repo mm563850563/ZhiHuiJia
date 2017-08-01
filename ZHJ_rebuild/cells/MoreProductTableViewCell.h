@@ -1,15 +1,15 @@
 //
-//  MoreProductListCell.h
+//  MoreProductTableViewCell.h
 //  ZHJ_rebuild
 //
-//  Created by ZHJ on 2017/7/17.
+//  Created by ZHJ on 2017/8/1.
 //  Copyright © 2017年 sophia. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 @class ClassifyListResultModel;
 
-@interface MoreProductListCell : UICollectionViewCell
+@interface MoreProductTableViewCell : UITableViewCell
 
 @property (nonatomic, strong)ClassifyListResultModel *modelClassifyList;
 

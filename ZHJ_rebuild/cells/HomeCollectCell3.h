@@ -14,12 +14,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelProductName1;
 @property (weak, nonatomic) IBOutlet UILabel *labelProductIntroduce1;
 @property (weak, nonatomic) IBOutlet UILabel *labelPrice1;
-@property (weak, nonatomic) IBOutlet UILabel *labelCompare1;
+@property (weak, nonatomic) IBOutlet UILabel *labelMarketPrice1;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgProduct2;
 @property (weak, nonatomic) IBOutlet UILabel *labelProductName2;
-@property (weak, nonatomic) IBOutlet UILabel *labelProductIntroduce;
+@property (weak, nonatomic) IBOutlet UILabel *labelProductIntroduce2;
 @property (weak, nonatomic) IBOutlet UILabel *labelPrice2;
-@property (weak, nonatomic) IBOutlet UILabel *labelCompare2;
+@property (weak, nonatomic) IBOutlet UILabel *labelMarketPrice2;
+
+@property (nonatomic, strong)NSMutableArray *dataArray;
 
 @end

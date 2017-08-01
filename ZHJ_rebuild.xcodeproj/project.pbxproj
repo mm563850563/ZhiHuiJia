@@ -211,6 +211,12 @@
 		DD6898051F2F2847008B6A8F /* AllBrandListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6898041F2F2847008B6A8F /* AllBrandListModel.m */; };
 		DD6898081F2F2861008B6A8F /* AllBrandGoodsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6898071F2F2861008B6A8F /* AllBrandGoodsListModel.m */; };
 		DD68980B1F2F5C22008B6A8F /* AllBrandContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD68980A1F2F5C22008B6A8F /* AllBrandContentModel.m */; };
+		DD68980E1F302B03008B6A8F /* ClassifyListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD68980D1F302B03008B6A8F /* ClassifyListModel.m */; };
+		DD6898141F302BB2008B6A8F /* ClassifyListDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6898131F302BB2008B6A8F /* ClassifyListDataModel.m */; };
+		DD6898171F302BE3008B6A8F /* ClassifyListResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6898161F302BE3008B6A8F /* ClassifyListResultModel.m */; };
+		DD6898241F3049AD008B6A8F /* NSMutableAttributedString+ThroughLine.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6898231F3049AD008B6A8F /* NSMutableAttributedString+ThroughLine.m */; };
+		DD6898281F30525A008B6A8F /* MoreProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6898261F30525A008B6A8F /* MoreProductTableViewCell.m */; };
+		DD6898291F30525A008B6A8F /* MoreProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6898271F30525A008B6A8F /* MoreProductTableViewCell.xib */; };
 		DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63981F2EB56800611FA8 /* OrderListCell.m */; };
 		DD9A639B1F2EB56800611FA8 /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A63991F2EB56800611FA8 /* OrderListCell.xib */; };
 		DD9A639E1F2ECEE400611FA8 /* OrderListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A639D1F2ECEE400611FA8 /* OrderListHeaderView.m */; };
@@ -665,6 +671,17 @@
 		DD6898071F2F2861008B6A8F /* AllBrandGoodsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllBrandGoodsListModel.m; path = models/AllBrandGoodsListModel.m; sourceTree = "<group>"; };
 		DD6898091F2F5C22008B6A8F /* AllBrandContentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllBrandContentModel.h; path = models/AllBrandContentModel.h; sourceTree = "<group>"; };
 		DD68980A1F2F5C22008B6A8F /* AllBrandContentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllBrandContentModel.m; path = models/AllBrandContentModel.m; sourceTree = "<group>"; };
+		DD68980C1F302B03008B6A8F /* ClassifyListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassifyListModel.h; path = models/ClassifyListModel.h; sourceTree = "<group>"; };
+		DD68980D1F302B03008B6A8F /* ClassifyListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassifyListModel.m; path = models/ClassifyListModel.m; sourceTree = "<group>"; };
+		DD6898121F302BB2008B6A8F /* ClassifyListDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassifyListDataModel.h; path = models/ClassifyListDataModel.h; sourceTree = "<group>"; };
+		DD6898131F302BB2008B6A8F /* ClassifyListDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassifyListDataModel.m; path = models/ClassifyListDataModel.m; sourceTree = "<group>"; };
+		DD6898151F302BE3008B6A8F /* ClassifyListResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassifyListResultModel.h; path = models/ClassifyListResultModel.h; sourceTree = "<group>"; };
+		DD6898161F302BE3008B6A8F /* ClassifyListResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassifyListResultModel.m; path = models/ClassifyListResultModel.m; sourceTree = "<group>"; };
+		DD6898221F3049AD008B6A8F /* NSMutableAttributedString+ThroughLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableAttributedString+ThroughLine.h"; path = "tools/NSMutableAttributedString+ThroughLine.h"; sourceTree = "<group>"; };
+		DD6898231F3049AD008B6A8F /* NSMutableAttributedString+ThroughLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableAttributedString+ThroughLine.m"; path = "tools/NSMutableAttributedString+ThroughLine.m"; sourceTree = "<group>"; };
+		DD6898251F30525A008B6A8F /* MoreProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreProductTableViewCell.h; path = cells/MoreProductTableViewCell.h; sourceTree = "<group>"; };
+		DD6898261F30525A008B6A8F /* MoreProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreProductTableViewCell.m; path = cells/MoreProductTableViewCell.m; sourceTree = "<group>"; };
+		DD6898271F30525A008B6A8F /* MoreProductTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreProductTableViewCell.xib; path = cells/MoreProductTableViewCell.xib; sourceTree = "<group>"; };
 		DD9A63971F2EB56800611FA8 /* OrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListCell.h; path = cells/OrderListCell.h; sourceTree = "<group>"; };
 		DD9A63981F2EB56800611FA8 /* OrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListCell.m; path = cells/OrderListCell.m; sourceTree = "<group>"; };
 		DD9A63991F2EB56800611FA8 /* OrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListCell.xib; path = cells/OrderListCell.xib; sourceTree = "<group>"; };
@@ -1106,6 +1123,9 @@
 				DDFB828B1F1C5E3900AEAAA7 /* MoreProductListCell.h */,
 				DDFB828C1F1C5E3900AEAAA7 /* MoreProductListCell.m */,
 				DDFB828D1F1C5E3900AEAAA7 /* MoreProductListCell.xib */,
+				DD6898251F30525A008B6A8F /* MoreProductTableViewCell.h */,
+				DD6898261F30525A008B6A8F /* MoreProductTableViewCell.m */,
+				DD6898271F30525A008B6A8F /* MoreProductTableViewCell.xib */,
 				DD40B7251F17250B00839748 /* HomeLeftImageCell.h */,
 				DD40B7261F17250B00839748 /* HomeLeftImageCell.m */,
 				DD40B7271F17250B00839748 /* HomeLeftImageCell.xib */,
@@ -1362,6 +1382,12 @@
 				DD6897F51F2F0E88008B6A8F /* HomeGoodsBigImageModel.m */,
 				DD6897F71F2F0F88008B6A8F /* HomeGoodsListModel.h */,
 				DD6897F81F2F0F88008B6A8F /* HomeGoodsListModel.m */,
+				DD68980C1F302B03008B6A8F /* ClassifyListModel.h */,
+				DD68980D1F302B03008B6A8F /* ClassifyListModel.m */,
+				DD6898121F302BB2008B6A8F /* ClassifyListDataModel.h */,
+				DD6898131F302BB2008B6A8F /* ClassifyListDataModel.m */,
+				DD6898151F302BE3008B6A8F /* ClassifyListResultModel.h */,
+				DD6898161F302BE3008B6A8F /* ClassifyListResultModel.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -1384,6 +1410,8 @@
 				DDFB81C21F184B7600AEAAA7 /* CALayer+XIBUIColor.m */,
 				DDDD17B71F2C5194006BE206 /* ProgressHUDManager.h */,
 				DDDD17B81F2C5194006BE206 /* ProgressHUDManager.m */,
+				DD6898221F3049AD008B6A8F /* NSMutableAttributedString+ThroughLine.h */,
+				DD6898231F3049AD008B6A8F /* NSMutableAttributedString+ThroughLine.m */,
 			);
 			name = tools;
 			sourceTree = "<group>";
@@ -1829,6 +1857,7 @@
 				DD6287531F203C030030331D /* MyAddressIncreaseViewController.xib in Resources */,
 				DD6287671F2059F70030331D /* MyBalanceViewController.xib in Resources */,
 				DD4CEFE01F26CD0F0024156F /* BrandDetailViewController.xib in Resources */,
+				DD6898291F30525A008B6A8F /* MoreProductTableViewCell.xib in Resources */,
 				EC4BA0CD1F1359DF00B9BE1A /* SelectThemeColorView.xib in Resources */,
 				DD62870F1F1EEE1B0030331D /* FocusPersonHeaderCell.xib in Resources */,
 				DD62880F1F22EB090030331D /* SubMessage_CommentViewController.xib in Resources */,
@@ -2008,6 +2037,7 @@
 				DD9A63B71F2EF31900611FA8 /* HomeGoodsModel.m in Sources */,
 				DDFB829C1F1C78FD00AEAAA7 /* MoreProduct_SortView.m in Sources */,
 				DD6287F21F21ED4F0030331D /* PersonalRankActivityViewController.m in Sources */,
+				DD6898241F3049AD008B6A8F /* NSMutableAttributedString+ThroughLine.m in Sources */,
 				DD9A63AE1F2EE29C00611FA8 /* AfterSalesCell.m in Sources */,
 				DD4CF0221F286E9E0024156F /* ActivityRecommendDetailCell.m in Sources */,
 				DD4CF0EA1F29BF850024156F /* YQNetworking+RequestManager.m in Sources */,
@@ -2022,12 +2052,15 @@
 				DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */,
 				DD62880E1F22EB090030331D /* SubMessage_CommentViewController.m in Sources */,
 				EC4BA0F41F136CA400B9BE1A /* SubCategate_CategateViewController.m in Sources */,
+				DD6898281F30525A008B6A8F /* MoreProductTableViewCell.m in Sources */,
 				DD6288341F233EE00030331D /* SameHobbyPersonListViewController.m in Sources */,
 				DD6287431F1F8C1E0030331D /* MyAddressViewController.m in Sources */,
 				DD6288221F22EC7A0030331D /* SubNotification_DiscountViewController.m in Sources */,
 				DD6897F91F2F0F88008B6A8F /* HomeGoodsListModel.m in Sources */,
+				DD6898141F302BB2008B6A8F /* ClassifyListDataModel.m in Sources */,
 				DD4CEFFC1F2732370024156F /* BrandStoryViewController.m in Sources */,
 				DD6287DE1F21E3B20030331D /* ActivityViewController.m in Sources */,
+				DD6898171F302BE3008B6A8F /* ClassifyListResultModel.m in Sources */,
 				DD9A63A91F2EE20100611FA8 /* AfterSalesViewController.m in Sources */,
 				EC4BA0CA1F1359DF00B9BE1A /* LeftSideSegmentView.m in Sources */,
 				DD4CF0401F28A43E0024156F /* NewPostViewController.m in Sources */,
@@ -2056,6 +2089,7 @@
 				EC4BA11C1F1376F600B9BE1A /* CartViewController.m in Sources */,
 				DD6287D31F21C96F0030331D /* DomainHeaderView.m in Sources */,
 				DD6287ED1F21E8C00030331D /* FailureReviewViewController.m in Sources */,
+				DD68980E1F302B03008B6A8F /* ClassifyListModel.m in Sources */,
 				DDFB826B1F187A7900AEAAA7 /* SSCheckBoxView.m in Sources */,
 				DDFB82A21F1C81E300AEAAA7 /* PersonalFileViewController.m in Sources */,
 				DD6287CA1F21AF900030331D /* LookAroundTableCell.m in Sources */,

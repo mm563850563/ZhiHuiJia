@@ -81,6 +81,9 @@
 #pragma mark - <首页产品数据>
 #define kHomeGoods @"/Index/getHomeGoods"
 
+#pragma mark - <分类列表>
+#define kClassifyList @"/classify/classifyList" //参数：sort_lastest，sort_sales，sort_price
+
 
 
 

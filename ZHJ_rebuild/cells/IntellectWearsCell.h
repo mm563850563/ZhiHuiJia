@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class HomeGoodsResultModel;
 
 @interface IntellectWearsCell : UITableViewCell
 
-@property (nonatomic, assign)NSInteger numberOfCell;
+@property (nonatomic, strong)HomeGoodsResultModel *model;
+@property (nonatomic, assign)CGFloat cellHeight;
 
 @end

@@ -15,5 +15,6 @@
 @property (nonatomic, strong)NSString *goods_name;
 @property (nonatomic, strong)NSString *goods_remark;
 @property (nonatomic, strong)NSString *img;
+@property (nonatomic, strong)NSString *market_price;
 
 @end

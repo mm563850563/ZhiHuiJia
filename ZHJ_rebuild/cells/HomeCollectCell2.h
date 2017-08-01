@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class HomeGoodsListModel;
 
 @interface HomeCollectCell2 : UICollectionViewCell
+
+@property (nonatomic, strong)HomeGoodsListModel *model;
 
 @end

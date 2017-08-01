@@ -10,6 +10,7 @@
 
 //cells
 #import "MoreProductListCell.h"
+#import "MoreProductTableViewCell.h"
 
 //views
 #import "MoreProduct_SortView.h"
@@ -17,10 +18,23 @@
 //controllers
 #import "ProductDetailViewController.h"
 
-@interface MoreProductListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+//models
+#import "ClassifyListModel.h"
+#import "ClassifyListResultModel.h"
 
+typedef NS_ENUM(NSUInteger,LayoutCode){
+    CollectionLayout,//collectionView布局
+    TableLayout  //tableView布局
+};
+
+@interface MoreProductListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic, assign)LayoutCode layoutCode;
+@property (nonatomic, strong)MoreProduct_SortView *sortView;
 @property (nonatomic, strong)UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong)UICollectionView *collectionView;
+@property (nonatomic, strong)UITableView *tableView;
+@property (nonatomic, strong)NSArray *classifyListResultArray;
 
 @end
 
@@ -28,10 +42,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //默认布局为collectionView
+    self.layoutCode = CollectionLayout;
     
+    [self getClassifyListData];
     [self settingNavigation];
     [self initMoreProduct_SortView];
+    [self initTableView];
     [self initCollectionView];
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,6 +68,58 @@
  }
  */
 
+#pragma mark - <获取数据>
+-(void)getClassifyListData
+{
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    
+    //分类列表
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kClassifyList];
+    //参数
+    NSDictionary *dictParameter = @{@"category_id":self.category_id};
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            [hud hideAnimated:YES afterDelay:1.0];
+            NSDictionary *dataDict = (NSDictionary *)response;
+            ClassifyListModel *model = [[ClassifyListModel alloc]initWithDictionary:dataDict error:nil];
+            if ([model.code isEqualToString:@"200"]) {
+                self.classifyListResultArray = model.data.result;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.collectionView reloadData];
+                    [self.tableView reloadData];
+                });
+            }else{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+        }
+    } failBlock:^(NSError *error) {
+        [hud hideAnimated:YES afterDelay:1.0];
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }];
+}
+
+#pragma mark - <初始化tableView>
+-(void)initTableView
+{
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50) style:UITableViewStylePlain];
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_offset(0);
+        make.top.mas_offset(50);
+    }];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.rowHeight = 120;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([MoreProductTableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([MoreProductTableViewCell class])];
+}
+
+#pragma mark - <初始化collectionView>
 -(UICollectionViewFlowLayout *)flowLayout
 {
     if (!_flowLayout) {
@@ -58,12 +129,11 @@
         CGFloat itemWidth = self.view.frame.size.width/2.02;
         CGFloat itemHeight = itemWidth/2.0*3.1;
         _flowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
-        _flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        _flowLayout.sectionInset = UIEdgeInsetsMake(5, 0, 0, 0);
 //        _flowLayout.headerReferenceSize = CGSizeMake(kSCREEN_WIDTH, 50);
     }
     return _flowLayout;
 }
-
 -(UICollectionView *)collectionView
 {
     if (!_collectionView) {
@@ -76,6 +146,14 @@
         [_collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([MoreProductListCell class])];
     }
     return _collectionView;
+}
+-(void)initCollectionView
+{
+    [self.view addSubview:self.collectionView];
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_offset(0);
+        make.top.mas_offset(50);
+    }];
 }
 
 
@@ -93,27 +171,57 @@
         make.top.left.right.mas_offset(0);
         make.height.mas_offset(50);
     }];
+    self.sortView = sortView;
 }
 
--(void)initCollectionView
+#pragma mark - <页面布局变化>
+-(void)changeLayout
 {
-    [self.view addSubview:self.collectionView];
-    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.mas_offset(0);
-        make.top.mas_offset(50);
+    if (self.layoutCode == CollectionLayout) {
+        [self.view bringSubviewToFront:self.collectionView];
+    }else if (self.layoutCode == TableLayout){
+        [self.view sendSubviewToBack:self.collectionView];
+    }
+}
+
+#pragma mark - <RAC响应>
+-(void)respondWithRAC
+{
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"changeLayout" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        UIButton *button = (UIButton *)x.object;
+        if (button.isSelected == YES) {
+            self.layoutCode = TableLayout;
+        }else{
+            self.layoutCode = CollectionLayout;
+        }
+        [self changeLayout];
     }];
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #pragma mark - ** UICollectionViewDelegate,UICollectionViewDataSource ***
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return self.classifyListResultArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    ClassifyListResultModel *model = self.classifyListResultArray[indexPath.item];
     MoreProductListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MoreProductListCell class]) forIndexPath:indexPath];
+    cell.modelClassifyList = model;
     return cell;
 }
 
@@ -123,6 +231,27 @@
     [self.navigationController pushViewController:productDetailVC animated:YES];
 }
 
+
+
+#pragma mark - **** UITableViewDelegate,UITableViewDataSource ****
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.classifyListResultArray.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ClassifyListResultModel *model = self.classifyListResultArray[indexPath.item];
+    MoreProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MoreProductTableViewCell class])];
+    cell.modelClassifyList = model;
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
+    [self.navigationController pushViewController:productDetailVC animated:YES];
+}
 
 
 @end

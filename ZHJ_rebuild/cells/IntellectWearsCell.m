@@ -16,10 +16,13 @@
 #import "HomeCollectCell2.h"
 #import "HomeCollectCell3.h"
 
-@interface IntellectWearsCell ()<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource>
+#import "HomeGoodsResultModel.h"
+
+@interface IntellectWearsCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong)UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong)UICollectionView *collectionView;
+@property (nonatomic, strong)NSArray *dataArray;
 
 @end
 
@@ -42,6 +45,16 @@
     if (!_flowLayout) {
         _flowLayout = [[UICollectionViewFlowLayout alloc]init];
         _flowLayout.sectionInset = UIEdgeInsetsMake(5, 0, 5, 0);
+        _flowLayout.minimumLineSpacing = 5;
+        _flowLayout.minimumInteritemSpacing = 0;
+        CGFloat itemWidth = kSCREEN_WIDTH/2.02;
+        CGFloat itemHeight = itemWidth/2.0*3.0;
+        
+        NSLog(@"%f,%f",itemWidth,itemHeight);
+        if (itemHeight > (itemWidth+90)) {
+            itemHeight = itemWidth+90;
+        }
+        _flowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
     }
     return _flowLayout;
 }
@@ -50,7 +63,7 @@
 {
     if (!_collectionView) {
         _collectionView = [[UICollectionView alloc]initWithFrame:self.contentView.bounds collectionViewLayout:self.flowLayout];
-        _collectionView.backgroundColor = kColorFromRGB(kWhite);
+        _collectionView.backgroundColor = kColorFromRGB(kLightGray);
         _collectionView.scrollEnabled = NO;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
@@ -67,52 +80,55 @@
     return _collectionView;
 }
 
--(void)setNumberOfCell:(NSInteger)numberOfCell
-{
-    _numberOfCell = numberOfCell;
-}
+
 
 
 -(void)drawRect:(CGRect)rect
 {
     [self.contentView addSubview:self.collectionView];
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
 }
 
-
-
-
-#pragma mark - ****** UICollectionViewDelegateFlowLayout *******
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+-(void)setModel:(HomeGoodsResultModel *)model
 {
-    CGFloat itemWidth = self.contentView.frame.size.width/2.02;
-    CGFloat itemHeight = itemWidth/2.0*3.0;
-    
-    NSLog(@"%f,%f",itemWidth,itemHeight);
-    if (itemHeight > (itemWidth+90)) {
-        itemHeight = itemWidth+90;
+    if (_model != model) {
+        _model = model;
+        self.dataArray = model.goods_list;
+        [self.collectionView reloadData];
+//        强制刷新界面高度
+        [self.collectionView layoutIfNeeded];
+        
+        CGFloat itemWidth = kSCREEN_WIDTH/2.02;
+        CGFloat itemHeight = itemWidth/2.0*3.0;
+        if (itemHeight > (itemWidth+90)) {
+            itemHeight = itemWidth+90;
+        }
+        
+        NSInteger lineCount = self.dataArray.count/2;
+        if (self.dataArray.count%2 != 0) {
+            lineCount++;
+        }
+        self.cellHeight = itemHeight*lineCount + 20;
     }
-    CGSize size = CGSizeMake(itemWidth, itemHeight);
-//    if (indexPath.item == 1 || indexPath.item == 2) {
-//        size = CGSizeMake(itemWidth, itemHeight/2.03);
-//    }
-    return size;
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 5;
-}
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 0;
-}
+
+
+
+
+
+
+
+
 
 
 #pragma mark - *** UICollectionViewDelegate,UICollectionViewDataSource *****
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    return self.dataArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -120,12 +136,24 @@
     UICollectionViewCell *cell = [[UICollectionViewCell alloc]init];
     if (indexPath.item == 0) {
         HomeCollectCell2 *cell2 = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HomeCollectCell2 class]) forIndexPath:indexPath];
+        HomeGoodsListModel *model = self.dataArray[indexPath.item];
+        cell2.model = model;
         cell = cell2;
     }else if (indexPath.item == 1) {
         HomeCollectCell3 *cell3 = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HomeCollectCell3 class]) forIndexPath:indexPath];
+        NSMutableArray *dataArray = [NSMutableArray array];
+        HomeGoodsListModel *model1 = self.dataArray[indexPath.item];
+        [dataArray addObject:model1];
+        if (self.dataArray.count > 2) {
+            HomeGoodsListModel *model2 = self.dataArray[indexPath.item+1];
+            [dataArray addObject:model2];
+        }
+        cell3.dataArray = dataArray;
         cell = cell3;
     }else{
         HomeCollectCell1 *cell1 = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HomeCollectCell1 class]) forIndexPath:indexPath];
+        HomeGoodsListModel *model = self.dataArray[indexPath.item];
+        cell1.model = model;
         cell = cell1;
     }
     return cell;

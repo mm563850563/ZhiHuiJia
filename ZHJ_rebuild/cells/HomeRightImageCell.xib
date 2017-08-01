@@ -71,12 +71,22 @@
                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某东价：¥299" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8H-jk-cb3">
-                                        <rect key="frame" x="44.5" y="42.5" width="67" height="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某东价:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8H-jk-cb3">
+                                        <rect key="frame" x="44.5" y="42.5" width="40" height="15"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="4eT-1U-qHy"/>
                                             <constraint firstAttribute="height" constant="15" id="CE6-6t-YTm"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKY-34-v8e">
+                                        <rect key="frame" x="84.5" y="40.5" width="57" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="jXP-wH-IKa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -86,15 +96,18 @@
                                     <constraint firstItem="1Yn-oG-0cp" firstAttribute="top" secondItem="CXp-aK-6lR" secondAttribute="bottom" id="0bx-7l-WDI"/>
                                     <constraint firstAttribute="trailing" secondItem="CXp-aK-6lR" secondAttribute="trailing" id="6mw-dU-U9d"/>
                                     <constraint firstItem="FjN-DG-hek" firstAttribute="top" secondItem="1Yn-oG-0cp" secondAttribute="bottom" id="8xC-sa-b9G"/>
+                                    <constraint firstItem="nKY-34-v8e" firstAttribute="centerY" secondItem="f8H-jk-cb3" secondAttribute="centerY" id="A2k-5n-XLC"/>
                                     <constraint firstItem="1Yn-oG-0cp" firstAttribute="leading" secondItem="xSW-rd-bDz" secondAttribute="leading" id="BXn-D1-8Bh"/>
                                     <constraint firstAttribute="height" constant="60" id="Gs8-8u-UKS"/>
                                     <constraint firstItem="1Yn-oG-0cp" firstAttribute="top" secondItem="CXp-aK-6lR" secondAttribute="bottom" id="KQA-qS-1hy"/>
+                                    <constraint firstAttribute="trailing" secondItem="nKY-34-v8e" secondAttribute="trailing" id="PZU-Ye-mbi"/>
                                     <constraint firstAttribute="trailing" secondItem="1Yn-oG-0cp" secondAttribute="trailing" id="TYe-oi-3K9"/>
                                     <constraint firstItem="FjN-DG-hek" firstAttribute="leading" secondItem="xSW-rd-bDz" secondAttribute="leading" id="Vxp-yk-ptf"/>
                                     <constraint firstItem="18C-mM-9LO" firstAttribute="top" secondItem="1Yn-oG-0cp" secondAttribute="bottom" id="WkQ-vh-8Ht"/>
                                     <constraint firstItem="CXp-aK-6lR" firstAttribute="leading" secondItem="xSW-rd-bDz" secondAttribute="leading" id="Y31-2n-kVJ"/>
                                     <constraint firstItem="18C-mM-9LO" firstAttribute="leading" secondItem="FjN-DG-hek" secondAttribute="trailing" id="Yjw-Rb-1nO"/>
                                     <constraint firstItem="CXp-aK-6lR" firstAttribute="top" secondItem="xSW-rd-bDz" secondAttribute="top" id="hdc-jC-Vod"/>
+                                    <constraint firstItem="nKY-34-v8e" firstAttribute="leading" secondItem="f8H-jk-cb3" secondAttribute="trailing" id="kyT-kl-nzv"/>
                                     <constraint firstItem="f8H-jk-cb3" firstAttribute="centerY" secondItem="18C-mM-9LO" secondAttribute="centerY" id="m0Q-3V-UBW"/>
                                     <constraint firstItem="f8H-jk-cb3" firstAttribute="leading" secondItem="18C-mM-9LO" secondAttribute="trailing" constant="5" id="pzH-hj-Xwu"/>
                                 </constraints>
@@ -118,6 +131,13 @@
                     <constraint firstAttribute="bottom" secondItem="Kls-D6-hdh" secondAttribute="bottom" id="rS5-S8-o3V"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imgProduct" destination="Y4e-7c-59t" id="49W-pB-flc"/>
+                <outlet property="labelMarketPrice" destination="nKY-34-v8e" id="dcf-EI-Mbt"/>
+                <outlet property="labelPrice" destination="18C-mM-9LO" id="DZu-rn-PDj"/>
+                <outlet property="labelProductName" destination="CXp-aK-6lR" id="RJa-ec-jeo"/>
+                <outlet property="labelProductRemark" destination="1Yn-oG-0cp" id="XCk-3a-EPJ"/>
+            </connections>
             <point key="canvasLocation" x="27.5" y="114"/>
         </tableViewCell>
     </objects>

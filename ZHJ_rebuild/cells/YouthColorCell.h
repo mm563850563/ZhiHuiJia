@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class YouthColorModel;
+@class HomeGoodsResultModel;
 
 @interface YouthColorCell : UITableViewCell
 
-@property (nonatomic, strong)YouthColorModel *model;
-@property (nonatomic,assign)CGFloat height;
-@property (nonatomic, assign)NSInteger numberOfCell;
+@property (nonatomic, strong)HomeGoodsResultModel *model;
+@property (nonatomic,assign)CGFloat cellHeight;
 
 @end

@@ -56,13 +56,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    if ([self.leftTableView.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
-//        // 默认选择第一个cell
-//        [self.leftTableView.delegate tableView:self.leftTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-//    }
-//}
+
+
 //任务，测试进度显示
 - (void)myProgressTask {
     // This just increases the progress indicator in a loop
@@ -95,6 +90,8 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.leftTableView reloadData];
                     [self.rightTableView reloadData];
+                    //默认选中第一个
+                    [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
                 });
             }else{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
@@ -130,8 +127,6 @@
     
     UINib *nibProductNameCell = [UINib nibWithNibName:NSStringFromClass([CategoryProductNameCell class]) bundle:nil];
     [self.leftTableView registerNib:nibProductNameCell forCellReuseIdentifier:NSStringFromClass([CategoryProductNameCell class])];
-
-    [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
 
 #pragma mark - <初始化右侧tableView>
@@ -278,8 +273,6 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == self.leftTableView) {
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        cell.textLabel.textColor = kColorFromRGB(kThemeYellow);
         
         AllClassifyResultModel *modelResult = self.dataResultArray[indexPath.row];
         self.dataChildFirstArray = modelResult.children;
@@ -291,16 +284,7 @@
     NSLog(@"%@_%ld",[tableView class],(long)indexPath.row);
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (tableView == self.leftTableView) {
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        cell.textLabel.textColor = kColorFromRGB(kBlack);
-//        if (indexPath.row == 0) {
-//            cell.textLabel.textColor = kColorFromRGB(kThemeYellow);
-//        }
-    }
-}
+
 
 
 @end

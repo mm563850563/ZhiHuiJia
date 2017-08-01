@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class HomeGoodsListModel;
 
 @interface HomeLeftImageCell : UITableViewCell
+
+@property (nonatomic, strong)HomeGoodsListModel *model;
 
 @end

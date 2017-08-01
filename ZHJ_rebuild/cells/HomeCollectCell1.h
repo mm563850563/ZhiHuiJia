@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class HomeGoodsListModel;
 
 @interface HomeCollectCell1 : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgProduct;
@@ -14,5 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelProductDetail;
 @property (weak, nonatomic) IBOutlet UILabel *labelPrice;
 @property (weak, nonatomic) IBOutlet UILabel *labelCompare;
+
+@property (nonatomic, strong)HomeGoodsListModel *model;
 
 @end
