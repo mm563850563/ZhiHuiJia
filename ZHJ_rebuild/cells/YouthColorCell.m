@@ -54,7 +54,7 @@
         if (self.dataArray.count%2 != 0) {
             lineCount++;
         }
-        self.cellHeight = itemHeight*lineCount + 20;
+        self.cellHeight = itemHeight*lineCount + (lineCount+1)*5;
     }
 }
 

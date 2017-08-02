@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GetGiftTypeResultModel;
 
 @interface GiftSendingTableViewCell : UITableViewCell
+
+@property (nonatomic, strong)GetGiftTypeResultModel *model;
 
 @end

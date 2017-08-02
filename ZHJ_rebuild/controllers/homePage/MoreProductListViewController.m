@@ -227,7 +227,9 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    ClassifyListResultModel *model = self.classifyListResultArray[indexPath.row];
     ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
+    productDetailVC.goods_id = model.goods_id;
     [self.navigationController pushViewController:productDetailVC animated:YES];
 }
 
@@ -249,7 +251,9 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    ClassifyListResultModel *model = self.classifyListResultArray[indexPath.row];
     ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
+    productDetailVC.goods_id = model.goods_id;
     [self.navigationController pushViewController:productDetailVC animated:YES];
 }
 

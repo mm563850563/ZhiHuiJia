@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GoodsDetailContentModel;
 
 @interface ProductDetailImageCell : UITableViewCell
+
+@property (nonatomic, strong)GoodsDetailContentModel *model;
+@property (nonatomic, assign)CGFloat cellHeight;
 
 @end

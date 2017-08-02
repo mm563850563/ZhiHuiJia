@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import "LoginView.h"
+#import "MainTabBarViewController.h"
 #import <MLTransition.h>
 #import <IQKeyboardManager.h>
 
@@ -31,7 +32,30 @@
     //支持摇一摇
     [self settingShake];
     
+    [self settingMainTabbarVC];
+//    [self presentLogionVC];
+    
     return YES;
+}
+
+#pragma  mark - <登录页面>
+-(void)presentLogionVC
+{
+    if (!kUserDefaultObject(kUserInfo)) {
+        LoginView *loginView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([LoginView class]) owner:nil options:nil].lastObject;
+        [self.window addSubview:loginView];
+        [self.window bringSubviewToFront:loginView];
+    }
+}
+
+#pragma mark - <设置mainTabbar>
+-(void)settingMainTabbarVC
+{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainTabBarViewController *mainTabbarVC = [sb instantiateViewControllerWithIdentifier:NSStringFromClass([MainTabBarViewController class])];
+    self.window = [[UIWindow alloc]initWithFrame:kScreeFrame];
+    self.window.rootViewController = mainTabbarVC;
+    [self.window makeKeyAndVisible];
 }
 
 #pragma mark - <支持摇一摇功能>

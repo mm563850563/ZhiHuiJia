@@ -33,12 +33,15 @@
 #import "HomeRightImageCell.h"
 #import "IntellectWearsCell.h"//智能穿戴大的tableViewCell
 #import "SameHobbyCell.h"//发现同趣的人的大cell
+#import "MoreNewProductCell.h"
 
 //models
 #import "HomeGoodsModel.h"
 #import "HomeGoodsResultModel.h"
 #import "IndexCarouselModel.h"
 #import "IndexCarouselResultModel.h"
+#import "GetGiftTypeModel.h"
+#import "GetGiftTypeResultModel.h"
 
 @interface HomePageViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,CycleScrollViewCellDelegate,UISearchBarDelegate,UINavigationControllerDelegate>
 
@@ -50,6 +53,7 @@
 @property (nonatomic, strong)NSArray *carouselResultArray;
 @property (nonatomic, strong)NSArray *homeGoodsResultArray;
 @property (nonatomic, strong)NSArray *homeGoodsListArray;
+@property (nonatomic, strong)GetGiftTypeResultModel *getGiftResultModel;
 
 @end
 
@@ -106,12 +110,16 @@
     dispatch_group_t group = dispatch_group_create();
     dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
     dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
+    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
     
     dispatch_group_async(group, queue1, ^{
         [self getIndexCarouselData];
     });
     dispatch_group_async(group, queue2, ^{
         [self getHomeGoodsData];
+    });
+    dispatch_group_async(group, queue3, ^{
+        [self getGiftTypeData];
     });
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
@@ -176,6 +184,30 @@
     }];
 }
 
+#pragma  mark - <获取拿好礼类型>
+-(void)getGiftTypeData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetGiftType];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:nil progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            GetGiftTypeModel *model = [[GetGiftTypeModel alloc]initWithDictionary:dataDict error:nil];
+            if ([model.code isEqualToString:@"200"]) {
+                self.getGiftResultModel = model.data.result;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }else{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+        }
+    } failBlock:^(NSError *error) {
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:error.description];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }];
+}
+
 
 #pragma mark - <初始化tableView>
 -(void)initTableView
@@ -190,7 +222,8 @@
     [self.view addSubview:self.tableView];
     
     //注册cell
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"more"];
+    UINib *nibMoreNew = [UINib nibWithNibName:NSStringFromClass([MoreNewProductCell class]) bundle:nil];
+    [self.tableView registerNib:nibMoreNew forCellReuseIdentifier:NSStringFromClass([MoreNewProductCell class])];
     
     [self.tableView registerClass:[CycleScrollViewCell class] forCellReuseIdentifier:NSStringFromClass([IndexCarouselModel class])];
     
@@ -354,24 +387,23 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger sectionCount = 3;
-    if (section < 12) {
-        HomeGoodsResultModel *model = self.homeGoodsResultArray[section];
-        NSString *modelID = model.id;
-        if ([modelID isEqualToString:@"1"] || [modelID isEqualToString:@"4"] || [modelID isEqualToString:@"8"]) {
-            sectionCount = model.goods_list.count;
-        }
-    }
+    NSInteger rowCount = 3;
     
     if (section == 0) {
         return 2;
     }
-    else if (section == 13){
+    else if (section == self.homeGoodsResultArray.count+1){
         return 1;
-    }else if (section == 14){
+    }else if (section == self.homeGoodsResultArray.count+2){
         return 2;
+    }else{
+        HomeGoodsResultModel *model = self.homeGoodsResultArray[section-1];
+        NSString *modelID = model.id;
+        if ([modelID isEqualToString:@"1"] || [modelID isEqualToString:@"4"] || [modelID isEqualToString:@"8"]) {
+            rowCount = model.goods_list.count+2;
+        }
     }
-    return sectionCount;
+    return rowCount;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -387,6 +419,7 @@
             cell = cycleCell;
         }else if (indexPath.row == 1){
             GiftSendingTableViewCell *giftCell = [tableView dequeueReusableCellWithIdentifier:@"GiftSendingTableViewCell"];
+            giftCell.model = self.getGiftResultModel;
             cell = giftCell;
         }
     }else if (indexPath.section == self.homeGoodsResultArray.count+1){//为你精心推荐
@@ -409,38 +442,29 @@
                     cell = cellIntellect;
                 }
                 if (indexPath.row == 2) {
-                    UITableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:@"more"];
-                    cellMore.textLabel.text = @"更多新品 >";
-                    cellMore.textLabel.textAlignment = 1;
-                    cellMore.textLabel.font = [UIFont systemFontOfSize:13];
+                    MoreNewProductCell *cellMore = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MoreNewProductCell class])];
                     cell = cellMore;
                 }
             }else if ([modelResult.id isEqualToString:@"1"] || [modelResult.id isEqualToString:@"4"] || [modelResult.id isEqualToString:@"8"]){
-                if (indexPath.row == modelResult.goods_list.count-1) {
-                    UITableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:@"more"];
-                    cellMore.textLabel.text = @"更多新品 >";
-                    cellMore.textLabel.textAlignment = 1;
-                    cellMore.textLabel.font = [UIFont systemFontOfSize:13];
+                if (indexPath.row == modelResult.goods_list.count+1) {
+                    MoreNewProductCell *cellMore = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MoreNewProductCell class])];
                     cell = cellMore;
                 }else{
-                    if (indexPath.row / 2 == 1) {
+                    if (indexPath.row % 2 == 0) {
                         HomeRightImageCell *cellRight = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HomeRightImageCell class])];
-                        HomeGoodsListModel *model = modelResult.goods_list[indexPath.row];
+                        HomeGoodsListModel *model = modelResult.goods_list[indexPath.row-1];
                         cellRight.model = model;
                         cell = cellRight;
                     }else{
                         HomeLeftImageCell *cellLeft = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HomeLeftImageCell class])];
-                        HomeGoodsListModel *model = modelResult.goods_list[indexPath.row];
+                        HomeGoodsListModel *model = modelResult.goods_list[indexPath.row-1];
                         cellLeft.model = model;
                         cell = cellLeft;
                     }
                 }
             }else{
                 if (indexPath.row == 2) {
-                    UITableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:@"more"];
-                    cellMore.textLabel.text = @"更多新品 >";
-                    cellMore.textLabel.textAlignment = 1;
-                    cellMore.textLabel.font = [UIFont systemFontOfSize:13];
+                    MoreNewProductCell *cellMore = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MoreNewProductCell class])];
                     cell = cellMore;
                 }
                 if (indexPath.row == 1) {
@@ -458,7 +482,7 @@
 {
     CGFloat height = kSCREEN_WIDTH/5.2*3.0;
     if (indexPath.section == 0) {
-        height = kSCREEN_WIDTH/5.2*3.0;
+        height = kSCREEN_WIDTH/5.2*3.5;
     }else if (indexPath.section == self.homeGoodsResultArray.count+1){
         height = kSCREEN_WIDTH/2.0/2.0*3.0*3;
     }else if (indexPath.section == self.homeGoodsResultArray.count+2){
@@ -483,7 +507,12 @@
                     height = 40;
                 }
             }else if ([modelResult.id isEqualToString:@"1"] || [modelResult.id isEqualToString:@"4"] || [modelResult.id isEqualToString:@"8"]){
-                height = kSCREEN_WIDTH/2.0;
+                if (indexPath.row == modelResult.goods_list.count+1) {
+                    height = 40;
+                }else{
+                    height = kSCREEN_WIDTH/2.0;
+                }
+                
             }else{
                 if (indexPath.row == 1) {
                     HomeGoodsResultModel *modelResult = self.homeGoodsResultArray[indexPath.section-1];

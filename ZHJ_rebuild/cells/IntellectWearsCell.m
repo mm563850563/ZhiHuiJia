@@ -106,11 +106,11 @@
             itemHeight = itemWidth+90;
         }
         
-        NSInteger lineCount = self.dataArray.count/2;
-        if (self.dataArray.count%2 != 0) {
+        NSInteger lineCount = (self.dataArray.count-1)/2;
+        if ((self.dataArray.count-1)%2 != 0) {
             lineCount++;
         }
-        self.cellHeight = itemHeight*lineCount + 20;
+        self.cellHeight = itemHeight*lineCount + 10;
     }
 }
 
@@ -128,7 +128,7 @@
 #pragma mark - *** UICollectionViewDelegate,UICollectionViewDataSource *****
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.dataArray.count;
+    return self.dataArray.count-1;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -151,8 +151,11 @@
         cell3.dataArray = dataArray;
         cell = cell3;
     }else{
+        HomeGoodsListModel *model = [[HomeGoodsListModel alloc]init];
+        if (self.dataArray.count > 3 && indexPath.row < self.dataArray.count-1) {
+            model = self.dataArray[indexPath.item+1];
+        }
         HomeCollectCell1 *cell1 = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HomeCollectCell1 class]) forIndexPath:indexPath];
-        HomeGoodsListModel *model = self.dataArray[indexPath.item];
         cell1.model = model;
         cell = cell1;
     }

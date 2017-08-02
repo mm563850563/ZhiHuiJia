@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="169.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huodong" translatesAutoresizingMaskIntoConstraints="NO" id="xYP-dZ-5iR">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xYP-dZ-5iR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="169.5"/>
                     </imageView>
                 </subviews>
@@ -29,10 +29,10 @@
                     <constraint firstAttribute="bottom" secondItem="xYP-dZ-5iR" secondAttribute="bottom" id="neU-Bu-iVQ"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imgDetail" destination="xYP-dZ-5iR" id="3n5-0d-CeR"/>
+            </connections>
             <point key="canvasLocation" x="72" y="174"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="huodong" width="553" height="318"/>
-    </resources>
 </document>
