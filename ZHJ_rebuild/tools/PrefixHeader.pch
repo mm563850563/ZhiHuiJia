@@ -18,6 +18,8 @@
 #define kUserDefaultObject(key) [[NSUserDefaults standardUserDefaults]objectForKey:key]
 //用户偏好设置-设置object
 #define kUserDefaultSetObject(object,key) [[NSUserDefaults standardUserDefaults]setObject:object forKey:key]
+//用户偏好设置-同步
+#define kUserDefaultSynchronize [[NSUserDefaults standardUserDefaults]synchronize]
 //用户信息-key
 #define kUserInfo @"userInfo"
 
@@ -37,6 +39,7 @@
 #define kWhite 0xffffff
 #define kBlack 0x000000
 #define kRed 0xFF0000
+#define kLightBlue 0x80FFFF
 
 //主题色
 #define kThemeYellow 0xffda44
@@ -94,8 +97,21 @@
 #pragma mark - <拿好礼类型>
 #define kGetGiftType @"/Index/getGiftType"
 
+#pragma mark - <拿好礼>
+#define kGetGiftList @"/Index/getGiftList"
+
+#pragma mark - <摇一摇领取礼品>
+#define kGetUserPrize @"/Index/getUserPrize"  //参数 user_id:2596  type_id:1
+
 #pragma mark - <商品详情>
 #define kGoodsDetail @"/Goods/goodsDetail" //参数：goods_id
+
+#pragma mark - <为你精心推荐>
+#define kGetRecommendGoods @"/Index/getRecommendGoods"  //参数：user_id
+
+#pragma mark - <登录>
+#define kLogin @"/user/login" //参数：mobile,password
+
 
 
 

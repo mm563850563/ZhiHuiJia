@@ -33,7 +33,7 @@
     [self settingShake];
     
     [self settingMainTabbarVC];
-//    [self presentLogionVC];
+    [self presentLogionVC];
     
     return YES;
 }

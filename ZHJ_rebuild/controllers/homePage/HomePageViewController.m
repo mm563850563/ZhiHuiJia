@@ -42,6 +42,7 @@
 #import "IndexCarouselResultModel.h"
 #import "GetGiftTypeModel.h"
 #import "GetGiftTypeResultModel.h"
+#import "RecommendGoodsModel.h"
 
 @interface HomePageViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,CycleScrollViewCellDelegate,UISearchBarDelegate,UINavigationControllerDelegate>
 
@@ -53,6 +54,7 @@
 @property (nonatomic, strong)NSArray *carouselResultArray;
 @property (nonatomic, strong)NSArray *homeGoodsResultArray;
 @property (nonatomic, strong)NSArray *homeGoodsListArray;
+@property (nonatomic, strong)NSArray *recommendResultArray;
 @property (nonatomic, strong)GetGiftTypeResultModel *getGiftResultModel;
 
 @end
@@ -73,8 +75,6 @@
     [super viewDidLoad];
     
     [self managerRequestWithGCD];
-//    [self getIndexCarouselData];
-//    [self getHomeGoodsData];
     [self settingNavigationBar];
     [self initTableView];
     [self addSearchBarIntoNavigationBar];
@@ -111,6 +111,7 @@
     dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
     dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
     dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
+    dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
     
     dispatch_group_async(group, queue1, ^{
         [self getIndexCarouselData];
@@ -120,6 +121,9 @@
     });
     dispatch_group_async(group, queue3, ^{
         [self getGiftTypeData];
+    });
+    dispatch_group_async(group, queue4, ^{
+        [self getRecommendGoodsData];
     });
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
@@ -204,6 +208,33 @@
         }
     } failBlock:^(NSError *error) {
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:error.description];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }];
+}
+
+#pragma mark - <获取“为你推荐”数据>
+-(void)getRecommendGoodsData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetRecommendGoods];
+    NSString *userID = kUserDefaultObject(kUserInfo);
+    
+    NSDictionary *dictParameter = @{@"user_id":userID};
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            RecommendGoodsModel *model = [[RecommendGoodsModel alloc]initWithDictionary:dataDict error:nil];
+            if ([model.code isEqualToString:@"200"]) {
+                self.recommendResultArray = model.data.result;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }else{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+        }
+    } failBlock:^(NSError *error) {
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
         [hudWarning hideAnimated:YES afterDelay:2.0];
     }];
 }
@@ -345,24 +376,24 @@
     
     //点击”拿好礼“按钮
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"RegisterGiftAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        UIButton *button = x.object;
+        NSString *type_id = x.object;
         GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
         getGiftVC.hidesBottomBarWhenPushed = YES;
-        getGiftVC.category = button.tag;
+        getGiftVC.type_id = type_id;
         [self.navigationController pushViewController:getGiftVC animated:YES];
     }];
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"ShareGiftAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        UIButton *button = x.object;
+        NSString *type_id = x.object;
         GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
         getGiftVC.hidesBottomBarWhenPushed = YES;
-        getGiftVC.category = button.tag;
+        getGiftVC.type_id = type_id;
         [self.navigationController pushViewController:getGiftVC animated:YES];
     }];
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"BuyGiftAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        UIButton *button = x.object;
+        NSString *type_id = x.object;
         GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
         getGiftVC.hidesBottomBarWhenPushed = YES;
-        getGiftVC.category = button.tag;
+        getGiftVC.type_id = type_id;
         [self.navigationController pushViewController:getGiftVC animated:YES];
     }];
     
@@ -372,6 +403,11 @@
         [self jumpToProductDetailVC];
     }];
 }
+
+
+
+
+
 
 
 
@@ -423,7 +459,9 @@
             cell = giftCell;
         }
     }else if (indexPath.section == self.homeGoodsResultArray.count+1){//为你精心推荐
-        
+        YouthColorCell *cellYouth = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([YouthColorCell class])];
+        cellYouth.recommendGoodsArray = self.recommendResultArray;
+        cell = cellYouth;
     }else if (indexPath.section == self.homeGoodsResultArray.count+2){//发现同趣的人
         
     }else{
@@ -484,7 +522,9 @@
     if (indexPath.section == 0) {
         height = kSCREEN_WIDTH/5.2*3.5;
     }else if (indexPath.section == self.homeGoodsResultArray.count+1){
-        height = kSCREEN_WIDTH/2.0/2.0*3.0*3;
+        YouthColorCell *cellYouth = [[YouthColorCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([YouthColorCell class])];
+        cellYouth.recommendGoodsArray = self.recommendResultArray;
+        height = cellYouth.cellHeight;
     }else if (indexPath.section == self.homeGoodsResultArray.count+2){
         if (indexPath.row == 0) {
             return 230;

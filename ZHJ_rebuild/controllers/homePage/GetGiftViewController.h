@@ -10,6 +10,6 @@
 
 @interface GetGiftViewController : UIViewController
 
-@property (nonatomic, assign)NSInteger category;
+@property (nonatomic, strong)NSString *type_id;
 
 @end

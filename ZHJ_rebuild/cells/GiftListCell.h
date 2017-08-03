@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GetGiftList_GiftListModel;
 
 @interface GiftListCell : UICollectionViewCell
+
+@property (nonatomic, strong)GetGiftList_GiftListModel *model;
+@property (nonatomic, strong)NSString *winGiftID;
 
 @end

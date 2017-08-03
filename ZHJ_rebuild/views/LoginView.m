@@ -8,6 +8,10 @@
 
 #import "LoginView.h"
 
+//models
+#import "LoginModel.h"
+#import "LoginDataModel.h"
+
 @interface LoginView ()
 
 @property (weak, nonatomic) IBOutlet UITextField *tfPhone;
@@ -41,10 +45,52 @@
     }
 }
 
+#pragma mark - <发送登陆请求>
+-(void)postLoginRequest
+{
+    NSString *strLogin = [NSString stringWithFormat:@"%@%@",kDomainBase,kLogin];
+    NSDictionary *dictParameter = @{@"mobile":self.tfPhone.text,
+                               @"password":self.tfPassword.text};
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self animated:YES];
+    [YQNetworking postWithUrl:strLogin refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        [hud hideAnimated:YES afterDelay:1.0];
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            LoginModel *model = [[LoginModel alloc]initWithDictionary:dataDict error:nil];
+            if ([model.code isEqualToString:@"200"]) {
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:model.msg];
+                hudWarning.completionBlock = ^{
+                    [self removeFromSuperview];
+                };
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                
+                //登陆成功后，把user_id保存本地，用作持久化登陆
+                kUserDefaultSetObject(model.data.user_id, kUserInfo);
+                kUserDefaultSynchronize;
+            }else{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+        }
+    } failBlock:^(NSError *error) {
+        [hud hideAnimated:YES afterDelay:1.0];
+    }];
+}
+
 #pragma mark - <登陆按钮响应>
 - (IBAction)btnLoginAction:(UIButton *)sender
 {
-    
+    if ([self.tfPhone.text isEqualToString:@""]) {
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:nil];
+        hudWarning.label.text = @"请输入手机号码";
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }else if ([self.tfPassword.text isEqualToString:@""]){
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:nil];
+        hudWarning.label.text = @"请输入密码";
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }else{
+        [self postLoginRequest];
+    }
 }
 
 #pragma mark - <立即注册按钮响应>

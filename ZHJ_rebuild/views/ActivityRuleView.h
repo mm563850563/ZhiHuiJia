@@ -10,4 +10,6 @@
 
 @interface ActivityRuleView : UIView
 
+@property (weak, nonatomic) IBOutlet UITextView *tvActivityRule;
+
 @end

@@ -22,9 +22,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BfI-mE-UkR">
                         <rect key="frame" x="0.0" y="0.0" width="121" height="157"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sctu1" translatesAutoresizingMaskIntoConstraints="NO" id="FF9-PT-eHw">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FF9-PT-eHw">
                                 <rect key="frame" x="0.0" y="0.0" width="121" height="121"/>
-                                <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FF9-PT-eHw" secondAttribute="height" multiplier="1:1" id="Hy7-t3-b8I"/>
                                 </constraints>
@@ -43,6 +42,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zhongjiang" translatesAutoresizingMaskIntoConstraints="NO" id="NAX-es-S5r">
+                                <rect key="frame" x="0.0" y="0.0" width="121" height="121"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NAX-es-S5r" secondAttribute="height" multiplier="1:1" id="3wH-rf-XbS"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -51,7 +56,10 @@
                             <constraint firstItem="FF9-PT-eHw" firstAttribute="top" secondItem="BfI-mE-UkR" secondAttribute="top" id="9DX-rn-2pf"/>
                             <constraint firstAttribute="trailing" secondItem="AuJ-ks-m5Z" secondAttribute="trailing" constant="3" id="A5Q-oT-3hr"/>
                             <constraint firstItem="AuJ-ks-m5Z" firstAttribute="leading" secondItem="BfI-mE-UkR" secondAttribute="leading" constant="3" id="ADo-x8-x4X"/>
+                            <constraint firstItem="NAX-es-S5r" firstAttribute="top" secondItem="BfI-mE-UkR" secondAttribute="top" id="SvT-V4-WCY"/>
+                            <constraint firstAttribute="trailing" secondItem="NAX-es-S5r" secondAttribute="trailing" id="fhz-4N-73e"/>
                             <constraint firstItem="AuJ-ks-m5Z" firstAttribute="top" secondItem="FF9-PT-eHw" secondAttribute="bottom" id="h4Y-7o-Pqy"/>
+                            <constraint firstItem="NAX-es-S5r" firstAttribute="leading" secondItem="BfI-mE-UkR" secondAttribute="leading" id="skw-qu-KtD"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -63,10 +71,15 @@
                 <constraint firstAttribute="trailing" secondItem="BfI-mE-UkR" secondAttribute="trailing" id="XOQ-Kb-GIX"/>
             </constraints>
             <size key="customSize" width="121" height="157"/>
+            <connections>
+                <outlet property="imgGift" destination="FF9-PT-eHw" id="YeS-AC-kPB"/>
+                <outlet property="imgIsWinPrizes" destination="NAX-es-S5r" id="XaL-xh-11A"/>
+                <outlet property="labelGiftName" destination="AuJ-ks-m5Z" id="n0o-oR-Abw"/>
+            </connections>
             <point key="canvasLocation" x="95.5" y="33.5"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="sctu1" width="142" height="142"/>
+        <image name="zhongjiang" width="116" height="115"/>
     </resources>
 </document>

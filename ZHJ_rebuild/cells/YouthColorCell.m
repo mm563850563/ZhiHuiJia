@@ -58,6 +58,28 @@
     }
 }
 
+-(void)setRecommendGoodsArray:(NSArray *)recommendGoodsArray
+{
+    if (_recommendGoodsArray != recommendGoodsArray) {
+        _recommendGoodsArray = recommendGoodsArray;
+        self.dataArray = recommendGoodsArray;
+        [self.collectionView reloadData];
+        [self.collectionView layoutIfNeeded];
+        
+        CGFloat itemWidth = kSCREEN_WIDTH/2.02;
+        CGFloat itemHeight = itemWidth/2.0*3.0;
+        if (itemHeight > (itemWidth+90)) {
+            itemHeight = itemWidth+90;
+        }
+        
+        NSInteger lineCount = recommendGoodsArray.count/2;
+        if (recommendGoodsArray.count%2 != 0) {
+            lineCount++;
+        }
+        self.cellHeight = itemHeight*lineCount + (lineCount+1)*5;
+    }
+}
+
 
 -(UICollectionView *)collectionView
 {

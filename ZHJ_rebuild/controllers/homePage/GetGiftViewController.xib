@@ -17,7 +17,10 @@
                 <outlet property="imgProgress" destination="551-GP-rHo" id="CWA-lY-abP"/>
                 <outlet property="imgViewHeader" destination="0zu-Fu-9pd" id="YfQ-vu-kdO"/>
                 <outlet property="labelAddress" destination="VQA-xe-aGV" id="jxd-Q6-ULb"/>
+                <outlet property="labelConfirm" destination="1mb-62-rIL" id="3hi-96-5MS"/>
                 <outlet property="labelFinishSendGift" destination="LYd-In-JKN" id="MSs-an-GUF"/>
+                <outlet property="labelPayFreight" destination="Y0I-Qy-jpB" id="gzq-G3-KcJ"/>
+                <outlet property="labelWaitToSendOut" destination="yRd-43-8en" id="QW0-s7-w0p"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -59,7 +62,6 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="btnShakeAction:" destination="-1" eventType="touchUpInside" id="oFM-QO-dAa"/>
                                                         <action selector="shakeAndWinAction:" destination="-1" eventType="touchUpInside" id="qSp-F2-3gU"/>
                                                     </connections>
                                                 </button>
@@ -137,7 +139,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="填写地址" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQA-xe-aGV">
                                             <rect key="frame" x="0.0" y="0.0" width="71" height="35"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付运费" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0I-Qy-jpB">

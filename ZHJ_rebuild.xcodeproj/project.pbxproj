@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		B822B7179385E475CA42C7AE /* libPods-ZHJ_rebuild.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6362BF3062F7C9A408E5716D /* libPods-ZHJ_rebuild.a */; };
+		DD0DBAC91F32B2BE0098F5FA /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAC81F32B2BE0098F5FA /* LoginModel.m */; };
+		DD0DBACC1F32B2DC0098F5FA /* LoginDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBACB1F32B2DC0098F5FA /* LoginDataModel.m */; };
+		DD0DBAD01F32B9810098F5FA /* RecommendGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBACF1F32B9810098F5FA /* RecommendGoodsModel.m */; };
+		DD0DBAD31F32B9970098F5FA /* RecommendGoodsDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAD21F32B9970098F5FA /* RecommendGoodsDataModel.m */; };
+		DD0DBADA1F32ED150098F5FA /* GetGiftListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAD91F32ED150098F5FA /* GetGiftListModel.m */; };
+		DD0DBADD1F32ED3B0098F5FA /* GetGiftListDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBADC1F32ED3B0098F5FA /* GetGiftListDataModel.m */; };
+		DD0DBAE01F32ED510098F5FA /* GetGiftListResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBADF1F32ED510098F5FA /* GetGiftListResultModel.m */; };
+		DD0DBAE31F32ED7C0098F5FA /* GetGiftList_GiftListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAE21F32ED7C0098F5FA /* GetGiftList_GiftListModel.m */; };
+		DD0DBAE71F330CA50098F5FA /* GetUserPrizeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAE61F330CA50098F5FA /* GetUserPrizeModel.m */; };
+		DD0DBAEA1F330CC10098F5FA /* GetUserPrizeDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAE91F330CC10098F5FA /* GetUserPrizeDataModel.m */; };
+		DD0DBAED1F330CDA0098F5FA /* GetUserPrizeResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAEC1F330CDA0098F5FA /* GetUserPrizeResultModel.m */; };
+		DD0DBAF01F330D070098F5FA /* GetUserPrize_MyPrizeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAEF1F330D070098F5FA /* GetUserPrize_MyPrizeModel.m */; };
+		DD0DBAF31F330D280098F5FA /* GetUserPrize_PrizeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAF21F330D280098F5FA /* GetUserPrize_PrizeListModel.m */; };
 		DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B7191F164CE000839748 /* HomePageMainCell.m */; };
 		DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD40B71A1F164CE000839748 /* HomePageMainCell.xib */; };
 		DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B71E1F17027E00839748 /* YouthColorCell.m */; };
@@ -366,6 +379,32 @@
 		452A45259DE5E7099BAE637E /* Pods-ZHJ_rebuild.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHJ_rebuild.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHJ_rebuild/Pods-ZHJ_rebuild.release.xcconfig"; sourceTree = "<group>"; };
 		63013718528BCE08784575AC /* Pods-ZHJ_rebuild.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHJ_rebuild.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHJ_rebuild/Pods-ZHJ_rebuild.debug.xcconfig"; sourceTree = "<group>"; };
 		6362BF3062F7C9A408E5716D /* libPods-ZHJ_rebuild.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHJ_rebuild.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD0DBAC71F32B2BE0098F5FA /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginModel.h; path = models/LoginModel.h; sourceTree = "<group>"; };
+		DD0DBAC81F32B2BE0098F5FA /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginModel.m; path = models/LoginModel.m; sourceTree = "<group>"; };
+		DD0DBACA1F32B2DC0098F5FA /* LoginDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginDataModel.h; path = models/LoginDataModel.h; sourceTree = "<group>"; };
+		DD0DBACB1F32B2DC0098F5FA /* LoginDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginDataModel.m; path = models/LoginDataModel.m; sourceTree = "<group>"; };
+		DD0DBACE1F32B9810098F5FA /* RecommendGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecommendGoodsModel.h; path = models/RecommendGoodsModel.h; sourceTree = "<group>"; };
+		DD0DBACF1F32B9810098F5FA /* RecommendGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecommendGoodsModel.m; path = models/RecommendGoodsModel.m; sourceTree = "<group>"; };
+		DD0DBAD11F32B9970098F5FA /* RecommendGoodsDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecommendGoodsDataModel.h; path = models/RecommendGoodsDataModel.h; sourceTree = "<group>"; };
+		DD0DBAD21F32B9970098F5FA /* RecommendGoodsDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecommendGoodsDataModel.m; path = models/RecommendGoodsDataModel.m; sourceTree = "<group>"; };
+		DD0DBAD81F32ED150098F5FA /* GetGiftListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetGiftListModel.h; path = models/GetGiftListModel.h; sourceTree = "<group>"; };
+		DD0DBAD91F32ED150098F5FA /* GetGiftListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetGiftListModel.m; path = models/GetGiftListModel.m; sourceTree = "<group>"; };
+		DD0DBADB1F32ED3B0098F5FA /* GetGiftListDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetGiftListDataModel.h; path = models/GetGiftListDataModel.h; sourceTree = "<group>"; };
+		DD0DBADC1F32ED3B0098F5FA /* GetGiftListDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetGiftListDataModel.m; path = models/GetGiftListDataModel.m; sourceTree = "<group>"; };
+		DD0DBADE1F32ED510098F5FA /* GetGiftListResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetGiftListResultModel.h; path = models/GetGiftListResultModel.h; sourceTree = "<group>"; };
+		DD0DBADF1F32ED510098F5FA /* GetGiftListResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetGiftListResultModel.m; path = models/GetGiftListResultModel.m; sourceTree = "<group>"; };
+		DD0DBAE11F32ED7C0098F5FA /* GetGiftList_GiftListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetGiftList_GiftListModel.h; path = models/GetGiftList_GiftListModel.h; sourceTree = "<group>"; };
+		DD0DBAE21F32ED7C0098F5FA /* GetGiftList_GiftListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetGiftList_GiftListModel.m; path = models/GetGiftList_GiftListModel.m; sourceTree = "<group>"; };
+		DD0DBAE51F330CA50098F5FA /* GetUserPrizeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetUserPrizeModel.h; path = models/GetUserPrizeModel.h; sourceTree = "<group>"; };
+		DD0DBAE61F330CA50098F5FA /* GetUserPrizeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetUserPrizeModel.m; path = models/GetUserPrizeModel.m; sourceTree = "<group>"; };
+		DD0DBAE81F330CC10098F5FA /* GetUserPrizeDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetUserPrizeDataModel.h; path = models/GetUserPrizeDataModel.h; sourceTree = "<group>"; };
+		DD0DBAE91F330CC10098F5FA /* GetUserPrizeDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetUserPrizeDataModel.m; path = models/GetUserPrizeDataModel.m; sourceTree = "<group>"; };
+		DD0DBAEB1F330CDA0098F5FA /* GetUserPrizeResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetUserPrizeResultModel.h; path = models/GetUserPrizeResultModel.h; sourceTree = "<group>"; };
+		DD0DBAEC1F330CDA0098F5FA /* GetUserPrizeResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetUserPrizeResultModel.m; path = models/GetUserPrizeResultModel.m; sourceTree = "<group>"; };
+		DD0DBAEE1F330D070098F5FA /* GetUserPrize_MyPrizeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetUserPrize_MyPrizeModel.h; path = models/GetUserPrize_MyPrizeModel.h; sourceTree = "<group>"; };
+		DD0DBAEF1F330D070098F5FA /* GetUserPrize_MyPrizeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetUserPrize_MyPrizeModel.m; path = models/GetUserPrize_MyPrizeModel.m; sourceTree = "<group>"; };
+		DD0DBAF11F330D280098F5FA /* GetUserPrize_PrizeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetUserPrize_PrizeListModel.h; path = models/GetUserPrize_PrizeListModel.h; sourceTree = "<group>"; };
+		DD0DBAF21F330D280098F5FA /* GetUserPrize_PrizeListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetUserPrize_PrizeListModel.m; path = models/GetUserPrize_PrizeListModel.m; sourceTree = "<group>"; };
 		DD40B7181F164CE000839748 /* HomePageMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomePageMainCell.h; path = cells/HomePageMainCell.h; sourceTree = "<group>"; };
 		DD40B7191F164CE000839748 /* HomePageMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomePageMainCell.m; path = cells/HomePageMainCell.m; sourceTree = "<group>"; };
 		DD40B71A1F164CE000839748 /* HomePageMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomePageMainCell.xib; path = cells/HomePageMainCell.xib; sourceTree = "<group>"; };
@@ -963,6 +1002,60 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DD0DBAC61F32B29A0098F5FA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DD0DBAC71F32B2BE0098F5FA /* LoginModel.h */,
+				DD0DBAC81F32B2BE0098F5FA /* LoginModel.m */,
+				DD0DBACA1F32B2DC0098F5FA /* LoginDataModel.h */,
+				DD0DBACB1F32B2DC0098F5FA /* LoginDataModel.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		DD0DBACD1F32B9550098F5FA /* GetRecommendGoods */ = {
+			isa = PBXGroup;
+			children = (
+				DD0DBACE1F32B9810098F5FA /* RecommendGoodsModel.h */,
+				DD0DBACF1F32B9810098F5FA /* RecommendGoodsModel.m */,
+				DD0DBAD11F32B9970098F5FA /* RecommendGoodsDataModel.h */,
+				DD0DBAD21F32B9970098F5FA /* RecommendGoodsDataModel.m */,
+			);
+			name = GetRecommendGoods;
+			sourceTree = "<group>";
+		};
+		DD0DBAD71F32ECE20098F5FA /* GetGiftList */ = {
+			isa = PBXGroup;
+			children = (
+				DD0DBAD81F32ED150098F5FA /* GetGiftListModel.h */,
+				DD0DBAD91F32ED150098F5FA /* GetGiftListModel.m */,
+				DD0DBADB1F32ED3B0098F5FA /* GetGiftListDataModel.h */,
+				DD0DBADC1F32ED3B0098F5FA /* GetGiftListDataModel.m */,
+				DD0DBADE1F32ED510098F5FA /* GetGiftListResultModel.h */,
+				DD0DBADF1F32ED510098F5FA /* GetGiftListResultModel.m */,
+				DD0DBAE11F32ED7C0098F5FA /* GetGiftList_GiftListModel.h */,
+				DD0DBAE21F32ED7C0098F5FA /* GetGiftList_GiftListModel.m */,
+			);
+			name = GetGiftList;
+			sourceTree = "<group>";
+		};
+		DD0DBAE41F330C840098F5FA /* GetUserPrize */ = {
+			isa = PBXGroup;
+			children = (
+				DD0DBAE51F330CA50098F5FA /* GetUserPrizeModel.h */,
+				DD0DBAE61F330CA50098F5FA /* GetUserPrizeModel.m */,
+				DD0DBAE81F330CC10098F5FA /* GetUserPrizeDataModel.h */,
+				DD0DBAE91F330CC10098F5FA /* GetUserPrizeDataModel.m */,
+				DD0DBAEB1F330CDA0098F5FA /* GetUserPrizeResultModel.h */,
+				DD0DBAEC1F330CDA0098F5FA /* GetUserPrizeResultModel.m */,
+				DD0DBAEE1F330D070098F5FA /* GetUserPrize_MyPrizeModel.h */,
+				DD0DBAEF1F330D070098F5FA /* GetUserPrize_MyPrizeModel.m */,
+				DD0DBAF11F330D280098F5FA /* GetUserPrize_PrizeListModel.h */,
+				DD0DBAF21F330D280098F5FA /* GetUserPrize_PrizeListModel.m */,
+			);
+			name = GetUserPrize;
+			sourceTree = "<group>";
+		};
 		DD4CF0021F28219F0024156F /* HWPoTools */ = {
 			isa = PBXGroup;
 			children = (
@@ -1521,6 +1614,10 @@
 				DD68983E1F319D0E008B6A8F /* ClassifyList */,
 				DD68983F1F319D27008B6A8F /* GetGiftType */,
 				DD68984C1F31B279008B6A8F /* GoodsDetail */,
+				DD0DBAC61F32B29A0098F5FA /* Login */,
+				DD0DBACD1F32B9550098F5FA /* GetRecommendGoods */,
+				DD0DBAD71F32ECE20098F5FA /* GetGiftList */,
+				DD0DBAE41F330C840098F5FA /* GetUserPrize */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -2075,12 +2172,14 @@
 				EC4BA0C91F1359DF00B9BE1A /* FlipTableView.m in Sources */,
 				DD6898521F31B55D008B6A8F /* GoodsDetailDataModel.m in Sources */,
 				DD4CF0361F2895680024156F /* PersonalActivitilyRuleViewController.m in Sources */,
+				DD0DBACC1F32B2DC0098F5FA /* LoginDataModel.m in Sources */,
 				DD68984B1F319E2C008B6A8F /* GetGiftType_gift_typeModel.m in Sources */,
 				DD6287271F1F48000030331D /* CommentTableViewCell.m in Sources */,
 				EC4BA25E1F15FE0900B9BE1A /* DiscoverHotTopicViewController.m in Sources */,
 				DD4CF1061F29EDD80024156F /* AllClassifyModel.m in Sources */,
 				EC4BA24F1F15D43600B9BE1A /* BrandRulesViewController.m in Sources */,
 				EC4BA0841F13599A00B9BE1A /* UIImage+Color.m in Sources */,
+				DD0DBAEA1F330CC10098F5FA /* GetUserPrizeDataModel.m in Sources */,
 				DD40B7351F17485500839748 /* HomeCollectCell2.m in Sources */,
 				EC4BA05D1F13562700B9BE1A /* AppDelegate.m in Sources */,
 				EC4BA0CC1F1359DF00B9BE1A /* SelectThemeColorView.m in Sources */,
@@ -2102,7 +2201,9 @@
 				DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */,
 				DD40B72D1F173B5300839748 /* HomeRightImageCell.m in Sources */,
 				EC4BA25B1F15FDE400B9BE1A /* DiscoverDynamicViewController.m in Sources */,
+				DD0DBAE01F32ED510098F5FA /* GetGiftListResultModel.m in Sources */,
 				DD6287FB1F21F2C30030331D /* PersonalActivityRankFooterView.m in Sources */,
+				DD0DBAE71F330CA50098F5FA /* GetUserPrizeModel.m in Sources */,
 				EC4BA11F1F13771100B9BE1A /* DiscoverViewController.m in Sources */,
 				DD6898421F319D74008B6A8F /* GetGiftTypeModel.m in Sources */,
 				EC4BA2611F15FE2200B9BE1A /* DiscoverRecommendViewController.m in Sources */,
@@ -2119,6 +2220,7 @@
 				DD62878E1F20C2290030331D /* MyCircleHeaderCell.m in Sources */,
 				DD4CF0E81F29BF850024156F /* YQLRUManager.m in Sources */,
 				DD62875C1F20522F0030331D /* MyCollectProductViewController.m in Sources */,
+				DD0DBADA1F32ED150098F5FA /* GetGiftListModel.m in Sources */,
 				EC4BA0D81F1359EC00B9BE1A /* BaseCollectionViewCell.m in Sources */,
 				DD4CF0131F285C020024156F /* ActivityRecommendDetailViewController.m in Sources */,
 				DDFB82B31F1D931500AEAAA7 /* NSBundle+PYSearchExtension.m in Sources */,
@@ -2126,6 +2228,7 @@
 				DD4CF1151F29F2D00024156F /* AllClassifyChildrenSecondModel.m in Sources */,
 				DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */,
 				DD62871D1F1F3D8B0030331D /* PriaseTableViewCell.m in Sources */,
+				DD0DBAD31F32B9970098F5FA /* RecommendGoodsDataModel.m in Sources */,
 				DD4CF0A41F2996B60024156F /* MoreCycleViewController.m in Sources */,
 				EC4BA2431F14B05E00B9BE1A /* CategateNavigationController.m in Sources */,
 				DD68985B1F31B99B008B6A8F /* GoodsDetailImageModel.m in Sources */,
@@ -2177,6 +2280,7 @@
 				DD4CEFEC1F26DEDA0024156F /* BrandDetailHeaderCell.m in Sources */,
 				DD62879D1F2191A90030331D /* ActivityRankFirstCell.m in Sources */,
 				DD6898331F3172B5008B6A8F /* LoginViewController.m in Sources */,
+				DD0DBAF01F330D070098F5FA /* GetUserPrize_MyPrizeModel.m in Sources */,
 				DD40B7281F17250B00839748 /* HomeLeftImageCell.m in Sources */,
 				DD4CF01D1F2868490024156F /* ActivityRecommendInformationCell.m in Sources */,
 				DD6287181F1F32010030331D /* DynamicDetailViewController.m in Sources */,
@@ -2185,6 +2289,7 @@
 				DD6287F21F21ED4F0030331D /* PersonalRankActivityViewController.m in Sources */,
 				DD6898241F3049AD008B6A8F /* NSMutableAttributedString+ThroughLine.m in Sources */,
 				DD9A63AE1F2EE29C00611FA8 /* AfterSalesCell.m in Sources */,
+				DD0DBAF31F330D280098F5FA /* GetUserPrize_PrizeListModel.m in Sources */,
 				DD4CF0221F286E9E0024156F /* ActivityRecommendDetailCell.m in Sources */,
 				DD4CF0EA1F29BF850024156F /* YQNetworking+RequestManager.m in Sources */,
 				DDFB82741F19B18800AEAAA7 /* Categate_CategateCollectCell.m in Sources */,
@@ -2205,6 +2310,7 @@
 				DD6897F91F2F0F88008B6A8F /* HomeGoodsListModel.m in Sources */,
 				DD6898451F319D90008B6A8F /* GetGiftTypeDataModel.m in Sources */,
 				DD6898141F302BB2008B6A8F /* ClassifyListDataModel.m in Sources */,
+				DD0DBAED1F330CDA0098F5FA /* GetUserPrizeResultModel.m in Sources */,
 				DD4CEFFC1F2732370024156F /* BrandStoryViewController.m in Sources */,
 				DD6287DE1F21E3B20030331D /* ActivityViewController.m in Sources */,
 				DD6898171F302BE3008B6A8F /* ClassifyListResultModel.m in Sources */,
@@ -2215,6 +2321,7 @@
 				EC4BA05A1F13562700B9BE1A /* main.m in Sources */,
 				DD4CF0A91F299A7C0024156F /* AtSomeOneViewController.m in Sources */,
 				DD6287841F2097940030331D /* HotCircleCell.m in Sources */,
+				DD0DBAC91F32B2BE0098F5FA /* LoginModel.m in Sources */,
 				DD6288181F22EB740030331D /* SubMessage_PrivateLetterViewController.m in Sources */,
 				DD62873E1F1F5FA20030331D /* GetGiftViewController.m in Sources */,
 				DD68980B1F2F5C22008B6A8F /* AllBrandContentModel.m in Sources */,
@@ -2223,6 +2330,7 @@
 				DDDD17B91F2C5194006BE206 /* ProgressHUDManager.m in Sources */,
 				DDDD17C21F2C6B54006BE206 /* IndexCarouselResultModel.m in Sources */,
 				DD62870E1F1EEE1B0030331D /* FocusPersonHeaderCell.m in Sources */,
+				DD0DBAE31F32ED7C0098F5FA /* GetGiftList_GiftListModel.m in Sources */,
 				DD6287041F1EE19C0030331D /* FocusPersonFileViewController.m in Sources */,
 				DD6287481F1F90E80030331D /* GiftListCell.m in Sources */,
 				DD62872F1F1F51BA0030331D /* ConfigurationCell.m in Sources */,
@@ -2262,9 +2370,11 @@
 				DD6897FC1F2F2647008B6A8F /* AllBrandModel.m in Sources */,
 				DD62872B1F1F4EC20030331D /* ConfigurationViewController.m in Sources */,
 				EC4BA08A1F1359A900B9BE1A /* CycleScrollModel.m in Sources */,
+				DD0DBADD1F32ED3B0098F5FA /* GetGiftListDataModel.m in Sources */,
 				DD6287AC1F219ADA0030331D /* SameTownTopicViewController.m in Sources */,
 				DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */,
 				EC4BA1111F136CBD00B9BE1A /* SubNotifi_MessageViewController.m in Sources */,
+				DD0DBAD01F32B9810098F5FA /* RecommendGoodsModel.m in Sources */,
 				DD4CF03B1F289FB20024156F /* MyOnFocusCell.m in Sources */,
 				DD9A639E1F2ECEE400611FA8 /* OrderListHeaderView.m in Sources */,
 				DDFB827C1F19F38000AEAAA7 /* Categate_BrandCollectionCell.m in Sources */,

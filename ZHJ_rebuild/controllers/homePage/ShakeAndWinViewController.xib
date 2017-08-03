@@ -11,7 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShakeAndWinViewController">
             <connections>
-                <outlet property="scrollLabelBGView" destination="Slp-sw-DhG" id="yly-A3-dIF"/>
+                <outlet property="labelWinPrizeCount" destination="Cy6-ya-GW4" id="mA0-IL-9SJ"/>
+                <outlet property="scrollLabelBGView" destination="REa-c2-vuY" id="N7x-W5-kpZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -48,7 +49,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="ryc-96-NTU"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -69,26 +70,24 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Slp-sw-DhG">
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Slp-sw-DhG">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                    <subviews>
-                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REa-c2-vuY">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
-                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="J6e-Lg-6vU"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REa-c2-vuY">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="REa-c2-vuY" firstAttribute="top" secondItem="Slp-sw-DhG" secondAttribute="top" id="13g-h1-4Yp"/>
-                        <constraint firstAttribute="bottom" secondItem="REa-c2-vuY" secondAttribute="bottom" id="B69-kO-1dy"/>
-                        <constraint firstAttribute="height" constant="40" id="J6e-Lg-6vU"/>
-                        <constraint firstAttribute="trailing" secondItem="REa-c2-vuY" secondAttribute="trailing" id="UMI-Hu-Tt9"/>
-                        <constraint firstItem="REa-c2-vuY" firstAttribute="leading" secondItem="Slp-sw-DhG" secondAttribute="leading" id="uVR-20-qWV"/>
+                        <constraint firstAttribute="height" constant="40" id="6gL-tv-5Mw"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="REa-c2-vuY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5iI-VT-Cad"/>
                 <constraint firstItem="Cy6-ya-GW4" firstAttribute="top" secondItem="OvV-zJ-xu5" secondAttribute="bottom" constant="20" id="73x-BI-KZK"/>
                 <constraint firstItem="Slp-sw-DhG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AMo-CE-jHl"/>
                 <constraint firstItem="8nd-bN-W0e" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Lv3-9p-hiN"/>
@@ -101,9 +100,12 @@
                 <constraint firstItem="lqF-jM-SXj" firstAttribute="top" secondItem="Cy6-ya-GW4" secondAttribute="bottom" constant="5" id="mpu-qo-7jm"/>
                 <constraint firstItem="8nd-bN-W0e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oWa-hu-Uxh"/>
                 <constraint firstItem="OvV-zJ-xu5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="p9b-f0-Ss3"/>
+                <constraint firstAttribute="trailing" secondItem="REa-c2-vuY" secondAttribute="trailing" id="pob-cr-krb"/>
+                <constraint firstItem="REa-c2-vuY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="v3Q-Oy-jPc"/>
                 <constraint firstAttribute="trailing" secondItem="8nd-bN-W0e" secondAttribute="trailing" id="vvl-Wz-YNm"/>
                 <constraint firstAttribute="trailing" secondItem="Cy6-ya-GW4" secondAttribute="trailing" constant="10" id="y6w-wx-M99"/>
             </constraints>
+            <point key="canvasLocation" x="67.5" y="98.5"/>
         </view>
     </objects>
     <resources>

@@ -241,7 +241,7 @@
         [self.navigationController pushViewController:customerCenterVC animated:YES];
     }else if (indexPath.item == 5){//足迹
         GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
-        getGiftVC.category = 1;
+//        getGiftVC.category = 1;
         getGiftVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:getGiftVC animated:YES];
     }else if (indexPath.item == 6){//关注公众号

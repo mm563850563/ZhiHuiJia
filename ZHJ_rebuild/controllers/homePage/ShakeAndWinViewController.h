@@ -10,4 +10,6 @@
 
 @interface ShakeAndWinViewController : UIViewController
 
+@property (nonatomic,strong)NSString *type_id;
+
 @end

@@ -14,6 +14,11 @@
 //controllers
 #import "ShakeAndWinViewController.h"
 
+//models
+#import "GetGiftListModel.h"
+#import "GetGiftListResultModel.h"
+#import "GetGiftList_GiftListModel.h"
+
 @interface GetGiftViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 //outlets
@@ -23,9 +28,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgProgress;
 @property (weak, nonatomic) IBOutlet UILabel *labelAddress;
 @property (weak, nonatomic) IBOutlet UILabel *labelFinishSendGift;
+@property (weak, nonatomic) IBOutlet UILabel *labelPayFreight;
+@property (weak, nonatomic) IBOutlet UILabel *labelWaitToSendOut;
+@property (weak, nonatomic) IBOutlet UILabel *labelConfirm;
 
-
-@property (nonatomic, strong)NSArray *headerImgArray;
+@property (nonatomic, strong)NSArray *giftListArray;
+@property (nonatomic, strong)GetGiftListResultModel *modelResult;
 
 @end
 
@@ -35,6 +43,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [self getGiftListData];
     [self settingOutlets];
 }
 
@@ -53,13 +62,64 @@
 }
 */
 
+
+#pragma mark - <获取礼物数据>
+-(void)getGiftListData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetGiftList];
+    
+    NSString *userID = kUserDefaultObject(kUserInfo);
+    NSDictionary *dictParameter = @{@"user_id":@"2596",
+                                    @"type_id":self.type_id};
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        [hud hideAnimated:YES afterDelay:1.0];
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            GetGiftListModel *model = [[GetGiftListModel alloc]initWithDictionary:dataDict error:nil];
+            if ([model.code isEqualToString:@"200"]) {
+                self.modelResult = model.data.result;
+                self.giftListArray = model.data.result.gift_list;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.collectionView reloadData];
+                    [self sendDataToOutlets];
+                });
+            }else{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+        }
+    } failBlock:^(NSError *error) {
+        [hud hideAnimated:YES afterDelay:1.0];
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }];
+}
+
+#pragma mark - <补充outlets数据>
+-(void)sendDataToOutlets
+{
+    NSString *strBanner = [NSString stringWithFormat:@"%@%@",kDomainImage,self.modelResult.banner];
+    NSURL *urlBanner = [NSURL URLWithString:strBanner];
+    [self.imgViewHeader sd_setImageWithURL:urlBanner placeholderImage:kPlaceholder];
+    
+    if ([self.modelResult.status isEqualToString:@"1"]) {
+        self.labelAddress.textColor = kColorFromRGB(kLightBlue);
+    }else if ([self.modelResult.status isEqualToString:@"2"]){
+        self.labelPayFreight.textColor = kColorFromRGB(kLightBlue);
+    }else if ([self.modelResult.status isEqualToString:@"3"]){
+        self.labelWaitToSendOut.textColor = kColorFromRGB(kLightBlue);
+    }else if ([self.modelResult.status isEqualToString:@"4"]){
+        self.labelConfirm.textColor = kColorFromRGB(kLightBlue);
+    }else if ([self.modelResult.status isEqualToString:@"5"]){
+        self.labelFinishSendGift.textColor = kColorFromRGB(kLightBlue);
+    }
+}
+
 #pragma mark - <settingOutlets>
 -(void)settingOutlets
 {
-    self.headerImgArray = @[@"zhuce",@"fenxiangdali",@"gouwuhaoli"];
-    UIImage *imageHeader = [UIImage imageNamed:self.headerImgArray[self.category]];
-    [self.imgViewHeader setImage:imageHeader];
-
     
     //画“填写地址”和“送礼完成”圆角
     UIBezierPath *maskPath1 = [UIBezierPath bezierPathWithRoundedRect:self.labelAddress.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerTopLeft cornerRadii:self.labelAddress.bounds.size];
@@ -93,11 +153,6 @@
     [self.collectionView registerNib:nibGift forCellWithReuseIdentifier:NSStringFromClass([GiftListCell class])];
 }
 
-#pragma mark - <摇一摇 拿大礼>
-- (IBAction)btnShakeAction:(UIButton *)sender
-{
-    
-}
 
 #pragma mark - <立即分享>
 - (IBAction)btnShareAction:(UIButton *)sender
@@ -115,6 +170,7 @@
 - (IBAction)shakeAndWinAction:(UIButton *)sender
 {
     ShakeAndWinViewController *shakeAndWinVC = [[ShakeAndWinViewController alloc]initWithNibName:NSStringFromClass([ShakeAndWinViewController class]) bundle:nil];
+    shakeAndWinVC.type_id = self.type_id;
     [self.navigationController pushViewController:shakeAndWinVC animated:YES];
 }
 
@@ -129,12 +185,17 @@
 #pragma mark - *** UICollectionViewDelegate,UICollectionViewDataSource *****
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return self.giftListArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     GiftListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([GiftListCell class]) forIndexPath:indexPath];
+    GetGiftList_GiftListModel *model = self.giftListArray[indexPath.item];
+    /****这两句顺序不能乱***/
+    cell.winGiftID = self.modelResult.gift_id;
+    cell.model = model;
+    /****这两句顺序不能乱***/
     return cell;
 }
 
