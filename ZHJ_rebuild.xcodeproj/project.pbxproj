@@ -21,6 +21,15 @@
 		DD0DBAED1F330CDA0098F5FA /* GetUserPrizeResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAEC1F330CDA0098F5FA /* GetUserPrizeResultModel.m */; };
 		DD0DBAF01F330D070098F5FA /* GetUserPrize_MyPrizeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAEF1F330D070098F5FA /* GetUserPrize_MyPrizeModel.m */; };
 		DD0DBAF31F330D280098F5FA /* GetUserPrize_PrizeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAF21F330D280098F5FA /* GetUserPrize_PrizeListModel.m */; };
+		DD0DBAF61F332E840098F5FA /* ProductDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAF51F332E840098F5FA /* ProductDetailHeaderView.m */; };
+		DD0DBAF81F332EA00098F5FA /* ProductDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0DBAF71F332EA00098F5FA /* ProductDetailHeaderView.xib */; };
+		DD0DBAFB1F3358C20098F5FA /* GoodsDetailSpec_ListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAFA1F3358C20098F5FA /* GoodsDetailSpec_ListModel.m */; };
+		DD0DBAFE1F33594A0098F5FA /* GoodsDetailSpec_ValueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAFD1F33594A0098F5FA /* GoodsDetailSpec_ValueModel.m */; };
+		DD0DBB011F3403670098F5FA /* ProductDetailSpecHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB001F3403670098F5FA /* ProductDetailSpecHeaderView.m */; };
+		DD0DBB071F3431460098F5FA /* GetSpecPriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB061F3431460098F5FA /* GetSpecPriceModel.m */; };
+		DD0DBB0A1F3431650098F5FA /* GetSpecPriceDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB091F3431650098F5FA /* GetSpecPriceDataModel.m */; };
+		DD0DBB0D1F3431780098F5FA /* GetSpecPriceResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB0C1F3431780098F5FA /* GetSpecPriceResultModel.m */; };
+		DD0DBB101F34817A0098F5FA /* NSString+ContentWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB0F1F34817A0098F5FA /* NSString+ContentWidth.m */; };
 		DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B7191F164CE000839748 /* HomePageMainCell.m */; };
 		DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD40B71A1F164CE000839748 /* HomePageMainCell.xib */; };
 		DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B71E1F17027E00839748 /* YouthColorCell.m */; };
@@ -269,6 +278,21 @@
 		DDDD17CA1F2C9141006BE206 /* MyOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDDD17C81F2C9141006BE206 /* MyOrderViewController.xib */; };
 		DDDD17CE1F2C93A2006BE206 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17CC1F2C93A2006BE206 /* OrderListViewController.m */; };
 		DDDD17CF1F2C93A2006BE206 /* OrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDDD17CD1F2C93A2006BE206 /* OrderListViewController.xib */; };
+		DDE0FCF51F35641900269DBD /* AddToCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FCF41F35641900269DBD /* AddToCartModel.m */; };
+		DDE0FCF81F35642C00269DBD /* AddToCartDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FCF71F35642C00269DBD /* AddToCartDataModel.m */; };
+		DDE0FCFE1F35653800269DBD /* CartListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FCFD1F35653800269DBD /* CartListModel.m */; };
+		DDE0FD011F35654900269DBD /* CartListDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FD001F35654900269DBD /* CartListDataModel.m */; };
+		DDE0FD041F35656A00269DBD /* CartListResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FD031F35656A00269DBD /* CartListResultModel.m */; };
+		DDE0FD071F35662400269DBD /* CartList_CartListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FD061F35662400269DBD /* CartList_CartListModel.m */; };
+		DDE0FD0A1F35664D00269DBD /* CartListTotalPriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FD091F35664D00269DBD /* CartListTotalPriceModel.m */; };
+		DDE0FD0D1F35666200269DBD /* UserFavoriteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FD0C1F35666200269DBD /* UserFavoriteModel.m */; };
+		DDE0FD101F35668700269DBD /* UserFavoriteDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FD0F1F35668700269DBD /* UserFavoriteDataModel.m */; };
+		DDE0FD131F35669B00269DBD /* UserFavoriteResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FD121F35669B00269DBD /* UserFavoriteResultModel.m */; };
+		DDE0FD171F35C8E300269DBD /* CartListAllSelectedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FD161F35C8E300269DBD /* CartListAllSelectedModel.m */; };
+		DDE0FD1A1F35C8FD00269DBD /* CartListAllSelectedDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FD191F35C8FD00269DBD /* CartListAllSelectedDataModel.m */; };
+		DDE0FD1E1F35D07E00269DBD /* AddToCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FD1D1F35D07E00269DBD /* AddToCollectionModel.m */; };
+		DDE0FD211F35D09000269DBD /* AddToCollectionDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FD201F35D09000269DBD /* AddToCollectionDataModel.m */; };
+		DDE0FD241F35D74E00269DBD /* AddToCollectionResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FD231F35D74E00269DBD /* AddToCollectionResultModel.m */; };
 		DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */; };
 		DDFB81C01F18475700AEAAA7 /* SameHobbyPersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */; };
 		DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB81C21F184B7600AEAAA7 /* CALayer+XIBUIColor.m */; };
@@ -405,6 +429,23 @@
 		DD0DBAEF1F330D070098F5FA /* GetUserPrize_MyPrizeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetUserPrize_MyPrizeModel.m; path = models/GetUserPrize_MyPrizeModel.m; sourceTree = "<group>"; };
 		DD0DBAF11F330D280098F5FA /* GetUserPrize_PrizeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetUserPrize_PrizeListModel.h; path = models/GetUserPrize_PrizeListModel.h; sourceTree = "<group>"; };
 		DD0DBAF21F330D280098F5FA /* GetUserPrize_PrizeListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetUserPrize_PrizeListModel.m; path = models/GetUserPrize_PrizeListModel.m; sourceTree = "<group>"; };
+		DD0DBAF41F332E840098F5FA /* ProductDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductDetailHeaderView.h; path = views/ProductDetailHeaderView.h; sourceTree = "<group>"; };
+		DD0DBAF51F332E840098F5FA /* ProductDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductDetailHeaderView.m; path = views/ProductDetailHeaderView.m; sourceTree = "<group>"; };
+		DD0DBAF71F332EA00098F5FA /* ProductDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProductDetailHeaderView.xib; path = views/ProductDetailHeaderView.xib; sourceTree = "<group>"; };
+		DD0DBAF91F3358C20098F5FA /* GoodsDetailSpec_ListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoodsDetailSpec_ListModel.h; path = models/GoodsDetailSpec_ListModel.h; sourceTree = "<group>"; };
+		DD0DBAFA1F3358C20098F5FA /* GoodsDetailSpec_ListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoodsDetailSpec_ListModel.m; path = models/GoodsDetailSpec_ListModel.m; sourceTree = "<group>"; };
+		DD0DBAFC1F33594A0098F5FA /* GoodsDetailSpec_ValueModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoodsDetailSpec_ValueModel.h; path = models/GoodsDetailSpec_ValueModel.h; sourceTree = "<group>"; };
+		DD0DBAFD1F33594A0098F5FA /* GoodsDetailSpec_ValueModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoodsDetailSpec_ValueModel.m; path = models/GoodsDetailSpec_ValueModel.m; sourceTree = "<group>"; };
+		DD0DBAFF1F3403670098F5FA /* ProductDetailSpecHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductDetailSpecHeaderView.h; path = views/ProductDetailSpecHeaderView.h; sourceTree = "<group>"; };
+		DD0DBB001F3403670098F5FA /* ProductDetailSpecHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductDetailSpecHeaderView.m; path = views/ProductDetailSpecHeaderView.m; sourceTree = "<group>"; };
+		DD0DBB051F3431460098F5FA /* GetSpecPriceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetSpecPriceModel.h; path = models/GetSpecPriceModel.h; sourceTree = "<group>"; };
+		DD0DBB061F3431460098F5FA /* GetSpecPriceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetSpecPriceModel.m; path = models/GetSpecPriceModel.m; sourceTree = "<group>"; };
+		DD0DBB081F3431650098F5FA /* GetSpecPriceDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetSpecPriceDataModel.h; path = models/GetSpecPriceDataModel.h; sourceTree = "<group>"; };
+		DD0DBB091F3431650098F5FA /* GetSpecPriceDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetSpecPriceDataModel.m; path = models/GetSpecPriceDataModel.m; sourceTree = "<group>"; };
+		DD0DBB0B1F3431780098F5FA /* GetSpecPriceResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetSpecPriceResultModel.h; path = models/GetSpecPriceResultModel.h; sourceTree = "<group>"; };
+		DD0DBB0C1F3431780098F5FA /* GetSpecPriceResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetSpecPriceResultModel.m; path = models/GetSpecPriceResultModel.m; sourceTree = "<group>"; };
+		DD0DBB0E1F34817A0098F5FA /* NSString+ContentWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+ContentWidth.h"; path = "tools/NSString+ContentWidth.h"; sourceTree = "<group>"; };
+		DD0DBB0F1F34817A0098F5FA /* NSString+ContentWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+ContentWidth.m"; path = "tools/NSString+ContentWidth.m"; sourceTree = "<group>"; };
 		DD40B7181F164CE000839748 /* HomePageMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomePageMainCell.h; path = cells/HomePageMainCell.h; sourceTree = "<group>"; };
 		DD40B7191F164CE000839748 /* HomePageMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomePageMainCell.m; path = cells/HomePageMainCell.m; sourceTree = "<group>"; };
 		DD40B71A1F164CE000839748 /* HomePageMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomePageMainCell.xib; path = cells/HomePageMainCell.xib; sourceTree = "<group>"; };
@@ -803,6 +844,36 @@
 		DDDD17CB1F2C93A2006BE206 /* OrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListViewController.h; path = controllers/personal/OrderListViewController.h; sourceTree = "<group>"; };
 		DDDD17CC1F2C93A2006BE206 /* OrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListViewController.m; path = controllers/personal/OrderListViewController.m; sourceTree = "<group>"; };
 		DDDD17CD1F2C93A2006BE206 /* OrderListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListViewController.xib; path = controllers/personal/OrderListViewController.xib; sourceTree = "<group>"; };
+		DDE0FCF31F35641900269DBD /* AddToCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddToCartModel.h; path = models/AddToCartModel.h; sourceTree = "<group>"; };
+		DDE0FCF41F35641900269DBD /* AddToCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddToCartModel.m; path = models/AddToCartModel.m; sourceTree = "<group>"; };
+		DDE0FCF61F35642C00269DBD /* AddToCartDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddToCartDataModel.h; path = models/AddToCartDataModel.h; sourceTree = "<group>"; };
+		DDE0FCF71F35642C00269DBD /* AddToCartDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddToCartDataModel.m; path = models/AddToCartDataModel.m; sourceTree = "<group>"; };
+		DDE0FCFC1F35653800269DBD /* CartListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CartListModel.h; path = models/CartListModel.h; sourceTree = "<group>"; };
+		DDE0FCFD1F35653800269DBD /* CartListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CartListModel.m; path = models/CartListModel.m; sourceTree = "<group>"; };
+		DDE0FCFF1F35654900269DBD /* CartListDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CartListDataModel.h; path = models/CartListDataModel.h; sourceTree = "<group>"; };
+		DDE0FD001F35654900269DBD /* CartListDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CartListDataModel.m; path = models/CartListDataModel.m; sourceTree = "<group>"; };
+		DDE0FD021F35656A00269DBD /* CartListResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CartListResultModel.h; path = models/CartListResultModel.h; sourceTree = "<group>"; };
+		DDE0FD031F35656A00269DBD /* CartListResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CartListResultModel.m; path = models/CartListResultModel.m; sourceTree = "<group>"; };
+		DDE0FD051F35662400269DBD /* CartList_CartListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CartList_CartListModel.h; path = models/CartList_CartListModel.h; sourceTree = "<group>"; };
+		DDE0FD061F35662400269DBD /* CartList_CartListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CartList_CartListModel.m; path = models/CartList_CartListModel.m; sourceTree = "<group>"; };
+		DDE0FD081F35664D00269DBD /* CartListTotalPriceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CartListTotalPriceModel.h; path = models/CartListTotalPriceModel.h; sourceTree = "<group>"; };
+		DDE0FD091F35664D00269DBD /* CartListTotalPriceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CartListTotalPriceModel.m; path = models/CartListTotalPriceModel.m; sourceTree = "<group>"; };
+		DDE0FD0B1F35666200269DBD /* UserFavoriteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserFavoriteModel.h; path = models/UserFavoriteModel.h; sourceTree = "<group>"; };
+		DDE0FD0C1F35666200269DBD /* UserFavoriteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserFavoriteModel.m; path = models/UserFavoriteModel.m; sourceTree = "<group>"; };
+		DDE0FD0E1F35668700269DBD /* UserFavoriteDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserFavoriteDataModel.h; path = models/UserFavoriteDataModel.h; sourceTree = "<group>"; };
+		DDE0FD0F1F35668700269DBD /* UserFavoriteDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserFavoriteDataModel.m; path = models/UserFavoriteDataModel.m; sourceTree = "<group>"; };
+		DDE0FD111F35669B00269DBD /* UserFavoriteResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserFavoriteResultModel.h; path = models/UserFavoriteResultModel.h; sourceTree = "<group>"; };
+		DDE0FD121F35669B00269DBD /* UserFavoriteResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserFavoriteResultModel.m; path = models/UserFavoriteResultModel.m; sourceTree = "<group>"; };
+		DDE0FD151F35C8E300269DBD /* CartListAllSelectedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CartListAllSelectedModel.h; path = models/CartListAllSelectedModel.h; sourceTree = "<group>"; };
+		DDE0FD161F35C8E300269DBD /* CartListAllSelectedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CartListAllSelectedModel.m; path = models/CartListAllSelectedModel.m; sourceTree = "<group>"; };
+		DDE0FD181F35C8FD00269DBD /* CartListAllSelectedDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CartListAllSelectedDataModel.h; path = models/CartListAllSelectedDataModel.h; sourceTree = "<group>"; };
+		DDE0FD191F35C8FD00269DBD /* CartListAllSelectedDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CartListAllSelectedDataModel.m; path = models/CartListAllSelectedDataModel.m; sourceTree = "<group>"; };
+		DDE0FD1C1F35D07E00269DBD /* AddToCollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddToCollectionModel.h; path = models/AddToCollectionModel.h; sourceTree = "<group>"; };
+		DDE0FD1D1F35D07E00269DBD /* AddToCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddToCollectionModel.m; path = models/AddToCollectionModel.m; sourceTree = "<group>"; };
+		DDE0FD1F1F35D09000269DBD /* AddToCollectionDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddToCollectionDataModel.h; path = models/AddToCollectionDataModel.h; sourceTree = "<group>"; };
+		DDE0FD201F35D09000269DBD /* AddToCollectionDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddToCollectionDataModel.m; path = models/AddToCollectionDataModel.m; sourceTree = "<group>"; };
+		DDE0FD221F35D74E00269DBD /* AddToCollectionResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddToCollectionResultModel.h; path = models/AddToCollectionResultModel.h; sourceTree = "<group>"; };
+		DDE0FD231F35D74E00269DBD /* AddToCollectionResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddToCollectionResultModel.m; path = models/AddToCollectionResultModel.m; sourceTree = "<group>"; };
 		DDFB81BC1F18475700AEAAA7 /* SameHobbyPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameHobbyPersonCell.h; path = cells/SameHobbyPersonCell.h; sourceTree = "<group>"; };
 		DDFB81BD1F18475700AEAAA7 /* SameHobbyPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameHobbyPersonCell.m; path = cells/SameHobbyPersonCell.m; sourceTree = "<group>"; };
 		DDFB81BE1F18475700AEAAA7 /* SameHobbyPersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SameHobbyPersonCell.xib; path = cells/SameHobbyPersonCell.xib; sourceTree = "<group>"; };
@@ -1056,6 +1127,19 @@
 			name = GetUserPrize;
 			sourceTree = "<group>";
 		};
+		DD0DBB041F3431140098F5FA /* GetSpecPrice */ = {
+			isa = PBXGroup;
+			children = (
+				DD0DBB051F3431460098F5FA /* GetSpecPriceModel.h */,
+				DD0DBB061F3431460098F5FA /* GetSpecPriceModel.m */,
+				DD0DBB081F3431650098F5FA /* GetSpecPriceDataModel.h */,
+				DD0DBB091F3431650098F5FA /* GetSpecPriceDataModel.m */,
+				DD0DBB0B1F3431780098F5FA /* GetSpecPriceResultModel.h */,
+				DD0DBB0C1F3431780098F5FA /* GetSpecPriceResultModel.m */,
+			);
+			name = GetSpecPrice;
+			sourceTree = "<group>";
+		};
 		DD4CF0021F28219F0024156F /* HWPoTools */ = {
 			isa = PBXGroup;
 			children = (
@@ -1228,8 +1312,84 @@
 				DD68985A1F31B99B008B6A8F /* GoodsDetailImageModel.m */,
 				DD68985C1F31BA88008B6A8F /* GoodsDetailContentModel.h */,
 				DD68985D1F31BA88008B6A8F /* GoodsDetailContentModel.m */,
+				DD0DBAF91F3358C20098F5FA /* GoodsDetailSpec_ListModel.h */,
+				DD0DBAFA1F3358C20098F5FA /* GoodsDetailSpec_ListModel.m */,
+				DD0DBAFC1F33594A0098F5FA /* GoodsDetailSpec_ValueModel.h */,
+				DD0DBAFD1F33594A0098F5FA /* GoodsDetailSpec_ValueModel.m */,
 			);
 			name = GoodsDetail;
+			sourceTree = "<group>";
+		};
+		DDE0FCF01F3563CA00269DBD /* AddToCart */ = {
+			isa = PBXGroup;
+			children = (
+				DDE0FCF31F35641900269DBD /* AddToCartModel.h */,
+				DDE0FCF41F35641900269DBD /* AddToCartModel.m */,
+				DDE0FCF61F35642C00269DBD /* AddToCartDataModel.h */,
+				DDE0FCF71F35642C00269DBD /* AddToCartDataModel.m */,
+			);
+			name = AddToCart;
+			sourceTree = "<group>";
+		};
+		DDE0FCF11F3563E300269DBD /* GetCartList */ = {
+			isa = PBXGroup;
+			children = (
+				DDE0FCFC1F35653800269DBD /* CartListModel.h */,
+				DDE0FCFD1F35653800269DBD /* CartListModel.m */,
+				DDE0FCFF1F35654900269DBD /* CartListDataModel.h */,
+				DDE0FD001F35654900269DBD /* CartListDataModel.m */,
+				DDE0FD021F35656A00269DBD /* CartListResultModel.h */,
+				DDE0FD031F35656A00269DBD /* CartListResultModel.m */,
+				DDE0FD051F35662400269DBD /* CartList_CartListModel.h */,
+				DDE0FD061F35662400269DBD /* CartList_CartListModel.m */,
+				DDE0FD081F35664D00269DBD /* CartListTotalPriceModel.h */,
+				DDE0FD091F35664D00269DBD /* CartListTotalPriceModel.m */,
+			);
+			name = GetCartList;
+			sourceTree = "<group>";
+		};
+		DDE0FCF21F3563F000269DBD /* UserFavorite */ = {
+			isa = PBXGroup;
+			children = (
+				DDE0FD0B1F35666200269DBD /* UserFavoriteModel.h */,
+				DDE0FD0C1F35666200269DBD /* UserFavoriteModel.m */,
+				DDE0FD0E1F35668700269DBD /* UserFavoriteDataModel.h */,
+				DDE0FD0F1F35668700269DBD /* UserFavoriteDataModel.m */,
+				DDE0FD111F35669B00269DBD /* UserFavoriteResultModel.h */,
+				DDE0FD121F35669B00269DBD /* UserFavoriteResultModel.m */,
+			);
+			name = UserFavorite;
+			sourceTree = "<group>";
+		};
+		DDE0FD141F35C8AE00269DBD /* CartListAllSelected */ = {
+			isa = PBXGroup;
+			children = (
+				DDE0FD151F35C8E300269DBD /* CartListAllSelectedModel.h */,
+				DDE0FD161F35C8E300269DBD /* CartListAllSelectedModel.m */,
+				DDE0FD181F35C8FD00269DBD /* CartListAllSelectedDataModel.h */,
+				DDE0FD191F35C8FD00269DBD /* CartListAllSelectedDataModel.m */,
+			);
+			name = CartListAllSelected;
+			sourceTree = "<group>";
+		};
+		DDE0FD1B1F35D04E00269DBD /* AddToCollection */ = {
+			isa = PBXGroup;
+			children = (
+				DDE0FD1C1F35D07E00269DBD /* AddToCollectionModel.h */,
+				DDE0FD1D1F35D07E00269DBD /* AddToCollectionModel.m */,
+				DDE0FD1F1F35D09000269DBD /* AddToCollectionDataModel.h */,
+				DDE0FD201F35D09000269DBD /* AddToCollectionDataModel.m */,
+				DDE0FD221F35D74E00269DBD /* AddToCollectionResultModel.h */,
+				DDE0FD231F35D74E00269DBD /* AddToCollectionResultModel.m */,
+			);
+			name = AddToCollection;
+			sourceTree = "<group>";
+		};
+		DDE0FD251F35D8DC00269DBD /* DeleteCollection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DeleteCollection;
 			sourceTree = "<group>";
 		};
 		DDFB823A1F187A7900AEAAA7 /* SSCheckBoxView */ = {
@@ -1580,6 +1740,11 @@
 				DD6898351F31903B008B6A8F /* LoginView.h */,
 				DD6898361F31903B008B6A8F /* LoginView.m */,
 				DD6898381F31904A008B6A8F /* LoginView.xib */,
+				DD0DBAF41F332E840098F5FA /* ProductDetailHeaderView.h */,
+				DD0DBAF51F332E840098F5FA /* ProductDetailHeaderView.m */,
+				DD0DBAF71F332EA00098F5FA /* ProductDetailHeaderView.xib */,
+				DD0DBAFF1F3403670098F5FA /* ProductDetailSpecHeaderView.h */,
+				DD0DBB001F3403670098F5FA /* ProductDetailSpecHeaderView.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -1618,6 +1783,13 @@
 				DD0DBACD1F32B9550098F5FA /* GetRecommendGoods */,
 				DD0DBAD71F32ECE20098F5FA /* GetGiftList */,
 				DD0DBAE41F330C840098F5FA /* GetUserPrize */,
+				DD0DBB041F3431140098F5FA /* GetSpecPrice */,
+				DDE0FCF21F3563F000269DBD /* UserFavorite */,
+				DDE0FCF11F3563E300269DBD /* GetCartList */,
+				DDE0FCF01F3563CA00269DBD /* AddToCart */,
+				DDE0FD1B1F35D04E00269DBD /* AddToCollection */,
+				DDE0FD141F35C8AE00269DBD /* CartListAllSelected */,
+				DDE0FD251F35D8DC00269DBD /* DeleteCollection */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -1629,6 +1801,8 @@
 				DD4CF0021F28219F0024156F /* HWPoTools */,
 				DD62882E1F232E970030331D /* GetHeightOfText.h */,
 				DD62882F1F232E970030331D /* GetHeightOfText.m */,
+				DD0DBB0E1F34817A0098F5FA /* NSString+ContentWidth.h */,
+				DD0DBB0F1F34817A0098F5FA /* NSString+ContentWidth.m */,
 				EC4BA1201F13778300B9BE1A /* PrefixHeader.pch */,
 				EC4BA0821F13599A00B9BE1A /* UIImage+Color.h */,
 				EC4BA0831F13599A00B9BE1A /* UIImage+Color.m */,
@@ -2041,6 +2215,7 @@
 				DDFB829E1F1C791800AEAAA7 /* MoreProduct_SortView.xib in Resources */,
 				DD6287491F1F90E80030331D /* GiftListCell.xib in Resources */,
 				DD62873F1F1F5FA20030331D /* GetGiftViewController.xib in Resources */,
+				DD0DBAF81F332EA00098F5FA /* ProductDetailHeaderView.xib in Resources */,
 				DD40B73E1F1788B000839748 /* HomeCollectCell3.xib in Resources */,
 				DD4CF0321F2885660024156F /* ActivityApplyViewController.xib in Resources */,
 				DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */,
@@ -2163,11 +2338,14 @@
 			files = (
 				DDFB82B51F1D931500AEAAA7 /* PYSearchConst.m in Sources */,
 				DD4CF0AE1F29A8FC0024156F /* AtSomeOneCell.m in Sources */,
+				DD0DBB0A1F3431650098F5FA /* GetSpecPriceDataModel.m in Sources */,
 				DD4CF0001F274B480024156F /* ShakeAndWinViewController.m in Sources */,
 				DD9A63B21F2EE84400611FA8 /* AfterSalesHeaderView.m in Sources */,
 				EC4BA0DB1F1359EC00B9BE1A /* FactoryCollectionViewCell.m in Sources */,
+				DDE0FCFE1F35653800269DBD /* CartListModel.m in Sources */,
 				DD4CF0311F2885660024156F /* ActivityApplyViewController.m in Sources */,
 				DD6898371F31903B008B6A8F /* LoginView.m in Sources */,
+				DDE0FD071F35662400269DBD /* CartList_CartListModel.m in Sources */,
 				DD6287341F1F52BE0030331D /* Configuration_ButtonCell.m in Sources */,
 				EC4BA0C91F1359DF00B9BE1A /* FlipTableView.m in Sources */,
 				DD6898521F31B55D008B6A8F /* GoodsDetailDataModel.m in Sources */,
@@ -2181,12 +2359,14 @@
 				EC4BA0841F13599A00B9BE1A /* UIImage+Color.m in Sources */,
 				DD0DBAEA1F330CC10098F5FA /* GetUserPrizeDataModel.m in Sources */,
 				DD40B7351F17485500839748 /* HomeCollectCell2.m in Sources */,
+				DDE0FD131F35669B00269DBD /* UserFavoriteResultModel.m in Sources */,
 				EC4BA05D1F13562700B9BE1A /* AppDelegate.m in Sources */,
 				EC4BA0CC1F1359DF00B9BE1A /* SelectThemeColorView.m in Sources */,
 				DD62882C1F2317E60030331D /* ReplyCommentCell.m in Sources */,
 				DD6287521F203C030030331D /* MyAddressIncreaseViewController.m in Sources */,
 				DD4CF0081F2824A10024156F /* ActivityRuleView.m in Sources */,
 				DD40B73D1F1788B000839748 /* HomeCollectCell3.m in Sources */,
+				DDE0FD041F35656A00269DBD /* CartListResultModel.m in Sources */,
 				DD6287221F1F41BF0030331D /* DynamicWithoutCommentCell.m in Sources */,
 				DD4CF0E91F29BF850024156F /* YQMemoryCache.m in Sources */,
 				EC4BA1341F1462F100B9BE1A /* GiftSendingTableViewCell.m in Sources */,
@@ -2198,6 +2378,7 @@
 				DDDD17C91F2C9141006BE206 /* MyOrderViewController.m in Sources */,
 				DD62876B1F207A850030331D /* CustomerServiceCenterViewController.m in Sources */,
 				DD40B7311F17437100839748 /* IntellectWearsCell.m in Sources */,
+				DDE0FD0A1F35664D00269DBD /* CartListTotalPriceModel.m in Sources */,
 				DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */,
 				DD40B72D1F173B5300839748 /* HomeRightImageCell.m in Sources */,
 				EC4BA25B1F15FDE400B9BE1A /* DiscoverDynamicViewController.m in Sources */,
@@ -2214,6 +2395,7 @@
 				DD4CF1191F2AFB9E0024156F /* CategoryProductNameCell.m in Sources */,
 				DD9A63BD1F2EF3D900611FA8 /* HomeGoodsResultModel.m in Sources */,
 				DD6288051F2214F40030331D /* RatingBar.m in Sources */,
+				DD0DBAFB1F3358C20098F5FA /* GoodsDetailSpec_ListModel.m in Sources */,
 				DDFB82981F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m in Sources */,
 				DDDD17CE1F2C93A2006BE206 /* OrderListViewController.m in Sources */,
 				DD40B7231F1705A000839748 /* HomeCollectCell1.m in Sources */,
@@ -2221,15 +2403,20 @@
 				DD4CF0E81F29BF850024156F /* YQLRUManager.m in Sources */,
 				DD62875C1F20522F0030331D /* MyCollectProductViewController.m in Sources */,
 				DD0DBADA1F32ED150098F5FA /* GetGiftListModel.m in Sources */,
+				DD0DBB071F3431460098F5FA /* GetSpecPriceModel.m in Sources */,
 				EC4BA0D81F1359EC00B9BE1A /* BaseCollectionViewCell.m in Sources */,
 				DD4CF0131F285C020024156F /* ActivityRecommendDetailViewController.m in Sources */,
 				DDFB82B31F1D931500AEAAA7 /* NSBundle+PYSearchExtension.m in Sources */,
 				DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */,
 				DD4CF1151F29F2D00024156F /* AllClassifyChildrenSecondModel.m in Sources */,
+				DDE0FD1A1F35C8FD00269DBD /* CartListAllSelectedDataModel.m in Sources */,
+				DD0DBB011F3403670098F5FA /* ProductDetailSpecHeaderView.m in Sources */,
 				DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */,
+				DD0DBB0D1F3431780098F5FA /* GetSpecPriceResultModel.m in Sources */,
 				DD62871D1F1F3D8B0030331D /* PriaseTableViewCell.m in Sources */,
 				DD0DBAD31F32B9970098F5FA /* RecommendGoodsDataModel.m in Sources */,
 				DD4CF0A41F2996B60024156F /* MoreCycleViewController.m in Sources */,
+				DDE0FD011F35654900269DBD /* CartListDataModel.m in Sources */,
 				EC4BA2431F14B05E00B9BE1A /* CategateNavigationController.m in Sources */,
 				DD68985B1F31B99B008B6A8F /* GoodsDetailImageModel.m in Sources */,
 				DD6287931F2185A10030331D /* JoinedCircleCell.m in Sources */,
@@ -2245,6 +2432,7 @@
 				EC4BA2471F14DFE900B9BE1A /* BrandApplyViewController.m in Sources */,
 				DD62877A1F208CA40030331D /* MyCircleViewController.m in Sources */,
 				DD40B7391F176E8600839748 /* EqualSpaceFlowLayout.m in Sources */,
+				DDE0FD0D1F35666200269DBD /* UserFavoriteModel.m in Sources */,
 				DDFB82931F1C699D00AEAAA7 /* MoreProductListViewController.m in Sources */,
 				DD6287A21F2191C90030331D /* ActivityRankNormalCell.m in Sources */,
 				DDDD17BF1F2C6B11006BE206 /* IndexCarouselDataModel.m in Sources */,
@@ -2258,6 +2446,7 @@
 				DDFB82811F19F97900AEAAA7 /* Categate_Brand_HeaderView.m in Sources */,
 				DD4CF10C1F29EE250024156F /* AllClassifyResultModel.m in Sources */,
 				DD6287E81F21E85D0030331D /* AlreadyPassedViewController.m in Sources */,
+				DDE0FD1E1F35D07E00269DBD /* AddToCollectionModel.m in Sources */,
 				DD4CF1091F29EE010024156F /* AllClassifyDataModel.m in Sources */,
 				DDFB82C51F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m in Sources */,
 				EC4BA0F21F136CA400B9BE1A /* CategateViewController.m in Sources */,
@@ -2294,6 +2483,7 @@
 				DD4CF0EA1F29BF850024156F /* YQNetworking+RequestManager.m in Sources */,
 				DDFB82741F19B18800AEAAA7 /* Categate_CategateCollectCell.m in Sources */,
 				EC4BA0DC1F1359EC00B9BE1A /* FactoryTableViewCell.m in Sources */,
+				DDE0FD211F35D09000269DBD /* AddToCollectionDataModel.m in Sources */,
 				EC4BA10B1F136CBD00B9BE1A /* HomePageViewController.m in Sources */,
 				DD62877F1F208CE60030331D /* RankingListViewController.m in Sources */,
 				DD62881D1F22EC5F0030331D /* SubNotification_AnnouncementViewController.m in Sources */,
@@ -2318,6 +2508,7 @@
 				EC4BA0CA1F1359DF00B9BE1A /* LeftSideSegmentView.m in Sources */,
 				DD4CF0401F28A43E0024156F /* NewPostViewController.m in Sources */,
 				EC4BA1121F136CBD00B9BE1A /* SubNotifi_NotificationViewController.m in Sources */,
+				DDE0FCF51F35641900269DBD /* AddToCartModel.m in Sources */,
 				EC4BA05A1F13562700B9BE1A /* main.m in Sources */,
 				DD4CF0A91F299A7C0024156F /* AtSomeOneViewController.m in Sources */,
 				DD6287841F2097940030331D /* HotCircleCell.m in Sources */,
@@ -2333,6 +2524,7 @@
 				DD0DBAE31F32ED7C0098F5FA /* GetGiftList_GiftListModel.m in Sources */,
 				DD6287041F1EE19C0030331D /* FocusPersonFileViewController.m in Sources */,
 				DD6287481F1F90E80030331D /* GiftListCell.m in Sources */,
+				DD0DBAF61F332E840098F5FA /* ProductDetailHeaderView.m in Sources */,
 				DD62872F1F1F51BA0030331D /* ConfigurationCell.m in Sources */,
 				DDFB82B91F1D931500AEAAA7 /* UIView+PYSearchExtension.m in Sources */,
 				DD6287E31F21E8120030331D /* WaitForReviewViewController.m in Sources */,
@@ -2347,11 +2539,13 @@
 				DD6287ED1F21E8C00030331D /* FailureReviewViewController.m in Sources */,
 				DD68980E1F302B03008B6A8F /* ClassifyListModel.m in Sources */,
 				DDFB826B1F187A7900AEAAA7 /* SSCheckBoxView.m in Sources */,
+				DDE0FD241F35D74E00269DBD /* AddToCollectionResultModel.m in Sources */,
 				DDFB82A21F1C81E300AEAAA7 /* PersonalFileViewController.m in Sources */,
 				DD6287CA1F21AF900030331D /* LookAroundTableCell.m in Sources */,
 				DD6287B11F219BA50030331D /* HandpickActivitiesViewController.m in Sources */,
 				DD6288301F232E970030331D /* GetHeightOfText.m in Sources */,
 				EC4BA2541F15EDF000B9BE1A /* DiscoverHeaderCell.m in Sources */,
+				DDE0FCF81F35642C00269DBD /* AddToCartDataModel.m in Sources */,
 				DD6897FF1F2F276C008B6A8F /* AllBrandDataModel.m in Sources */,
 				DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */,
 				DD4CEFDF1F26CD0F0024156F /* BrandDetailViewController.m in Sources */,
@@ -2364,6 +2558,7 @@
 				DD4CF0FA1F29BF850024156F /* YQNetworking.m in Sources */,
 				EC4BA2651F160F1F00B9BE1A /* DiscoverCell.m in Sources */,
 				DD4CF0E71F29BF850024156F /* YQDiskCache.m in Sources */,
+				DD0DBB101F34817A0098F5FA /* NSString+ContentWidth.m in Sources */,
 				EC4BA0EB1F136C8100B9BE1A /* PersonalViewController.m in Sources */,
 				DD4CF0271F2877EC0024156F /* ActivityRecommendApplyCell.m in Sources */,
 				DD6287A71F2198FC0030331D /* SameTownViewController.m in Sources */,
@@ -2371,7 +2566,9 @@
 				DD62872B1F1F4EC20030331D /* ConfigurationViewController.m in Sources */,
 				EC4BA08A1F1359A900B9BE1A /* CycleScrollModel.m in Sources */,
 				DD0DBADD1F32ED3B0098F5FA /* GetGiftListDataModel.m in Sources */,
+				DD0DBAFE1F33594A0098F5FA /* GoodsDetailSpec_ValueModel.m in Sources */,
 				DD6287AC1F219ADA0030331D /* SameTownTopicViewController.m in Sources */,
+				DDE0FD171F35C8E300269DBD /* CartListAllSelectedModel.m in Sources */,
 				DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */,
 				EC4BA1111F136CBD00B9BE1A /* SubNotifi_MessageViewController.m in Sources */,
 				DD0DBAD01F32B9810098F5FA /* RecommendGoodsModel.m in Sources */,
@@ -2383,6 +2580,7 @@
 				DD6898081F2F2861008B6A8F /* AllBrandGoodsListModel.m in Sources */,
 				DD4CF0051F28219F0024156F /* HWPopTool.m in Sources */,
 				DD6898051F2F2847008B6A8F /* AllBrandListModel.m in Sources */,
+				DDE0FD101F35668700269DBD /* UserFavoriteDataModel.m in Sources */,
 				EC4BA1401F14997800B9BE1A /* CycleScrollViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,13 +18,26 @@
 //controllers
 #import "ProductDetailViewController.h"
 
+//models
+#import "CartListModel.h"
+#import "CartList_CartListModel.h"
+#import "CartListTotalPriceModel.h"
+#import "CartListAllSelectedModel.h"
+
 @interface CartViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UILabel *labelTotalPrice;
+@property (weak, nonatomic) IBOutlet UILabel *labelCutPrice;
 @property (weak, nonatomic) IBOutlet UIView *tableBGView;
 @property (weak, nonatomic) IBOutlet UIView *checkBoxBGView;
+@property (weak, nonatomic) IBOutlet UIButton *btnSubmitOrDelete;
 @property (nonatomic, strong)SSCheckBoxView *checkBox;
 
 @property (nonatomic, strong)UITableView *tableView;
+@property (nonatomic, strong)NSArray *cartListArray;
+@property (nonatomic, strong)CartListTotalPriceModel *modelTotalPrice;
+
+@property (nonatomic, assign)BOOL isEdit;
 
 @end
 
@@ -33,8 +46,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self getCartListData];
+    [self settingNavigationBar];
     [self settingOutlets];
     [self initTableView];
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,11 +68,75 @@
 }
 */
 
-
-#pragma mark - <配置navigationBar>
--(void)settingNavigation
+#pragma mark - <设置navigationBar>
+-(void)settingNavigationBar
 {
-//    UIBarButtonItem *btnRight = [UIBarButtonItem alloc]initWithTitle:<#(nullable NSString *)#> style:<#(UIBarButtonItemStyle)#> target:<#(nullable id)#> action:<#(nullable SEL)#>
+    UIButton *btnEdit = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnEdit.frame = CGRectMake(0, 0, 50, 30);
+    [btnEdit setTitleColor:kColorFromRGB(kDeepGray) forState:UIControlStateNormal];
+    btnEdit.titleLabel.font = [UIFont systemFontOfSize:16];
+    [btnEdit setTitle:@"编辑" forState:UIControlStateNormal];
+    [btnEdit addTarget:self action:@selector(btnEditAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *editBarItem = [[UIBarButtonItem alloc]initWithCustomView:btnEdit];
+    self.navigationItem.rightBarButtonItem = editBarItem;
+}
+
+#pragma mark - <编辑按钮响应>
+-(void)btnEditAction:(UIButton *)sender
+{
+    self.isEdit = !self.isEdit;
+    if (self.isEdit) {
+        [self.btnSubmitOrDelete setTitle:@"删除" forState:UIControlStateNormal];
+        [sender setTitle:@"完成" forState:UIControlStateNormal];
+    }else{
+        [self.btnSubmitOrDelete setTitle:@"去提交" forState:UIControlStateNormal];
+        [sender setTitle:@"编辑" forState:UIControlStateNormal];
+    }
+    
+    [self.tableView reloadData];
+}
+
+
+#pragma mark - <获取购物车列表数据>
+-(void)getCartListData
+{
+    NSString *str = [NSString stringWithFormat:@"%@%@",kDomainBase,kCartList];
+    NSDictionary *dictParameter = [NSDictionary dictionary];
+    if (kUserDefaultObject(kUserInfo)) {
+        NSString *userID = kUserDefaultObject(kUserInfo);
+        dictParameter = @{@"user_id":userID};
+    }
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:str refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        [hud hideAnimated:YES afterDelay:1.0];
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            CartListModel *model = [[CartListModel alloc]initWithDictionary:dataDict error:nil];
+            if ([model.code isEqualToString:@"200"]) {
+                self.cartListArray = model.data.result.cart_list;
+                self.modelTotalPrice = model.data.result.total_price;
+                [self sendDataToOutlets];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }else{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+        }
+    } failBlock:^(NSError *error) {
+        [hud hideAnimated:YES afterDelay:1.0];
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }];
+}
+
+#pragma mark - <填充页面数据>
+-(void)sendDataToOutlets
+{
+    self.labelTotalPrice.text = [NSString stringWithFormat:@"¥ %@",self.modelTotalPrice.total_fee];
+    self.labelCutPrice.text = [NSString stringWithFormat:@"（已省¥ %@）",self.modelTotalPrice.cut_fee];
 }
 
 
@@ -70,7 +150,42 @@
         make.width.mas_equalTo(30);
     }];
     
-//    self.checkBox.stateChangedBlock = 
+    __weak typeof(self) weakSelf = self;
+    self.checkBox.stateChangedBlock = ^(SSCheckBoxView *cbv) {
+        if (weakSelf.checkBox.checked) {
+            [weakSelf getCartListAllSelectedDataWith:@"1"];
+        }else{
+            [weakSelf getCartListAllSelectedDataWith:@"0"];
+        }
+        
+    };
+}
+
+#pragma mark - <购物车列表全选>
+-(void)getCartListAllSelectedDataWith:(NSString *)isAllSelected
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kCartListAllSelected];
+    if (kUserDefaultObject(kUserInfo)) {
+        NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                        @"select_all":isAllSelected};
+        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+        [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+            if (response) {
+                NSDictionary *dataDict = (NSDictionary *)response;
+                CartListAllSelectedModel *model = [[CartListAllSelectedModel alloc]initWithDictionary:dataDict error:nil];
+                if ([model.code isEqualToString:@"200"]) {
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    hud.completionBlock = ^{
+                        [self getCartListData];
+                    };
+                }
+            }
+        } failBlock:^(NSError *error) {
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }];
+    }
 }
 
 #pragma mark - <初始化tableView>
@@ -79,7 +194,6 @@
     self.tableView = [[UITableView alloc]initWithFrame:self.tableBGView.bounds style:UITableViewStyleGrouped];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = kColorFromRGB(kLightGray);
-//    self.tableView.allowsMultipleSelection = YES;
     [self.tableBGView addSubview:self.tableView];
     
     self.tableView.delegate = self;
@@ -91,6 +205,34 @@
     [self.tableView registerClass:[YouthColorCell class] forCellReuseIdentifier:NSStringFromClass([YouthColorCell class])];
 }
 
+#pragma mark - <提交按钮响应>
+- (IBAction)btnSubmitOrDeleteAction:(UIButton *)sender
+{
+    if (self.isEdit) {
+        //执行删除
+    }else{
+        //执行提交
+    }
+}
+
+#pragma mark - <RAC响应>
+-(void)respondWithRAC
+{
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshCartList" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [self getCartListData];
+    }];
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -98,13 +240,17 @@
 #pragma mark - ****** UITableViewDelegate,UITableViewDataSource *******
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    if (self.isEdit) {
+        return 1;
+    }else{
+        return 2;
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 5;
+        return self.cartListArray.count;
     }else{
         return 1;
     }
@@ -132,6 +278,8 @@
     UITableViewCell *cell = [[UITableViewCell alloc]init];
     if (indexPath.section == 0) {
         CartProductListCell *cellCartProductList = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CartProductListCell class])];
+        CartList_CartListModel *model = self.cartListArray[indexPath.row];
+        cellCartProductList.model = model;
         cell = cellCartProductList;
     }else if (indexPath.section == 1){
         YouthColorCell *cellYouth = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([YouthColorCell class])];
@@ -157,7 +305,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ProductDetailViewController *prductDetaiVC = [[ProductDetailViewController alloc]init];
-    
+    CartList_CartListModel *model = self.cartListArray[indexPath.row];
+    prductDetaiVC.goods_id = model.goods_id;
+    prductDetaiVC.hidesBottomBarWhenPushed = YES;
     [self. navigationController pushViewController:prductDetaiVC animated:YES];
 }
 

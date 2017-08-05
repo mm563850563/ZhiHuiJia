@@ -106,11 +106,32 @@
 #pragma mark - <商品详情>
 #define kGoodsDetail @"/Goods/goodsDetail" //参数：goods_id
 
+#pragma mark - <添加到收藏>
+#define kAddToCollection @"/user/addToCollected"  //user_id,goods_id
+
+#pragma mark - <删除收藏>
+#define kDeleteCollection @"/user/delCollected"
+
+#pragma mark - <选择产品规格返回实际价格>
+#define kGetSpecPrice @"/goods/getSpecPrice" //参数：goods_id:307，spec_item_id
+
 #pragma mark - <为你精心推荐>
 #define kGetRecommendGoods @"/Index/getRecommendGoods"  //参数：user_id
 
 #pragma mark - <登录>
 #define kLogin @"/user/login" //参数：mobile,password
+
+#pragma mark - <加入购物车>
+#define kAddToCart @"/cart/addToCart"  //goods_id,goods_spec,goods_num,user_id
+
+#pragma mark - <购物车列表>
+#define kCartList @"/cart/getCartList"  //user_id
+
+#pragma mark - <购物车列表全选>
+#define kCartListAllSelected @"/cart/selectAll"  //user_id,select_all
+
+#pragma mark - <听说你喜欢>
+#define kUserFavorite @"/user/userFavorite"  //user_id,page,page_count
 
 
 

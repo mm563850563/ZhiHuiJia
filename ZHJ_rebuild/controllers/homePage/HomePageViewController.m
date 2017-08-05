@@ -136,7 +136,6 @@
 -(void)getIndexCarouselData
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kIndexCarousel];
-//    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.navigationController.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:nil progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
@@ -146,16 +145,11 @@
                 //回到主线程刷新数据
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
-                    //开始加载首页产品数据
-//                    [self getHomeGoodsDataWithHUD:hud];
                 });
             }else{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
             }
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [hud hideAnimated:YES afterDelay:1.0];
-//            });
         }
     } failBlock:^(NSError *error) {
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:error.description];
@@ -350,10 +344,11 @@
     [self.navigationController pushViewController:personalFileVC animated:YES];
 }
 #pragma mark - <跳转产品详情页面>
--(void)jumpToProductDetailVC
+-(void)jumpToProductDetailVCWithGoodsID:(NSString *)goods_id
 {
     ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
     productDetailVC.hidesBottomBarWhenPushed = YES;
+    productDetailVC.goods_id = @"13";
     [self.navigationController pushViewController:productDetailVC animated:YES];
 }
 #pragma mark - <跳转更多产品页面>
@@ -399,8 +394,8 @@
     
     //点击YouthColorCell中的item
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectYouthItem" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        NSIndexPath *indePath = x.object;
-        [self jumpToProductDetailVC];
+        NSString *goods_id = x.object;
+        [self jumpToProductDetailVCWithGoodsID:goods_id];
     }];
 }
 
@@ -609,7 +604,7 @@
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            [self jumpToProductDetailVC];
+//            [self jumpToProductDetailVC];
         }
     }else if (indexPath.section == 13){
         return;
@@ -620,19 +615,19 @@
             [self.navigationController pushViewController:sameHobbyPersonListVC animated:YES];
         }
     }else{
-        if (indexPath.section == 3 || indexPath.section == 6 || indexPath.section == 9) {
-            if (indexPath.row == 5) {
-                [self jumpToMoreProductListVC];
-            }else{
-                [self jumpToProductDetailVC];
-            }
-        }else{
-            if (indexPath.row == 0) {
-                [self jumpToProductDetailVC];
-            }else if (indexPath.row == 2){
-                [self jumpToMoreProductListVC];
-            }
-        }
+//        if (indexPath.section == 3 || indexPath.section == 6 || indexPath.section == 9) {
+//            if (indexPath.row == 5) {
+//                [self jumpToMoreProductListVC];
+//            }else{
+//                [self jumpToProductDetailVC];
+//            }
+//        }else{
+//            if (indexPath.row == 0) {
+//                [self jumpToProductDetailVC];
+//            }else if (indexPath.row == 2){
+//                [self jumpToMoreProductListVC];
+//            }
+//        }
     }
 }
 
@@ -689,9 +684,8 @@
 #pragma mark - ****** CycleScrollViewCellDelegate *******
 -(void)cycleScrollViewCell:(CycleScrollViewCell *)cycleScrollViewCell didSelectItemAtIndex:(NSInteger)index
 {
-    ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:@"ProductDetailViewController" bundle:nil];
-    productDetailVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:productDetailVC animated:YES];
+    IndexCarouselResultModel *modelIndexCarouselModel = self.carouselResultArray[index];
+    [self jumpToProductDetailVCWithGoodsID:modelIndexCarouselModel.ad_link];
 }
 
 #pragma mark - **** UISearchBarDelegate ****

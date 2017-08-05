@@ -18,14 +18,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="152" height="66"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X08-AI-YDZ">
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tc5-Zy-x1Z">
                         <rect key="frame" x="5" y="20.5" width="142" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="Nmx-ue-OTV"/>
+                            <constraint firstAttribute="height" constant="25" id="XwF-wc-HwR"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.40784313729999999" green="0.40784313729999999" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
+                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                        <state key="normal" title="--">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="5"/>
@@ -37,17 +39,17 @@
                                 <color key="value" red="0.40784313725490196" green="0.40784313725490196" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
-                    </label>
+                    </button>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="X08-AI-YDZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="F3F-CS-QgR"/>
-                <constraint firstItem="X08-AI-YDZ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="l5O-jt-d32"/>
-                <constraint firstAttribute="trailing" secondItem="X08-AI-YDZ" secondAttribute="trailing" constant="5" id="lzL-Pc-1HS"/>
+                <constraint firstItem="Tc5-Zy-x1Z" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="hlR-nh-hLv"/>
+                <constraint firstAttribute="trailing" secondItem="Tc5-Zy-x1Z" secondAttribute="trailing" constant="5" id="lGT-AC-V4t"/>
+                <constraint firstItem="Tc5-Zy-x1Z" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="qGS-TQ-hgh"/>
             </constraints>
             <size key="customSize" width="152" height="66"/>
             <connections>
-                <outlet property="labelStyleName" destination="X08-AI-YDZ" id="88Z-nQ-fsw"/>
+                <outlet property="btnStyleName" destination="Tc5-Zy-x1Z" id="EtS-Kj-USm"/>
             </connections>
             <point key="canvasLocation" x="123" y="62"/>
         </collectionViewCell>

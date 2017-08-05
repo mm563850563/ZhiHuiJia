@@ -10,6 +10,6 @@
 
 @interface ProductStyleSelectionCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *labelStyleName;
+@property (weak, nonatomic) IBOutlet UIButton *btnStyleName;
 
 @end

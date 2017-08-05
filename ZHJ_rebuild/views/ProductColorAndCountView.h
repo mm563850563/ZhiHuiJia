@@ -21,4 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelCount;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 
+@property (nonatomic, strong)NSArray *dataArray;
+@property (nonatomic, strong)NSString *goods_id;
+
 @end

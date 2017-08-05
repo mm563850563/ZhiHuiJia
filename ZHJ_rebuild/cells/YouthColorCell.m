@@ -141,7 +141,8 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectYouthItem" object:indexPath];
+    HomeGoodsListModel *model = self.dataArray[indexPath.item];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectYouthItem" object:model.goods_id];
 }
 
 

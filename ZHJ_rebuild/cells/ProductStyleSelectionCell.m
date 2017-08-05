@@ -17,7 +17,13 @@
 
 -(void)setSelected:(BOOL)selected
 {
-    
+    if (selected) {
+        self.btnStyleName.layer.borderColor = kColorFromRGB(kRed).CGColor;
+        [self.btnStyleName setTitleColor:kColorFromRGB(kRed) forState:UIControlStateNormal];
+    }else{
+        self.btnStyleName.layer.borderColor = kColorFromRGB(kDeepGray).CGColor;
+        [self.btnStyleName setTitleColor:kColorFromRGB(kDeepGray) forState:UIControlStateNormal];
+    }
 }
 
 @end
