@@ -10,4 +10,6 @@
 
 @interface BrandDetailViewController : UIViewController
 
+@property (nonatomic, strong)NSString *brand_id;
+
 @end

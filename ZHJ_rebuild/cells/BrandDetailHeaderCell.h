@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class BrandDetail_BrandDetailModel;
 
 @interface BrandDetailHeaderCell : UITableViewCell
 
@@ -16,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgBrand;
 @property (weak, nonatomic) IBOutlet UILabel *labelStoreName;
 @property (weak, nonatomic) IBOutlet UIButton *btnOnlineContact;
+@property (nonatomic, strong)BrandDetail_BrandDetailModel *model;
 
 @end

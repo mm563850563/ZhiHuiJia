@@ -118,6 +118,11 @@
                 self.modelTotalPrice = model.data.result.total_price;
                 [self sendDataToOutlets];
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    for (CartList_CartListModel *modelCartList in self.cartListArray) {
+                        if ([modelCartList.selected isEqualToString:@"0"]) {
+                            self.checkBox.checked = NO;
+                        }
+                    }
                     [self.tableView reloadData];
                 });
             }else{

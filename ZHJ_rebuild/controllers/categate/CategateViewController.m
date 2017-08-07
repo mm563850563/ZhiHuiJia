@@ -22,6 +22,7 @@
 //models
 #import "AllClassifyModel.h"
 #import "AllClassifyChildrenSecondModel.h"
+#import "AllBrandListModel.h"
 
 @interface CategateViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,UISearchBarDelegate>
 
@@ -147,9 +148,10 @@
     [self.navigationController pushViewController:moreProductVC animated:YES];
 }
 #pragma mark - <跳转品牌详情页面>
--(void)jumpToBrandDetailVC
+-(void)jumpToBrandDetailVCWithBrandID:(NSString *)brand_id
 {
     BrandDetailViewController *brandDetailVC = [[BrandDetailViewController alloc]initWithNibName:NSStringFromClass([BrandDetailViewController class]) bundle:nil];
+    brandDetailVC.brand_id = brand_id;
     brandDetailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:brandDetailVC animated:YES];
 }
@@ -189,16 +191,16 @@
     
     //点击品牌
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnBrand1" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        UIButton *button = x.object;
-        [self jumpToBrandDetailVC];
+        AllBrandListModel *model = x.object;
+        [self jumpToBrandDetailVCWithBrandID:model.brand_id];
     }];
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnBrand2" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        UIButton *button = x.object;
-        [self jumpToBrandDetailVC];
+        AllBrandListModel *model = x.object;
+        [self jumpToBrandDetailVCWithBrandID:model.brand_id];
     }];
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnBrand3" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        UIButton *button = x.object;
-        [self jumpToBrandDetailVC];
+        AllBrandListModel *model = x.object;
+        [self jumpToBrandDetailVCWithBrandID:model.brand_id];
     }];
 }
 

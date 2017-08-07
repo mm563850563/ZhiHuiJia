@@ -14,6 +14,9 @@
 //cells
 #import "MoreProductListCell.h"
 
+//models
+#import "BrandDetail_BrandGoodsModel.h"
+
 @interface AllProductViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong)MoreProduct_SortView *sortView;
@@ -95,14 +98,36 @@
     __weak typeof(self) weakSelf = self;
     [self.sortView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_offset(0);
-        make.height.mas_offset(50);
+        make.height.mas_offset(40);
     }];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(weakSelf.sortView.mas_bottom);
+        make.top.mas_equalTo(weakSelf.sortView.mas_bottom).with.offset(0);
         make.left.right.bottom.mas_equalTo(0);
     }];
 }
 
+-(void)setDataArray:(NSArray *)dataArray
+{
+    if (_dataArray != dataArray) {
+        _dataArray = dataArray;
+        [self.collectionView reloadData];
+        [self.collectionView layoutIfNeeded];
+        
+        CGFloat itemWidth = kSCREEN_WIDTH/2.02;
+        CGFloat itemHeight = itemWidth/2.0*3.0;
+        if (itemHeight > (itemWidth+100)) {
+            itemHeight = itemWidth+100;
+        }
+        
+        NSInteger lineCount = _dataArray.count/2;
+        if (self.dataArray.count%2 != 0) {
+            lineCount++;
+        }
+        CGFloat cellHeight = itemHeight*lineCount + (lineCount+1)*10 + 50;
+        NSNumber *object = [NSNumber numberWithFloat:cellHeight];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"settingCellHeightByBrandDetail" object:object];
+    }
+}
 
 
 
@@ -117,12 +142,14 @@
 #pragma mark - ** UICollectionViewDelegate,UICollectionViewDataSource ***
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return self.dataArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    BrandDetail_BrandGoodsModel *model = self.dataArray[indexPath.item];
     MoreProductListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MoreProductListCell class]) forIndexPath:indexPath];
+    cell.modelBrandGoods = model;
     return cell;
 }
 

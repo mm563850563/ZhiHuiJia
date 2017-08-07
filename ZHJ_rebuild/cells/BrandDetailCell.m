@@ -17,9 +17,14 @@
 #import "AllProductViewController.h"
 #import "BrandStoryViewController.h"
 
+//models
+#import "BrandDetail_BrandDetailModel.h"
+
 @interface BrandDetailCell ()<FlipTableViewDelegate>
 
 @property (nonatomic, strong)FlipTableView *flipView;
+@property (nonatomic, strong)AllProductViewController *allProductVC;
+@property (nonatomic, strong)BrandStoryViewController *brandStoryVC;
 
 @end
 
@@ -64,25 +69,47 @@
 -(void)setDataArray:(NSArray *)dataArray
 {
     _dataArray = dataArray;
-//    [self.flipView reloadInputViews];
-//    [self.flipView layoutIfNeeded];
-//    
-//    [self.flipView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.height.mas_equalTo(300);
-//    }];
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"settingCellHeightByBrandDetail" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSNumber *obj = x.object;
+        CGFloat cellHeight = [obj floatValue];
+        self.cellHeight = cellHeight;
+    }];
+    self.allProductVC.dataArray = _dataArray;
 }
 
+-(void)setModelBrandDetail:(BrandDetail_BrandDetailModel *)modelBrandDetail
+{
+    if (_modelBrandDetail != modelBrandDetail) {
+        _modelBrandDetail = modelBrandDetail;
+        self.brandStoryVC.model = modelBrandDetail;
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"fillTVStory" object:modelBrandDetail.desc];
+    }
+}
+
+
+-(AllProductViewController *)allProductVC
+{
+    if (!_allProductVC) {
+        _allProductVC = [[AllProductViewController alloc]init];
+    }return _allProductVC;
+}
+
+-(BrandStoryViewController *)brandStoryVC
+{
+    if (!_brandStoryVC) {
+        _brandStoryVC = [[BrandStoryViewController alloc]initWithNibName:NSStringFromClass([BrandStoryViewController class]) bundle:nil];
+    }
+    return _brandStoryVC;
+}
 
 
 -(FlipTableView *)flipView
 {
     if (!_flipView) {
-        AllProductViewController *allProductVC = [[AllProductViewController alloc]init];
-        BrandStoryViewController *brandStoryVC = [[BrandStoryViewController alloc]init];
         
         NSMutableArray *array = [[NSMutableArray alloc]init];
-        [array addObject:allProductVC];
-        [array addObject:brandStoryVC];
+        [array addObject:self.allProductVC];
+        [array addObject:self.brandStoryVC];
         
         _flipView = [[FlipTableView alloc]initWithFrame:self.contentView.bounds withArray:array];
         _flipView.delegate = self;

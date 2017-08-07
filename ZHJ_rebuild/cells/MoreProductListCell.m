@@ -12,6 +12,7 @@
 
 //models
 #import "ClassifyListResultModel.h"
+#import "BrandDetail_BrandGoodsModel.h"
 
 //tools
 #import "NSMutableAttributedString+ThroughLine.h"
@@ -68,6 +69,24 @@
         NSMutableAttributedString *marketPriceStr = [NSMutableAttributedString returnThroughLineWithText:[NSString stringWithFormat:@"¥%@",modelClassifyList.market_price] font:11];
         self.labelMarketPrice.attributedText = marketPriceStr;
         self.ratingBar.starNumber = [modelClassifyList.average_score integerValue];
+    }
+}
+
+-(void)setModelBrandGoods:(BrandDetail_BrandGoodsModel *)modelBrandGoods
+{
+    if (_modelBrandGoods != modelBrandGoods) {
+        _modelBrandGoods = modelBrandGoods;
+        NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,_modelBrandGoods.image];
+        NSURL *imgURL = [NSURL URLWithString:imgStr];
+        [self.imgProduct sd_setImageWithURL:imgURL placeholderImage:kPlaceholder];
+        
+        self.labelProductName.text = _modelBrandGoods.goods_name;
+        self.labelProductRemark.text = _modelBrandGoods.goods_remark;
+        self.labelProductPrice.text = [NSString stringWithFormat:@"¥%@",_modelBrandGoods.price];
+        self.labelCommentCount.text = [NSString stringWithFormat:@"%@条评论",_modelBrandGoods.comment_count];
+        NSMutableAttributedString *marketPriceStr = [NSMutableAttributedString returnThroughLineWithText:[NSString stringWithFormat:@"¥%@",_modelBrandGoods.market_price] font:11];
+        self.labelMarketPrice.attributedText = marketPriceStr;
+        self.ratingBar.starNumber = [_modelBrandGoods.average_score integerValue];
     }
 }
 

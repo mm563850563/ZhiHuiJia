@@ -58,6 +58,7 @@
 #import <JSONModel.h>
 #import <MBProgressHUD.h>
 #import "ProgressHUDManager.h"
+#import <MJRefresh.h>
 
 
 
@@ -132,6 +133,12 @@
 
 #pragma mark - <听说你喜欢>
 #define kUserFavorite @"/user/userFavorite"  //user_id,page,page_count
+
+//#pragma mark - <购物车商品加减>
+//#define k
+
+#pragma mark - <品牌详情>
+#define kBrandDetail @"/brand/brandDetail"
 
 
 

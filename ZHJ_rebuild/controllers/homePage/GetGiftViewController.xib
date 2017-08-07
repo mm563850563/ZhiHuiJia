@@ -207,13 +207,13 @@
                                         <constraint firstItem="1mb-62-rIL" firstAttribute="width" secondItem="yRd-43-8en" secondAttribute="width" id="yjf-LI-A7X"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9o-fL-6op">
-                                    <rect key="frame" x="10" y="15" width="40" height="30"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9o-fL-6op">
+                                    <rect key="frame" x="10" y="15" width="20" height="20"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="40" id="irp-fX-bpq"/>
-                                        <constraint firstAttribute="height" constant="30" id="z6d-PT-3sM"/>
+                                        <constraint firstAttribute="width" constant="20" id="irp-fX-bpq"/>
+                                        <constraint firstAttribute="height" constant="20" id="z6d-PT-3sM"/>
                                     </constraints>
-                                    <state key="normal" title="返回">
+                                    <state key="normal" image="back">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -267,4 +267,7 @@
             <point key="canvasLocation" x="72.5" y="86.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="back" width="75" height="75"/>
+    </resources>
 </document>

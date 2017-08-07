@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MLTransition.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -87,17 +92,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>13F01DC534B09915DF136CB56C0292BF</key>
+		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>18122C429B2CE3968F3C5AF4518E4A0F</key>
+		<key>0B1FB829F9AD5109B6B9963529C43A9F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2BC5C0365C4256E51567D55E50A4EF23</key>
+		<key>319899E174E33477EBAB84F6EE3C21FF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3A955E8F16351812A4558E028F0B12F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,12 +117,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4AFAC47E8E16F97C899E714F55F6BD9F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4E5D32424B9CC05D596336AA0B262387</key>
+		<key>46D135718CBA4B585A32AF70A3FDB92F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,6 +142,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>95BD7B2979D0130408AF801EAE9C5864</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9DC8D9E02903E93BD0B2FEC9D846EA20</key>
 		<dict>
 			<key>primary</key>
@@ -147,12 +157,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A354D386EBB966A8717E34F2F7CED85B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BE27E82893F27C2F7D2F971829E6205F</key>
+		<key>BF160D8215288D0E84F7F4B168E29138</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,7 +167,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FC4213257F3F851654D1D0D0C1BB29AD</key>
+		<key>E9A8CCB2D8B5B70F29907F3336DDD61A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EED721F4CA94C5B92107EB107C5A512F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

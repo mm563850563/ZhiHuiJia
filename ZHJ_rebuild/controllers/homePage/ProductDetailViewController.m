@@ -137,6 +137,9 @@
             AddToCollectionModel *model = [[AddToCollectionModel alloc]initWithDictionary:dataDict error:nil];
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
             [hudWarning hideAnimated:YES afterDelay:2.0];
+            if ([model.code isEqualToString:@"200"]) {
+                self.imgViewCollection.image = [UIImage imageNamed:@"shouc"];
+            }
         }
     } failBlock:^(NSError *error) {
         [hud hideAnimated:YES afterDelay:1.0];
@@ -164,6 +167,9 @@
             AddToCollectionModel *model = [[AddToCollectionModel alloc]initWithDictionary:dataDict error:nil];
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
             [hudWarning hideAnimated:YES afterDelay:2.0];
+            if ([model.code isEqualToString:@"200"]) {
+                self.imgViewCollection.image = [UIImage imageNamed:@"kefu"];
+            }
         }
     } failBlock:^(NSError *error) {
         [hud hideAnimated:YES afterDelay:1.0];

@@ -2,15 +2,20 @@
 //  BrandStoryViewController.m
 //  ZHJ_rebuild
 //
-//  Created by ZHJ on 2017/7/25.
+//  Created by ZHJ on 2017/8/7.
 //  Copyright © 2017年 sophia. All rights reserved.
 //
 
 #import "BrandStoryViewController.h"
 
-@interface BrandStoryViewController ()
+#import "BrandDetail_BrandDetailModel.h"
 
-@property (nonatomic, strong)UITextView *tvStory;
+//cells
+#import "BrandStoryCell.h"
+
+@interface BrandStoryViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -19,23 +24,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setUI];
+    [self SettingTableView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - <懒加载>
--(UITextView *)tvStory
-{
-    if (!_tvStory) {
-        _tvStory = [[UITextView alloc]init];
-        _tvStory.editable = NO;
-        _tvStory.font = [UIFont systemFontOfSize:14];
-    }
-    return _tvStory;
 }
 
 /*
@@ -48,21 +42,47 @@
 }
 */
 
-#pragma mark - <setUI>
--(void)setUI
+-(void)SettingTableView
 {
-    [self.view addSubview:self.tvStory];
-    [self.tvStory mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_offset(UIEdgeInsetsMake(10, 20, 20, 10));
-    }];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.scrollEnabled = NO;
+    self.tableView.rowHeight = self.tableView.frame.size.height;
     
-    self.tvStory.text = @"计算机房个 v 哦时间。 是非观地方的高度 个。市发动第四个三个地方个地方个点风格的 风格的风格的多幅高的 的风格 的父母官高 看见i简介哦哦破饿哦速度佛；罗迪克 流口水的；；肌肤可我饿哭人为哦人陪了我日； 啦啦；a.ns努力；拉舒服的能力及 边框和拉萨了地方计算机房个 v 哦时间。 是非观地方的高度 个。市发动第四个三个地方个地方个点风格的 风格的风格的多幅高的 的风格 的父母官高 看见i简介哦哦破饿哦速度佛；罗迪克 流口水的；；肌肤可我饿哭人为哦人陪了我日； 啦啦；a.ns努力；拉舒服的能力及 边框和拉萨了地方计算机房个 v 哦时间。 是非观地方的高度 个。市发动第四个三个地方个地方个点风格的 风格的风格的多幅高的 的风格 的父母官高 看见i简介哦哦破饿哦速度佛；罗迪克 流口水的；；肌肤可我饿哭人为哦人陪了我日； 啦啦；a.ns努力；拉舒服的能力及 边框和拉萨了地方计算机房个 v 哦时间。 是非观地方的高度 个。市发动第四个三个地方个地方个点风格的 风格的风格的多幅高的 的风格 的父母官高 看见i简介哦哦破饿哦速度佛；罗迪克 流口水的；；肌肤可我饿哭人为哦人陪了我日； 啦啦；a.ns努力；拉舒服的能力及 边框和拉萨了地方计算机房个 v 哦时间。 是非观地方的高度 个。市发动第四个三个地方个地方个点风格的 风格的风格的多幅高的 的风格 的父母官高 看见i简介哦哦破饿哦速度佛；罗迪克 流口水的；；肌肤可我饿哭人为哦人陪了我日； 啦啦；a.ns努力；拉舒服的能力及 边框和拉萨了地方计算机房个 v 哦时间。 是非观地方的高度 个。市发动第四个三个地方个地方个点风格的 风格的风格的多幅高的 的风格 的父母官高 看见i简介哦哦破饿哦速度佛；罗迪克 流口水的；；肌肤可我饿哭人为哦人陪了我日； 啦啦；a.ns努力；拉舒服的能力及 边框和拉萨了地方计算机房个 v 哦时间。 是非观地方的高度 个。市发动第四个三个地方个地方个点风格的 风格的风格的多幅高的 的风格 的父母官高 看见i简介哦哦破饿哦速度佛；罗迪克 流口水的；；肌肤可我饿哭人为哦人陪了我日； 啦啦；a.ns努力；拉舒服的能力及 边框和拉萨了地方计算机房个 v 哦时间。 是非观地方的高度 个。市发动第四个三个地方个地方个点风格的 风格的风格的多幅高的 的风格 的父母官高 看见i简介哦哦破饿哦速度佛；罗迪克 流口水的；；肌肤可我饿哭人为哦人陪了我日； 啦啦；a.ns努力；拉舒服的能力及 边框和拉萨了地方计算机房个 v 哦时间。 是非观地方的高度 个。市发动第四个三个地方个地方个点风格的 风格的风格的多幅高的 的风格 的父母官高 看见i简介哦哦破饿哦速度佛；罗迪克 流口水的；；肌肤可我饿哭人为哦人陪了我日； 啦啦；a.ns努力；拉舒服的能力及 边框和拉萨了地方计算机房个 v 哦时间。 是非观地方的高度 个。市发动第四个三个地方个地方个点风格的 风格的风格的多幅高的 的风格 的父母官高 看见i简介哦哦破饿哦速度佛；罗迪克 流口水的；；肌肤可我饿哭人为哦人陪了我日； 啦啦；a.ns努力；拉舒服的能力及 边框和拉萨了地方计算机房个 v 哦时间。 是非观地方的高度 个。市发动第四个三个地方个地方个点风格的 风格的风格的多幅高的 的风格 的父母官高 看见i简介哦哦破饿哦速度佛；罗迪克 流口水的；；肌肤可我饿哭人为哦人陪了我日； 啦啦；a.ns努力；拉舒服的能力及 边框和拉萨了地方";
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([BrandStoryCell class]) bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([BrandStoryCell class])];
+}
+
+
+-(void)setModel:(BrandDetail_BrandDetailModel *)model
+{
+    if (_model != model) {
+        _model = model;
+    }
 }
 
 
 
 
 
+
+
+
+
+
+#pragma mark - <UITableViewDelegate,UITableViewDataSource>
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BrandStoryCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BrandStoryCell class])];
+    cell.model = self.model;
+    return cell;
+}
 
 
 

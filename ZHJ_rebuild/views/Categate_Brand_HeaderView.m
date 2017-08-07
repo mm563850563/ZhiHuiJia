@@ -9,6 +9,12 @@
 #import "Categate_Brand_HeaderView.h"
 #import "AllBrandListModel.h"
 
+@interface Categate_Brand_HeaderView ()
+
+@property (nonatomic, strong)NSString *brand_id;
+
+@end
+
 @implementation Categate_Brand_HeaderView
 
 - (void)awakeFromNib {
@@ -57,15 +63,18 @@
 
 - (IBAction)btnBrand1Action:(UIButton *)sender
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand1" object:sender];
+    AllBrandListModel *modelBrandList = self.model.brand_list[0];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand1" object:modelBrandList];
 }
 - (IBAction)btnBrand2Action:(UIButton *)sender
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand2" object:sender];
+    AllBrandListModel *modelBrandList = self.model.brand_list[1];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand2" object:modelBrandList];
 }
 - (IBAction)btnBrand3Action:(UIButton *)sender
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand3" object:sender];
+    AllBrandListModel *modelBrandList = self.model.brand_list[2];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand3" object:modelBrandList];
 }
 
 -(void)setModel:(AllBrandContentModel *)model

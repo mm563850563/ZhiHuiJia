@@ -10,4 +10,6 @@
 
 @interface AllProductViewController : UIViewController
 
+@property (nonatomic, strong)NSArray *dataArray;
+
 @end

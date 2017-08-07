@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class BrandDetail_BrandDetailModel;
 
 @interface BrandDetailCell : UITableViewCell
 
 @property (nonatomic,strong)NSArray *dataArray;
+@property (nonatomic,strong)BrandDetail_BrandDetailModel *modelBrandDetail;
+@property (nonatomic, assign)CGFloat cellHeight;
 
 @end

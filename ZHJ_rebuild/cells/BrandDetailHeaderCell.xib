@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="324" height="199.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huodong" translatesAutoresizingMaskIntoConstraints="NO" id="JzR-ii-uNd">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JzR-ii-uNd">
                         <rect key="frame" x="0.0" y="0.0" width="324" height="159.5"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQJ-Ea-KDv">
@@ -50,6 +50,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnOnlineContactAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fju-4S-tcx"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -63,10 +66,10 @@
                             <constraint firstItem="I6t-A5-QC2" firstAttribute="centerY" secondItem="hQJ-Ea-KDv" secondAttribute="centerY" id="tCp-QD-PGJ"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="ta9-PU-Cfz">
-                        <rect key="frame" x="10" y="144.5" width="70" height="30"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ta9-PU-Cfz">
+                        <rect key="frame" x="10" y="139.5" width="70" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="cUb-dH-yKC"/>
+                            <constraint firstAttribute="height" constant="40" id="cUb-dH-yKC"/>
                             <constraint firstAttribute="width" constant="70" id="mmn-Kx-tqF"/>
                         </constraints>
                     </imageView>
@@ -75,7 +78,7 @@
                     <constraint firstItem="hQJ-Ea-KDv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6if-qz-QWP"/>
                     <constraint firstItem="JzR-ii-uNd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Lex-bU-kIW"/>
                     <constraint firstItem="ta9-PU-Cfz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="aZI-yS-lGk"/>
-                    <constraint firstAttribute="bottom" secondItem="ta9-PU-Cfz" secondAttribute="bottom" constant="25" id="cLl-Cp-dek"/>
+                    <constraint firstAttribute="bottom" secondItem="ta9-PU-Cfz" secondAttribute="bottom" constant="20" id="cLl-Cp-dek"/>
                     <constraint firstAttribute="bottom" secondItem="JzR-ii-uNd" secondAttribute="bottom" constant="40" id="dWm-fM-KEn"/>
                     <constraint firstItem="JzR-ii-uNd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gVK-fB-H2T"/>
                     <constraint firstAttribute="trailing" secondItem="JzR-ii-uNd" secondAttribute="trailing" id="iN4-v9-Egd"/>
@@ -94,8 +97,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="bgbg" width="540" height="325"/>
-        <image name="huodong" width="553" height="318"/>
         <image name="kefu" width="17" height="14"/>
     </resources>
 </document>

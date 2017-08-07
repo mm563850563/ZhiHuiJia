@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 @class ClassifyListResultModel;
+@class BrandDetail_BrandGoodsModel;
 
 @interface MoreProductListCell : UICollectionViewCell
 
 @property (nonatomic, strong)ClassifyListResultModel *modelClassifyList;
+@property (nonatomic, strong)BrandDetail_BrandGoodsModel *modelBrandGoods;
 
 @end
