@@ -10,4 +10,7 @@
 
 @interface EditCartNumberResultModel : JSONModel
 
+@property (nonatomic, strong)NSString *is_success;
+@property (nonatomic, strong)NSString *total_price;
+
 @end

@@ -7,7 +7,13 @@
 //
 
 #import <JSONModel/JSONModel.h>
+#import "UserFavoriteResultModel.h"
+
+@protocol UserFavoriteResultModel <NSObject>
+@end
 
 @interface UserFavoriteDataModel : JSONModel
+
+@property (nonatomic, strong)NSArray<UserFavoriteResultModel> *result;
 
 @end

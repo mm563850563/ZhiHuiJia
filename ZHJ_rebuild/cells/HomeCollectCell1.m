@@ -8,6 +8,7 @@
 
 #import "HomeCollectCell1.h"
 #import "HomeGoodsListModel.h"
+#import "UserFavoriteResultModel.h"
 #import "NSMutableAttributedString+ThroughLine.h"
 
 @implementation HomeCollectCell1
@@ -33,6 +34,24 @@
         self.labelProductName.text = model.goods_name;
         self.labelPrice.text = [NSString stringWithFormat:@"¥%@",model.price];
         self.labelProductDetail.text = model.goods_remark;
+    }
+}
+
+-(void)setModelUserFavorite:(UserFavoriteResultModel *)modelUserFavorite
+{
+    if (_modelUserFavorite != modelUserFavorite) {
+        _modelUserFavorite = modelUserFavorite;
+        
+        NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelUserFavorite.img];
+        NSURL *url = [NSURL URLWithString:imgStr];
+        [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
+        
+        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:modelUserFavorite.market_price font:11];
+        self.labelCompare.attributedText = throughLineText;
+        
+        self.labelProductName.text = modelUserFavorite.goods_name;
+        self.labelPrice.text = [NSString stringWithFormat:@"¥%@",modelUserFavorite.price];
+        self.labelProductDetail.text = modelUserFavorite.goods_remark;
     }
 }
 

@@ -13,6 +13,7 @@
 
 //model
 #import "HomeGoodsResultModel.h"
+#import "UserFavoriteResultModel.h"
 
 @interface YouthColorCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -80,6 +81,28 @@
     }
 }
 
+-(void)setUserFavoriteArray:(NSArray *)userFavoriteArray
+{
+//    if (_userFavoriteArray != userFavoriteArray) {
+        _userFavoriteArray = userFavoriteArray;
+//        self.dataArray = userFavoriteArray;
+        [self.collectionView reloadData];
+        [self.collectionView layoutIfNeeded];
+        
+        CGFloat itemWidth = kSCREEN_WIDTH/2.02;
+        CGFloat itemHeight = itemWidth/2.0*3.0;
+        if (itemHeight > (itemWidth+90)) {
+            itemHeight = itemWidth+90;
+        }
+        
+        NSInteger lineCount = userFavoriteArray.count/2;
+        if (userFavoriteArray.count%2 != 0) {
+            lineCount++;
+        }
+        self.cellHeight = itemHeight*lineCount + (lineCount+1)*5;
+//    }
+}
+
 
 -(UICollectionView *)collectionView
 {
@@ -128,21 +151,37 @@
 #pragma mark - ******* UICollectionViewDelegate,UICollectionViewDataSource *******
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.dataArray.count;
+    if (self.userFavoriteArray.count>0) {
+        return self.userFavoriteArray.count;
+    }else {
+        return self.dataArray.count;
+    }
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeCollectCell1 *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HomeCollectCell1 class]) forIndexPath:indexPath];
-    HomeGoodsListModel *model = self.dataArray[indexPath.item];
-    cell.model = model;
+    if (self.userFavoriteArray.count>0) {
+        UserFavoriteResultModel *model = self.userFavoriteArray[indexPath.item];
+        cell.modelUserFavorite = model;
+    }else if (self.dataArray.count>0){
+        HomeGoodsListModel *model = self.dataArray[indexPath.item];
+        cell.model = model;
+    }
+    
     return cell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    HomeGoodsListModel *model = self.dataArray[indexPath.item];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectYouthItem" object:model.goods_id];
+    if (self.dataArray.count>0) {
+        HomeGoodsListModel *model = self.dataArray[indexPath.item];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"selectYouthItem" object:model.goods_id];
+    }else if (self.userFavoriteArray.count>0){
+        UserFavoriteResultModel *model = self.userFavoriteArray[indexPath.item];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"selectYouthItemByCartList" object:model.goods_id];
+    }
+    
 }
 
 

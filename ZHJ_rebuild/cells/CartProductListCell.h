@@ -11,8 +11,16 @@
 
 @class SSCheckBoxView;
 
+@protocol CartProductListCellDelegate <NSObject>
+
+-(void)didClickCheckBoxButton:(UIButton *)sender isSelected:(NSString *)isSelected;
+-(void)didClickBtnChangeCartNumberWithButton:(UIButton *)sender productCount:(NSString *)productCount;
+
+@end
+
 @interface CartProductListCell : UITableViewCell
 
+@property (nonatomic, strong)UIButton *btnCheckBox;
 @property (weak, nonatomic) IBOutlet UIView *checkBoxBGView;
 @property (nonatomic, strong)SSCheckBoxView *checkBox;
 @property (weak, nonatomic) IBOutlet UIButton *btnIncrease;
@@ -24,5 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelGoodsPrice;
 
 @property (nonatomic, strong)CartList_CartListModel *model;
+
+@property (nonatomic, weak)id<CartProductListCellDelegate> delegate;
 
 @end

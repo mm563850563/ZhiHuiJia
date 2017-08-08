@@ -7,7 +7,12 @@
 //
 
 #import <JSONModel/JSONModel.h>
+#import "EditCartNumberDataModel.h"
 
 @interface EditCartNumberModel : JSONModel
+
+@property (nonatomic, strong)NSString *code;
+@property (nonatomic, strong)NSString *msg;
+@property (nonatomic, strong)EditCartNumberDataModel *data;
 
 @end

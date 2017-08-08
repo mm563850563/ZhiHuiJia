@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class HomeGoodsListModel;
+@class UserFavoriteResultModel;
 
 @interface HomeCollectCell1 : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgProduct;
@@ -17,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelCompare;
 
 @property (nonatomic, strong)HomeGoodsListModel *model;
+@property (nonatomic, strong)UserFavoriteResultModel *modelUserFavorite;
 
 @end

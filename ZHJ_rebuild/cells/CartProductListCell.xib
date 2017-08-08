@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BtP-3R-R5R">
                         <rect key="frame" x="0.0" y="5" width="320" height="108.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sctu1" translatesAutoresizingMaskIntoConstraints="NO" id="TiW-8p-Wlx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TiW-8p-Wlx">
                                 <rect key="frame" x="50" y="14.5" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="VY5-Vx-bDi"/>
@@ -177,7 +177,4 @@
             <point key="canvasLocation" x="37" y="122"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="sctu1" width="142" height="142"/>
-    </resources>
 </document>

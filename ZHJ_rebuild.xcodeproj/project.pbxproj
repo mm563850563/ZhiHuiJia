@@ -254,6 +254,9 @@
 		DD6898581F31B5DC008B6A8F /* GoodsDetailGoodsInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6898571F31B5DC008B6A8F /* GoodsDetailGoodsInfoModel.m */; };
 		DD68985B1F31B99B008B6A8F /* GoodsDetailImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD68985A1F31B99B008B6A8F /* GoodsDetailImageModel.m */; };
 		DD68985E1F31BA88008B6A8F /* GoodsDetailContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD68985D1F31BA88008B6A8F /* GoodsDetailContentModel.m */; };
+		DD69B2901F3954A50036F368 /* EditCartNumberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B28F1F3954A50036F368 /* EditCartNumberModel.m */; };
+		DD69B2931F3954BA0036F368 /* EditCartNumberDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2921F3954BA0036F368 /* EditCartNumberDataModel.m */; };
+		DD69B2961F3954D60036F368 /* EditCartNumberResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2951F3954D60036F368 /* EditCartNumberResultModel.m */; };
 		DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63981F2EB56800611FA8 /* OrderListCell.m */; };
 		DD9A639B1F2EB56800611FA8 /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A63991F2EB56800611FA8 /* OrderListCell.xib */; };
 		DD9A639E1F2ECEE400611FA8 /* OrderListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A639D1F2ECEE400611FA8 /* OrderListHeaderView.m */; };
@@ -812,6 +815,12 @@
 		DD68985A1F31B99B008B6A8F /* GoodsDetailImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoodsDetailImageModel.m; path = models/GoodsDetailImageModel.m; sourceTree = "<group>"; };
 		DD68985C1F31BA88008B6A8F /* GoodsDetailContentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoodsDetailContentModel.h; path = models/GoodsDetailContentModel.h; sourceTree = "<group>"; };
 		DD68985D1F31BA88008B6A8F /* GoodsDetailContentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoodsDetailContentModel.m; path = models/GoodsDetailContentModel.m; sourceTree = "<group>"; };
+		DD69B28E1F3954A50036F368 /* EditCartNumberModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditCartNumberModel.h; path = models/EditCartNumberModel.h; sourceTree = "<group>"; };
+		DD69B28F1F3954A50036F368 /* EditCartNumberModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCartNumberModel.m; path = models/EditCartNumberModel.m; sourceTree = "<group>"; };
+		DD69B2911F3954BA0036F368 /* EditCartNumberDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditCartNumberDataModel.h; path = models/EditCartNumberDataModel.h; sourceTree = "<group>"; };
+		DD69B2921F3954BA0036F368 /* EditCartNumberDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCartNumberDataModel.m; path = models/EditCartNumberDataModel.m; sourceTree = "<group>"; };
+		DD69B2941F3954D60036F368 /* EditCartNumberResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditCartNumberResultModel.h; path = models/EditCartNumberResultModel.h; sourceTree = "<group>"; };
+		DD69B2951F3954D60036F368 /* EditCartNumberResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCartNumberResultModel.m; path = models/EditCartNumberResultModel.m; sourceTree = "<group>"; };
 		DD9A63971F2EB56800611FA8 /* OrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListCell.h; path = cells/OrderListCell.h; sourceTree = "<group>"; };
 		DD9A63981F2EB56800611FA8 /* OrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListCell.m; path = cells/OrderListCell.m; sourceTree = "<group>"; };
 		DD9A63991F2EB56800611FA8 /* OrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListCell.xib; path = cells/OrderListCell.xib; sourceTree = "<group>"; };
@@ -1342,6 +1351,19 @@
 			name = GoodsDetail;
 			sourceTree = "<group>";
 		};
+		DD69B28D1F3954670036F368 /* EditCartNumber */ = {
+			isa = PBXGroup;
+			children = (
+				DD69B28E1F3954A50036F368 /* EditCartNumberModel.h */,
+				DD69B28F1F3954A50036F368 /* EditCartNumberModel.m */,
+				DD69B2911F3954BA0036F368 /* EditCartNumberDataModel.h */,
+				DD69B2921F3954BA0036F368 /* EditCartNumberDataModel.m */,
+				DD69B2941F3954D60036F368 /* EditCartNumberResultModel.h */,
+				DD69B2951F3954D60036F368 /* EditCartNumberResultModel.m */,
+			);
+			name = EditCartNumber;
+			sourceTree = "<group>";
+		};
 		DDE0FCF01F3563CA00269DBD /* AddToCart */ = {
 			isa = PBXGroup;
 			children = (
@@ -1833,6 +1855,7 @@
 				DDE0FD141F35C8AE00269DBD /* CartListAllSelected */,
 				DDE0FD251F35D8DC00269DBD /* DeleteCollection */,
 				DDE0FD261F37F6E600269DBD /* BrandDetailModel */,
+				DD69B28D1F3954670036F368 /* EditCartNumber */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -2420,6 +2443,7 @@
 				DDFB828E1F1C5E3900AEAAA7 /* MoreProductListCell.m in Sources */,
 				DD4CEFF91F2732210024156F /* AllProductViewController.m in Sources */,
 				DD6287F71F21EE4C0030331D /* PersonalActivityRankCell.m in Sources */,
+				DD69B2901F3954A50036F368 /* EditCartNumberModel.m in Sources */,
 				DD6898581F31B5DC008B6A8F /* GoodsDetailGoodsInfoModel.m in Sources */,
 				DD6898551F31B56F008B6A8F /* GoodsDetailResultModel.m in Sources */,
 				DDDD17C91F2C9141006BE206 /* MyOrderViewController.m in Sources */,
@@ -2447,6 +2471,7 @@
 				DDDD17CE1F2C93A2006BE206 /* OrderListViewController.m in Sources */,
 				DD40B7231F1705A000839748 /* HomeCollectCell1.m in Sources */,
 				DD62878E1F20C2290030331D /* MyCircleHeaderCell.m in Sources */,
+				DD69B2961F3954D60036F368 /* EditCartNumberResultModel.m in Sources */,
 				DD4CF0E81F29BF850024156F /* YQLRUManager.m in Sources */,
 				DD62875C1F20522F0030331D /* MyCollectProductViewController.m in Sources */,
 				DD0DBADA1F32ED150098F5FA /* GetGiftListModel.m in Sources */,
@@ -2457,6 +2482,7 @@
 				DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */,
 				DD4CF1151F29F2D00024156F /* AllClassifyChildrenSecondModel.m in Sources */,
 				DDE0FD1A1F35C8FD00269DBD /* CartListAllSelectedDataModel.m in Sources */,
+				DD69B2931F3954BA0036F368 /* EditCartNumberDataModel.m in Sources */,
 				DD0DBB011F3403670098F5FA /* ProductDetailSpecHeaderView.m in Sources */,
 				DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */,
 				DD0DBB0D1F3431780098F5FA /* GetSpecPriceResultModel.m in Sources */,

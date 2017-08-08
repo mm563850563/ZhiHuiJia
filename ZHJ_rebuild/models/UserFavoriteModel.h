@@ -7,7 +7,12 @@
 //
 
 #import <JSONModel/JSONModel.h>
+#import "UserFavoriteDataModel.h"
 
 @interface UserFavoriteModel : JSONModel
+
+@property (nonatomic, strong)NSString *code;
+@property (nonatomic, strong)NSString *msg;
+@property (nonatomic, strong)UserFavoriteDataModel *data;
 
 @end

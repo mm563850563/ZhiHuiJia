@@ -80,64 +80,70 @@
 #pragma mark - <Domain_Image>
 #define kDomainImage @"http://www.havshark.com"
 
-#pragma mark - <分类页面分类>
+#pragma mark - <1.分类页面分类>
 #define kGetAllClassify @"/classify/getAllClassify"
 
-#pragma mark - <所有品牌>
+#pragma mark - <2.所有品牌>
 #define kGetAllBrand @"/brand/getAllbrand"
 
-#pragma mark - <首页轮播图>
+#pragma mark - <3.首页轮播图>
 #define kIndexCarousel @"/Index/carousel"
 
-#pragma mark - <首页产品数据>
+#pragma mark - <4.首页产品数据>
 #define kHomeGoods @"/Index/getHomeGoods"
 
-#pragma mark - <分类列表>
+#pragma mark - <5.分类列表>
 #define kClassifyList @"/classify/classifyList" //参数：sort_lastest，sort_sales，sort_price
 
-#pragma mark - <拿好礼类型>
+#pragma mark - <6.拿好礼类型>
 #define kGetGiftType @"/Index/getGiftType"
 
-#pragma mark - <拿好礼>
+#pragma mark - <7.拿好礼>
 #define kGetGiftList @"/Index/getGiftList"
 
-#pragma mark - <摇一摇领取礼品>
+#pragma mark - <8.摇一摇领取礼品>
 #define kGetUserPrize @"/Index/getUserPrize"  //参数 user_id:2596  type_id:1
 
-#pragma mark - <商品详情>
+#pragma mark - <9.商品详情>
 #define kGoodsDetail @"/Goods/goodsDetail" //参数：goods_id
 
-#pragma mark - <添加到收藏>
+#pragma mark - <10.添加到收藏>
 #define kAddToCollection @"/user/addToCollected"  //user_id,goods_id
 
-#pragma mark - <删除收藏>
+#pragma mark - <11.删除收藏>
 #define kDeleteCollection @"/user/delCollected"
 
-#pragma mark - <选择产品规格返回实际价格>
+#pragma mark - <12.选择产品规格返回实际价格>
 #define kGetSpecPrice @"/goods/getSpecPrice" //参数：goods_id:307，spec_item_id
 
-#pragma mark - <为你精心推荐>
+#pragma mark - <13.为你精心推荐>
 #define kGetRecommendGoods @"/Index/getRecommendGoods"  //参数：user_id
 
-#pragma mark - <登录>
+#pragma mark - <14.登录>
 #define kLogin @"/user/login" //参数：mobile,password
 
-#pragma mark - <加入购物车>
+#pragma mark - <15.加入购物车>
 #define kAddToCart @"/cart/addToCart"  //goods_id,goods_spec,goods_num,user_id
 
-#pragma mark - <购物车列表>
+#pragma mark - <16.购物车列表>
 #define kCartList @"/cart/getCartList"  //user_id
 
-#pragma mark - <购物车列表全选>
+#pragma mark - <17.购物车列表全选>
 #define kCartListAllSelected @"/cart/selectAll"  //user_id,select_all
 
-#pragma mark - <听说你喜欢>
+#pragma mark - <18.购物车单个选中>
+#define kChangeSelect @"/cart/changeSelect"  //user_id,cart_id,slelected
+
+#pragma mark - <19.购物车商品增减>
+#define kEditCartNumber @"/cart/editCart"  //user_id,goods_num, cart_id
+
+#pragma mark - <20.删除购物车>
+#define kRemoveCart @"/cart/removeCart"  //user_id ,cart_id
+
+#pragma mark - <21.听说你喜欢>
 #define kUserFavorite @"/user/userFavorite"  //user_id,page,page_count
 
-//#pragma mark - <购物车商品加减>
-//#define k
-
-#pragma mark - <品牌详情>
+#pragma mark - <22.品牌详情>
 #define kBrandDetail @"/brand/brandDetail"
 
 

@@ -20,10 +20,10 @@
     
     self.checkBox = [[SSCheckBoxView alloc]initWithFrame:self.checkBoxBGView.bounds style:kSSCheckBoxViewStyleGreen checked:YES];
     [self.checkBoxBGView addSubview:self.checkBox];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = self.checkBoxBGView.bounds;
-    [self.checkBoxBGView addSubview:button];
-    [button addTarget:self action:@selector(btnSelectCheckBoxAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.btnCheckBox = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.btnCheckBox.frame = self.checkBoxBGView.bounds;
+    [self.checkBoxBGView addSubview:self.btnCheckBox];
+    [self.btnCheckBox addTarget:self action:@selector(btnSelectCheckBoxAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -61,6 +61,10 @@
         count++;
     }
     self.labelProductCount.text = [NSString stringWithFormat:@"%d",count];
+    
+    if ([self.delegate respondsToSelector:@selector(didClickBtnChangeCartNumberWithButton:productCount:)]) {
+        [self.delegate didClickBtnChangeCartNumberWithButton:sender productCount:self.labelProductCount.text];
+    }
 }
 
 - (IBAction)btnProductDecreaseAction:(UIButton *)sender
@@ -70,13 +74,23 @@
         count--;
     }
     self.labelProductCount.text = [NSString stringWithFormat:@"%d",count];
+    
+    if ([self.delegate respondsToSelector:@selector(didClickBtnChangeCartNumberWithButton:productCount:)]) {
+        [self.delegate didClickBtnChangeCartNumberWithButton:sender productCount:self.labelProductCount.text];
+    }
 }
 
 - (void)btnSelectCheckBoxAction:(UIButton *)sender
 {
-    self.checkBox.checked = !self.checkBox.checked;
+    if ([self.delegate respondsToSelector:@selector(didClickCheckBoxButton:isSelected:)]) {
+        self.checkBox.checked = !self.checkBox.checked;
+        if (self.checkBox.checked) {
+            [self.delegate didClickCheckBoxButton:sender isSelected:@"1"];
+        }else{
+            [self.delegate didClickCheckBoxButton:sender isSelected:@"0"];
+        }
+    }
     
-    NSLog(@"7878");
 }
 
 
