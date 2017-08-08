@@ -257,6 +257,25 @@
 		DD69B2901F3954A50036F368 /* EditCartNumberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B28F1F3954A50036F368 /* EditCartNumberModel.m */; };
 		DD69B2931F3954BA0036F368 /* EditCartNumberDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2921F3954BA0036F368 /* EditCartNumberDataModel.m */; };
 		DD69B2961F3954D60036F368 /* EditCartNumberResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2951F3954D60036F368 /* EditCartNumberResultModel.m */; };
+		DD69B29A1F39A0510036F368 /* BrandAppliedCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2981F39A0510036F368 /* BrandAppliedCollectionCell.m */; };
+		DD69B29B1F39A0510036F368 /* BrandAppliedCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69B2991F39A0510036F368 /* BrandAppliedCollectionCell.xib */; };
+		DD69B29F1F39B2970036F368 /* OrderConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B29D1F39B2970036F368 /* OrderConfirmViewController.m */; };
+		DD69B2A01F39B2970036F368 /* OrderConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69B29E1F39B2970036F368 /* OrderConfirmViewController.xib */; };
+		DD69B2A41F39B6130036F368 /* OrderConfirmAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2A21F39B6130036F368 /* OrderConfirmAddressCell.m */; };
+		DD69B2A51F39B6130036F368 /* OrderConfirmAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69B2A31F39B6130036F368 /* OrderConfirmAddressCell.xib */; };
+		DD69B2A91F39B6360036F368 /* OrderConfirmProductListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2A71F39B6360036F368 /* OrderConfirmProductListCell.m */; };
+		DD69B2AA1F39B6360036F368 /* OrderConfirmProductListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69B2A81F39B6360036F368 /* OrderConfirmProductListCell.xib */; };
+		DD69B2AE1F39B6610036F368 /* OrderConfirmDisCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2AC1F39B6610036F368 /* OrderConfirmDisCountCell.m */; };
+		DD69B2AF1F39B6610036F368 /* OrderConfirmDisCountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69B2AD1F39B6610036F368 /* OrderConfirmDisCountCell.xib */; };
+		DD69B2B31F39B6980036F368 /* OrderConfirmFeeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2B11F39B6980036F368 /* OrderConfirmFeeCell.m */; };
+		DD69B2B41F39B6980036F368 /* OrderConfirmFeeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69B2B21F39B6980036F368 /* OrderConfirmFeeCell.xib */; };
+		DD69B2B81F39B6BD0036F368 /* OrderConfirmWayOfPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2B61F39B6BD0036F368 /* OrderConfirmWayOfPayCell.m */; };
+		DD69B2B91F39B6BD0036F368 /* OrderConfirmWayOfPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69B2B71F39B6BD0036F368 /* OrderConfirmWayOfPayCell.xib */; };
+		DD69B2BC1F39D25C0036F368 /* BuyNowSelectSpecView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2BB1F39D25C0036F368 /* BuyNowSelectSpecView.m */; };
+		DD69B2BE1F39D27C0036F368 /* BuyNowSelectSpecView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69B2BD1F39D27C0036F368 /* BuyNowSelectSpecView.xib */; };
+		DD69B2C21F39EF1E0036F368 /* UserAddressListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2C11F39EF1E0036F368 /* UserAddressListModel.m */; };
+		DD69B2C51F39EF2F0036F368 /* UserAddressListDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2C41F39EF2F0036F368 /* UserAddressListDataModel.m */; };
+		DD69B2C81F39EF400036F368 /* UserAddressListResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2C71F39EF400036F368 /* UserAddressListResultModel.m */; };
 		DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63981F2EB56800611FA8 /* OrderListCell.m */; };
 		DD9A639B1F2EB56800611FA8 /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A63991F2EB56800611FA8 /* OrderListCell.xib */; };
 		DD9A639E1F2ECEE400611FA8 /* OrderListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A639D1F2ECEE400611FA8 /* OrderListHeaderView.m */; };
@@ -821,6 +840,36 @@
 		DD69B2921F3954BA0036F368 /* EditCartNumberDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCartNumberDataModel.m; path = models/EditCartNumberDataModel.m; sourceTree = "<group>"; };
 		DD69B2941F3954D60036F368 /* EditCartNumberResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditCartNumberResultModel.h; path = models/EditCartNumberResultModel.h; sourceTree = "<group>"; };
 		DD69B2951F3954D60036F368 /* EditCartNumberResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCartNumberResultModel.m; path = models/EditCartNumberResultModel.m; sourceTree = "<group>"; };
+		DD69B2971F39A0510036F368 /* BrandAppliedCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrandAppliedCollectionCell.h; path = cells/BrandAppliedCollectionCell.h; sourceTree = "<group>"; };
+		DD69B2981F39A0510036F368 /* BrandAppliedCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrandAppliedCollectionCell.m; path = cells/BrandAppliedCollectionCell.m; sourceTree = "<group>"; };
+		DD69B2991F39A0510036F368 /* BrandAppliedCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BrandAppliedCollectionCell.xib; path = cells/BrandAppliedCollectionCell.xib; sourceTree = "<group>"; };
+		DD69B29C1F39B2970036F368 /* OrderConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderConfirmViewController.h; path = controllers/homePage/OrderConfirmViewController.h; sourceTree = "<group>"; };
+		DD69B29D1F39B2970036F368 /* OrderConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderConfirmViewController.m; path = controllers/homePage/OrderConfirmViewController.m; sourceTree = "<group>"; };
+		DD69B29E1F39B2970036F368 /* OrderConfirmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderConfirmViewController.xib; path = controllers/homePage/OrderConfirmViewController.xib; sourceTree = "<group>"; };
+		DD69B2A11F39B6130036F368 /* OrderConfirmAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderConfirmAddressCell.h; path = cells/OrderConfirmAddressCell.h; sourceTree = "<group>"; };
+		DD69B2A21F39B6130036F368 /* OrderConfirmAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderConfirmAddressCell.m; path = cells/OrderConfirmAddressCell.m; sourceTree = "<group>"; };
+		DD69B2A31F39B6130036F368 /* OrderConfirmAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderConfirmAddressCell.xib; path = cells/OrderConfirmAddressCell.xib; sourceTree = "<group>"; };
+		DD69B2A61F39B6360036F368 /* OrderConfirmProductListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderConfirmProductListCell.h; path = cells/OrderConfirmProductListCell.h; sourceTree = "<group>"; };
+		DD69B2A71F39B6360036F368 /* OrderConfirmProductListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderConfirmProductListCell.m; path = cells/OrderConfirmProductListCell.m; sourceTree = "<group>"; };
+		DD69B2A81F39B6360036F368 /* OrderConfirmProductListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderConfirmProductListCell.xib; path = cells/OrderConfirmProductListCell.xib; sourceTree = "<group>"; };
+		DD69B2AB1F39B6610036F368 /* OrderConfirmDisCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderConfirmDisCountCell.h; path = cells/OrderConfirmDisCountCell.h; sourceTree = "<group>"; };
+		DD69B2AC1F39B6610036F368 /* OrderConfirmDisCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderConfirmDisCountCell.m; path = cells/OrderConfirmDisCountCell.m; sourceTree = "<group>"; };
+		DD69B2AD1F39B6610036F368 /* OrderConfirmDisCountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderConfirmDisCountCell.xib; path = cells/OrderConfirmDisCountCell.xib; sourceTree = "<group>"; };
+		DD69B2B01F39B6980036F368 /* OrderConfirmFeeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderConfirmFeeCell.h; path = cells/OrderConfirmFeeCell.h; sourceTree = "<group>"; };
+		DD69B2B11F39B6980036F368 /* OrderConfirmFeeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderConfirmFeeCell.m; path = cells/OrderConfirmFeeCell.m; sourceTree = "<group>"; };
+		DD69B2B21F39B6980036F368 /* OrderConfirmFeeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderConfirmFeeCell.xib; path = cells/OrderConfirmFeeCell.xib; sourceTree = "<group>"; };
+		DD69B2B51F39B6BD0036F368 /* OrderConfirmWayOfPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderConfirmWayOfPayCell.h; path = cells/OrderConfirmWayOfPayCell.h; sourceTree = "<group>"; };
+		DD69B2B61F39B6BD0036F368 /* OrderConfirmWayOfPayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderConfirmWayOfPayCell.m; path = cells/OrderConfirmWayOfPayCell.m; sourceTree = "<group>"; };
+		DD69B2B71F39B6BD0036F368 /* OrderConfirmWayOfPayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderConfirmWayOfPayCell.xib; path = cells/OrderConfirmWayOfPayCell.xib; sourceTree = "<group>"; };
+		DD69B2BA1F39D25C0036F368 /* BuyNowSelectSpecView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyNowSelectSpecView.h; path = views/BuyNowSelectSpecView.h; sourceTree = "<group>"; };
+		DD69B2BB1F39D25C0036F368 /* BuyNowSelectSpecView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyNowSelectSpecView.m; path = views/BuyNowSelectSpecView.m; sourceTree = "<group>"; };
+		DD69B2BD1F39D27C0036F368 /* BuyNowSelectSpecView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BuyNowSelectSpecView.xib; path = views/BuyNowSelectSpecView.xib; sourceTree = "<group>"; };
+		DD69B2C01F39EF1E0036F368 /* UserAddressListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserAddressListModel.h; path = models/UserAddressListModel.h; sourceTree = "<group>"; };
+		DD69B2C11F39EF1E0036F368 /* UserAddressListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserAddressListModel.m; path = models/UserAddressListModel.m; sourceTree = "<group>"; };
+		DD69B2C31F39EF2F0036F368 /* UserAddressListDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserAddressListDataModel.h; path = models/UserAddressListDataModel.h; sourceTree = "<group>"; };
+		DD69B2C41F39EF2F0036F368 /* UserAddressListDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserAddressListDataModel.m; path = models/UserAddressListDataModel.m; sourceTree = "<group>"; };
+		DD69B2C61F39EF400036F368 /* UserAddressListResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserAddressListResultModel.h; path = models/UserAddressListResultModel.h; sourceTree = "<group>"; };
+		DD69B2C71F39EF400036F368 /* UserAddressListResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserAddressListResultModel.m; path = models/UserAddressListResultModel.m; sourceTree = "<group>"; };
 		DD9A63971F2EB56800611FA8 /* OrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListCell.h; path = cells/OrderListCell.h; sourceTree = "<group>"; };
 		DD9A63981F2EB56800611FA8 /* OrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListCell.m; path = cells/OrderListCell.m; sourceTree = "<group>"; };
 		DD9A63991F2EB56800611FA8 /* OrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListCell.xib; path = cells/OrderListCell.xib; sourceTree = "<group>"; };
@@ -1364,6 +1413,19 @@
 			name = EditCartNumber;
 			sourceTree = "<group>";
 		};
+		DD69B2BF1F39EEEF0036F368 /* UserAddressListModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD69B2C01F39EF1E0036F368 /* UserAddressListModel.h */,
+				DD69B2C11F39EF1E0036F368 /* UserAddressListModel.m */,
+				DD69B2C31F39EF2F0036F368 /* UserAddressListDataModel.h */,
+				DD69B2C41F39EF2F0036F368 /* UserAddressListDataModel.m */,
+				DD69B2C61F39EF400036F368 /* UserAddressListResultModel.h */,
+				DD69B2C71F39EF400036F368 /* UserAddressListResultModel.m */,
+			);
+			name = UserAddressListModel;
+			sourceTree = "<group>";
+		};
 		DDE0FCF01F3563CA00269DBD /* AddToCart */ = {
 			isa = PBXGroup;
 			children = (
@@ -1753,6 +1815,24 @@
 				DDE0FD3B1F38714600269DBD /* BrandStoryCell.h */,
 				DDE0FD3C1F38714600269DBD /* BrandStoryCell.m */,
 				DDE0FD3D1F38714600269DBD /* BrandStoryCell.xib */,
+				DD69B2971F39A0510036F368 /* BrandAppliedCollectionCell.h */,
+				DD69B2981F39A0510036F368 /* BrandAppliedCollectionCell.m */,
+				DD69B2991F39A0510036F368 /* BrandAppliedCollectionCell.xib */,
+				DD69B2A11F39B6130036F368 /* OrderConfirmAddressCell.h */,
+				DD69B2A21F39B6130036F368 /* OrderConfirmAddressCell.m */,
+				DD69B2A31F39B6130036F368 /* OrderConfirmAddressCell.xib */,
+				DD69B2A61F39B6360036F368 /* OrderConfirmProductListCell.h */,
+				DD69B2A71F39B6360036F368 /* OrderConfirmProductListCell.m */,
+				DD69B2A81F39B6360036F368 /* OrderConfirmProductListCell.xib */,
+				DD69B2AB1F39B6610036F368 /* OrderConfirmDisCountCell.h */,
+				DD69B2AC1F39B6610036F368 /* OrderConfirmDisCountCell.m */,
+				DD69B2AD1F39B6610036F368 /* OrderConfirmDisCountCell.xib */,
+				DD69B2B01F39B6980036F368 /* OrderConfirmFeeCell.h */,
+				DD69B2B11F39B6980036F368 /* OrderConfirmFeeCell.m */,
+				DD69B2B21F39B6980036F368 /* OrderConfirmFeeCell.xib */,
+				DD69B2B51F39B6BD0036F368 /* OrderConfirmWayOfPayCell.h */,
+				DD69B2B61F39B6BD0036F368 /* OrderConfirmWayOfPayCell.m */,
+				DD69B2B71F39B6BD0036F368 /* OrderConfirmWayOfPayCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -1809,6 +1889,9 @@
 				DD0DBAF71F332EA00098F5FA /* ProductDetailHeaderView.xib */,
 				DD0DBAFF1F3403670098F5FA /* ProductDetailSpecHeaderView.h */,
 				DD0DBB001F3403670098F5FA /* ProductDetailSpecHeaderView.m */,
+				DD69B2BA1F39D25C0036F368 /* BuyNowSelectSpecView.h */,
+				DD69B2BB1F39D25C0036F368 /* BuyNowSelectSpecView.m */,
+				DD69B2BD1F39D27C0036F368 /* BuyNowSelectSpecView.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -1856,6 +1939,7 @@
 				DDE0FD251F35D8DC00269DBD /* DeleteCollection */,
 				DDE0FD261F37F6E600269DBD /* BrandDetailModel */,
 				DD69B28D1F3954670036F368 /* EditCartNumber */,
+				DD69B2BF1F39EEEF0036F368 /* UserAddressListModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -1891,6 +1975,9 @@
 			children = (
 				EC4BA0F51F136CBD00B9BE1A /* HomePageViewController.h */,
 				EC4BA0F61F136CBD00B9BE1A /* HomePageViewController.m */,
+				DD69B29C1F39B2970036F368 /* OrderConfirmViewController.h */,
+				DD69B29D1F39B2970036F368 /* OrderConfirmViewController.m */,
+				DD69B29E1F39B2970036F368 /* OrderConfirmViewController.xib */,
 				DD4CEFD41F25DD3A0024156F /* CommentListViewController.h */,
 				DD4CEFD51F25DD3A0024156F /* CommentListViewController.m */,
 				DD4CEFD61F25DD3A0024156F /* CommentListViewController.xib */,
@@ -2210,6 +2297,7 @@
 				DD6288141F22EB440030331D /* SubMessage_LikedViewController.xib in Resources */,
 				DD4CF01E1F2868490024156F /* ActivityRecommendInformationCell.xib in Resources */,
 				DD40B72E1F173B5300839748 /* HomeRightImageCell.xib in Resources */,
+				DD69B2A51F39B6130036F368 /* OrderConfirmAddressCell.xib in Resources */,
 				DDFB825A1F187A7900AEAAA7 /* cb_dark_off.png in Resources */,
 				DDFB81C01F18475700AEAAA7 /* SameHobbyPersonCell.xib in Resources */,
 				DD6288281F22ECBC0030331D /* SubNotification_OtherViewController.xib in Resources */,
@@ -2239,6 +2327,7 @@
 				DD6287AD1F219ADA0030331D /* SameTownTopicViewController.xib in Resources */,
 				DDFB827D1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib in Resources */,
 				EC4BA2481F14DFE900B9BE1A /* BrandApplyViewController.xib in Resources */,
+				DD69B2BE1F39D27C0036F368 /* BuyNowSelectSpecView.xib in Resources */,
 				DD62880A1F22EA510030331D /* SubMessage_AboutMeViewController.xib in Resources */,
 				DDFB82681F187A7900AEAAA7 /* cb_mono_on.png in Resources */,
 				DD9A63AA1F2EE20100611FA8 /* AfterSalesViewController.xib in Resources */,
@@ -2253,6 +2342,7 @@
 				DD4CF0AF1F29A8FC0024156F /* AtSomeOneCell.xib in Resources */,
 				DDFB82991F1C6A8900AEAAA7 /* MoreProductList_HeaderView.xib in Resources */,
 				DD4CF0011F274B480024156F /* ShakeAndWinViewController.xib in Resources */,
+				DD69B2AF1F39B6610036F368 /* OrderConfirmDisCountCell.xib in Resources */,
 				DD6287E41F21E8120030331D /* WaitForReviewViewController.xib in Resources */,
 				DD9A63B41F2EE86700611FA8 /* AfterSalesHeaderView.xib in Resources */,
 				DD6287DF1F21E3B20030331D /* ActivityViewController.xib in Resources */,
@@ -2262,6 +2352,7 @@
 				DDDD17CF1F2C93A2006BE206 /* OrderListViewController.xib in Resources */,
 				DD6288231F22EC7A0030331D /* SubNotification_DiscountViewController.xib in Resources */,
 				DD4CF03C1F289FB20024156F /* MyOnFocusCell.xib in Resources */,
+				DD69B2AA1F39B6360036F368 /* OrderConfirmProductListCell.xib in Resources */,
 				DD6288351F233EE00030331D /* SameHobbyPersonListViewController.xib in Resources */,
 				DDFB82631F187A7900AEAAA7 /* cb_green_off@2x.png in Resources */,
 				DD6287301F1F51BA0030331D /* ConfigurationCell.xib in Resources */,
@@ -2271,6 +2362,7 @@
 				DD6287851F2097940030331D /* HotCircleCell.xib in Resources */,
 				DDFB82751F19B18800AEAAA7 /* Categate_CategateCollectCell.xib in Resources */,
 				DD4CF0371F2895680024156F /* PersonalActivitilyRuleViewController.xib in Resources */,
+				DD69B2A01F39B2970036F368 /* OrderConfirmViewController.xib in Resources */,
 				DD62879E1F2191A90030331D /* ActivityRankFirstCell.xib in Resources */,
 				DDFB82601F187A7900AEAAA7 /* cb_glossy_on.png in Resources */,
 				DDFB828F1F1C5E3900AEAAA7 /* MoreProductListCell.xib in Resources */,
@@ -2293,12 +2385,15 @@
 				DD4CF00A1F2824B30024156F /* ActivityRuleView.xib in Resources */,
 				EC4BA2661F160F1F00B9BE1A /* DiscoverCell.xib in Resources */,
 				DD62881E1F22EC5F0030331D /* SubNotification_AnnouncementViewController.xib in Resources */,
+				DD69B29B1F39A0510036F368 /* BrandAppliedCollectionCell.xib in Resources */,
 				DD4CF0281F2877EC0024156F /* ActivityRecommendApplyCell.xib in Resources */,
 				DD6287C61F21AE580030331D /* LookAroundViewController.xib in Resources */,
 				DD6287B21F219BA50030331D /* HandpickActivitiesViewController.xib in Resources */,
 				DD6287581F2049A10030331D /* ModifyPasswordViewController.xib in Resources */,
 				DD40B7241F1705A000839748 /* HomeCollectCell1.xib in Resources */,
+				DD69B2B41F39B6980036F368 /* OrderConfirmFeeCell.xib in Resources */,
 				DDFB825C1F187A7900AEAAA7 /* cb_dark_on.png in Resources */,
+				DD69B2B91F39B6BD0036F368 /* OrderConfirmWayOfPayCell.xib in Resources */,
 				DDFB82661F187A7900AEAAA7 /* cb_mono_off.png in Resources */,
 				DD6287281F1F48000030331D /* CommentTableViewCell.xib in Resources */,
 				DDFB82561F187A7900AEAAA7 /* cb_box_off.png in Resources */,
@@ -2405,12 +2500,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD69B2C81F39EF400036F368 /* UserAddressListResultModel.m in Sources */,
 				DDFB82B51F1D931500AEAAA7 /* PYSearchConst.m in Sources */,
 				DD4CF0AE1F29A8FC0024156F /* AtSomeOneCell.m in Sources */,
 				DD0DBB0A1F3431650098F5FA /* GetSpecPriceDataModel.m in Sources */,
 				DD4CF0001F274B480024156F /* ShakeAndWinViewController.m in Sources */,
 				DD9A63B21F2EE84400611FA8 /* AfterSalesHeaderView.m in Sources */,
 				EC4BA0DB1F1359EC00B9BE1A /* FactoryCollectionViewCell.m in Sources */,
+				DD69B2A91F39B6360036F368 /* OrderConfirmProductListCell.m in Sources */,
 				DDE0FD291F37F71C00269DBD /* BrandDetailModel.m in Sources */,
 				DDE0FCFE1F35653800269DBD /* CartListModel.m in Sources */,
 				DD4CF0311F2885660024156F /* ActivityApplyViewController.m in Sources */,
@@ -2453,6 +2550,7 @@
 				DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */,
 				DD40B72D1F173B5300839748 /* HomeRightImageCell.m in Sources */,
 				EC4BA25B1F15FDE400B9BE1A /* DiscoverDynamicViewController.m in Sources */,
+				DD69B2B81F39B6BD0036F368 /* OrderConfirmWayOfPayCell.m in Sources */,
 				DD0DBAE01F32ED510098F5FA /* GetGiftListResultModel.m in Sources */,
 				DD6287FB1F21F2C30030331D /* PersonalActivityRankFooterView.m in Sources */,
 				DD0DBAE71F330CA50098F5FA /* GetUserPrizeModel.m in Sources */,
@@ -2489,6 +2587,7 @@
 				DD62871D1F1F3D8B0030331D /* PriaseTableViewCell.m in Sources */,
 				DD0DBAD31F32B9970098F5FA /* RecommendGoodsDataModel.m in Sources */,
 				DD4CF0A41F2996B60024156F /* MoreCycleViewController.m in Sources */,
+				DD69B2BC1F39D25C0036F368 /* BuyNowSelectSpecView.m in Sources */,
 				DDE0FD011F35654900269DBD /* CartListDataModel.m in Sources */,
 				EC4BA2431F14B05E00B9BE1A /* CategateNavigationController.m in Sources */,
 				DD68985B1F31B99B008B6A8F /* GoodsDetailImageModel.m in Sources */,
@@ -2570,6 +2669,7 @@
 				DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */,
 				DD62880E1F22EB090030331D /* SubMessage_CommentViewController.m in Sources */,
 				EC4BA0F41F136CA400B9BE1A /* SubCategate_CategateViewController.m in Sources */,
+				DD69B29F1F39B2970036F368 /* OrderConfirmViewController.m in Sources */,
 				DD6898281F30525A008B6A8F /* MoreProductTableViewCell.m in Sources */,
 				DD6288341F233EE00030331D /* SameHobbyPersonListViewController.m in Sources */,
 				DD6287431F1F8C1E0030331D /* MyAddressViewController.m in Sources */,
@@ -2610,6 +2710,7 @@
 				DD6287BB1F21A3700030331D /* LookAroundCell.m in Sources */,
 				DD6287891F20B0BA0030331D /* MainCircleViewController.m in Sources */,
 				DD4CF1121F29F22E0024156F /* AllClassifyChidrenFirstModel.m in Sources */,
+				DD69B2A41F39B6130036F368 /* OrderConfirmAddressCell.m in Sources */,
 				EC4BA11C1F1376F600B9BE1A /* CartViewController.m in Sources */,
 				DD6287D31F21C96F0030331D /* DomainHeaderView.m in Sources */,
 				DD6287ED1F21E8C00030331D /* FailureReviewViewController.m in Sources */,
@@ -2633,11 +2734,13 @@
 				EC4BA10C1F136CBD00B9BE1A /* NotificationViewController.m in Sources */,
 				DD4CEFE31F26D9A60024156F /* BrandDetailCell.m in Sources */,
 				DD4CF0FA1F29BF850024156F /* YQNetworking.m in Sources */,
+				DD69B2C51F39EF2F0036F368 /* UserAddressListDataModel.m in Sources */,
 				EC4BA2651F160F1F00B9BE1A /* DiscoverCell.m in Sources */,
 				DD4CF0E71F29BF850024156F /* YQDiskCache.m in Sources */,
 				DD0DBB101F34817A0098F5FA /* NSString+ContentWidth.m in Sources */,
 				EC4BA0EB1F136C8100B9BE1A /* PersonalViewController.m in Sources */,
 				DD4CF0271F2877EC0024156F /* ActivityRecommendApplyCell.m in Sources */,
+				DD69B29A1F39A0510036F368 /* BrandAppliedCollectionCell.m in Sources */,
 				DD6287A71F2198FC0030331D /* SameTownViewController.m in Sources */,
 				DD6897FC1F2F2647008B6A8F /* AllBrandModel.m in Sources */,
 				DD62872B1F1F4EC20030331D /* ConfigurationViewController.m in Sources */,
@@ -2645,6 +2748,8 @@
 				DD0DBADD1F32ED3B0098F5FA /* GetGiftListDataModel.m in Sources */,
 				DD0DBAFE1F33594A0098F5FA /* GoodsDetailSpec_ValueModel.m in Sources */,
 				DD6287AC1F219ADA0030331D /* SameTownTopicViewController.m in Sources */,
+				DD69B2AE1F39B6610036F368 /* OrderConfirmDisCountCell.m in Sources */,
+				DD69B2B31F39B6980036F368 /* OrderConfirmFeeCell.m in Sources */,
 				DDE0FD171F35C8E300269DBD /* CartListAllSelectedModel.m in Sources */,
 				DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */,
 				EC4BA1111F136CBD00B9BE1A /* SubNotifi_MessageViewController.m in Sources */,
@@ -2656,6 +2761,7 @@
 				EC4BA0CB1F1359DF00B9BE1A /* SegmentTapView.m in Sources */,
 				EC4BA0F31F136CA400B9BE1A /* SubCategate_BrandViewController.m in Sources */,
 				DD6898081F2F2861008B6A8F /* AllBrandGoodsListModel.m in Sources */,
+				DD69B2C21F39EF1E0036F368 /* UserAddressListModel.m in Sources */,
 				DD4CF0051F28219F0024156F /* HWPopTool.m in Sources */,
 				DD6898051F2F2847008B6A8F /* AllBrandListModel.m in Sources */,
 				DDE0FD101F35668700269DBD /* UserFavoriteDataModel.m in Sources */,

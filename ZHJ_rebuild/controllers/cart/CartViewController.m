@@ -17,6 +17,7 @@
 
 //controllers
 #import "ProductDetailViewController.h"
+#import "OrderConfirmViewController.h"
 
 //models
 #import "CartListModel.h"
@@ -537,6 +538,7 @@
         [self getRemoveCartDataWithRemoveCartArray:self.removeCartArray];
     }else{
         //执行提交
+        [self jumpToOrderConfirmVC];
     }
 }
 
@@ -547,6 +549,14 @@
     productDetailVC.hidesBottomBarWhenPushed = YES;
     productDetailVC.goods_id = @"13";
     [self.navigationController pushViewController:productDetailVC animated:YES];
+}
+
+#pragma mark - <跳转“确认订单页面”>
+-(void)jumpToOrderConfirmVC
+{
+    OrderConfirmViewController *orderConfirmVC = [[OrderConfirmViewController alloc]initWithNibName:NSStringFromClass([OrderConfirmViewController class]) bundle:nil];
+    orderConfirmVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:orderConfirmVC animated:YES];
 }
 
 #pragma mark - <RAC响应>

@@ -133,9 +133,10 @@
 }
 
 #pragma mark - <跳转产品详情页面>
--(void)jumpToProductDetailVC
+-(void)jumpToProductDetailVCWithGoodsID:(NSString *)goods_id
 {
     ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
+    productDetailVC.goods_id = goods_id;
     productDetailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:productDetailVC animated:YES];
 }
@@ -180,25 +181,18 @@
     
     //点击品牌馆-入驻品牌图片
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickImgBrandApply" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        [self jumpToProductDetailVC];
+        NSString *goods_id = x.object;
+        [self jumpToProductDetailVCWithGoodsID:goods_id];
     }];
     
     //点击品牌馆-热卖商品item
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectHotSalesProductItem" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        NSIndexPath *indexPath = x.object;
-        [self jumpToProductDetailVC];
+        NSString *goods_id = x.object;
+        [self jumpToProductDetailVCWithGoodsID:goods_id];
     }];
     
     //点击品牌
-    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnBrand1" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        AllBrandListModel *model = x.object;
-        [self jumpToBrandDetailVCWithBrandID:model.brand_id];
-    }];
-    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnBrand2" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        AllBrandListModel *model = x.object;
-        [self jumpToBrandDetailVCWithBrandID:model.brand_id];
-    }];
-    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnBrand3" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnBrand" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         AllBrandListModel *model = x.object;
         [self jumpToBrandDetailVCWithBrandID:model.brand_id];
     }];

@@ -6,7 +6,7 @@
 //  Copyright © 2017年 sophia. All rights reserved.
 //
 
-#import "ProductColorAndCountView.h"
+#import "BuyNowSelectSpecView.h"
 
 //cells
 #import "ProductStyleSelectionCell.h"
@@ -24,7 +24,7 @@
 #import "GetSpecPriceModel.h"
 #import "AddToCartModel.h"
 
-@interface ProductColorAndCountView ()<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface BuyNowSelectSpecView ()<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong)NSMutableArray *specValueArray;
 //用于保存一份self.dataarray;用作修改
@@ -32,15 +32,15 @@
 
 @end
 
-@implementation ProductColorAndCountView
+@implementation BuyNowSelectSpecView
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 -(void)awakeFromNib
 {
@@ -82,8 +82,8 @@
 {
     CGFloat itemWidth = 100;
     CGFloat itemHeight = 30;
-//    self.flowLayout.estimatedItemSize = CGSizeMake(itemWidth, itemHeight);
-//    self.flowLayout.itemSize = uicoll
+    //    self.flowLayout.estimatedItemSize = CGSizeMake(itemWidth, itemHeight);
+    //    self.flowLayout.itemSize = uicoll
     self.flowLayout.minimumInteritemSpacing = 0;
     self.flowLayout.sectionInset = UIEdgeInsetsMake(5, 0, 0, 0);
     
@@ -107,8 +107,8 @@
     if (_dataArray != dataArray) {
         _dataArray = dataArray;
         self.tempArray = [NSMutableArray arrayWithArray:dataArray];
-//        GoodsDetailSpec_ListModel *model = self.tempArray[0];
-//        model.selectedId = @"2";
+        //        GoodsDetailSpec_ListModel *model = self.tempArray[0];
+        //        model.selectedId = @"2";
         [self.collectionView reloadData];
         for (int i=0; i<self.tempArray.count; i++) {
             [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:i] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
@@ -153,7 +153,7 @@
 
 - (IBAction)btnCancelAction:(UIButton *)sender
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"removeTheView" object:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"removeBuyNowSpecView" object:nil];
 }
 
 - (IBAction)btnIncreaseAction:(UIButton *)sender
@@ -174,10 +174,18 @@
     self.labelCount.text = [NSString stringWithFormat:@"%d",count];
 }
 
-#pragma mark - <加入购物车>
-- (IBAction)btnAddToCartAndRequest:(UIButton *)sender
+#pragma mark - <立即提交>
+- (IBAction)btnSubmitAndRequest:(UIButton *)sender
 {
-    [self GetAddToCartData];
+    [self btnCancelAction:nil];
+    
+    
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"goods_id":self.goods_id,
+                                    @"goods_num":self.labelCount.text,
+                                    @"goods_spec":self.specValueArray};
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToOrderConfirmVC" object:dictParameter];
+//    [self GetAddToCartData];
 }
 
 #pragma mark - <请求加入购物车>
@@ -203,9 +211,6 @@
             AddToCartModel *model = [[AddToCartModel alloc]initWithDictionary:dataDict error:nil];
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:model.msg];
             [hudWarning hideAnimated:YES afterDelay:2.0];
-            hudWarning.completionBlock = ^{
-                [self btnCancelAction:nil];
-            };
             
             //发送通知刷新购物车页面
             [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCartList" object:nil];

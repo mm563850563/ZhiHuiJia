@@ -8,10 +8,13 @@
 
 #import "Categate_Brand_HeaderView.h"
 #import "AllBrandListModel.h"
+#import "BrandAppliedCollectionCell.h"
 
-@interface Categate_Brand_HeaderView ()
+@interface Categate_Brand_HeaderView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong)NSString *brand_id;
+@property (weak, nonatomic) IBOutlet UIView *collectionBGView;
+@property (nonatomic, assign)CGFloat width;
 
 @end
 
@@ -20,35 +23,30 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self addButtonIntoArray];
+//    [self settingCollectionView];
     [self imgHeaderAddInteraction];
 }
 
--(NSMutableArray *)buttonArray
+-(void)drawRect:(CGRect)rect
 {
-    if (!_buttonArray) {
-        _buttonArray = [NSMutableArray array];
-    }
-    return _buttonArray;
+    self.width = self.collectionBGView.frame.size.width;
+    [self settingCollectionView];
 }
 
--(NSMutableArray *)imgBrandArray
+-(void)settingCollectionView
 {
-    if (!_imgBrandArray) {
-        _imgBrandArray = [NSMutableArray array];
-    }
-    return _imgBrandArray;
-}
-
--(void)addButtonIntoArray
-{
-    [self.buttonArray addObject:self.btnBrand1];
-    [self.buttonArray addObject:self.btnBrand2];
-    [self.buttonArray addObject:self.btnBrand3];
+    CGFloat itemWidth = (self.width)/3.0;
+    CGFloat itemHeight = 40;
+    self.flowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    self.flowLayout.minimumLineSpacing = 0;
+    self.flowLayout.minimumInteritemSpacing = 0;
     
-    [self.imgBrandArray addObject:self.imgBrand1];
-    [self.imgBrandArray addObject:self.imgBrand2];
-    [self.imgBrandArray addObject:self.imgBrand3];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([BrandAppliedCollectionCell class]) bundle:nil];
+    [self.collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([BrandAppliedCollectionCell class])];
+    
 }
 
 -(void)imgHeaderAddInteraction
@@ -58,44 +56,47 @@
 }
 -(void)postNotificationWithRAC
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickImgBrandApply" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickImgBrandApply" object:self.model.goods_id];
 }
 
-- (IBAction)btnBrand1Action:(UIButton *)sender
-{
-    AllBrandListModel *modelBrandList = self.model.brand_list[0];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand1" object:modelBrandList];
-}
-- (IBAction)btnBrand2Action:(UIButton *)sender
-{
-    AllBrandListModel *modelBrandList = self.model.brand_list[1];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand2" object:modelBrandList];
-}
-- (IBAction)btnBrand3Action:(UIButton *)sender
-{
-    AllBrandListModel *modelBrandList = self.model.brand_list[2];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand3" object:modelBrandList];
-}
 
 -(void)setModel:(AllBrandContentModel *)model
 {
-//    if (_model != model) {
-        _model = model;
-        
-        NSString *urlStrHeader = [NSString stringWithFormat:@"%@%@",kDomainImage,model.banner];
-        NSURL *urlHeader = [NSURL URLWithString:urlStrHeader];
-        [self.imgHeader sd_setImageWithURL:urlHeader placeholderImage:kPlaceholder];
-        
-        for (int i=0; i<model.brand_list.count; i++) {
-            UIImageView *imgView = self.imgBrandArray[i];
-            UIButton *button = self.buttonArray[i];
-            button.hidden = NO;
-            AllBrandListModel *modelBrandList = model.brand_list[i];
-            NSString *urlstr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelBrandList.logo];
-            NSURL *url = [NSURL URLWithString:urlstr];
-            [imgView sd_setImageWithURL:url placeholderImage:kPlaceholder];
-        }
-//    }
+    _model = model;
+    
+    NSString *urlStrHeader = [NSString stringWithFormat:@"%@%@",kDomainImage,model.banner];
+    NSURL *urlHeader = [NSURL URLWithString:urlStrHeader];
+    [self.imgHeader sd_setImageWithURL:urlHeader placeholderImage:kPlaceholder];
+    
+    [self.collectionView reloadData];
 }
+
+
+
+
+
+
+
+#pragma mark - *** UICollectionViewDelegate,UICollectionViewDataSource *****
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.model.brand_list.count;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    BrandAppliedCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([BrandAppliedCollectionCell class]) forIndexPath:indexPath];
+    AllBrandListModel *modelBrandList = self.model.brand_list[indexPath.item];
+    cell.model = modelBrandList;
+    return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    AllBrandListModel *modelBrandList = self.model.brand_list[indexPath.item];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand" object:modelBrandList];
+}
+
 
 @end

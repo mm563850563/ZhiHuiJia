@@ -261,7 +261,9 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectHotSalesProductItem" object:indexPath];
+    AllBrandGoodsListModel *model = self.allBrandGoodsListArray[indexPath.item];
+    NSString *goods_id = model.goods_id;
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectHotSalesProductItem" object:goods_id];
 }
 
 

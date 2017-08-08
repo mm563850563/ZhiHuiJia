@@ -140,11 +140,18 @@
 #pragma mark - <20.删除购物车>
 #define kRemoveCart @"/cart/removeCart"  //user_id ,cart_id
 
-#pragma mark - <21.听说你喜欢>
+#pragma mark - <21.确认订单>
+#define kConfirmOrder @"/order/confirmOrder" //goods_id,user_id,goods_num,address_id,goods_spec
+
+
+#pragma mark - <22.听说你喜欢>
 #define kUserFavorite @"/user/userFavorite"  //user_id,page,page_count
 
-#pragma mark - <22.品牌详情>
-#define kBrandDetail @"/brand/brandDetail"
+#pragma mark - <23.品牌详情>
+#define kBrandDetail @"/brand/brandDetail" 
+
+#pragma mark - <24.用户地址列表>
+#define kUserAddressList @"/User/getUserAddressList"  //user_id
 
 
 

@@ -12,14 +12,8 @@
 @interface Categate_Brand_HeaderView : UICollectionReusableView
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgHeader;
-@property (weak, nonatomic) IBOutlet UIImageView *imgBrand1;
-@property (weak, nonatomic) IBOutlet UIImageView *imgBrand2;
-@property (weak, nonatomic) IBOutlet UIImageView *imgBrand3;
-@property (weak, nonatomic) IBOutlet UIButton *btnBrand1;
-@property (weak, nonatomic) IBOutlet UIButton *btnBrand2;
-@property (weak, nonatomic) IBOutlet UIButton *btnBrand3;
-@property (nonatomic, strong)NSMutableArray *buttonArray;
-@property (nonatomic, strong)NSMutableArray *imgBrandArray;
 @property (nonatomic, strong)AllBrandContentModel *model;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 
 @end

@@ -10,9 +10,11 @@
 
 //views
 #import "ProductDetailHeaderView.h"
+#import "BuyNowSelectSpecView.h"
 
 //controllers
 #import "CommentListViewController.h"
+#import "OrderConfirmViewController.h"
 
 //cells
 #import "ProductDetailImageCell.h"
@@ -29,6 +31,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewCollection;
 
+@property (nonatomic, strong)UIView *cloudGlassBGView;
+@property (nonatomic, strong)BuyNowSelectSpecView *productMessageAndBuyNowView;
+
 @property (nonatomic, strong)GoodsDetailGoodsInfoModel *modelInfo;
 @property (nonatomic, strong)NSMutableArray *bannerArray;
 @property (nonatomic, strong)NSArray *contentArray;
@@ -43,7 +48,7 @@
     
     [self getGoodsDetailData];
     [self settingTableView];
-    
+    [self initProductMessageView];
     
     [self respondWithRAC];
 }
@@ -89,6 +94,10 @@
                 self.modelInfo = model.data.result.goods_info;
                 self.contentArray = model.data.result.goods_content;
                 self.spec_listArray = model.data.result.spec_list;
+                
+                //传数据给“立即购买选择规格”view(下面两句不能调换)
+                self.productMessageAndBuyNowView.goods_id = self.modelInfo.goods_id;
+                self.productMessageAndBuyNowView.dataArray = self.spec_listArray;
                 
                 //判断是否已经收藏
                 if ([model.data.result.is_collected isEqualToString:@"0"]) {
@@ -200,6 +209,14 @@
     [self.navigationController pushViewController:commentListVC animated:YES];
 }
 
+#pragma mark - <跳转确认订单页面>
+-(void)jumpToOrderConfirmVC
+{
+    OrderConfirmViewController *orderConfirmVC = [[OrderConfirmViewController alloc]initWithNibName:NSStringFromClass([OrderConfirmViewController class]) bundle:nil];
+    orderConfirmVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:orderConfirmVC animated:YES];
+}
+
 #pragma mark - <客服>
 - (IBAction)btnSalesCenterAction:(UIButton *)sender
 {
@@ -233,7 +250,21 @@
 #pragma mark - <立即购买>
 - (IBAction)btnBuyByNowAction:(UIButton *)sender
 {
+    [[UIApplication sharedApplication].keyWindow addSubview:self.cloudGlassBGView];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.productMessageAndBuyNowView.frame = CGRectMake(0, kSCREENH_HEIGHT-400, kSCREEN_WIDTH, 400);
+    }];
+}
+
+#pragma mark - <初始化商品规格选择页面>
+-(void)initProductMessageView
+{
+    self.cloudGlassBGView = [[UIView alloc]initWithFrame:kScreeFrame];
+    self.cloudGlassBGView.backgroundColor = kColorFromRGBAndAlpha(kBlack, 0.4);
     
+    self.productMessageAndBuyNowView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([BuyNowSelectSpecView class]) owner:nil options:nil].lastObject;
+    self.productMessageAndBuyNowView.frame = CGRectMake(0, kSCREENH_HEIGHT, kSCREEN_WIDTH, 400);
+    [self.cloudGlassBGView addSubview:self.productMessageAndBuyNowView];
 }
 
 
@@ -244,13 +275,17 @@
         [self jumpToMoreCommentVC];
     }];
     
-//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"removeTheView" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-//        [UIView animateWithDuration:0.3 animations:^{
-//            self.productMessageView.frame = CGRectMake(0, kSCREENH_HEIGHT, kSCREEN_WIDTH, 300);
-//        } completion:^(BOOL finished) {
-//            [self.cloudGlassBGView removeFromSuperview];
-//        }];
-//    }];
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"removeBuyNowSpecView" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.productMessageAndBuyNowView.frame = CGRectMake(0, kSCREENH_HEIGHT, kSCREEN_WIDTH, 400);
+        } completion:^(BOOL finished) {
+            [self.cloudGlassBGView removeFromSuperview];
+        }];
+    }];
+    
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToOrderConfirmVC" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [self jumpToOrderConfirmVC];
+    }];
 }
 
 
