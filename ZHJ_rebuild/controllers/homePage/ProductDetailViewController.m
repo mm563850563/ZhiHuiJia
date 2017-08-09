@@ -81,51 +81,53 @@
 #pragma mark - <获取商品详情数据>
 -(void)getGoodsDetailData
 {
-    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
-    NSDictionary *dictParameter = @{@"goods_id":self.goods_id};
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGoodsDetail];
-    [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
-        [hud hideAnimated:YES afterDelay:1.0];
-        if (response) {
-            NSDictionary *dataDict = (NSDictionary *)response;
-            GoodsDetailModel *model = [[GoodsDetailModel alloc]initWithDictionary:dataDict error:nil];
-            
-            if ([model.code isEqualToString:@"200"]) {
-                self.modelInfo = model.data.result.goods_info;
-                self.contentArray = model.data.result.goods_content;
-                self.spec_listArray = model.data.result.spec_list;
+    if (self.goods_id) {
+        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+        NSDictionary *dictParameter = @{@"goods_id":self.goods_id};
+        NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGoodsDetail];
+        [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+            [hud hideAnimated:YES afterDelay:1.0];
+            if (response) {
+                NSDictionary *dataDict = (NSDictionary *)response;
+                GoodsDetailModel *model = [[GoodsDetailModel alloc]initWithDictionary:dataDict error:nil];
                 
-                //传数据给“立即购买选择规格”view(下面两句不能调换)
-                self.productMessageAndBuyNowView.goods_id = self.modelInfo.goods_id;
-                self.productMessageAndBuyNowView.dataArray = self.spec_listArray;
-                
-                //判断是否已经收藏
-                if ([model.data.result.is_collected isEqualToString:@"0"]) {
-                    self.imgViewCollection.image = [UIImage imageNamed:@"kefu"];
+                if ([model.code isEqualToString:@"200"]) {
+                    self.modelInfo = model.data.result.goods_info;
+                    self.contentArray = model.data.result.goods_content;
+                    self.spec_listArray = model.data.result.spec_list;
+                    
+                    //传数据给“立即购买选择规格”view(下面两句不能调换)
+                    self.productMessageAndBuyNowView.goods_id = self.modelInfo.goods_id;
+                    self.productMessageAndBuyNowView.dataArray = self.spec_listArray;
+                    
+                    //判断是否已经收藏
+                    if ([model.data.result.is_collected isEqualToString:@"0"]) {
+                        self.imgViewCollection.image = [UIImage imageNamed:@"kefu"];
+                    }else{
+                        self.imgViewCollection.image = [UIImage imageNamed:@"shouc"];
+                    }
+                    
+                    for (GoodsDetailImageModel *modelImage in model.data.result.goods_images) {
+                        NSString *str = [NSString stringWithFormat:@"%@%@",kDomainImage,modelImage.image_url];
+                        [self.bannerArray addObject:str];
+                    }
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.tableView reloadData];
+                    });
                 }else{
-                    self.imgViewCollection.image = [UIImage imageNamed:@"shouc"];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                    });
                 }
-                
-                for (GoodsDetailImageModel *modelImage in model.data.result.goods_images) {
-                    NSString *str = [NSString stringWithFormat:@"%@%@",kDomainImage,modelImage.image_url];
-                    [self.bannerArray addObject:str];
-                }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.tableView reloadData];
-                });
-            }else{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
-                });
             }
-        }
-    } failBlock:^(NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
-        });
-    }];
+        } failBlock:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }];
+    }
 }
 
 #pragma mark - <获取添加到收藏数据>
@@ -210,9 +212,10 @@
 }
 
 #pragma mark - <跳转确认订单页面>
--(void)jumpToOrderConfirmVC
+-(void)jumpToOrderConfirmVCWithParameter:(NSDictionary *)dictParameter
 {
     OrderConfirmViewController *orderConfirmVC = [[OrderConfirmViewController alloc]initWithNibName:NSStringFromClass([OrderConfirmViewController class]) bundle:nil];
+    orderConfirmVC.Parameter = dictParameter;
     orderConfirmVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:orderConfirmVC animated:YES];
 }
@@ -284,7 +287,8 @@
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToOrderConfirmVC" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        [self jumpToOrderConfirmVC];
+        NSDictionary *dictParameter = x.object;
+        [self jumpToOrderConfirmVCWithParameter:dictParameter];
     }];
 }
 

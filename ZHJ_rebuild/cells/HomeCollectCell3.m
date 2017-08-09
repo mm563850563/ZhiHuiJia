@@ -50,4 +50,24 @@
     }
 }
 
+- (IBAction)btnSelectOneAction:(UIButton *)sender
+{
+    if (self.dataArray.count > 0) {
+        HomeGoodsListModel *model = self.dataArray[0];
+        NSString *goodsID = model.goods_id;
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"selectItemOneSide" object:goodsID];
+    }
+}
+
+- (IBAction)btnSelectTwoAction:(UIButton *)sender
+{
+    if (self.dataArray.count > 1) {
+        HomeGoodsListModel *model = self.dataArray[1];
+        NSString *goodsID = model.goods_id;
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"selectItemTwoSide" object:goodsID];
+    }
+}
+
+
+
 @end

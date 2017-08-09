@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class OrderConfirmUserAddressModel;
 
 @interface OrderConfirmAddressCell : UITableViewCell
+
+@property (nonatomic, strong)OrderConfirmUserAddressModel *modelUserAddress;
 
 @end

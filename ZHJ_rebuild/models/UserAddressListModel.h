@@ -7,7 +7,12 @@
 //
 
 #import <JSONModel/JSONModel.h>
+#import "UserAddressListDataModel.h"
 
 @interface UserAddressListModel : JSONModel
+
+@property (nonatomic, strong)NSString *code;
+@property (nonatomic, strong)NSString *msg;
+@property (nonatomic, strong)UserAddressListDataModel *data;
 
 @end

@@ -7,7 +7,13 @@
 //
 
 #import <JSONModel/JSONModel.h>
+#import "UserAddressListResultModel.h"
+
+@protocol UserAddressListResultModel <NSObject>
+@end
 
 @interface UserAddressListDataModel : JSONModel
+
+@property (nonatomic, strong)NSArray<UserAddressListResultModel> *result;
 
 @end

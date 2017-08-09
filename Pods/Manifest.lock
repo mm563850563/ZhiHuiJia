@@ -30,7 +30,6 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
-  - STPickerView (2.1)
   - TTTAttributedLabel (2.0.0)
   - TZImagePickerController (1.8.1)
   - XHImageViewer (0.1.2)
@@ -47,7 +46,6 @@ DEPENDENCIES:
   - MLTransition (~> 2.1.2)
   - ReactiveObjC (~> 2.1.2)
   - SDCycleScrollView (~> 1.66)
-  - STPickerView (~> 2.1)
   - TTTAttributedLabel
   - TZImagePickerController
   - XHImageViewer
@@ -65,11 +63,10 @@ SPEC CHECKSUMS:
   ReactiveObjC: 7b6782ae39f9ac0f57205c3b0c0b69b9dd7048c0
   SDCycleScrollView: e3ade90e9b3159bec04330b208fbfd81c3f3b671
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
-  STPickerView: 9bfbb827de31d4807424454296ade35a85c21f9e
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   TZImagePickerController: 086034156913375cb19c8e4103562f15322c3b36
   XHImageViewer: 7b275d2aa829e56761c30303b9d51cae086a90b9
 
-PODFILE CHECKSUM: 7674ec7f9d1a3e60b0b54054d6713b42be1b3410
+PODFILE CHECKSUM: 32cfb45fd2677ed158791088e30acedd58e84c03
 
 COCOAPODS: 1.2.1

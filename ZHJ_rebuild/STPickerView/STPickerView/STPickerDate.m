@@ -8,6 +8,15 @@
 
 #import "STPickerDate.h"
 #import "NSCalendar+STPicker.h"
+
+typedef NS_OPTIONS(NSUInteger, STCalendarUnit) {
+    STCalendarUnitYear  = (1UL << 0),
+    STCalendarUnitMonth = (1UL << 1),
+    STCalendarUnitDay   = (1UL << 2),
+    STCalendarUnitHour  = (1UL << 3),
+    STCalendarUnitMinute= (1UL << 4),
+};
+
 @interface STPickerDate()<UIPickerViewDataSource, UIPickerViewDelegate>
 /** 1.年 */
 @property (nonatomic, assign)NSInteger year;
@@ -29,6 +38,7 @@
     _yearLeast = 1900;
     _yearSum   = 200;
     _heightPickerComponent = 28;
+//    self.calendarUnit = STCalendarUnitYear | STCalendarUnitMonth | STCalendarUnitDay;
     
     _year  = [NSCalendar currentYear];
     _month = [NSCalendar currentMonth];
@@ -47,14 +57,16 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    if (component == 0) {
-        return self.yearSum;
-    }else if(component == 1) {
-        return 12;
-    }else {
-        NSInteger yearSelected = [pickerView selectedRowInComponent:0] + self.yearLeast;
-        NSInteger monthSelected = [pickerView selectedRowInComponent:1] + 1;
-        return  [NSCalendar getDaysWithYear:yearSelected month:monthSelected];
+    switch (component) {
+        case 0:
+            return self.yearSum;
+            break;
+        case 1:
+            return 12;
+            break;
+        default:
+            return [NSCalendar getDaysWithYear:self.year month:self.month];
+            break;
     }
 }
 
@@ -66,17 +78,17 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     switch (component) {
-        case 0:
-            [pickerView reloadComponent:1];
+        case 0:{
+            self.year = row + self.yearLeast;
             [pickerView reloadComponent:2];
-            break;
-        case 1:
+        }break;
+        case 1:{
+            self.month = row + 1;
             [pickerView reloadComponent:2];
-        default:
-            break;
+        }break;
+        case 2:{
+        }break;
     }
-    
-    [self reloadData];
 }
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(nullable UIView *)view
@@ -109,7 +121,8 @@
 - (void)selectedOk
 {
     if ([self.delegate respondsToSelector:@selector(pickerDate:year:month:day:)]) {
-         [self.delegate pickerDate:self year:self.year month:self.month day:self.day];
+        NSInteger day = [self.pickerView selectedRowInComponent:2] + 1;
+         [self.delegate pickerDate:self year:self.year month:self.month day:day];
     }
    
     [super selectedOk];
@@ -117,18 +130,10 @@
 
 #pragma mark - --- private methods 私有方法 ---
 
-- (void)reloadData
-{
-    self.year  = [self.pickerView selectedRowInComponent:0] + self.yearLeast;
-    self.month = [self.pickerView selectedRowInComponent:1] + 1;
-    self.day   = [self.pickerView selectedRowInComponent:2] + 1;
-}
-
 #pragma mark - --- setters 属性 ---
 
 - (void)setYearLeast:(NSInteger)yearLeast
 {
-    
     if (yearLeast<=0) {
         return;
     }
@@ -139,6 +144,7 @@
     [self.pickerView selectRow:(_day - 1) inComponent:2 animated:NO];
     [self.pickerView reloadAllComponents];
 }
+
 - (void)setYearSum:(NSInteger)yearSum{
     if (yearSum<=0) {
         return;
@@ -147,6 +153,7 @@
     _yearSum = yearSum;
     [self.pickerView reloadAllComponents];
 }
+
 #pragma mark - --- getters 属性 ---
 
 

@@ -69,11 +69,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>STPickerView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>TTTAttributedLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,22 +87,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>02A60475FA8CB9D254EB23473DD8D51A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0B1FB829F9AD5109B6B9963529C43A9F</key>
+		<key>2261605F92C936308F5EA88DFB74A444</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>319899E174E33477EBAB84F6EE3C21FF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3A955E8F16351812A4558E028F0B12F4</key>
+		<key>3C247FF831B6B792A6C5D5335F53A6D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,7 +112,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>46D135718CBA4B585A32AF70A3FDB92F</key>
+		<key>527E62B14CF1D4FDAAE0E83DCA98519E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,7 +137,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>95BD7B2979D0130408AF801EAE9C5864</key>
+		<key>98537334A22882731777CA5B72746F81</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,7 +152,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BF160D8215288D0E84F7F4B168E29138</key>
+		<key>AF20EF556067870A98C5D7677E3FCB69</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -167,12 +162,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E9A8CCB2D8B5B70F29907F3336DDD61A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EED721F4CA94C5B92107EB107C5A512F</key>
+		<key>D3C7C5353F8F9A4148097866F9868D98</key>
 		<dict>
 			<key>primary</key>
 			<true/>

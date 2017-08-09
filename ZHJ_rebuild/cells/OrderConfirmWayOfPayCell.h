@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelWayOfPay;
 @property (weak, nonatomic) IBOutlet UIView *checkboxBGView;
 @property (nonatomic, strong)SSCheckBoxView *checkBox;
+@property (weak, nonatomic) IBOutlet UIImageView *imgWayOfPay;
 
 @end

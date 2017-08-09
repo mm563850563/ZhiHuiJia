@@ -10,4 +10,9 @@
 
 @interface OrderConfirmViewController : UIViewController
 
+@property (nonatomic, strong)NSString *goods_id;
+@property (nonatomic, strong)NSString *goods_num;
+@property (nonatomic, strong)NSArray *goods_spec;
+@property (nonatomic, strong)NSDictionary *Parameter;
+
 @end

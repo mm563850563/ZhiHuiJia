@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class UserAddressListResultModel;
+@class SSCheckBoxView;
 
 @interface MyAddressCell : UITableViewCell
+
+@property (nonatomic, strong)UserAddressListResultModel *modelResult;
+@property (nonatomic, strong)SSCheckBoxView *checkBox;
+@property (weak, nonatomic) IBOutlet UIButton *btnEdit;
+@property (weak, nonatomic) IBOutlet UIButton *btnDelete;
 
 @end

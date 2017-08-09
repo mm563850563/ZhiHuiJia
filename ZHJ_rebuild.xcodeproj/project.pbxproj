@@ -276,6 +276,22 @@
 		DD69B2C21F39EF1E0036F368 /* UserAddressListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2C11F39EF1E0036F368 /* UserAddressListModel.m */; };
 		DD69B2C51F39EF2F0036F368 /* UserAddressListDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2C41F39EF2F0036F368 /* UserAddressListDataModel.m */; };
 		DD69B2C81F39EF400036F368 /* UserAddressListResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2C71F39EF400036F368 /* UserAddressListResultModel.m */; };
+		DD69B2CC1F3AB5FA0036F368 /* OrderConfirmModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2CB1F3AB5FA0036F368 /* OrderConfirmModel.m */; };
+		DD69B2CF1F3AB60C0036F368 /* OrderConfirmDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2CE1F3AB60C0036F368 /* OrderConfirmDataModel.m */; };
+		DD69B2D21F3AB62E0036F368 /* OrderConfirmResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2D11F3AB62E0036F368 /* OrderConfirmResultModel.m */; };
+		DD69B2D81F3AB7D80036F368 /* OrderConfirmUserAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2D71F3AB7D80036F368 /* OrderConfirmUserAddressModel.m */; };
+		DD69B2DB1F3ABE420036F368 /* OrderConfirmGoodsInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2DA1F3ABE420036F368 /* OrderConfirmGoodsInfoModel.m */; };
+		DD69B2F31F3AFD390036F368 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD69B2E21F3AFD390036F368 /* area.plist */; };
+		DD69B2F41F3AFD390036F368 /* NSCalendar+STPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2E51F3AFD390036F368 /* NSCalendar+STPicker.m */; };
+		DD69B2F51F3AFD390036F368 /* STPickerArea.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2E71F3AFD390036F368 /* STPickerArea.m */; };
+		DD69B2F61F3AFD390036F368 /* STPickerDate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2E91F3AFD390036F368 /* STPickerDate.m */; };
+		DD69B2F71F3AFD390036F368 /* STPickerSingle.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2EB1F3AFD390036F368 /* STPickerSingle.m */; };
+		DD69B2F81F3AFD390036F368 /* STPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2ED1F3AFD390036F368 /* STPickerView.m */; };
+		DD69B2F91F3AFD390036F368 /* STPickerViewUI.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2EF1F3AFD390036F368 /* STPickerViewUI.m */; };
+		DD69B2FA1F3AFD390036F368 /* UIView+STPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B2F11F3AFD390036F368 /* UIView+STPicker.m */; };
+		DD69B2FE1F3B09050036F368 /* RegionList.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD69B2FD1F3B09050036F368 /* RegionList.plist */; };
+		DD69B3021F3B309E0036F368 /* EditMyAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B3001F3B309E0036F368 /* EditMyAddressViewController.m */; };
+		DD69B3031F3B309E0036F368 /* EditMyAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69B3011F3B309E0036F368 /* EditMyAddressViewController.xib */; };
 		DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63981F2EB56800611FA8 /* OrderListCell.m */; };
 		DD9A639B1F2EB56800611FA8 /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A63991F2EB56800611FA8 /* OrderListCell.xib */; };
 		DD9A639E1F2ECEE400611FA8 /* OrderListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A639D1F2ECEE400611FA8 /* OrderListHeaderView.m */; };
@@ -340,10 +356,10 @@
 		DDFB825F1F187A7900AEAAA7 /* cb_glossy_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82451F187A7900AEAAA7 /* cb_glossy_off@2x.png */; };
 		DDFB82601F187A7900AEAAA7 /* cb_glossy_on.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82461F187A7900AEAAA7 /* cb_glossy_on.png */; };
 		DDFB82611F187A7900AEAAA7 /* cb_glossy_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82471F187A7900AEAAA7 /* cb_glossy_on@2x.png */; };
-		DDFB82621F187A7900AEAAA7 /* cb_green_off.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82481F187A7900AEAAA7 /* cb_green_off.png */; };
-		DDFB82631F187A7900AEAAA7 /* cb_green_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82491F187A7900AEAAA7 /* cb_green_off@2x.png */; };
-		DDFB82641F187A7900AEAAA7 /* cb_green_on.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB824A1F187A7900AEAAA7 /* cb_green_on.png */; };
-		DDFB82651F187A7900AEAAA7 /* cb_green_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB824B1F187A7900AEAAA7 /* cb_green_on@2x.png */; };
+		DDFB82621F187A7900AEAAA7 /* cb_green_off111.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82481F187A7900AEAAA7 /* cb_green_off111.png */; };
+		DDFB82631F187A7900AEAAA7 /* cb_green_off111@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82491F187A7900AEAAA7 /* cb_green_off111@2x.png */; };
+		DDFB82641F187A7900AEAAA7 /* cb_green_on111.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB824A1F187A7900AEAAA7 /* cb_green_on111.png */; };
+		DDFB82651F187A7900AEAAA7 /* cb_green_on111@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB824B1F187A7900AEAAA7 /* cb_green_on111@2x.png */; };
 		DDFB82661F187A7900AEAAA7 /* cb_mono_off.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB824C1F187A7900AEAAA7 /* cb_mono_off.png */; };
 		DDFB82671F187A7900AEAAA7 /* cb_mono_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB824D1F187A7900AEAAA7 /* cb_mono_off@2x.png */; };
 		DDFB82681F187A7900AEAAA7 /* cb_mono_on.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFB824E1F187A7900AEAAA7 /* cb_mono_on.png */; };
@@ -870,6 +886,35 @@
 		DD69B2C41F39EF2F0036F368 /* UserAddressListDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserAddressListDataModel.m; path = models/UserAddressListDataModel.m; sourceTree = "<group>"; };
 		DD69B2C61F39EF400036F368 /* UserAddressListResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserAddressListResultModel.h; path = models/UserAddressListResultModel.h; sourceTree = "<group>"; };
 		DD69B2C71F39EF400036F368 /* UserAddressListResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserAddressListResultModel.m; path = models/UserAddressListResultModel.m; sourceTree = "<group>"; };
+		DD69B2CA1F3AB5FA0036F368 /* OrderConfirmModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderConfirmModel.h; path = models/OrderConfirmModel.h; sourceTree = "<group>"; };
+		DD69B2CB1F3AB5FA0036F368 /* OrderConfirmModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderConfirmModel.m; path = models/OrderConfirmModel.m; sourceTree = "<group>"; };
+		DD69B2CD1F3AB60C0036F368 /* OrderConfirmDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderConfirmDataModel.h; path = models/OrderConfirmDataModel.h; sourceTree = "<group>"; };
+		DD69B2CE1F3AB60C0036F368 /* OrderConfirmDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderConfirmDataModel.m; path = models/OrderConfirmDataModel.m; sourceTree = "<group>"; };
+		DD69B2D01F3AB62E0036F368 /* OrderConfirmResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderConfirmResultModel.h; path = models/OrderConfirmResultModel.h; sourceTree = "<group>"; };
+		DD69B2D11F3AB62E0036F368 /* OrderConfirmResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderConfirmResultModel.m; path = models/OrderConfirmResultModel.m; sourceTree = "<group>"; };
+		DD69B2D61F3AB7D80036F368 /* OrderConfirmUserAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderConfirmUserAddressModel.h; path = models/OrderConfirmUserAddressModel.h; sourceTree = "<group>"; };
+		DD69B2D71F3AB7D80036F368 /* OrderConfirmUserAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderConfirmUserAddressModel.m; path = models/OrderConfirmUserAddressModel.m; sourceTree = "<group>"; };
+		DD69B2D91F3ABE420036F368 /* OrderConfirmGoodsInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderConfirmGoodsInfoModel.h; path = models/OrderConfirmGoodsInfoModel.h; sourceTree = "<group>"; };
+		DD69B2DA1F3ABE420036F368 /* OrderConfirmGoodsInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderConfirmGoodsInfoModel.m; path = models/OrderConfirmGoodsInfoModel.m; sourceTree = "<group>"; };
+		DD69B2E21F3AFD390036F368 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
+		DD69B2E41F3AFD390036F368 /* NSCalendar+STPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+STPicker.h"; sourceTree = "<group>"; };
+		DD69B2E51F3AFD390036F368 /* NSCalendar+STPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+STPicker.m"; sourceTree = "<group>"; };
+		DD69B2E61F3AFD390036F368 /* STPickerArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerArea.h; sourceTree = "<group>"; };
+		DD69B2E71F3AFD390036F368 /* STPickerArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerArea.m; sourceTree = "<group>"; };
+		DD69B2E81F3AFD390036F368 /* STPickerDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerDate.h; sourceTree = "<group>"; };
+		DD69B2E91F3AFD390036F368 /* STPickerDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerDate.m; sourceTree = "<group>"; };
+		DD69B2EA1F3AFD390036F368 /* STPickerSingle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerSingle.h; sourceTree = "<group>"; };
+		DD69B2EB1F3AFD390036F368 /* STPickerSingle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerSingle.m; sourceTree = "<group>"; };
+		DD69B2EC1F3AFD390036F368 /* STPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerView.h; sourceTree = "<group>"; };
+		DD69B2ED1F3AFD390036F368 /* STPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerView.m; sourceTree = "<group>"; };
+		DD69B2EE1F3AFD390036F368 /* STPickerViewUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerViewUI.h; sourceTree = "<group>"; };
+		DD69B2EF1F3AFD390036F368 /* STPickerViewUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerViewUI.m; sourceTree = "<group>"; };
+		DD69B2F01F3AFD390036F368 /* UIView+STPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+STPicker.h"; sourceTree = "<group>"; };
+		DD69B2F11F3AFD390036F368 /* UIView+STPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+STPicker.m"; sourceTree = "<group>"; };
+		DD69B2FD1F3B09050036F368 /* RegionList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RegionList.plist; sourceTree = "<group>"; };
+		DD69B2FF1F3B309E0036F368 /* EditMyAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditMyAddressViewController.h; path = controllers/personal/EditMyAddressViewController.h; sourceTree = "<group>"; };
+		DD69B3001F3B309E0036F368 /* EditMyAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditMyAddressViewController.m; path = controllers/personal/EditMyAddressViewController.m; sourceTree = "<group>"; };
+		DD69B3011F3B309E0036F368 /* EditMyAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditMyAddressViewController.xib; path = controllers/personal/EditMyAddressViewController.xib; sourceTree = "<group>"; };
 		DD9A63971F2EB56800611FA8 /* OrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListCell.h; path = cells/OrderListCell.h; sourceTree = "<group>"; };
 		DD9A63981F2EB56800611FA8 /* OrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListCell.m; path = cells/OrderListCell.m; sourceTree = "<group>"; };
 		DD9A63991F2EB56800611FA8 /* OrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListCell.xib; path = cells/OrderListCell.xib; sourceTree = "<group>"; };
@@ -974,10 +1019,10 @@
 		DDFB82451F187A7900AEAAA7 /* cb_glossy_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cb_glossy_off@2x.png"; sourceTree = "<group>"; };
 		DDFB82461F187A7900AEAAA7 /* cb_glossy_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cb_glossy_on.png; sourceTree = "<group>"; };
 		DDFB82471F187A7900AEAAA7 /* cb_glossy_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cb_glossy_on@2x.png"; sourceTree = "<group>"; };
-		DDFB82481F187A7900AEAAA7 /* cb_green_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cb_green_off.png; sourceTree = "<group>"; };
-		DDFB82491F187A7900AEAAA7 /* cb_green_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cb_green_off@2x.png"; sourceTree = "<group>"; };
-		DDFB824A1F187A7900AEAAA7 /* cb_green_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cb_green_on.png; sourceTree = "<group>"; };
-		DDFB824B1F187A7900AEAAA7 /* cb_green_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cb_green_on@2x.png"; sourceTree = "<group>"; };
+		DDFB82481F187A7900AEAAA7 /* cb_green_off111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cb_green_off111.png; sourceTree = "<group>"; };
+		DDFB82491F187A7900AEAAA7 /* cb_green_off111@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cb_green_off111@2x.png"; sourceTree = "<group>"; };
+		DDFB824A1F187A7900AEAAA7 /* cb_green_on111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cb_green_on111.png; sourceTree = "<group>"; };
+		DDFB824B1F187A7900AEAAA7 /* cb_green_on111@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cb_green_on111@2x.png"; sourceTree = "<group>"; };
 		DDFB824C1F187A7900AEAAA7 /* cb_mono_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cb_mono_off.png; sourceTree = "<group>"; };
 		DDFB824D1F187A7900AEAAA7 /* cb_mono_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cb_mono_off@2x.png"; sourceTree = "<group>"; };
 		DDFB824E1F187A7900AEAAA7 /* cb_mono_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cb_mono_on.png; sourceTree = "<group>"; };
@@ -1426,6 +1471,62 @@
 			name = UserAddressListModel;
 			sourceTree = "<group>";
 		};
+		DD69B2C91F3AB5B70036F368 /* OrderConfirm */ = {
+			isa = PBXGroup;
+			children = (
+				DD69B2CA1F3AB5FA0036F368 /* OrderConfirmModel.h */,
+				DD69B2CB1F3AB5FA0036F368 /* OrderConfirmModel.m */,
+				DD69B2CD1F3AB60C0036F368 /* OrderConfirmDataModel.h */,
+				DD69B2CE1F3AB60C0036F368 /* OrderConfirmDataModel.m */,
+				DD69B2D01F3AB62E0036F368 /* OrderConfirmResultModel.h */,
+				DD69B2D11F3AB62E0036F368 /* OrderConfirmResultModel.m */,
+				DD69B2D91F3ABE420036F368 /* OrderConfirmGoodsInfoModel.h */,
+				DD69B2DA1F3ABE420036F368 /* OrderConfirmGoodsInfoModel.m */,
+				DD69B2D61F3AB7D80036F368 /* OrderConfirmUserAddressModel.h */,
+				DD69B2D71F3AB7D80036F368 /* OrderConfirmUserAddressModel.m */,
+			);
+			name = OrderConfirm;
+			sourceTree = "<group>";
+		};
+		DD69B2DE1F3AFD390036F368 /* STPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				DD69B2E11F3AFD390036F368 /* Resource */,
+				DD69B2E31F3AFD390036F368 /* STPickerView */,
+			);
+			path = STPickerView;
+			sourceTree = "<group>";
+		};
+		DD69B2E11F3AFD390036F368 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				DD69B2E21F3AFD390036F368 /* area.plist */,
+				DD69B2FD1F3B09050036F368 /* RegionList.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		DD69B2E31F3AFD390036F368 /* STPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				DD69B2E41F3AFD390036F368 /* NSCalendar+STPicker.h */,
+				DD69B2E51F3AFD390036F368 /* NSCalendar+STPicker.m */,
+				DD69B2E61F3AFD390036F368 /* STPickerArea.h */,
+				DD69B2E71F3AFD390036F368 /* STPickerArea.m */,
+				DD69B2E81F3AFD390036F368 /* STPickerDate.h */,
+				DD69B2E91F3AFD390036F368 /* STPickerDate.m */,
+				DD69B2EA1F3AFD390036F368 /* STPickerSingle.h */,
+				DD69B2EB1F3AFD390036F368 /* STPickerSingle.m */,
+				DD69B2EC1F3AFD390036F368 /* STPickerView.h */,
+				DD69B2ED1F3AFD390036F368 /* STPickerView.m */,
+				DD69B2EE1F3AFD390036F368 /* STPickerViewUI.h */,
+				DD69B2EF1F3AFD390036F368 /* STPickerViewUI.m */,
+				DD69B2F01F3AFD390036F368 /* UIView+STPicker.h */,
+				DD69B2F11F3AFD390036F368 /* UIView+STPicker.m */,
+			);
+			path = STPickerView;
+			sourceTree = "<group>";
+		};
 		DDE0FCF01F3563CA00269DBD /* AddToCart */ = {
 			isa = PBXGroup;
 			children = (
@@ -1542,10 +1643,10 @@
 				DDFB82451F187A7900AEAAA7 /* cb_glossy_off@2x.png */,
 				DDFB82461F187A7900AEAAA7 /* cb_glossy_on.png */,
 				DDFB82471F187A7900AEAAA7 /* cb_glossy_on@2x.png */,
-				DDFB82481F187A7900AEAAA7 /* cb_green_off.png */,
-				DDFB82491F187A7900AEAAA7 /* cb_green_off@2x.png */,
-				DDFB824A1F187A7900AEAAA7 /* cb_green_on.png */,
-				DDFB824B1F187A7900AEAAA7 /* cb_green_on@2x.png */,
+				DDFB82481F187A7900AEAAA7 /* cb_green_off111.png */,
+				DDFB82491F187A7900AEAAA7 /* cb_green_off111@2x.png */,
+				DDFB824A1F187A7900AEAAA7 /* cb_green_on111.png */,
+				DDFB824B1F187A7900AEAAA7 /* cb_green_on111@2x.png */,
 				DDFB824C1F187A7900AEAAA7 /* cb_mono_off.png */,
 				DDFB824D1F187A7900AEAAA7 /* cb_mono_off@2x.png */,
 				DDFB824E1F187A7900AEAAA7 /* cb_mono_on.png */,
@@ -1840,6 +1941,7 @@
 		EC4BA07E1F1357B700B9BE1A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				DD69B2DE1F3AFD390036F368 /* STPickerView */,
 				DD6288001F2214F40030331D /* RatingBar */,
 				DDFB823A1F187A7900AEAAA7 /* SSCheckBoxView */,
 				EC4BA0C01F1359DF00B9BE1A /* FlipTableView.h */,
@@ -1940,6 +2042,7 @@
 				DDE0FD261F37F6E600269DBD /* BrandDetailModel */,
 				DD69B28D1F3954670036F368 /* EditCartNumber */,
 				DD69B2BF1F39EEEF0036F368 /* UserAddressListModel */,
+				DD69B2C91F3AB5B70036F368 /* OrderConfirm */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -2186,6 +2289,9 @@
 				DD6287651F2059F70030331D /* MyBalanceViewController.xib */,
 				DD6287291F1F4EC20030331D /* ConfigurationViewController.h */,
 				DD62872A1F1F4EC20030331D /* ConfigurationViewController.m */,
+				DD69B2FF1F3B309E0036F368 /* EditMyAddressViewController.h */,
+				DD69B3001F3B309E0036F368 /* EditMyAddressViewController.m */,
+				DD69B3011F3B309E0036F368 /* EditMyAddressViewController.xib */,
 				DD6287401F1F8C1E0030331D /* MyAddressViewController.h */,
 				DD6287411F1F8C1E0030331D /* MyAddressViewController.m */,
 				DD6287421F1F8C1E0030331D /* MyAddressViewController.xib */,
@@ -2290,6 +2396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD6287941F2185A10030331D /* JoinedCircleCell.xib in Resources */,
+				DD69B3031F3B309E0036F368 /* EditMyAddressViewController.xib in Resources */,
 				DDFB825D1F187A7900AEAAA7 /* cb_dark_on@2x.png in Resources */,
 				DD6287351F1F52BE0030331D /* Configuration_ButtonCell.xib in Resources */,
 				DD62877B1F208CA40030331D /* MyCircleViewController.xib in Resources */,
@@ -2323,7 +2430,7 @@
 				DD62870A1F1EE3210030331D /* FocusPersonCell.xib in Resources */,
 				EC4BA0681F13562700B9BE1A /* LaunchScreen.storyboard in Resources */,
 				DDFB82C11F1E059A00AEAAA7 /* DiscoverDynamicCell.xib in Resources */,
-				DDFB82641F187A7900AEAAA7 /* cb_green_on.png in Resources */,
+				DDFB82641F187A7900AEAAA7 /* cb_green_on111.png in Resources */,
 				DD6287AD1F219ADA0030331D /* SameTownTopicViewController.xib in Resources */,
 				DDFB827D1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib in Resources */,
 				EC4BA2481F14DFE900B9BE1A /* BrandApplyViewController.xib in Resources */,
@@ -2354,7 +2461,7 @@
 				DD4CF03C1F289FB20024156F /* MyOnFocusCell.xib in Resources */,
 				DD69B2AA1F39B6360036F368 /* OrderConfirmProductListCell.xib in Resources */,
 				DD6288351F233EE00030331D /* SameHobbyPersonListViewController.xib in Resources */,
-				DDFB82631F187A7900AEAAA7 /* cb_green_off@2x.png in Resources */,
+				DDFB82631F187A7900AEAAA7 /* cb_green_off111@2x.png in Resources */,
 				DD6287301F1F51BA0030331D /* ConfigurationCell.xib in Resources */,
 				DD4CEFD81F25DD3A0024156F /* CommentListViewController.xib in Resources */,
 				DD4CF0AA1F299A7C0024156F /* AtSomeOneViewController.xib in Resources */,
@@ -2366,7 +2473,7 @@
 				DD62879E1F2191A90030331D /* ActivityRankFirstCell.xib in Resources */,
 				DDFB82601F187A7900AEAAA7 /* cb_glossy_on.png in Resources */,
 				DDFB828F1F1C5E3900AEAAA7 /* MoreProductListCell.xib in Resources */,
-				DDFB82651F187A7900AEAAA7 /* cb_green_on@2x.png in Resources */,
+				DDFB82651F187A7900AEAAA7 /* cb_green_on111@2x.png in Resources */,
 				DDFB82821F19F97900AEAAA7 /* Categate_Brand_HeaderView.xib in Resources */,
 				DD4CEFD31F25D1B90024156F /* ProductStyleSelectionCell.xib in Resources */,
 				DD62874E1F2032220030331D /* MyAddressCell.xib in Resources */,
@@ -2379,7 +2486,7 @@
 				DD4CF0321F2885660024156F /* ActivityApplyViewController.xib in Resources */,
 				DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */,
 				DD6287BC1F21A3700030331D /* LookAroundCell.xib in Resources */,
-				DDFB82621F187A7900AEAAA7 /* cb_green_off.png in Resources */,
+				DDFB82621F187A7900AEAAA7 /* cb_green_off111.png in Resources */,
 				DD6287191F1F32010030331D /* DynamicDetailViewController.xib in Resources */,
 				DD6287DA1F21DE0C0030331D /* MyFocusViewController.xib in Resources */,
 				DD4CF00A1F2824B30024156F /* ActivityRuleView.xib in Resources */,
@@ -2409,6 +2516,7 @@
 				DD62875D1F20522F0030331D /* MyCollectProductViewController.xib in Resources */,
 				DD6287F81F21EE4C0030331D /* PersonalActivityRankCell.xib in Resources */,
 				DD6287A31F2191C90030331D /* ActivityRankNormalCell.xib in Resources */,
+				DD69B2F31F3AFD390036F368 /* area.plist in Resources */,
 				DD6287761F208C0B0030331D /* HotCircleViewController.xib in Resources */,
 				DDE0FD3F1F38714600269DBD /* BrandStoryCell.xib in Resources */,
 				DD9A63A51F2ECF3300611FA8 /* OrderListFooterView.xib in Resources */,
@@ -2434,6 +2542,7 @@
 				DD62870F1F1EEE1B0030331D /* FocusPersonHeaderCell.xib in Resources */,
 				DD62880F1F22EB090030331D /* SubMessage_CommentViewController.xib in Resources */,
 				DD4CF0231F286E9E0024156F /* ActivityRecommendDetailCell.xib in Resources */,
+				DD69B2FE1F3B09050036F368 /* RegionList.plist in Resources */,
 				DD6287E91F21E85D0030331D /* AlreadyPassedViewController.xib in Resources */,
 				EC4BA0EA1F136C8100B9BE1A /* FeedbackViewController.xib in Resources */,
 				DDFB82571F187A7900AEAAA7 /* cb_box_off@2x.png in Resources */,
@@ -2535,10 +2644,12 @@
 				DD40B73D1F1788B000839748 /* HomeCollectCell3.m in Sources */,
 				DDE0FD041F35656A00269DBD /* CartListResultModel.m in Sources */,
 				DD6287221F1F41BF0030331D /* DynamicWithoutCommentCell.m in Sources */,
+				DD69B2F51F3AFD390036F368 /* STPickerArea.m in Sources */,
 				DD4CF0E91F29BF850024156F /* YQMemoryCache.m in Sources */,
 				EC4BA1341F1462F100B9BE1A /* GiftSendingTableViewCell.m in Sources */,
 				DDFB828E1F1C5E3900AEAAA7 /* MoreProductListCell.m in Sources */,
 				DD4CEFF91F2732210024156F /* AllProductViewController.m in Sources */,
+				DD69B2D81F3AB7D80036F368 /* OrderConfirmUserAddressModel.m in Sources */,
 				DD6287F71F21EE4C0030331D /* PersonalActivityRankCell.m in Sources */,
 				DD69B2901F3954A50036F368 /* EditCartNumberModel.m in Sources */,
 				DD6898581F31B5DC008B6A8F /* GoodsDetailGoodsInfoModel.m in Sources */,
@@ -2546,6 +2657,7 @@
 				DDDD17C91F2C9141006BE206 /* MyOrderViewController.m in Sources */,
 				DD62876B1F207A850030331D /* CustomerServiceCenterViewController.m in Sources */,
 				DD40B7311F17437100839748 /* IntellectWearsCell.m in Sources */,
+				DD69B2DB1F3ABE420036F368 /* OrderConfirmGoodsInfoModel.m in Sources */,
 				DDE0FD0A1F35664D00269DBD /* CartListTotalPriceModel.m in Sources */,
 				DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */,
 				DD40B72D1F173B5300839748 /* HomeRightImageCell.m in Sources */,
@@ -2563,6 +2675,7 @@
 				DD6288091F22EA510030331D /* SubMessage_AboutMeViewController.m in Sources */,
 				DD4CF1191F2AFB9E0024156F /* CategoryProductNameCell.m in Sources */,
 				DD9A63BD1F2EF3D900611FA8 /* HomeGoodsResultModel.m in Sources */,
+				DD69B2CF1F3AB60C0036F368 /* OrderConfirmDataModel.m in Sources */,
 				DD6288051F2214F40030331D /* RatingBar.m in Sources */,
 				DD0DBAFB1F3358C20098F5FA /* GoodsDetailSpec_ListModel.m in Sources */,
 				DDFB82981F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m in Sources */,
@@ -2572,6 +2685,7 @@
 				DD69B2961F3954D60036F368 /* EditCartNumberResultModel.m in Sources */,
 				DD4CF0E81F29BF850024156F /* YQLRUManager.m in Sources */,
 				DD62875C1F20522F0030331D /* MyCollectProductViewController.m in Sources */,
+				DD69B2F41F3AFD390036F368 /* NSCalendar+STPicker.m in Sources */,
 				DD0DBADA1F32ED150098F5FA /* GetGiftListModel.m in Sources */,
 				DD0DBB071F3431460098F5FA /* GetSpecPriceModel.m in Sources */,
 				EC4BA0D81F1359EC00B9BE1A /* BaseCollectionViewCell.m in Sources */,
@@ -2584,6 +2698,7 @@
 				DD0DBB011F3403670098F5FA /* ProductDetailSpecHeaderView.m in Sources */,
 				DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */,
 				DD0DBB0D1F3431780098F5FA /* GetSpecPriceResultModel.m in Sources */,
+				DD69B2FA1F3AFD390036F368 /* UIView+STPicker.m in Sources */,
 				DD62871D1F1F3D8B0030331D /* PriaseTableViewCell.m in Sources */,
 				DD0DBAD31F32B9970098F5FA /* RecommendGoodsDataModel.m in Sources */,
 				DD4CF0A41F2996B60024156F /* MoreCycleViewController.m in Sources */,
@@ -2620,6 +2735,7 @@
 				DD4CF10C1F29EE250024156F /* AllClassifyResultModel.m in Sources */,
 				DD6287E81F21E85D0030331D /* AlreadyPassedViewController.m in Sources */,
 				DDE0FD1E1F35D07E00269DBD /* AddToCollectionModel.m in Sources */,
+				DD69B2CC1F3AB5FA0036F368 /* OrderConfirmModel.m in Sources */,
 				DD4CF1091F29EE010024156F /* AllClassifyDataModel.m in Sources */,
 				DDFB82C51F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m in Sources */,
 				DDE0FD2F1F37F75500269DBD /* BrandDetailResultModel.m in Sources */,
@@ -2671,6 +2787,7 @@
 				EC4BA0F41F136CA400B9BE1A /* SubCategate_CategateViewController.m in Sources */,
 				DD69B29F1F39B2970036F368 /* OrderConfirmViewController.m in Sources */,
 				DD6898281F30525A008B6A8F /* MoreProductTableViewCell.m in Sources */,
+				DD69B2F91F3AFD390036F368 /* STPickerViewUI.m in Sources */,
 				DD6288341F233EE00030331D /* SameHobbyPersonListViewController.m in Sources */,
 				DD6287431F1F8C1E0030331D /* MyAddressViewController.m in Sources */,
 				DD6288221F22EC7A0030331D /* SubNotification_DiscountViewController.m in Sources */,
@@ -2678,6 +2795,7 @@
 				DD6898451F319D90008B6A8F /* GetGiftTypeDataModel.m in Sources */,
 				DD6898141F302BB2008B6A8F /* ClassifyListDataModel.m in Sources */,
 				DD0DBAED1F330CDA0098F5FA /* GetUserPrizeResultModel.m in Sources */,
+				DD69B2F71F3AFD390036F368 /* STPickerSingle.m in Sources */,
 				DD6287DE1F21E3B20030331D /* ActivityViewController.m in Sources */,
 				DD6898171F302BE3008B6A8F /* ClassifyListResultModel.m in Sources */,
 				DD9A63A91F2EE20100611FA8 /* AfterSalesViewController.m in Sources */,
@@ -2722,9 +2840,11 @@
 				DD6287B11F219BA50030331D /* HandpickActivitiesViewController.m in Sources */,
 				DD6288301F232E970030331D /* GetHeightOfText.m in Sources */,
 				EC4BA2541F15EDF000B9BE1A /* DiscoverHeaderCell.m in Sources */,
+				DD69B2F81F3AFD390036F368 /* STPickerView.m in Sources */,
 				DDE0FCF81F35642C00269DBD /* AddToCartDataModel.m in Sources */,
 				DD6897FF1F2F276C008B6A8F /* AllBrandDataModel.m in Sources */,
 				DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */,
+				DD69B2D21F3AB62E0036F368 /* OrderConfirmResultModel.m in Sources */,
 				DD4CEFDF1F26CD0F0024156F /* BrandDetailViewController.m in Sources */,
 				DD6288391F233FA30030331D /* SameHobbyPersonListCell.m in Sources */,
 				DDE0FD351F37F7B300269DBD /* BrandDetail_BrandGoodsModel.m in Sources */,
@@ -2753,6 +2873,7 @@
 				DDE0FD171F35C8E300269DBD /* CartListAllSelectedModel.m in Sources */,
 				DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */,
 				EC4BA1111F136CBD00B9BE1A /* SubNotifi_MessageViewController.m in Sources */,
+				DD69B2F61F3AFD390036F368 /* STPickerDate.m in Sources */,
 				DD0DBAD01F32B9810098F5FA /* RecommendGoodsModel.m in Sources */,
 				DD4CF03B1F289FB20024156F /* MyOnFocusCell.m in Sources */,
 				DD9A639E1F2ECEE400611FA8 /* OrderListHeaderView.m in Sources */,
@@ -2762,6 +2883,7 @@
 				EC4BA0F31F136CA400B9BE1A /* SubCategate_BrandViewController.m in Sources */,
 				DD6898081F2F2861008B6A8F /* AllBrandGoodsListModel.m in Sources */,
 				DD69B2C21F39EF1E0036F368 /* UserAddressListModel.m in Sources */,
+				DD69B3021F3B309E0036F368 /* EditMyAddressViewController.m in Sources */,
 				DD4CF0051F28219F0024156F /* HWPopTool.m in Sources */,
 				DD6898051F2F2847008B6A8F /* AllBrandListModel.m in Sources */,
 				DDE0FD101F35668700269DBD /* UserFavoriteDataModel.m in Sources */,

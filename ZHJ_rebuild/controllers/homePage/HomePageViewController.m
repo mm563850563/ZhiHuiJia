@@ -38,6 +38,7 @@
 //models
 #import "HomeGoodsModel.h"
 #import "HomeGoodsResultModel.h"
+#import "HomeGoodsListModel.h"
 #import "IndexCarouselModel.h"
 #import "IndexCarouselResultModel.h"
 #import "GetGiftTypeModel.h"
@@ -210,27 +211,31 @@
 -(void)getRecommendGoodsData
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetRecommendGoods];
-    NSString *userID = kUserDefaultObject(kUserInfo);
     
-    NSDictionary *dictParameter = @{@"user_id":userID};
-    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:dictParameter progressBlock:nil successBlock:^(id response) {
-        if (response) {
-            NSDictionary *dataDict = (NSDictionary *)response;
-            RecommendGoodsModel *model = [[RecommendGoodsModel alloc]initWithDictionary:dataDict error:nil];
-            if ([model.code isEqualToString:@"200"]) {
-                self.recommendResultArray = model.data.result;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.tableView reloadData];
-                });
-            }else{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+    if (kUserDefaultObject(kUserInfo)) {
+        NSString *userID = kUserDefaultObject(kUserInfo);
+        NSDictionary *dictParameter = @{@"user_id":userID};
+        
+        [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:dictParameter progressBlock:nil successBlock:^(id response) {
+            if (response) {
+                NSDictionary *dataDict = (NSDictionary *)response;
+                RecommendGoodsModel *model = [[RecommendGoodsModel alloc]initWithDictionary:dataDict error:nil];
+                if ([model.code isEqualToString:@"200"]) {
+                    self.recommendResultArray = model.data.result;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.tableView reloadData];
+                    });
+                }else{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                }
             }
-        }
-    } failBlock:^(NSError *error) {
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
-    }];
+        } failBlock:^(NSError *error) {
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }];
+    }
+    
 }
 
 
@@ -348,7 +353,7 @@
 {
     ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
     productDetailVC.hidesBottomBarWhenPushed = YES;
-    productDetailVC.goods_id = @"13";
+    productDetailVC.goods_id = goods_id;
     [self.navigationController pushViewController:productDetailVC animated:YES];
 }
 #pragma mark - <跳转更多产品页面>
@@ -394,6 +399,26 @@
     
     //点击YouthColorCell中的item
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectYouthItem" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *goods_id = x.object;
+        [self jumpToProductDetailVCWithGoodsID:goods_id];
+    }];
+    
+    //点击IntellectWearsCell中的上下布局item
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectItemOneSide" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *goods_id = x.object;
+        [self jumpToProductDetailVCWithGoodsID:goods_id];
+    }];
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectItemTwoSide" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *goods_id = x.object;
+        [self jumpToProductDetailVCWithGoodsID:goods_id];
+    }];
+    
+    //点击IntellectWearsCell中的其他item
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectIntellectWearOverTwoItem" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *goods_id = x.object;
+        [self jumpToProductDetailVCWithGoodsID:goods_id];
+    }];
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectIntellectWearNormalItem" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         NSString *goods_id = x.object;
         [self jumpToProductDetailVCWithGoodsID:goods_id];
     }];
@@ -615,19 +640,26 @@
             [self.navigationController pushViewController:sameHobbyPersonListVC animated:YES];
         }
     }else{
-//        if (indexPath.section == 3 || indexPath.section == 6 || indexPath.section == 9) {
-//            if (indexPath.row == 5) {
-//                [self jumpToMoreProductListVC];
-//            }else{
-//                [self jumpToProductDetailVC];
-//            }
-//        }else{
-//            if (indexPath.row == 0) {
-//                [self jumpToProductDetailVC];
-//            }else if (indexPath.row == 2){
-//                [self jumpToMoreProductListVC];
-//            }
-//        }
+        if (indexPath.row == 0) {
+            HomeGoodsResultModel *modelResult = self.homeGoodsResultArray[indexPath.section-1];
+            NSString *goodsID = modelResult.big_img.goods_id;
+            [self jumpToProductDetailVCWithGoodsID:goodsID];
+        }else{
+            HomeGoodsResultModel *modelResult = self.homeGoodsResultArray[indexPath.section-1];
+            if ([modelResult.id isEqualToString:@"3"] || [modelResult.id isEqualToString:@"6"]) {
+                
+            }else if ([modelResult.id isEqualToString:@"1"] || [modelResult.id isEqualToString:@"4"] || [modelResult.id isEqualToString:@"8"]){
+                
+                if (indexPath.row == modelResult.goods_list.count+1) {
+                    //更多新品
+                }else{
+                    HomeGoodsListModel *modelGoodsList = modelResult.goods_list[indexPath.row-1];
+                    NSString *goodsID = modelGoodsList.goods_id;
+                    [self jumpToProductDetailVCWithGoodsID:goodsID];
+                }
+                
+            }
+        }
     }
 }
 

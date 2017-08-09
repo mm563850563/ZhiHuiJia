@@ -9,8 +9,8 @@
 #import "PersonalFileViewController.h"
 
 //views
-#import <STPickerArea.h>
-#import <STPickerDate.h>
+#import "STPickerArea.h"
+#import "STPickerDate.h"
 
 @interface PersonalFileViewController ()<STPickerDateDelegate,STPickerAreaDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
@@ -161,7 +161,7 @@
 }
 
 #pragma mark - **** STPickerAreaDelegate ****
--(void)pickerArea:(STPickerArea *)pickerArea province:(NSString *)province city:(NSString *)city area:(NSString *)area
+-(void)pickerArea:(STPickerArea *)pickerArea province:(NSString *)province city:(NSString *)city area:(NSString *)area provinceID:(nonnull NSString *)provinceID cityID:(nonnull NSString *)cityID areaID:(nonnull NSString *)areaID
 {
     NSMutableArray *array = [NSMutableArray array];
     if (![province isEqualToString:@""]) {

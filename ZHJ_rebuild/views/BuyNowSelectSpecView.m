@@ -179,13 +179,13 @@
 {
     [self btnCancelAction:nil];
     
-    
-    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
-                                    @"goods_id":self.goods_id,
-                                    @"goods_num":self.labelCount.text,
-                                    @"goods_spec":self.specValueArray};
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToOrderConfirmVC" object:dictParameter];
-//    [self GetAddToCartData];
+    if (self.goods_id && self.labelCount.text && self.specValueArray.count>0 && kUserDefaultObject(kUserInfo)) {
+        NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                        @"goods_id":self.goods_id,
+                                        @"goods_num":self.labelCount.text,
+                                        @"goods_spec":self.specValueArray};
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToOrderConfirmVC" object:dictParameter];
+    }
 }
 
 #pragma mark - <请求加入购物车>

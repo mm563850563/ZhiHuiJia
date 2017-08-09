@@ -63,6 +63,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="checkboxBGView" destination="o8B-0C-LLX" id="yLw-pv-Xhh"/>
+                <outlet property="imgWayOfPay" destination="MWg-b0-Hs7" id="Pbn-PH-Zrl"/>
                 <outlet property="labelWayOfPay" destination="n4U-Zr-xVt" id="NNs-oT-FEn"/>
             </connections>
             <point key="canvasLocation" x="83" y="142.5"/>

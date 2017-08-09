@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class OrderConfirmGoodsInfoModel;
 
 @interface OrderConfirmProductListCell : UITableViewCell
+
+@property (nonatomic, strong)OrderConfirmGoodsInfoModel *modelGoodsInfo;
 
 @end

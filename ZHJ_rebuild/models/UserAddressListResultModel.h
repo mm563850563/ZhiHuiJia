@@ -12,9 +12,11 @@
 
 @property (nonatomic, strong)NSString *address_id;
 @property (nonatomic, strong)NSString *consignee;
-@property (nonatomic, strong)NSString *address_name;
+@property (nonatomic, strong)NSString *area;
 @property (nonatomic, strong)NSString *address;
 @property (nonatomic, strong)NSString *mobile;
 @property (nonatomic, strong)NSString *is_default;
-
+@property (nonatomic, strong)NSString *province;
+@property (nonatomic, strong)NSString *city;
+@property (nonatomic, strong)NSString *district;
 @end

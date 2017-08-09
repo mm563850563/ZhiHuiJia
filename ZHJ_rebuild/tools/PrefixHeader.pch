@@ -141,7 +141,7 @@
 #define kRemoveCart @"/cart/removeCart"  //user_id ,cart_id
 
 #pragma mark - <21.确认订单>
-#define kConfirmOrder @"/order/confirmOrder" //goods_id,user_id,goods_num,address_id,goods_spec
+#define kConfirmOrder @"/order/confirmOrder" //goods_id,user_id,goods_num,goods_spec
 
 
 #pragma mark - <22.听说你喜欢>
@@ -152,6 +152,9 @@
 
 #pragma mark - <24.用户地址列表>
 #define kUserAddressList @"/User/getUserAddressList"  //user_id
+
+#pragma mark - <25.新增收获地址>
+#define kAddAddress @"/User/addUserAddress" 
 
 
 

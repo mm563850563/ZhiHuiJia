@@ -164,7 +164,26 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%ld",(long)indexPath.row);
+    if (indexPath.item == 1) {
+        NSMutableArray *dataArray = [NSMutableArray array];
+        HomeGoodsListModel *model1 = self.dataArray[indexPath.item];
+        [dataArray addObject:model1];
+        if (self.dataArray.count > 2) {
+            HomeGoodsListModel *model2 = self.dataArray[indexPath.item+1];
+            [dataArray addObject:model2];
+        }
+    }else if (indexPath.row > 1){
+        HomeGoodsListModel *model = [[HomeGoodsListModel alloc]init];
+        if (self.dataArray.count > 3 && indexPath.row < self.dataArray.count-1) {
+            model = self.dataArray[indexPath.item+1];
+        }
+        NSString *goodsID = model.goods_id;
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"selectIntellectWearOverTwoItem" object:goodsID];
+    }else{
+        HomeGoodsListModel *model = self.dataArray[indexPath.item];
+        NSString *goodsID = model.goods_id;
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"selectIntellectWearNormalItem" object:goodsID];
+    }
 }
 
 
