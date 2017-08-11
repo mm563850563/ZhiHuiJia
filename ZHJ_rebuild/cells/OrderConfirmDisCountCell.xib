@@ -67,6 +67,9 @@
                     <constraint firstAttribute="trailing" secondItem="UKN-w5-GJD" secondAttribute="trailing" id="pdS-PI-43B"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="labelDiscountMessage" destination="BPm-ep-TSw" id="RbO-V2-vx4"/>
+            </connections>
             <point key="canvasLocation" x="83" y="118.5"/>
         </tableViewCell>
     </objects>

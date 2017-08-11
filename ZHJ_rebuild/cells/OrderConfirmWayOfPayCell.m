@@ -8,7 +8,7 @@
 
 #import "OrderConfirmWayOfPayCell.h"
 
-#import "SSCheckBoxView.h"
+
 
 @interface OrderConfirmWayOfPayCell ()
 

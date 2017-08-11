@@ -14,12 +14,17 @@
 @interface MyAddressIncreaseViewController ()<STPickerAreaDelegate>
 
 @property (nonatomic, strong)STPickerArea *areaPicker;
-@property (nonatomic, strong)NSString *proviceID;
+@property (nonatomic, strong)NSString *provinceID;
 @property (nonatomic, strong)NSString *cityID;
 @property (nonatomic, strong)NSString *areaID;
 
 //outlets
 @property (weak, nonatomic) IBOutlet UILabel *labelArea;
+@property (weak, nonatomic) IBOutlet UITextField *tfContactName;
+@property (weak, nonatomic) IBOutlet UITextField *tfContactPhone;
+@property (weak, nonatomic) IBOutlet UITextField *tfContactAddress;
+@property (weak, nonatomic) IBOutlet UISwitch *switcher;
+@property (nonatomic, strong)NSString *isDefault;
 
 @end
 
@@ -28,6 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self settingOutlets];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,20 +52,130 @@
 }
 */
 
+#pragma mark - <获取提交数据>
+-(void)getSubmitData
+{
+    if (![self.tfContactName.text isEqualToString:@""] || ![self.tfContactPhone.text isEqualToString:@""] || ![self.tfContactAddress.text isEqualToString:@""] || self.provinceID || self.cityID || self.areaID || kUserDefaultObject(kUserInfo)) {
+        
+        NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kAddAddress];
+        NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                        @"consignee":self.tfContactName.text,
+                                        @"mobile":self.tfContactPhone.text,
+                                        @"address":self.tfContactAddress.text,
+                                        @"is_default":self.isDefault,
+                                        @"province":self.provinceID,
+                                        @"city":self.cityID,
+                                        @"district":self.areaID};
+        
+        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+        [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+            if (response) {
+                NSDictionary *dataDict = (NSDictionary *)response;
+                NSNumber *code = (NSNumber *)response[@"code"];
+                if ([code isEqual:@200]) {
+                    //通知地址列表刷新页面
+                    [[NSNotificationCenter defaultCenter]postNotificationName:@"submitAfterModifyAddress" object:nil];
+                    
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    hudWarning.completionBlock = ^{
+                        [self.navigationController popViewControllerAnimated:YES];
+                    };
+                }else{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                }
+            }else{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"数据为空"];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+        } failBlock:^(NSError *error) {
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }];
+    }
+}
+
+#pragma mark - <配置outlets>
+-(void)settingOutlets
+{
+    if (self.switcher.on) {
+        self.isDefault = @"1";
+    }else{
+        self.isDefault = @"0";
+    }
+}
+
 #pragma mark - <点击“所在地区”响应>
 - (IBAction)btnSelectAreaAction:(UIButton *)sender
 {
+    //收回键盘
+    [self.view endEditing:YES];
+    //弹起pickerView
     self.areaPicker = [[STPickerArea alloc]init];
     self.areaPicker.delegate = self;
     [self.areaPicker show];
 }
+
+#pragma mark - <设置为默认收货地址>
+- (IBAction)switcherSetDefaultAction:(UISwitch *)sender
+{
+    if (sender.on) {
+        self.isDefault = @"1";
+    }else{
+        self.isDefault = @"0";
+    }
+}
+
+#pragma mark - <提交按钮响应>
+- (IBAction)btnSubmitAction:(UIButton *)sender
+{
+    if ([self.tfContactName.text isEqualToString:@""] || [self.tfContactPhone.text isEqualToString:@""] || [self.tfContactAddress.text isEqualToString:@""] || !self.provinceID || !self.cityID || !self.areaID) {
+        NSString *warningStr = @"";
+        if ([self.tfContactName.text isEqualToString:@""]) {
+            warningStr = @"请填写收货人";
+        }else if ([self.tfContactPhone.text isEqualToString:@""]){
+            warningStr = @"请填写手机号码";
+        }else if ([self.tfContactAddress.text isEqualToString:@""]){
+            warningStr = @"请填写详细地址";
+        }else if (!self.provinceID || !self.cityID || !self.areaID){
+            warningStr = @"请选择所在地区";
+        }
+        MBProgressHUD *hud = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:warningStr];
+        [hud hideAnimated:YES afterDelay:2.0];
+    }else{
+        [self getSubmitData];
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 #pragma mark - **** STPickerAreaDelegate ****
 -(void)pickerArea:(STPickerArea *)pickerArea province:(NSString *)province city:(NSString *)city area:(NSString *)area provinceID:(nonnull NSString *)provinceID cityID:(nonnull NSString *)cityID areaID:(nonnull NSString *)areaID
 {
-    self.proviceID = provinceID;
+    self.provinceID = provinceID;
     self.cityID = cityID;
     self.areaID = areaID;
     

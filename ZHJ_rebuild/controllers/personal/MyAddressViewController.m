@@ -88,6 +88,61 @@
     }
 }
 
+#pragma mark - <获取设置默认收货地址数据>
+-(void)getSetDefaultAddressDataWithUserID:(NSString *)user_id addressID:(NSString *)address_id
+{
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kSetDefaultAddress];
+    NSDictionary *dictParameter = @{@"user_id":user_id,
+                                    @"address_id":address_id};
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        [hud hideAnimated:YES afterDelay:1.0];
+        NSDictionary *dataDict = (NSDictionary *)response;
+        NSNumber *code = (NSNumber *)dataDict[@"code"];
+        if ([code isEqual:@200]) {
+            //设置成功后重新请求页面数据
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self getUserAddressListData];
+            });
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }else{
+            
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }
+    } failBlock:^(NSError *error) {
+        [hud hideAnimated:YES afterDelay:1.0];
+    }];
+}
+
+#pragma mark - <获取删除收货地址数据>
+-(void)getDeleteAddressDataWithUserID:(NSString *)user_id addressID:(NSString *)address_id
+{
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kDeleteAddress];
+    NSDictionary *dictParameter = @{@"user_id":user_id,
+                                    @"address_id":address_id};
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        [hud hideAnimated:YES afterDelay:1.0];
+        NSDictionary *dataDict = (NSDictionary *)response;
+        NSNumber *code = (NSNumber *)dataDict[@"code"];
+        if ([code isEqual:@200]) {
+            //设置成功后重新请求页面数据
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self getUserAddressListData];
+            });
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }else{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }
+    } failBlock:^(NSError *error) {
+        [hud hideAnimated:YES afterDelay:1.0];
+    }];
+}
+
 #pragma mark - <配置tableView>
 -(void)settingTableview
 {
@@ -99,7 +154,7 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([MyAddressCell class])];
 }
 
-
+#pragma mark - <新增地址>
 - (IBAction)btnIncreaseNewlyAddress:(id)sender
 {
     MyAddressIncreaseViewController *myAddressIncreaseVC = [[MyAddressIncreaseViewController alloc]initWithNibName:NSStringFromClass([MyAddressIncreaseViewController class]) bundle:nil];
@@ -120,14 +175,32 @@
 {
     //编辑地址
     [[[NSNotificationCenter defaultCenter ]rac_addObserverForName:@"EditAddressAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        UIButton *button = x.object;
-        UserAddressListResultModel *model = self.addressListArray[button.tag];
+        UserAddressListResultModel *model = x.object;
         [self jumpToEditMyAddressVCWithModel:model];
+    }];
+    
+    //编辑地址后刷新该页面
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"submitAfterModifyAddress" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [self getUserAddressListData];
     }];
     
     //删除地址
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DeleteAddressAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        
+        NSString *address_id = x.object;
+        NSString *user_id = kUserDefaultObject( kUserInfo);
+        [self getDeleteAddressDataWithUserID:user_id addressID:address_id];
+    }];
+    
+    //选择收货地址
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectAddress" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    //设置默认收货地址
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"setDefaultAddress" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *address_id = x.object;
+        NSString *user_id = kUserDefaultObject( kUserInfo);
+        [self getSetDefaultAddressDataWithUserID:user_id addressID:address_id];
     }];
 }
 
@@ -165,9 +238,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UserAddressListResultModel *model = self.addressListArray[indexPath.row];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectAddress" object:model];
-    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 @end

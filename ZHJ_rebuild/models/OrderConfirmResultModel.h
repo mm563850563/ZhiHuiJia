@@ -13,7 +13,7 @@
 @interface OrderConfirmResultModel : JSONModel
 
 @property (nonatomic, strong)OrderConfirmGoodsInfoModel *goods_info;
-@property (nonatomic, strong)NSString *sub_total;
+@property (nonatomic, strong)NSString *unpaid;
 @property (nonatomic, strong)OrderConfirmUserAddressModel *user_address;
 
 @end

@@ -10,4 +10,6 @@
 
 @interface OrderConfirmDisCountCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *labelDiscountMessage;
+
 @end

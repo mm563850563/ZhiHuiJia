@@ -33836,7 +33836,18 @@
 			</dict>
 			<dict>
 				<key>children</key>
-				<array/>
+				<array>
+					<dict>
+						<key>level</key>
+						<string>3</string>
+						<key>name</key>
+						<string>桃园县</string>
+						<key>parent_id</key>
+						<string>3267</string>
+						<key>id</key>
+						<string>3268</string>
+					</dict>
+				</array>
 				<key>id</key>
 				<string>3267</string>
 				<key>level</key>

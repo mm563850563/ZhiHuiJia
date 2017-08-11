@@ -156,6 +156,18 @@
 #pragma mark - <25.新增收获地址>
 #define kAddAddress @"/User/addUserAddress" 
 
+#pragma mark - <26.修改收货地址>
+#define kUpdateAddres @"/User/updateUserAddress"
+
+#pragma mark - <27.设置默认收货地址>
+#define kSetDefaultAddress @"/User/setDefaultAddress"
+
+#pragma mark - <28.删除收货地址>
+#define kDeleteAddress @"/User/delUserAddress"
+
+#pragma mark - <29.优惠券列表>
+#define kDiscountCouponList @"/user/getCouponList"
+
 
 
 

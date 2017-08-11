@@ -12,6 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyAddressIncreaseViewController">
             <connections>
                 <outlet property="labelArea" destination="OyU-QF-BB2" id="9jc-ho-rx5"/>
+                <outlet property="switcher" destination="3Sa-ih-2E3" id="amr-eP-VzW"/>
+                <outlet property="tfContactAddress" destination="Nko-0M-ZrL" id="K1s-LD-BHR"/>
+                <outlet property="tfContactName" destination="bMg-14-yfW" id="8TR-s7-qn1"/>
+                <outlet property="tfContactPhone" destination="ScR-sI-uUF" id="6dR-EJ-66w"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -225,6 +229,9 @@
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Sa-ih-2E3">
                                             <rect key="frame" x="316" y="10" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="switcherSetDefaultAction:" destination="-1" eventType="valueChanged" id="A7m-Ja-4hO"/>
+                                            </connections>
                                         </switch>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -284,6 +291,9 @@
                             <integer key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="btnSubmitAction:" destination="-1" eventType="touchUpInside" id="OsZ-rh-kAp"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>

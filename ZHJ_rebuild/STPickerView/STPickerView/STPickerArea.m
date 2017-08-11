@@ -28,6 +28,11 @@
 /** 8.地区 */
 @property (nonatomic, strong, nullable)NSString *area;
 
+@property (nonatomic, strong)NSMutableArray *arrayProvinceID;
+@property (nonatomic, strong)NSMutableArray *arrayCityID;
+@property (nonatomic, strong)NSMutableArray *arrayAreaID;
+
+
 @property (nonatomic, strong)NSString *provinceID;
 @property (nonatomic, strong)NSString *cityID;
 @property (nonatomic, strong)NSString *areaID;
@@ -46,6 +51,7 @@
     [self.arrayRoot enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
 //        [self.arrayProvince addObject:obj[@"state"]];
         [self.arrayProvince addObject:obj[@"name"]];
+        [self.arrayProvinceID addObject:obj[@"id"]];
     }];
 
 //    NSMutableArray *citys = [NSMutableArray arrayWithArray:[self.arrayRoot firstObject][@"cities"]];
@@ -54,17 +60,27 @@
     [citys enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
 //        [self.arrayCity addObject:obj[@"city"]];
         [self.arrayCity addObject:obj[@"name"]];
+        [self.arrayCityID addObject:obj[@"id"]];
     }];
 
 //    self.arrayArea = [citys firstObject][@"area"];
     self.arrayArea = [citys firstObject][@"children"];
+    [self.arrayArea enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.arrayAreaID addObject:obj[@"id"]];
+    }];
 
     self.province = self.arrayProvince[0];
+    self.provinceID = self.arrayProvinceID[0];
+    
     self.city = self.arrayCity[0];
+    self.cityID = self.arrayCityID[0];
+    
     if (self.arrayArea.count != 0) {
         self.area = self.arrayArea[0][@"name"];
+        self.areaID = self.arrayAreaID[0];
     }else{
         self.area = @"";
+        self.areaID = @"";
     }
     self.saveHistory = NO;
     
@@ -102,14 +118,19 @@
 {
     if (component == 0) {
         self.arraySelected = self.arrayRoot[row][@"children"];
-        self.provinceID = self.arrayRoot[row][@"id"];
 
         [self.arrayCity removeAllObjects];
+        [self.arrayCityID removeAllObjects];
         [self.arraySelected enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [self.arrayCity addObject:obj[@"name"]];
+            [self.arrayCityID addObject:obj[@"id"]];
         }];
 
         self.arrayArea = [NSMutableArray arrayWithArray:[self.arraySelected firstObject][@"children"]];
+        [self.arrayAreaID removeAllObjects];
+        [self.arrayArea enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self.arrayAreaID addObject:obj[@"id"]];
+        }];
 
         [pickerView reloadComponent:1];
         [pickerView reloadComponent:2];
@@ -120,15 +141,18 @@
         if (self.arraySelected.count == 0) {
             self.arraySelected = [self.arrayRoot firstObject][@"children"];
         }
-
-        self.cityID = self.arraySelected[row][@"id"];
+        
         self.arrayArea = [NSMutableArray arrayWithArray:[self.arraySelected objectAtIndex:row][@"children"]];
+        [self.arrayAreaID removeAllObjects];
+        [self.arrayArea enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self.arrayAreaID addObject:obj[@"id"]];
+        }];
 
         [pickerView reloadComponent:2];
         [pickerView selectRow:0 inComponent:2 animated:YES];
 
     }else{
-        self.areaID = self.arrayArea[row][@"id"];
+//        self.areaID = self.arrayArea[row][@"id"];
     }
 
     [self reloadData];
@@ -144,17 +168,22 @@
         }
     }];
     
-    
     NSString *text;
     if (component == 0) {
         text =  self.arrayProvince[row];
+        self.provinceID = self.arrayProvinceID[row];
     }else if (component == 1){
         text =  self.arrayCity[row];
+        self.cityID = self.arrayCityID[row];
+//        NSLog(@"%@:%@\n",text,self.cityID);
     }else{
+        
         if (self.arrayArea.count > 0) {
             text = self.arrayArea[row][@"name"];
+            self.areaID = self.arrayAreaID[row];
         }else{
             text =  @"";
+            self.areaID = @"";
         }
     }
     
@@ -190,11 +219,17 @@
     NSInteger index1 = [self.pickerView selectedRowInComponent:1];
     NSInteger index2 = [self.pickerView selectedRowInComponent:2];
     self.province = self.arrayProvince[index0];
+    self.provinceID = self.arrayProvinceID[index0];
+    
     self.city = self.arrayCity[index1];
+    self.cityID = self.arrayCityID[index1];
+    
     if (self.arrayArea.count != 0) {
         self.area = self.arrayArea[index2][@"name"];
+        self.areaID = self.arrayAreaID[index2];
     }else{
         self.area = @"";
+        self.areaID = @"";
     }
     
     NSString *title = [NSString stringWithFormat:@"%@ %@ %@", self.province, self.city, self.area];
@@ -300,6 +335,30 @@
         _arraySelected = @[].mutableCopy;
     }
     return _arraySelected;
+}
+
+-(NSMutableArray *)arrayProvinceID
+{
+    if (!_arrayProvinceID) {
+        _arrayProvinceID = @[].mutableCopy;
+    }
+    return _arrayProvinceID;
+}
+
+-(NSMutableArray *)arrayCityID
+{
+    if (!_arrayCityID) {
+        _arrayCityID = @[].mutableCopy;
+    }
+    return _arrayCityID;
+}
+
+-(NSMutableArray *)arrayAreaID
+{
+    if (!_arrayAreaID) {
+        _arrayAreaID = @[].mutableCopy;
+    }
+    return _arrayAreaID;
 }
 
 @end

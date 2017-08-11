@@ -72,20 +72,30 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HQ-Ek-9pS">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="92"/>
+                                        <connections>
+                                            <action selector="btnSelectBecomeShippingAddress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WHn-qY-QYB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7HQ-Ek-9pS" secondAttribute="trailing" id="0Qi-Vw-WqR"/>
                                     <constraint firstItem="PeE-aQ-87b" firstAttribute="centerY" secondItem="iSO-l4-6mP" secondAttribute="centerY" id="3Ap-fh-rbf"/>
+                                    <constraint firstItem="7HQ-Ek-9pS" firstAttribute="leading" secondItem="INu-6o-bf5" secondAttribute="leading" id="6Mz-Kk-a52"/>
                                     <constraint firstItem="h3B-cY-ajd" firstAttribute="centerY" secondItem="qYe-lN-3N3" secondAttribute="centerY" id="GgM-qs-Wim"/>
                                     <constraint firstItem="iSO-l4-6mP" firstAttribute="top" secondItem="INu-6o-bf5" secondAttribute="top" constant="15" id="Z5e-2M-XdC"/>
                                     <constraint firstItem="PeE-aQ-87b" firstAttribute="leading" secondItem="iSO-l4-6mP" secondAttribute="trailing" id="ZU9-1e-BNd"/>
                                     <constraint firstItem="qYe-lN-3N3" firstAttribute="top" secondItem="iSO-l4-6mP" secondAttribute="bottom" constant="5" id="ao4-83-2Ky"/>
                                     <constraint firstItem="pSO-Be-DBv" firstAttribute="centerY" secondItem="qYe-lN-3N3" secondAttribute="centerY" id="c6L-rq-JnR"/>
                                     <constraint firstAttribute="trailing" secondItem="iSO-l4-6mP" secondAttribute="trailing" constant="110" id="dzs-4Z-rIJ"/>
+                                    <constraint firstItem="7HQ-Ek-9pS" firstAttribute="top" secondItem="INu-6o-bf5" secondAttribute="top" id="eRB-Sy-s55"/>
                                     <constraint firstItem="qYe-lN-3N3" firstAttribute="leading" secondItem="iSO-l4-6mP" secondAttribute="leading" id="fXw-rB-jo1"/>
                                     <constraint firstItem="h3B-cY-ajd" firstAttribute="leading" secondItem="qYe-lN-3N3" secondAttribute="trailing" constant="5" id="hl3-PO-JVv"/>
                                     <constraint firstAttribute="trailing" secondItem="PeE-aQ-87b" secondAttribute="trailing" constant="10" id="kiU-EO-nOK"/>
                                     <constraint firstItem="iSO-l4-6mP" firstAttribute="leading" secondItem="INu-6o-bf5" secondAttribute="leading" constant="10" id="lSf-wl-fdf"/>
+                                    <constraint firstAttribute="bottom" secondItem="7HQ-Ek-9pS" secondAttribute="bottom" id="sHM-52-i0c"/>
                                     <constraint firstItem="pSO-Be-DBv" firstAttribute="leading" secondItem="h3B-cY-ajd" secondAttribute="trailing" constant="5" id="vKS-AL-7VR"/>
                                 </constraints>
                             </view>

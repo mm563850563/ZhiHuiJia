@@ -30,6 +30,19 @@
 		DD0DBB0A1F3431650098F5FA /* GetSpecPriceDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB091F3431650098F5FA /* GetSpecPriceDataModel.m */; };
 		DD0DBB0D1F3431780098F5FA /* GetSpecPriceResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB0C1F3431780098F5FA /* GetSpecPriceResultModel.m */; };
 		DD0DBB101F34817A0098F5FA /* NSString+ContentWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB0F1F34817A0098F5FA /* NSString+ContentWidth.m */; };
+		DD184E071F3C4EE6009BFF5B /* MyDiscountCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD184E051F3C4EE6009BFF5B /* MyDiscountCouponViewController.m */; };
+		DD184E081F3C4EE6009BFF5B /* MyDiscountCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD184E061F3C4EE6009BFF5B /* MyDiscountCouponViewController.xib */; };
+		DD184E0C1F3C52C6009BFF5B /* MyDiscountCouponCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD184E0A1F3C52C6009BFF5B /* MyDiscountCouponCell.m */; };
+		DD184E0D1F3C52C6009BFF5B /* MyDiscountCouponCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD184E0B1F3C52C6009BFF5B /* MyDiscountCouponCell.xib */; };
+		DD184E111F3C596A009BFF5B /* MyDiscountCouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD184E101F3C596A009BFF5B /* MyDiscountCouponModel.m */; };
+		DD184E141F3C597A009BFF5B /* MyDiscountCouponDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD184E131F3C597A009BFF5B /* MyDiscountCouponDataModel.m */; };
+		DD184E171F3C598D009BFF5B /* MyDiscountCouponResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD184E161F3C598D009BFF5B /* MyDiscountCouponResultModel.m */; };
+		DD184E1A1F3C59AC009BFF5B /* MyDiscountCouponNormalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD184E191F3C59AC009BFF5B /* MyDiscountCouponNormalModel.m */; };
+		DD184E1D1F3C59C7009BFF5B /* MyDiscountCouponExpiredModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD184E1C1F3C59C7009BFF5B /* MyDiscountCouponExpiredModel.m */; };
+		DD184E201F3C59ED009BFF5B /* MyDiscountCouponAvailableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD184E1F1F3C59ED009BFF5B /* MyDiscountCouponAvailableModel.m */; };
+		DD184E231F3D3C19009BFF5B /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = DD184E221F3D3C19009BFF5B /* NSString+MD5.m */; };
+		DD184E271F3D5658009BFF5B /* NULLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD184E251F3D5658009BFF5B /* NULLTableViewCell.m */; };
+		DD184E281F3D5658009BFF5B /* NULLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD184E261F3D5658009BFF5B /* NULLTableViewCell.xib */; };
 		DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B7191F164CE000839748 /* HomePageMainCell.m */; };
 		DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD40B71A1F164CE000839748 /* HomePageMainCell.xib */; };
 		DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B71E1F17027E00839748 /* YouthColorCell.m */; };
@@ -492,6 +505,29 @@
 		DD0DBB0C1F3431780098F5FA /* GetSpecPriceResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetSpecPriceResultModel.m; path = models/GetSpecPriceResultModel.m; sourceTree = "<group>"; };
 		DD0DBB0E1F34817A0098F5FA /* NSString+ContentWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+ContentWidth.h"; path = "tools/NSString+ContentWidth.h"; sourceTree = "<group>"; };
 		DD0DBB0F1F34817A0098F5FA /* NSString+ContentWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+ContentWidth.m"; path = "tools/NSString+ContentWidth.m"; sourceTree = "<group>"; };
+		DD184E041F3C4EE6009BFF5B /* MyDiscountCouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDiscountCouponViewController.h; path = controllers/personal/MyDiscountCouponViewController.h; sourceTree = "<group>"; };
+		DD184E051F3C4EE6009BFF5B /* MyDiscountCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDiscountCouponViewController.m; path = controllers/personal/MyDiscountCouponViewController.m; sourceTree = "<group>"; };
+		DD184E061F3C4EE6009BFF5B /* MyDiscountCouponViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyDiscountCouponViewController.xib; path = controllers/personal/MyDiscountCouponViewController.xib; sourceTree = "<group>"; };
+		DD184E091F3C52C6009BFF5B /* MyDiscountCouponCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDiscountCouponCell.h; path = cells/MyDiscountCouponCell.h; sourceTree = "<group>"; };
+		DD184E0A1F3C52C6009BFF5B /* MyDiscountCouponCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDiscountCouponCell.m; path = cells/MyDiscountCouponCell.m; sourceTree = "<group>"; };
+		DD184E0B1F3C52C6009BFF5B /* MyDiscountCouponCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyDiscountCouponCell.xib; path = cells/MyDiscountCouponCell.xib; sourceTree = "<group>"; };
+		DD184E0F1F3C596A009BFF5B /* MyDiscountCouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDiscountCouponModel.h; path = models/MyDiscountCouponModel.h; sourceTree = "<group>"; };
+		DD184E101F3C596A009BFF5B /* MyDiscountCouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDiscountCouponModel.m; path = models/MyDiscountCouponModel.m; sourceTree = "<group>"; };
+		DD184E121F3C597A009BFF5B /* MyDiscountCouponDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDiscountCouponDataModel.h; path = models/MyDiscountCouponDataModel.h; sourceTree = "<group>"; };
+		DD184E131F3C597A009BFF5B /* MyDiscountCouponDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDiscountCouponDataModel.m; path = models/MyDiscountCouponDataModel.m; sourceTree = "<group>"; };
+		DD184E151F3C598D009BFF5B /* MyDiscountCouponResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDiscountCouponResultModel.h; path = models/MyDiscountCouponResultModel.h; sourceTree = "<group>"; };
+		DD184E161F3C598D009BFF5B /* MyDiscountCouponResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDiscountCouponResultModel.m; path = models/MyDiscountCouponResultModel.m; sourceTree = "<group>"; };
+		DD184E181F3C59AC009BFF5B /* MyDiscountCouponNormalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDiscountCouponNormalModel.h; path = models/MyDiscountCouponNormalModel.h; sourceTree = "<group>"; };
+		DD184E191F3C59AC009BFF5B /* MyDiscountCouponNormalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDiscountCouponNormalModel.m; path = models/MyDiscountCouponNormalModel.m; sourceTree = "<group>"; };
+		DD184E1B1F3C59C7009BFF5B /* MyDiscountCouponExpiredModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDiscountCouponExpiredModel.h; path = models/MyDiscountCouponExpiredModel.h; sourceTree = "<group>"; };
+		DD184E1C1F3C59C7009BFF5B /* MyDiscountCouponExpiredModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDiscountCouponExpiredModel.m; path = models/MyDiscountCouponExpiredModel.m; sourceTree = "<group>"; };
+		DD184E1E1F3C59ED009BFF5B /* MyDiscountCouponAvailableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDiscountCouponAvailableModel.h; path = models/MyDiscountCouponAvailableModel.h; sourceTree = "<group>"; };
+		DD184E1F1F3C59ED009BFF5B /* MyDiscountCouponAvailableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDiscountCouponAvailableModel.m; path = models/MyDiscountCouponAvailableModel.m; sourceTree = "<group>"; };
+		DD184E211F3D3C18009BFF5B /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MD5.h"; path = "tools/NSString+MD5.h"; sourceTree = "<group>"; };
+		DD184E221F3D3C19009BFF5B /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5.m"; path = "tools/NSString+MD5.m"; sourceTree = "<group>"; };
+		DD184E241F3D5658009BFF5B /* NULLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NULLTableViewCell.h; path = cells/NULLTableViewCell.h; sourceTree = "<group>"; };
+		DD184E251F3D5658009BFF5B /* NULLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NULLTableViewCell.m; path = cells/NULLTableViewCell.m; sourceTree = "<group>"; };
+		DD184E261F3D5658009BFF5B /* NULLTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NULLTableViewCell.xib; path = cells/NULLTableViewCell.xib; sourceTree = "<group>"; };
 		DD40B7181F164CE000839748 /* HomePageMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomePageMainCell.h; path = cells/HomePageMainCell.h; sourceTree = "<group>"; };
 		DD40B7191F164CE000839748 /* HomePageMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomePageMainCell.m; path = cells/HomePageMainCell.m; sourceTree = "<group>"; };
 		DD40B71A1F164CE000839748 /* HomePageMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomePageMainCell.xib; path = cells/HomePageMainCell.xib; sourceTree = "<group>"; };
@@ -1265,6 +1301,25 @@
 			name = GetSpecPrice;
 			sourceTree = "<group>";
 		};
+		DD184E0E1F3C5938009BFF5B /* MyDiscountCouponModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD184E0F1F3C596A009BFF5B /* MyDiscountCouponModel.h */,
+				DD184E101F3C596A009BFF5B /* MyDiscountCouponModel.m */,
+				DD184E121F3C597A009BFF5B /* MyDiscountCouponDataModel.h */,
+				DD184E131F3C597A009BFF5B /* MyDiscountCouponDataModel.m */,
+				DD184E151F3C598D009BFF5B /* MyDiscountCouponResultModel.h */,
+				DD184E161F3C598D009BFF5B /* MyDiscountCouponResultModel.m */,
+				DD184E181F3C59AC009BFF5B /* MyDiscountCouponNormalModel.h */,
+				DD184E191F3C59AC009BFF5B /* MyDiscountCouponNormalModel.m */,
+				DD184E1B1F3C59C7009BFF5B /* MyDiscountCouponExpiredModel.h */,
+				DD184E1C1F3C59C7009BFF5B /* MyDiscountCouponExpiredModel.m */,
+				DD184E1E1F3C59ED009BFF5B /* MyDiscountCouponAvailableModel.h */,
+				DD184E1F1F3C59ED009BFF5B /* MyDiscountCouponAvailableModel.m */,
+			);
+			name = MyDiscountCouponModel;
+			sourceTree = "<group>";
+		};
 		DD4CF0021F28219F0024156F /* HWPoTools */ = {
 			isa = PBXGroup;
 			children = (
@@ -1934,6 +1989,12 @@
 				DD69B2B51F39B6BD0036F368 /* OrderConfirmWayOfPayCell.h */,
 				DD69B2B61F39B6BD0036F368 /* OrderConfirmWayOfPayCell.m */,
 				DD69B2B71F39B6BD0036F368 /* OrderConfirmWayOfPayCell.xib */,
+				DD184E091F3C52C6009BFF5B /* MyDiscountCouponCell.h */,
+				DD184E0A1F3C52C6009BFF5B /* MyDiscountCouponCell.m */,
+				DD184E0B1F3C52C6009BFF5B /* MyDiscountCouponCell.xib */,
+				DD184E241F3D5658009BFF5B /* NULLTableViewCell.h */,
+				DD184E251F3D5658009BFF5B /* NULLTableViewCell.m */,
+				DD184E261F3D5658009BFF5B /* NULLTableViewCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -2043,6 +2104,7 @@
 				DD69B28D1F3954670036F368 /* EditCartNumber */,
 				DD69B2BF1F39EEEF0036F368 /* UserAddressListModel */,
 				DD69B2C91F3AB5B70036F368 /* OrderConfirm */,
+				DD184E0E1F3C5938009BFF5B /* MyDiscountCouponModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -2069,6 +2131,8 @@
 				DDDD17B81F2C5194006BE206 /* ProgressHUDManager.m */,
 				DD6898221F3049AD008B6A8F /* NSMutableAttributedString+ThroughLine.h */,
 				DD6898231F3049AD008B6A8F /* NSMutableAttributedString+ThroughLine.m */,
+				DD184E211F3D3C18009BFF5B /* NSString+MD5.h */,
+				DD184E221F3D3C19009BFF5B /* NSString+MD5.m */,
 			);
 			name = tools;
 			sourceTree = "<group>";
@@ -2287,6 +2351,9 @@
 				DD6287631F2059F70030331D /* MyBalanceViewController.h */,
 				DD6287641F2059F70030331D /* MyBalanceViewController.m */,
 				DD6287651F2059F70030331D /* MyBalanceViewController.xib */,
+				DD184E041F3C4EE6009BFF5B /* MyDiscountCouponViewController.h */,
+				DD184E051F3C4EE6009BFF5B /* MyDiscountCouponViewController.m */,
+				DD184E061F3C4EE6009BFF5B /* MyDiscountCouponViewController.xib */,
 				DD6287291F1F4EC20030331D /* ConfigurationViewController.h */,
 				DD62872A1F1F4EC20030331D /* ConfigurationViewController.m */,
 				DD69B2FF1F3B309E0036F368 /* EditMyAddressViewController.h */,
@@ -2395,6 +2462,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD184E281F3D5658009BFF5B /* NULLTableViewCell.xib in Resources */,
 				DD6287941F2185A10030331D /* JoinedCircleCell.xib in Resources */,
 				DD69B3031F3B309E0036F368 /* EditMyAddressViewController.xib in Resources */,
 				DDFB825D1F187A7900AEAAA7 /* cb_dark_on@2x.png in Resources */,
@@ -2499,6 +2567,7 @@
 				DD6287581F2049A10030331D /* ModifyPasswordViewController.xib in Resources */,
 				DD40B7241F1705A000839748 /* HomeCollectCell1.xib in Resources */,
 				DD69B2B41F39B6980036F368 /* OrderConfirmFeeCell.xib in Resources */,
+				DD184E081F3C4EE6009BFF5B /* MyDiscountCouponViewController.xib in Resources */,
 				DDFB825C1F187A7900AEAAA7 /* cb_dark_on.png in Resources */,
 				DD69B2B91F39B6BD0036F368 /* OrderConfirmWayOfPayCell.xib in Resources */,
 				DDFB82661F187A7900AEAAA7 /* cb_mono_off.png in Resources */,
@@ -2506,6 +2575,7 @@
 				DDFB82561F187A7900AEAAA7 /* cb_box_off.png in Resources */,
 				DD6287231F1F41BF0030331D /* DynamicWithoutCommentCell.xib in Resources */,
 				DD6287D51F21C9930030331D /* DomainHeaderView.xib in Resources */,
+				DD184E0D1F3C52C6009BFF5B /* MyDiscountCouponCell.xib in Resources */,
 				DD6287A81F2198FC0030331D /* SameTownViewController.xib in Resources */,
 				DD6898341F3172B5008B6A8F /* LoginViewController.xib in Resources */,
 				EC4BA0651F13562700B9BE1A /* Assets.xcassets in Resources */,
@@ -2618,6 +2688,7 @@
 				EC4BA0DB1F1359EC00B9BE1A /* FactoryCollectionViewCell.m in Sources */,
 				DD69B2A91F39B6360036F368 /* OrderConfirmProductListCell.m in Sources */,
 				DDE0FD291F37F71C00269DBD /* BrandDetailModel.m in Sources */,
+				DD184E271F3D5658009BFF5B /* NULLTableViewCell.m in Sources */,
 				DDE0FCFE1F35653800269DBD /* CartListModel.m in Sources */,
 				DD4CF0311F2885660024156F /* ActivityApplyViewController.m in Sources */,
 				DD6898371F31903B008B6A8F /* LoginView.m in Sources */,
@@ -2644,6 +2715,7 @@
 				DD40B73D1F1788B000839748 /* HomeCollectCell3.m in Sources */,
 				DDE0FD041F35656A00269DBD /* CartListResultModel.m in Sources */,
 				DD6287221F1F41BF0030331D /* DynamicWithoutCommentCell.m in Sources */,
+				DD184E201F3C59ED009BFF5B /* MyDiscountCouponAvailableModel.m in Sources */,
 				DD69B2F51F3AFD390036F368 /* STPickerArea.m in Sources */,
 				DD4CF0E91F29BF850024156F /* YQMemoryCache.m in Sources */,
 				EC4BA1341F1462F100B9BE1A /* GiftSendingTableViewCell.m in Sources */,
@@ -2745,6 +2817,7 @@
 				DD4CEFDB1F25E08D0024156F /* CommentListCell.m in Sources */,
 				DD9A63BA1F2EF3B600611FA8 /* HomeGoodsDataModel.m in Sources */,
 				DDFB82C01F1E059A00AEAAA7 /* DiscoverDynamicCell.m in Sources */,
+				DD184E111F3C596A009BFF5B /* MyDiscountCouponModel.m in Sources */,
 				DD68984F1F31B532008B6A8F /* GoodsDetailModel.m in Sources */,
 				DD6287661F2059F70030331D /* MyBalanceViewController.m in Sources */,
 				DDFB826F1F18BC4500AEAAA7 /* PersonalCollectCell.m in Sources */,
@@ -2775,6 +2848,7 @@
 				DDFB82741F19B18800AEAAA7 /* Categate_CategateCollectCell.m in Sources */,
 				DDE0FD391F38585B00269DBD /* BrandStoryViewController.m in Sources */,
 				EC4BA0DC1F1359EC00B9BE1A /* FactoryTableViewCell.m in Sources */,
+				DD184E1A1F3C59AC009BFF5B /* MyDiscountCouponNormalModel.m in Sources */,
 				DDE0FD211F35D09000269DBD /* AddToCollectionDataModel.m in Sources */,
 				EC4BA10B1F136CBD00B9BE1A /* HomePageViewController.m in Sources */,
 				DD62877F1F208CE60030331D /* RankingListViewController.m in Sources */,
@@ -2799,6 +2873,7 @@
 				DD6287DE1F21E3B20030331D /* ActivityViewController.m in Sources */,
 				DD6898171F302BE3008B6A8F /* ClassifyListResultModel.m in Sources */,
 				DD9A63A91F2EE20100611FA8 /* AfterSalesViewController.m in Sources */,
+				DD184E171F3C598D009BFF5B /* MyDiscountCouponResultModel.m in Sources */,
 				EC4BA0CA1F1359DF00B9BE1A /* LeftSideSegmentView.m in Sources */,
 				DD4CF0401F28A43E0024156F /* NewPostViewController.m in Sources */,
 				EC4BA1121F136CBD00B9BE1A /* SubNotifi_NotificationViewController.m in Sources */,
@@ -2815,7 +2890,9 @@
 				DDDD17B91F2C5194006BE206 /* ProgressHUDManager.m in Sources */,
 				DDDD17C21F2C6B54006BE206 /* IndexCarouselResultModel.m in Sources */,
 				DD62870E1F1EEE1B0030331D /* FocusPersonHeaderCell.m in Sources */,
+				DD184E231F3D3C19009BFF5B /* NSString+MD5.m in Sources */,
 				DD0DBAE31F32ED7C0098F5FA /* GetGiftList_GiftListModel.m in Sources */,
+				DD184E1D1F3C59C7009BFF5B /* MyDiscountCouponExpiredModel.m in Sources */,
 				DD6287041F1EE19C0030331D /* FocusPersonFileViewController.m in Sources */,
 				DD6287481F1F90E80030331D /* GiftListCell.m in Sources */,
 				DD0DBAF61F332E840098F5FA /* ProductDetailHeaderView.m in Sources */,
@@ -2825,6 +2902,7 @@
 				DD6898481F319DA8008B6A8F /* GetGiftTypeResultModel.m in Sources */,
 				DD6287C51F21AE580030331D /* LookAroundViewController.m in Sources */,
 				EC4BA0D91F1359EC00B9BE1A /* BaseTableViewCell.m in Sources */,
+				DD184E141F3C597A009BFF5B /* MyDiscountCouponDataModel.m in Sources */,
 				DD6287BB1F21A3700030331D /* LookAroundCell.m in Sources */,
 				DD6287891F20B0BA0030331D /* MainCircleViewController.m in Sources */,
 				DD4CF1121F29F22E0024156F /* AllClassifyChidrenFirstModel.m in Sources */,
@@ -2863,10 +2941,12 @@
 				DD69B29A1F39A0510036F368 /* BrandAppliedCollectionCell.m in Sources */,
 				DD6287A71F2198FC0030331D /* SameTownViewController.m in Sources */,
 				DD6897FC1F2F2647008B6A8F /* AllBrandModel.m in Sources */,
+				DD184E0C1F3C52C6009BFF5B /* MyDiscountCouponCell.m in Sources */,
 				DD62872B1F1F4EC20030331D /* ConfigurationViewController.m in Sources */,
 				EC4BA08A1F1359A900B9BE1A /* CycleScrollModel.m in Sources */,
 				DD0DBADD1F32ED3B0098F5FA /* GetGiftListDataModel.m in Sources */,
 				DD0DBAFE1F33594A0098F5FA /* GoodsDetailSpec_ValueModel.m in Sources */,
+				DD184E071F3C4EE6009BFF5B /* MyDiscountCouponViewController.m in Sources */,
 				DD6287AC1F219ADA0030331D /* SameTownTopicViewController.m in Sources */,
 				DD69B2AE1F39B6610036F368 /* OrderConfirmDisCountCell.m in Sources */,
 				DD69B2B31F39B6980036F368 /* OrderConfirmFeeCell.m in Sources */,

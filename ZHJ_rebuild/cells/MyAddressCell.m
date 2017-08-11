@@ -40,19 +40,33 @@
 {
     self.checkBox = [[SSCheckBoxView alloc]initWithFrame:self.checkBoxBGView.bounds style:kSSCheckBoxViewStyleGreen checked:NO];
     [self.checkBoxBGView addSubview:self.checkBox];
+    [self.checkBox setStateChangedTarget:self selector:@selector(postNotificationToSetDefaultAddress)];
 }
+
+#pragma mark - <发送通知设置默认收货地址>
+-(void)postNotificationToSetDefaultAddress
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"setDefaultAddress" object:self.modelResult.address_id];
+}
+
+
 
 #pragma mark - <删除地址>
 - (IBAction)btnDeleteAddressAction:(UIButton *)sender
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"DeleteAddressAction" object:sender];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"DeleteAddressAction" object:self.modelResult.address_id];
 }
 
 #pragma mark - <编辑地址>
 - (IBAction)btnEditAddressAction:(UIButton *)sender
 {
-    
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"EditAddressAction" object:sender];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"EditAddressAction" object:self.modelResult];
+}
+
+#pragma mark - <选择该项cell作为收货地址>
+- (IBAction)btnSelectBecomeShippingAddress:(UIButton *)sender
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectAddress" object:self.modelResult];
 }
 
 -(void)setModelResult:(UserAddressListResultModel *)modelResult

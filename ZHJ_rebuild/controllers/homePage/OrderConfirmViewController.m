@@ -18,7 +18,7 @@
 //controllers
 #import "MyAddressViewController.h"
 #import "ProductDetailViewController.h"
-#import "SubNotification_DiscountViewController.h"
+#import "MyDiscountCouponViewController.h"
 
 //models
 #import "OrderConfirmModel.h"
@@ -26,15 +26,22 @@
 #import "OrderConfirmGoodsInfoModel.h"
 #import "OrderConfirmUserAddressModel.h"
 #import "UserAddressListResultModel.h"
+#import "MyDiscountCouponAvailableModel.h"
 
 @interface OrderConfirmViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UILabel *labelTotalPrice;
+@property (weak, nonatomic) IBOutlet UILabel *labelShouldPay;
+@property (nonatomic, strong)NSString *shouldPay;
 
 @property (nonatomic, strong)OrderConfirmGoodsInfoModel *modelGoodsInfo;
 @property (nonatomic, strong)OrderConfirmResultModel *modelResult;
 @property (nonatomic, strong)OrderConfirmUserAddressModel *modelUserAddress;
+
+@property (nonatomic, strong)NSString *wayOfPay;
+@property (nonatomic, strong)NSString *discountCouponID;
+@property (nonatomic, strong)NSString *discountPrice;
+@property (nonatomic, strong)NSString *discountCouponMessage;
 
 @end
 
@@ -44,6 +51,7 @@
     [super viewDidLoad];
     
     [self getOrderConfirmData];
+    [self settingOutlsets];
     [self settingTableView];
     
     [self respondWithRAC];
@@ -80,9 +88,11 @@
                 self.modelResult = model.data.result;
                 self.modelUserAddress = model.data.result.user_address;
                 
+                [self fillDataToOutletsWithModel:self.modelResult];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
-                    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:4] animated:YES scrollPosition:UITableViewScrollPositionNone];
+                    //默认选中支付方式第一项
+//                    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:4] animated:YES scrollPosition:UITableViewScrollPositionNone];
                 });
             }else{
                 [hud hideAnimated:YES afterDelay:1.0];
@@ -100,6 +110,21 @@
         [hudWarning hideAnimated:YES afterDelay:2.0];
     }];
 
+}
+
+
+#pragma mark - <填充数据给outlets>
+-(void)fillDataToOutletsWithModel:(OrderConfirmResultModel *)model;
+{
+    self.labelShouldPay.text = [NSString stringWithFormat:@"¥%@",model.unpaid];
+    self.shouldPay = model.unpaid;
+}
+
+#pragma mark - <设定默认outlets>
+-(void)settingOutlsets
+{
+    self.discountCouponMessage = @"分享产品立即满减";
+    self.discountPrice = @"0";
 }
 
 #pragma mark - <配置tableView>
@@ -146,9 +171,10 @@
 }
 
 #pragma mark - <跳转优惠券页面>
--(void)jumpToDiscountVC
+-(void)jumpToDiscountVCWithShouldPay:(NSString *)shouldPay
 {
-    SubNotification_DiscountViewController *discountVC = [[SubNotification_DiscountViewController alloc]initWithNibName:NSStringFromClass([SubNotification_DiscountViewController class]) bundle:nil];
+    MyDiscountCouponViewController *discountVC = [[MyDiscountCouponViewController alloc]initWithNibName:NSStringFromClass([MyDiscountCouponViewController class]) bundle:nil];
+    discountVC.shouldPay = shouldPay;
     discountVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:discountVC animated:YES];
 }
@@ -156,6 +182,7 @@
 #pragma mark - <RAC响应>
 -(void)respondWithRAC
 {
+    //选择收货地址
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectAddress" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         UserAddressListResultModel *model = x.object;
         
@@ -172,6 +199,23 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
+    }];
+    
+    //选择优惠券
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectDiscountCoupon" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        MyDiscountCouponAvailableModel *model = x.object;
+        self.discountCouponMessage = [NSString stringWithFormat:@"已选择%@优惠券",model.money];
+        self.discountCouponID = model.id;
+        self.discountPrice = model.money;
+        //计算应支付：应支付-优惠券
+        float discountPrice = [self.discountPrice floatValue];
+        float shouldPay = [self.shouldPay floatValue];
+        shouldPay = shouldPay-discountPrice;
+        if (shouldPay < 0) {
+            shouldPay = 0.00;
+        }
+        self.labelShouldPay.text = [NSString stringWithFormat:@"¥%.2f",shouldPay];
+        [self.tableView reloadData];
     }];
 }
 
@@ -200,7 +244,7 @@
     }else if (section == 3){
         return 1;
     }else if (section == 4){
-        return 3;
+        return 2;
     }
     return 0;
 }
@@ -251,24 +295,24 @@
         cell = cellProductList;
     }else if (indexPath.section == 2){
         OrderConfirmDisCountCell *cellDiscount = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OrderConfirmDisCountCell class])];
+        cellDiscount.labelDiscountMessage.text = self.discountCouponMessage;
         cell = cellDiscount;
     }else if (indexPath.section == 3){
         OrderConfirmFeeCell  *cellFee = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OrderConfirmFeeCell class])];
         cellFee.labelTotalPrice.text = [NSString stringWithFormat:@"¥%@",self.modelGoodsInfo.price];
         cellFee.labelFreight.text = [NSString stringWithFormat:@"¥%@",self.modelGoodsInfo.freight];
-        cellFee.labelDiscount.text = [NSString stringWithFormat:@"-¥%@",@"0"];
+        cellFee.labelDiscount.text = [NSString stringWithFormat:@"-¥%@",self.discountPrice];
+        cellFee.labelUserBalance.text = [NSString stringWithFormat:@"-¥%@",self.modelGoodsInfo.use_money];
         cell = cellFee;
     }else if (indexPath.section == 4){
         OrderConfirmWayOfPayCell *cellWayOfPay = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OrderConfirmWayOfPayCell class])];
-        if (indexPath.row == 0) {
+        cellWayOfPay.wayOfPay = self.wayOfPay;
+        cellWayOfPay.tag = indexPath.row;
+        if (indexPath.row == 0) {cellWayOfPay.imgWayOfPay.image = [UIImage imageNamed:@"zhi_fu_bao_zhi_fu"];
+            cellWayOfPay.labelWayOfPay.text = @"支付宝";
+        }else if (indexPath.row == 1){
             cellWayOfPay.imgWayOfPay.image = [UIImage imageNamed:@"wei_xin_zhi_fu"];
             cellWayOfPay.labelWayOfPay.text = @"微信支付";
-        }else if (indexPath.row == 1){
-            cellWayOfPay.imgWayOfPay.image = [UIImage imageNamed:@"zhi_fu_bao_zhi_fu"];
-            cellWayOfPay.labelWayOfPay.text = @"支付宝";
-        }else if (indexPath.row == 2){
-            cellWayOfPay.imgWayOfPay.image = [UIImage imageNamed:@"zj"];
-            cellWayOfPay.labelWayOfPay.text = @"用户余额";
         }
         cell = cellWayOfPay;
     }
@@ -285,7 +329,16 @@
     }else if (indexPath.section == 1){
         [self jumpToProductDetailVCWithGoodsID:self.modelGoodsInfo.goods_id];
     }else if (indexPath.section == 2){
-        [self jumpToDiscountVC];
+        double totalPrice = [self.modelGoodsInfo.total_price doubleValue];
+        double freight = [self.modelGoodsInfo.freight doubleValue];
+        NSString *shouldPay = [NSString stringWithFormat:@"%f",totalPrice+freight];
+        [self jumpToDiscountVCWithShouldPay:shouldPay];
+    }else if (indexPath.section == 4){
+        if (indexPath.row == 0) {
+            self.wayOfPay = @"1";//支付宝
+        }else if (indexPath.row == 1){
+            self.wayOfPay = @"2";//微信支付
+        }
     }
 }
 

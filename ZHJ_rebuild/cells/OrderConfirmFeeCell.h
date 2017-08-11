@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelTotalPrice;
 @property (weak, nonatomic) IBOutlet UILabel *labelFreight;
 @property (weak, nonatomic) IBOutlet UILabel *labelDiscount;
+@property (weak, nonatomic) IBOutlet UILabel *labelUserBalance;
 
 @end

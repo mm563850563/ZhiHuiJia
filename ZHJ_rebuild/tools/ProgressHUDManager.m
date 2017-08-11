@@ -15,7 +15,7 @@
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:isAnimated];
     hud.mode = MBProgressHUDModeIndeterminate;
-    hud.label.text = @"Loading";
+//    hud.label.text = @"Loading";
     hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
     hud.bezelView.color = [UIColor colorWithWhite:1.0 alpha:0];
     return hud;
@@ -41,6 +41,7 @@
     [hud setYOffset:230];
     hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
     hud.bezelView.color = [UIColor colorWithWhite:0 alpha:0.8];
+//    [hud hideAnimated:YES afterDelay:2.0];
     return hud;
 }
 

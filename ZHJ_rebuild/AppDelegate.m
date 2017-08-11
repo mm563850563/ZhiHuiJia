@@ -11,6 +11,7 @@
 #import "MainTabBarViewController.h"
 #import <MLTransition.h>
 #import <IQKeyboardManager.h>
+#import <AFNetworkReachabilityManager.h>
 
 @interface AppDelegate ()
 
@@ -22,7 +23,37 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     //检查网络
-//    [YQNetworking ]
+    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
+    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusUnknown:
+            {
+                //未知网络
+                NSLog(@"未知网络");
+            }
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+            {
+                //无法联网
+                NSLog(@"请检查网络");
+            }
+                break;
+                
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+            {
+                //手机自带网络
+                NSLog(@"当前使用的是2g/3g/4g网络");
+            }
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+            {
+                //WIFI
+                NSLog(@"当前在WIFI网络下");
+            }
+        }
+    }];
+    [manager startMonitoring];
+    
     
     //全局手势滑动返回
     [MLTransition validatePanBackWithMLTransitionGestureRecognizerType:MLTransitionGestureRecognizerTypeScreenEdgePan];
@@ -42,9 +73,12 @@
 -(void)presentLogionVC
 {
     if (!kUserDefaultObject(kUserInfo)) {
+        NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
         LoginView *loginView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([LoginView class]) owner:nil options:nil].lastObject;
         [self.window addSubview:loginView];
         [self.window bringSubviewToFront:loginView];
+    }else{
+        NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
     }
 }
 

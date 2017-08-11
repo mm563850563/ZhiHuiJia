@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderConfirmViewController">
             <connections>
-                <outlet property="labelTotalPrice" destination="hhY-rd-xDw" id="Bqt-E9-uPZ"/>
+                <outlet property="labelShouldPay" destination="hhY-rd-xDw" id="YYQ-nu-mEG"/>
                 <outlet property="tableView" destination="RgS-jS-pu4" id="oWE-AT-TE5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -48,17 +48,17 @@
                                 <action selector="btnConfirmOrderNowAction:" destination="-1" eventType="touchUpInside" id="cPc-iC-7mR"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huw-wE-oZY">
-                            <rect key="frame" x="0.0" y="1" width="60" height="49"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="待支付：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huw-wE-oZY">
+                            <rect key="frame" x="0.0" y="1" width="80" height="49"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="60" id="nJ5-3R-gBq"/>
+                                <constraint firstAttribute="width" constant="80" id="nJ5-3R-gBq"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhY-rd-xDw">
-                            <rect key="frame" x="60" y="1" width="215" height="49"/>
+                            <rect key="frame" x="80" y="1" width="195" height="49"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>

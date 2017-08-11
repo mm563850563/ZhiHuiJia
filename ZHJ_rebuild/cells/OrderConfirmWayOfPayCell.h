@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class  SSCheckBoxView;
+#import "SSCheckBoxView.h"
 
 @interface OrderConfirmWayOfPayCell : UITableViewCell
 
@@ -15,5 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIView *checkboxBGView;
 @property (nonatomic, strong)SSCheckBoxView *checkBox;
 @property (weak, nonatomic) IBOutlet UIImageView *imgWayOfPay;
+
+@property (nonatomic, strong)NSString *wayOfPay;
 
 @end
