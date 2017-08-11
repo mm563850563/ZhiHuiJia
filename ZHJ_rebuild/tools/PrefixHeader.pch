@@ -140,7 +140,7 @@
 #pragma mark - <20.删除购物车>
 #define kRemoveCart @"/cart/removeCart"  //user_id ,cart_id
 
-#pragma mark - <21.确认订单>
+#pragma mark - <21.确认订单／提交订单>
 #define kConfirmOrder @"/order/confirmOrder" //goods_id,user_id,goods_num,goods_spec
 
 
@@ -167,6 +167,9 @@
 
 #pragma mark - <29.优惠券列表>
 #define kDiscountCouponList @"/user/getCouponList"
+
+#pragma mark - <30.立即下单>
+#define kPlaceOrder @"/order/placeOrder"
 
 
 

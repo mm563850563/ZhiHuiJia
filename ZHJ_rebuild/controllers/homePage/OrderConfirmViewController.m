@@ -8,6 +8,9 @@
 
 #import "OrderConfirmViewController.h"
 
+//AliPay
+#import <AlipaySDK/AlipaySDK.h>
+
 //cells
 #import "OrderConfirmFeeCell.h"
 #import "OrderConfirmAddressCell.h"
@@ -27,6 +30,7 @@
 #import "OrderConfirmUserAddressModel.h"
 #import "UserAddressListResultModel.h"
 #import "MyDiscountCouponAvailableModel.h"
+#import "PlaceOrderModel.h"
 
 @interface OrderConfirmViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -42,6 +46,11 @@
 @property (nonatomic, strong)NSString *discountCouponID;
 @property (nonatomic, strong)NSString *discountPrice;
 @property (nonatomic, strong)NSString *discountCouponMessage;
+
+@property (nonatomic, strong)NSMutableArray *specArray;
+
+//支付串码
+@property (nonatomic, strong)NSString *pay_code;
 
 @end
 
@@ -60,6 +69,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - <懒加载>
+-(NSMutableArray *)specArray
+{
+    if (!_specArray) {
+        _specArray = [NSMutableArray array];
+    }
+    return _specArray;
 }
 
 /*
@@ -112,6 +130,68 @@
 
 }
 
+#pragma mark - <获取立即下单数据>
+-(void)getPlaceOrderData
+{
+//    if (kUserDefaultObject(kUserInfo) && self.goods_id && self.modelUserAddress.address_id && self.goods_num && self.specArray.count>0 ) {
+        NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPlaceOrder];
+        NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                        @"goods_id":self.modelGoodsInfo.goods_id,
+                                        @"goods_num":self.modelGoodsInfo.goods_num,
+                                        @"goods_spec":self.specArray,
+                                        @"address_id":self.modelUserAddress.address_id,
+                                        @"coupon_id":self.discountCouponID,
+                                        @"use_money":self.discountPrice,
+                                        @"pay_type":self.wayOfPay};
+        
+        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+        [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+            if (response) {
+                [hud hideAnimated:YES afterDelay:1.0];
+                NSDictionary *dataDict = (NSDictionary *)response;
+                PlaceOrderModel *model = [[PlaceOrderModel alloc]initWithDictionary:dataDict error:nil];
+                self.pay_code = model.data.result.pay_code;
+                
+                //支付串码不为空就调支付宝
+                if (![self.pay_code isEqualToString:@""]) {
+                    NSString *scheme = @"ZhiHuiJia";
+                    [[AlipaySDK defaultService]payOrder:self.pay_code fromScheme:scheme callback:^(NSDictionary *resultDic) {
+                        NSString *resultStatus = resultDic[@"resultStatus"];
+                        if ([resultStatus isEqualToString:@"9000"]) {
+                            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付成功"];
+                            [hudWarning hideAnimated:YES afterDelay:2.0];
+                            NSDictionary *dataDict = [self getCallBackDataAfterPayWithResultDict:resultDic];
+                            
+                        }else{
+                            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付失败"];
+                            [hudWarning hideAnimated:YES afterDelay:2.0];
+                        }
+                    }];
+                }else{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"网络繁忙，请重试"];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                }
+            }else{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请稍后再试"];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+        } failBlock:^(NSError *error) {
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }];
+//    }
+}
+
+#pragma mark - <获取支付回调的数据>
+-(NSDictionary *)getCallBackDataAfterPayWithResultDict:(NSDictionary *)resultDict
+{
+    NSDictionary *result = resultDict[@"result"];
+    NSDictionary *dataDict = result[@"alipay_trade_app_pay_response"];
+    return dataDict;
+}
+
 
 #pragma mark - <填充数据给outlets>
 -(void)fillDataToOutletsWithModel:(OrderConfirmResultModel *)model;
@@ -123,8 +203,13 @@
 #pragma mark - <设定默认outlets>
 -(void)settingOutlsets
 {
+    self.wayOfPay = @"0";
+    self.discountCouponID = @"0";
     self.discountCouponMessage = @"分享产品立即满减";
     self.discountPrice = @"0";
+    self.specArray = [self.Parameter objectForKey:@"goods_spec"];
+    self.goods_num = [self.Parameter objectForKey:@"goods_num"];
+    self.goods_id = [self.Parameter objectForKey:@"goods_id"];
 }
 
 #pragma mark - <配置tableView>
@@ -150,7 +235,16 @@
 #pragma mark - <立即下单按钮响应>
 - (IBAction)btnConfirmOrderNowAction:(UIButton *)sender
 {
-    
+    float shouldPay = [self.shouldPay floatValue];
+    if (shouldPay > 0 && [self.wayOfPay isEqualToString:@"0"]) {
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择支付方式"];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }else if (shouldPay > 0 && ![self.wayOfPay isEqualToString:@"0"]){
+        //获取支付串码
+        [self getPlaceOrderData];
+    }else{
+        //跳转支付成功页面
+    }
 }
 
 #pragma mark - <跳转用户地址列表页面>
