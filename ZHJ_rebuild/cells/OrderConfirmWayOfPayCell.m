@@ -23,7 +23,13 @@
 
 -(void)drawRect:(CGRect)rect
 {
-    self.checkBox = [[SSCheckBoxView alloc]initWithFrame:self.checkboxBGView.bounds style:kSSCheckBoxViewStyleGreen checked:YES];
+    BOOL checked;
+    if (self.tag == 0) {
+        checked = YES;
+    }else{
+        checked = NO;
+    }
+    self.checkBox = [[SSCheckBoxView alloc]initWithFrame:self.checkboxBGView.bounds style:kSSCheckBoxViewStyleGreen checked:checked];
     [self.checkboxBGView addSubview:self.checkBox];
     [self.checkBox mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
@@ -36,8 +42,10 @@
     [super setSelected:selected animated:animated];
 
     if (selected) {
+        NSLog(@"%ld",(long)self.tag);
         self.checkBox.checked = YES;
     }else{
+        NSLog(@"%ld",(long)self.tag);
         self.checkBox.checked = NO;
     }
 }

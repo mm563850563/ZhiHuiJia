@@ -110,7 +110,8 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
                     //默认选中支付方式第一项
-//                    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:4] animated:YES scrollPosition:UITableViewScrollPositionNone];
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:4];
+                    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
                 });
             }else{
                 [hud hideAnimated:YES afterDelay:1.0];
@@ -150,27 +151,34 @@
                 [hud hideAnimated:YES afterDelay:1.0];
                 NSDictionary *dataDict = (NSDictionary *)response;
                 PlaceOrderModel *model = [[PlaceOrderModel alloc]initWithDictionary:dataDict error:nil];
-                self.pay_code = model.data.result.pay_code;
                 
-                //支付串码不为空就调支付宝
-                if (![self.pay_code isEqualToString:@""]) {
-                    NSString *scheme = @"ZhiHuiJia";
-                    [[AlipaySDK defaultService]payOrder:self.pay_code fromScheme:scheme callback:^(NSDictionary *resultDic) {
-                        NSString *resultStatus = resultDic[@"resultStatus"];
-                        if ([resultStatus isEqualToString:@"9000"]) {
-                            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付成功"];
-                            [hudWarning hideAnimated:YES afterDelay:2.0];
-                            NSDictionary *dataDict = [self getCallBackDataAfterPayWithResultDict:resultDic];
-                            
-                        }else{
-                            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付失败"];
-                            [hudWarning hideAnimated:YES afterDelay:2.0];
-                        }
-                    }];
+                if ([model.code isEqualToString:@"200"]) {
+                    self.pay_code = model.data.result.pay_code;
+                    
+                    //支付串码不为空就调支付宝
+                    if (![self.pay_code isEqualToString:@""]) {
+                        NSString *scheme = @"ZhiHuiJia";
+                        [[AlipaySDK defaultService]payOrder:self.pay_code fromScheme:scheme callback:^(NSDictionary *resultDic) {
+                            NSString *resultStatus = resultDic[@"resultStatus"];
+                            if ([resultStatus isEqualToString:@"9000"]) {
+                                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付成功"];
+                                [hudWarning hideAnimated:YES afterDelay:2.0];
+                                NSDictionary *dataDict = [self getCallBackDataAfterPayWithResultDict:resultDic];
+                                
+                            }else{
+                                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付失败"];
+                                [hudWarning hideAnimated:YES afterDelay:2.0];
+                            }
+                        }];
+                    }else{
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                    }
                 }else{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"网络繁忙，请重试"];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
                 }
+                
             }else{
                 [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请稍后再试"];
@@ -198,6 +206,11 @@
 {
     self.labelShouldPay.text = [NSString stringWithFormat:@"¥%@",model.unpaid];
     self.shouldPay = model.unpaid;
+    
+    float shouldPay = [self.shouldPay floatValue];
+    if (shouldPay>0) {
+        self.wayOfPay = @"1";
+    }
 }
 
 #pragma mark - <设定默认outlets>
@@ -244,6 +257,7 @@
         [self getPlaceOrderData];
     }else{
         //跳转支付成功页面
+        [self getPlaceOrderData];
     }
 }
 
@@ -324,7 +338,11 @@
 #pragma mark - *** UITableViewDelegate,UITableViewDataSource ****
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    float shouldPay = [self.shouldPay floatValue];
+    if (shouldPay>0) {
+        return 5;
+    }
+    return 4;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -400,7 +418,7 @@
         cell = cellFee;
     }else if (indexPath.section == 4){
         OrderConfirmWayOfPayCell *cellWayOfPay = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OrderConfirmWayOfPayCell class])];
-        cellWayOfPay.wayOfPay = self.wayOfPay;
+//        cellWayOfPay.wayOfPay = self.wayOfPay;
         cellWayOfPay.tag = indexPath.row;
         if (indexPath.row == 0) {cellWayOfPay.imgWayOfPay.image = [UIImage imageNamed:@"zhi_fu_bao_zhi_fu"];
             cellWayOfPay.labelWayOfPay.text = @"支付宝";

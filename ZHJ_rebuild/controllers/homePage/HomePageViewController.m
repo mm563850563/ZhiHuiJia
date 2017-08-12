@@ -130,6 +130,7 @@
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
         [hud hideAnimated:YES afterDelay:1.0];
+        [self.tableView.mj_header endRefreshing];
     });
 }
 
@@ -153,8 +154,10 @@
             }
         }
     } failBlock:^(NSError *error) {
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:error.description];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        if (error.code == -1009) {
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:@"请检查网络"];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }
     }];
 }
 
@@ -178,8 +181,10 @@
             }
         }
     } failBlock:^(NSError *error) {
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:error.description];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        if (error.code == -1009) {
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:@"请检查网络"];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }
     }];
 }
 
@@ -202,8 +207,10 @@
             }
         }
     } failBlock:^(NSError *error) {
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:error.description];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        if (error.code == -1009) {
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:@"请检查网络"];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }
     }];
 }
 
@@ -231,8 +238,10 @@
                 }
             }
         } failBlock:^(NSError *error) {
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            if (error.code == -1009) {
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:@"请检查网络"];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
         }];
     }
     
@@ -274,6 +283,11 @@
     [self.tableView registerClass:[IntellectWearsCell class] forCellReuseIdentifier:NSStringFromClass([IntellectWearsCell class])];
     
     [self.tableView registerClass:[SameHobbyCell class] forCellReuseIdentifier:NSStringFromClass([SameHobbyCell class])];
+    
+    
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self managerRequestWithGCD];
+    }];
 }
 
 #pragma mark - <配置navigationBar>

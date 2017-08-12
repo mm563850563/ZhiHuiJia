@@ -548,7 +548,7 @@
 {
     ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
     productDetailVC.hidesBottomBarWhenPushed = YES;
-    productDetailVC.goods_id = @"13";
+    productDetailVC.goods_id = goods_id;
     [self.navigationController pushViewController:productDetailVC animated:YES];
 }
 

@@ -42,7 +42,9 @@
     
     self.page = [NSNumber numberWithInt:1];
     
-    [self getBrandDetailDataWithSort_sales:@"0" sort_price:@"0" sort_lastest:@"0" sort_recommend:@"1" page:@"1"];
+    NSDictionary *dictParameter = @{@"brand_id":self.brand_id,
+                                    @"sort_recommend":@"1"};
+    [self getBrandDetailDataWithDictParameter:dictParameter];
     [self initHeaderView];
     [self settingTableView];
     [self respondWithRAC];
@@ -73,17 +75,12 @@
 }
 
 #pragma mark - <品牌详情>
--(void)getBrandDetailDataWithSort_sales:(NSString *)sort_sales sort_price:(NSString *)sort_price sort_lastest:(NSString *)sort_lastest sort_recommend:(NSString *)sort_recommend page:(NSString *)page
+-(void)getBrandDetailDataWithDictParameter:(NSDictionary *)dictPara
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kBrandDetail];
-    NSDictionary *dictParameter = @{@"brand_id":self.brand_id,
-                                    @"sort_sales":sort_sales,
-                                    @"sort_price":sort_price,
-                                    @"sort_lastest":sort_lastest,
-                                    @"page":page};
     
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
-    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:dictParameter progressBlock:nil successBlock:^(id response) {
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:dictPara progressBlock:nil successBlock:^(id response) {
         [hud hideAnimated:YES afterDelay:1.0];
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
@@ -188,19 +185,54 @@
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_recommed" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        [self getBrandDetailDataWithSort_sales:@"0" sort_price:@"0" sort_lastest:@"0" sort_recommend:@"1" page:@"1"];
+        NSDictionary *dictParameter = @{@"brand_id":self.brand_id,
+                                        @"sort_recommend":@"1"};
+        [self getBrandDetailDataWithDictParameter:dictParameter];
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_newest" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        [self getBrandDetailDataWithSort_sales:@"0" sort_price:@"0" sort_lastest:@"1" sort_recommend:@"1" page:@"1"];
+        UIButton *button = x.object;
+        NSDictionary *dictParameter = [NSDictionary dictionary];
+        if (button.selected) {
+            dictParameter = @{@"brand_id":self.brand_id,
+                              @"sort_recommend":@"1",
+                              @"sort_lastest":@"1"};
+        }else{
+            dictParameter = @{@"brand_id":self.brand_id,
+                              @"sort_recommend":@"1",
+                              @"sort_lastest":@"0"};
+        }
+        [self getBrandDetailDataWithDictParameter:dictParameter];
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_salesVolunm" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        [self getBrandDetailDataWithSort_sales:@"1" sort_price:@"0" sort_lastest:@"0" sort_recommend:@"1" page:@"1"];
+        UIButton *button = x.object;
+        NSDictionary *dictParameter = [NSDictionary dictionary];
+        if (button.selected) {
+            dictParameter = @{@"brand_id":self.brand_id,
+                              @"sort_recommend":@"1",
+                              @"sort_sales":@"1"};
+        }else{
+            dictParameter = @{@"brand_id":self.brand_id,
+                              @"sort_recommend":@"1",
+                              @"sort_sales":@"0"};
+        }
+        [self getBrandDetailDataWithDictParameter:dictParameter];
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_price" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        [self getBrandDetailDataWithSort_sales:@"0" sort_price:@"1" sort_lastest:@"0" sort_recommend:@"1" page:@"1"];
+        UIButton *button = x.object;
+        NSDictionary *dictParameter = [NSDictionary dictionary];
+        if (button.selected) {
+            dictParameter = @{@"brand_id":self.brand_id,
+                              @"sort_recommend":@"1",
+                              @"sort_price":@"1"};
+        }else{
+            dictParameter = @{@"brand_id":self.brand_id,
+                              @"sort_recommend":@"1",
+                              @"sort_price":@"0"};
+        }
+        [self getBrandDetailDataWithDictParameter:dictParameter];
     }];
 }
 

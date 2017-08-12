@@ -196,6 +196,22 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
         }
         [self changeLayout];
     }];
+    
+//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_recommed" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+//        
+//    }];
+//    
+//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_newest" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+//        
+//    }];
+//    
+//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_salesVolunm" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+//        
+//    }];
+//    
+//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_price" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+//        
+//    }];
 }
 
 

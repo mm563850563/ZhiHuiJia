@@ -55,7 +55,8 @@
     self.labelSalesVolume.textColor = kColorFromRGB(kBlack);
     self.labelPrice.textColor = kColorFromRGB(kBlack);
     
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"sort_newest" object:nil];
+    sender.selected = !sender.selected;
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"sort_newest" object:sender];
 }
 - (IBAction)btnSalesVolumeAction:(UIButton *)sender
 {
@@ -64,7 +65,8 @@
     self.labelSalesVolume.textColor = kColorFromRGB(kThemeYellow);
     self.labelPrice.textColor = kColorFromRGB(kBlack);
     
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"sort_salesVolunm" object:nil];
+    sender.selected = !sender.selected;
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"sort_salesVolunm" object:sender];
 }
 - (IBAction)btnPriceAction:(UIButton *)sender
 {
@@ -73,7 +75,8 @@
     self.labelSalesVolume.textColor = kColorFromRGB(kBlack);
     self.labelPrice.textColor = kColorFromRGB(kThemeYellow);
     
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"sort_price" object:nil];
+    sender.selected = !sender.selected;
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"sort_price" object:sender];
 }
 - (IBAction)btnLayoutAction:(UIButton *)sender
 {

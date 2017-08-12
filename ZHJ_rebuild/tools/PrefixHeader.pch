@@ -148,7 +148,7 @@
 #define kUserFavorite @"/user/userFavorite"  //user_id,page,page_count
 
 #pragma mark - <23.品牌详情>
-#define kBrandDetail @"/brand/brandDetail" 
+#define kBrandDetail @"/brand/brandDetail" //sort_recommend始终为1，默认page为1，sort_lastest默认为0可选为1，sort_price默认为0可选为1,sort_sales默认为0可选为1;
 
 #pragma mark - <24.用户地址列表>
 #define kUserAddressList @"/User/getUserAddressList"  //user_id

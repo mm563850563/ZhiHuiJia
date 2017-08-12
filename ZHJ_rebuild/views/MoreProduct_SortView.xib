@@ -25,7 +25,7 @@
                             <color key="textColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lru-iR-pnS">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lru-iR-pnS">
                             <rect key="frame" x="0.0" y="0.0" width="75" height="667"/>
                             <connections>
                                 <action selector="btnRecommendAction:" destination="HMt-x7-zk9" eventType="touchUpInside" id="C52-6J-zWC"/>
@@ -53,7 +53,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kju-XW-Tmr">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kju-XW-Tmr">
                             <rect key="frame" x="0.0" y="0.0" width="75" height="667"/>
                             <connections>
                                 <action selector="btnMostNewAction:" destination="HMt-x7-zk9" eventType="touchUpInside" id="gSb-rX-2gd"/>
@@ -102,7 +102,7 @@
                                 <constraint firstAttribute="width" constant="50" id="xHz-9R-qsg"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZA-7V-7md">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZA-7V-7md">
                             <rect key="frame" x="0.0" y="0.0" width="75" height="667"/>
                             <connections>
                                 <action selector="btnSalesVolumeAction:" destination="HMt-x7-zk9" eventType="touchUpInside" id="uQt-xy-NA3"/>
@@ -149,7 +149,7 @@
                                 <constraint firstItem="8NQ-gJ-Lvd" firstAttribute="leading" secondItem="y0n-gD-8WH" secondAttribute="leading" id="yqI-zI-V7o"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yw-g8-IWX">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yw-g8-IWX">
                             <rect key="frame" x="0.0" y="0.0" width="75" height="667"/>
                             <connections>
                                 <action selector="btnPriceAction:" destination="HMt-x7-zk9" eventType="touchUpInside" id="MFo-Fg-Vn3"/>
