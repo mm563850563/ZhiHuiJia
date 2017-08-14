@@ -175,6 +175,8 @@ static NSTimeInterval   requestTimeout = 20.f;
     __block YQURLSessionTask *session = nil;
     
     AFHTTPSessionManager *manager = [self manager];
+//    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     if (networkStatus == YQNetworkStatusNotReachable) {
         if (failBlock) failBlock(YQ_ERROR);

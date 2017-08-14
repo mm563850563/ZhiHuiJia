@@ -9,6 +9,8 @@
 #ifndef ZhiHuiJia_PrefixHeader_pch
 #define ZhiHuiJia_PrefixHeader_pch
 
+
+#pragma mark - <基本宏>******************************
 //获取屏幕宽高和bounds
 #define kSCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
 #define kSCREENH_HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -74,7 +76,7 @@
 
 
 //api
-#pragma mark - <Domain_Base>
+#pragma mark - <Domain_Base>******************************
 #define kDomainBase @"http://www.havshark.com/api"
 
 #pragma mark - <Domain_Image>
@@ -171,6 +173,20 @@
 #pragma mark - <30.立即下单>
 #define kPlaceOrder @"/order/placeOrder"
 
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - <SDK_AppID>******************************
+#pragma mark - <微信支付AppID>
+#define kWeChatPay_AppID @"wxd8b7051c3bd0f932"
 
 
 

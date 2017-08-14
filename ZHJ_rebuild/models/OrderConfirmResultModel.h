@@ -10,10 +10,16 @@
 #import "OrderConfirmGoodsInfoModel.h"
 #import "OrderConfirmUserAddressModel.h"
 
+@protocol OrderConfirmGoodsInfoModel <NSObject>
+@end
+
 @interface OrderConfirmResultModel : JSONModel
 
-@property (nonatomic, strong)OrderConfirmGoodsInfoModel *goods_info;
+@property (nonatomic, strong)NSArray<OrderConfirmGoodsInfoModel> *goods_info;
 @property (nonatomic, strong)NSString *unpaid;
 @property (nonatomic, strong)OrderConfirmUserAddressModel *user_address;
+@property (nonatomic, strong)NSString *freight;
+@property (nonatomic, strong)NSString *total_price;
+@property (nonatomic, strong)NSString *use_money;
 
 @end

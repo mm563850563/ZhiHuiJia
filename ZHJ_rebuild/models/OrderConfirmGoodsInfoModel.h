@@ -17,8 +17,5 @@
 @property (nonatomic, strong)NSString *spec_name;
 @property (nonatomic, strong)NSString *image;
 @property (nonatomic, strong)NSString *goods_id;
-@property (nonatomic, strong)NSString *freight;
-@property (nonatomic, strong)NSString *total_price;
-@property (nonatomic, strong)NSString *use_money;
 
 @end

@@ -12,8 +12,12 @@
 #import <MLTransition.h>
 #import <IQKeyboardManager.h>
 #import <AlipaySDK/AlipaySDK.h>
+#import "WXApi.h"
+#import "WXApiManager.h"
+#import "SearchNetTool.h"
+#import <AFNetworkReachabilityManager.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -22,20 +26,64 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    //检查网络
-//    [YQNetworking ]
+    //***********检查网络*************
+//    [SearchNetTool searchNet];
+
+    //1.创建网络监测者
+    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     
+    /*枚举里面四个状态  分别对应 未知 无网络 数据 WiFi
+     typedef NS_ENUM(NSInteger, AFNetworkReachabilityStatus) {
+     AFNetworkReachabilityStatusUnknown          = -1,      未知
+     AFNetworkReachabilityStatusNotReachable     = 0,       无网络
+     AFNetworkReachabilityStatusReachableViaWWAN = 1,       蜂窝数据网络
+     AFNetworkReachabilityStatusReachableViaWiFi = 2,       WiFi
+     };
+     */
     
-    //全局手势滑动返回
+    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"%ld",(long)status);
+        //这里是监测到网络改变的block  可以写成switch方便
+        //在里面可以随便写事件
+        switch (status) {
+            case AFNetworkReachabilityStatusUnknown:
+                NSLog(@"未知网络状态");
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+                NSLog(@"无网络");
+                break;
+                
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                NSLog(@"蜂窝数据网");
+                break;
+                
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                NSLog(@"WiFi网络");
+                
+                break;
+                
+            default:
+                break;
+        }
+        
+    }] ;
+    
+    //************全局手势滑动返回*************
     [MLTransition validatePanBackWithMLTransitionGestureRecognizerType:MLTransitionGestureRecognizerTypeScreenEdgePan];
     
-    //全局键盘自动管理
+    //***************全局键盘自动管理*************
     [self settingIQKeyBoardManager];
-    //支持摇一摇
+    
+    //**************支持摇一摇******************
     [self settingShake];
     
     [self settingMainTabbarVC];
+    
+    //****************登陆***************
     [self presentLogionVC];
+    
+    //****************微信支付*****************
+    [WXApi registerApp:kWeChatPay_AppID ];
     
     return YES;
 }
@@ -119,20 +167,6 @@
 }
 
 #pragma mark - <AliPaySDK>
-//- (BOOL)application:(UIApplication *)application
-//            openURL:(NSURL *)url
-//  sourceApplication:(NSString *)sourceApplication
-//         annotation:(id)annotation {
-//    
-//    if ([url.host isEqualToString:@"safepay"]) {
-//        //跳转支付宝钱包进行支付，处理支付结果
-//        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-//            NSLog(@"result = %@",resultDic);
-//        }];
-//    }
-//    return YES;
-//}
-
 // NOTE: 9.0以后使用新API接口
 - (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
@@ -145,6 +179,80 @@
         }];
     }
     return YES;
+}
+
+#pragma mark - <微信支付>
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    // 跳转到URL scheme中配置的地址
+    //NSLog(@"跳转到URL scheme中配置的地址-->%@",url);
+    /*! @brief 处理微信通过URL启动App时传递的数据
+     *
+     * 需要在 application:openURL:sourceApplication:annotation:或者application:handleOpenURL中调用。
+     * @param url 微信启动第三方应用时传递过来的URL
+     * @param delegate  WXApiDelegate对象，用来接收微信触发的消息。
+     * @return 成功返回YES，失败返回NO。
+     */
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+//支付成功时调用，回到第三方应用中
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    /*! @brief 处理微信通过URL启动App时传递的数据
+     *
+     * 需要在 application:openURL:sourceApplication:annotation:或者application:handleOpenURL中调用。
+     * @param url 微信启动第三方应用时传递过来的URL
+     * @param delegate  WXApiDelegate对象，用来接收微信触发的消息。
+     * @return 成功返回YES，失败返回NO。
+     */
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+-(void)onResp:(BaseResp *)resp
+{
+    if ([resp isKindOfClass:[PayResp class]]) {
+        PayResp*response=(PayResp*)resp;  // 微信终端返回给第三方的关于支付结果的结构体
+        switch (response.errCode) {
+            case WXSuccess:
+            {// 支付成功，向后台发送消息
+                NSLog(@"支付成功");
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"WX_PaySuccess" object:nil];
+            }
+                break;
+            case WXErrCodeCommon:
+            { //签名错误、未注册APPID、项目设置APPID不正确、注册的APPID与设置的不匹配、其他异常等
+                NSLog(@"支付失败");
+            }
+                break;
+            case WXErrCodeUserCancel:
+            { //用户点击取消并返回
+                NSLog(@"取消支付");
+//                [MBProgressHUD showError:@"取消支付"];
+            }
+                break;
+            case WXErrCodeSentFail:
+            { //发送失败
+                NSLog(@"发送失败");
+//                [MBProgressHUD showError:@"发送失败"];
+            }
+                break;
+            case WXErrCodeUnsupport:
+            { //微信不支持
+                NSLog(@"微信不支持");
+//                [MBProgressHUD showError:@"微信不支持"];
+            }
+                break;
+            case WXErrCodeAuthDeny:
+            { //授权失败
+                NSLog(@"授权失败");
+//                [MBProgressHUD showError:@"授权失败"];
+            }
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 

@@ -336,6 +336,16 @@
 		DD9A63B71F2EF31900611FA8 /* HomeGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63B61F2EF31900611FA8 /* HomeGoodsModel.m */; };
 		DD9A63BA1F2EF3B600611FA8 /* HomeGoodsDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63B91F2EF3B600611FA8 /* HomeGoodsDataModel.m */; };
 		DD9A63BD1F2EF3D900611FA8 /* HomeGoodsResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63BC1F2EF3D900611FA8 /* HomeGoodsResultModel.m */; };
+		DDC52E871F41328800ECF211 /* SearchNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52E861F41328800ECF211 /* SearchNetTool.m */; };
+		DDC52E901F416D6400ECF211 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC52E8D1F416D6400ECF211 /* libWeChatSDK.a */; };
+		DDC52E921F416D9C00ECF211 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC52E911F416D9C00ECF211 /* Security.framework */; };
+		DDC52E941F416DBB00ECF211 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC52E931F416DBB00ECF211 /* libsqlite3.0.tbd */; };
+		DDC52E971F41809300ECF211 /* PlaceOrderAliPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52E961F41809300ECF211 /* PlaceOrderAliPayModel.m */; };
+		DDC52E9A1F4180B100ECF211 /* PlaceOrderWeChatPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52E991F4180B100ECF211 /* PlaceOrderWeChatPayModel.m */; };
+		DDC52E9D1F4186D900ECF211 /* PlaceOrderBalanceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52E9C1F4186D900ECF211 /* PlaceOrderBalanceModel.m */; };
+		DDC52EA01F41C5B600ECF211 /* PlaceOrderCallbackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52E9F1F41C5B600ECF211 /* PlaceOrderCallbackModel.m */; };
+		DDC52EA31F41C60500ECF211 /* PalceOrderOrderInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52EA21F41C60500ECF211 /* PalceOrderOrderInfoModel.m */; };
+		DDC52EAF1F41CFBF00ECF211 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52EAE1F41CFBF00ECF211 /* WXApiManager.m */; };
 		DDDD17B91F2C5194006BE206 /* ProgressHUDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17B81F2C5194006BE206 /* ProgressHUDManager.m */; };
 		DDDD17BF1F2C6B11006BE206 /* IndexCarouselDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17BE1F2C6B11006BE206 /* IndexCarouselDataModel.m */; };
 		DDDD17C21F2C6B54006BE206 /* IndexCarouselResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17C11F2C6B54006BE206 /* IndexCarouselResultModel.m */; };
@@ -1010,6 +1020,25 @@
 		DD9A63B91F2EF3B600611FA8 /* HomeGoodsDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeGoodsDataModel.m; path = models/HomeGoodsDataModel.m; sourceTree = "<group>"; };
 		DD9A63BB1F2EF3D900611FA8 /* HomeGoodsResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeGoodsResultModel.h; path = models/HomeGoodsResultModel.h; sourceTree = "<group>"; };
 		DD9A63BC1F2EF3D900611FA8 /* HomeGoodsResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeGoodsResultModel.m; path = models/HomeGoodsResultModel.m; sourceTree = "<group>"; };
+		DDC52E851F41328800ECF211 /* SearchNetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchNetTool.h; sourceTree = "<group>"; };
+		DDC52E861F41328800ECF211 /* SearchNetTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchNetTool.m; sourceTree = "<group>"; };
+		DDC52E8D1F416D6400ECF211 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		DDC52E8E1F416D6400ECF211 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		DDC52E8F1F416D6400ECF211 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		DDC52E911F416D9C00ECF211 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DDC52E931F416DBB00ECF211 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		DDC52E951F41809300ECF211 /* PlaceOrderAliPayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceOrderAliPayModel.h; path = models/PlaceOrderAliPayModel.h; sourceTree = "<group>"; };
+		DDC52E961F41809300ECF211 /* PlaceOrderAliPayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceOrderAliPayModel.m; path = models/PlaceOrderAliPayModel.m; sourceTree = "<group>"; };
+		DDC52E981F4180B100ECF211 /* PlaceOrderWeChatPayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceOrderWeChatPayModel.h; path = models/PlaceOrderWeChatPayModel.h; sourceTree = "<group>"; };
+		DDC52E991F4180B100ECF211 /* PlaceOrderWeChatPayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceOrderWeChatPayModel.m; path = models/PlaceOrderWeChatPayModel.m; sourceTree = "<group>"; };
+		DDC52E9B1F4186D900ECF211 /* PlaceOrderBalanceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceOrderBalanceModel.h; path = models/PlaceOrderBalanceModel.h; sourceTree = "<group>"; };
+		DDC52E9C1F4186D900ECF211 /* PlaceOrderBalanceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceOrderBalanceModel.m; path = models/PlaceOrderBalanceModel.m; sourceTree = "<group>"; };
+		DDC52E9E1F41C5B600ECF211 /* PlaceOrderCallbackModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceOrderCallbackModel.h; path = models/PlaceOrderCallbackModel.h; sourceTree = "<group>"; };
+		DDC52E9F1F41C5B600ECF211 /* PlaceOrderCallbackModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceOrderCallbackModel.m; path = models/PlaceOrderCallbackModel.m; sourceTree = "<group>"; };
+		DDC52EA11F41C60500ECF211 /* PalceOrderOrderInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PalceOrderOrderInfoModel.h; path = models/PalceOrderOrderInfoModel.h; sourceTree = "<group>"; };
+		DDC52EA21F41C60500ECF211 /* PalceOrderOrderInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PalceOrderOrderInfoModel.m; path = models/PalceOrderOrderInfoModel.m; sourceTree = "<group>"; };
+		DDC52EAD1F41CFBF00ECF211 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
+		DDC52EAE1F41CFBF00ECF211 /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
 		DDDD17B71F2C5194006BE206 /* ProgressHUDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressHUDManager.h; path = tools/ProgressHUDManager.h; sourceTree = "<group>"; };
 		DDDD17B81F2C5194006BE206 /* ProgressHUDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressHUDManager.m; path = tools/ProgressHUDManager.m; sourceTree = "<group>"; };
 		DDDD17BD1F2C6B11006BE206 /* IndexCarouselDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexCarouselDataModel.h; path = models/IndexCarouselDataModel.h; sourceTree = "<group>"; };
@@ -1245,6 +1274,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDC52E941F416DBB00ECF211 /* libsqlite3.0.tbd in Frameworks */,
+				DDC52E921F416D9C00ECF211 /* Security.framework in Frameworks */,
+				DDC52E901F416D6400ECF211 /* libWeChatSDK.a in Frameworks */,
 				DD184E431F3D7FE5009BFF5B /* CoreMotion.framework in Frameworks */,
 				DD184E411F3D7FD9009BFF5B /* CFNetwork.framework in Frameworks */,
 				DD184E3F1F3D7FCB009BFF5B /* Foundation.framework in Frameworks */,
@@ -1267,6 +1299,8 @@
 		5D002E95C2F28AA7C7D9B17E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DDC52E931F416DBB00ECF211 /* libsqlite3.0.tbd */,
+				DDC52E911F416D9C00ECF211 /* Security.framework */,
 				DD184E421F3D7FE5009BFF5B /* CoreMotion.framework */,
 				DD184E401F3D7FD9009BFF5B /* CFNetwork.framework */,
 				DD184E3E1F3D7FCB009BFF5B /* Foundation.framework */,
@@ -1381,6 +1415,7 @@
 		DD184E291F3D7EAF009BFF5B /* SDKs */ = {
 			isa = PBXGroup;
 			children = (
+				DDC52E8C1F416D6400ECF211 /* WeChatPay */,
 				DD184E4E1F3DA5F9009BFF5B /* AliPay */,
 			);
 			path = SDKs;
@@ -1395,6 +1430,16 @@
 				DD184E491F3D957B009BFF5B /* PlaceOrderDataModel.m */,
 				DD184E4B1F3D9595009BFF5B /* PlaceOrderResultModel.h */,
 				DD184E4C1F3D9595009BFF5B /* PlaceOrderResultModel.m */,
+				DDC52E951F41809300ECF211 /* PlaceOrderAliPayModel.h */,
+				DDC52E961F41809300ECF211 /* PlaceOrderAliPayModel.m */,
+				DDC52E981F4180B100ECF211 /* PlaceOrderWeChatPayModel.h */,
+				DDC52E991F4180B100ECF211 /* PlaceOrderWeChatPayModel.m */,
+				DDC52E9E1F41C5B600ECF211 /* PlaceOrderCallbackModel.h */,
+				DDC52E9F1F41C5B600ECF211 /* PlaceOrderCallbackModel.m */,
+				DDC52EA11F41C60500ECF211 /* PalceOrderOrderInfoModel.h */,
+				DDC52EA21F41C60500ECF211 /* PalceOrderOrderInfoModel.m */,
+				DDC52E9B1F4186D900ECF211 /* PlaceOrderBalanceModel.h */,
+				DDC52E9C1F4186D900ECF211 /* PlaceOrderBalanceModel.m */,
 			);
 			name = PlaceOrderModel;
 			sourceTree = "<group>";
@@ -1668,6 +1713,18 @@
 				DD69B2F11F3AFD390036F368 /* UIView+STPicker.m */,
 			);
 			path = STPickerView;
+			sourceTree = "<group>";
+		};
+		DDC52E8C1F416D6400ECF211 /* WeChatPay */ = {
+			isa = PBXGroup;
+			children = (
+				DDC52E8D1F416D6400ECF211 /* libWeChatSDK.a */,
+				DDC52E8E1F416D6400ECF211 /* WXApi.h */,
+				DDC52E8F1F416D6400ECF211 /* WXApiObject.h */,
+				DDC52EAD1F41CFBF00ECF211 /* WXApiManager.h */,
+				DDC52EAE1F41CFBF00ECF211 /* WXApiManager.m */,
+			);
+			path = WeChatPay;
 			sourceTree = "<group>";
 		};
 		DDE0FCF01F3563CA00269DBD /* AddToCart */ = {
@@ -2223,6 +2280,8 @@
 				DD6898231F3049AD008B6A8F /* NSMutableAttributedString+ThroughLine.m */,
 				DD184E211F3D3C18009BFF5B /* NSString+MD5.h */,
 				DD184E221F3D3C19009BFF5B /* NSString+MD5.m */,
+				DDC52E851F41328800ECF211 /* SearchNetTool.h */,
+				DDC52E861F41328800ECF211 /* SearchNetTool.m */,
 			);
 			name = tools;
 			sourceTree = "<group>";
@@ -2774,6 +2833,8 @@
 				DDFB82B51F1D931500AEAAA7 /* PYSearchConst.m in Sources */,
 				DD4CF0AE1F29A8FC0024156F /* AtSomeOneCell.m in Sources */,
 				DD0DBB0A1F3431650098F5FA /* GetSpecPriceDataModel.m in Sources */,
+				DDC52E871F41328800ECF211 /* SearchNetTool.m in Sources */,
+				DDC52EA31F41C60500ECF211 /* PalceOrderOrderInfoModel.m in Sources */,
 				DD4CF0001F274B480024156F /* ShakeAndWinViewController.m in Sources */,
 				DD9A63B21F2EE84400611FA8 /* AfterSalesHeaderView.m in Sources */,
 				EC4BA0DB1F1359EC00B9BE1A /* FactoryCollectionViewCell.m in Sources */,
@@ -2824,7 +2885,9 @@
 				DDE0FD0A1F35664D00269DBD /* CartListTotalPriceModel.m in Sources */,
 				DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */,
 				DD40B72D1F173B5300839748 /* HomeRightImageCell.m in Sources */,
+				DDC52EAF1F41CFBF00ECF211 /* WXApiManager.m in Sources */,
 				EC4BA25B1F15FDE400B9BE1A /* DiscoverDynamicViewController.m in Sources */,
+				DDC52EA01F41C5B600ECF211 /* PlaceOrderCallbackModel.m in Sources */,
 				DD69B2B81F39B6BD0036F368 /* OrderConfirmWayOfPayCell.m in Sources */,
 				DD0DBAE01F32ED510098F5FA /* GetGiftListResultModel.m in Sources */,
 				DD6287FB1F21F2C30030331D /* PersonalActivityRankFooterView.m in Sources */,
@@ -2868,6 +2931,7 @@
 				DD0DBAD31F32B9970098F5FA /* RecommendGoodsDataModel.m in Sources */,
 				DD4CF0A41F2996B60024156F /* MoreCycleViewController.m in Sources */,
 				DD69B2BC1F39D25C0036F368 /* BuyNowSelectSpecView.m in Sources */,
+				DDC52E9D1F4186D900ECF211 /* PlaceOrderBalanceModel.m in Sources */,
 				DDE0FD011F35654900269DBD /* CartListDataModel.m in Sources */,
 				EC4BA2431F14B05E00B9BE1A /* CategateNavigationController.m in Sources */,
 				DD68985B1F31B99B008B6A8F /* GoodsDetailImageModel.m in Sources */,
@@ -2924,6 +2988,7 @@
 				DDFB82781F19B98E00AEAAA7 /* Categate_CategateTableViewCell.m in Sources */,
 				DD62874D1F2032220030331D /* MyAddressCell.m in Sources */,
 				DD4CEFEC1F26DEDA0024156F /* BrandDetailHeaderCell.m in Sources */,
+				DDC52E9A1F4180B100ECF211 /* PlaceOrderWeChatPayModel.m in Sources */,
 				DD62879D1F2191A90030331D /* ActivityRankFirstCell.m in Sources */,
 				DD6898331F3172B5008B6A8F /* LoginViewController.m in Sources */,
 				DD0DBAF01F330D070098F5FA /* GetUserPrize_MyPrizeModel.m in Sources */,
@@ -2963,6 +3028,7 @@
 				DD6898141F302BB2008B6A8F /* ClassifyListDataModel.m in Sources */,
 				DD0DBAED1F330CDA0098F5FA /* GetUserPrizeResultModel.m in Sources */,
 				DD69B2F71F3AFD390036F368 /* STPickerSingle.m in Sources */,
+				DDC52E971F41809300ECF211 /* PlaceOrderAliPayModel.m in Sources */,
 				DD6287DE1F21E3B20030331D /* ActivityViewController.m in Sources */,
 				DD6898171F302BE3008B6A8F /* ClassifyListResultModel.m in Sources */,
 				DD9A63A91F2EE20100611FA8 /* AfterSalesViewController.m in Sources */,
@@ -3195,6 +3261,49 @@
 				GCC_PREFIX_HEADER = /Users/zhj/Desktop/ZhiHuiJia/ZHJ_rebuild/tools/PrefixHeader.pch;
 				INFOPLIST_FILE = ZHJ_rebuild/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/WeChatPay",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"CXPhotoBrowser\"",
+					"-l\"IQKeyboardManager\"",
+					"-l\"JSONModel\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MJRefresh\"",
+					"-l\"MLTransition\"",
+					"-l\"MarqueeLabel\"",
+					"-l\"Masonry\"",
+					"-l\"ReactiveObjC\"",
+					"-l\"SDCycleScrollView\"",
+					"-l\"SDWebImage\"",
+					"-l\"TTTAttributedLabel\"",
+					"-l\"TZImagePickerController\"",
+					"-l\"XHImageViewer\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhiHuiJia.ZHJ-rebuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3217,6 +3326,49 @@
 				GCC_PREFIX_HEADER = /Users/zhj/Desktop/ZhiHuiJia/ZHJ_rebuild/tools/PrefixHeader.pch;
 				INFOPLIST_FILE = ZHJ_rebuild/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/WeChatPay",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"CXPhotoBrowser\"",
+					"-l\"IQKeyboardManager\"",
+					"-l\"JSONModel\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MJRefresh\"",
+					"-l\"MLTransition\"",
+					"-l\"MarqueeLabel\"",
+					"-l\"Masonry\"",
+					"-l\"ReactiveObjC\"",
+					"-l\"SDCycleScrollView\"",
+					"-l\"SDWebImage\"",
+					"-l\"TTTAttributedLabel\"",
+					"-l\"TZImagePickerController\"",
+					"-l\"XHImageViewer\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhiHuiJia.ZHJ-rebuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

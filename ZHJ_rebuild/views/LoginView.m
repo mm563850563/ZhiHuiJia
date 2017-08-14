@@ -52,11 +52,12 @@
     NSDictionary *dictParameter = @{@"mobile":self.tfPhone.text,
                                @"password":self.tfPassword.text};
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self animated:YES];
-    [YQNetworking postWithUrl:strLogin refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+    [YQNetworking postWithUrl:strLogin refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         [hud hideAnimated:YES afterDelay:1.0];
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
-            LoginModel *model = [[LoginModel alloc]initWithDictionary:dataDict error:nil];
+            NSError *error = nil;
+            LoginModel *model = [[LoginModel alloc]initWithDictionary:dataDict error:&error];
             if ([model.code isEqualToString:@"200"]) {
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:model.msg];
                 hudWarning.completionBlock = ^{
@@ -74,6 +75,13 @@
         }
     } failBlock:^(NSError *error) {
         [hud hideAnimated:YES afterDelay:1.0];
+        if (error.code == -1009) {
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:@"请检查网络"];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }else{
+            
+        }
+        
     }];
 }
 

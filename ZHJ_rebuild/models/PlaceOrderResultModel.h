@@ -8,13 +8,14 @@
 
 #import <JSONModel/JSONModel.h>
 
+#import "PlaceOrderAliPayModel.h"
+#import "PlaceOrderWeChatPayModel.h"
+#import "PlaceOrderBalanceModel.h"
+
 @interface PlaceOrderResultModel : JSONModel
 
-@property (nonatomic, strong)NSString *payables;
-@property (nonatomic, strong)NSString *order_sn;
-@property (nonatomic, strong)NSString *use_money;
-@property (nonatomic, strong)NSString *coupon_price;
-@property (nonatomic, strong)NSString *add_time;
-@property (nonatomic, strong)NSString *pay_code;
+@property (nonatomic, strong)PlaceOrderAliPayModel *aliPay;
+@property (nonatomic, strong)PlaceOrderWeChatPayModel *wxPay;
+@property (nonatomic, strong)PlaceOrderBalanceModel *balance;
 
 @end

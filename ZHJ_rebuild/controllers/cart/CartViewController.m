@@ -158,9 +158,7 @@
         dictParameter = @{@"user_id":userID};
     }
     
-//    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:str refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
-//        [hud hideAnimated:YES afterDelay:1.0];
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             CartListModel *model = [[CartListModel alloc]initWithDictionary:dataDict error:nil];
@@ -168,7 +166,10 @@
                 self.cartListArray = model.data.result.cart_list;
                 self.modelTotalPrice = model.data.result.total_price;
                 [self sendDataToOutlets];
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                    
                     NSMutableArray *array = [NSMutableArray array];
                     for (CartList_CartListModel *modelCartList in self.cartListArray) {
                         if ([modelCartList.selected isEqualToString:@"0"]) {
@@ -179,19 +180,27 @@
                     if (array.count == 0) {
                         self.checkBox.checked = YES;
                     }
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.tableView reloadData];
-                    });
                 });
             }else{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
             }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"数据为空"];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
         }
     } failBlock:^(NSError *error) {
-//        [hud hideAnimated:YES afterDelay:1.0];
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        if (error.code == -1009) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请检查网络"];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+        
     }];
 }
 
@@ -201,38 +210,36 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kUserFavorite];
     if (kUserDefaultObject(kUserInfo)) {
         NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
-//        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+        
         [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
             if (response) {
                 NSDictionary *dataDict = (NSDictionary *)response;
                 UserFavoriteModel *model = [[UserFavoriteModel alloc]initWithDictionary:dataDict error:nil];
                 if ([model.code isEqualToString:@"200"]) {
-//                    [hud hideAnimated:YES afterDelay:1.0];
-//                    NSArray *array = model.data.result;
-//                    if (array.count>0) {
-//                        for (UserFavoriteResultModel *modelResult in array) {
-//                            [self.userFavoriteArray addObject:modelResult];
-//                        }
-//                    }
                     self.userFavoriteArray = [NSMutableArray arrayWithArray:model.data.result];
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.tableView reloadData];
                     });
-                }else{
-//                    [hud hideAnimated:YES afterDelay:1.0];
+                }else{ dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+                    
                 }
             }else{
-//                [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"数据为空"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"数据为空"];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+                
             }
         } failBlock:^(NSError *error) {
-//            [hud hideAnimated:YES afterDelay:1.0];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+            
         }];
     }
 }
