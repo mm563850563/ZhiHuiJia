@@ -47,10 +47,15 @@
 #define kThemeYellow 0xffda44
 
 
+
+#pragma mark - <错误提示>
+#define kRequestError @"请求失败,请稍后再试"
+#define kRequestEmptyData @"数据为空"
+
+
+#pragma mark - <导入头文件>********************
 //category
 #import "UIImage+Color.h"
-
-
 #import <Masonry/Masonry.h>
 #import <ReactiveObjC.h>
 #import <UIImageView+WebCache.h>
@@ -142,36 +147,46 @@
 #pragma mark - <20.删除购物车>
 #define kRemoveCart @"/cart/removeCart"  //user_id ,cart_id
 
-#pragma mark - <21.确认订单／提交订单>
+#pragma mark - <21.详情确认订单>
 #define kConfirmOrder @"/order/confirmOrder" //goods_id,user_id,goods_num,goods_spec
 
+#pragma mark - <22.购物车确认订单>
+#define kConfirmOrder2 @"/order/confirmOrder2"
 
-#pragma mark - <22.听说你喜欢>
+#pragma mark - <23.详情立即下单>
+#define kPlaceOrder @"/order/placeOrder"
+
+#pragma mark - <24.购物车立即下单>
+#define kPlaceOrder2 @"/order/placeOrder2"
+
+#pragma mark - <25.听说你喜欢>
 #define kUserFavorite @"/user/userFavorite"  //user_id,page,page_count
 
-#pragma mark - <23.品牌详情>
+#pragma mark - <26.品牌详情>
 #define kBrandDetail @"/brand/brandDetail" //sort_recommend始终为1，默认page为1，sort_lastest默认为0可选为1，sort_price默认为0可选为1,sort_sales默认为0可选为1;
 
-#pragma mark - <24.用户地址列表>
+#pragma mark - <27.用户地址列表>
 #define kUserAddressList @"/User/getUserAddressList"  //user_id
 
-#pragma mark - <25.新增收获地址>
+#pragma mark - <28.新增收获地址>
 #define kAddAddress @"/User/addUserAddress" 
 
-#pragma mark - <26.修改收货地址>
+#pragma mark - <29.修改收货地址>
 #define kUpdateAddres @"/User/updateUserAddress"
 
-#pragma mark - <27.设置默认收货地址>
+#pragma mark - <30.设置默认收货地址>
 #define kSetDefaultAddress @"/User/setDefaultAddress"
 
-#pragma mark - <28.删除收货地址>
+#pragma mark - <31.删除收货地址>
 #define kDeleteAddress @"/User/delUserAddress"
 
-#pragma mark - <29.优惠券列表>
+#pragma mark - <32.优惠券列表>
 #define kDiscountCouponList @"/user/getCouponList"
 
-#pragma mark - <30.立即下单>
-#define kPlaceOrder @"/order/placeOrder"
+#pragma mark - <33.微信支付成功后二次请求>
+#define kVerifyPayResult @"/order/verifyPayResult"
+
+
 
 
 

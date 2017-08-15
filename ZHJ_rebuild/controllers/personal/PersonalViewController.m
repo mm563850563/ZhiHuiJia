@@ -96,7 +96,7 @@
 #pragma mark - <跳转“我的订单”页面>
 -(void)jumpToMyOrderVCWithSelectedIndex:(NSInteger)selectedIndex
 {
-    MyOrderViewController *myOrderVC = [[MyOrderViewController alloc]initWithNibName:NSStringFromClass([MyOrderViewController class]) bundle:nil];
+    MyOrderViewController *myOrderVC = [[MyOrderViewController alloc]init];
     myOrderVC.selectedIndex = selectedIndex;
     myOrderVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:myOrderVC animated:YES];

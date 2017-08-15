@@ -17,6 +17,6 @@
 @property (nonatomic, strong)NSString *partnerid;
 @property (nonatomic, strong)NSString *prepayid;
 @property (nonatomic, strong)NSString *timestamp;
-@property (nonatomic, strong)NSString *sign;
+@property (nonatomic, strong)NSString<Optional> *sign;
 
 @end

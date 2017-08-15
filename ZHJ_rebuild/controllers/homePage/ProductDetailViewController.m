@@ -216,6 +216,7 @@
 {
     OrderConfirmViewController *orderConfirmVC = [[OrderConfirmViewController alloc]initWithNibName:NSStringFromClass([OrderConfirmViewController class]) bundle:nil];
     orderConfirmVC.Parameter = dictParameter;
+    orderConfirmVC.JumpID = @"detail";
     orderConfirmVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:orderConfirmVC animated:YES];
 }

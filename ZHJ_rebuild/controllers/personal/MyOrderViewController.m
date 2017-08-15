@@ -17,9 +17,6 @@
 
 @interface MyOrderViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *segmentBGView;
-@property (weak, nonatomic) IBOutlet UIView *flipBGView;
-
 @property (nonatomic, strong)SegmentTapView *segmentView;
 @property (nonatomic, strong)FlipTableView *flipView;
 
@@ -31,9 +28,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
     [self initSegment];
     [self initFlipTableView];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,11 +48,17 @@
 }
 */
 
+
 #pragma mark - <添加segmentView>
 -(void)initSegment{
-    self.segmentView = [[SegmentTapView alloc] initWithFrame:self.segmentBGView.bounds withDataArray:[NSArray arrayWithObjects:@"全部",@"待付款",@"待发货",@"已发货",@"待评价", nil] withFont:15];
+    self.segmentView = [[SegmentTapView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 40) withDataArray:[NSArray arrayWithObjects:@"全部",@"待付款",@"待发货",@"已发货",@"待评价", nil] withFont:15];
     self.segmentView.delegate = self;
-    [self.segmentBGView addSubview:self.segmentView];
+    [self.view addSubview:self.segmentView];
+//    [self.segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
+////        make.top.left.right.mas_equalTo(0);
+////        make.height.mas_equalTo(40);
+//        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+//    }];
 }
 
 #pragma mark - <添加flipTableView>
@@ -73,13 +76,15 @@
     [vcArray addObject:sendedGoodsVC];
     [vcArray addObject:waitToCommentVC];
     
-    self.flipView = [[FlipTableView alloc] initWithFrame:self.flipBGView.bounds withArray:vcArray];
+    self.flipView = [[FlipTableView alloc] initWithFrame:CGRectMake(0, 40, kSCREEN_WIDTH, self.view.frame.size.height-40-64) withArray:vcArray];
     self.flipView.delegate = self;
-    [self.flipBGView addSubview:self.flipView];
+    [self.view addSubview:self.flipView];
     
-    [self.flipView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
-    }];
+//    __weak typeof(self) weakSelf = self;
+//    [self.flipView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(weakSelf.segmentView).with.offset(0);
+//        make.right.left.bottom.mas_equalTo(0);
+//    }];
     
     //根据上一个页面传过来的selectedIndex确定当前segmentView的选中页面
     [self.segmentView selectIndex:self.selectedIndex];

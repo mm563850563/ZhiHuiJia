@@ -95,6 +95,9 @@
         NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
         LoginView *loginView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([LoginView class]) owner:nil options:nil].lastObject;
         [self.window addSubview:loginView];
+        [loginView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+        }];
         [self.window bringSubviewToFront:loginView];
     }else{
         NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
@@ -166,47 +169,26 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-#pragma mark - <AliPaySDK>
+
 // NOTE: 9.0以后使用新API接口
 - (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
             options:(NSDictionary<NSString*, id> *)options
 {
-    if ([url.host isEqualToString:@"safepay"]) {
-        //跳转支付宝钱包进行支付，处理支付结果
-        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-            NSLog(@"result = %@",resultDic);
-        }];
-    }
-    return YES;
-}
-
-#pragma mark - <微信支付>
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+//    if ([url.host isEqualToString:@"safepay"]) {
     
-    // 跳转到URL scheme中配置的地址
-    //NSLog(@"跳转到URL scheme中配置的地址-->%@",url);
-    /*! @brief 处理微信通过URL启动App时传递的数据
-     *
-     * 需要在 application:openURL:sourceApplication:annotation:或者application:handleOpenURL中调用。
-     * @param url 微信启动第三方应用时传递过来的URL
-     * @param delegate  WXApiDelegate对象，用来接收微信触发的消息。
-     * @return 成功返回YES，失败返回NO。
-     */
-    return [WXApi handleOpenURL:url delegate:self];
-}
-
-//支付成功时调用，回到第三方应用中
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    /*! @brief 处理微信通过URL启动App时传递的数据
-     *
-     * 需要在 application:openURL:sourceApplication:annotation:或者application:handleOpenURL中调用。
-     * @param url 微信启动第三方应用时传递过来的URL
-     * @param delegate  WXApiDelegate对象，用来接收微信触发的消息。
-     * @return 成功返回YES，失败返回NO。
-     */
-    return [WXApi handleOpenURL:url delegate:self];
+    
+    
+    #pragma mark - <AliPaySDK>
+    //跳转支付宝钱包进行支付，处理支付结果
+    [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+        NSLog(@"result = %@",resultDic);
+    }];
+    
+    
+    #pragma mark - <微信支付>
+    [WXApi handleOpenURL:url delegate:self];
+    return YES;
 }
 
 -(void)onResp:(BaseResp *)resp
@@ -220,36 +202,10 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"WX_PaySuccess" object:nil];
             }
                 break;
-            case WXErrCodeCommon:
-            { //签名错误、未注册APPID、项目设置APPID不正确、注册的APPID与设置的不匹配、其他异常等
-                NSLog(@"支付失败");
-            }
-                break;
-            case WXErrCodeUserCancel:
-            { //用户点击取消并返回
-                NSLog(@"取消支付");
-//                [MBProgressHUD showError:@"取消支付"];
-            }
-                break;
-            case WXErrCodeSentFail:
-            { //发送失败
-                NSLog(@"发送失败");
-//                [MBProgressHUD showError:@"发送失败"];
-            }
-                break;
-            case WXErrCodeUnsupport:
-            { //微信不支持
-                NSLog(@"微信不支持");
-//                [MBProgressHUD showError:@"微信不支持"];
-            }
-                break;
-            case WXErrCodeAuthDeny:
-            { //授权失败
+            default:{
                 NSLog(@"授权失败");
-//                [MBProgressHUD showError:@"授权失败"];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"WX_PaySuccess" object:nil];
             }
-                break;
-            default:
                 break;
         }
     }

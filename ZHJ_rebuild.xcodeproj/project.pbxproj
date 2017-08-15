@@ -337,7 +337,6 @@
 		DD9A63BA1F2EF3B600611FA8 /* HomeGoodsDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63B91F2EF3B600611FA8 /* HomeGoodsDataModel.m */; };
 		DD9A63BD1F2EF3D900611FA8 /* HomeGoodsResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63BC1F2EF3D900611FA8 /* HomeGoodsResultModel.m */; };
 		DDC52E871F41328800ECF211 /* SearchNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52E861F41328800ECF211 /* SearchNetTool.m */; };
-		DDC52E901F416D6400ECF211 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC52E8D1F416D6400ECF211 /* libWeChatSDK.a */; };
 		DDC52E921F416D9C00ECF211 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC52E911F416D9C00ECF211 /* Security.framework */; };
 		DDC52E941F416DBB00ECF211 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC52E931F416DBB00ECF211 /* libsqlite3.0.tbd */; };
 		DDC52E971F41809300ECF211 /* PlaceOrderAliPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52E961F41809300ECF211 /* PlaceOrderAliPayModel.m */; };
@@ -346,12 +345,23 @@
 		DDC52EA01F41C5B600ECF211 /* PlaceOrderCallbackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52E9F1F41C5B600ECF211 /* PlaceOrderCallbackModel.m */; };
 		DDC52EA31F41C60500ECF211 /* PalceOrderOrderInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52EA21F41C60500ECF211 /* PalceOrderOrderInfoModel.m */; };
 		DDC52EAF1F41CFBF00ECF211 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52EAE1F41CFBF00ECF211 /* WXApiManager.m */; };
+		DDC52EB11F42AE8A00ECF211 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC52EB01F42AE8A00ECF211 /* libWeChatSDK.a */; };
+		DDC52EB81F42C00900ECF211 /* SuccessPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52EB61F42C00900ECF211 /* SuccessPayViewController.m */; };
+		DDC52EB91F42C00900ECF211 /* SuccessPayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC52EB71F42C00900ECF211 /* SuccessPayViewController.xib */; };
+		DDC52EBC1F42C39F00ECF211 /* SuccessPayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52EBB1F42C39F00ECF211 /* SuccessPayHeaderView.m */; };
+		DDC52EBE1F42C44000ECF211 /* SuccessPayHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC52EBD1F42C44000ECF211 /* SuccessPayHeaderView.xib */; };
+		DDC52EC21F42C84D00ECF211 /* SuccessPayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52EC01F42C84D00ECF211 /* SuccessPayTableViewCell.m */; };
+		DDC52EC31F42C84D00ECF211 /* SuccessPayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC52EC11F42C84D00ECF211 /* SuccessPayTableViewCell.xib */; };
+		DDC52EC61F42DDEF00ECF211 /* SuccessPayRecommedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52EC51F42DDEF00ECF211 /* SuccessPayRecommedCell.m */; };
+		DDC52ECA1F42E0F100ECF211 /* SuccessPayRecommendMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52EC81F42E0F100ECF211 /* SuccessPayRecommendMemberCell.m */; };
+		DDC52ECB1F42E0F100ECF211 /* SuccessPayRecommendMemberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC52EC91F42E0F100ECF211 /* SuccessPayRecommendMemberCell.xib */; };
+		DDC52ECE1F42E43600ECF211 /* SuccessPayRecommedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC52ECD1F42E43600ECF211 /* SuccessPayRecommedHeaderView.m */; };
+		DDC52ED01F42E45A00ECF211 /* SuccessPayRecommedHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC52ECF1F42E45A00ECF211 /* SuccessPayRecommedHeaderView.xib */; };
 		DDDD17B91F2C5194006BE206 /* ProgressHUDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17B81F2C5194006BE206 /* ProgressHUDManager.m */; };
 		DDDD17BF1F2C6B11006BE206 /* IndexCarouselDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17BE1F2C6B11006BE206 /* IndexCarouselDataModel.m */; };
 		DDDD17C21F2C6B54006BE206 /* IndexCarouselResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17C11F2C6B54006BE206 /* IndexCarouselResultModel.m */; };
 		DDDD17C51F2C6C06006BE206 /* IndexCarouselModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17C41F2C6C06006BE206 /* IndexCarouselModel.m */; };
 		DDDD17C91F2C9141006BE206 /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17C71F2C9141006BE206 /* MyOrderViewController.m */; };
-		DDDD17CA1F2C9141006BE206 /* MyOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDDD17C81F2C9141006BE206 /* MyOrderViewController.xib */; };
 		DDDD17CE1F2C93A2006BE206 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD17CC1F2C93A2006BE206 /* OrderListViewController.m */; };
 		DDDD17CF1F2C93A2006BE206 /* OrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDDD17CD1F2C93A2006BE206 /* OrderListViewController.xib */; };
 		DDE0FCF51F35641900269DBD /* AddToCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0FCF41F35641900269DBD /* AddToCartModel.m */; };
@@ -1022,9 +1032,6 @@
 		DD9A63BC1F2EF3D900611FA8 /* HomeGoodsResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeGoodsResultModel.m; path = models/HomeGoodsResultModel.m; sourceTree = "<group>"; };
 		DDC52E851F41328800ECF211 /* SearchNetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchNetTool.h; sourceTree = "<group>"; };
 		DDC52E861F41328800ECF211 /* SearchNetTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchNetTool.m; sourceTree = "<group>"; };
-		DDC52E8D1F416D6400ECF211 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		DDC52E8E1F416D6400ECF211 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		DDC52E8F1F416D6400ECF211 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		DDC52E911F416D9C00ECF211 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		DDC52E931F416DBB00ECF211 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		DDC52E951F41809300ECF211 /* PlaceOrderAliPayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceOrderAliPayModel.h; path = models/PlaceOrderAliPayModel.h; sourceTree = "<group>"; };
@@ -1039,6 +1046,27 @@
 		DDC52EA21F41C60500ECF211 /* PalceOrderOrderInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PalceOrderOrderInfoModel.m; path = models/PalceOrderOrderInfoModel.m; sourceTree = "<group>"; };
 		DDC52EAD1F41CFBF00ECF211 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
 		DDC52EAE1F41CFBF00ECF211 /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
+		DDC52EB01F42AE8A00ECF211 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		DDC52EB21F42AEA400ECF211 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		DDC52EB31F42AEA400ECF211 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		DDC52EB41F42AEA400ECF211 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		DDC52EB51F42C00900ECF211 /* SuccessPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuccessPayViewController.h; path = controllers/homePage/SuccessPayViewController.h; sourceTree = "<group>"; };
+		DDC52EB61F42C00900ECF211 /* SuccessPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuccessPayViewController.m; path = controllers/homePage/SuccessPayViewController.m; sourceTree = "<group>"; };
+		DDC52EB71F42C00900ECF211 /* SuccessPayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SuccessPayViewController.xib; path = controllers/homePage/SuccessPayViewController.xib; sourceTree = "<group>"; };
+		DDC52EBA1F42C39F00ECF211 /* SuccessPayHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuccessPayHeaderView.h; path = views/SuccessPayHeaderView.h; sourceTree = "<group>"; };
+		DDC52EBB1F42C39F00ECF211 /* SuccessPayHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuccessPayHeaderView.m; path = views/SuccessPayHeaderView.m; sourceTree = "<group>"; };
+		DDC52EBD1F42C44000ECF211 /* SuccessPayHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SuccessPayHeaderView.xib; path = views/SuccessPayHeaderView.xib; sourceTree = "<group>"; };
+		DDC52EBF1F42C84D00ECF211 /* SuccessPayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuccessPayTableViewCell.h; path = cells/SuccessPayTableViewCell.h; sourceTree = "<group>"; };
+		DDC52EC01F42C84D00ECF211 /* SuccessPayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuccessPayTableViewCell.m; path = cells/SuccessPayTableViewCell.m; sourceTree = "<group>"; };
+		DDC52EC11F42C84D00ECF211 /* SuccessPayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SuccessPayTableViewCell.xib; path = cells/SuccessPayTableViewCell.xib; sourceTree = "<group>"; };
+		DDC52EC41F42DDEF00ECF211 /* SuccessPayRecommedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuccessPayRecommedCell.h; path = cells/SuccessPayRecommedCell.h; sourceTree = "<group>"; };
+		DDC52EC51F42DDEF00ECF211 /* SuccessPayRecommedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuccessPayRecommedCell.m; path = cells/SuccessPayRecommedCell.m; sourceTree = "<group>"; };
+		DDC52EC71F42E0F100ECF211 /* SuccessPayRecommendMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuccessPayRecommendMemberCell.h; path = cells/SuccessPayRecommendMemberCell.h; sourceTree = "<group>"; };
+		DDC52EC81F42E0F100ECF211 /* SuccessPayRecommendMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuccessPayRecommendMemberCell.m; path = cells/SuccessPayRecommendMemberCell.m; sourceTree = "<group>"; };
+		DDC52EC91F42E0F100ECF211 /* SuccessPayRecommendMemberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SuccessPayRecommendMemberCell.xib; path = cells/SuccessPayRecommendMemberCell.xib; sourceTree = "<group>"; };
+		DDC52ECC1F42E43600ECF211 /* SuccessPayRecommedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuccessPayRecommedHeaderView.h; path = views/SuccessPayRecommedHeaderView.h; sourceTree = "<group>"; };
+		DDC52ECD1F42E43600ECF211 /* SuccessPayRecommedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuccessPayRecommedHeaderView.m; path = views/SuccessPayRecommedHeaderView.m; sourceTree = "<group>"; };
+		DDC52ECF1F42E45A00ECF211 /* SuccessPayRecommedHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SuccessPayRecommedHeaderView.xib; path = views/SuccessPayRecommedHeaderView.xib; sourceTree = "<group>"; };
 		DDDD17B71F2C5194006BE206 /* ProgressHUDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressHUDManager.h; path = tools/ProgressHUDManager.h; sourceTree = "<group>"; };
 		DDDD17B81F2C5194006BE206 /* ProgressHUDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressHUDManager.m; path = tools/ProgressHUDManager.m; sourceTree = "<group>"; };
 		DDDD17BD1F2C6B11006BE206 /* IndexCarouselDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexCarouselDataModel.h; path = models/IndexCarouselDataModel.h; sourceTree = "<group>"; };
@@ -1049,7 +1077,6 @@
 		DDDD17C41F2C6C06006BE206 /* IndexCarouselModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexCarouselModel.m; path = models/IndexCarouselModel.m; sourceTree = "<group>"; };
 		DDDD17C61F2C9141006BE206 /* MyOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyOrderViewController.h; path = controllers/personal/MyOrderViewController.h; sourceTree = "<group>"; };
 		DDDD17C71F2C9141006BE206 /* MyOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyOrderViewController.m; path = controllers/personal/MyOrderViewController.m; sourceTree = "<group>"; };
-		DDDD17C81F2C9141006BE206 /* MyOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyOrderViewController.xib; path = controllers/personal/MyOrderViewController.xib; sourceTree = "<group>"; };
 		DDDD17CB1F2C93A2006BE206 /* OrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListViewController.h; path = controllers/personal/OrderListViewController.h; sourceTree = "<group>"; };
 		DDDD17CC1F2C93A2006BE206 /* OrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListViewController.m; path = controllers/personal/OrderListViewController.m; sourceTree = "<group>"; };
 		DDDD17CD1F2C93A2006BE206 /* OrderListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListViewController.xib; path = controllers/personal/OrderListViewController.xib; sourceTree = "<group>"; };
@@ -1276,7 +1303,7 @@
 			files = (
 				DDC52E941F416DBB00ECF211 /* libsqlite3.0.tbd in Frameworks */,
 				DDC52E921F416D9C00ECF211 /* Security.framework in Frameworks */,
-				DDC52E901F416D6400ECF211 /* libWeChatSDK.a in Frameworks */,
+				DDC52EB11F42AE8A00ECF211 /* libWeChatSDK.a in Frameworks */,
 				DD184E431F3D7FE5009BFF5B /* CoreMotion.framework in Frameworks */,
 				DD184E411F3D7FD9009BFF5B /* CFNetwork.framework in Frameworks */,
 				DD184E3F1F3D7FCB009BFF5B /* Foundation.framework in Frameworks */,
@@ -1718,9 +1745,10 @@
 		DDC52E8C1F416D6400ECF211 /* WeChatPay */ = {
 			isa = PBXGroup;
 			children = (
-				DDC52E8D1F416D6400ECF211 /* libWeChatSDK.a */,
-				DDC52E8E1F416D6400ECF211 /* WXApi.h */,
-				DDC52E8F1F416D6400ECF211 /* WXApiObject.h */,
+				DDC52EB01F42AE8A00ECF211 /* libWeChatSDK.a */,
+				DDC52EB21F42AEA400ECF211 /* WechatAuthSDK.h */,
+				DDC52EB31F42AEA400ECF211 /* WXApi.h */,
+				DDC52EB41F42AEA400ECF211 /* WXApiObject.h */,
 				DDC52EAD1F41CFBF00ECF211 /* WXApiManager.h */,
 				DDC52EAE1F41CFBF00ECF211 /* WXApiManager.m */,
 			);
@@ -2141,6 +2169,14 @@
 				DD184E241F3D5658009BFF5B /* NULLTableViewCell.h */,
 				DD184E251F3D5658009BFF5B /* NULLTableViewCell.m */,
 				DD184E261F3D5658009BFF5B /* NULLTableViewCell.xib */,
+				DDC52EBF1F42C84D00ECF211 /* SuccessPayTableViewCell.h */,
+				DDC52EC01F42C84D00ECF211 /* SuccessPayTableViewCell.m */,
+				DDC52EC11F42C84D00ECF211 /* SuccessPayTableViewCell.xib */,
+				DDC52EC41F42DDEF00ECF211 /* SuccessPayRecommedCell.h */,
+				DDC52EC51F42DDEF00ECF211 /* SuccessPayRecommedCell.m */,
+				DDC52EC71F42E0F100ECF211 /* SuccessPayRecommendMemberCell.h */,
+				DDC52EC81F42E0F100ECF211 /* SuccessPayRecommendMemberCell.m */,
+				DDC52EC91F42E0F100ECF211 /* SuccessPayRecommendMemberCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -2201,6 +2237,12 @@
 				DD69B2BA1F39D25C0036F368 /* BuyNowSelectSpecView.h */,
 				DD69B2BB1F39D25C0036F368 /* BuyNowSelectSpecView.m */,
 				DD69B2BD1F39D27C0036F368 /* BuyNowSelectSpecView.xib */,
+				DDC52EBA1F42C39F00ECF211 /* SuccessPayHeaderView.h */,
+				DDC52EBB1F42C39F00ECF211 /* SuccessPayHeaderView.m */,
+				DDC52EBD1F42C44000ECF211 /* SuccessPayHeaderView.xib */,
+				DDC52ECC1F42E43600ECF211 /* SuccessPayRecommedHeaderView.h */,
+				DDC52ECD1F42E43600ECF211 /* SuccessPayRecommedHeaderView.m */,
+				DDC52ECF1F42E45A00ECF211 /* SuccessPayRecommedHeaderView.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -2297,6 +2339,9 @@
 				DD4CEFD41F25DD3A0024156F /* CommentListViewController.h */,
 				DD4CEFD51F25DD3A0024156F /* CommentListViewController.m */,
 				DD4CEFD61F25DD3A0024156F /* CommentListViewController.xib */,
+				DDC52EB51F42C00900ECF211 /* SuccessPayViewController.h */,
+				DDC52EB61F42C00900ECF211 /* SuccessPayViewController.m */,
+				DDC52EB71F42C00900ECF211 /* SuccessPayViewController.xib */,
 				DD6288311F233EDF0030331D /* SameHobbyPersonListViewController.h */,
 				DD6288321F233EDF0030331D /* SameHobbyPersonListViewController.m */,
 				DD6288331F233EDF0030331D /* SameHobbyPersonListViewController.xib */,
@@ -2487,7 +2532,6 @@
 				DD9A63A81F2EE20100611FA8 /* AfterSalesViewController.xib */,
 				DDDD17C61F2C9141006BE206 /* MyOrderViewController.h */,
 				DDDD17C71F2C9141006BE206 /* MyOrderViewController.m */,
-				DDDD17C81F2C9141006BE206 /* MyOrderViewController.xib */,
 				DDDD17CB1F2C93A2006BE206 /* OrderListViewController.h */,
 				DDDD17CC1F2C93A2006BE206 /* OrderListViewController.m */,
 				DDDD17CD1F2C93A2006BE206 /* OrderListViewController.xib */,
@@ -2619,6 +2663,7 @@
 				DD62877B1F208CA40030331D /* MyCircleViewController.xib in Resources */,
 				DDFB81F21F18686A00AEAAA7 /* CartProductListCell.xib in Resources */,
 				DD6288141F22EB440030331D /* SubMessage_LikedViewController.xib in Resources */,
+				DDC52ED01F42E45A00ECF211 /* SuccessPayRecommedHeaderView.xib in Resources */,
 				DD4CF01E1F2868490024156F /* ActivityRecommendInformationCell.xib in Resources */,
 				DD40B72E1F173B5300839748 /* HomeRightImageCell.xib in Resources */,
 				DD69B2A51F39B6130036F368 /* OrderConfirmAddressCell.xib in Resources */,
@@ -2633,7 +2678,6 @@
 				DD4CF00F1F283D500024156F /* ProductDetailImageCell.xib in Resources */,
 				DD6287051F1EE19C0030331D /* FocusPersonFileViewController.xib in Resources */,
 				DD4CF11A1F2AFB9E0024156F /* CategoryProductNameCell.xib in Resources */,
-				DDDD17CA1F2C9141006BE206 /* MyOrderViewController.xib in Resources */,
 				DD4CF0191F285E7D0024156F /* ActivityRecommendImageCell.xib in Resources */,
 				DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */,
 				DD6287C11F21AB890030331D /* HandpickActivitiesCell.xib in Resources */,
@@ -2659,6 +2703,7 @@
 				DDFB825E1F187A7900AEAAA7 /* cb_glossy_off.png in Resources */,
 				DDFB82611F187A7900AEAAA7 /* cb_glossy_on@2x.png in Resources */,
 				DD9A63A01F2ECEF700611FA8 /* OrderListHeaderView.xib in Resources */,
+				DDC52EC31F42C84D00ECF211 /* SuccessPayTableViewCell.xib in Resources */,
 				DD6287CB1F21AF900030331D /* LookAroundTableCell.xib in Resources */,
 				DD6287EE1F21E8C00030331D /* FailureReviewViewController.xib in Resources */,
 				DDFB82701F18BC4500AEAAA7 /* PersonalCollectCell.xib in Resources */,
@@ -2669,6 +2714,7 @@
 				DD69B2AF1F39B6610036F368 /* OrderConfirmDisCountCell.xib in Resources */,
 				DD6287E41F21E8120030331D /* WaitForReviewViewController.xib in Resources */,
 				DD9A63B41F2EE86700611FA8 /* AfterSalesHeaderView.xib in Resources */,
+				DDC52EB91F42C00900ECF211 /* SuccessPayViewController.xib in Resources */,
 				DD6287DF1F21E3B20030331D /* ActivityViewController.xib in Resources */,
 				EC4BA2551F15EDF000B9BE1A /* DiscoverHeaderCell.xib in Resources */,
 				DD62871E1F1F3D8B0030331D /* PriaseTableViewCell.xib in Resources */,
@@ -2677,6 +2723,7 @@
 				DD6288231F22EC7A0030331D /* SubNotification_DiscountViewController.xib in Resources */,
 				DD4CF03C1F289FB20024156F /* MyOnFocusCell.xib in Resources */,
 				DD69B2AA1F39B6360036F368 /* OrderConfirmProductListCell.xib in Resources */,
+				DDC52ECB1F42E0F100ECF211 /* SuccessPayRecommendMemberCell.xib in Resources */,
 				DD6288351F233EE00030331D /* SameHobbyPersonListViewController.xib in Resources */,
 				DDFB82631F187A7900AEAAA7 /* cb_green_off111@2x.png in Resources */,
 				DD6287301F1F51BA0030331D /* ConfigurationCell.xib in Resources */,
@@ -2758,6 +2805,7 @@
 				DD4CEFE01F26CD0F0024156F /* BrandDetailViewController.xib in Resources */,
 				DD6898291F30525A008B6A8F /* MoreProductTableViewCell.xib in Resources */,
 				EC4BA0CD1F1359DF00B9BE1A /* SelectThemeColorView.xib in Resources */,
+				DDC52EBE1F42C44000ECF211 /* SuccessPayHeaderView.xib in Resources */,
 				DDE0FD3A1F38585B00269DBD /* BrandStoryViewController.xib in Resources */,
 				DD62870F1F1EEE1B0030331D /* FocusPersonHeaderCell.xib in Resources */,
 				DD62880F1F22EB090030331D /* SubMessage_CommentViewController.xib in Resources */,
@@ -2833,6 +2881,7 @@
 				DDFB82B51F1D931500AEAAA7 /* PYSearchConst.m in Sources */,
 				DD4CF0AE1F29A8FC0024156F /* AtSomeOneCell.m in Sources */,
 				DD0DBB0A1F3431650098F5FA /* GetSpecPriceDataModel.m in Sources */,
+				DDC52ECE1F42E43600ECF211 /* SuccessPayRecommedHeaderView.m in Sources */,
 				DDC52E871F41328800ECF211 /* SearchNetTool.m in Sources */,
 				DDC52EA31F41C60500ECF211 /* PalceOrderOrderInfoModel.m in Sources */,
 				DD4CF0001F274B480024156F /* ShakeAndWinViewController.m in Sources */,
@@ -2849,6 +2898,7 @@
 				EC4BA0C91F1359DF00B9BE1A /* FlipTableView.m in Sources */,
 				DD6898521F31B55D008B6A8F /* GoodsDetailDataModel.m in Sources */,
 				DD4CF0361F2895680024156F /* PersonalActivitilyRuleViewController.m in Sources */,
+				DDC52EC61F42DDEF00ECF211 /* SuccessPayRecommedCell.m in Sources */,
 				DD0DBACC1F32B2DC0098F5FA /* LoginDataModel.m in Sources */,
 				DD68984B1F319E2C008B6A8F /* GetGiftType_gift_typeModel.m in Sources */,
 				DD6287271F1F48000030331D /* CommentTableViewCell.m in Sources */,
@@ -3003,6 +3053,7 @@
 				DD0DBAF31F330D280098F5FA /* GetUserPrize_PrizeListModel.m in Sources */,
 				DD4CF0221F286E9E0024156F /* ActivityRecommendDetailCell.m in Sources */,
 				DD4CF0EA1F29BF850024156F /* YQNetworking+RequestManager.m in Sources */,
+				DDC52ECA1F42E0F100ECF211 /* SuccessPayRecommendMemberCell.m in Sources */,
 				DDFB82741F19B18800AEAAA7 /* Categate_CategateCollectCell.m in Sources */,
 				DDE0FD391F38585B00269DBD /* BrandStoryViewController.m in Sources */,
 				EC4BA0DC1F1359EC00B9BE1A /* FactoryTableViewCell.m in Sources */,
@@ -3025,6 +3076,7 @@
 				DD6288221F22EC7A0030331D /* SubNotification_DiscountViewController.m in Sources */,
 				DD6897F91F2F0F88008B6A8F /* HomeGoodsListModel.m in Sources */,
 				DD6898451F319D90008B6A8F /* GetGiftTypeDataModel.m in Sources */,
+				DDC52EBC1F42C39F00ECF211 /* SuccessPayHeaderView.m in Sources */,
 				DD6898141F302BB2008B6A8F /* ClassifyListDataModel.m in Sources */,
 				DD0DBAED1F330CDA0098F5FA /* GetUserPrizeResultModel.m in Sources */,
 				DD69B2F71F3AFD390036F368 /* STPickerSingle.m in Sources */,
@@ -3052,6 +3104,7 @@
 				DD184E231F3D3C19009BFF5B /* NSString+MD5.m in Sources */,
 				DD0DBAE31F32ED7C0098F5FA /* GetGiftList_GiftListModel.m in Sources */,
 				DD184E1D1F3C59C7009BFF5B /* MyDiscountCouponExpiredModel.m in Sources */,
+				DDC52EB81F42C00900ECF211 /* SuccessPayViewController.m in Sources */,
 				DD6287041F1EE19C0030331D /* FocusPersonFileViewController.m in Sources */,
 				DD6287481F1F90E80030331D /* GiftListCell.m in Sources */,
 				DD0DBAF61F332E840098F5FA /* ProductDetailHeaderView.m in Sources */,
@@ -3059,6 +3112,7 @@
 				DDFB82B91F1D931500AEAAA7 /* UIView+PYSearchExtension.m in Sources */,
 				DD6287E31F21E8120030331D /* WaitForReviewViewController.m in Sources */,
 				DD6898481F319DA8008B6A8F /* GetGiftTypeResultModel.m in Sources */,
+				DDC52EC21F42C84D00ECF211 /* SuccessPayTableViewCell.m in Sources */,
 				DD6287C51F21AE580030331D /* LookAroundViewController.m in Sources */,
 				EC4BA0D91F1359EC00B9BE1A /* BaseTableViewCell.m in Sources */,
 				DD184E141F3C597A009BFF5B /* MyDiscountCouponDataModel.m in Sources */,

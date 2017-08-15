@@ -33,6 +33,7 @@
     // Do any additional setup after loading the view from its nib.
     
     [self getUserAddressListData];
+    [self settingNavigationBar];
     [self settingTableview];
     [self respondWithRAC];
 }
@@ -152,6 +153,12 @@
     
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([MyAddressCell class]) bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([MyAddressCell class])];
+}
+
+#pragma mark - <配置navigationBar>
+-(void)settingNavigationBar
+{
+    [self.navigationController.navigationBar setTranslucent:NO];
 }
 
 #pragma mark - <新增地址>

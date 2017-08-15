@@ -23,6 +23,7 @@
 #import "MyAddressViewController.h"
 #import "ProductDetailViewController.h"
 #import "MyDiscountCouponViewController.h"
+#import "SuccessPayViewController.h"
 
 //models
 #import "OrderConfirmModel.h"
@@ -36,6 +37,7 @@
 #import "PlaceOrderWeChatPayModel.h"
 #import "PalceOrderOrderInfoModel.h"
 #import "PlaceOrderCallbackModel.h"
+
 
 @interface OrderConfirmViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -55,8 +57,10 @@
 @property (nonatomic, strong)NSMutableArray *specArray;
 @property (nonatomic, strong)NSArray *goodsArray;
 
-//支付串码
+//支付宝支付串码
 @property (nonatomic, strong)NSString *pay_code;
+//微信支付订单号
+@property (nonatomic, strong)NSString *order_sn;
 
 @end
 
@@ -65,7 +69,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self getOrderConfirmData];
+    [self getDataByJumpID];
     [self settingOutlsets];
     [self settingTableView];
     
@@ -75,6 +79,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+    if ([self.wayOfPay isEqualToString:@"1"]) {
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:4] animated:YES scrollPosition:UITableViewScrollPositionNone];
+    }else{
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:4] animated:YES scrollPosition:UITableViewScrollPositionNone];
+    }
+    
 }
 
 #pragma mark - <懒加载>
@@ -96,7 +111,17 @@
 }
 */
 
-#pragma mark - <获取订单数据>
+#pragma mark - <判断从产品详情进入还是购物车进入>
+-(void)getDataByJumpID
+{
+    if ([self.JumpID isEqualToString:@"detail"]) {
+        [self getOrderConfirmData];
+    }else if ([self.JumpID isEqualToString:@"cart"]){
+        [self getgetOrderConfirmData2];
+    }
+}
+
+#pragma mark - <产品详情进入————获取订单数据>
 -(void)getOrderConfirmData
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kConfirmOrder];
@@ -138,18 +163,87 @@
 
 }
 
+#pragma mark - <购物车进入————获取订单数据>
+-(void)getgetOrderConfirmData2
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kConfirmOrder2];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSError *error = nil;
+            OrderConfirmModel *model = [[OrderConfirmModel alloc]initWithDictionary:dataDict error:&error];
+            if (!error) {
+                if ([model.code isEqualToString:@"200"]) {
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    self.goodsArray = model.data.result.goods_info;
+                    self.modelGoodsInfo = self.goodsArray[0];
+                    self.modelResult = model.data.result;
+                    self.modelUserAddress = model.data.result.user_address;
+                    
+                    [self fillDataToOutletsWithModel:self.modelResult];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.tableView reloadData];
+                        //默认选中支付方式第一项
+                        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:4];
+                        [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+                    });
+                }else{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                }
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.localizedDescription];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        if (error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    }];
+}
+
 #pragma mark - <获取立即下单数据_支付宝支付>
 -(void)getPlaceOrderDataWithAliPay
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPlaceOrder];
-    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
-                                    @"goods_id":self.modelGoodsInfo.goods_id,
-                                    @"goods_num":self.modelGoodsInfo.goods_num,
-                                    @"goods_spec":self.specArray,
-                                    @"address_id":self.modelUserAddress.address_id,
-                                    @"coupon_id":self.discountCouponID,
-                                    @"use_money":self.discountPrice,
-                                    @"pay_type":self.wayOfPay};
+    NSString *urlStr = [NSString string];
+    
+    //判断该参数从产品详情／购物车进入
+    NSDictionary *dictParameter = [NSDictionary dictionary];
+    if ([self.JumpID isEqualToString:@"detail"]) {
+        urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPlaceOrder];
+        dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                          @"goods_id":self.modelGoodsInfo.goods_id,
+                          @"goods_num":self.modelGoodsInfo.goods_num,
+                          @"goods_spec":self.specArray,
+                          @"address_id":self.modelUserAddress.address_id,
+                          @"coupon_id":self.discountCouponID,
+                          @"use_money":self.discountPrice,
+                          @"pay_type":self.wayOfPay};
+    }else if ([self.JumpID isEqualToString:@"cart"]){
+        urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPlaceOrder2];
+        dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                          @"address_id":self.modelUserAddress.address_id,
+                          @"coupon_id":self.discountCouponID,
+                          @"pay_type":self.wayOfPay,
+                          @"use_money":self.discountPrice};
+    }
     
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
@@ -169,11 +263,19 @@
                         [[AlipaySDK defaultService]payOrder:self.pay_code fromScheme:scheme callback:^(NSDictionary *resultDic) {
                             NSString *resultStatus = resultDic[@"resultStatus"];
                             if ([resultStatus isEqualToString:@"9000"]) {
+                                
                                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付成功"];
                                 [hudWarning hideAnimated:YES afterDelay:2.0];
-                                NSDictionary *dataDict = [self getCallBackDataAfterPayWithResultDict:resultDic];
+                                hudWarning.completionBlock = ^{
+                                    SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
+                                    successPayVC.modelAli = modelAliPay;
+                                    [self presentViewController:successPayVC animated:YES completion:^{
+                                        [self.navigationController popViewControllerAnimated:YES];
+                                    }];
+                                };
                                 
                             }else{
+                                [self.navigationController popViewControllerAnimated:YES];
                                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付失败"];
                                 [hudWarning hideAnimated:YES afterDelay:2.0];
                             }
@@ -186,6 +288,10 @@
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
                 }
+            }else{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.localizedDescription];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
             }
             
         }else{
@@ -203,15 +309,27 @@
 #pragma mark - <获取立即下单数据_微信支付>
 -(void)getPlaceOrderDataWithWeChatPay
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPlaceOrder];
-    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
-                                    @"goods_id":self.modelGoodsInfo.goods_id,
-                                    @"goods_num":self.modelGoodsInfo.goods_num,
-                                    @"goods_spec":self.specArray,
-                                    @"address_id":self.modelUserAddress.address_id,
-                                    @"coupon_id":self.discountCouponID,
-                                    @"use_money":self.discountPrice,
-                                    @"pay_type":@"2"};
+    NSString *urlStr = [NSString string];
+    NSDictionary *dictParameter = [NSDictionary dictionary];
+    
+    if ([self.JumpID isEqualToString:@"detail"]) {
+        urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPlaceOrder];
+        dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                          @"goods_id":self.modelGoodsInfo.goods_id,
+                          @"goods_num":self.modelGoodsInfo.goods_num,
+                          @"goods_spec":self.specArray,
+                          @"address_id":self.modelUserAddress.address_id,
+                          @"coupon_id":self.discountCouponID,
+                          @"use_money":self.discountPrice,
+                          @"pay_type":@"2"};
+    }else if ([self.JumpID isEqualToString:@"cart"]){
+        urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPlaceOrder2];
+        dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                          @"address_id":self.modelUserAddress.address_id,
+                          @"coupon_id":self.discountCouponID,
+                          @"pay_type":self.wayOfPay,
+                          @"use_money":self.discountPrice};
+    }
     
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
@@ -222,6 +340,7 @@
                 [hud hideAnimated:YES afterDelay:1.0];
                 PlaceOrderCallbackModel *modelCallback = model.data.result.wxPay.callback;
                 PalceOrderOrderInfoModel *modelOrderInfo = model.data.result.wxPay.order_info;
+                self.order_sn = modelOrderInfo.order_sn;
                 
                 PayReq *payreq = [[PayReq alloc]init];
                 payreq.partnerId = modelCallback.partnerid;
@@ -259,6 +378,48 @@
     NSDictionary *result = resultDict[@"result"];
     NSDictionary *dataDict = result[@"alipay_trade_app_pay_response"];
     return dataDict;
+}
+
+#pragma mark - <微信支付回调二次请求>
+-(void)verifyWXPayResult
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kVerifyPayResult];
+    if (![self.order_sn isEqualToString:@""]) {
+        NSDictionary *dictParameter = @{@"order_sn":self.order_sn};
+        
+        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+        [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+            if (response) {
+                NSDictionary *dataDict = (NSDictionary *)response;
+                NSNumber *code = dataDict[@"code"];
+                if ([code isEqual:@200]) {
+                    NSError *error = nil;
+                    PalceOrderOrderInfoModel *modelWXPay = [[PalceOrderOrderInfoModel alloc]initWithDictionary:dataDict[@"data"][@"result"] error:&error]; ;
+                    SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
+                    successPayVC.modelWX = modelWXPay;
+                    [self presentViewController:successPayVC animated:YES completion:^{
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }];
+                }else{
+                    //。跳转订单列表，
+                }
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        } failBlock:^(NSError *error) {
+            if (error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }];
+    }
 }
 
 
@@ -391,6 +552,12 @@
         self.labelShouldPay.text = [NSString stringWithFormat:@"¥%.2f",shouldPay];
         [self.tableView reloadData];
     }];
+    
+    //微信回调二次请求
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"WX_PaySuccess" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [self verifyWXPayResult];
+    
+    }];
 }
 
 
@@ -457,6 +624,9 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+    if (section == 4) {
+        return 30;
+    }
     return 0.1f;
 }
 
@@ -485,7 +655,7 @@
         cell = cellFee;
     }else if (indexPath.section == 4){
         OrderConfirmWayOfPayCell *cellWayOfPay = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OrderConfirmWayOfPayCell class])];
-//        cellWayOfPay.wayOfPay = self.wayOfPay;
+        cellWayOfPay.wayOfPay = self.wayOfPay;
         cellWayOfPay.tag = indexPath.row;
         if (indexPath.row == 0) {cellWayOfPay.imgWayOfPay.image = [UIImage imageNamed:@"zhi_fu_bao_zhi_fu"];
             cellWayOfPay.labelWayOfPay.text = @"支付宝";

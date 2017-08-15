@@ -15,4 +15,6 @@
 @property (nonatomic, strong)NSArray *goods_spec;
 @property (nonatomic, strong)NSDictionary *Parameter;
 
+@property (nonatomic, strong)NSString *JumpID;
+
 @end

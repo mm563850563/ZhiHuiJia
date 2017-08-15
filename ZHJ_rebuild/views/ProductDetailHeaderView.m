@@ -112,6 +112,9 @@ self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:self.cycleScr
     self.cycleScrollView.autoScroll = NO;
     self.cycleScrollView.pageDotColor = kColorFromRGB(kThemeYellow);
     [self.cycleScrollBGView addSubview:self.cycleScrollView];
+    [self.cycleScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
 }
 
 #pragma mark - <添加ratingBar>

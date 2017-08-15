@@ -54,7 +54,6 @@
     [super viewDidLoad];
     
     self.page = [NSNumber numberWithInt:1];
-//    [self getUserFavoriteData];
     [self managerRequestWithGCD];
     [self settingNavigationBar];
     [self settingOutlets];
@@ -144,6 +143,7 @@
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
         [hud hideAnimated:YES afterDelay:1.0];
+        [self.tableView.mj_header endRefreshing];
     });
 }
 
@@ -509,10 +509,13 @@
 #pragma mark - <初始化tableView>
 -(void)initTableView
 {
-    self.tableView = [[UITableView alloc]initWithFrame:self.tableBGView.bounds style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 50, 50) style:UITableViewStyleGrouped];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = kColorFromRGB(kLightGray);
     [self.tableBGView addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -522,6 +525,9 @@
     
     [self.tableView registerClass:[YouthColorCell class] forCellReuseIdentifier:NSStringFromClass([YouthColorCell class])];
     
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self managerRequestWithGCD];
+    }];
     
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         int page_int = [self.page intValue];
@@ -564,6 +570,7 @@
 {
     OrderConfirmViewController *orderConfirmVC = [[OrderConfirmViewController alloc]initWithNibName:NSStringFromClass([OrderConfirmViewController class]) bundle:nil];
     orderConfirmVC.hidesBottomBarWhenPushed = YES;
+    orderConfirmVC.JumpID = @"cart";
     [self.navigationController pushViewController:orderConfirmVC animated:YES];
 }
 

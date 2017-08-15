@@ -19,12 +19,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    [self addCheckBox];
 }
 
--(void)drawRect:(CGRect)rect
+-(void)addCheckBox
 {
     BOOL checked;
-    if (self.tag == 0) {
+    if ([self.wayOfPay isEqualToString:@"0"]) {
         checked = YES;
     }else{
         checked = NO;
