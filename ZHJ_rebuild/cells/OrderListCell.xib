@@ -64,7 +64,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退款成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkX-qP-Zwg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkX-qP-Zwg">
                                 <rect key="frame" x="240" y="71.5" width="50" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Au0-NY-zX6"/>
@@ -128,6 +128,15 @@
                     <constraint firstItem="RaI-tK-nfN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="nci-53-EzX"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imgProduct" destination="Eqf-PF-Y8b" id="IGV-ux-jd5"/>
+                <outlet property="labelCount" destination="60j-kY-5Wb" id="gpe-nS-6Qg"/>
+                <outlet property="labelMarketPrice" destination="sHA-DN-qjo" id="LaE-5M-hHh"/>
+                <outlet property="labelPrice" destination="EKl-98-5mi" id="3hc-DC-aY9"/>
+                <outlet property="labelProductName" destination="2kU-Vt-RY7" id="Am5-b8-q7Q"/>
+                <outlet property="labelRefund" destination="pkX-qP-Zwg" id="AcE-RF-KtR"/>
+                <outlet property="labelSpec" destination="7ZQ-Sf-jjO" id="2xR-le-P0Z"/>
+            </connections>
             <point key="canvasLocation" x="20" y="148"/>
         </tableViewCell>
     </objects>

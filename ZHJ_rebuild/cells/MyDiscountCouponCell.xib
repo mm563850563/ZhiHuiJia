@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -116,18 +117,27 @@
                                     <constraint firstAttribute="bottom" secondItem="Fyx-FO-Yb6" secondAttribute="bottom" id="yTb-c4-A9c"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kdy-3U-jpf">
+                                <rect key="frame" x="181.5" y="0.0" width="118.5" height="118.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kdy-3U-jpf" secondAttribute="height" multiplier="1:1" id="Fgq-hY-ele"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="5HK-ys-N64" secondAttribute="bottom" id="249-P4-aRT"/>
                             <constraint firstItem="5HK-ys-N64" firstAttribute="top" secondItem="ZPc-BX-4qt" secondAttribute="top" id="6oI-nD-8WG"/>
                             <constraint firstItem="Jan-VC-NrS" firstAttribute="centerY" secondItem="ZPc-BX-4qt" secondAttribute="centerY" id="7x2-H2-HJI"/>
+                            <constraint firstAttribute="trailing" secondItem="kdy-3U-jpf" secondAttribute="trailing" id="IHu-9b-nur"/>
                             <constraint firstItem="ecK-ec-OqS" firstAttribute="width" secondItem="ZPc-BX-4qt" secondAttribute="width" multiplier="1:3.5" id="Khq-JA-A1w"/>
                             <constraint firstAttribute="trailing" secondItem="5HK-ys-N64" secondAttribute="trailing" id="The-N1-bIB"/>
                             <constraint firstItem="ecK-ec-OqS" firstAttribute="centerY" secondItem="ZPc-BX-4qt" secondAttribute="centerY" id="b1B-BU-pAY"/>
                             <constraint firstAttribute="trailing" secondItem="Jan-VC-NrS" secondAttribute="trailing" constant="10" id="dyP-Oz-6sF"/>
+                            <constraint firstAttribute="bottom" secondItem="kdy-3U-jpf" secondAttribute="bottom" id="efI-h9-RfY"/>
                             <constraint firstItem="Jan-VC-NrS" firstAttribute="leading" secondItem="ecK-ec-OqS" secondAttribute="trailing" constant="30" id="fsH-SJ-lpd"/>
                             <constraint firstItem="ecK-ec-OqS" firstAttribute="leading" secondItem="ZPc-BX-4qt" secondAttribute="leading" constant="10" id="mER-Qe-HS8"/>
+                            <constraint firstItem="kdy-3U-jpf" firstAttribute="top" secondItem="ZPc-BX-4qt" secondAttribute="top" id="n1r-B3-jJi"/>
                             <constraint firstItem="5HK-ys-N64" firstAttribute="leading" secondItem="ZPc-BX-4qt" secondAttribute="leading" id="qqJ-Yd-sGx"/>
                         </constraints>
                     </view>
@@ -140,6 +150,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imgBGColor" destination="5HK-ys-N64" id="UqS-7E-0Hj"/>
+                <outlet property="imgStatus" destination="kdy-3U-jpf" id="BiA-OV-sIo"/>
                 <outlet property="labelCondition" destination="7Vd-xc-JPg" id="dVg-A9-o8B"/>
                 <outlet property="labelMoney" destination="MRJ-PV-kM2" id="Li3-Cy-fa2"/>
                 <outlet property="labelMoneyCoupon" destination="Fh5-0Q-gsB" id="0yN-Ys-a11"/>

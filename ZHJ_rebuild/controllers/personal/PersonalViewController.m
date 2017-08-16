@@ -16,6 +16,7 @@
 #import "GetGiftViewController.h"
 #import "CustomerServiceCenterViewController.h"
 #import "MyOrderViewController.h"
+#import "MyDiscountCouponViewController.h"
 #import "AfterSalesViewController.h"
 
 //cells
@@ -100,6 +101,22 @@
     myOrderVC.selectedIndex = selectedIndex;
     myOrderVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:myOrderVC animated:YES];
+}
+
+#pragma mark - <跳转”优惠券“页面>
+-(void)jumpToDiscountCouponVC
+{
+    MyDiscountCouponViewController *myCouponVC = [[MyDiscountCouponViewController alloc]initWithNibName:NSStringFromClass([MyDiscountCouponViewController class]) bundle:nil];
+    myCouponVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:myCouponVC animated:YES];
+}
+
+#pragma mark - <跳转“我的收藏”页面>
+-(void)jumpToMyCollectionVC
+{
+    MyCollectProductViewController *myCollectProductVC = [[MyCollectProductViewController alloc]initWithNibName:NSStringFromClass([MyCollectProductViewController class]) bundle:nil];
+    myCollectProductVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:myCollectProductVC animated:YES];
 }
 
 #pragma mark - <跳转“售后”页面>
@@ -228,11 +245,9 @@
         myBalanceVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:myBalanceVC animated:YES];
     }else if (indexPath.item == 1){//优惠券
-        MyCollectProductViewController *myCollectProductVC = [[MyCollectProductViewController alloc]initWithNibName:NSStringFromClass([MyCollectProductViewController class]) bundle:nil];
-        myCollectProductVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:myCollectProductVC animated:YES];
+        [self jumpToDiscountCouponVC];
     }else if (indexPath.item == 2){//我的收藏
-        
+        [self jumpToMyCollectionVC];
     }else if (indexPath.item == 3){//分享邀请
         
     }else if (indexPath.item == 4){//客服中心

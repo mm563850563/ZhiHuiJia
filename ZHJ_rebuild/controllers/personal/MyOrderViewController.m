@@ -13,7 +13,11 @@
 #import "FlipTableView.h"
 
 //controllers
-#import "OrderListViewController.h"
+#import "OrderListViewController_One.h"
+#import "OrderListViewController_Two.h"
+#import "OrderListViewController_Three.h"
+#import "OrderListViewController_Four.h"
+#import "OrderListViewController_Five.h"
 
 @interface MyOrderViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate>
 
@@ -51,7 +55,7 @@
 
 #pragma mark - <添加segmentView>
 -(void)initSegment{
-    self.segmentView = [[SegmentTapView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 40) withDataArray:[NSArray arrayWithObjects:@"全部",@"待付款",@"待发货",@"已发货",@"待评价", nil] withFont:15];
+    self.segmentView = [[SegmentTapView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 40) withDataArray:[NSArray arrayWithObjects:@"全部",@"待付款",@"待发货",@"待收货",@"待评价", nil] withFont:15];
     self.segmentView.delegate = self;
     [self.view addSubview:self.segmentView];
 //    [self.segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -63,11 +67,11 @@
 
 #pragma mark - <添加flipTableView>
 -(void)initFlipTableView{
-    OrderListViewController *allOrderVC = [[OrderListViewController alloc]initWithNibName:NSStringFromClass([OrderListViewController class]) bundle:nil];
-    OrderListViewController *waitToPayVC = [[OrderListViewController alloc]initWithNibName:NSStringFromClass([OrderListViewController class]) bundle:nil];
-    OrderListViewController *waitToSendoutVC = [[OrderListViewController alloc]initWithNibName:NSStringFromClass([OrderListViewController class]) bundle:nil];
-    OrderListViewController *sendedGoodsVC = [[OrderListViewController alloc]initWithNibName:NSStringFromClass([OrderListViewController class]) bundle:nil];
-    OrderListViewController *waitToCommentVC = [[OrderListViewController alloc]initWithNibName:NSStringFromClass([OrderListViewController class]) bundle:nil];
+    OrderListViewController_One *allOrderVC = [[OrderListViewController_One alloc]initWithNibName:NSStringFromClass([OrderListViewController_One class]) bundle:nil];
+    OrderListViewController_Two *waitToPayVC = [[OrderListViewController_Two alloc]initWithNibName:NSStringFromClass([OrderListViewController_Two class]) bundle:nil];
+    OrderListViewController_Three *waitToSendoutVC = [[OrderListViewController_Three alloc]initWithNibName:NSStringFromClass([OrderListViewController_Three class]) bundle:nil];
+    OrderListViewController_Four *sendedGoodsVC = [[OrderListViewController_Four alloc]initWithNibName:NSStringFromClass([OrderListViewController_Four class]) bundle:nil];
+    OrderListViewController_Five *waitToCommentVC = [[OrderListViewController_Five alloc]initWithNibName:NSStringFromClass([OrderListViewController_Five class]) bundle:nil];
     
     NSMutableArray *vcArray = [NSMutableArray array];
     [vcArray addObject:allOrderVC];

@@ -48,9 +48,13 @@
 
 
 
-#pragma mark - <错误提示>
+#pragma mark - <错误提示>*********************
 #define kRequestError @"请求失败,请稍后再试"
 #define kRequestEmptyData @"数据为空"
+
+
+#pragma mark - <md5——盐>
+#define kSalt @"wz17zh"
 
 
 #pragma mark - <导入头文件>********************
@@ -185,6 +189,9 @@
 
 #pragma mark - <33.微信支付成功后二次请求>
 #define kVerifyPayResult @"/order/verifyPayResult"
+
+#pragma mark - <34.订单列表>
+#define kOrderList @"/Order/ajaxOrderList"
 
 
 

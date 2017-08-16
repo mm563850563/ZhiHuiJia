@@ -14,11 +14,18 @@
 //models
 #import "MyDiscountCouponModel.h"
 #import "MyDiscountCouponAvailableModel.h"
+#import "MyDiscountCouponNormalModel.h"
+#import "MyDiscountCouponExpiredModel.h"
+#import "MyDiscountCouponUsedModel.h"
 
 @interface MyDiscountCouponViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (nonatomic, strong)NSArray *couponAvailableArray;
+@property (nonatomic, strong)NSArray *couponUsedArray;
+@property (nonatomic, strong)NSArray *couponNormalArray;
+@property (nonatomic, strong)NSArray *couponExpiredArray;
 
 @end
 
@@ -42,9 +49,15 @@
 {
     if (self.shouldPay || kUserDefaultObject(kUserInfo)) {
         NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kDiscountCouponList];
-        NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
-                                        @"is_all":@"0",
-                                        @"total_price":self.shouldPay};
+        NSDictionary *dictParameter = [NSDictionary dictionary];
+        if (self.shouldPay) {
+            dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                              @"is_all":@"0",
+                              @"total_price":self.shouldPay};
+        }else{
+            dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                              @"is_all":@"1"};
+        }
         
         MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
         [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
@@ -54,6 +67,9 @@
                 if ([model.code isEqualToString:@"200"]) {
                     [hud hideAnimated:YES afterDelay:1.0];
                     self.couponAvailableArray = model.data.result.available;
+                    self.couponUsedArray = model.data.result.used;
+                    self.couponExpiredArray = model.data.result.expired;
+                    self.couponNormalArray = model.data.result.normal;
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.tableView reloadData];
@@ -100,28 +116,54 @@
 
 
 #pragma mark - **** UITableViewDelegate,UITableViewDataSource ****
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 4;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.couponAvailableArray.count;
+    NSInteger count = 0;
+    if (section == 0) {
+        count = self.couponAvailableArray.count;
+    }else if (section == 1){
+        count = self.couponNormalArray.count;
+    }else if (section == 2){
+        count = self.couponExpiredArray.count;
+    }else if (section == 3){
+        count = self.couponUsedArray.count;
+    }
+    return count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc]init];
-    MyDiscountCouponCell *cellAvailable = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyDiscountCouponCell class])];
-    MyDiscountCouponAvailableModel *model = self.couponAvailableArray[indexPath.row];
-    cellAvailable.modelAvailable = model;
-    cell = cellAvailable;
+    MyDiscountCouponCell *cellCoupon = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyDiscountCouponCell class])];
+    if (indexPath.section == 0) {
+        MyDiscountCouponAvailableModel *model = self.couponAvailableArray[indexPath.row];
+        cellCoupon.modelAvailable = model;
+    }else if (indexPath.section == 1){
+        MyDiscountCouponNormalModel *model = self.couponNormalArray[indexPath.row];
+        cellCoupon.modelNormal = model;
+    }else if (indexPath.section == 2){
+        MyDiscountCouponExpiredModel *model = self.couponExpiredArray[indexPath.row];
+        cellCoupon.modelExpired = model;
+    }else if (indexPath.section == 3){
+        MyDiscountCouponUsedModel *model = self.couponUsedArray[indexPath.row];
+        cellCoupon.modelUsed = model;
+    }
     
-    return cell;
+    return cellCoupon;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 {
-    MyDiscountCouponAvailableModel *model = self.couponAvailableArray[indexPath.row];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectDiscountCoupon" object:model];
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.shouldPay) {
+        MyDiscountCouponAvailableModel *model = self.couponAvailableArray[indexPath.row];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"selectDiscountCoupon" object:model];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 

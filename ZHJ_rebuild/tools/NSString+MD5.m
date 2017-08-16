@@ -11,7 +11,7 @@
 
 @implementation NSString (MD5)
 
--(NSString *)md5WithInputText:(NSString *)inputText
++(NSString *)md5WithInputText:(NSString *)inputText
 {
     const char*cStr = [inputText UTF8String];
     unsigned char digest[CC_MD5_DIGEST_LENGTH];

@@ -10,6 +10,7 @@
 #import "MyDiscountCouponNormalModel.h"
 #import "MyDiscountCouponExpiredModel.h"
 #import "MyDiscountCouponAvailableModel.h"
+#import "MyDiscountCouponUsedModel.h"
 
 @protocol MyDiscountCouponNormalModel <NSObject>
 @end
@@ -20,10 +21,14 @@
 @protocol MyDiscountCouponAvailableModel <NSObject>
 @end
 
+@protocol MyDiscountCouponUsedModel <NSObject>
+@end
+
 @interface MyDiscountCouponResultModel : JSONModel
 
 @property (nonatomic, strong)NSArray<MyDiscountCouponNormalModel> *normal;
 @property (nonatomic, strong)NSArray<MyDiscountCouponExpiredModel> *expired;
 @property (nonatomic, strong)NSArray<MyDiscountCouponAvailableModel> *available;
+@property (nonatomic, strong)NSArray<MyDiscountCouponUsedModel> *used;
 
 @end

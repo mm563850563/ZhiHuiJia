@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OrderListViewController : UIViewController
+@interface OrderListViewController_One : UIViewController
+
+@property (nonatomic, strong)NSString *order_type;
 
 @end

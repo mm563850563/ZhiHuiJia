@@ -1,14 +1,14 @@
 //
-//  MyDiscountCouponExpiredModel.h
+//  MyDiscountCouponUsedModel.h
 //  ZHJ_rebuild
 //
-//  Created by ZHJ on 2017/8/10.
+//  Created by ZHJ on 2017/8/16.
 //  Copyright © 2017年 sophia. All rights reserved.
 //
 
 #import <JSONModel/JSONModel.h>
 
-@interface MyDiscountCouponExpiredModel : JSONModel
+@interface MyDiscountCouponUsedModel : JSONModel
 
 @property (nonatomic, strong)NSString *id;
 @property (nonatomic, strong)NSString *condition;

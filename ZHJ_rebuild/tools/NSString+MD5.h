@@ -10,6 +10,6 @@
 
 @interface NSString (MD5)
 
--(NSString *)md5WithInputText:(NSString *)inputText;
++(NSString *)md5WithInputText:(NSString *)inputText;
 
 @end

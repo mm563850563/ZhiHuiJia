@@ -8,6 +8,16 @@
 
 #import "OrderListFooterView.h"
 
+@interface OrderListFooterView ()
+
+@property (weak, nonatomic) IBOutlet UIButton *btnCheckLogistic;
+@property (weak, nonatomic) IBOutlet UIButton *btnCancel;
+@property (weak, nonatomic) IBOutlet UIButton *btnCommit;
+@property (weak, nonatomic) IBOutlet UIButton *btnConfirm;
+@property (weak, nonatomic) IBOutlet UIButton *btnShare;
+
+@end
+
 @implementation OrderListFooterView
 
 /*
@@ -17,6 +27,99 @@
     // Drawing code
 }
 */
+
+
+
+-(void)setModelOrderList:(OrderList_OrderListModel *)modelOrderList
+{
+    self.labelProductCount.text = [NSString stringWithFormat:@"共%@件商品",modelOrderList.goods_count];
+    self.labelTotalPrice.text = [NSString stringWithFormat:@"合计：¥%@",modelOrderList.goods_price];
+    
+    if ([modelOrderList.order_status_desc isEqualToString:@"待支付"]) {
+        self.btnCommit.hidden = YES;
+        self.btnCheckLogistic.hidden = YES;
+        self.btnConfirm.hidden = YES;
+        self.btnCancel.hidden = NO;
+        
+        __weak typeof(self) weakSelf = self;
+        [self.btnCancel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+            make.right.mas_equalTo(-10);
+            make.height.mas_equalTo(20);
+            make.width.mas_equalTo(70);
+        }];
+        [self.btnShare mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+            make.right.mas_equalTo(weakSelf.btnCancel.mas_left).with.offset(-5);
+            make.size.mas_offset(CGSizeMake(50, 20));
+        }];
+        
+    }else if ([modelOrderList.order_status_desc isEqualToString:@"待发货"]){
+        self.btnCommit.hidden = YES;
+        self.btnCheckLogistic.hidden = YES;
+        self.btnConfirm.hidden = YES;
+        self.btnCancel.hidden = YES;
+        
+        [self.btnShare mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+            make.right.mas_equalTo(-10);
+            make.size.mas_offset(CGSizeMake(50, 20));
+        }];
+    }else if ([modelOrderList.order_status_desc isEqualToString:@"待收货"]){
+        self.btnCommit.hidden = YES;
+        self.btnCheckLogistic.hidden = NO;
+        self.btnConfirm.hidden = NO;
+        self.btnCancel.hidden = YES;
+        
+        __weak typeof(self) weakSelf = self;
+        [self.btnConfirm mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+            make.right.mas_equalTo(-10);
+            make.size.mas_offset(CGSizeMake(70, 20));
+        }];
+        [self.btnCheckLogistic mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+            make.right.mas_equalTo(weakSelf.btnConfirm.mas_left).with.offset(-5);
+            make.size.mas_offset(CGSizeMake(70, 20));
+        }];
+        [self.btnShare mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+            make.right.mas_equalTo(weakSelf.btnCheckLogistic.mas_left).with.offset(-5);
+            make.size.mas_offset(CGSizeMake(50, 20));
+        }];
+    }else if ([modelOrderList.order_status_desc isEqualToString:@"待评价"]){
+        self.btnCommit.hidden = NO;
+        self.btnCheckLogistic.hidden = YES;
+        self.btnConfirm.hidden = YES;
+        self.btnCancel.hidden = YES;
+        
+        __weak typeof(self) weakSelf = self;
+        [self.btnCommit mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+            make.right.mas_equalTo(-10);
+            make.size.mas_offset(CGSizeMake(70, 20));
+        }];
+        [self.btnShare mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+            make.right.mas_equalTo(weakSelf.btnCommit.mas_left).with.offset(-5);
+            make.size.mas_offset(CGSizeMake(50, 20));
+        }];
+    }else if ([modelOrderList.order_status_desc isEqualToString:@"已取消"]){
+        self.btnCommit.hidden = YES;
+        self.btnCheckLogistic.hidden = YES;
+        self.btnConfirm.hidden = YES;
+        self.btnCancel.hidden = YES;
+        self.btnCancel.hidden = YES;
+    }else if ([modelOrderList.order_status_desc isEqualToString:@"已完成"]){
+        self.btnCommit.hidden = YES;
+        self.btnCheckLogistic.hidden = YES;
+        self.btnConfirm.hidden = YES;
+        self.btnCancel.hidden = YES;
+        self.btnCancel.hidden = YES;
+    }
+}
+
+
 
 - (IBAction)btnShareAction:(UIButton *)sender
 {

@@ -12,6 +12,9 @@
 #import "LoginModel.h"
 #import "LoginDataModel.h"
 
+//tools
+#import "NSString+MD5.h"
+
 @interface LoginView ()
 
 @property (weak, nonatomic) IBOutlet UITextField *tfPhone;
@@ -49,8 +52,11 @@
 -(void)postLoginRequest
 {
     NSString *strLogin = [NSString stringWithFormat:@"%@%@",kDomainBase,kLogin];
+    //md5加密
+    NSString *password = [kSalt stringByAppendingString:self.tfPassword.text];
+    password = [NSString md5WithInputText:password];
     NSDictionary *dictParameter = @{@"mobile":self.tfPhone.text,
-                               @"password":self.tfPassword.text};
+                               @"password":password};
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self animated:YES];
     [YQNetworking postWithUrl:strLogin refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         [hud hideAnimated:YES afterDelay:1.0];
@@ -66,7 +72,7 @@
                 [hudWarning hideAnimated:YES afterDelay:2.0];
                 
                 //登陆成功后，把user_id保存本地，用作持久化登陆
-                kUserDefaultSetObject(model.data.user_id, kUserInfo);
+                kUserDefaultSetObject(model.data.result.user_id, kUserInfo);
                 kUserDefaultSynchronize;
             }else{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:model.msg];

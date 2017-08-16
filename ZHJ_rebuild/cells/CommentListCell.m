@@ -75,9 +75,6 @@
     [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(@(self.collectionView.collectionViewLayout.collectionViewContentSize.height));
     }];
-    
-//    self.cellHeight = self.collectionView.contentSize.height + 130;
-//    NSLog(@"当前cell的高度为%f",self.cellHeight);
 }
 
 

@@ -7,9 +7,10 @@
 //
 
 #import <JSONModel/JSONModel.h>
+#import "LoginResultModel.h"
 
 @interface LoginDataModel : JSONModel
 
-@property (nonatomic, strong)NSString *user_id;
+@property (nonatomic, strong)LoginResultModel *result;
 
 @end

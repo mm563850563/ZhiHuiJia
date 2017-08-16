@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "OrderListGoodsModel.h"
+
 @interface OrderListCell : UITableViewCell
+
+@property (nonatomic, strong)OrderListGoodsModel *modelGoods;
 
 @end

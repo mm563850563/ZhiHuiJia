@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "OrderList_OrderListModel.h"
+
 @interface OrderListFooterView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel *labelProductCount;
 @property (weak, nonatomic) IBOutlet UILabel *labelTotalPrice;
+
+@property (nonatomic, strong)OrderList_OrderListModel *modelOrderList;
 
 @end
