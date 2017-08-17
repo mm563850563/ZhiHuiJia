@@ -10,6 +10,7 @@
 
 //cells
 #import "OrderListCell.h"
+#import "NULLTableViewCell.h"
 
 //views
 #import "OrderListHeaderView.h"
@@ -76,6 +77,8 @@
     NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
                                     @"order_type":@"pay"};
     
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
@@ -86,35 +89,116 @@
                     self.orderListArray = [NSMutableArray arrayWithArray:model.data.result.order_list];
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        [hud hideAnimated:YES afterDelay:1.0];
                         [self.tableView reloadData];
+                        [self.tableView.mj_header endRefreshing];
+                        [self.tableView.mj_footer endRefreshing];
+                    });
+                }else{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [hud hideAnimated:YES afterDelay:1.0];
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        
+                        [self.tableView.mj_header endRefreshing];
+                        [self.tableView.mj_footer endRefreshing];
+                    });
+                }
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.localizedDescription];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    
+                    [self.tableView.mj_header endRefreshing];
+                    [self.tableView.mj_footer endRefreshing];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                
+                [self.tableView.mj_header endRefreshing];
+                [self.tableView.mj_footer endRefreshing];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+            
+            [self.tableView.mj_header endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
+        });
+    }];
+}
+
+#pragma mark - <获取更多订单列表数据>
+-(void)getMoreOrderListDataWithPage:(NSNumber *)page
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kOrderList];
+    
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"page":page,
+                                    @"order_type":@"pay"};
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSError *error = nil;
+            OrderListModel *model = [[OrderListModel alloc]initWithDictionary:dataDict error:&error];
+            if (!error) {
+                if ([model.code isEqualToString:@"200"]) {
+                    NSArray *array = [NSMutableArray arrayWithArray:model.data.result.order_list];
+                    for (OrderList_OrderListModel *model in array) {
+                        [self.orderListArray addObject:model];
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.tableView reloadData];
+                        [self.tableView.mj_header endRefreshing];
+                        [self.tableView.mj_footer endRefreshing];
                     });
                 }else{
                     dispatch_async(dispatch_get_main_queue(), ^{
                         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
                         [hudWarning hideAnimated:YES afterDelay:2.0];
+                        
+                        [self.tableView.mj_header endRefreshing];
+                        [self.tableView.mj_footer endRefreshing];
                     });
                 }
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.localizedDescription];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
+                    
+                    [self.tableView.mj_header endRefreshing];
+                    [self.tableView.mj_footer endRefreshing];
                 });
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
+                
+                [self.tableView.mj_header endRefreshing];
+                [self.tableView.mj_footer endRefreshing];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:2.0];
+            
+            [self.tableView.mj_header endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
         });
     }];
 }
-
-
 
 
 
@@ -134,14 +218,28 @@
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([OrderListCell class]) bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([OrderListCell class])];
     
+    UINib *nibNull = [UINib nibWithNibName:NSStringFromClass([NULLTableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
+    
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self getOrderListData];
+    }];
+    
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         int page_int = [self.page intValue];
         page_int++;
         self.page = [NSNumber numberWithInt:page_int];
+        [self getMoreOrderListDataWithPage:self.page];
     }];
 }
 
-
+#pragma mark - <rac响应>
+-(void)respondWithRAC
+{
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshAllOrderAndPayOrder" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [self getOrderListData];
+    }];
+}
 
 
 
@@ -155,60 +253,68 @@
 #pragma mark - **** UITableViewDelegate,UITableViewDataSource ****
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.orderListArray.count;
+    if (self.orderListArray.count>0) {
+        return self.orderListArray.count;
+    }else{
+        return 1;
+    }
+    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    OrderList_OrderListModel *modelOrderList = self.orderListArray[section];
-    self.goodsArray = modelOrderList.goods;
-    return self.goodsArray.count;
+    if (self.orderListArray.count>0) {
+        OrderList_OrderListModel *modelOrderList = self.orderListArray[section];
+        self.goodsArray = modelOrderList.goods;
+        return self.goodsArray.count;
+    }else{
+        return 1;
+    }
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (self.orderListArray.count == 0) {
+        return 0.1f;
+    }
     return 45;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+    if (self.orderListArray.count == 0) {
+        return 0.1f;
+    }
     return 70;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.orderListArray.count>0) {
+        return 100;
+    }else{
+        return self.view.frame.size.height;
+    }
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    /*
-     0 => '待确认',
-     1 => '已确认',
-     2 => '已收货',
-     3 => '已取消',
-     4 => '已完成',//评价完
-     5 => '已作废',
-     */
+    if (self.orderListArray.count == 0) {
+        return nil;
+    }
     OrderList_OrderListModel *modelOrderList = self.orderListArray[section];
     OrderListHeaderView *headerView  = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([OrderListHeaderView class]) owner:nil options:nil].lastObject;
     headerView.labelOrderCode.text = modelOrderList.order_sn;
     headerView.labelOrderState.text = @"待付款";
-    
-//    if ([modelOrderList.order_status isEqualToString:@"0"]) {
-//        headerView.labelOrderState.text = @"待付款";
-//    }else if ([modelOrderList.order_status isEqualToString:@"1"]){
-//        headerView.labelOrderState.text = @"已付款";
-//    }else if ([modelOrderList.order_status isEqualToString:@"2"]){
-//        headerView.labelOrderState.text = @"已收货";
-//    }else if ([modelOrderList.order_status isEqualToString:@"3"]){
-//        headerView.labelOrderState.text = @"交易关闭";
-//    }else if ([modelOrderList.order_status isEqualToString:@"4"]){
-//        headerView.labelOrderState.text = @"已完成";
-//    }else if ([modelOrderList.order_status isEqualToString:@"5"]){
-//        headerView.labelOrderState.text = @"已作废";
-//    }
-    //
     return headerView;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
+    if (self.orderListArray.count == 0) {
+        return nil;
+    }
     OrderList_OrderListModel *modelOrderList = self.orderListArray[section];
     OrderListFooterView *footerView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([OrderListFooterView class]) owner:nil options:nil].lastObject;
     modelOrderList.order_status_desc = @"待支付";
@@ -218,6 +324,10 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.orderListArray.count == 0) {
+        NULLTableViewCell *cellNull = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NULLTableViewCell class])];
+        return cellNull;
+    }
     OrderList_OrderListModel *modelOrderList = self.orderListArray[indexPath.section];
     self.goodsArray = modelOrderList.goods;
     OrderListGoodsModel *modelGoods = self.goodsArray[indexPath.row];

@@ -1,29 +1,25 @@
 //
-//  CustomerServiceCenter.m
+//  AboutUsViewController.m
 //  ZHJ_rebuild
 //
-//  Created by ZHJ on 2017/7/20.
+//  Created by ZHJ on 2017/8/17.
 //  Copyright © 2017年 sophia. All rights reserved.
 //
 
-#import "CustomerServiceCenterViewController.h"
+#import "AboutUsViewController.h"
 
-@interface CustomerServiceCenterViewController ()
-
-@property (weak, nonatomic) IBOutlet UIImageView *imgBGView;
-@property (weak, nonatomic) IBOutlet UILabel *labelHotLine;
-
-@property (nonatomic, strong)NSString *phoneStr;
+@interface AboutUsViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *imgAboutUs;
 
 @end
 
-@implementation CustomerServiceCenterViewController
+@implementation AboutUsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self getCustomerServiceData];
+    [self getAboutUsData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,11 +37,10 @@
 }
 */
 
-
-#pragma mark - <获取客服中心数据>
--(void)getCustomerServiceData
+#pragma mark - <获取“关于我们”数据>
+-(void)getAboutUsData
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kCustomerService];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kAboutUs];
     
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:nil progressBlock:nil successBlock:^(id response) {
@@ -55,6 +50,7 @@
             if ([code isEqual:@200]) {
                 NSDictionary *result = dataDict[@"data"][@"result"];
                 [self fillDataWithResult:result];
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
                 });
@@ -84,38 +80,10 @@
 #pragma mark - <填充数据>
 -(void)fillDataWithResult:(NSDictionary *)result
 {
-    //背景图
-    NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,result[@"image"]];
-    NSURL *url = [NSURL URLWithString:imgStr];
-    [self.imgBGView sd_setImageWithURL:url];
-    
-    //客服热线文本
-    NSString *hotLineStr = [NSString stringWithFormat:@"客服热线：%@",result[@"hotline"]];
-    self.labelHotLine.text = hotLineStr;
-    
-    //分离出客服号码
-    NSArray *array = [result[@"hotline"] componentsSeparatedByString:@" "];
-    self.phoneStr = array[0];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainImage,result[@"image"]];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    [self.imgAboutUs sd_setImageWithURL:url placeholderImage:kPlaceholder];
 }
-
-#pragma mark - <拨打热线>
-- (IBAction)btnHotLineAction:(UIButton *)sender
-{
-    NSMutableString *str = [NSMutableString stringWithFormat:@"tel:%@",self.phoneStr];
-    NSURL *url = [NSURL URLWithString:str];
-    
-    [[UIApplication sharedApplication]openURL:url];
-}
-
-#pragma mark - <客服聊天>
-- (IBAction)btnChatAction:(UIButton *)sender
-{
-    
-}
-
-
-
-
 
 
 @end

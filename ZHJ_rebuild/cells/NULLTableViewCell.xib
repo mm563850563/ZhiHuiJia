@@ -11,18 +11,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NULLTableViewCell" rowHeight="167" id="KGk-i7-Jjw" customClass="NULLTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="167"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NULLTableViewCell" rowHeight="244" id="KGk-i7-Jjw" customClass="NULLTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="329" height="244"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="166.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="329" height="243.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="null" translatesAutoresizingMaskIntoConstraints="NO" id="tfd-ud-oh0">
-                        <rect key="frame" x="110" y="33" width="100" height="100"/>
+                        <rect key="frame" x="64.5" y="22" width="200" height="200"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="100" id="CQh-Kp-IAr"/>
-                            <constraint firstAttribute="height" constant="100" id="WYL-5n-cTp"/>
+                            <constraint firstAttribute="width" constant="200" id="CQh-Kp-IAr"/>
+                            <constraint firstAttribute="height" constant="200" id="WYL-5n-cTp"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -31,7 +31,7 @@
                     <constraint firstItem="tfd-ud-oh0" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="gv6-tO-0aZ"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="50" y="185.5"/>
+            <point key="canvasLocation" x="54.5" y="224"/>
         </tableViewCell>
     </objects>
     <resources>

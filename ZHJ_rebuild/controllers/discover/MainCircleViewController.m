@@ -62,7 +62,7 @@
 -(void)initSegmentView
 {
     NSArray *array = @[@"热门圈子",@"我的圈子",@"排行榜"];
-    self.segmentView = [[SegmentTapView alloc]initWithFrame:self.segmentBGView.bounds withDataArray:array withFont:14];
+    self.segmentView = [[SegmentTapView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 40) withDataArray:array withFont:14];
     self.segmentView.delegate = self;
     [self.segmentBGView addSubview:self.segmentView];
     [self.segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -82,7 +82,7 @@
     [vcArray addObject:myCircleVC];
     [vcArray addObject:rankListVC];
     
-    self.flipView = [[FlipTableView alloc]initWithFrame:self.flipBGView.bounds withArray:vcArray];
+    self.flipView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, self.flipBGView.frame.size.height) withArray:vcArray];
     self.flipView.delegate = self;
     [self.flipBGView addSubview:self.flipView];
     [self.flipView mas_makeConstraints:^(MASConstraintMaker *make) {

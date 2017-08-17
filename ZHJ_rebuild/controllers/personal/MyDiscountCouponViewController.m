@@ -10,6 +10,7 @@
 
 //cells
 #import "MyDiscountCouponCell.h"
+#import "NULLTableViewCell.h"
 
 //models
 #import "MyDiscountCouponModel.h"
@@ -34,8 +35,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    [self getDiscountCouponData];
+    if (self.available) {
+        [self getAvailableCouponFromMyWallet];
+    }else{
+        [self getDiscountCouponData];
+    }
     [self settingTableView];
 }
 
@@ -81,16 +85,51 @@
                 }
             }else{
                 [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"数据为空"];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
             }
         } failBlock:^(NSError *error) {
             [hud hideAnimated:YES afterDelay:1.0];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:2.0];
         }];
     }
+}
+
+#pragma mark - <获取“我的钱包”中查看可用优惠券>
+-(void)getAvailableCouponFromMyWallet
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kMyAvailabelCoupon];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
     
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                [hud hideAnimated:YES afterDelay:1.0];
+                self.couponAvailableArray = dataDict[@"data"][@"result"];
+            }else{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+        }else{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }
+    } failBlock:^(NSError *error) {
+        [hud hideAnimated:YES afterDelay:1.0];
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }];
+
 }
 
 #pragma mark - <配置tableView>
@@ -103,6 +142,9 @@
     
     UINib *nibAvailable = [UINib nibWithNibName:NSStringFromClass([MyDiscountCouponCell class]) bundle:nil];
     [self.tableView registerNib:nibAvailable forCellReuseIdentifier:NSStringFromClass([MyDiscountCouponCell class])];
+    
+    UINib *nibNull = [UINib nibWithNibName:NSStringFromClass([NULLTableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
 }
 
 
@@ -118,26 +160,41 @@
 #pragma mark - **** UITableViewDelegate,UITableViewDataSource ****
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (self.couponAvailableArray.count == 0 && self
+        .couponUsedArray.count == 0 && self.couponNormalArray.count == 0 && self.couponExpiredArray.count == 0) {
+        return 1;
+    }
     return 4;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger count = 0;
-    if (section == 0) {
-        count = self.couponAvailableArray.count;
-    }else if (section == 1){
-        count = self.couponNormalArray.count;
-    }else if (section == 2){
-        count = self.couponExpiredArray.count;
-    }else if (section == 3){
-        count = self.couponUsedArray.count;
+    if (self.couponAvailableArray.count == 0 && self
+        .couponUsedArray.count == 0 && self.couponNormalArray.count == 0 && self.couponExpiredArray.count == 0) {
+        return 1;
+    }else{
+        NSInteger count = 0;
+        if (section == 0) {
+            count = self.couponAvailableArray.count;
+        }else if (section == 1){
+            count = self.couponNormalArray.count;
+        }else if (section == 2){
+            count = self.couponExpiredArray.count;
+        }else if (section == 3){
+            count = self.couponUsedArray.count;
+        }
+        return count;
     }
-    return count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.couponAvailableArray.count == 0 && self
+        .couponUsedArray.count == 0 && self.couponNormalArray.count == 0 && self.couponExpiredArray.count == 0) {
+        NULLTableViewCell *cellNull = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NULLTableViewCell class])];
+        return cellNull;
+    }
+    
     MyDiscountCouponCell *cellCoupon = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyDiscountCouponCell class])];
     if (indexPath.section == 0) {
         MyDiscountCouponAvailableModel *model = self.couponAvailableArray[indexPath.row];
@@ -154,6 +211,16 @@
     }
     
     return cellCoupon;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.couponAvailableArray.count == 0 && self
+        .couponUsedArray.count == 0 && self.couponNormalArray.count == 0 && self.couponExpiredArray.count == 0) {
+        return self.view.frame.size.height;
+    }else{
+        return 120;
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

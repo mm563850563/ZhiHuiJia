@@ -18,9 +18,14 @@
 #import "MyOrderViewController.h"
 #import "MyDiscountCouponViewController.h"
 #import "AfterSalesViewController.h"
+#import "WeChatAccountViewController.h"
+#import "AboutUsViewController.h"
 
 //cells
 #import "PersonalCollectCell.h"
+
+//tools
+#import "UIButton+Badge.h"
 
 
 @interface PersonalViewController ()<UINavigationControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
@@ -32,6 +37,15 @@
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)NSArray *arrayCollection;
 
+
+@property (weak, nonatomic) IBOutlet UIButton *btnWaitToPay;
+@property (weak, nonatomic) IBOutlet UIButton *btnWaitToShipping;
+@property (weak, nonatomic) IBOutlet UIButton *btnWaitToReceive;
+@property (weak, nonatomic) IBOutlet UIButton *btnWaitToComment;
+@property (weak, nonatomic) IBOutlet UIButton *btnAfterSale;
+@property (weak, nonatomic) IBOutlet UILabel *labelUserName;
+@property (weak, nonatomic) IBOutlet UIButton *btnPotrait;
+
 @end
 
 @implementation PersonalViewController
@@ -39,6 +53,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self getPersonalCenterData];
     [self setNavigationController];
     [self initCollectionView];
     
@@ -61,6 +76,86 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <获取个人中心数据>
+-(void)getPersonalCenterData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPersonalCenter];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                NSDictionary *result = dataDict[@"data"][@"result"];
+                NSDictionary *user_info = result[@"user_info"];
+                [self fillDataWithResult:result userInfo:user_info];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                });
+                
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
+#pragma mark - <填充数据>
+-(void)fillDataWithResult:(NSDictionary *)result userInfo:(NSDictionary *)user_info
+{
+    if (![result[@"pay_count"] isEqual:@0]) {
+        self.btnWaitToPay.badgeValue = [NSString stringWithFormat:@"%@",result[@"pay_count"]];
+        self.btnWaitToPay.badgeOriginY = 0;
+        self.btnWaitToPay.badgeOriginX = 35;
+    }
+    
+    if (![result[@"deliver_count"] isEqual:@0]) {
+        self.btnWaitToShipping.badgeValue = [NSString stringWithFormat:@"%@",result[@"deliver_count"]];
+        self.btnWaitToShipping.badgeOriginY = 0;
+        self.btnWaitToShipping.badgeOriginX = 35;
+    }
+    
+    if (![result[@"receive_count"] isEqual:@0]) {
+        self.btnWaitToReceive.badgeValue = [NSString stringWithFormat:@"%@",result[@"receive_count"]];
+        self.btnWaitToReceive.badgeOriginY = 0;
+        self.btnWaitToReceive.badgeOriginX = 35;
+    }
+    
+    if (![result[@"comment_count"] isEqual:@0]) {
+        self.btnWaitToComment.badgeValue = [NSString stringWithFormat:@"%@",result[@"comment_count"]];
+        self.btnWaitToComment.badgeOriginY = 0;
+        self.btnWaitToComment.badgeOriginX = 35;
+    }
+    
+    
+    self.labelUserName.text = user_info[@"nickname"];
+    if (![user_info[@"headimg"] isEqualToString:@""]) {
+        NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,user_info[@"headimg"]];
+        NSURL *url = [NSURL URLWithString:imgStr];
+        [self.btnPotrait.imageView sd_setImageWithURL:url placeholderImage:kPlaceholder];
+    }
+    
+}
 
 #pragma mark - <配置navigationBar>
 -(void)setNavigationController
@@ -125,6 +220,22 @@
     AfterSalesViewController *afterSalesVC = [[AfterSalesViewController alloc]initWithNibName:NSStringFromClass([AfterSalesViewController class]) bundle:nil];
     afterSalesVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:afterSalesVC animated:YES];
+}
+
+#pragma mark - <跳转“微信公众号”页面>
+-(void)jumpToWeChatAccountVC
+{
+    WeChatAccountViewController *weChatAccountVC = [[WeChatAccountViewController alloc]initWithNibName:NSStringFromClass([WeChatAccountViewController class]) bundle:nil];
+    weChatAccountVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:weChatAccountVC animated:YES];
+}
+
+#pragma mark - <跳转“微信公众号”页面>
+-(void)jumpToAboutUsVC
+{
+    AboutUsViewController *aboutUsVC = [[AboutUsViewController alloc]initWithNibName:NSStringFromClass([AboutUsViewController class]) bundle:nil];
+    aboutUsVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:aboutUsVC animated:YES];
 }
 
 #pragma mark - <设置按钮响应>
@@ -260,9 +371,9 @@
         getGiftVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:getGiftVC animated:YES];
     }else if (indexPath.item == 6){//关注公众号
-        
+        [self jumpToWeChatAccountVC];
     }else if (indexPath.item == 7){//关于我们
-        
+        [self jumpToAboutUsVC];
     }else if (indexPath.item == 8){//意见反馈
         FeedbackViewController *feedBackVC = [[FeedbackViewController alloc]initWithNibName:NSStringFromClass([FeedbackViewController class]) bundle:nil];
         feedBackVC.hidesBottomBarWhenPushed = YES;

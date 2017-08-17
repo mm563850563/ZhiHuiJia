@@ -19,7 +19,7 @@
 #import "OrderListViewController_Four.h"
 #import "OrderListViewController_Five.h"
 
-@interface MyOrderViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate>
+@interface MyOrderViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,MBProgressHUDDelegate>
 
 @property (nonatomic, strong)SegmentTapView *segmentView;
 @property (nonatomic, strong)FlipTableView *flipView;
@@ -35,6 +35,7 @@
     [self initSegment];
     [self initFlipTableView];
     
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,8 +93,68 @@
     
     //根据上一个页面传过来的selectedIndex确定当前segmentView的选中页面
     [self.segmentView selectIndex:self.selectedIndex];
+    [self.flipView selectIndex:self.selectedIndex-1];
 }
 
+#pragma mark - <取消订单请求>
+-(void)requestCancelOrderWithOrderID:(NSString *)order_id;
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kCancelOrder];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"order_id":order_id};
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.navigationController.view animated:YES];
+    hud.delegate = self;
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+        
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
+#pragma mark - <rac响应>
+-(void)respondWithRAC
+{
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"cancelOrder" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *order_id = x.object;
+        
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil message:@"取消订单？" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionYES = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self requestCancelOrderWithOrderID:order_id];
+        }];
+        UIAlertAction *actionNO = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleDefault handler:nil];
+        [alertVC addAction:actionYES];
+        [alertVC addAction:actionNO];
+        [self presentViewController:alertVC animated:YES completion:nil];
+    }];
+}
 
 
 
@@ -119,6 +180,10 @@
     [self.segmentView selectIndex:index];
 }
 
-
+#pragma mark - ***** MBProgressHUDDelegate *****
+-(void)hudWasHidden:(MBProgressHUD *)hud
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshAllOrderAndPayOrder" object:nil];
+}
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "LoginView.h"
+#import "LoginViewController.h"
 #import "MainTabBarViewController.h"
 #import <MLTransition.h>
 #import <IQKeyboardManager.h>
@@ -93,12 +93,9 @@
 {
     if (!kUserDefaultObject(kUserInfo)) {
         NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
-        LoginView *loginView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([LoginView class]) owner:nil options:nil].lastObject;
-        [self.window addSubview:loginView];
-        [loginView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
-        }];
-        [self.window bringSubviewToFront:loginView];
+        
+        LoginViewController *loginVC = [[LoginViewController alloc]initWithNibName:NSStringFromClass([LoginViewController class]) bundle:nil];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:loginVC animated:YES completion:nil];
     }else{
         NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
     }

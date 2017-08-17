@@ -89,7 +89,8 @@
 #define kDomainBase @"http://www.havshark.com/api"
 
 #pragma mark - <Domain_Image>
-#define kDomainImage @"http://www.havshark.com"
+//#define kDomainImage @"http://www.havshark.com"
+#define kDomainImage @""
 
 #pragma mark - <1.分类页面分类>
 #define kGetAllClassify @"/classify/getAllClassify"
@@ -193,6 +194,26 @@
 #pragma mark - <34.订单列表>
 #define kOrderList @"/Order/ajaxOrderList"
 
+#pragma mark - <35.取消订单>
+#define kCancelOrder @"/user/cancelOrder"
+
+#pragma mark - <36.我的钱包>
+#define kMyWallet @"/user/getMyWallet"
+
+#pragma mark - <37,我的钱包里面的优惠券>
+#define kMyAvailabelCoupon @"/user/getAvailableCoupon"
+
+#pragma mark - <38.客服中心>
+#define kCustomerService @"/user/customerService"
+
+#pragma mark - <39.微信公众号>
+#define kWechatAccount @"/user/wechatAccount"
+
+#pragma mark - <40.关于我们>
+#define kAboutUs @"/user/aboutUs"
+
+#pragma mark - <41.个人中心>
+#define kPersonalCenter @"/user/personalCenter"
 
 
 

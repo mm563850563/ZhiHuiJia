@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnConfirm;
 @property (weak, nonatomic) IBOutlet UIButton *btnShare;
 
+//@property (nonatomic, strong)
+
 @end
 
 @implementation OrderListFooterView
@@ -32,10 +34,16 @@
 
 -(void)setModelOrderList:(OrderList_OrderListModel *)modelOrderList
 {
+    _modelOrderList = modelOrderList;
+    
     self.labelProductCount.text = [NSString stringWithFormat:@"共%@件商品",modelOrderList.goods_count];
     self.labelTotalPrice.text = [NSString stringWithFormat:@"合计：¥%@",modelOrderList.goods_price];
     
+    
     if ([modelOrderList.order_status_desc isEqualToString:@"待支付"]) {
+        //温馨提示
+        {/*亲爱的iOS维护者们，当你看到这段经典的判断，正在思考为什么用文本字符来判断订单状态，而不是订单状态ID，请不要惊讶，因为我们有一个能干的后台，掌握着比基础还要基础的技术水平，扛起这个繁重的后台，真是辛苦了，每天各种高调处理杂碎小问题，彰显自己的技术水平*/
+        };
         self.btnCommit.hidden = YES;
         self.btnCheckLogistic.hidden = YES;
         self.btnConfirm.hidden = YES;
@@ -133,7 +141,8 @@
 
 - (IBAction)btnDeleteOrderAction:(UIButton *)sender
 {
-    
+    NSString *order_id = self.modelOrderList.order_id;
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"cancelOrder" object:order_id];
 }
 
 - (IBAction)btnCommentAction:(UIButton *)sender

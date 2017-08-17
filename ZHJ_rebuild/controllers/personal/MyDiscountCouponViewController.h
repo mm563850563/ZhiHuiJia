@@ -11,5 +11,6 @@
 @interface MyDiscountCouponViewController : UIViewController
 
 @property (nonatomic, strong)NSString *shouldPay;
+@property (nonatomic, strong)NSString *available;
 
 @end

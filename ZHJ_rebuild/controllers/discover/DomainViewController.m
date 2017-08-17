@@ -86,13 +86,13 @@
 }
 
 #pragma mark - <跳转“我的活动”页面>
+#pragma mark - <跳转“参与的活动”页面>
 -(void)jumpToMyActivitiesVC
 {
     ActivityViewController *activityVC = [[ActivityViewController alloc]initWithNibName:NSStringFromClass([ActivityViewController class]) bundle:nil];
     [self.navigationController pushViewController:activityVC animated:YES];
 }
 
-#pragma mark - <跳转“参与的活动”页面>
 #pragma mark - <跳转“个人活跃度排名”页面>
 -(void)jumpToPersonalRankVC
 {

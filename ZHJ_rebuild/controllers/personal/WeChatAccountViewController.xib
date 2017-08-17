@@ -9,9 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderListViewController_Five">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeChatAccountViewController">
             <connections>
-                <outlet property="tableView" destination="WqM-nl-xJA" id="S28-Wc-fEm"/>
+                <outlet property="imgWeChatAccount" destination="tPo-Yb-uOq" id="brQ-OR-ugG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,17 +20,16 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="WqM-nl-xJA">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tPo-Yb-uOq">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                </tableView>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="WqM-nl-xJA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3Ux-co-OYU"/>
-                <constraint firstAttribute="trailing" secondItem="WqM-nl-xJA" secondAttribute="trailing" id="BkT-nQ-yt7"/>
-                <constraint firstItem="WqM-nl-xJA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DhU-Sx-kxa"/>
-                <constraint firstAttribute="bottom" secondItem="WqM-nl-xJA" secondAttribute="bottom" id="jhq-eq-fpD"/>
+                <constraint firstItem="tPo-Yb-uOq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6lY-XR-quc"/>
+                <constraint firstAttribute="trailing" secondItem="tPo-Yb-uOq" secondAttribute="trailing" id="Dvn-R8-mdn"/>
+                <constraint firstAttribute="bottom" secondItem="tPo-Yb-uOq" secondAttribute="bottom" id="K2K-BJ-9o6"/>
+                <constraint firstItem="tPo-Yb-uOq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jcz-Vl-RJT"/>
             </constraints>
         </view>
     </objects>

@@ -23,6 +23,14 @@
 		DD0939081F442E7400A75182 /* OrderListViewController_Four.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0939061F442E7400A75182 /* OrderListViewController_Four.xib */; };
 		DD09390C1F442E8A00A75182 /* OrderListViewController_Five.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09390A1F442E8A00A75182 /* OrderListViewController_Five.m */; };
 		DD09390D1F442E8A00A75182 /* OrderListViewController_Five.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD09390B1F442E8A00A75182 /* OrderListViewController_Five.xib */; };
+		DD0939111F4553B700A75182 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09390F1F4553B700A75182 /* RegisterViewController.m */; };
+		DD0939121F4553B700A75182 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0939101F4553B700A75182 /* RegisterViewController.xib */; };
+		DD0939161F4586F100A75182 /* WeChatAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0939141F4586F100A75182 /* WeChatAccountViewController.m */; };
+		DD0939171F4586F100A75182 /* WeChatAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0939151F4586F100A75182 /* WeChatAccountViewController.xib */; };
+		DD09391B1F458BA100A75182 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0939191F458BA100A75182 /* AboutUsViewController.m */; };
+		DD09391C1F458BA100A75182 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD09391A1F458BA100A75182 /* AboutUsViewController.xib */; };
+		DD0939221F45918900A75182 /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09391F1F45918900A75182 /* UIBarButtonItem+Badge.m */; };
+		DD0939231F45918900A75182 /* UIButton+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0939211F45918900A75182 /* UIButton+Badge.m */; };
 		DD0DBAC91F32B2BE0098F5FA /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAC81F32B2BE0098F5FA /* LoginModel.m */; };
 		DD0DBACC1F32B2DC0098F5FA /* LoginDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBACB1F32B2DC0098F5FA /* LoginDataModel.m */; };
 		DD0DBAD01F32B9810098F5FA /* RecommendGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBACF1F32B9810098F5FA /* RecommendGoodsModel.m */; };
@@ -539,6 +547,19 @@
 		DD0939091F442E8A00A75182 /* OrderListViewController_Five.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListViewController_Five.h; path = controllers/personal/OrderListViewController_Five.h; sourceTree = "<group>"; };
 		DD09390A1F442E8A00A75182 /* OrderListViewController_Five.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListViewController_Five.m; path = controllers/personal/OrderListViewController_Five.m; sourceTree = "<group>"; };
 		DD09390B1F442E8A00A75182 /* OrderListViewController_Five.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListViewController_Five.xib; path = controllers/personal/OrderListViewController_Five.xib; sourceTree = "<group>"; };
+		DD09390E1F4553B700A75182 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = controllers/login/RegisterViewController.h; sourceTree = "<group>"; };
+		DD09390F1F4553B700A75182 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = controllers/login/RegisterViewController.m; sourceTree = "<group>"; };
+		DD0939101F4553B700A75182 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterViewController.xib; path = controllers/login/RegisterViewController.xib; sourceTree = "<group>"; };
+		DD0939131F4586F100A75182 /* WeChatAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeChatAccountViewController.h; path = controllers/personal/WeChatAccountViewController.h; sourceTree = "<group>"; };
+		DD0939141F4586F100A75182 /* WeChatAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeChatAccountViewController.m; path = controllers/personal/WeChatAccountViewController.m; sourceTree = "<group>"; };
+		DD0939151F4586F100A75182 /* WeChatAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeChatAccountViewController.xib; path = controllers/personal/WeChatAccountViewController.xib; sourceTree = "<group>"; };
+		DD0939181F458BA100A75182 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutUsViewController.h; path = controllers/personal/AboutUsViewController.h; sourceTree = "<group>"; };
+		DD0939191F458BA100A75182 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutUsViewController.m; path = controllers/personal/AboutUsViewController.m; sourceTree = "<group>"; };
+		DD09391A1F458BA100A75182 /* AboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutUsViewController.xib; path = controllers/personal/AboutUsViewController.xib; sourceTree = "<group>"; };
+		DD09391E1F45918900A75182 /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
+		DD09391F1F45918900A75182 /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
+		DD0939201F45918900A75182 /* UIButton+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Badge.h"; sourceTree = "<group>"; };
+		DD0939211F45918900A75182 /* UIButton+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Badge.m"; sourceTree = "<group>"; };
 		DD0DBAC71F32B2BE0098F5FA /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginModel.h; path = models/LoginModel.h; sourceTree = "<group>"; };
 		DD0DBAC81F32B2BE0098F5FA /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginModel.m; path = models/LoginModel.m; sourceTree = "<group>"; };
 		DD0DBACA1F32B2DC0098F5FA /* LoginDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginDataModel.h; path = models/LoginDataModel.h; sourceTree = "<group>"; };
@@ -1411,6 +1432,17 @@
 			name = OrderList;
 			sourceTree = "<group>";
 		};
+		DD09391D1F45915200A75182 /* UIButton+badge */ = {
+			isa = PBXGroup;
+			children = (
+				DD09391E1F45918900A75182 /* UIBarButtonItem+Badge.h */,
+				DD09391F1F45918900A75182 /* UIBarButtonItem+Badge.m */,
+				DD0939201F45918900A75182 /* UIButton+Badge.h */,
+				DD0939211F45918900A75182 /* UIButton+Badge.m */,
+			);
+			name = "UIButton+badge";
+			sourceTree = "<group>";
+		};
 		DD0DBAC61F32B29A0098F5FA /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1601,6 +1633,9 @@
 				DD6898301F3172B5008B6A8F /* LoginViewController.h */,
 				DD6898311F3172B5008B6A8F /* LoginViewController.m */,
 				DD6898321F3172B5008B6A8F /* LoginViewController.xib */,
+				DD09390E1F4553B700A75182 /* RegisterViewController.h */,
+				DD09390F1F4553B700A75182 /* RegisterViewController.m */,
+				DD0939101F4553B700A75182 /* RegisterViewController.xib */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -2246,6 +2281,7 @@
 		EC4BA07E1F1357B700B9BE1A /* views */ = {
 			isa = PBXGroup;
 			children = (
+				DD09391D1F45915200A75182 /* UIButton+badge */,
 				DD69B2DE1F3AFD390036F368 /* STPickerView */,
 				DD6288001F2214F40030331D /* RatingBar */,
 				DDFB823A1F187A7900AEAAA7 /* SSCheckBoxView */,
@@ -2590,6 +2626,12 @@
 			children = (
 				EC4BA0E71F136C8100B9BE1A /* PersonalViewController.h */,
 				EC4BA0E81F136C8100B9BE1A /* PersonalViewController.m */,
+				DD0939181F458BA100A75182 /* AboutUsViewController.h */,
+				DD0939191F458BA100A75182 /* AboutUsViewController.m */,
+				DD09391A1F458BA100A75182 /* AboutUsViewController.xib */,
+				DD0939131F4586F100A75182 /* WeChatAccountViewController.h */,
+				DD0939141F4586F100A75182 /* WeChatAccountViewController.m */,
+				DD0939151F4586F100A75182 /* WeChatAccountViewController.xib */,
 				DD9A63A61F2EE20100611FA8 /* AfterSalesViewController.h */,
 				DD9A63A71F2EE20100611FA8 /* AfterSalesViewController.m */,
 				DD9A63A81F2EE20100611FA8 /* AfterSalesViewController.xib */,
@@ -2822,6 +2864,7 @@
 				DD40B7361F17485500839748 /* HomeCollectCell2.xib in Resources */,
 				DDFB829E1F1C791800AEAAA7 /* MoreProduct_SortView.xib in Resources */,
 				DD6287491F1F90E80030331D /* GiftListCell.xib in Resources */,
+				DD0939121F4553B700A75182 /* RegisterViewController.xib in Resources */,
 				DD62873F1F1F5FA20030331D /* GetGiftViewController.xib in Resources */,
 				DD0DBAF81F332EA00098F5FA /* ProductDetailHeaderView.xib in Resources */,
 				DD40B73E1F1788B000839748 /* HomeCollectCell3.xib in Resources */,
@@ -2847,6 +2890,7 @@
 				DD69B2B91F39B6BD0036F368 /* OrderConfirmWayOfPayCell.xib in Resources */,
 				DDFB82661F187A7900AEAAA7 /* cb_mono_off.png in Resources */,
 				DD6287281F1F48000030331D /* CommentTableViewCell.xib in Resources */,
+				DD0939171F4586F100A75182 /* WeChatAccountViewController.xib in Resources */,
 				DDFB82561F187A7900AEAAA7 /* cb_box_off.png in Resources */,
 				DD6287231F1F41BF0030331D /* DynamicWithoutCommentCell.xib in Resources */,
 				DD6287D51F21C9930030331D /* DomainHeaderView.xib in Resources */,
@@ -2854,6 +2898,7 @@
 				DD6287A81F2198FC0030331D /* SameTownViewController.xib in Resources */,
 				DD6898341F3172B5008B6A8F /* LoginViewController.xib in Resources */,
 				EC4BA0651F13562700B9BE1A /* Assets.xcassets in Resources */,
+				DD09391C1F458BA100A75182 /* AboutUsViewController.xib in Resources */,
 				DD4CF0A01F2975880024156F /* NewPostImageCell.xib in Resources */,
 				DD4CEFCE1F25B38B0024156F /* ProductColorAndCountView.xib in Resources */,
 				DD62878F1F20C2290030331D /* MyCircleHeaderCell.xib in Resources */,
@@ -2960,6 +3005,7 @@
 				DDFB82B51F1D931500AEAAA7 /* PYSearchConst.m in Sources */,
 				DD4CF0AE1F29A8FC0024156F /* AtSomeOneCell.m in Sources */,
 				DD0DBB0A1F3431650098F5FA /* GetSpecPriceDataModel.m in Sources */,
+				DD0939231F45918900A75182 /* UIButton+Badge.m in Sources */,
 				DDC52ECE1F42E43600ECF211 /* SuccessPayRecommedHeaderView.m in Sources */,
 				DDC52E871F41328800ECF211 /* SearchNetTool.m in Sources */,
 				DDC52EA31F41C60500ECF211 /* PalceOrderOrderInfoModel.m in Sources */,
@@ -3050,6 +3096,7 @@
 				DDFB82B31F1D931500AEAAA7 /* NSBundle+PYSearchExtension.m in Sources */,
 				DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */,
 				DD4CF1151F29F2D00024156F /* AllClassifyChildrenSecondModel.m in Sources */,
+				DD0939161F4586F100A75182 /* WeChatAccountViewController.m in Sources */,
 				DD184E4D1F3D9595009BFF5B /* PlaceOrderResultModel.m in Sources */,
 				DDE0FD1A1F35C8FD00269DBD /* CartListAllSelectedDataModel.m in Sources */,
 				DD69B2931F3954BA0036F368 /* EditCartNumberDataModel.m in Sources */,
@@ -3082,6 +3129,7 @@
 				EC4BA2471F14DFE900B9BE1A /* BrandApplyViewController.m in Sources */,
 				DD62877A1F208CA40030331D /* MyCircleViewController.m in Sources */,
 				DD40B7391F176E8600839748 /* EqualSpaceFlowLayout.m in Sources */,
+				DD0939111F4553B700A75182 /* RegisterViewController.m in Sources */,
 				DDE0FD0D1F35666200269DBD /* UserFavoriteModel.m in Sources */,
 				DDFB82931F1C699D00AEAAA7 /* MoreProductListViewController.m in Sources */,
 				DD6287A21F2191C90030331D /* ActivityRankNormalCell.m in Sources */,
@@ -3128,6 +3176,7 @@
 				DD6898331F3172B5008B6A8F /* LoginViewController.m in Sources */,
 				DD0DBAF01F330D070098F5FA /* GetUserPrize_MyPrizeModel.m in Sources */,
 				DD40B7281F17250B00839748 /* HomeLeftImageCell.m in Sources */,
+				DD0939221F45918900A75182 /* UIBarButtonItem+Badge.m in Sources */,
 				DD4CF01D1F2868490024156F /* ActivityRecommendInformationCell.m in Sources */,
 				DD6287181F1F32010030331D /* DynamicDetailViewController.m in Sources */,
 				DD9A63B71F2EF31900611FA8 /* HomeGoodsModel.m in Sources */,
@@ -3214,6 +3263,7 @@
 				DDFB826B1F187A7900AEAAA7 /* SSCheckBoxView.m in Sources */,
 				DDE0FD241F35D74E00269DBD /* AddToCollectionResultModel.m in Sources */,
 				DDFB82A21F1C81E300AEAAA7 /* PersonalFileViewController.m in Sources */,
+				DD09391B1F458BA100A75182 /* AboutUsViewController.m in Sources */,
 				DD6287CA1F21AF900030331D /* LookAroundTableCell.m in Sources */,
 				DD6287B11F219BA50030331D /* HandpickActivitiesViewController.m in Sources */,
 				DD6288301F232E970030331D /* GetHeightOfText.m in Sources */,

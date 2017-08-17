@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomerServiceCenterViewController">
             <connections>
+                <outlet property="imgBGView" destination="0Hd-ru-54B" id="EdU-CF-Ufg"/>
+                <outlet property="labelHotLine" destination="HX6-xX-249" id="e0i-UU-YEd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBG1" translatesAutoresizingMaskIntoConstraints="NO" id="0Hd-ru-54B">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Hd-ru-54B">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AlM-yQ-8yI">
@@ -29,14 +31,14 @@
                             <rect key="frame" x="117" y="-0.5" width="100" height="45"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kefu" translatesAutoresizingMaskIntoConstraints="NO" id="G7C-bK-a01">
-                                    <rect key="frame" x="0.0" y="13.5" width="20" height="18"/>
+                                    <rect key="frame" x="0.0" y="13.5" width="22" height="18"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="20" id="F0M-jv-m3p"/>
+                                        <constraint firstAttribute="width" constant="22" id="F0M-jv-m3p"/>
                                         <constraint firstAttribute="height" constant="18" id="YbY-JZ-4e8"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在线客服" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyo-sn-Dt4">
-                                    <rect key="frame" x="20" y="0.0" width="80" height="45"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在线客服" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyo-sn-Dt4">
+                                    <rect key="frame" x="22" y="0.0" width="78" height="45"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -56,6 +58,9 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWg-K2-GVp">
                             <rect key="frame" x="0.0" y="0.0" width="335" height="45"/>
+                            <connections>
+                                <action selector="btnChatAction:" destination="-1" eventType="touchUpInside" id="vgX-J9-tXi"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -79,7 +84,7 @@
                     <rect key="frame" x="20" y="522" width="335" height="45"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onz-aa-Jf2">
-                            <rect key="frame" x="52" y="-0.5" width="230" height="45"/>
+                            <rect key="frame" x="42" y="-0.5" width="250" height="45"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dianhua" translatesAutoresizingMaskIntoConstraints="NO" id="Ehd-gF-gaR">
                                     <rect key="frame" x="0.0" y="12.5" width="20" height="20"/>
@@ -89,7 +94,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服热线：020-34761998（转305）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX6-xX-249">
-                                    <rect key="frame" x="20" y="0.0" width="210" height="45"/>
+                                    <rect key="frame" x="20" y="0.0" width="230" height="45"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -100,7 +105,7 @@
                                 <constraint firstAttribute="bottom" secondItem="HX6-xX-249" secondAttribute="bottom" id="2NB-uV-zD7"/>
                                 <constraint firstAttribute="height" constant="45" id="8Mj-sK-hh4"/>
                                 <constraint firstItem="HX6-xX-249" firstAttribute="leading" secondItem="Ehd-gF-gaR" secondAttribute="trailing" id="TtN-OF-NgM"/>
-                                <constraint firstAttribute="width" constant="230" id="aHr-ER-ZM1"/>
+                                <constraint firstAttribute="width" constant="250" id="aHr-ER-ZM1"/>
                                 <constraint firstItem="Ehd-gF-gaR" firstAttribute="centerY" secondItem="onz-aa-Jf2" secondAttribute="centerY" id="k0f-IE-EqK"/>
                                 <constraint firstItem="HX6-xX-249" firstAttribute="top" secondItem="onz-aa-Jf2" secondAttribute="top" id="mi6-yL-22i"/>
                                 <constraint firstAttribute="trailing" secondItem="HX6-xX-249" secondAttribute="trailing" id="tq5-ei-1KI"/>
@@ -109,6 +114,9 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifU-zl-RSu">
                             <rect key="frame" x="0.0" y="0.0" width="335" height="45"/>
+                            <connections>
+                                <action selector="btnHotLineAction:" destination="-1" eventType="touchUpInside" id="nDt-WH-Rv3"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -146,6 +154,5 @@
     <resources>
         <image name="dianhua" width="33" height="32"/>
         <image name="kefu" width="17" height="14"/>
-        <image name="loginBG1" width="1080" height="1920"/>
     </resources>
 </document>
