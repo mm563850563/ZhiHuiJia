@@ -13,6 +13,9 @@
 //tools
 #import "NSString+MD5.h"
 
+//controllers
+#import "RegisterViewController.h"
+
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *tfPhone;
@@ -110,7 +113,8 @@
 #pragma mark - <立即注册按钮响应>
 - (IBAction)btnRegisterAction:(UIButton *)sender
 {
-    
+    RegisterViewController *registerVC = [[RegisterViewController alloc]initWithNibName:NSStringFromClass([RegisterViewController class]) bundle:nil];
+    [self presentViewController:registerVC animated:YES completion:nil];
 }
 
 #pragma mark - <忘记密码按钮响应>

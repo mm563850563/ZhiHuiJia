@@ -16,5 +16,6 @@
 +(MBProgressHUD *)showProgressHUDAddTo:(UIView *)view animated:(BOOL)isAnimated;
 +(MBProgressHUD *)showReloadProgressHUD:(UIView *)view animated:(BOOL)isAnimated addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)events;
 +(MBProgressHUD *)showWarningProgressHUDAddTo:(UIView *)view animated:(BOOL)isAnimated warningMessage:(NSString *)warningMessage;
++(MBProgressHUD *)showFullScreenProgressHUDAddTo:(UIView *)view animated:(BOOL)isAnimated;
 
 @end

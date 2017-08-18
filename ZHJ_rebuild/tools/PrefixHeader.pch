@@ -93,7 +93,7 @@
 #define kDomainImage @""
 
 #pragma mark - <1.分类页面分类>
-#define kGetAllClassify @"/classify/getAllClassify"
+#define kGetAllClassify @"/Category/getAllCategory"
 
 #pragma mark - <2.所有品牌>
 #define kGetAllBrand @"/brand/getAllbrand"
@@ -105,7 +105,7 @@
 #define kHomeGoods @"/Index/getHomeGoods"
 
 #pragma mark - <5.分类列表>
-#define kClassifyList @"/classify/classifyList" //参数：sort_lastest，sort_sales，sort_price
+#define kClassifyList @"/Category/categoryList" //参数：sort_lastest，sort_sales，sort_price
 
 #pragma mark - <6.拿好礼类型>
 #define kGetGiftType @"/Index/getGiftType"
@@ -214,6 +214,12 @@
 
 #pragma mark - <41.个人中心>
 #define kPersonalCenter @"/user/personalCenter"
+
+#pragma mark - <42.短信验证>
+#define kSendMsg @"/user/sendMsg"
+
+#pragma mark - <43.注册>
+#define kRegister @"/user/register"
 
 
 

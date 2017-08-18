@@ -82,7 +82,7 @@
 -(void)getGoodsDetailData
 {
     if (self.goods_id) {
-        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+        MBProgressHUD *hud = [ProgressHUDManager showFullScreenProgressHUDAddTo:self.view animated:YES];
         NSDictionary *dictParameter = @{@"goods_id":self.goods_id};
         NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGoodsDetail];
         [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {

@@ -14,7 +14,7 @@
 @protocol CartProductListCellDelegate <NSObject>
 
 -(void)didClickCheckBoxButton:(UIButton *)sender isSelected:(NSString *)isSelected;
--(void)didClickBtnChangeCartNumberWithButton:(UIButton *)sender productCount:(NSString *)productCount;
+-(void)didClickBtnChangeCartNumberWithButton:(UIButton *)sender productCount:(NSString *)productCount isSelected:(NSString *)selected cutPrice:(NSString *)cutPrice isIncrease:(BOOL)isIncrease;
 
 @end
 

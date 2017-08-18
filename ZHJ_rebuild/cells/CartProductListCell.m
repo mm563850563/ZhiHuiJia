@@ -54,16 +54,19 @@
     }
 }
 
-- (IBAction)btnProductIncreaseAction:(UIButton *)sender
+- (IBAction)btnProductIncreaseAction:(UIButton *)sender 
 {
     int count = [self.labelProductCount.text intValue];
     if (count >= 1) {
         count++;
     }
     self.labelProductCount.text = [NSString stringWithFormat:@"%d",count];
+    NSInteger originPrice = [self.model.market_price integerValue];
+    NSInteger ourPrice = [self.model.goods_price integerValue];
+    NSString *cutPrice = [NSString stringWithFormat:@"%ld",(originPrice-ourPrice)];
     
-    if ([self.delegate respondsToSelector:@selector(didClickBtnChangeCartNumberWithButton:productCount:)]) {
-        [self.delegate didClickBtnChangeCartNumberWithButton:sender productCount:self.labelProductCount.text];
+    if ([self.delegate respondsToSelector:@selector(didClickBtnChangeCartNumberWithButton:productCount:isSelected:cutPrice:isIncrease:)]) {
+        [self.delegate didClickBtnChangeCartNumberWithButton:sender productCount:self.labelProductCount.text isSelected:self.model.selected cutPrice:cutPrice isIncrease:YES];
     }
 }
 
@@ -74,9 +77,12 @@
         count--;
     }
     self.labelProductCount.text = [NSString stringWithFormat:@"%d",count];
+    NSInteger originPrice = [self.model.market_price integerValue];
+    NSInteger ourPrice = [self.model.goods_price integerValue];
+    NSString *cutPrice = [NSString stringWithFormat:@"%ld",(originPrice-ourPrice)];
     
-    if ([self.delegate respondsToSelector:@selector(didClickBtnChangeCartNumberWithButton:productCount:)]) {
-        [self.delegate didClickBtnChangeCartNumberWithButton:sender productCount:self.labelProductCount.text];
+    if ([self.delegate respondsToSelector:@selector(didClickBtnChangeCartNumberWithButton:productCount:isSelected:cutPrice:isIncrease:)]) {
+        [self.delegate didClickBtnChangeCartNumberWithButton:sender productCount:self.labelProductCount.text isSelected:self.model.selected cutPrice:cutPrice isIncrease:NO];
     }
 }
 

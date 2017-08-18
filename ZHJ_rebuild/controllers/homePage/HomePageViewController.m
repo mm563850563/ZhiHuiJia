@@ -130,6 +130,33 @@
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
         [hud hideAnimated:YES afterDelay:1.0];
+    });
+}
+
+#pragma mark - <下拉刷新请求>
+-(void)pullDownRefresh
+{
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
+    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
+    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
+    dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
+    
+    dispatch_group_async(group, queue1, ^{
+        [self getIndexCarouselData];
+    });
+    dispatch_group_async(group, queue2, ^{
+        [self getHomeGoodsData];
+    });
+    dispatch_group_async(group, queue3, ^{
+        [self getGiftTypeData];
+    });
+    dispatch_group_async(group, queue4, ^{
+        [self getRecommendGoodsData];
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     });
 }
@@ -286,7 +313,7 @@
     
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self managerRequestWithGCD];
+        [self pullDownRefresh];
     }];
 }
 

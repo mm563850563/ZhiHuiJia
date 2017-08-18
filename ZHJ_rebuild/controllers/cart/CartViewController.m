@@ -384,7 +384,7 @@
 }
 
 #pragma mark - <选择购物车产品的数量>
--(void)getChangeCartNumberDataWithUser_id:(NSString *)userID goods_num:(NSString *)goodsNum cart_id:(NSString *)cartID
+-(void)getChangeCartNumberDataWithUser_id:(NSString *)userID goods_num:(NSString *)goodsNum cart_id:(NSString *)cartID isSelected:(NSString *)selected cutPrice:(NSString *)cutPrice isIncrease:(BOOL)isIncrease
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kEditCartNumber];
     if (![userID isEqualToString:@""] || ![cartID isEqualToString:@""] || ![goodsNum isEqualToString:@""]) {
@@ -398,7 +398,19 @@
                 EditCartNumberModel *model = [[EditCartNumberModel alloc]initWithDictionary:dataDict error:nil];
                 if ([model.code isEqualToString:@"200"]) {
                     [hud hideAnimated:YES afterDelay:1.0];
-                    self.labelTotalPrice.text = model.data.result.total_price;
+                    self.labelTotalPrice.text = [NSString stringWithFormat:@"¥ %@",model.data.result.total_price];
+                    if ([selected isEqualToString:@"1"]) {
+                        NSArray *array = [self.labelCutPrice.text componentsSeparatedByString:@" "];
+                        NSInteger originCutPrice = [array[1] integerValue];
+                        NSInteger shouldCutPrice = [cutPrice integerValue];
+                        NSInteger nowCutPrice;
+                        if (isIncrease) {
+                            nowCutPrice = originCutPrice+shouldCutPrice;
+                        }else{
+                            nowCutPrice = originCutPrice-shouldCutPrice;
+                        }
+                        self.labelCutPrice.text = [NSString stringWithFormat:@"（已省¥ %ld）",nowCutPrice];
+                    }
                 }else{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
@@ -696,11 +708,11 @@
     [self getCartListSingleSelectedDataWithUser_id:kUserDefaultObject(kUserInfo) cart_id:model.cart_id selected:isSelected];
 }
 
--(void)didClickBtnChangeCartNumberWithButton:(UIButton *)sender productCount:(NSString *)productCount
+-(void)didClickBtnChangeCartNumberWithButton:(UIButton *)sender productCount:(NSString *)productCount isSelected:(NSString *)selected cutPrice:(NSString *)cutPrice isIncrease:(BOOL)isIncrease
 {
     CartList_CartListModel *model = self.cartListArray[sender.tag];
     
-    [self getChangeCartNumberDataWithUser_id:kUserDefaultObject(kUserInfo) goods_num:productCount cart_id:model.cart_id];
+    [self getChangeCartNumberDataWithUser_id:kUserDefaultObject(kUserInfo) goods_num:productCount cart_id:model.cart_id isSelected:selected cutPrice:cutPrice isIncrease:isIncrease];
 }
 
 
