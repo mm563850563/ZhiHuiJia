@@ -24,6 +24,7 @@
 #import "ProductDetailViewController.h"
 #import "MyDiscountCouponViewController.h"
 #import "SuccessPayViewController.h"
+#import "MyOrderViewController.h"
 
 //models
 #import "OrderConfirmModel.h"
@@ -393,6 +394,7 @@
                 NSDictionary *dataDict = (NSDictionary *)response;
                 NSNumber *code = dataDict[@"code"];
                 if ([code isEqual:@200]) {
+                    [hud hideAnimated:YES afterDelay:1.0];
                     NSError *error = nil;
                     PalceOrderOrderInfoModel *modelWXPay = [[PalceOrderOrderInfoModel alloc]initWithDictionary:dataDict[@"data"][@"result"] error:&error]; ;
                     SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
@@ -401,7 +403,9 @@
                         [self.navigationController popViewControllerAnimated:YES];
                     }];
                 }else{
-                    //。跳转订单列表，
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    [[NSNotificationCenter defaultCenter]postNotificationName:@"failurePayJumpToMyOrderVC" object:nil];
+                    [self.navigationController popViewControllerAnimated:NO];
                 }
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -472,20 +476,26 @@
 - (IBAction)btnConfirmOrderNowAction:(UIButton *)sender
 {
     float shouldPay = [self.shouldPay floatValue];
-    if (shouldPay > 0 && [self.wayOfPay isEqualToString:@"0"]) {
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择支付方式"];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
-    }else if (shouldPay > 0 && ![self.wayOfPay isEqualToString:@"0"]){
-        if ([self.wayOfPay isEqualToString:@"1"]) {
-            //获取支付串码_支付宝支付
-            [self getPlaceOrderDataWithAliPay];
+    if (![self.modelUserAddress.address_id isEqualToString:@""]) {
+        if (shouldPay > 0 && [self.wayOfPay isEqualToString:@"0"]) {
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择支付方式"];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }else if (shouldPay > 0 && ![self.wayOfPay isEqualToString:@"0"]){
+            if ([self.wayOfPay isEqualToString:@"1"]) {
+                //获取支付串码_支付宝支付
+                [self getPlaceOrderDataWithAliPay];
+            }else{
+                //微信支付
+                [self getPlaceOrderDataWithWeChatPay];
+            }
         }else{
-            //微信支付
-            [self getPlaceOrderDataWithWeChatPay];
+            //跳转支付成功页面
         }
     }else{
-        //跳转支付成功页面
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请添加收货地址"];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
     }
+    
 }
 
 #pragma mark - <跳转用户地址列表页面>
@@ -514,6 +524,7 @@
     [self.navigationController pushViewController:discountVC animated:YES];
 }
 
+
 #pragma mark - <RAC响应>
 -(void)respondWithRAC
 {
@@ -534,6 +545,11 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
+    }];
+    
+    //删除地址列表中的地址后执行刷新该页面
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"afterDeleteAddressRefresh" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [self getOrderConfirmData];
     }];
     
     //选择优惠券

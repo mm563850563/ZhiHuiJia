@@ -11,13 +11,13 @@
 @interface OrderConfirmUserAddressModel : JSONModel
 
 @property (nonatomic, strong)NSString *address_id;
-@property (nonatomic, strong)NSString *consignee;
-@property (nonatomic, strong)NSString *area;
-@property (nonatomic, strong)NSString *address;
-@property (nonatomic, strong)NSString *mobile;
-@property (nonatomic, strong)NSString *is_default;
-@property (nonatomic, strong)NSString *province;
-@property (nonatomic, strong)NSString *city;
-@property (nonatomic, strong)NSString *district;
+@property (nonatomic, strong)NSString<Optional> *consignee;
+@property (nonatomic, strong)NSString<Optional> *area;
+@property (nonatomic, strong)NSString<Optional> *address;
+@property (nonatomic, strong)NSString<Optional> *mobile;
+@property (nonatomic, strong)NSString<Optional> *is_default;
+@property (nonatomic, strong)NSString<Optional> *province;
+@property (nonatomic, strong)NSString<Optional> *city;
+@property (nonatomic, strong)NSString<Optional> *district;
 
 @end

@@ -52,6 +52,8 @@
         }else{
             [self.btnDefaultAddress setHidden:YES];
         }
+        [self.btnAddAddress setHidden:YES];
+        
         [self.labelReceiptInformation setHidden:NO];
         [self.labelGoToNext setHidden: NO];
         [self.labelContactName setHidden:NO];

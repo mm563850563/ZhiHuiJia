@@ -58,6 +58,8 @@
     [self initCollectionView];
     
     [self settingHeightForScrollView];
+    
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -297,7 +299,11 @@
     }];
 }
 
-
+#pragma mark - <rac响应>
+-(void)respondWithRAC
+{
+    
+}
 
 
 

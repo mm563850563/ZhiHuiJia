@@ -11,10 +11,12 @@
 //views
 #import "ProductDetailHeaderView.h"
 #import "BuyNowSelectSpecView.h"
+//#import "ProductColorAndCountView.h"
 
 //controllers
 #import "CommentListViewController.h"
 #import "OrderConfirmViewController.h"
+#import "MyOrderViewController.h"
 
 //cells
 #import "ProductDetailImageCell.h"
@@ -33,6 +35,7 @@
 
 @property (nonatomic, strong)UIView *cloudGlassBGView;
 @property (nonatomic, strong)BuyNowSelectSpecView *productMessageAndBuyNowView;
+//@property (nonatomic, strong)ProductColorAndCountView *productMessageView;
 
 @property (nonatomic, strong)GoodsDetailGoodsInfoModel *modelInfo;
 @property (nonatomic, strong)NSMutableArray *bannerArray;
@@ -48,7 +51,8 @@
     
     [self getGoodsDetailData];
     [self settingTableView];
-    [self initProductMessageView];
+    [self initBuyNowProductMessageView];
+//    [self initAddToCartProductMessageView];
     
     [self respondWithRAC];
 }
@@ -221,6 +225,14 @@
     [self.navigationController pushViewController:orderConfirmVC animated:YES];
 }
 
+#pragma mark - <跳转“我的订单”页面>
+-(void)jumpToMyOrderVC
+{
+    MyOrderViewController *myOrderVC = [[MyOrderViewController alloc]init];
+    myOrderVC.selectedIndex = 1;
+    [self.navigationController pushViewController:myOrderVC animated:NO];
+}
+
 #pragma mark - <客服>
 - (IBAction)btnSalesCenterAction:(UIButton *)sender
 {
@@ -260,8 +272,8 @@
     }];
 }
 
-#pragma mark - <初始化商品规格选择页面>
--(void)initProductMessageView
+#pragma mark - <初始化立即下单商品规格选择页面>
+-(void)initBuyNowProductMessageView
 {
     self.cloudGlassBGView = [[UIView alloc]initWithFrame:kScreeFrame];
     self.cloudGlassBGView.backgroundColor = kColorFromRGBAndAlpha(kBlack, 0.4);
@@ -271,14 +283,27 @@
     [self.cloudGlassBGView addSubview:self.productMessageAndBuyNowView];
 }
 
+//#pragma mark - <初始化加入购物车商品规格选择页面>
+//-(void)initAddToCartProductMessageView
+//{
+//    self.cloudGlassBGView = [[UIView alloc]initWithFrame:kScreeFrame];
+//    self.cloudGlassBGView.backgroundColor = kColorFromRGBAndAlpha(kBlack, 0.4);
+//    
+//    self.productMessageView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([ProductColorAndCountView class]) owner:nil options:nil].lastObject;
+//    self.productMessageView.frame = CGRectMake(0, kSCREENH_HEIGHT, kSCREEN_WIDTH, 400);
+//    [self.cloudGlassBGView addSubview:self.productMessageView];
+//}
+
 
 #pragma mark - <RAC响应>
 -(void)respondWithRAC
 {
+    //跳转”更多评论“页面
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"JumpToMoreCommentVC" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         [self jumpToMoreCommentVC];
     }];
     
+    //移除选择规格view
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"removeBuyNowSpecView" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         [UIView animateWithDuration:0.3 animations:^{
             self.productMessageAndBuyNowView.frame = CGRectMake(0, kSCREENH_HEIGHT, kSCREEN_WIDTH, 400);
@@ -287,9 +312,21 @@
         }];
     }];
     
+    //跳转“确认订单”页面
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToOrderConfirmVC" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         NSDictionary *dictParameter = x.object;
         [self jumpToOrderConfirmVCWithParameter:dictParameter];
+    }];
+    
+    //支付失败后跳转“我的订单”页面
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"failurePayJumpToMyOrderVC" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSArray *vcArray = self.navigationController.viewControllers;
+        for (UIViewController *vc in vcArray) {
+            if ([vc isKindOfClass:[self class]]) {
+                [self.navigationController popToViewController:vc animated:NO];
+                [self jumpToMyOrderVC];
+            }
+        }
     }];
 }
 

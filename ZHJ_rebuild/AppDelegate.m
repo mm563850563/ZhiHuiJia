@@ -200,7 +200,7 @@
             }
                 break;
             default:{
-                NSLog(@"授权失败");
+                NSLog(@"支付失败");
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"WX_PaySuccess" object:nil];
             }
                 break;

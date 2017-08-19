@@ -10,6 +10,7 @@
 
 //cells
 #import "MyAddressCell.h"
+#import "NULLTableViewCell.h"
 
 //controllers
 #import "MyAddressIncreaseViewController.h"
@@ -32,7 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self getUserAddressListData];
+    [self getUserAddressListDataAfterDelete:NO];
     [self settingNavigationBar];
     [self settingTableview];
     [self respondWithRAC];
@@ -54,7 +55,7 @@
 */
 
 #pragma mark - <获取用户地址列表数据>
--(void)getUserAddressListData
+-(void)getUserAddressListDataAfterDelete:(BOOL)afterDelete
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kUserAddressList];
     if (kUserDefaultObject(kUserInfo)) {
@@ -69,6 +70,12 @@
                     self.addressListArray = [NSMutableArray arrayWithArray:model.data.result];
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        if (afterDelete) {
+                            if (self.addressListArray.count == 0) {
+                                [[NSNotificationCenter defaultCenter]postNotificationName:@"afterDeleteAddressRefresh" object:nil];
+                                [self.navigationController popViewControllerAnimated:YES];
+                            }
+                        }
                         [self.tableView reloadData];
                     });
                 }else{
@@ -103,7 +110,7 @@
         if ([code isEqual:@200]) {
             //设置成功后重新请求页面数据
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self getUserAddressListData];
+                [self getUserAddressListDataAfterDelete:NO];
             });
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
             [hudWarning hideAnimated:YES afterDelay:2.0];
@@ -131,7 +138,7 @@
         if ([code isEqual:@200]) {
             //设置成功后重新请求页面数据
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self getUserAddressListData];
+                [self getUserAddressListDataAfterDelete:YES];
             });
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
             [hudWarning hideAnimated:YES afterDelay:2.0];
@@ -153,6 +160,9 @@
     
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([MyAddressCell class]) bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([MyAddressCell class])];
+    
+    UINib *nibNull = [UINib nibWithNibName:NSStringFromClass([NULLTableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
 }
 
 #pragma mark - <配置navigationBar>
@@ -188,7 +198,7 @@
     
     //编辑地址后刷新该页面
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"submitAfterModifyAddress" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        [self getUserAddressListData];
+        [self getUserAddressListDataAfterDelete:NO];
     }];
     
     //删除地址
@@ -225,22 +235,35 @@
 #pragma mark - *** UItableViewDelegate,UITableViewDataSource  ****
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.addressListArray.count;
+    if (self.addressListArray.count == 0) {
+        return 1;
+    }else{
+        return self.addressListArray.count;
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 130;
+    if (self.addressListArray.count == 0) {
+        return self.tableView.frame.size.height;
+    }else{
+        return 130;
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MyAddressCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyAddressCell class])];
-    UserAddressListResultModel *model = self.addressListArray[indexPath.row];
-    cell.btnEdit.tag = indexPath.row;
-    cell.btnDelete.tag = indexPath.row;
-    cell.modelResult = model;
-    return cell;
+    if (self.addressListArray.count == 0) {
+        NULLTableViewCell *cellNull = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NULLTableViewCell class])];
+        return cellNull;
+    }else{
+        MyAddressCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyAddressCell class])];
+        UserAddressListResultModel *model = self.addressListArray[indexPath.row];
+        cell.btnEdit.tag = indexPath.row;
+        cell.btnDelete.tag = indexPath.row;
+        cell.modelResult = model;
+        return cell;
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
