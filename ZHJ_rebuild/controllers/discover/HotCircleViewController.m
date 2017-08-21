@@ -11,9 +11,14 @@
 //cells
 #import "HotCircleCell.h"
 
+//models
+#import "GetHotCycleDataModel.h"
+#import "GetHotCycleResultModel.h"
+
 @interface HotCircleViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong)NSArray *circleClassifyArray;
 
 @end
 
@@ -23,6 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [self getHotCircleData];
     [self settingTableView];
 }
 
@@ -41,6 +47,47 @@
 }
 */
 
+#pragma mark - <获取热门圈子数据>
+-(void)getHotCircleData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetHotCircle];
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:nil progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                [hud hideAnimated:YES afterDelay:1.0];
+                GetHotCycleDataModel *modelData = [[GetHotCycleDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                self.circleClassifyArray = modelData.result;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+            
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
 #pragma mark - <配置tableView>
 -(void)settingTableView
 {
@@ -48,6 +95,7 @@
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = kColorFromRGB(kLightGray);
+    self.tableView.rowHeight = 70;
     
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([HotCircleCell class]) bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([HotCircleCell class])];
@@ -65,12 +113,14 @@
 #pragma mark - *** UITableViewDelegate,UITableViewDataSource ****
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    return self.circleClassifyArray.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    GetHotCycleResultModel *modelResult = self.circleClassifyArray[section];
+    NSArray *array = modelResult.circle_info;
+    return array.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -80,7 +130,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section == 5) {
+    if (section == self.circleClassifyArray.count-1) {
         return 100;
     }
     return 5;
@@ -93,11 +143,12 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    GetHotCycleResultModel *modelResult = self.circleClassifyArray[section];
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 5, kSCREEN_WIDTH, 35)];
     headerView.backgroundColor = kColorFromRGB(kWhite);
     
     UILabel *label1 = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, headerView.frame.size.width/2, headerView.frame.size.height)];
-    label1.text = @"王者荣绕";
+    label1.text = modelResult.classify_name;
     label1.font = [UIFont systemFontOfSize:13];
     [headerView addSubview:label1];
     
@@ -115,7 +166,11 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    GetHotCycleResultModel *modelResult = self.circleClassifyArray[indexPath.section];
+    GetHotCycleCircleInfoModel *modelCircleInfo = modelResult.circle_info[indexPath.row];
+    
     HotCircleCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HotCircleCell class])];
+    cell.modelCircleInfo = modelCircleInfo;
     return cell;
 }
 

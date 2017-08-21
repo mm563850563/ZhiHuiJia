@@ -161,6 +161,12 @@
 		DD4CF1151F29F2D00024156F /* AllClassifyChildrenSecondModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF1141F29F2D00024156F /* AllClassifyChildrenSecondModel.m */; };
 		DD4CF1191F2AFB9E0024156F /* CategoryProductNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF1171F2AFB9E0024156F /* CategoryProductNameCell.m */; };
 		DD4CF11A1F2AFB9E0024156F /* CategoryProductNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4CF1181F2AFB9E0024156F /* CategoryProductNameCell.xib */; };
+		DD58FF261F4A6F32009EC9F2 /* GetHotCycleDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF251F4A6F32009EC9F2 /* GetHotCycleDataModel.m */; };
+		DD58FF291F4A6F4D009EC9F2 /* GetHotCycleResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF281F4A6F4D009EC9F2 /* GetHotCycleResultModel.m */; };
+		DD58FF2C1F4A6F7C009EC9F2 /* GetHotCycleCircleInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF2B1F4A6F7C009EC9F2 /* GetHotCycleCircleInfoModel.m */; };
+		DD58FF301F4A90CF009EC9F2 /* ApplyCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF2E1F4A90CF009EC9F2 /* ApplyCircleViewController.m */; };
+		DD58FF311F4A90CF009EC9F2 /* ApplyCircleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF2F1F4A90CF009EC9F2 /* ApplyCircleViewController.xib */; };
+		DD58FF341F4B0D33009EC9F2 /* UIImage+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF331F4B0D33009EC9F2 /* UIImage+Orientation.m */; };
 		DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */; };
 		DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */; };
 		DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */; };
@@ -776,6 +782,17 @@
 		DD4CF1161F2AFB9E0024156F /* CategoryProductNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryProductNameCell.h; path = cells/CategoryProductNameCell.h; sourceTree = "<group>"; };
 		DD4CF1171F2AFB9E0024156F /* CategoryProductNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryProductNameCell.m; path = cells/CategoryProductNameCell.m; sourceTree = "<group>"; };
 		DD4CF1181F2AFB9E0024156F /* CategoryProductNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryProductNameCell.xib; path = cells/CategoryProductNameCell.xib; sourceTree = "<group>"; };
+		DD58FF241F4A6F32009EC9F2 /* GetHotCycleDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetHotCycleDataModel.h; path = models/GetHotCycleDataModel.h; sourceTree = "<group>"; };
+		DD58FF251F4A6F32009EC9F2 /* GetHotCycleDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetHotCycleDataModel.m; path = models/GetHotCycleDataModel.m; sourceTree = "<group>"; };
+		DD58FF271F4A6F4D009EC9F2 /* GetHotCycleResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetHotCycleResultModel.h; path = models/GetHotCycleResultModel.h; sourceTree = "<group>"; };
+		DD58FF281F4A6F4D009EC9F2 /* GetHotCycleResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetHotCycleResultModel.m; path = models/GetHotCycleResultModel.m; sourceTree = "<group>"; };
+		DD58FF2A1F4A6F7C009EC9F2 /* GetHotCycleCircleInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetHotCycleCircleInfoModel.h; path = models/GetHotCycleCircleInfoModel.h; sourceTree = "<group>"; };
+		DD58FF2B1F4A6F7C009EC9F2 /* GetHotCycleCircleInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetHotCycleCircleInfoModel.m; path = models/GetHotCycleCircleInfoModel.m; sourceTree = "<group>"; };
+		DD58FF2D1F4A90CF009EC9F2 /* ApplyCircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplyCircleViewController.h; path = controllers/discover/ApplyCircleViewController.h; sourceTree = "<group>"; };
+		DD58FF2E1F4A90CF009EC9F2 /* ApplyCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplyCircleViewController.m; path = controllers/discover/ApplyCircleViewController.m; sourceTree = "<group>"; };
+		DD58FF2F1F4A90CF009EC9F2 /* ApplyCircleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ApplyCircleViewController.xib; path = controllers/discover/ApplyCircleViewController.xib; sourceTree = "<group>"; };
+		DD58FF321F4B0D33009EC9F2 /* UIImage+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Orientation.h"; path = "tools/UIImage+Orientation.h"; sourceTree = "<group>"; };
+		DD58FF331F4B0D33009EC9F2 /* UIImage+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Orientation.m"; path = "tools/UIImage+Orientation.m"; sourceTree = "<group>"; };
 		DD6286F71F1E398C0030331D /* Discover_HotTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_HotTopicCell.h; path = cells/Discover_HotTopicCell.h; sourceTree = "<group>"; };
 		DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_HotTopicCell.m; path = cells/Discover_HotTopicCell.m; sourceTree = "<group>"; };
 		DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_HotTopicCell.xib; path = cells/Discover_HotTopicCell.xib; sourceTree = "<group>"; };
@@ -1633,6 +1650,19 @@
 			path = RequestManager;
 			sourceTree = "<group>";
 		};
+		DD58FF231F4A6EEC009EC9F2 /* GetHotCycle */ = {
+			isa = PBXGroup;
+			children = (
+				DD58FF241F4A6F32009EC9F2 /* GetHotCycleDataModel.h */,
+				DD58FF251F4A6F32009EC9F2 /* GetHotCycleDataModel.m */,
+				DD58FF271F4A6F4D009EC9F2 /* GetHotCycleResultModel.h */,
+				DD58FF281F4A6F4D009EC9F2 /* GetHotCycleResultModel.m */,
+				DD58FF2A1F4A6F7C009EC9F2 /* GetHotCycleCircleInfoModel.h */,
+				DD58FF2B1F4A6F7C009EC9F2 /* GetHotCycleCircleInfoModel.m */,
+			);
+			name = GetHotCycle;
+			sourceTree = "<group>";
+		};
 		DD6288001F2214F40030331D /* RatingBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2411,6 +2441,7 @@
 				DD184E0E1F3C5938009BFF5B /* MyDiscountCouponModel */,
 				DD184E441F3D9503009BFF5B /* PlaceOrderModel */,
 				DD0938E21F43E7B500A75182 /* OrderList */,
+				DD58FF231F4A6EEC009EC9F2 /* GetHotCycle */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -2441,6 +2472,8 @@
 				DD184E221F3D3C19009BFF5B /* NSString+MD5.m */,
 				DDC52E851F41328800ECF211 /* SearchNetTool.h */,
 				DDC52E861F41328800ECF211 /* SearchNetTool.m */,
+				DD58FF321F4B0D33009EC9F2 /* UIImage+Orientation.h */,
+				DD58FF331F4B0D33009EC9F2 /* UIImage+Orientation.m */,
 			);
 			name = tools;
 			sourceTree = "<group>";
@@ -2575,6 +2608,9 @@
 				DD6287861F20B0B90030331D /* MainCircleViewController.h */,
 				DD6287871F20B0BA0030331D /* MainCircleViewController.m */,
 				DD6287881F20B0BA0030331D /* MainCircleViewController.xib */,
+				DD58FF2D1F4A90CF009EC9F2 /* ApplyCircleViewController.h */,
+				DD58FF2E1F4A90CF009EC9F2 /* ApplyCircleViewController.m */,
+				DD58FF2F1F4A90CF009EC9F2 /* ApplyCircleViewController.xib */,
 				DD6287721F208C0B0030331D /* HotCircleViewController.h */,
 				DD6287731F208C0B0030331D /* HotCircleViewController.m */,
 				DD6287741F208C0B0030331D /* HotCircleViewController.xib */,
@@ -2815,6 +2851,7 @@
 				DD4CF00F1F283D500024156F /* ProductDetailImageCell.xib in Resources */,
 				DD6287051F1EE19C0030331D /* FocusPersonFileViewController.xib in Resources */,
 				DD4CF11A1F2AFB9E0024156F /* CategoryProductNameCell.xib in Resources */,
+				DD58FF311F4A90CF009EC9F2 /* ApplyCircleViewController.xib in Resources */,
 				DD4CF0191F285E7D0024156F /* ActivityRecommendImageCell.xib in Resources */,
 				DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */,
 				DD6287C11F21AB890030331D /* HandpickActivitiesCell.xib in Resources */,
@@ -3026,6 +3063,7 @@
 				DD0939231F45918900A75182 /* UIButton+Badge.m in Sources */,
 				DDC52ECE1F42E43600ECF211 /* SuccessPayRecommedHeaderView.m in Sources */,
 				DDC52E871F41328800ECF211 /* SearchNetTool.m in Sources */,
+				DD58FF301F4A90CF009EC9F2 /* ApplyCircleViewController.m in Sources */,
 				DDC52EA31F41C60500ECF211 /* PalceOrderOrderInfoModel.m in Sources */,
 				DD4CF0001F274B480024156F /* ShakeAndWinViewController.m in Sources */,
 				DD9A63B21F2EE84400611FA8 /* AfterSalesHeaderView.m in Sources */,
@@ -3130,6 +3168,7 @@
 				DD69B2BC1F39D25C0036F368 /* BuyNowSelectSpecView.m in Sources */,
 				DDC52E9D1F4186D900ECF211 /* PlaceOrderBalanceModel.m in Sources */,
 				DDE0FD011F35654900269DBD /* CartListDataModel.m in Sources */,
+				DD58FF341F4B0D33009EC9F2 /* UIImage+Orientation.m in Sources */,
 				EC4BA2431F14B05E00B9BE1A /* CategateNavigationController.m in Sources */,
 				DD09390C1F442E8A00A75182 /* OrderListViewController_Five.m in Sources */,
 				DD0939271F46A6FE00A75182 /* HBLockSliderView.m in Sources */,
@@ -3193,6 +3232,7 @@
 				DD4CEFEC1F26DEDA0024156F /* BrandDetailHeaderCell.m in Sources */,
 				DDC52E9A1F4180B100ECF211 /* PlaceOrderWeChatPayModel.m in Sources */,
 				DD62879D1F2191A90030331D /* ActivityRankFirstCell.m in Sources */,
+				DD58FF291F4A6F4D009EC9F2 /* GetHotCycleResultModel.m in Sources */,
 				DD6898331F3172B5008B6A8F /* LoginViewController.m in Sources */,
 				DD0DBAF01F330D070098F5FA /* GetUserPrize_MyPrizeModel.m in Sources */,
 				DD40B7281F17250B00839748 /* HomeLeftImageCell.m in Sources */,
@@ -3209,6 +3249,7 @@
 				DD4CF0EA1F29BF850024156F /* YQNetworking+RequestManager.m in Sources */,
 				DDC52ECA1F42E0F100ECF211 /* SuccessPayRecommendMemberCell.m in Sources */,
 				DDFB82741F19B18800AEAAA7 /* Categate_CategateCollectCell.m in Sources */,
+				DD58FF2C1F4A6F7C009EC9F2 /* GetHotCycleCircleInfoModel.m in Sources */,
 				DDE0FD391F38585B00269DBD /* BrandStoryViewController.m in Sources */,
 				EC4BA0DC1F1359EC00B9BE1A /* FactoryTableViewCell.m in Sources */,
 				DD184E1A1F3C59AC009BFF5B /* MyDiscountCouponNormalModel.m in Sources */,
@@ -3270,6 +3311,7 @@
 				DD6898481F319DA8008B6A8F /* GetGiftTypeResultModel.m in Sources */,
 				DDC52EC21F42C84D00ECF211 /* SuccessPayTableViewCell.m in Sources */,
 				DD6287C51F21AE580030331D /* LookAroundViewController.m in Sources */,
+				DD58FF261F4A6F32009EC9F2 /* GetHotCycleDataModel.m in Sources */,
 				EC4BA0D91F1359EC00B9BE1A /* BaseTableViewCell.m in Sources */,
 				DD184E141F3C597A009BFF5B /* MyDiscountCouponDataModel.m in Sources */,
 				DD6287BB1F21A3700030331D /* LookAroundCell.m in Sources */,

@@ -221,7 +221,14 @@
 #pragma mark - <43.注册>
 #define kRegister @"/user/register"
 
+#pragma mark - <44.获取热门圈子>
+#define kGetHotCircle @"/Circle/getHotCircle"
 
+#pragma mark - <45.获取全部圈子分类>
+#define kAllCircleClassify @"/circle/getAllClassify"
+
+#pragma mark - <46.提交申请圈子>
+#define kApplyForCircle @"/circle/applyForCircle"
 
 
 

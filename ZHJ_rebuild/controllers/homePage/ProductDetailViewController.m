@@ -11,7 +11,7 @@
 //views
 #import "ProductDetailHeaderView.h"
 #import "BuyNowSelectSpecView.h"
-//#import "ProductColorAndCountView.h"
+#import "ProductColorAndCountView.h"
 
 //controllers
 #import "CommentListViewController.h"
@@ -34,8 +34,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewCollection;
 
 @property (nonatomic, strong)UIView *cloudGlassBGView;
+@property (nonatomic, strong)UIView *cloudGlassBGView2;
 @property (nonatomic, strong)BuyNowSelectSpecView *productMessageAndBuyNowView;
-//@property (nonatomic, strong)ProductColorAndCountView *productMessageView;
+@property (nonatomic, strong)ProductColorAndCountView *productMessageAddToCartView;
 
 @property (nonatomic, strong)GoodsDetailGoodsInfoModel *modelInfo;
 @property (nonatomic, strong)NSMutableArray *bannerArray;
@@ -52,7 +53,7 @@
     [self getGoodsDetailData];
     [self settingTableView];
     [self initBuyNowProductMessageView];
-//    [self initAddToCartProductMessageView];
+    [self initAddToCartProductMessageView];
     
     [self respondWithRAC];
 }
@@ -103,6 +104,9 @@
                     //传数据给“立即购买选择规格”view(下面两句不能调换)
                     self.productMessageAndBuyNowView.goods_id = self.modelInfo.goods_id;
                     self.productMessageAndBuyNowView.dataArray = self.spec_listArray;
+                    
+                    self.productMessageAddToCartView.goods_id = self.modelInfo.goods_id;
+                    self.productMessageAddToCartView.dataArray = self.spec_listArray;
                     
                     //判断是否已经收藏
                     if ([model.data.result.is_collected isEqualToString:@"0"]) {
@@ -260,7 +264,11 @@
 #pragma mark - <加入购物车>
 - (IBAction)btnAddToCartAction:(UIButton *)sender
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"popProductMessageView" object:nil];
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"popProductMessageView" object:nil];
+    [[UIApplication sharedApplication].keyWindow addSubview:self.cloudGlassBGView2];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.productMessageAddToCartView.frame = CGRectMake(0, kSCREENH_HEIGHT-400, kSCREEN_WIDTH, 400);
+    }];
 }
 
 #pragma mark - <立即购买>
@@ -283,16 +291,16 @@
     [self.cloudGlassBGView addSubview:self.productMessageAndBuyNowView];
 }
 
-//#pragma mark - <初始化加入购物车商品规格选择页面>
-//-(void)initAddToCartProductMessageView
-//{
-//    self.cloudGlassBGView = [[UIView alloc]initWithFrame:kScreeFrame];
-//    self.cloudGlassBGView.backgroundColor = kColorFromRGBAndAlpha(kBlack, 0.4);
-//    
-//    self.productMessageView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([ProductColorAndCountView class]) owner:nil options:nil].lastObject;
-//    self.productMessageView.frame = CGRectMake(0, kSCREENH_HEIGHT, kSCREEN_WIDTH, 400);
-//    [self.cloudGlassBGView addSubview:self.productMessageView];
-//}
+#pragma mark - <初始化加入购物车商品规格选择页面>
+-(void)initAddToCartProductMessageView
+{
+    self.cloudGlassBGView2 = [[UIView alloc]initWithFrame:kScreeFrame];
+    self.cloudGlassBGView2.backgroundColor = kColorFromRGBAndAlpha(kBlack, 0.4);
+    
+    self.productMessageAddToCartView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([ProductColorAndCountView class]) owner:nil options:nil].lastObject;
+    self.productMessageAddToCartView.frame = CGRectMake(0, kSCREENH_HEIGHT, kSCREEN_WIDTH, 400);
+    [self.cloudGlassBGView2 addSubview:self.productMessageAddToCartView];
+}
 
 
 #pragma mark - <RAC响应>
@@ -303,12 +311,21 @@
         [self jumpToMoreCommentVC];
     }];
     
-    //移除选择规格view
+    //移除"立即购买"选择规格view
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"removeBuyNowSpecView" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         [UIView animateWithDuration:0.3 animations:^{
             self.productMessageAndBuyNowView.frame = CGRectMake(0, kSCREENH_HEIGHT, kSCREEN_WIDTH, 400);
         } completion:^(BOOL finished) {
             [self.cloudGlassBGView removeFromSuperview];
+        }];
+    }];
+    
+    //移除"加入购物车"选择规格view
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"removeTheView" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.productMessageAddToCartView.frame = CGRectMake(0, kSCREENH_HEIGHT, kSCREEN_WIDTH, 400);
+        } completion:^(BOOL finished) {
+            [self.cloudGlassBGView2 removeFromSuperview];
         }];
     }];
     

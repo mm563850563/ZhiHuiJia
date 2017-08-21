@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GetHotCycleCircleInfoModel.h"
 
 @interface HotCircleCell : UITableViewCell
+
+@property (nonatomic, strong)GetHotCycleCircleInfoModel *modelCircleInfo;
 
 @end

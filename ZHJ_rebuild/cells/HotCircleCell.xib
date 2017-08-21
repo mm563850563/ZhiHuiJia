@@ -11,21 +11,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HotCircleCell" rowHeight="52" id="KGk-i7-Jjw" customClass="HotCircleCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HotCircleCell" rowHeight="121" id="KGk-i7-Jjw" customClass="HotCircleCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="121"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="120.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsZ-g6-9sC">
-                        <rect key="frame" x="0.0" y="1" width="320" height="50.5"/>
+                        <rect key="frame" x="0.0" y="1" width="320" height="119.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="touxiang" translatesAutoresizingMaskIntoConstraints="NO" id="OLJ-lg-RSl">
-                                <rect key="frame" x="10" y="5.5" width="40" height="40"/>
+                                <rect key="frame" x="10" y="35" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Vhy-nI-KZU"/>
-                                    <constraint firstAttribute="width" constant="40" id="p6f-EF-GWQ"/>
+                                    <constraint firstAttribute="height" constant="50" id="Vhy-nI-KZU"/>
+                                    <constraint firstAttribute="width" constant="50" id="p6f-EF-GWQ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -34,7 +34,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数码配件小圈子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kT-eV-IcM">
-                                <rect key="frame" x="60" y="5.5" width="250" height="20"/>
+                                <rect key="frame" x="70" y="35" width="240" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Lbr-8F-XyM"/>
                                 </constraints>
@@ -43,7 +43,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="809成员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDa-3e-bGe">
-                                <rect key="frame" x="60" y="25.5" width="250" height="20"/>
+                                <rect key="frame" x="70" y="55" width="240" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="clD-bk-2fs"/>
                                 </constraints>
@@ -73,7 +73,12 @@
                     <constraint firstItem="ZsZ-g6-9sC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="qEf-Kl-Dzk"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="82" y="91"/>
+            <connections>
+                <outlet property="imgPotrait" destination="OLJ-lg-RSl" id="JfM-bQ-dZz"/>
+                <outlet property="labelCircleName" destination="5kT-eV-IcM" id="mtr-Wn-WeH"/>
+                <outlet property="labelMemberCount" destination="CDa-3e-bGe" id="1iF-gV-ubx"/>
+            </connections>
+            <point key="canvasLocation" x="82" y="125.5"/>
         </tableViewCell>
     </objects>
     <resources>

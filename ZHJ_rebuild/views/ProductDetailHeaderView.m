@@ -58,7 +58,7 @@
     [super awakeFromNib];
     [self addCycleScollView];
     [self addRatingBar];
-    [self initProductMessageView];
+//    [self initProductMessageView];
     [self respondWithRAC];
 }
 
@@ -178,9 +178,9 @@ self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:self.cycleScr
 
 -(void)respondWithRAC
 {
-    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"removeTheView" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        [self dismissProductMessageView];
-    }];
+//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"removeTheView" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+//        [self dismissProductMessageView];
+//    }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"popProductMessageView" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         [self btnSelectProductCountAndCountAction:nil];
