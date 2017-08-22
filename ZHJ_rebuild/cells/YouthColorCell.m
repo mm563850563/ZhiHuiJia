@@ -179,7 +179,13 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:@"selectYouthItem" object:model.goods_id];
     }else if (self.userFavoriteArray.count>0){
         UserFavoriteResultModel *model = self.userFavoriteArray[indexPath.item];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"selectYouthItemByCartList" object:model.goods_id];
+        
+        if ([self.fromWhere isEqualToString:@"cart"]) {
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"selectYouthItemByCartList" object:model.goods_id];
+        }else if([self.fromWhere isEqualToString:@"myCollectionList"]){
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"selectYouthItemByCollectionList" object:model.goods_id];
+        }
+        
     }
     
 }

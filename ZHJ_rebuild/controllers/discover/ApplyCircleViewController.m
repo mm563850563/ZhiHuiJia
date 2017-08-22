@@ -333,63 +333,6 @@
         });
     }];
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
-//                                    @"circle_name":self.tfCircleName.text,
-//                                    @"classify_id":self.circleCategoryID,
-//                                    @"description":self.tvCircleDescription.text,
-//                                    @"logo":self.dataMainImg,
-//                                    @"img":self.dataDetailImg};
-    
-    
-    
-//    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
-//        if (response) {
-//            NSDictionary *dataDict = (NSDictionary *)response;
-//            NSNumber *code = (NSNumber *)dataDict[@"code"];
-//            if ([code isEqual:@200]) {
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [hud hideAnimated:YES afterDelay:1.0];
-//                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-//                    [hudWarning hideAnimated: YES afterDelay:2.0];
-//                });
-//            }else{
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [hud hideAnimated:YES afterDelay:1.0];
-//                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-//                    [hudWarning hideAnimated: YES afterDelay:2.0];
-//                });
-//            }
-//        }else{
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [hud hideAnimated:YES afterDelay:1.0];
-//                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-//                [hudWarning hideAnimated: YES afterDelay:2.0];
-//            });
-//        }
-//    } failBlock:^(NSError *error) {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [hud hideAnimated:YES afterDelay:1.0];
-//            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-//            [hudWarning hideAnimated: YES afterDelay:2.0];
-//        });
-//    }];
 }
 
 #pragma mark - <计算页面高度>
@@ -493,8 +436,7 @@
             [self dismissViewControllerAnimated:YES completion:nil];
         }
         //把按钮中的图片转化成NSData，用于判断改图片是否存在
-        UIImage *imgMain = self.btnCircleMainPhoto.imageView.image;
-        imgMain = [UIImage fixOrientation:imgMain];
+        UIImage *imgMain = [UIImage fixOrientation:image];
         NSData *dataMainImg = UIImageJPEGRepresentation(imgMain,0.3);
         self.dataMainImg = dataMainImg;
     }else if (picker == self.pickerDetailPhoto){
@@ -506,8 +448,7 @@
             [self.btnCircleDetailPhoto setImage:image forState:UIControlStateNormal];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
-        UIImage *imgDetail = self.btnCircleDetailPhoto.imageView.image;
-        imgDetail = [UIImage fixOrientation:imgDetail];
+        UIImage *imgDetail = [UIImage fixOrientation:image];
         NSData *dataDetailImg = UIImageJPEGRepresentation(imgDetail,0.3);
         self.dataDetailImg = dataDetailImg;
     }

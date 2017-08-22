@@ -50,6 +50,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self userBrowseGoods];
     [self getGoodsDetailData];
     [self settingTableView];
     [self initBuyNowProductMessageView];
@@ -82,6 +83,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <记录用户浏览内容>
+-(void)userBrowseGoods
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kUserBrowseGoods];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"goods_id":self.goods_id};
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:nil failBlock:nil];
+}
 
 #pragma mark - <获取商品详情数据>
 -(void)getGoodsDetailData

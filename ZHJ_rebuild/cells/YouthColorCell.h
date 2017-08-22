@@ -16,4 +16,6 @@
 @property (nonatomic,assign)CGFloat cellHeight;
 @property (nonatomic, strong)NSArray *userFavoriteArray;
 
+@property (nonatomic, strong)NSString *fromWhere;
+
 @end

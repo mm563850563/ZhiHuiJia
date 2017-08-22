@@ -15,6 +15,8 @@
 
 //tools
 #import "NSString+MD5.h"
+#import "UIImage+Orientation.h"
+#import <AFNetworking.h>
 
 @interface RegisterViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate,STPickerDateDelegate,UITextFieldDelegate>
 
@@ -91,40 +93,66 @@
     }
     
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
-    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
-        if (response) {
-            NSDictionary *dataDict = (NSDictionary *)response;
-            NSNumber *code = (NSNumber *)dataDict[@"code"];
-            if ([code isEqual:@200]) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [hud hideAnimated:YES afterDelay:1.0];
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:EIO warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
-                    hudWarning.completionBlock = ^{
-                        [self dismissViewControllerAnimated:YES completion:nil];
-                    };
-                });
-            }else{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [hud hideAnimated:YES afterDelay:1.0];
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:EIO warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
-                });
-            }
-        }else{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:EIO warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
-            });
-        }
-    } failBlock:^(NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [hud hideAnimated:YES afterDelay:1.0];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:EIO warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
-        });
-    }];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 20;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain",
+                                                         @"multipart/form-data",
+                                                         @"application/json",
+                                                         @"text/html",
+                                                         @"image/jpeg",
+                                                         @"image/png",
+                                                         @"application/octet-stream",
+                                                         @"text/json", nil];
+    [manager POST:urlStr
+       parameters:nil
+constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [formData appendPartWithFormData:[self.tfPhone.text dataUsingEncoding:NSUTF8StringEncoding] name:@"mobile"];
+    [formData appendPartWithFormData:[self.tfVerificationCode.text dataUsingEncoding:NSUTF8StringEncoding] name:@"verify_code"];
+    [formData appendPartWithFormData:[password dataUsingEncoding:NSUTF8StringEncoding] name:@"password"];
+    [formData appendPartWithFormData:[self.birthdayStr dataUsingEncoding:NSUTF8StringEncoding] name:@"birthday"];
+    [formData appendPartWithFormData:[self.gender dataUsingEncoding:NSUTF8StringEncoding] name:@"sex"];
+    
+    if (self.imgData) {
+        [formData appendPartWithFileData:self.imgData name:@"user_img" fileName:@"user_img.jpg" mimeType:@"image/jpeg"];
+    }
+}
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if (responseObject) {
+                  NSDictionary *dataDict = (NSDictionary *)responseObject;
+                  NSNumber *code = (NSNumber *)dataDict[@"code"];
+                  if ([code isEqual:@200]) {
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          [hud hideAnimated:YES afterDelay:1.0];
+                          MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:EIO warningMessage:dataDict[@"msg"]];
+                          [hudWarning hideAnimated:YES afterDelay:2.0];
+                          hudWarning.completionBlock = ^{
+                              [self dismissViewControllerAnimated:YES completion:nil];
+                          };
+                      });
+                  }else{
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          [hud hideAnimated:YES afterDelay:1.0];
+                          MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:EIO warningMessage:dataDict[@"msg"]];
+                          [hudWarning hideAnimated:YES afterDelay:2.0];
+                      });
+                  }
+              }else{
+                  dispatch_async(dispatch_get_main_queue(), ^{
+                      [hud hideAnimated:YES afterDelay:1.0];
+                      MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:EIO warningMessage:kRequestError];
+                      [hudWarning hideAnimated:YES afterDelay:2.0];
+                  });
+              }
+          }
+          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  [hud hideAnimated:YES afterDelay:1.0];
+                  MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:EIO warningMessage:kRequestError];
+                  [hudWarning hideAnimated:YES afterDelay:2.0];
+              });
+          }];
+    
 }
 
 #pragma mark - <获取短信验证数据>
@@ -457,6 +485,11 @@
 {
     //通过key值获取相片
     UIImage *image = info[UIImagePickerControllerOriginalImage];
+    //纠正由拍照引起的图片旋转问题
+    UIImage *imgPortrait = [UIImage fixOrientation:image];
+    //转换为nsdata，用于判断图片是否存在
+    NSData *dataImgPortrait = UIImageJPEGRepresentation(imgPortrait, 0.3);
+    self.imgData = dataImgPortrait;
     
     //判断数据源类型
     if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {

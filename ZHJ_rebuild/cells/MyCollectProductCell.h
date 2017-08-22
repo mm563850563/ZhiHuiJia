@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyCollectionListResultModel.h"
 
 @interface MyCollectProductCell : UITableViewCell
+
+@property (nonatomic, strong)MyCollectionListResultModel *modelMyCollecgtionResult;
 
 @end

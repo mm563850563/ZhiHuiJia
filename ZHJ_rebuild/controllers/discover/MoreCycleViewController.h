@@ -10,4 +10,6 @@
 
 @interface MoreCycleViewController : UIViewController
 
+@property (nonatomic, strong)NSString *moreType;
+
 @end

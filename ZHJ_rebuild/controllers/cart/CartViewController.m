@@ -14,6 +14,7 @@
 //cells
 #import "CartProductListCell.h"
 #import "YouthColorCell.h"
+#import "NULLTableViewCell.h"
 
 //controllers
 #import "ProductDetailViewController.h"
@@ -189,18 +190,15 @@
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"数据为空"];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
             });
         }
     } failBlock:^(NSError *error) {
-        if (error.code == -1009) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请检查网络"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
-            });
-        }
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
     }];
 }
 
@@ -537,6 +535,9 @@
     
     [self.tableView registerClass:[YouthColorCell class] forCellReuseIdentifier:NSStringFromClass([YouthColorCell class])];
     
+    UINib *nibNull = [UINib nibWithNibName:NSStringFromClass([NULLTableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
+    
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self managerRequestWithGCD];
     }];
@@ -627,6 +628,9 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
+        if (self.cartListArray.count == 0) {
+            return 1;
+        }
         return self.cartListArray.count;
     }else{
         return 1;
@@ -636,6 +640,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
+        if (self.cartListArray.count == 0) {
+            return 250;
+        }
         return 100;
     }else{
         YouthColorCell *cell = [[YouthColorCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([YouthColorCell class])];
@@ -658,6 +665,10 @@
 {
     UITableViewCell *cell = [[UITableViewCell alloc]init];
     if (indexPath.section == 0) {
+        if (self.cartListArray.count == 0) {
+            NULLTableViewCell *cellNull = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NULLTableViewCell class])];
+            return cellNull;
+        }
         CartProductListCell *cellCartProductList = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CartProductListCell class])];
         CartList_CartListModel *model = self.cartListArray[indexPath.row];
         cellCartProductList.model = model;
@@ -669,6 +680,7 @@
     }else if (indexPath.section == 1){
         YouthColorCell *cellYouth = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([YouthColorCell class])];
         cellYouth.userFavoriteArray = self.userFavoriteArray;
+        cellYouth.fromWhere = @"cart";
         cell = cellYouth;
     }
     return cell;
@@ -690,11 +702,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProductDetailViewController *prductDetaiVC = [[ProductDetailViewController alloc]init];
-    CartList_CartListModel *model = self.cartListArray[indexPath.row];
-    prductDetaiVC.goods_id = model.goods_id;
-    prductDetaiVC.hidesBottomBarWhenPushed = YES;
-    [self. navigationController pushViewController:prductDetaiVC animated:YES];
+    if (self.cartListArray.count > 0) {
+        ProductDetailViewController *prductDetaiVC = [[ProductDetailViewController alloc]init];
+        CartList_CartListModel *model = self.cartListArray[indexPath.row];
+        prductDetaiVC.goods_id = model.goods_id;
+        prductDetaiVC.hidesBottomBarWhenPushed = YES;
+        [self. navigationController pushViewController:prductDetaiVC animated:YES];
+    }
+    
 }
 
 

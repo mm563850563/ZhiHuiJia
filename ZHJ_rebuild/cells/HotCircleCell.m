@@ -40,7 +40,16 @@
     [self.imgPotrait sd_setImageWithURL:url placeholderImage:kPlaceholder];
 }
 
-
+-(void)setModelJoinedCircle:(MyJoinedCircleResultModel *)modelJoinedCircle
+{
+    _modelJoinedCircle = modelJoinedCircle;
+    NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelJoinedCircle.logo];
+    NSURL *url = [NSURL URLWithString:imgStr];
+    [self.imgPotrait sd_setImageWithURL:url placeholderImage:kPlaceholder];
+    
+    self.labelCircleName.text = modelJoinedCircle.circle_name;
+    self.labelMemberCount.text = [NSString stringWithFormat:@"%@个成员",modelJoinedCircle.members_count];
+}
 
 
 

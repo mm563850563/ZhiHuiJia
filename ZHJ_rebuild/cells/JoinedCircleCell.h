@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MyJoinedCircleResultModel;
 
 @interface JoinedCircleCell : UITableViewCell
+
+@property (nonatomic, strong)MyJoinedCircleResultModel *modelJoinedCircle;
 
 @end

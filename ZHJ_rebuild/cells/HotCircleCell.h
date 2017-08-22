@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "GetHotCycleCircleInfoModel.h"
+#import "MyJoinedCircleResultModel.h"
 
 @interface HotCircleCell : UITableViewCell
 
 @property (nonatomic, strong)GetHotCycleCircleInfoModel *modelCircleInfo;
+@property (nonatomic,strong)MyJoinedCircleResultModel *modelJoinedCircle;
 
 @end

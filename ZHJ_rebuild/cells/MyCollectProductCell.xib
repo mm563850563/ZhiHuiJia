@@ -29,7 +29,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDI-po-Nhj">
-                                <rect key="frame" x="105" y="10" width="175" height="20"/>
+                                <rect key="frame" x="105" y="15" width="165" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="gI8-DJ-lTT"/>
                                 </constraints>
@@ -38,15 +38,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDh-p1-2ke">
-                                <rect key="frame" x="295" y="10" width="15" height="15"/>
+                                <rect key="frame" x="270" y="17.5" width="40" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="Aj7-nj-DeO"/>
+                                    <constraint firstAttribute="width" constant="40" id="Aj7-nj-DeO"/>
                                     <constraint firstAttribute="height" constant="15" id="peg-oh-lKn"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="删除">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnDeleteAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BgF-Sj-dtG"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="规格：白色 辐条轮" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugH-9N-OaC">
-                                <rect key="frame" x="105" y="35" width="205" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugH-9N-OaC">
+                                <rect key="frame" x="105" y="40" width="205" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="UG0-YE-wOG"/>
                                 </constraints>
@@ -60,27 +66,32 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVl-Lt-d2k">
-                                <rect key="frame" x="245" y="70" width="65" height="20"/>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVl-Lt-d2k">
+                                <rect key="frame" x="240" y="70" width="70" height="20"/>
                                 <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="gsF-L2-QhQ"/>
-                                    <constraint firstAttribute="width" constant="65" id="tLq-0O-ORe"/>
+                                    <constraint firstAttribute="width" constant="70" id="tLq-0O-ORe"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <state key="normal" title="加入购物车"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="加入购物车">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnAddToCartAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="U57-BS-keT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GDh-p1-2ke" firstAttribute="top" secondItem="qYW-Bf-9hf" secondAttribute="top" id="0WZ-Q9-Z5R"/>
                             <constraint firstItem="jDI-po-Nhj" firstAttribute="leading" secondItem="qYW-Bf-9hf" secondAttribute="trailing" constant="15" id="5ei-tX-Ci8"/>
-                            <constraint firstAttribute="trailing" secondItem="jDI-po-Nhj" secondAttribute="trailing" constant="40" id="5fq-uD-8Yt"/>
+                            <constraint firstAttribute="trailing" secondItem="jDI-po-Nhj" secondAttribute="trailing" constant="50" id="5fq-uD-8Yt"/>
                             <constraint firstAttribute="trailing" secondItem="EVl-Lt-d2k" secondAttribute="trailing" constant="10" id="Ar7-dG-TBz"/>
-                            <constraint firstItem="jDI-po-Nhj" firstAttribute="top" secondItem="qYW-Bf-9hf" secondAttribute="top" id="ESa-1o-qPD"/>
+                            <constraint firstItem="jDI-po-Nhj" firstAttribute="top" secondItem="qYW-Bf-9hf" secondAttribute="top" constant="5" id="ESa-1o-qPD"/>
                             <constraint firstAttribute="trailing" secondItem="ugH-9N-OaC" secondAttribute="trailing" constant="10" id="EpX-7b-hLU"/>
                             <constraint firstItem="Kb6-Qt-yNz" firstAttribute="leading" secondItem="jDI-po-Nhj" secondAttribute="leading" id="F0Y-40-RsJ"/>
                             <constraint firstItem="ugH-9N-OaC" firstAttribute="top" secondItem="jDI-po-Nhj" secondAttribute="bottom" constant="5" id="Tcs-zv-lKY"/>
+                            <constraint firstItem="GDh-p1-2ke" firstAttribute="centerY" secondItem="jDI-po-Nhj" secondAttribute="centerY" id="bhg-CF-J6R"/>
                             <constraint firstAttribute="trailing" secondItem="GDh-p1-2ke" secondAttribute="trailing" constant="10" id="cOM-XI-r2h"/>
                             <constraint firstItem="Kb6-Qt-yNz" firstAttribute="bottom" secondItem="qYW-Bf-9hf" secondAttribute="bottom" id="dIS-nd-aJX"/>
                             <constraint firstItem="qYW-Bf-9hf" firstAttribute="top" secondItem="Ton-8A-Bd6" secondAttribute="top" constant="10" id="nhy-bS-tLJ"/>
@@ -98,6 +109,12 @@
                     <constraint firstAttribute="bottom" secondItem="Ton-8A-Bd6" secondAttribute="bottom" id="psI-4w-lQK"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imgProduct" destination="qYW-Bf-9hf" id="bcm-NN-XWu"/>
+                <outlet property="labelPrice" destination="Kb6-Qt-yNz" id="Q42-Mm-aHW"/>
+                <outlet property="labelProductName" destination="jDI-po-Nhj" id="gBW-bK-uI2"/>
+                <outlet property="labelProductSpec" destination="ugH-9N-OaC" id="eOA-5r-vHI"/>
+            </connections>
             <point key="canvasLocation" x="60" y="120"/>
         </tableViewCell>
     </objects>

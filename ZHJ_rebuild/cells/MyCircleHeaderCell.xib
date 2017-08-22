@@ -25,59 +25,59 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="113"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6Q-tH-rWo">
-                                <rect key="frame" x="10" y="10" width="60" height="20"/>
+                                <rect key="frame" x="10" y="10" width="70" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="BQv-tI-k2d"/>
-                                    <constraint firstAttribute="width" constant="60" id="e5Y-LR-Vct"/>
+                                    <constraint firstAttribute="height" constant="25" id="BQv-tI-k2d"/>
+                                    <constraint firstAttribute="width" constant="70" id="e5Y-LR-Vct"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <inset key="titleEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="5" minY="3" maxX="40" maxY="3"/>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="50" maxY="5"/>
                                 <state key="normal" title="编辑" image="00bi"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户昵称：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpH-DG-Or8">
-                                <rect key="frame" x="10" y="35" width="70" height="20"/>
+                                <rect key="frame" x="10" y="40" width="70" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="bTF-Us-kvg"/>
                                     <constraint firstAttribute="width" constant="70" id="o0W-db-AqZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKT-ac-u8b">
-                                <rect key="frame" x="80" y="35" width="230" height="20"/>
+                                <rect key="frame" x="80" y="40" width="230" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="spf-cG-oyH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活跃度：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzZ-FU-7Vw">
-                                <rect key="frame" x="10" y="60" width="50" height="20"/>
+                                <rect key="frame" x="10" y="65" width="60" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="6lt-Yj-oSk"/>
-                                    <constraint firstAttribute="width" constant="50" id="sib-py-KSB"/>
+                                    <constraint firstAttribute="width" constant="60" id="sib-py-KSB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yue" translatesAutoresizingMaskIntoConstraints="NO" id="AD5-bt-3fi">
-                                <rect key="frame" x="65" y="64" width="12" height="12"/>
+                                <rect key="frame" x="75" y="69" width="12" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="12" id="MLa-lQ-ge6"/>
                                     <constraint firstAttribute="height" constant="12" id="Zta-Aq-dhr"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLn-l0-xoJ">
-                                <rect key="frame" x="82" y="60" width="30" height="20"/>
+                                <rect key="frame" x="92" y="65" width="30" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="JCa-f8-ebu"/>
                                     <constraint firstAttribute="height" constant="20" id="e7X-Oh-1rV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -112,7 +112,7 @@
                                     <constraint firstAttribute="height" constant="20" id="RoT-AS-D3v"/>
                                     <constraint firstAttribute="width" constant="90" id="ns5-Q6-WLp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

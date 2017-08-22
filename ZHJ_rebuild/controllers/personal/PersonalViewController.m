@@ -20,6 +20,7 @@
 #import "AfterSalesViewController.h"
 #import "WeChatAccountViewController.h"
 #import "AboutUsViewController.h"
+#import "MyTrackViewController.h"
 
 //cells
 #import "PersonalCollectCell.h"
@@ -240,6 +241,14 @@
     [self.navigationController pushViewController:aboutUsVC animated:YES];
 }
 
+#pragma mark - <跳转“我的足迹”页面>
+-(void)jumpToMyTrackVC
+{
+    MyTrackViewController *myTrackVC = [[MyTrackViewController alloc]initWithNibName:NSStringFromClass([MyTrackViewController class]) bundle:nil];
+    myTrackVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:myTrackVC animated:YES];
+}
+
 #pragma mark - <设置按钮响应>
 - (IBAction)btnConfigurationAction:(UIButton *)sender
 {
@@ -366,16 +375,16 @@
     }else if (indexPath.item == 2){//我的收藏
         [self jumpToMyCollectionVC];
     }else if (indexPath.item == 3){//分享邀请
-        
+        GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
+//        getGiftVC.category = 1;
+        getGiftVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:getGiftVC animated:YES];
     }else if (indexPath.item == 4){//客服中心
         CustomerServiceCenterViewController *customerCenterVC = [[CustomerServiceCenterViewController alloc]initWithNibName:NSStringFromClass([CustomerServiceCenterViewController class]) bundle:nil];
         customerCenterVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:customerCenterVC animated:YES];
     }else if (indexPath.item == 5){//足迹
-        GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
-//        getGiftVC.category = 1;
-        getGiftVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:getGiftVC animated:YES];
+        [self jumpToMyTrackVC];
     }else if (indexPath.item == 6){//关注公众号
         [self jumpToWeChatAccountVC];
     }else if (indexPath.item == 7){//关于我们

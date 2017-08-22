@@ -119,7 +119,7 @@
 #pragma mark - <跳转mainCircleVC>
 -(void)jumpToMainCircleVC
 {
-    MainCircleViewController *mainCircleVC = [[MainCircleViewController alloc]initWithNibName:NSStringFromClass([MainCircleViewController class]) bundle:nil];
+    MainCircleViewController *mainCircleVC = [[MainCircleViewController alloc]init];
     mainCircleVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:mainCircleVC animated:YES];
 }

@@ -78,6 +78,7 @@
 - (IBAction)btnSelectCycleAction:(UIButton *)sender
 {
     MoreCycleViewController *moreCycleVC = [[MoreCycleViewController alloc]initWithNibName:NSStringFromClass([MoreCycleViewController class]) bundle:nil];
+    moreCycleVC.moreType = @"moreJoined";
     moreCycleVC.hidesBottomBarWhenPushed = NO;
     [self.navigationController pushViewController:moreCycleVC animated:YES];
 }

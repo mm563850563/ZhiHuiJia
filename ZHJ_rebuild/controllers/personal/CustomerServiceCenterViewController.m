@@ -85,9 +85,9 @@
 -(void)fillDataWithResult:(NSDictionary *)result
 {
     //背景图
-    NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,result[@"image"]];
-    NSURL *url = [NSURL URLWithString:imgStr];
-    [self.imgBGView sd_setImageWithURL:url];
+//    NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,result[@"image"]];
+//    NSURL *url = [NSURL URLWithString:imgStr];
+//    [self.imgBGView sd_setImageWithURL:url];
     
     //客服热线文本
     NSString *hotLineStr = [NSString stringWithFormat:@"客服热线：%@",result[@"hotline"]];

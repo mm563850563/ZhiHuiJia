@@ -17,11 +17,12 @@
 #import "MyCircleViewController.h"
 #import "RankingListViewController.h"
 #import "ApplyCircleViewController.h"
+#import "MoreCycleViewController.h"
 
 @interface MainCircleViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *segmentBGView;
-@property (weak, nonatomic) IBOutlet UIView *flipBGView;
+//@property (weak, nonatomic) IBOutlet UIView *segmentBGView;
+//@property (weak, nonatomic) IBOutlet UIView *flipBGView;
 
 @property (nonatomic, strong)SegmentTapView *segmentView;
 @property (nonatomic, strong)FlipTableView *flipView;
@@ -38,6 +39,8 @@
     [self initApplyCircle];
     [self initSegmentView];
     [self initFlipView];
+    
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,11 +124,7 @@
     NSArray *array = @[@"热门圈子",@"我的圈子",@"排行榜"];
     self.segmentView = [[SegmentTapView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 40) withDataArray:array withFont:14];
     self.segmentView.delegate = self;
-    [self.segmentBGView addSubview:self.segmentView];
-    [self.segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
-    }];
-    
+    [self.view addSubview:self.segmentView];
 }
 
 #pragma mark - <初始化flipView>
@@ -139,13 +138,33 @@
     [vcArray addObject:myCircleVC];
     [vcArray addObject:rankListVC];
     
-    self.flipView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, self.flipBGView.frame.size.height) withArray:vcArray];
+    self.flipView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 41, kSCREEN_WIDTH, self.view.frame.size.height-41) withArray:vcArray];
     self.flipView.delegate = self;
-    [self.flipBGView addSubview:self.flipView];
-    [self.flipView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    [self.view addSubview:self.flipView];
+}
+
+#pragma mark - <跳转更多圈子页面>
+-(void)jumpToMoreCircleVCWithMoreType:(NSString *)moreType
+{
+    MoreCycleViewController *moreCircleVC = [[MoreCycleViewController alloc]initWithNibName:NSStringFromClass([MoreCycleViewController class]) bundle:nil];
+    moreCircleVC.moreType = moreType;
+    moreCircleVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:moreCircleVC animated:YES];
+}
+
+#pragma mark - <RAC响应>
+-(void)respondWithRAC
+{
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToMoreCircleFromMyCircle" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *moreType = x.object;
+        [self jumpToMoreCircleVCWithMoreType:moreType];
     }];
 }
+
+
+
+
+
 
 
 

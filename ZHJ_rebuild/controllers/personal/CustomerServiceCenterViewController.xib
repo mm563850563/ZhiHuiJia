@@ -21,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Hd-ru-54B">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotLineBG" translatesAutoresizingMaskIntoConstraints="NO" id="0Hd-ru-54B">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AlM-yQ-8yI">
@@ -153,6 +153,7 @@
     </objects>
     <resources>
         <image name="dianhua" width="33" height="32"/>
+        <image name="hotLineBG" width="1080" height="1717"/>
         <image name="kefu" width="17" height="14"/>
     </resources>
 </document>

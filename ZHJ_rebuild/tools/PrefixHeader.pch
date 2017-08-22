@@ -230,6 +230,18 @@
 #pragma mark - <46.提交申请圈子>
 #define kApplyForCircle @"/circle/applyForCircle"
 
+#pragma mark - <47.已加入的圈子>
+#define kMyJoinedCircle @"/Circle/myJoinedCircle"
+
+#pragma mark - <48.我的收藏>
+#define kMyCollectionList @"/user/getCollectedList"
+
+#pragma mark - <49.我的足迹>
+#define kMyTrack @"/user/getMyTracks"
+
+#pragma mark - <50.记录用户浏览记录>
+#define kUserBrowseGoods @"/Goods/userBrowseGoods"
+
 
 
 

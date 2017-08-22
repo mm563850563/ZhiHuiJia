@@ -12,10 +12,18 @@
 #import "MyCircleHeaderCell.h"
 #import "FocusPersonCell.h"
 #import "JoinedCircleCell.h"
+#import "MoreTableViewCell.h"
+
+//models
+#import "MyJoinedCircleDataModel.h"
+#import "MyJoinedCircleResultModel.h"
+
+//controllers
 
 @interface MyCircleViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *joinedCircleArray;
 
 @end
 
@@ -25,6 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [self getMyJoinedCircleData];
     [self settingTableView];
 }
 
@@ -43,6 +52,47 @@
 }
 */
 
+#pragma mark - <获取“已加入圈子”数据>
+-(void)getMyJoinedCircleData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kMyJoinedCircle];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                MyJoinedCircleDataModel *model = [[MyJoinedCircleDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                self.joinedCircleArray = model.result;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    [self.tableView reloadData];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
 
 -(void)settingTableView
 {
@@ -58,7 +108,12 @@
     
     UINib *nibJoinCircle = [UINib nibWithNibName:NSStringFromClass([JoinedCircleCell class]) bundle:nil];
     [self.tableView registerNib:nibJoinCircle forCellReuseIdentifier:NSStringFromClass([JoinedCircleCell class])];
+    
+    UINib *nibMore = [UINib nibWithNibName:NSStringFromClass([MoreTableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nibMore forCellReuseIdentifier:NSStringFromClass([MoreTableViewCell class])];
 }
+
+
 
 
 
@@ -77,7 +132,10 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 5;
+        if (self.joinedCircleArray.count > 3) {
+            return 5;
+        }
+        return self.joinedCircleArray.count+1;
     }
     return 5;
 }
@@ -87,8 +145,10 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             return 150;
+        }else if (indexPath.row == 4){
+            return 40;
         }
-        return 60;
+        return 70;
     }
     return 120;
 }
@@ -116,8 +176,13 @@
         if (indexPath.row == 0) {
             MyCircleHeaderCell * cellHeader = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyCircleHeaderCell class])];
             cell = cellHeader;
+        }else if (indexPath.row == 4){
+            MoreTableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MoreTableViewCell class])];
+            cell = cellMore;
         }else{
             JoinedCircleCell *cellJoined = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([JoinedCircleCell class])];
+            MyJoinedCircleResultModel *modelResult = self.joinedCircleArray[indexPath.row-1];
+            cellJoined.modelJoinedCircle = modelResult;
             cell = cellJoined;
         }
         
@@ -142,7 +207,14 @@
     return nil;
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        if (indexPath.row == 4) {
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToMoreCircleFromMyCircle" object:@"moreJoined"];
+        }
+    }
+}
 
 
 @end

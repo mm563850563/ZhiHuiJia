@@ -15,6 +15,9 @@
 #import "GetHotCycleDataModel.h"
 #import "GetHotCycleResultModel.h"
 
+//controllers
+#import "MoreCycleViewController.h"
+
 @interface HotCircleViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -138,7 +141,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return 70;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -152,12 +155,13 @@
     label1.font = [UIFont systemFontOfSize:13];
     [headerView addSubview:label1];
     
+    //button
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(headerView.frame.size.width-60, 0, 50, headerView.frame.size.height);
     [button setTitle:@"更多>" forState:UIControlStateNormal];
     [button setTitleColor:kColorFromRGB( kBlack) forState:UIControlStateNormal];
     [button.titleLabel setFont:[UIFont systemFontOfSize:13]];
-//    button 
+//    [NSNotificationCenter defaultCenter]postNotificationName:@"moreHotCircle" object:<#(nullable id)#>
     
     [headerView addSubview:button];
     
@@ -174,6 +178,10 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 
 
 @end

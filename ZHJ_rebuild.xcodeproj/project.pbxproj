@@ -167,6 +167,21 @@
 		DD58FF301F4A90CF009EC9F2 /* ApplyCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF2E1F4A90CF009EC9F2 /* ApplyCircleViewController.m */; };
 		DD58FF311F4A90CF009EC9F2 /* ApplyCircleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF2F1F4A90CF009EC9F2 /* ApplyCircleViewController.xib */; };
 		DD58FF341F4B0D33009EC9F2 /* UIImage+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF331F4B0D33009EC9F2 /* UIImage+Orientation.m */; };
+		DD58FF381F4BC81A009EC9F2 /* MyJoinedCircleDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF371F4BC81A009EC9F2 /* MyJoinedCircleDataModel.m */; };
+		DD58FF3B1F4BC831009EC9F2 /* MyJoinedCircleResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF3A1F4BC831009EC9F2 /* MyJoinedCircleResultModel.m */; };
+		DD58FF3F1F4BDF61009EC9F2 /* MoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF3D1F4BDF61009EC9F2 /* MoreTableViewCell.m */; };
+		DD58FF401F4BDF61009EC9F2 /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF3E1F4BDF61009EC9F2 /* MoreTableViewCell.xib */; };
+		DD58FF451F4C1021009EC9F2 /* MyCollectionListDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF441F4C1021009EC9F2 /* MyCollectionListDataModel.m */; };
+		DD58FF481F4C1034009EC9F2 /* MyCollectionListResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF471F4C1034009EC9F2 /* MyCollectionListResultModel.m */; };
+		DD58FF4C1F4C2A26009EC9F2 /* MyTrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF4A1F4C2A26009EC9F2 /* MyTrackViewController.m */; };
+		DD58FF4D1F4C2A26009EC9F2 /* MyTrackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF4B1F4C2A26009EC9F2 /* MyTrackViewController.xib */; };
+		DD58FF511F4C2D45009EC9F2 /* MyTrackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF4F1F4C2D45009EC9F2 /* MyTrackTableViewCell.m */; };
+		DD58FF521F4C2D45009EC9F2 /* MyTrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF501F4C2D45009EC9F2 /* MyTrackTableViewCell.xib */; };
+		DD58FF561F4C31C0009EC9F2 /* MyTrackDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF551F4C31C0009EC9F2 /* MyTrackDataModel.m */; };
+		DD58FF591F4C31D3009EC9F2 /* MyTrackResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF581F4C31D3009EC9F2 /* MyTrackResultModel.m */; };
+		DD58FF5C1F4C31F8009EC9F2 /* MyTrackGoodsInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF5B1F4C31F8009EC9F2 /* MyTrackGoodsInfoModel.m */; };
+		DD58FF5F1F4C36CB009EC9F2 /* MyTrackHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF5E1F4C36CB009EC9F2 /* MyTrackHeaderView.m */; };
+		DD58FF611F4C36EB009EC9F2 /* MyTrackHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF601F4C36EB009EC9F2 /* MyTrackHeaderView.xib */; };
 		DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */; };
 		DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */; };
 		DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */; };
@@ -219,7 +234,6 @@
 		DD6287841F2097940030331D /* HotCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287821F2097940030331D /* HotCircleCell.m */; };
 		DD6287851F2097940030331D /* HotCircleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287831F2097940030331D /* HotCircleCell.xib */; };
 		DD6287891F20B0BA0030331D /* MainCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287871F20B0BA0030331D /* MainCircleViewController.m */; };
-		DD62878A1F20B0BA0030331D /* MainCircleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6287881F20B0BA0030331D /* MainCircleViewController.xib */; };
 		DD62878E1F20C2290030331D /* MyCircleHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62878C1F20C2290030331D /* MyCircleHeaderCell.m */; };
 		DD62878F1F20C2290030331D /* MyCircleHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62878D1F20C2290030331D /* MyCircleHeaderCell.xib */; };
 		DD6287931F2185A10030331D /* JoinedCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6287911F2185A10030331D /* JoinedCircleCell.m */; };
@@ -793,6 +807,32 @@
 		DD58FF2F1F4A90CF009EC9F2 /* ApplyCircleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ApplyCircleViewController.xib; path = controllers/discover/ApplyCircleViewController.xib; sourceTree = "<group>"; };
 		DD58FF321F4B0D33009EC9F2 /* UIImage+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Orientation.h"; path = "tools/UIImage+Orientation.h"; sourceTree = "<group>"; };
 		DD58FF331F4B0D33009EC9F2 /* UIImage+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Orientation.m"; path = "tools/UIImage+Orientation.m"; sourceTree = "<group>"; };
+		DD58FF361F4BC81A009EC9F2 /* MyJoinedCircleDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyJoinedCircleDataModel.h; path = models/MyJoinedCircleDataModel.h; sourceTree = "<group>"; };
+		DD58FF371F4BC81A009EC9F2 /* MyJoinedCircleDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyJoinedCircleDataModel.m; path = models/MyJoinedCircleDataModel.m; sourceTree = "<group>"; };
+		DD58FF391F4BC831009EC9F2 /* MyJoinedCircleResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyJoinedCircleResultModel.h; path = models/MyJoinedCircleResultModel.h; sourceTree = "<group>"; };
+		DD58FF3A1F4BC831009EC9F2 /* MyJoinedCircleResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyJoinedCircleResultModel.m; path = models/MyJoinedCircleResultModel.m; sourceTree = "<group>"; };
+		DD58FF3C1F4BDF61009EC9F2 /* MoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreTableViewCell.h; path = cells/MoreTableViewCell.h; sourceTree = "<group>"; };
+		DD58FF3D1F4BDF61009EC9F2 /* MoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreTableViewCell.m; path = cells/MoreTableViewCell.m; sourceTree = "<group>"; };
+		DD58FF3E1F4BDF61009EC9F2 /* MoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreTableViewCell.xib; path = cells/MoreTableViewCell.xib; sourceTree = "<group>"; };
+		DD58FF431F4C1021009EC9F2 /* MyCollectionListDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCollectionListDataModel.h; path = models/MyCollectionListDataModel.h; sourceTree = "<group>"; };
+		DD58FF441F4C1021009EC9F2 /* MyCollectionListDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCollectionListDataModel.m; path = models/MyCollectionListDataModel.m; sourceTree = "<group>"; };
+		DD58FF461F4C1034009EC9F2 /* MyCollectionListResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCollectionListResultModel.h; path = models/MyCollectionListResultModel.h; sourceTree = "<group>"; };
+		DD58FF471F4C1034009EC9F2 /* MyCollectionListResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCollectionListResultModel.m; path = models/MyCollectionListResultModel.m; sourceTree = "<group>"; };
+		DD58FF491F4C2A26009EC9F2 /* MyTrackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTrackViewController.h; path = controllers/personal/MyTrackViewController.h; sourceTree = "<group>"; };
+		DD58FF4A1F4C2A26009EC9F2 /* MyTrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTrackViewController.m; path = controllers/personal/MyTrackViewController.m; sourceTree = "<group>"; };
+		DD58FF4B1F4C2A26009EC9F2 /* MyTrackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyTrackViewController.xib; path = controllers/personal/MyTrackViewController.xib; sourceTree = "<group>"; };
+		DD58FF4E1F4C2D45009EC9F2 /* MyTrackTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTrackTableViewCell.h; path = cells/MyTrackTableViewCell.h; sourceTree = "<group>"; };
+		DD58FF4F1F4C2D45009EC9F2 /* MyTrackTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTrackTableViewCell.m; path = cells/MyTrackTableViewCell.m; sourceTree = "<group>"; };
+		DD58FF501F4C2D45009EC9F2 /* MyTrackTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyTrackTableViewCell.xib; path = cells/MyTrackTableViewCell.xib; sourceTree = "<group>"; };
+		DD58FF541F4C31C0009EC9F2 /* MyTrackDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTrackDataModel.h; path = models/MyTrackDataModel.h; sourceTree = "<group>"; };
+		DD58FF551F4C31C0009EC9F2 /* MyTrackDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTrackDataModel.m; path = models/MyTrackDataModel.m; sourceTree = "<group>"; };
+		DD58FF571F4C31D3009EC9F2 /* MyTrackResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTrackResultModel.h; path = models/MyTrackResultModel.h; sourceTree = "<group>"; };
+		DD58FF581F4C31D3009EC9F2 /* MyTrackResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTrackResultModel.m; path = models/MyTrackResultModel.m; sourceTree = "<group>"; };
+		DD58FF5A1F4C31F8009EC9F2 /* MyTrackGoodsInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTrackGoodsInfoModel.h; path = models/MyTrackGoodsInfoModel.h; sourceTree = "<group>"; };
+		DD58FF5B1F4C31F8009EC9F2 /* MyTrackGoodsInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTrackGoodsInfoModel.m; path = models/MyTrackGoodsInfoModel.m; sourceTree = "<group>"; };
+		DD58FF5D1F4C36CB009EC9F2 /* MyTrackHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTrackHeaderView.h; path = views/MyTrackHeaderView.h; sourceTree = "<group>"; };
+		DD58FF5E1F4C36CB009EC9F2 /* MyTrackHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTrackHeaderView.m; path = views/MyTrackHeaderView.m; sourceTree = "<group>"; };
+		DD58FF601F4C36EB009EC9F2 /* MyTrackHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyTrackHeaderView.xib; path = views/MyTrackHeaderView.xib; sourceTree = "<group>"; };
 		DD6286F71F1E398C0030331D /* Discover_HotTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_HotTopicCell.h; path = cells/Discover_HotTopicCell.h; sourceTree = "<group>"; };
 		DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_HotTopicCell.m; path = cells/Discover_HotTopicCell.m; sourceTree = "<group>"; };
 		DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_HotTopicCell.xib; path = cells/Discover_HotTopicCell.xib; sourceTree = "<group>"; };
@@ -872,7 +912,6 @@
 		DD6287831F2097940030331D /* HotCircleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotCircleCell.xib; path = cells/HotCircleCell.xib; sourceTree = "<group>"; };
 		DD6287861F20B0B90030331D /* MainCircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainCircleViewController.h; path = controllers/discover/MainCircleViewController.h; sourceTree = "<group>"; };
 		DD6287871F20B0BA0030331D /* MainCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainCircleViewController.m; path = controllers/discover/MainCircleViewController.m; sourceTree = "<group>"; };
-		DD6287881F20B0BA0030331D /* MainCircleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainCircleViewController.xib; path = controllers/discover/MainCircleViewController.xib; sourceTree = "<group>"; };
 		DD62878B1F20C2290030331D /* MyCircleHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCircleHeaderCell.h; path = cells/MyCircleHeaderCell.h; sourceTree = "<group>"; };
 		DD62878C1F20C2290030331D /* MyCircleHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCircleHeaderCell.m; path = cells/MyCircleHeaderCell.m; sourceTree = "<group>"; };
 		DD62878D1F20C2290030331D /* MyCircleHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyCircleHeaderCell.xib; path = cells/MyCircleHeaderCell.xib; sourceTree = "<group>"; };
@@ -1663,6 +1702,41 @@
 			name = GetHotCycle;
 			sourceTree = "<group>";
 		};
+		DD58FF351F4BC7D9009EC9F2 /* MyJoinedCircleModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD58FF361F4BC81A009EC9F2 /* MyJoinedCircleDataModel.h */,
+				DD58FF371F4BC81A009EC9F2 /* MyJoinedCircleDataModel.m */,
+				DD58FF391F4BC831009EC9F2 /* MyJoinedCircleResultModel.h */,
+				DD58FF3A1F4BC831009EC9F2 /* MyJoinedCircleResultModel.m */,
+			);
+			name = MyJoinedCircleModel;
+			sourceTree = "<group>";
+		};
+		DD58FF421F4C0FF2009EC9F2 /* MyCollectionListModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD58FF431F4C1021009EC9F2 /* MyCollectionListDataModel.h */,
+				DD58FF441F4C1021009EC9F2 /* MyCollectionListDataModel.m */,
+				DD58FF461F4C1034009EC9F2 /* MyCollectionListResultModel.h */,
+				DD58FF471F4C1034009EC9F2 /* MyCollectionListResultModel.m */,
+			);
+			name = MyCollectionListModel;
+			sourceTree = "<group>";
+		};
+		DD58FF531F4C3189009EC9F2 /* MyTrackModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD58FF541F4C31C0009EC9F2 /* MyTrackDataModel.h */,
+				DD58FF551F4C31C0009EC9F2 /* MyTrackDataModel.m */,
+				DD58FF571F4C31D3009EC9F2 /* MyTrackResultModel.h */,
+				DD58FF581F4C31D3009EC9F2 /* MyTrackResultModel.m */,
+				DD58FF5A1F4C31F8009EC9F2 /* MyTrackGoodsInfoModel.h */,
+				DD58FF5B1F4C31F8009EC9F2 /* MyTrackGoodsInfoModel.m */,
+			);
+			name = MyTrackModel;
+			sourceTree = "<group>";
+		};
 		DD6288001F2214F40030331D /* RatingBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2311,6 +2385,9 @@
 				DD184E241F3D5658009BFF5B /* NULLTableViewCell.h */,
 				DD184E251F3D5658009BFF5B /* NULLTableViewCell.m */,
 				DD184E261F3D5658009BFF5B /* NULLTableViewCell.xib */,
+				DD58FF3C1F4BDF61009EC9F2 /* MoreTableViewCell.h */,
+				DD58FF3D1F4BDF61009EC9F2 /* MoreTableViewCell.m */,
+				DD58FF3E1F4BDF61009EC9F2 /* MoreTableViewCell.xib */,
 				DDC52EBF1F42C84D00ECF211 /* SuccessPayTableViewCell.h */,
 				DDC52EC01F42C84D00ECF211 /* SuccessPayTableViewCell.m */,
 				DDC52EC11F42C84D00ECF211 /* SuccessPayTableViewCell.xib */,
@@ -2319,6 +2396,9 @@
 				DDC52EC71F42E0F100ECF211 /* SuccessPayRecommendMemberCell.h */,
 				DDC52EC81F42E0F100ECF211 /* SuccessPayRecommendMemberCell.m */,
 				DDC52EC91F42E0F100ECF211 /* SuccessPayRecommendMemberCell.xib */,
+				DD58FF4E1F4C2D45009EC9F2 /* MyTrackTableViewCell.h */,
+				DD58FF4F1F4C2D45009EC9F2 /* MyTrackTableViewCell.m */,
+				DD58FF501F4C2D45009EC9F2 /* MyTrackTableViewCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -2389,6 +2469,9 @@
 				DDC52ECF1F42E45A00ECF211 /* SuccessPayRecommedHeaderView.xib */,
 				DD0939281F46C7B900A75182 /* MySlider.h */,
 				DD0939291F46C7B900A75182 /* MySlider.m */,
+				DD58FF5D1F4C36CB009EC9F2 /* MyTrackHeaderView.h */,
+				DD58FF5E1F4C36CB009EC9F2 /* MyTrackHeaderView.m */,
+				DD58FF601F4C36EB009EC9F2 /* MyTrackHeaderView.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -2442,6 +2525,9 @@
 				DD184E441F3D9503009BFF5B /* PlaceOrderModel */,
 				DD0938E21F43E7B500A75182 /* OrderList */,
 				DD58FF231F4A6EEC009EC9F2 /* GetHotCycle */,
+				DD58FF351F4BC7D9009EC9F2 /* MyJoinedCircleModel */,
+				DD58FF421F4C0FF2009EC9F2 /* MyCollectionListModel */,
+				DD58FF531F4C3189009EC9F2 /* MyTrackModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -2607,7 +2693,6 @@
 				DD6287D81F21DE0C0030331D /* MyFocusViewController.xib */,
 				DD6287861F20B0B90030331D /* MainCircleViewController.h */,
 				DD6287871F20B0BA0030331D /* MainCircleViewController.m */,
-				DD6287881F20B0BA0030331D /* MainCircleViewController.xib */,
 				DD58FF2D1F4A90CF009EC9F2 /* ApplyCircleViewController.h */,
 				DD58FF2E1F4A90CF009EC9F2 /* ApplyCircleViewController.m */,
 				DD58FF2F1F4A90CF009EC9F2 /* ApplyCircleViewController.xib */,
@@ -2680,6 +2765,9 @@
 			children = (
 				EC4BA0E71F136C8100B9BE1A /* PersonalViewController.h */,
 				EC4BA0E81F136C8100B9BE1A /* PersonalViewController.m */,
+				DD58FF491F4C2A26009EC9F2 /* MyTrackViewController.h */,
+				DD58FF4A1F4C2A26009EC9F2 /* MyTrackViewController.m */,
+				DD58FF4B1F4C2A26009EC9F2 /* MyTrackViewController.xib */,
 				DD0939181F458BA100A75182 /* AboutUsViewController.h */,
 				DD0939191F458BA100A75182 /* AboutUsViewController.m */,
 				DD09391A1F458BA100A75182 /* AboutUsViewController.xib */,
@@ -2851,6 +2939,7 @@
 				DD4CF00F1F283D500024156F /* ProductDetailImageCell.xib in Resources */,
 				DD6287051F1EE19C0030331D /* FocusPersonFileViewController.xib in Resources */,
 				DD4CF11A1F2AFB9E0024156F /* CategoryProductNameCell.xib in Resources */,
+				DD58FF4D1F4C2A26009EC9F2 /* MyTrackViewController.xib in Resources */,
 				DD58FF311F4A90CF009EC9F2 /* ApplyCircleViewController.xib in Resources */,
 				DD4CF0191F285E7D0024156F /* ActivityRecommendImageCell.xib in Resources */,
 				DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */,
@@ -2858,6 +2947,7 @@
 				DDFB825F1F187A7900AEAAA7 /* cb_glossy_off@2x.png in Resources */,
 				DD0939081F442E7400A75182 /* OrderListViewController_Four.xib in Resources */,
 				DDFB82671F187A7900AEAAA7 /* cb_mono_off@2x.png in Resources */,
+				DD58FF521F4C2D45009EC9F2 /* MyTrackTableViewCell.xib in Resources */,
 				DD6287D01F21C26C0030331D /* DomainViewController.xib in Resources */,
 				DD6287001F1E405A0030331D /* Discover_RecommendCell.xib in Resources */,
 				DD62883A1F233FA30030331D /* SameHobbyPersonListCell.xib in Resources */,
@@ -2891,6 +2981,7 @@
 				DD9A63B41F2EE86700611FA8 /* AfterSalesHeaderView.xib in Resources */,
 				DDC52EB91F42C00900ECF211 /* SuccessPayViewController.xib in Resources */,
 				DD6287DF1F21E3B20030331D /* ActivityViewController.xib in Resources */,
+				DD58FF401F4BDF61009EC9F2 /* MoreTableViewCell.xib in Resources */,
 				EC4BA2551F15EDF000B9BE1A /* DiscoverHeaderCell.xib in Resources */,
 				DD62871E1F1F3D8B0030331D /* PriaseTableViewCell.xib in Resources */,
 				DDFB82B41F1D931500AEAAA7 /* PYSearch.bundle in Resources */,
@@ -2972,7 +3063,6 @@
 				DD6287621F2053750030331D /* MyCollectProductCell.xib in Resources */,
 				DD4CEFED1F26DEDA0024156F /* BrandDetailHeaderCell.xib in Resources */,
 				DD4CF02D1F2882AF0024156F /* DisclaimerViewController.xib in Resources */,
-				DD62878A1F20B0BA0030331D /* MainCircleViewController.xib in Resources */,
 				DD6288191F22EB740030331D /* SubMessage_PrivateLetterViewController.xib in Resources */,
 				EC4BA13A1F14693F00B9BE1A /* ProductDetailViewController.xib in Resources */,
 				EC4BA0631F13562700B9BE1A /* Main.storyboard in Resources */,
@@ -2990,6 +3080,7 @@
 				DD4CF0231F286E9E0024156F /* ActivityRecommendDetailCell.xib in Resources */,
 				DD69B2FE1F3B09050036F368 /* RegionList.plist in Resources */,
 				DD6287E91F21E85D0030331D /* AlreadyPassedViewController.xib in Resources */,
+				DD58FF611F4C36EB009EC9F2 /* MyTrackHeaderView.xib in Resources */,
 				EC4BA0EA1F136C8100B9BE1A /* FeedbackViewController.xib in Resources */,
 				DDFB82571F187A7900AEAAA7 /* cb_box_off@2x.png in Resources */,
 				DD6287801F208CE60030331D /* RankingListViewController.xib in Resources */,
@@ -3062,6 +3153,7 @@
 				DD0DBB0A1F3431650098F5FA /* GetSpecPriceDataModel.m in Sources */,
 				DD0939231F45918900A75182 /* UIButton+Badge.m in Sources */,
 				DDC52ECE1F42E43600ECF211 /* SuccessPayRecommedHeaderView.m in Sources */,
+				DD58FF5C1F4C31F8009EC9F2 /* MyTrackGoodsInfoModel.m in Sources */,
 				DDC52E871F41328800ECF211 /* SearchNetTool.m in Sources */,
 				DD58FF301F4A90CF009EC9F2 /* ApplyCircleViewController.m in Sources */,
 				DDC52EA31F41C60500ECF211 /* PalceOrderOrderInfoModel.m in Sources */,
@@ -3092,6 +3184,7 @@
 				DDE0FD131F35669B00269DBD /* UserFavoriteResultModel.m in Sources */,
 				EC4BA05D1F13562700B9BE1A /* AppDelegate.m in Sources */,
 				EC4BA0CC1F1359DF00B9BE1A /* SelectThemeColorView.m in Sources */,
+				DD58FF3F1F4BDF61009EC9F2 /* MoreTableViewCell.m in Sources */,
 				DD62882C1F2317E60030331D /* ReplyCommentCell.m in Sources */,
 				DD6287521F203C030030331D /* MyAddressIncreaseViewController.m in Sources */,
 				DD4CF0081F2824A10024156F /* ActivityRuleView.m in Sources */,
@@ -3139,6 +3232,7 @@
 				DD0DBAFB1F3358C20098F5FA /* GoodsDetailSpec_ListModel.m in Sources */,
 				DDFB82981F1C6A8900AEAAA7 /* MoreProductList_HeaderView.m in Sources */,
 				DDDD17CE1F2C93A2006BE206 /* OrderListViewController_One.m in Sources */,
+				DD58FF3B1F4BC831009EC9F2 /* MyJoinedCircleResultModel.m in Sources */,
 				DD40B7231F1705A000839748 /* HomeCollectCell1.m in Sources */,
 				DD62878E1F20C2290030331D /* MyCircleHeaderCell.m in Sources */,
 				DD69B2961F3954D60036F368 /* EditCartNumberResultModel.m in Sources */,
@@ -3148,15 +3242,19 @@
 				DD69B2F41F3AFD390036F368 /* NSCalendar+STPicker.m in Sources */,
 				DD0DBADA1F32ED150098F5FA /* GetGiftListModel.m in Sources */,
 				DD0DBB071F3431460098F5FA /* GetSpecPriceModel.m in Sources */,
+				DD58FF4C1F4C2A26009EC9F2 /* MyTrackViewController.m in Sources */,
 				EC4BA0D81F1359EC00B9BE1A /* BaseCollectionViewCell.m in Sources */,
+				DD58FF5F1F4C36CB009EC9F2 /* MyTrackHeaderView.m in Sources */,
 				DD4CF0131F285C020024156F /* ActivityRecommendDetailViewController.m in Sources */,
 				DDFB82B31F1D931500AEAAA7 /* NSBundle+PYSearchExtension.m in Sources */,
 				DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */,
 				DD4CF1151F29F2D00024156F /* AllClassifyChildrenSecondModel.m in Sources */,
 				DD0939161F4586F100A75182 /* WeChatAccountViewController.m in Sources */,
+				DD58FF481F4C1034009EC9F2 /* MyCollectionListResultModel.m in Sources */,
 				DD184E4D1F3D9595009BFF5B /* PlaceOrderResultModel.m in Sources */,
 				DDE0FD1A1F35C8FD00269DBD /* CartListAllSelectedDataModel.m in Sources */,
 				DD69B2931F3954BA0036F368 /* EditCartNumberDataModel.m in Sources */,
+				DD58FF511F4C2D45009EC9F2 /* MyTrackTableViewCell.m in Sources */,
 				DD0938F11F43E89500A75182 /* OrderListGoodsModel.m in Sources */,
 				DD0DBB011F3403670098F5FA /* ProductDetailSpecHeaderView.m in Sources */,
 				DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */,
@@ -3179,6 +3277,7 @@
 				DD4CEFD71F25DD3A0024156F /* CommentListViewController.m in Sources */,
 				DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */,
 				DD6287C01F21AB890030331D /* HandpickActivitiesCell.m in Sources */,
+				DD58FF591F4C31D3009EC9F2 /* MyTrackResultModel.m in Sources */,
 				DD4CF02C1F2882AF0024156F /* DisclaimerViewController.m in Sources */,
 				DDE0FD3E1F38714600269DBD /* BrandStoryCell.m in Sources */,
 				DD6288131F22EB440030331D /* SubMessage_LikedViewController.m in Sources */,
@@ -3225,6 +3324,7 @@
 				DDFB826A1F187A7900AEAAA7 /* UIHelpers.m in Sources */,
 				DDE0FD2C1F37F72C00269DBD /* BrandDetailDataModel.m in Sources */,
 				DD6287571F2049A10030331D /* ModifyPasswordViewController.m in Sources */,
+				DD58FF451F4C1021009EC9F2 /* MyCollectionListDataModel.m in Sources */,
 				DD4CF0181F285E7D0024156F /* ActivityRecommendImageCell.m in Sources */,
 				EC4BA24B1F14F85000B9BE1A /* UIView+CurrentViewController.m in Sources */,
 				DDFB82781F19B98E00AEAAA7 /* Categate_CategateTableViewCell.m in Sources */,
@@ -3239,6 +3339,7 @@
 				DD0939221F45918900A75182 /* UIBarButtonItem+Badge.m in Sources */,
 				DD4CF01D1F2868490024156F /* ActivityRecommendInformationCell.m in Sources */,
 				DD6287181F1F32010030331D /* DynamicDetailViewController.m in Sources */,
+				DD58FF381F4BC81A009EC9F2 /* MyJoinedCircleDataModel.m in Sources */,
 				DD9A63B71F2EF31900611FA8 /* HomeGoodsModel.m in Sources */,
 				DDFB829C1F1C78FD00AEAAA7 /* MoreProduct_SortView.m in Sources */,
 				DD6287F21F21ED4F0030331D /* PersonalRankActivityViewController.m in Sources */,
@@ -3340,6 +3441,7 @@
 				DD4CEFDF1F26CD0F0024156F /* BrandDetailViewController.m in Sources */,
 				DD6288391F233FA30030331D /* SameHobbyPersonListCell.m in Sources */,
 				DDE0FD351F37F7B300269DBD /* BrandDetail_BrandGoodsModel.m in Sources */,
+				DD58FF561F4C31C0009EC9F2 /* MyTrackDataModel.m in Sources */,
 				DD6898021F2F279A008B6A8F /* AllBrandResultModel.m in Sources */,
 				DD4CEFD21F25D1B90024156F /* ProductStyleSelectionCell.m in Sources */,
 				DD6287D91F21DE0C0030331D /* MyFocusViewController.m in Sources */,

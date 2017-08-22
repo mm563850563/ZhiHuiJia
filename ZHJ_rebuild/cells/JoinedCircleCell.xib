@@ -21,11 +21,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G50-Gx-n6n">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="78.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gxq" translatesAutoresizingMaskIntoConstraints="NO" id="iC7-WK-0fc">
-                                <rect key="frame" x="10" y="19" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gxq" translatesAutoresizingMaskIntoConstraints="NO" id="iC7-WK-0fc">
+                                <rect key="frame" x="10" y="14" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="PJB-CC-g0g"/>
-                                    <constraint firstAttribute="width" constant="40" id="iJ0-by-LPd"/>
+                                    <constraint firstAttribute="height" constant="50" id="PJB-CC-g0g"/>
+                                    <constraint firstAttribute="width" constant="50" id="iJ0-by-LPd"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -34,7 +34,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数码配件圈子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0v-7D-x6n">
-                                <rect key="frame" x="60" y="19" width="250" height="20"/>
+                                <rect key="frame" x="70" y="14" width="240" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="nKM-3c-t44"/>
                                 </constraints>
@@ -43,7 +43,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99个成员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfM-y6-kQb">
-                                <rect key="frame" x="60" y="39" width="250" height="20"/>
+                                <rect key="frame" x="70" y="34" width="240" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="k6F-pl-Hfo"/>
                                 </constraints>
@@ -82,6 +82,11 @@
                     <constraint firstAttribute="trailing" secondItem="G50-Gx-n6n" secondAttribute="trailing" id="t4R-lJ-8w7"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imgPortrait" destination="iC7-WK-0fc" id="onS-QT-1Ri"/>
+                <outlet property="labelCircleMemberCount" destination="cfM-y6-kQb" id="FLa-mi-sxZ"/>
+                <outlet property="labelCircleName" destination="W0v-7D-x6n" id="3Lt-bm-KoN"/>
+            </connections>
             <point key="canvasLocation" x="52" y="104.5"/>
         </tableViewCell>
     </objects>
