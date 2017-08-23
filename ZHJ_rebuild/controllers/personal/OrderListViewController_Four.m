@@ -48,6 +48,8 @@
     self.page = [NSNumber numberWithInt:1];
     [self getOrderListData];
     [self initTableView];
+    
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -196,8 +198,54 @@
     }];
 }
 
-
-
+#pragma mark - <确认收货>
+-(void)getConfirmReceiptDataWithOrderID:(NSString *)order_id
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kConfirmReceipt];
+    
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"order_id":order_id};
+    
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    for (OrderList_OrderListModel *model in self.orderListArray) {
+                        if ([model.order_id isEqualToString:order_id]) {
+                            [self.orderListArray removeObject:model];
+                        }
+                    }
+                    [self.tableView reloadData];
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
 
 
 
@@ -226,6 +274,16 @@
         page_int++;
         self.page = [NSNumber numberWithInt:page_int];
         [self getMoreOrderListDataWithPage:self.page];
+    }];
+}
+
+#pragma mark - <rac响应>
+-(void)respondWithRAC
+{
+    //确认收货
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"confirmReceipt" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *order_id = x.object;
+        [self getConfirmReceiptDataWithOrderID:order_id];
     }];
 }
 

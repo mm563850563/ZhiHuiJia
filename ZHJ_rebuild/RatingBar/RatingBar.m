@@ -77,7 +77,9 @@
 -(void)tap:(UITapGestureRecognizer *)gesture{
     if(self.enable){
         CGPoint point = [gesture locationInView:self];
-        NSInteger count = (int)(point.x/self.starWidth)+1;
+        int temp = (int)(point.x/self.starWidth);
+        
+        NSInteger count = temp+1;
         self.topView.frame = CGRectMake(0, 0, self.starWidth*count, self.bounds.size.height);
         if(count>5){
             _starNumber = 5;
@@ -93,10 +95,13 @@
     if(self.enable){
         CGPoint point = [gesture locationInView:self];
         NSInteger count = (int)(point.x/self.starWidth);
-        if(count>=0 && count<=5 && _starNumber!=count){
+        if(count>0 && count<=5 && _starNumber!=count){
             self.topView.frame = CGRectMake(0, 0, self.starWidth*(count+1), self.bounds.size.height);
             _starNumber = count;
         }
+    }
+    if([delegate respondsToSelector:@selector(setRating:isHuman:)]){
+        [delegate setRating:_starNumber isHuman:YES];
     }
 }
 /*

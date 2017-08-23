@@ -17,5 +17,6 @@
 @property (nonatomic, strong)NSString *goods_price;
 @property (nonatomic, strong)NSString *market_price;
 @property (nonatomic, strong)NSString *spec_key_name;
+@property (nonatomic, strong)NSMutableArray<Optional> *pickerImageArray;
 
 @end

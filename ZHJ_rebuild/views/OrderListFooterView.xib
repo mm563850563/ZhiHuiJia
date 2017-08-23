@@ -176,6 +176,27 @@
                                         <action selector="btnShareAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="UPp-m0-I44"/>
                                     </connections>
                                 </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iF-hM-8H6">
+                                    <rect key="frame" x="-20" y="5" width="50" height="20"/>
+                                    <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="hrp-MT-XlF"/>
+                                        <constraint firstAttribute="width" constant="50" id="o12-cv-XAt"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <state key="normal" title="付  款">
+                                        <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="btnPayAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="TTX-O7-h6Y"/>
+                                        <action selector="btnShareAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="aus-UC-Emy"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -187,6 +208,8 @@
                                 <constraint firstItem="4e9-O3-ki8" firstAttribute="leading" secondItem="pcm-mR-ge3" secondAttribute="trailing" constant="5" id="Wbd-60-F5y"/>
                                 <constraint firstAttribute="trailing" secondItem="bW5-Jl-Mxs" secondAttribute="trailing" constant="10" id="YEx-wk-Sr8"/>
                                 <constraint firstItem="ewq-Jv-wwD" firstAttribute="centerY" secondItem="iti-BI-Iip" secondAttribute="centerY" id="cJf-ak-UMl"/>
+                                <constraint firstItem="pcm-mR-ge3" firstAttribute="leading" secondItem="8iF-hM-8H6" secondAttribute="trailing" constant="5" id="fLe-IT-Wya"/>
+                                <constraint firstItem="8iF-hM-8H6" firstAttribute="centerY" secondItem="iti-BI-Iip" secondAttribute="centerY" id="tJQ-0w-Q6p"/>
                                 <constraint firstItem="0Je-RD-Z3O" firstAttribute="leading" secondItem="4e9-O3-ki8" secondAttribute="trailing" constant="5" id="vL4-RY-Mhw"/>
                                 <constraint firstItem="bW5-Jl-Mxs" firstAttribute="leading" secondItem="ewq-Jv-wwD" secondAttribute="trailing" constant="5" id="vxH-al-SzA"/>
                             </constraints>
@@ -217,6 +240,7 @@
                 <outlet property="btnCheckLogistic" destination="4e9-O3-ki8" id="Mfp-cF-K9Z"/>
                 <outlet property="btnCommit" destination="ewq-Jv-wwD" id="UBI-0n-g3c"/>
                 <outlet property="btnConfirm" destination="bW5-Jl-Mxs" id="ypi-wl-tyJ"/>
+                <outlet property="btnPay" destination="8iF-hM-8H6" id="TZq-ul-aNH"/>
                 <outlet property="btnShare" destination="pcm-mR-ge3" id="G3C-6e-bDJ"/>
                 <outlet property="labelProductCount" destination="o7j-Go-X56" id="ugI-wG-WeY"/>
                 <outlet property="labelTotalPrice" destination="2zS-xm-vcu" id="InY-2x-QbM"/>

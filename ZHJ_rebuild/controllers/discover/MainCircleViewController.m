@@ -27,6 +27,8 @@
 @property (nonatomic, strong)SegmentTapView *segmentView;
 @property (nonatomic, strong)FlipTableView *flipView;
 
+@property (nonatomic, strong)UIView *applyCircleView;
+
 @end
 
 @implementation MainCircleViewController
@@ -36,9 +38,9 @@
     // Do any additional setup after loading the view from its nib.
     
     [self settingSelf];
-    [self initApplyCircle];
     [self initSegmentView];
     [self initFlipView];
+    [self initApplyCircle];
     
     [self respondWithRAC];
 }
@@ -66,19 +68,19 @@
 #pragma mark - <初始化“申请圈子”按钮>
 -(void)initApplyCircle
 {
-    UIView *applyCircleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
-    [self.view addSubview:applyCircleView];
-    [applyCircleView mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.applyCircleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+    [self.view addSubview:self.applyCircleView];
+    [self.applyCircleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-15);
         make.bottom.mas_equalTo(-40);
         make.size.mas_offset(CGSizeMake(60, 60));
     }];
-    applyCircleView.backgroundColor = kColorFromRGB(kThemeYellow);
-    applyCircleView.layer.cornerRadius = 30;
-    applyCircleView.layer.masksToBounds = YES;
+    self.applyCircleView.backgroundColor = kColorFromRGB(kThemeYellow);
+    self.applyCircleView.layer.cornerRadius = 30;
+    self.applyCircleView.layer.masksToBounds = YES;
     
     UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [applyCircleView addSubview:imgView];
+    [self.applyCircleView addSubview:imgView];
     [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(5);
         make.size.mas_offset(CGSizeMake(30, 30));
@@ -90,7 +92,7 @@
     imgView.contentMode = UIViewContentModeScaleAspectFit;
     
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [applyCircleView addSubview:label];
+    [self.applyCircleView addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(imgView.mas_bottom);
@@ -102,8 +104,8 @@
     label.textAlignment = NSTextAlignmentCenter;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = applyCircleView.bounds;
-    [applyCircleView addSubview:button];
+    button.frame = self.applyCircleView.bounds;
+    [self.applyCircleView addSubview:button];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
     }];

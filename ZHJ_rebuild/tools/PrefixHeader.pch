@@ -242,6 +242,11 @@
 #pragma mark - <50.记录用户浏览记录>
 #define kUserBrowseGoods @"/Goods/userBrowseGoods"
 
+#pragma mark - <51.确认收货>
+#define kConfirmReceipt @"/order/confirmReceipt"
+
+#pragma mark - <52.发布“待评论”中的对产品的评论>
+#define kAddComment @"/User/addComment"
 
 
 

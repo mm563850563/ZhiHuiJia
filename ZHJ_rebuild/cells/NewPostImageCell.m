@@ -18,7 +18,16 @@
 
 - (IBAction)btnDeleteImageAction:(UIButton *)sender
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"deleteImage" object:sender];
+    NSNumber *goods_row = [NSNumber numberWithInteger:self.tag];
+    NSNumber *image_item = [NSNumber numberWithInteger:sender.tag];
+    NSDictionary *dict = @{@"goods_row":goods_row,
+                           @"image_item":image_item};
+    if ([self.fromWhere isEqualToString:@"addComment"]) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"deleteImageFromAddComment" object:dict];
+    }else{
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"deleteImage" object:sender];
+    }
+    
 }
 
 @end

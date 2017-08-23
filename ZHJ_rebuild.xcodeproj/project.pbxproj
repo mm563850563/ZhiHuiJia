@@ -182,6 +182,12 @@
 		DD58FF5C1F4C31F8009EC9F2 /* MyTrackGoodsInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF5B1F4C31F8009EC9F2 /* MyTrackGoodsInfoModel.m */; };
 		DD58FF5F1F4C36CB009EC9F2 /* MyTrackHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF5E1F4C36CB009EC9F2 /* MyTrackHeaderView.m */; };
 		DD58FF611F4C36EB009EC9F2 /* MyTrackHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF601F4C36EB009EC9F2 /* MyTrackHeaderView.xib */; };
+		DD58FF651F4D12F0009EC9F2 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF631F4D12F0009EC9F2 /* CommentViewController.m */; };
+		DD58FF661F4D12F0009EC9F2 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF641F4D12F0009EC9F2 /* CommentViewController.xib */; };
+		DD58FF6A1F4D56CB009EC9F2 /* AddCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF681F4D56CB009EC9F2 /* AddCommentTableViewCell.m */; };
+		DD58FF6B1F4D56CB009EC9F2 /* AddCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF691F4D56CB009EC9F2 /* AddCommentTableViewCell.xib */; };
+		DD58FF6F1F4D7467009EC9F2 /* AddCommentReleaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF6D1F4D7467009EC9F2 /* AddCommentReleaseCell.m */; };
+		DD58FF701F4D7467009EC9F2 /* AddCommentReleaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF6E1F4D7467009EC9F2 /* AddCommentReleaseCell.xib */; };
 		DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */; };
 		DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */; };
 		DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */; };
@@ -833,6 +839,15 @@
 		DD58FF5D1F4C36CB009EC9F2 /* MyTrackHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTrackHeaderView.h; path = views/MyTrackHeaderView.h; sourceTree = "<group>"; };
 		DD58FF5E1F4C36CB009EC9F2 /* MyTrackHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTrackHeaderView.m; path = views/MyTrackHeaderView.m; sourceTree = "<group>"; };
 		DD58FF601F4C36EB009EC9F2 /* MyTrackHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyTrackHeaderView.xib; path = views/MyTrackHeaderView.xib; sourceTree = "<group>"; };
+		DD58FF621F4D12F0009EC9F2 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentViewController.h; path = controllers/personal/CommentViewController.h; sourceTree = "<group>"; };
+		DD58FF631F4D12F0009EC9F2 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentViewController.m; path = controllers/personal/CommentViewController.m; sourceTree = "<group>"; };
+		DD58FF641F4D12F0009EC9F2 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentViewController.xib; path = controllers/personal/CommentViewController.xib; sourceTree = "<group>"; };
+		DD58FF671F4D56CA009EC9F2 /* AddCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCommentTableViewCell.h; path = cells/AddCommentTableViewCell.h; sourceTree = "<group>"; };
+		DD58FF681F4D56CB009EC9F2 /* AddCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCommentTableViewCell.m; path = cells/AddCommentTableViewCell.m; sourceTree = "<group>"; };
+		DD58FF691F4D56CB009EC9F2 /* AddCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddCommentTableViewCell.xib; path = cells/AddCommentTableViewCell.xib; sourceTree = "<group>"; };
+		DD58FF6C1F4D7467009EC9F2 /* AddCommentReleaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCommentReleaseCell.h; path = cells/AddCommentReleaseCell.h; sourceTree = "<group>"; };
+		DD58FF6D1F4D7467009EC9F2 /* AddCommentReleaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCommentReleaseCell.m; path = cells/AddCommentReleaseCell.m; sourceTree = "<group>"; };
+		DD58FF6E1F4D7467009EC9F2 /* AddCommentReleaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddCommentReleaseCell.xib; path = cells/AddCommentReleaseCell.xib; sourceTree = "<group>"; };
 		DD6286F71F1E398C0030331D /* Discover_HotTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_HotTopicCell.h; path = cells/Discover_HotTopicCell.h; sourceTree = "<group>"; };
 		DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_HotTopicCell.m; path = cells/Discover_HotTopicCell.m; sourceTree = "<group>"; };
 		DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_HotTopicCell.xib; path = cells/Discover_HotTopicCell.xib; sourceTree = "<group>"; };
@@ -2399,6 +2414,12 @@
 				DD58FF4E1F4C2D45009EC9F2 /* MyTrackTableViewCell.h */,
 				DD58FF4F1F4C2D45009EC9F2 /* MyTrackTableViewCell.m */,
 				DD58FF501F4C2D45009EC9F2 /* MyTrackTableViewCell.xib */,
+				DD58FF671F4D56CA009EC9F2 /* AddCommentTableViewCell.h */,
+				DD58FF681F4D56CB009EC9F2 /* AddCommentTableViewCell.m */,
+				DD58FF691F4D56CB009EC9F2 /* AddCommentTableViewCell.xib */,
+				DD58FF6C1F4D7467009EC9F2 /* AddCommentReleaseCell.h */,
+				DD58FF6D1F4D7467009EC9F2 /* AddCommentReleaseCell.m */,
+				DD58FF6E1F4D7467009EC9F2 /* AddCommentReleaseCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -2794,6 +2815,9 @@
 				DD0939091F442E8A00A75182 /* OrderListViewController_Five.h */,
 				DD09390A1F442E8A00A75182 /* OrderListViewController_Five.m */,
 				DD09390B1F442E8A00A75182 /* OrderListViewController_Five.xib */,
+				DD58FF621F4D12F0009EC9F2 /* CommentViewController.h */,
+				DD58FF631F4D12F0009EC9F2 /* CommentViewController.m */,
+				DD58FF641F4D12F0009EC9F2 /* CommentViewController.xib */,
 				DD6287681F207A850030331D /* CustomerServiceCenterViewController.h */,
 				DD6287691F207A850030331D /* CustomerServiceCenterViewController.m */,
 				DD62876A1F207A850030331D /* CustomerServiceCenterViewController.xib */,
@@ -2926,6 +2950,7 @@
 				DD4CF01E1F2868490024156F /* ActivityRecommendInformationCell.xib in Resources */,
 				DD0939031F442E5400A75182 /* OrderListViewController_Three.xib in Resources */,
 				DD40B72E1F173B5300839748 /* HomeRightImageCell.xib in Resources */,
+				DD58FF661F4D12F0009EC9F2 /* CommentViewController.xib in Resources */,
 				DD69B2A51F39B6130036F368 /* OrderConfirmAddressCell.xib in Resources */,
 				DDFB825A1F187A7900AEAAA7 /* cb_dark_off.png in Resources */,
 				DDFB81C01F18475700AEAAA7 /* SameHobbyPersonCell.xib in Resources */,
@@ -2942,6 +2967,7 @@
 				DD58FF4D1F4C2A26009EC9F2 /* MyTrackViewController.xib in Resources */,
 				DD58FF311F4A90CF009EC9F2 /* ApplyCircleViewController.xib in Resources */,
 				DD4CF0191F285E7D0024156F /* ActivityRecommendImageCell.xib in Resources */,
+				DD58FF701F4D7467009EC9F2 /* AddCommentReleaseCell.xib in Resources */,
 				DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */,
 				DD6287C11F21AB890030331D /* HandpickActivitiesCell.xib in Resources */,
 				DDFB825F1F187A7900AEAAA7 /* cb_glossy_off@2x.png in Resources */,
@@ -2950,6 +2976,7 @@
 				DD58FF521F4C2D45009EC9F2 /* MyTrackTableViewCell.xib in Resources */,
 				DD6287D01F21C26C0030331D /* DomainViewController.xib in Resources */,
 				DD6287001F1E405A0030331D /* Discover_RecommendCell.xib in Resources */,
+				DD58FF6B1F4D56CB009EC9F2 /* AddCommentTableViewCell.xib in Resources */,
 				DD62883A1F233FA30030331D /* SameHobbyPersonListCell.xib in Resources */,
 				DDFB82C61F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib in Resources */,
 				EC4BA2501F15D43600B9BE1A /* BrandRulesViewController.xib in Resources */,
@@ -3191,6 +3218,7 @@
 				DD40B73D1F1788B000839748 /* HomeCollectCell3.m in Sources */,
 				DDE0FD041F35656A00269DBD /* CartListResultModel.m in Sources */,
 				DD6287221F1F41BF0030331D /* DynamicWithoutCommentCell.m in Sources */,
+				DD58FF651F4D12F0009EC9F2 /* CommentViewController.m in Sources */,
 				DD184E201F3C59ED009BFF5B /* MyDiscountCouponAvailableModel.m in Sources */,
 				DD69B2F51F3AFD390036F368 /* STPickerArea.m in Sources */,
 				DD4CF0E91F29BF850024156F /* YQMemoryCache.m in Sources */,
@@ -3273,6 +3301,7 @@
 				DD68985B1F31B99B008B6A8F /* GoodsDetailImageModel.m in Sources */,
 				DD6287931F2185A10030331D /* JoinedCircleCell.m in Sources */,
 				DDFB82B71F1D931500AEAAA7 /* PYSearchViewController.m in Sources */,
+				DD58FF6F1F4D7467009EC9F2 /* AddCommentReleaseCell.m in Sources */,
 				EC4BA1391F14693F00B9BE1A /* ProductDetailViewController.m in Sources */,
 				DD4CEFD71F25DD3A0024156F /* CommentListViewController.m in Sources */,
 				DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */,
@@ -3424,6 +3453,7 @@
 				DD6287ED1F21E8C00030331D /* FailureReviewViewController.m in Sources */,
 				DD68980E1F302B03008B6A8F /* ClassifyListModel.m in Sources */,
 				DDFB826B1F187A7900AEAAA7 /* SSCheckBoxView.m in Sources */,
+				DD58FF6A1F4D56CB009EC9F2 /* AddCommentTableViewCell.m in Sources */,
 				DDE0FD241F35D74E00269DBD /* AddToCollectionResultModel.m in Sources */,
 				DDFB82A21F1C81E300AEAAA7 /* PersonalFileViewController.m in Sources */,
 				DD09391B1F458BA100A75182 /* AboutUsViewController.m in Sources */,

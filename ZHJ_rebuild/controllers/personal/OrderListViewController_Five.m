@@ -21,6 +21,9 @@
 #import "OrderList_OrderListModel.h"
 #import "OrderListGoodsModel.h"
 
+//controllers
+#import "CommentViewController.h"
+
 @interface OrderListViewController_Five ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -48,6 +51,8 @@
     self.page = [NSNumber numberWithInt:1];
     [self getOrderListData];
     [self initTableView];
+    
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -202,11 +207,6 @@
 
 
 
-
-
-
-
-
 #pragma mark - <初始化tableView>
 -(void)initTableView
 {
@@ -232,6 +232,19 @@
         [self getMoreOrderListDataWithPage:self.page];
     }];
 }
+
+
+
+#pragma mark - <rac响应>
+-(void)respondWithRAC
+{
+    
+}
+
+
+
+
+
 
 
 

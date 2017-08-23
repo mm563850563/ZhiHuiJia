@@ -18,6 +18,9 @@
 #import "OrderListViewController_Three.h"
 #import "OrderListViewController_Four.h"
 #import "OrderListViewController_Five.h"
+#import "CommentViewController.h"
+
+#import "OrderList_OrderListModel.h"
 
 @interface MyOrderViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,MBProgressHUDDelegate>
 
@@ -139,9 +142,19 @@
     }];
 }
 
+#pragma mark - <跳转“评论”页面>
+-(void)jumpToCommentVCWithModel:(OrderList_OrderListModel *)model
+{
+    CommentViewController *commentVC = [[CommentViewController alloc]initWithNibName:NSStringFromClass([CommentViewController class]) bundle:nil];
+    commentVC.modelOrderList = model;
+    commentVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:commentVC animated:YES];
+}
+
 #pragma mark - <rac响应>
 -(void)respondWithRAC
 {
+    //响应“取消订单”
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"cancelOrder" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         NSString *order_id = x.object;
         
@@ -153,6 +166,12 @@
         [alertVC addAction:actionYES];
         [alertVC addAction:actionNO];
         [self presentViewController:alertVC animated:YES completion:nil];
+    }];
+    
+    //推出评论页面
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"presentCommentView" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        OrderList_OrderListModel *model = x.object;
+        [self jumpToCommentVCWithModel:model];
     }];
 }
 

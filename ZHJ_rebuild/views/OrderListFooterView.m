@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnCommit;
 @property (weak, nonatomic) IBOutlet UIButton *btnConfirm;
 @property (weak, nonatomic) IBOutlet UIButton *btnShare;
+@property (weak, nonatomic) IBOutlet UIButton *btnPay;
 
 //@property (nonatomic, strong)
 
@@ -48,6 +49,7 @@
         self.btnCheckLogistic.hidden = YES;
         self.btnConfirm.hidden = YES;
         self.btnCancel.hidden = NO;
+        self.btnPay.hidden = NO;
         
         __weak typeof(self) weakSelf = self;
         [self.btnCancel mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -61,12 +63,18 @@
             make.right.mas_equalTo(weakSelf.btnCancel.mas_left).with.offset(-5);
             make.size.mas_offset(CGSizeMake(50, 20));
         }];
+        [self.btnPay mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+            make.right.mas_equalTo(weakSelf.btnShare.mas_left).with.offset(-5);
+            make.size.mas_offset(CGSizeMake(50, 20));
+        }];
         
     }else if ([modelOrderList.order_status_desc isEqualToString:@"待发货"]){
         self.btnCommit.hidden = YES;
         self.btnCheckLogistic.hidden = YES;
         self.btnConfirm.hidden = YES;
         self.btnCancel.hidden = YES;
+        self.btnPay.hidden = YES;
         
         [self.btnShare mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(0);
@@ -78,6 +86,7 @@
         self.btnCheckLogistic.hidden = NO;
         self.btnConfirm.hidden = NO;
         self.btnCancel.hidden = YES;
+        self.btnPay.hidden = YES;
         
         __weak typeof(self) weakSelf = self;
         [self.btnConfirm mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -100,6 +109,7 @@
         self.btnCheckLogistic.hidden = YES;
         self.btnConfirm.hidden = YES;
         self.btnCancel.hidden = YES;
+        self.btnPay.hidden = YES;
         
         __weak typeof(self) weakSelf = self;
         [self.btnCommit mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -117,13 +127,20 @@
         self.btnCheckLogistic.hidden = YES;
         self.btnConfirm.hidden = YES;
         self.btnCancel.hidden = YES;
-        self.btnCancel.hidden = YES;
+        self.btnPay.hidden = YES;
+        self.btnShare.hidden = YES;
     }else if ([modelOrderList.order_status_desc isEqualToString:@"已完成"]){
         self.btnCommit.hidden = YES;
         self.btnCheckLogistic.hidden = YES;
         self.btnConfirm.hidden = YES;
         self.btnCancel.hidden = YES;
-        self.btnCancel.hidden = YES;
+        self.btnPay.hidden = YES;
+        
+        [self.btnShare mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+            make.right.mas_equalTo(-10);
+            make.size.mas_offset(CGSizeMake(50, 20));
+        }];
     }
 }
 
@@ -147,14 +164,18 @@
 
 - (IBAction)btnCommentAction:(UIButton *)sender
 {
-    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"presentCommentView" object:self.modelOrderList];
 }
 
 - (IBAction)btnConfirmAction:(UIButton *)sender
 {
-    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"confirmReceipt" object:self.modelOrderList.order_id];
 }
 
+- (IBAction)btnPayAction:(UIButton *)sender
+{
+    
+}
 
 
 

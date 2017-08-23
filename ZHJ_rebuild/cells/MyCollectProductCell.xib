@@ -66,27 +66,11 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVl-Lt-d2k">
-                                <rect key="frame" x="240" y="70" width="70" height="20"/>
-                                <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="gsF-L2-QhQ"/>
-                                    <constraint firstAttribute="width" constant="70" id="tLq-0O-ORe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="加入购物车">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnAddToCartAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="U57-BS-keT"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jDI-po-Nhj" firstAttribute="leading" secondItem="qYW-Bf-9hf" secondAttribute="trailing" constant="15" id="5ei-tX-Ci8"/>
                             <constraint firstAttribute="trailing" secondItem="jDI-po-Nhj" secondAttribute="trailing" constant="50" id="5fq-uD-8Yt"/>
-                            <constraint firstAttribute="trailing" secondItem="EVl-Lt-d2k" secondAttribute="trailing" constant="10" id="Ar7-dG-TBz"/>
                             <constraint firstItem="jDI-po-Nhj" firstAttribute="top" secondItem="qYW-Bf-9hf" secondAttribute="top" constant="5" id="ESa-1o-qPD"/>
                             <constraint firstAttribute="trailing" secondItem="ugH-9N-OaC" secondAttribute="trailing" constant="10" id="EpX-7b-hLU"/>
                             <constraint firstItem="Kb6-Qt-yNz" firstAttribute="leading" secondItem="jDI-po-Nhj" secondAttribute="leading" id="F0Y-40-RsJ"/>
@@ -95,7 +79,6 @@
                             <constraint firstAttribute="trailing" secondItem="GDh-p1-2ke" secondAttribute="trailing" constant="10" id="cOM-XI-r2h"/>
                             <constraint firstItem="Kb6-Qt-yNz" firstAttribute="bottom" secondItem="qYW-Bf-9hf" secondAttribute="bottom" id="dIS-nd-aJX"/>
                             <constraint firstItem="qYW-Bf-9hf" firstAttribute="top" secondItem="Ton-8A-Bd6" secondAttribute="top" constant="10" id="nhy-bS-tLJ"/>
-                            <constraint firstItem="EVl-Lt-d2k" firstAttribute="bottom" secondItem="qYW-Bf-9hf" secondAttribute="bottom" id="u0k-mz-Ekl"/>
                             <constraint firstItem="ugH-9N-OaC" firstAttribute="leading" secondItem="jDI-po-Nhj" secondAttribute="leading" id="xSn-Vc-SRU"/>
                             <constraint firstItem="qYW-Bf-9hf" firstAttribute="leading" secondItem="Ton-8A-Bd6" secondAttribute="leading" constant="10" id="zxw-co-hEC"/>
                         </constraints>
