@@ -188,6 +188,17 @@
 		DD58FF6B1F4D56CB009EC9F2 /* AddCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF691F4D56CB009EC9F2 /* AddCommentTableViewCell.xib */; };
 		DD58FF6F1F4D7467009EC9F2 /* AddCommentReleaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF6D1F4D7467009EC9F2 /* AddCommentReleaseCell.m */; };
 		DD58FF701F4D7467009EC9F2 /* AddCommentReleaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF6E1F4D7467009EC9F2 /* AddCommentReleaseCell.xib */; };
+		DD58FF741F4E668D009EC9F2 /* ActivityListDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF731F4E668C009EC9F2 /* ActivityListDataModel.m */; };
+		DD58FF771F4E669F009EC9F2 /* ActivityListResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF761F4E669F009EC9F2 /* ActivityListResultModel.m */; };
+		DD58FF7B1F4E79E0009EC9F2 /* ReleaseActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF791F4E79E0009EC9F2 /* ReleaseActivityViewController.m */; };
+		DD58FF7C1F4E79E0009EC9F2 /* ReleaseActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF7A1F4E79E0009EC9F2 /* ReleaseActivityViewController.xib */; };
+		DD58FF801F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF7E1F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.m */; };
+		DD58FF811F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF7F1F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.xib */; };
+		DD58FF851F4E833C009EC9F2 /* ReleaseActivityContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF831F4E833C009EC9F2 /* ReleaseActivityContentCell.m */; };
+		DD58FF861F4E833C009EC9F2 /* ReleaseActivityContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF841F4E833C009EC9F2 /* ReleaseActivityContentCell.xib */; };
+		DD58FF8A1F4E839B009EC9F2 /* ReleaseActivitySubmitToReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF881F4E839B009EC9F2 /* ReleaseActivitySubmitToReviewCell.m */; };
+		DD58FF8B1F4E839B009EC9F2 /* ReleaseActivitySubmitToReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FF891F4E839B009EC9F2 /* ReleaseActivitySubmitToReviewCell.xib */; };
+		DD58FF8E1F4FAE92009EC9F2 /* NSDictionary+ToJson.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF8D1F4FAE92009EC9F2 /* NSDictionary+ToJson.m */; };
 		DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */; };
 		DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */; };
 		DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */; };
@@ -848,6 +859,24 @@
 		DD58FF6C1F4D7467009EC9F2 /* AddCommentReleaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCommentReleaseCell.h; path = cells/AddCommentReleaseCell.h; sourceTree = "<group>"; };
 		DD58FF6D1F4D7467009EC9F2 /* AddCommentReleaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCommentReleaseCell.m; path = cells/AddCommentReleaseCell.m; sourceTree = "<group>"; };
 		DD58FF6E1F4D7467009EC9F2 /* AddCommentReleaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddCommentReleaseCell.xib; path = cells/AddCommentReleaseCell.xib; sourceTree = "<group>"; };
+		DD58FF721F4E668C009EC9F2 /* ActivityListDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityListDataModel.h; path = models/ActivityListDataModel.h; sourceTree = "<group>"; };
+		DD58FF731F4E668C009EC9F2 /* ActivityListDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityListDataModel.m; path = models/ActivityListDataModel.m; sourceTree = "<group>"; };
+		DD58FF751F4E669F009EC9F2 /* ActivityListResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityListResultModel.h; path = models/ActivityListResultModel.h; sourceTree = "<group>"; };
+		DD58FF761F4E669F009EC9F2 /* ActivityListResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityListResultModel.m; path = models/ActivityListResultModel.m; sourceTree = "<group>"; };
+		DD58FF781F4E79E0009EC9F2 /* ReleaseActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReleaseActivityViewController.h; path = controllers/discover/ReleaseActivityViewController.h; sourceTree = "<group>"; };
+		DD58FF791F4E79E0009EC9F2 /* ReleaseActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReleaseActivityViewController.m; path = controllers/discover/ReleaseActivityViewController.m; sourceTree = "<group>"; };
+		DD58FF7A1F4E79E0009EC9F2 /* ReleaseActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReleaseActivityViewController.xib; path = controllers/discover/ReleaseActivityViewController.xib; sourceTree = "<group>"; };
+		DD58FF7D1F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReleaseActivityUploadImageCell.h; path = cells/ReleaseActivityUploadImageCell.h; sourceTree = "<group>"; };
+		DD58FF7E1F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReleaseActivityUploadImageCell.m; path = cells/ReleaseActivityUploadImageCell.m; sourceTree = "<group>"; };
+		DD58FF7F1F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReleaseActivityUploadImageCell.xib; path = cells/ReleaseActivityUploadImageCell.xib; sourceTree = "<group>"; };
+		DD58FF821F4E833C009EC9F2 /* ReleaseActivityContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReleaseActivityContentCell.h; path = cells/ReleaseActivityContentCell.h; sourceTree = "<group>"; };
+		DD58FF831F4E833C009EC9F2 /* ReleaseActivityContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReleaseActivityContentCell.m; path = cells/ReleaseActivityContentCell.m; sourceTree = "<group>"; };
+		DD58FF841F4E833C009EC9F2 /* ReleaseActivityContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReleaseActivityContentCell.xib; path = cells/ReleaseActivityContentCell.xib; sourceTree = "<group>"; };
+		DD58FF871F4E839B009EC9F2 /* ReleaseActivitySubmitToReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReleaseActivitySubmitToReviewCell.h; path = cells/ReleaseActivitySubmitToReviewCell.h; sourceTree = "<group>"; };
+		DD58FF881F4E839B009EC9F2 /* ReleaseActivitySubmitToReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReleaseActivitySubmitToReviewCell.m; path = cells/ReleaseActivitySubmitToReviewCell.m; sourceTree = "<group>"; };
+		DD58FF891F4E839B009EC9F2 /* ReleaseActivitySubmitToReviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReleaseActivitySubmitToReviewCell.xib; path = cells/ReleaseActivitySubmitToReviewCell.xib; sourceTree = "<group>"; };
+		DD58FF8C1F4FAE92009EC9F2 /* NSDictionary+ToJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+ToJson.h"; path = "tools/NSDictionary+ToJson.h"; sourceTree = "<group>"; };
+		DD58FF8D1F4FAE92009EC9F2 /* NSDictionary+ToJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+ToJson.m"; path = "tools/NSDictionary+ToJson.m"; sourceTree = "<group>"; };
 		DD6286F71F1E398C0030331D /* Discover_HotTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_HotTopicCell.h; path = cells/Discover_HotTopicCell.h; sourceTree = "<group>"; };
 		DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_HotTopicCell.m; path = cells/Discover_HotTopicCell.m; sourceTree = "<group>"; };
 		DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_HotTopicCell.xib; path = cells/Discover_HotTopicCell.xib; sourceTree = "<group>"; };
@@ -1752,6 +1781,17 @@
 			name = MyTrackModel;
 			sourceTree = "<group>";
 		};
+		DD58FF711F4E6612009EC9F2 /* ActivityListModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD58FF721F4E668C009EC9F2 /* ActivityListDataModel.h */,
+				DD58FF731F4E668C009EC9F2 /* ActivityListDataModel.m */,
+				DD58FF751F4E669F009EC9F2 /* ActivityListResultModel.h */,
+				DD58FF761F4E669F009EC9F2 /* ActivityListResultModel.m */,
+			);
+			name = ActivityListModel;
+			sourceTree = "<group>";
+		};
 		DD6288001F2214F40030331D /* RatingBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2420,6 +2460,15 @@
 				DD58FF6C1F4D7467009EC9F2 /* AddCommentReleaseCell.h */,
 				DD58FF6D1F4D7467009EC9F2 /* AddCommentReleaseCell.m */,
 				DD58FF6E1F4D7467009EC9F2 /* AddCommentReleaseCell.xib */,
+				DD58FF7D1F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.h */,
+				DD58FF7E1F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.m */,
+				DD58FF7F1F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.xib */,
+				DD58FF821F4E833C009EC9F2 /* ReleaseActivityContentCell.h */,
+				DD58FF831F4E833C009EC9F2 /* ReleaseActivityContentCell.m */,
+				DD58FF841F4E833C009EC9F2 /* ReleaseActivityContentCell.xib */,
+				DD58FF871F4E839B009EC9F2 /* ReleaseActivitySubmitToReviewCell.h */,
+				DD58FF881F4E839B009EC9F2 /* ReleaseActivitySubmitToReviewCell.m */,
+				DD58FF891F4E839B009EC9F2 /* ReleaseActivitySubmitToReviewCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -2549,6 +2598,7 @@
 				DD58FF351F4BC7D9009EC9F2 /* MyJoinedCircleModel */,
 				DD58FF421F4C0FF2009EC9F2 /* MyCollectionListModel */,
 				DD58FF531F4C3189009EC9F2 /* MyTrackModel */,
+				DD58FF711F4E6612009EC9F2 /* ActivityListModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -2581,6 +2631,8 @@
 				DDC52E861F41328800ECF211 /* SearchNetTool.m */,
 				DD58FF321F4B0D33009EC9F2 /* UIImage+Orientation.h */,
 				DD58FF331F4B0D33009EC9F2 /* UIImage+Orientation.m */,
+				DD58FF8C1F4FAE92009EC9F2 /* NSDictionary+ToJson.h */,
+				DD58FF8D1F4FAE92009EC9F2 /* NSDictionary+ToJson.m */,
 			);
 			name = tools;
 			sourceTree = "<group>";
@@ -2747,6 +2799,9 @@
 				EC4BA25D1F15FE0900B9BE1A /* DiscoverHotTopicViewController.m */,
 				EC4BA25F1F15FE2200B9BE1A /* DiscoverRecommendViewController.h */,
 				EC4BA2601F15FE2200B9BE1A /* DiscoverRecommendViewController.m */,
+				DD58FF781F4E79E0009EC9F2 /* ReleaseActivityViewController.h */,
+				DD58FF791F4E79E0009EC9F2 /* ReleaseActivityViewController.m */,
+				DD58FF7A1F4E79E0009EC9F2 /* ReleaseActivityViewController.xib */,
 				DD4CF0101F285C020024156F /* ActivityRecommendDetailViewController.h */,
 				DD4CF0111F285C020024156F /* ActivityRecommendDetailViewController.m */,
 				DD4CF0121F285C020024156F /* ActivityRecommendDetailViewController.xib */,
@@ -2943,6 +2998,7 @@
 				DD69B3031F3B309E0036F368 /* EditMyAddressViewController.xib in Resources */,
 				DDFB825D1F187A7900AEAAA7 /* cb_dark_on@2x.png in Resources */,
 				DD6287351F1F52BE0030331D /* Configuration_ButtonCell.xib in Resources */,
+				DD58FF811F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.xib in Resources */,
 				DD62877B1F208CA40030331D /* MyCircleViewController.xib in Resources */,
 				DDFB81F21F18686A00AEAAA7 /* CartProductListCell.xib in Resources */,
 				DD6288141F22EB440030331D /* SubMessage_LikedViewController.xib in Resources */,
@@ -2977,6 +3033,8 @@
 				DD6287D01F21C26C0030331D /* DomainViewController.xib in Resources */,
 				DD6287001F1E405A0030331D /* Discover_RecommendCell.xib in Resources */,
 				DD58FF6B1F4D56CB009EC9F2 /* AddCommentTableViewCell.xib in Resources */,
+				DD58FF861F4E833C009EC9F2 /* ReleaseActivityContentCell.xib in Resources */,
+				DD58FF7C1F4E79E0009EC9F2 /* ReleaseActivityViewController.xib in Resources */,
 				DD62883A1F233FA30030331D /* SameHobbyPersonListCell.xib in Resources */,
 				DDFB82C61F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib in Resources */,
 				EC4BA2501F15D43600B9BE1A /* BrandRulesViewController.xib in Resources */,
@@ -3020,6 +3078,7 @@
 				DD6288351F233EE00030331D /* SameHobbyPersonListViewController.xib in Resources */,
 				DDFB82631F187A7900AEAAA7 /* cb_green_off111@2x.png in Resources */,
 				DD6287301F1F51BA0030331D /* ConfigurationCell.xib in Resources */,
+				DD58FF8B1F4E839B009EC9F2 /* ReleaseActivitySubmitToReviewCell.xib in Resources */,
 				DD4CEFD81F25DD3A0024156F /* CommentListViewController.xib in Resources */,
 				DD4CF0AA1F299A7C0024156F /* AtSomeOneViewController.xib in Resources */,
 				DD4CF0141F285C020024156F /* ActivityRecommendDetailViewController.xib in Resources */,
@@ -3208,8 +3267,10 @@
 				EC4BA0841F13599A00B9BE1A /* UIImage+Color.m in Sources */,
 				DD0DBAEA1F330CC10098F5FA /* GetUserPrizeDataModel.m in Sources */,
 				DD40B7351F17485500839748 /* HomeCollectCell2.m in Sources */,
+				DD58FF741F4E668D009EC9F2 /* ActivityListDataModel.m in Sources */,
 				DDE0FD131F35669B00269DBD /* UserFavoriteResultModel.m in Sources */,
 				EC4BA05D1F13562700B9BE1A /* AppDelegate.m in Sources */,
+				DD58FF771F4E669F009EC9F2 /* ActivityListResultModel.m in Sources */,
 				EC4BA0CC1F1359DF00B9BE1A /* SelectThemeColorView.m in Sources */,
 				DD58FF3F1F4BDF61009EC9F2 /* MoreTableViewCell.m in Sources */,
 				DD62882C1F2317E60030331D /* ReplyCommentCell.m in Sources */,
@@ -3292,6 +3353,7 @@
 				DD0DBAD31F32B9970098F5FA /* RecommendGoodsDataModel.m in Sources */,
 				DD4CF0A41F2996B60024156F /* MoreCycleViewController.m in Sources */,
 				DD69B2BC1F39D25C0036F368 /* BuyNowSelectSpecView.m in Sources */,
+				DD58FF801F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.m in Sources */,
 				DDC52E9D1F4186D900ECF211 /* PlaceOrderBalanceModel.m in Sources */,
 				DDE0FD011F35654900269DBD /* CartListDataModel.m in Sources */,
 				DD58FF341F4B0D33009EC9F2 /* UIImage+Orientation.m in Sources */,
@@ -3397,6 +3459,7 @@
 				DD6898281F30525A008B6A8F /* MoreProductTableViewCell.m in Sources */,
 				DD69B2F91F3AFD390036F368 /* STPickerViewUI.m in Sources */,
 				DD6288341F233EE00030331D /* SameHobbyPersonListViewController.m in Sources */,
+				DD58FF8E1F4FAE92009EC9F2 /* NSDictionary+ToJson.m in Sources */,
 				DD6287431F1F8C1E0030331D /* MyAddressViewController.m in Sources */,
 				DD6288221F22EC7A0030331D /* SubNotification_DiscountViewController.m in Sources */,
 				DD6897F91F2F0F88008B6A8F /* HomeGoodsListModel.m in Sources */,
@@ -3436,11 +3499,13 @@
 				DD6287481F1F90E80030331D /* GiftListCell.m in Sources */,
 				DD0DBAF61F332E840098F5FA /* ProductDetailHeaderView.m in Sources */,
 				DD62872F1F1F51BA0030331D /* ConfigurationCell.m in Sources */,
+				DD58FF8A1F4E839B009EC9F2 /* ReleaseActivitySubmitToReviewCell.m in Sources */,
 				DDFB82B91F1D931500AEAAA7 /* UIView+PYSearchExtension.m in Sources */,
 				DD6287E31F21E8120030331D /* WaitForReviewViewController.m in Sources */,
 				DD6898481F319DA8008B6A8F /* GetGiftTypeResultModel.m in Sources */,
 				DDC52EC21F42C84D00ECF211 /* SuccessPayTableViewCell.m in Sources */,
 				DD6287C51F21AE580030331D /* LookAroundViewController.m in Sources */,
+				DD58FF851F4E833C009EC9F2 /* ReleaseActivityContentCell.m in Sources */,
 				DD58FF261F4A6F32009EC9F2 /* GetHotCycleDataModel.m in Sources */,
 				EC4BA0D91F1359EC00B9BE1A /* BaseTableViewCell.m in Sources */,
 				DD184E141F3C597A009BFF5B /* MyDiscountCouponDataModel.m in Sources */,
@@ -3499,6 +3564,7 @@
 				DDE0FD171F35C8E300269DBD /* CartListAllSelectedModel.m in Sources */,
 				DDFB81C31F184B7600AEAAA7 /* CALayer+XIBUIColor.m in Sources */,
 				EC4BA1111F136CBD00B9BE1A /* SubNotifi_MessageViewController.m in Sources */,
+				DD58FF7B1F4E79E0009EC9F2 /* ReleaseActivityViewController.m in Sources */,
 				DD69B2F61F3AFD390036F368 /* STPickerDate.m in Sources */,
 				DD0938FD1F442E3B00A75182 /* OrderListViewController_Two.m in Sources */,
 				DD0DBAD01F32B9810098F5FA /* RecommendGoodsModel.m in Sources */,

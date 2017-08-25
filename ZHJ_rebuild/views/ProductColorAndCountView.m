@@ -66,6 +66,11 @@
     return _tempArray;
 }
 
+-(void)setDefaultPrice:(NSString *)defaultPrice
+{
+    self.labelPrice.text = [NSString stringWithFormat:@"¥ %@",defaultPrice];
+}
+
 -(void)settingCountBGView
 {
     UIBezierPath *maskPath1 = [UIBezierPath bezierPathWithRoundedRect:self.countBGView.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(3, 3)];
@@ -104,37 +109,36 @@
 
 -(void)setDataArray:(NSArray *)dataArray
 {
-    if (_dataArray != dataArray) {
-        _dataArray = dataArray;
-        self.tempArray = [NSMutableArray arrayWithArray:dataArray];
+    _dataArray = dataArray;
+    self.tempArray = [NSMutableArray arrayWithArray:dataArray];
 //        GoodsDetailSpec_ListModel *model = self.tempArray[0];
 //        model.selectedId = @"2";
-        [self.collectionView reloadData];
-        for (int i=0; i<self.tempArray.count; i++) {
-            [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:i] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-        }
-        
-        
-        for ( GoodsDetailSpec_ListModel *modelSpecList in self.tempArray) {
-            GoodsDetailSpec_ValueModel *modelSpecValue = modelSpecList.spec_value[0];
-            modelSpecList.selectedId = modelSpecValue.item_id;
-            [self.specValueArray addObject:modelSpecList.selectedId];
-        }
-        NSDictionary *dictParameter = @{@"spec_item_id":self.specValueArray,
-                                        @"goods_id":self.goods_id};
-        [self getSpecPriceDataWith:dictParameter];
-        
-        
-        //设置默认数据
-        if (_dataArray.count > 0) {
-            GoodsDetailSpec_ListModel *modelSpecList = _dataArray[0];
-            GoodsDetailSpec_ValueModel *modelSpecValue = modelSpecList.spec_value[0];
-            
-            NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelSpecValue.src];
-            NSURL *url = [NSURL URLWithString:imgStr];
-            [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
-        }
+    [self.collectionView reloadData];
+    for (int i=0; i<self.tempArray.count; i++) {
+        [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:i] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
     }
+    
+    
+    for ( GoodsDetailSpec_ListModel *modelSpecList in self.tempArray) {
+        GoodsDetailSpec_ValueModel *modelSpecValue = modelSpecList.spec_value[0];
+        modelSpecList.selectedId = modelSpecValue.item_id;
+        [self.specValueArray addObject:modelSpecList.selectedId];
+    }
+//    NSDictionary *dictParameter = @{@"spec_item_id":self.specValueArray,
+//                                    @"goods_id":self.goods_id};
+//    [self getSpecPriceDataWith:dictParameter];
+    
+    
+    //设置默认数据
+    if (_dataArray.count > 0) {
+        GoodsDetailSpec_ListModel *modelSpecList = _dataArray[0];
+        GoodsDetailSpec_ValueModel *modelSpecValue = modelSpecList.spec_value[0];
+        
+        NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelSpecValue.src];
+        NSURL *url = [NSURL URLWithString:imgStr];
+        [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
+    }
+    
 }
 
 #pragma mark - <获取商品规格对应的实际价格>

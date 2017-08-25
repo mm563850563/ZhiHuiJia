@@ -248,6 +248,12 @@
 #pragma mark - <52.发布“待评论”中的对产品的评论>
 #define kAddComment @"/User/addComment"
 
+#pragma mark - <53.活动推荐>
+#define kActivityList @"/Circle/activityList"
+
+#pragma mark - <54.发布活动>
+#define kApplyForActivity @"/circle/applyForActivity"
+
 
 
 

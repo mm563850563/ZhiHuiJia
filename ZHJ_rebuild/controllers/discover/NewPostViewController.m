@@ -126,7 +126,10 @@
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"deleteImage" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         UIButton *button = x.object;
         NSUInteger tag =  button.tag;
-        [self.imagesArray removeObjectAtIndex:tag];
+        if (self.imagesArray.count > tag) {
+            [self.imagesArray removeObjectAtIndex:tag];
+        }
+        
         [self.collectionView reloadData];
     }];
 }

@@ -53,8 +53,8 @@
     [self userBrowseGoods];
     [self getGoodsDetailData];
     [self settingTableView];
-    [self initBuyNowProductMessageView];
-    [self initAddToCartProductMessageView];
+//    [self initBuyNowProductMessageView];
+//    [self initAddToCartProductMessageView];
     
     [self respondWithRAC];
 }
@@ -111,12 +111,6 @@
                     self.contentArray = model.data.result.goods_content;
                     self.spec_listArray = model.data.result.spec_list;
                     
-                    //传数据给“立即购买选择规格”view(下面两句不能调换)
-                    self.productMessageAndBuyNowView.goods_id = self.modelInfo.goods_id;
-                    self.productMessageAndBuyNowView.dataArray = self.spec_listArray;
-                    
-                    self.productMessageAddToCartView.goods_id = self.modelInfo.goods_id;
-                    self.productMessageAddToCartView.dataArray = self.spec_listArray;
                     
                     //判断是否已经收藏
                     if ([model.data.result.is_collected isEqualToString:@"0"]) {
@@ -130,6 +124,17 @@
                         [self.bannerArray addObject:str];
                     }
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        [self initBuyNowProductMessageView];
+                        [self initAddToCartProductMessageView];
+                        //传数据给“立即购买选择规格”view(下面三句不能调换)
+                        self.productMessageAndBuyNowView.goods_id = self.modelInfo.goods_id;
+                        self.productMessageAndBuyNowView.defaultPrice = self.modelInfo.price;
+                        self.productMessageAndBuyNowView.dataArray = self.spec_listArray;
+                        
+                        self.productMessageAddToCartView.goods_id = self.modelInfo.goods_id;
+                        self.productMessageAddToCartView.defaultPrice = self.modelInfo.price;
+                        self.productMessageAddToCartView.dataArray = self.spec_listArray;
+                        
                         [self.tableView reloadData];
                     });
                 }else{

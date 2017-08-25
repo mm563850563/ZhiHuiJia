@@ -19,6 +19,8 @@
 
 //tools
 #import "UIImage+Orientation.h"
+#import <AFNetworking.h>
+#import "NSDictionary+ToJson.h"
 
 //models
 #import "OrderList_OrderListModel.h"
@@ -36,6 +38,15 @@
 
 //@property (nonatomic, strong)NSArray *goodsArray;
 @property (nonatomic, assign)NSInteger indexPath_row;
+
+//用于存储请求参数
+@property (nonatomic, strong)NSMutableArray *commentCellArray;
+
+
+
+//#warning ************ 拼接参数用 *************
+//@property (nonatomic, strong)NSMutableArray *order_infoArray;
+//@property (nonatomic, strong)NSMutableArray *order_imageArray;
 
 @end
 
@@ -57,6 +68,22 @@
 }
 
 #pragma mark - <懒加载>
+-(NSMutableArray *)commentCellArray
+{
+    if (!_commentCellArray) {
+        _commentCellArray = [NSMutableArray array];
+    }
+    return _commentCellArray;
+}
+
+//-(NSMutableArray *)order_infoArray
+//{
+//    if (!_order_infoArray) {
+//        _order_infoArray = [NSMutableArray array];
+//    }
+//    return _order_infoArray;
+//}
+
 //-(NSMutableArray *)imagesArray
 //{
 //    if (!_imagesArray) {
@@ -79,8 +106,6 @@
 -(void)settingAbout
 {
 //    self.goodsArray = self.modelOrderList.goods;
-    
-    self.modelOrderList;
 }
 
 #pragma mark - <配置tableView>
@@ -98,17 +123,135 @@
 }
 
 #pragma mark - <请求发布评论数据>
--(void)getAddCommentData
+-(void)getAddCommentDataWithTextPara:(NSDictionary *)textPara filePara:(NSDictionary *)filePara
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kAddComment];
     
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    // 2 设置头部
+//    _manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    _manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    NSString *authorization = AUTHORIZTION;
+//    [_manager.requestSerializer setValue:authorization forHTTPHeaderField:@"Authorization"];
+    
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer.timeoutInterval = 20;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    [manager.requestSerializer requestWithMethod:@"POST" URLString:urlStr parameters:jsonText error:nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain",
+                                                         @"multipart/form-data",
+                                                         @"application/json",
+                                                         @"text/html",
+                                                         @"image/jpeg",
+                                                         @"image/png",
+                                                         @"application/octet-stream",
+                                                         @"text/json", nil];
+    [manager POST:urlStr parameters:textPara constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+//        [formData appendPartWithFormData:[textPara[@"user_id"] dataUsingEncoding:NSUTF8StringEncoding] name:@"user_id"];
+//        [formData appendPartWithFormData:[textPara[@"order_id"] dataUsingEncoding:NSUTF8StringEncoding] name:@"order_id"];
+//        [formData appendPartWithFormData:[textPara[@"order_info"] dataUsingEncoding:NSUTF8StringEncoding] name:@"order_info"];
+        
+        NSArray *allKeys = [filePara allKeys];
+        for (NSString *key in allKeys) {
+            NSString *fileName = [NSString stringWithFormat:@"%@.jpg",key];
+            NSData *data = filePara[key];
+            [formData appendPartWithFileData:data name:key fileName:fileName mimeType:@"image/jpeg"];
+        }
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject) {
+            NSDictionary *dataDict = (NSDictionary *)responseObject;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    hudWarning.completionBlock = ^{
+                        [self.navigationController popViewControllerAnimated:YES];
+                    };
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+            
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
 }
 
 #pragma mark - <发布评论>
 -(void)releaseMyComment
 {
-    //遍历
+    NSMutableArray *order_infoArray = [NSMutableArray array];
+//    NSMutableSet *order_infoSet = [NSMutableSet set];
+    //遍历所有cell
+    for (AddCommentTableViewCell *cell in self.commentCellArray) {
+        if ([cell.tvCommentContent.text isEqualToString:@""]) {
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请填写评价内容"];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+            return;
+        }else{
+            NSNumber *grade = [NSNumber numberWithInteger:cell.goods_grade];
+            NSDictionary *dict = @{@"goods_id":cell.modelGoods.goods_id,
+                                   @"goods_grade":grade,
+                                   @"is_anonymous":cell.is_anonymous,
+                                   @"content":cell.tvCommentContent.text,
+                                   @"spec_key":cell.spec_key};
+            [order_infoArray addObject:dict];
+        }
+    }
+    //文本参数
+    NSDictionary *dict = @{@"user_id":kUserDefaultObject(kUserInfo),
+                               @"order_id":self.modelOrderList.order_id,
+                               @"order_info":order_infoArray};
+    //字典转json
+    NSString *json = [NSDictionary dictionaryToJson:dict];
+    NSDictionary *dictText = @{@"comment_info":json};
+    
+    //遍历model获取image
+    
+    //图片参数
+    NSMutableDictionary *dictImage = [NSMutableDictionary dictionary];
+    
+    for (int i=0; i<self.modelOrderList.goods.count; i++) {
+        OrderListGoodsModel *modelGoods = self.modelOrderList.goods[i];
+        for (int j=0; j<modelGoods.pickerImageArray.count; j++) {
+            NSString *key = [NSString stringWithFormat:@"img_%d_%d",i,j];
+            UIImage *image = modelGoods.pickerImageArray[j];
+            NSData *imgData = UIImageJPEGRepresentation(image, 0.5);
+            if (imgData) {
+                [dictImage setObject:imgData forKey:key];
+            }
+            
+        }
+    }
+    
+    //发送请求
+    [self getAddCommentDataWithTextPara:dictText filePara:dictImage];
 }
+
+
+
 
 
 #pragma mark - <调起相机／相册提示框>
@@ -175,7 +318,10 @@
         NSLog(@"大傻逼");
         
         OrderListGoodsModel *modelGood = self.modelOrderList.goods[goods_row];
-        [modelGood.pickerImageArray removeObjectAtIndex:image_item];
+        if (modelGood.pickerImageArray.count > image_item) {
+            [modelGood.pickerImageArray removeObjectAtIndex:image_item];
+        }
+        
         [self.tableView reloadData];
     }];
 }
@@ -221,6 +367,12 @@
     cellComment.modelGoods = modelGoods;
     cellComment.collectionView.tag = indexPath.row;
     cellComment.modelOrderList = self.modelOrderList;
+    cellComment.spec_key = modelGoods.spec_key;
+    
+    //把cell装进数组用于遍历
+    if (![self.commentCellArray containsObject:cellComment]) {
+        [self.commentCellArray addObject:cellComment];
+    }
     return cellComment;
 }
 

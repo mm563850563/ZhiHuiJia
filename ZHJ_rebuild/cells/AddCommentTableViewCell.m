@@ -23,18 +23,6 @@
 
 @interface AddCommentTableViewCell ()<UITextViewDelegate,RatingDelegate,UICollectionViewDelegate,UICollectionViewDataSource,TZImagePickerControllerDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *imgProduct;
-@property (weak, nonatomic) IBOutlet UIView *starBGView;
-@property (weak, nonatomic) IBOutlet UILabel *labelStatus;
-@property (weak, nonatomic) IBOutlet UITextView *tvCommentContent;
-@property (weak, nonatomic) IBOutlet UILabel *placeholder;
-@property (weak, nonatomic) IBOutlet UIView *checkBoxBGView;
-@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
-
-@property (nonatomic, strong)RatingBar *starBar;
-@property (nonatomic, strong)SSCheckBoxView *checkBox;
-@property (nonatomic, strong)NSString *is_anonymous; //是否匿名
-
 @property (nonatomic, strong)UIImagePickerController *pickerCamara;
 @property (nonatomic, strong)TZImagePickerController *pickerAlbum;
 @property (nonatomic, strong)NSMutableArray *imagesArray;
@@ -80,12 +68,16 @@
     self.starBar.enable = YES;
     self.starBar.delegate = self;
     self.starBar.starNumber = 5;
+    self.goods_grade = 5;
     
     //tvCommentContent
     self.tvCommentContent.delegate = self;
     
     //checkBox
     self.checkBox = [[SSCheckBoxView alloc]initWithFrame:self.checkBoxBGView.bounds style:kSSCheckBoxViewStyleGreen checked:NO];
+    
+    self.is_anonymous = @"0";
+    [self.checkBoxBGView addSubview:self.checkBox];
     
     __weak typeof(self) weakSelf = self;
     self.checkBox.stateChangedBlock = ^(SSCheckBoxView *cbv) {
@@ -95,8 +87,6 @@
             weakSelf.is_anonymous = @"0";
         }
     };
-    self.is_anonymous = @"0";
-    [self.checkBoxBGView addSubview:self.checkBox];
     
     //collectionView
     [self settingCollectionView];
@@ -122,6 +112,7 @@
 
 -(void)setModelGoods:(OrderListGoodsModel *)modelGoods
 {
+    _modelGoods = modelGoods;
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelGoods.image];
     NSURL *url = [NSURL URLWithString:imgStr];
     [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
@@ -157,6 +148,7 @@
         case 0:{
             self.labelStatus.text = @"非常差";
             self.starBar.starNumber = 1;
+            self.goods_grade = 1;
         }
             break;
         case 1:{

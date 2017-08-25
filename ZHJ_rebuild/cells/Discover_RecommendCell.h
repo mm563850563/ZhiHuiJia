@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ActivityListResultModel;
+
 @interface Discover_RecommendCell : UITableViewCell
+
+@property (nonatomic, strong)ActivityListResultModel *modelActivityResult;
 
 @end
