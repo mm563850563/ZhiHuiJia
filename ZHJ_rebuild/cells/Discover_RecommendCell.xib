@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jds-Tu-3RN">
                         <rect key="frame" x="0.0" y="1" width="320" height="90.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tu1" translatesAutoresizingMaskIntoConstraints="NO" id="FBT-Jb-XLj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FBT-Jb-XLj">
                                 <rect key="frame" x="10" y="8" width="74.5" height="74.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FBT-Jb-XLj" secondAttribute="height" multiplier="1:1" id="XKD-kE-oVZ"/>
@@ -113,6 +113,7 @@
                             <constraint firstItem="K14-VP-a23" firstAttribute="leading" secondItem="CmB-kp-l5a" secondAttribute="trailing" id="91E-yH-Ehy"/>
                             <constraint firstAttribute="trailing" secondItem="K14-VP-a23" secondAttribute="trailing" constant="10" id="BT9-dy-s7R"/>
                             <constraint firstItem="Rzk-vL-Ukd" firstAttribute="leading" secondItem="FBT-Jb-XLj" secondAttribute="trailing" constant="10" id="EDv-XD-Va2"/>
+                            <constraint firstItem="Rzk-vL-Ukd" firstAttribute="top" secondItem="CmB-kp-l5a" secondAttribute="bottom" constant="5" id="IBf-KJ-cR7"/>
                             <constraint firstItem="FBT-Jb-XLj" firstAttribute="leading" secondItem="jds-Tu-3RN" secondAttribute="leading" constant="10" id="J3y-CB-ohR"/>
                             <constraint firstItem="pPB-Lo-gDG" firstAttribute="centerY" secondItem="Rzk-vL-Ukd" secondAttribute="centerY" id="MFw-Pu-kU6"/>
                             <constraint firstAttribute="trailing" secondItem="YV7-hd-dB7" secondAttribute="trailing" constant="10" id="MG1-0i-h61"/>
@@ -120,7 +121,6 @@
                             <constraint firstItem="rlp-tD-fuq" firstAttribute="leading" secondItem="pPB-Lo-gDG" secondAttribute="trailing" id="RoH-qd-8cO"/>
                             <constraint firstAttribute="trailing" secondItem="pPB-Lo-gDG" secondAttribute="trailing" constant="50" id="YoT-Ts-GMh"/>
                             <constraint firstAttribute="trailing" secondItem="rlp-tD-fuq" secondAttribute="trailing" id="aQn-lq-2hj"/>
-                            <constraint firstItem="CmB-kp-l5a" firstAttribute="top" secondItem="YV7-hd-dB7" secondAttribute="bottom" constant="10" id="bP5-p6-j9g"/>
                             <constraint firstItem="Rzk-vL-Ukd" firstAttribute="bottom" secondItem="FBT-Jb-XLj" secondAttribute="bottom" id="bkA-5s-NsX"/>
                             <constraint firstItem="YV7-hd-dB7" firstAttribute="top" secondItem="FBT-Jb-XLj" secondAttribute="top" id="cwo-q9-8Wn"/>
                             <constraint firstItem="rlp-tD-fuq" firstAttribute="centerY" secondItem="pPB-Lo-gDG" secondAttribute="centerY" id="dB0-Mu-cSu"/>
@@ -149,7 +149,4 @@
             <point key="canvasLocation" x="36" y="78"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="tu1" width="164" height="164"/>
-    </resources>
 </document>

@@ -84,7 +84,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"didSelectDynamicItem" object:indexPath];
+    
 }
 
 

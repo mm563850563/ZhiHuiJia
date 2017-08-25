@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ActivitySignUpListResultModel.h"
+
 @interface ActivityRecommendApplyCell : UITableViewCell
+
+@property (nonatomic, strong)ActivitySignUpListResultModel *modelSignUpList;
 
 @end

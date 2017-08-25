@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class ActivityListResultModel;
+@class WaitToReviewActivityResultModel;
 
 @interface Discover_RecommendCell : UITableViewCell
 

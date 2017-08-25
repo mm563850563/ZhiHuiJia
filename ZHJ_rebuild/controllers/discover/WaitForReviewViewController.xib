@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WaitForReviewViewController">
             <connections>
+                <outlet property="tableView" destination="OUe-hX-nzn" id="P5b-yF-gDW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,22 +20,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="null" translatesAutoresizingMaskIntoConstraints="NO" id="w0s-Li-Dg2">
-                    <rect key="frame" x="87.5" y="50" width="200" height="200"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="200" id="29s-rK-uWq"/>
-                        <constraint firstAttribute="height" constant="200" id="7Fv-Xs-NNG"/>
-                    </constraints>
-                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OUe-hX-nzn">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="w0s-Li-Dg2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="U1a-kv-FV7"/>
-                <constraint firstItem="w0s-Li-Dg2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="vA5-md-Nav"/>
+                <constraint firstAttribute="bottom" secondItem="OUe-hX-nzn" secondAttribute="bottom" id="0kQ-em-eqT"/>
+                <constraint firstItem="OUe-hX-nzn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2px-mg-YX4"/>
+                <constraint firstItem="OUe-hX-nzn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LXo-rQ-sQw"/>
+                <constraint firstAttribute="trailing" secondItem="OUe-hX-nzn" secondAttribute="trailing" id="uXr-Sf-ei7"/>
             </constraints>
         </view>
     </objects>
-    <resources>
-        <image name="null" width="433" height="432"/>
-    </resources>
 </document>

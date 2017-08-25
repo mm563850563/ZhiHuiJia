@@ -10,4 +10,6 @@
 
 @interface DisclaimerViewController : UIViewController
 
+@property (nonatomic, strong)NSString *disclaimer;
+
 @end

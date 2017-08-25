@@ -11,8 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityViewController">
             <connections>
-                <outlet property="flipBGView" destination="hKx-wU-JSt" id="2eX-av-tYX"/>
-                <outlet property="segmentBGView" destination="wgG-JY-eXj" id="xD5-kX-dy3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,29 +21,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apj-Ac-Bwq">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgG-JY-eXj">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="KwE-58-57O"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKx-wU-JSt">
-                            <rect key="frame" x="0.0" y="40" width="375" height="627"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="wgG-JY-eXj" firstAttribute="leading" secondItem="apj-Ac-Bwq" secondAttribute="leading" id="1o5-to-AYY"/>
-                        <constraint firstItem="hKx-wU-JSt" firstAttribute="leading" secondItem="apj-Ac-Bwq" secondAttribute="leading" id="T0C-35-LuK"/>
-                        <constraint firstItem="hKx-wU-JSt" firstAttribute="top" secondItem="wgG-JY-eXj" secondAttribute="bottom" id="T1V-Qn-Ett"/>
-                        <constraint firstAttribute="bottom" secondItem="hKx-wU-JSt" secondAttribute="bottom" id="d8I-B7-J0K"/>
-                        <constraint firstItem="wgG-JY-eXj" firstAttribute="top" secondItem="apj-Ac-Bwq" secondAttribute="top" id="eYM-o6-axw"/>
-                        <constraint firstAttribute="trailing" secondItem="wgG-JY-eXj" secondAttribute="trailing" id="qpc-5h-J8Z"/>
-                        <constraint firstAttribute="trailing" secondItem="hKx-wU-JSt" secondAttribute="trailing" id="sb2-NL-tza"/>
-                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

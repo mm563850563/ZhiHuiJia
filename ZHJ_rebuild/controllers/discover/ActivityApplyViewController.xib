@@ -88,6 +88,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="提  交">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -95,6 +96,9 @@
                             <integer key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="btnSubmitAction:" destination="-1" eventType="touchUpInside" id="Xyh-Wu-wdy"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFQ-z0-pGl">
                     <rect key="frame" x="112" y="627" width="150" height="30"/>
@@ -102,7 +106,9 @@
                         <constraint firstAttribute="height" constant="30" id="EM0-UF-hu2"/>
                         <constraint firstAttribute="width" constant="150" id="XrE-PD-aIT"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>

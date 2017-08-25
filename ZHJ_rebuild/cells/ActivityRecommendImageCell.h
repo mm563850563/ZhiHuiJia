@@ -10,7 +10,8 @@
 
 @interface ActivityRecommendImageCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imgActivity;
+@property (nonatomic, strong)NSString *imgStr;
 @property (weak, nonatomic) IBOutlet UILabel *labelActivityTitle;
+@property (weak, nonatomic) IBOutlet UIButton *btnApplyActivity;
 
 @end

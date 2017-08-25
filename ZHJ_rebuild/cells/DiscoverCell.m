@@ -65,11 +65,11 @@
 
 -(void)respondWithRAC
 {
-    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"Discover_Segment" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        NSNumber *num = x.object;
-        NSInteger index = [num integerValue];
-        [self.flipView selectIndex:index];
-    }];
+//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"Discover_Segment" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+//        NSNumber *num = x.object;
+//        NSInteger index = [num integerValue];
+//        [self.flipView selectIndex:index];
+//    }];
 }
 
 -(void)scrollChangeToIndex:(NSInteger)index

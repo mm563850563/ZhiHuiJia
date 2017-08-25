@@ -254,6 +254,23 @@
 #pragma mark - <54.发布活动>
 #define kApplyForActivity @"/circle/applyForActivity"
 
+#pragma mark - <55.活动详情>
+#define kActivityDetail @"/circle/activityDetail"
+
+#pragma mark - <56.活动报名>
+#define kSignUpActivity @"/Circle/signUpActivity"
+
+#pragma mark - <57.取消活动报名>
+#define kCancelActivity @"/Circle/cancelActivity"
+
+#pragma mark - <58.报名列表>
+#define kGetSignUpList @"/Circle/getSignUpList"
+
+#pragma mark - <59.待审核活动>
+#define kWaitAuditActivities @"/Circle/waitAuditActivities"
+
+#pragma mark - <60.已通过活动>
+#define kPassAuditActivities @"/Circle/passAuditActivities"
 
 
 

@@ -19,16 +19,33 @@
 #import "DisclaimerViewController.h"
 #import "FocusPersonFileViewController.h"
 
+//models
+#import "ActivityDetailResultModel.h"
+#import "ActivitySignUpListDataModel.h"
+#import "ActivitySignUpListResultModel.h"
+
 @interface ActivityRecommendDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)UIView *footerView;
+@property (nonatomic, strong)ActivityDetailResultModel *model;
+@property (nonatomic, strong)NSMutableArray *signupListArray;
+
+@property (nonatomic, strong)NSNumber *page;
 
 @end
 
 @implementation ActivityRecommendDetailViewController
 
 #pragma mark - <懒加载>
+-(NSMutableArray *)signupListArray
+{
+    if (!_signupListArray) {
+        _signupListArray = [NSMutableArray array];
+    }
+    return _signupListArray;
+}
+
 -(UIView *)footerView
 {
     if (!_footerView) {
@@ -63,6 +80,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.page = [NSNumber numberWithInt:1];
+    [self managerRequestWithGCD];
     [self settingTableView];
     [self respondWithRAC];
 }
@@ -81,6 +100,154 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <GCD多线程管理任务>
+-(void)managerRequestWithGCD
+{
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_queue_t queue1 = dispatch_queue_create("getActivityDetailData", NULL);
+    dispatch_queue_t queue2 = dispatch_queue_create("getActivitySignUpListData", NULL);
+    
+    dispatch_group_async(group, queue1, ^{
+        [self getActivityDetailData];
+    });
+    dispatch_group_async(group, queue2, ^{
+        [self getSignUpListData];
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+        [hud hideAnimated:YES afterDelay:1.0];
+    });
+}
+
+#pragma mark - <获取活动详情数据>
+-(void)getActivityDetailData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kActivityDetail];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"activity_id":self.activity_id};
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                self.model = [[ActivityDetailResultModel alloc]initWithDictionary:dataDict[@"data"][@"result"] error:nil];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+            
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
+#pragma mark - <获取报名列表数据>
+-(void)getSignUpListData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetSignUpList];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"activity_id":self.activity_id};
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                ActivitySignUpListDataModel *modelSignUpListData = [[ActivitySignUpListDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                self.signupListArray = [NSMutableArray arrayWithArray:modelSignUpListData.result];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+            
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
+#pragma mark - <获取更多报名列表数据>
+-(void)getMoreSignUpListDataWithPage:(NSNumber *)page
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetSignUpList];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"activity_id":self.activity_id,
+                                    @"page":page,
+                                    @"page_count":@10};
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                ActivitySignUpListDataModel *modelSignUpListData = [[ActivitySignUpListDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                for (ActivitySignUpListResultModel *modelResult in modelSignUpListData.result) {
+                    [self.signupListArray addObject:modelResult];
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                    [self.tableView.mj_footer endRefreshing];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [self.tableView.mj_footer endRefreshing];
+                });
+            }
+            
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [self.tableView.mj_footer endRefreshing];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [self.tableView.mj_footer endRefreshing];
+        });
+    }];
+}
 
 #pragma mark - <配置tableView>
 -(void)settingTableView
@@ -102,18 +269,28 @@
     
     UINib *nibApply = [UINib nibWithNibName:NSStringFromClass([ActivityRecommendApplyCell class]) bundle:nil];
     [self.tableView registerNib:nibApply forCellReuseIdentifier:NSStringFromClass([ActivityRecommendApplyCell class])];
+    
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        int page = [self.page intValue];
+        page++;
+        self.page = [NSNumber numberWithInt:page];
+        [self getMoreSignUpListDataWithPage:self.page];
+    }];
 }
 
 #pragma mark - <跳转同城活动免责声明响应>
 -(void)jumpToDisclaimerVC
 {
     DisclaimerViewController *disclaimerVC = [[DisclaimerViewController alloc]initWithNibName:NSStringFromClass([DisclaimerViewController class]) bundle:nil];
+    disclaimerVC.disclaimer = self.model.disclaimer;
     [self.navigationController pushViewController:disclaimerVC animated:YES];
 }
 #pragma mark - <跳转报名页面>
--(void)jumpToApplyVC
+-(void)jumpToApplyVCWithActivityID:(NSString *)activity_id disclaimer:(NSString *)disclaimer
 {
     ActivityApplyViewController *applyVC = [[ActivityApplyViewController alloc]initWithNibName:NSStringFromClass([ActivityApplyViewController class]) bundle:nil];
+    applyVC.activity_id = activity_id;
+    applyVC.disclaimer = disclaimer;
     [self.navigationController pushViewController:applyVC animated:YES];
 }
 #pragma mark - <跳转个人页面>
@@ -123,11 +300,75 @@
     [self.navigationController pushViewController:personalFileVC animated:YES];
 }
 
+#pragma mark - <取消报名>
+-(void)getCancelActivityData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kCancelActivity];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"activity_id":self.activity_id};
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self getActivityDetailData];
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+            
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
 #pragma mark - <RAC响应>
 -(void)respondWithRAC
 {
+    //报名活动
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"applyAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        [self jumpToApplyVC];
+        UIButton *button = x.object;
+        if (!button.selected) {
+            [self jumpToApplyVCWithActivityID:self.model.activity_id disclaimer:self.model.disclaimer];
+        }else{
+            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil message:@"要取消报名？" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *actionYES = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self getCancelActivityData];
+            }];
+            UIAlertAction *actionNO = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+            [alertVC addAction:actionNO];
+            [alertVC addAction:actionYES];
+            [self presentViewController:alertVC animated:YES completion:nil];
+        }
+        
+    }];
+    
+    //报名成功后
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"signedForActivity" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        
+        [self getActivityDetailData];
     }];
 }
 
@@ -150,7 +391,7 @@
     if (section == 1) {
         return 5;
     }else if (section == 3) {
-        return 4;
+        return self.signupListArray.count;
     }
     return 1;
 }
@@ -176,7 +417,7 @@
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 30)];
     headerView.backgroundColor = kColorFromRGB(kWhite);
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, headerView.frame.size.width, headerView.frame.size.height)];
-    label.text = @"报名列表（x）";
+    label.text = [NSString stringWithFormat:@"报名列表（%lu）",(unsigned long)self.signupListArray.count];
     label.font = [UIFont systemFontOfSize:14];
     [headerView addSubview:label];
     if (section == 3) {
@@ -198,7 +439,13 @@
     UITableViewCell *cell = [[UITableViewCell alloc]init];
     if (indexPath.section == 0) {
         ActivityRecommendImageCell *cellImage = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ActivityRecommendImageCell class])];
-        cellImage.labelActivityTitle.text = @"周末狼人杀，嗨起来，Come on！Crazy！！！！！";
+        cellImage.labelActivityTitle.text= self.model.title;
+        cellImage.imgStr = self.model.image;
+        if ([self.model.is_signup isEqualToString:@"1"]) {
+            cellImage.btnApplyActivity.selected = YES;
+        }else{
+            cellImage.btnApplyActivity.selected = NO;
+        }
         cell = cellImage;
     }else if (indexPath.section == 1){
         ActivityRecommendInformationCell *cellInfomatiom = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ActivityRecommendInformationCell class])];
@@ -206,29 +453,41 @@
         NSString *strContent;
         if (indexPath.row == 0) {
             strTitle = @"活动地点：";
-            strContent = @"珠江新城";
+            strContent = self.model.location;
         }else if (indexPath.row == 1){
             strTitle = @"活动时间：";
-            strContent = @"2017年12月23日-12月30日（每周末都嗨起来，节假日不休息，随治随走，不开刀，无痛苦）";
+            NSInteger t1 = [self.model.start_time integerValue];
+            NSInteger t2 = [self.model.end_time integerValue];
+            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+            [formatter setDateFormat:@"yyyy年MM月dd日"];
+            NSDate *dateStart = [NSDate dateWithTimeIntervalSince1970:t1];
+            NSDate *dataEnd = [NSDate dateWithTimeIntervalSince1970:t2];
+            NSString *timeStart = [formatter stringFromDate:dateStart];
+            NSString *timeEnd = [formatter stringFromDate:dataEnd];
+            
+            strContent = [NSString stringWithFormat:@"%@-%@",timeStart,timeEnd];
         }else if (indexPath.row == 2){
             strTitle = @"发起人：";
-            strContent = @"xxx";
+            strContent = self.model.initiator;
         }else if (indexPath.row == 3){
             strTitle = @"联系方式：";
-            strContent = @"1378947747738";
+            strContent = self.model.mobile;
         }else if (indexPath.row == 4){
             strTitle = @"活动费用：";
-            strContent = @"免费";
+            strContent = self.model.entry_fee;
         }
         cellInfomatiom.labelTitle.text = strTitle;
         cellInfomatiom.labelContent .text = strContent;
         cell = cellInfomatiom;
     }else if (indexPath.section == 2){
         ActivityRecommendDetailCell *cellDetail = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ActivityRecommendDetailCell class])];
-        cellDetail.labelDetail.text = @"每周末都嗨起来，节假日不休息，随治随走，不开刀，无痛苦每周末都嗨起来，节假日不休息，随治随走，不开刀，无痛苦每周末都嗨起来，节假日不休息，随治随走，不开刀，无痛苦";
+        cellDetail.labelDetail.text = self.model.content;
         cell = cellDetail;
     }else if (indexPath.section == 3){
         ActivityRecommendApplyCell *cellApply = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ActivityRecommendApplyCell class])];
+        ActivitySignUpListResultModel *modelSignUpList = self.signupListArray[indexPath.row];
+        cellApply.modelSignUpList = modelSignUpList;
         cell = cellApply;
     }
     return  cell;

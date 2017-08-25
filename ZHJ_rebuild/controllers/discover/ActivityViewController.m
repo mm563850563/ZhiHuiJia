@@ -19,9 +19,6 @@
 
 @interface ActivityViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *segmentBGView;
-@property (weak, nonatomic) IBOutlet UIView *flipBGView;
-
 @property (nonatomic, strong)SegmentTapView *segmentView;
 @property (nonatomic, strong)FlipTableView *flipView;
 
@@ -33,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
+    [self settingSelf];
     [self initSegmentView];
     [self initFlipView];
 }
@@ -53,17 +50,22 @@
 }
 */
 
+#pragma mark - <settingSelf>
+-(void)settingSelf
+{
+    self.navigationController.navigationBar.translucent = NO;
+}
 
 #pragma mark - <初始化segmentView>
 -(void)initSegmentView
 {
     NSArray *array = @[@"等待审核",@"已通过",@"审核失败"];
-    self.segmentView = [[SegmentTapView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, self.segmentBGView.frame.size.height) withDataArray:array withFont:14];
+    self.segmentView = [[SegmentTapView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 40) withDataArray:array withFont:14];
     self.segmentView.delegate = self;
-    [self.segmentBGView addSubview:self.segmentView];
-    [self.segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
-    }];
+    [self.view addSubview:self.segmentView];
+//    [self.segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+//    }];
     
 }
 
@@ -78,12 +80,12 @@
     [vcArray addObject:passedVC];
     [vcArray addObject:failureReviewVC];
     
-    self.flipView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, self.flipBGView.frame.size.height) withArray:vcArray];
+    self.flipView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 40, kSCREEN_WIDTH, self.view.frame.size.height-40-64) withArray:vcArray];
     self.flipView.delegate = self;
-    [self.flipBGView addSubview:self.flipView];
-    [self.flipView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
-    }];
+    [self.view addSubview:self.flipView];
+//    [self.flipView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+//    }];
 }
 
 

@@ -10,13 +10,16 @@
 
 @interface DisclaimerViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextView *tvContent;
+
 @end
 
 @implementation DisclaimerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.tvContent.text = self.disclaimer;
 }
 
 - (void)didReceiveMemoryWarning {

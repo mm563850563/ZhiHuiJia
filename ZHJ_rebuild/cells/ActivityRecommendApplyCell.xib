@@ -105,6 +105,12 @@
                     <constraint firstItem="2z3-Z8-ehd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xpr-pd-q4i"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="btnFocus" destination="8Jt-ED-lFi" id="xRK-sl-mnL"/>
+                <outlet property="imgViewPortrait" destination="OJC-tc-3v1" id="Vw2-gv-7Zi"/>
+                <outlet property="labelNickName" destination="WlK-2z-iBP" id="bZO-3o-JXG"/>
+                <outlet property="labelReason" destination="mfh-Si-gpn" id="P1s-qZ-GHj"/>
+            </connections>
             <point key="canvasLocation" x="106" y="122"/>
         </tableViewCell>
     </objects>

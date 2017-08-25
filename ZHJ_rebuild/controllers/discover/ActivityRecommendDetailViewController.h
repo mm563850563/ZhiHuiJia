@@ -10,4 +10,6 @@
 
 @interface ActivityRecommendDetailViewController : UIViewController
 
+@property (nonatomic, strong)NSString *activity_id;
+
 @end

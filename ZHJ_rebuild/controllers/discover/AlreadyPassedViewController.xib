@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlreadyPassedViewController">
             <connections>
+                <outlet property="tableView" destination="tI3-jE-LKa" id="IhH-N0-mcy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,22 +20,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="null" translatesAutoresizingMaskIntoConstraints="NO" id="jSE-jT-eIR">
-                    <rect key="frame" x="87" y="50" width="200" height="200"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="Np0-Ti-Nik"/>
-                        <constraint firstAttribute="width" constant="200" id="VG8-ns-HxU"/>
-                    </constraints>
-                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tI3-jE-LKa">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="jSE-jT-eIR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="Ehu-Rk-jTm"/>
-                <constraint firstItem="jSE-jT-eIR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Qn0-Qs-nKA"/>
+                <constraint firstItem="tI3-jE-LKa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NDN-LA-juB"/>
+                <constraint firstAttribute="trailing" secondItem="tI3-jE-LKa" secondAttribute="trailing" id="e4q-zN-dVe"/>
+                <constraint firstAttribute="bottom" secondItem="tI3-jE-LKa" secondAttribute="bottom" id="v7T-u9-3WB"/>
+                <constraint firstItem="tI3-jE-LKa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wfn-YN-7R7"/>
             </constraints>
         </view>
     </objects>
-    <resources>
-        <image name="null" width="433" height="432"/>
-    </resources>
 </document>

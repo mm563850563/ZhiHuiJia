@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DisclaimerViewController">
             <connections>
+                <outlet property="tvContent" destination="c4t-Th-c4A" id="33R-Jz-6RI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,21 +20,19 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="同城免责声明" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="du1-qX-nTT">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="ugb-Of-vn5"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4t-Th-c4A">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="du1-qX-nTT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BLz-ZN-Ztr"/>
-                <constraint firstAttribute="trailing" secondItem="du1-qX-nTT" secondAttribute="trailing" id="ZJ2-rF-nem"/>
-                <constraint firstItem="du1-qX-nTT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="uqP-54-cqP"/>
+                <constraint firstAttribute="trailing" secondItem="c4t-Th-c4A" secondAttribute="trailing" id="QCR-CB-F0Q"/>
+                <constraint firstItem="c4t-Th-c4A" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="V5Q-Nl-ewl"/>
+                <constraint firstAttribute="bottom" secondItem="c4t-Th-c4A" secondAttribute="bottom" id="VQc-cw-FCE"/>
+                <constraint firstItem="c4t-Th-c4A" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bxK-lV-9hc"/>
             </constraints>
         </view>
     </objects>

@@ -10,6 +10,7 @@
 
 @interface ActivityApplyViewController : UIViewController
 
-
+@property (nonatomic, strong)NSString *activity_id;
+@property (nonatomic, strong)NSString *disclaimer;
 
 @end

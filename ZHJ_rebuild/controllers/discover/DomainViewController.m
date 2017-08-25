@@ -131,6 +131,7 @@
         [self jumpToMyOnFocusVC];
     }];
     
+    //我的活动
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToMyActivities" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         [self jumpToMyActivitiesVC];
     }];

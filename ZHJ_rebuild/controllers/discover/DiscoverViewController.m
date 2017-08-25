@@ -14,7 +14,7 @@
 
 //cells
 #import "DiscoverHeaderCell.h"
-#import "DiscoverCell.h"
+#import "DiscoverDynamicCell.h"
 
 //controllers
 #import "DynamicDetailViewController.h"
@@ -22,8 +22,10 @@
 #import "SameTownViewController.h"
 #import "DomainViewController.h"
 #import "NotificationViewController.h"
-#import "ActivityRecommendDetailViewController.h"
 #import "ReleaseActivityViewController.h"
+
+#import "DiscoverHotTopicViewController.h"
+#import "DiscoverRecommendViewController.h"
 
 @interface DiscoverViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,SegmentTapViewDelegate,UINavigationControllerDelegate>
 
@@ -32,7 +34,6 @@
 @property (nonatomic, strong)SegmentTapView *segmentView;
 @property (nonatomic, strong)FlipTableView *flipView;
 
-@property (nonatomic, strong)UIView *releaseActivity;
 @end
 
 @implementation DiscoverViewController
@@ -44,7 +45,6 @@
     
     [self settingNavigation];
     [self initMianTableView];
-    [self initReleaseActivity];
     
     [self respondWithRAC];
 }
@@ -95,6 +95,7 @@
     self.mainTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.mainTableView.delegate = self;
     self.mainTableView.dataSource = self;
+    self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.mainTableView];
     [self.mainTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
@@ -107,64 +108,29 @@
     UINib *nibHeaderCell = [UINib nibWithNibName:NSStringFromClass([DiscoverHeaderCell class]) bundle:nil];
     [self.mainTableView registerNib:nibHeaderCell forCellReuseIdentifier:NSStringFromClass([DiscoverHeaderCell class])];
     
-    UINib *nibDiscoverCell = [UINib nibWithNibName:NSStringFromClass([DiscoverCell class]) bundle:nil];
-    [self.mainTableView registerNib:nibDiscoverCell forCellReuseIdentifier:NSStringFromClass([DiscoverCell class])];
+    UINib *nibDynamicCell = [UINib nibWithNibName:NSStringFromClass([DiscoverDynamicCell class]) bundle:nil];
+    [self.mainTableView registerNib:nibDynamicCell forCellReuseIdentifier:NSStringFromClass([DiscoverDynamicCell class])];
 }
 
-#pragma mark - <初始化“申请圈子”按钮>
--(void)initReleaseActivity
+
+
+#pragma mark - <跳转“热门话题”页面>
+-(void)jumpToHotTopicVC
 {
-    self.releaseActivity = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
-    [self.view addSubview:self.releaseActivity];
-    [self.releaseActivity mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-15);
-        make.bottom.mas_equalTo(-40);
-        make.size.mas_offset(CGSizeMake(60, 60));
-    }];
-    self.releaseActivity.backgroundColor = kColorFromRGB(kThemeYellow);
-    self.releaseActivity.layer.cornerRadius = 30;
-    self.releaseActivity.layer.masksToBounds = YES;
-    
-    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [self.releaseActivity addSubview:imgView];
-    [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(5);
-        make.size.mas_offset(CGSizeMake(30, 30));
-        make.centerX.mas_equalTo(0);
-    }];
-    imgView.image = [UIImage imageNamed:@"pen"];
-    imgView.layer.cornerRadius = 15;
-    imgView.layer.masksToBounds = YES;
-    imgView.contentMode = UIViewContentModeScaleAspectFit;
-    
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [self.releaseActivity addSubview:label];
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(0);
-        make.top.mas_equalTo(imgView.mas_bottom);
-        make.height.mas_equalTo(20);
-    }];
-    label.text = @"发布活动";
-    label.font = [UIFont systemFontOfSize:10];
-    label.textColor = kColorFromRGB(kDeepGray);
-    label.textAlignment = NSTextAlignmentCenter;
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = self.releaseActivity.bounds;
-    [self.releaseActivity addSubview:button];
-    [button mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
-    }];
-    [button addTarget:self action:@selector(jumpToApplyCircleVC) forControlEvents:UIControlEventTouchUpInside];
+    DiscoverHotTopicViewController *hotTopicVC = [[DiscoverHotTopicViewController alloc]init];
+    hotTopicVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:hotTopicVC animated:YES];
 }
 
-#pragma mark - <跳转“发布活动”页面>
--(void)jumpToApplyCircleVC
+#pragma mark - <跳转“活动推荐”页面>
+-(void)jumpToActivityRecommendVC
 {
-    ReleaseActivityViewController *releaseActivityVC = [[ReleaseActivityViewController alloc]initWithNibName:NSStringFromClass([ReleaseActivityViewController class]) bundle:nil];
-    releaseActivityVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:releaseActivityVC animated:YES];
+    DiscoverRecommendViewController *activityRecommendVC = [[DiscoverRecommendViewController alloc]init];
+    activityRecommendVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:activityRecommendVC animated:YES];
 }
+
+
 
 #pragma mark - <跳转dynamicDetailVC>
 -(void)jumpToDynamicDetailVC
@@ -194,13 +160,6 @@
     domainVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:domainVC animated:YES];
 }
-#pragma mark - <跳转activityRecommendDetailVC>
--(void)jumpToActivityRecommendDetailVC
-{
-    ActivityRecommendDetailViewController *activityRecommendDetailVC = [[ActivityRecommendDetailViewController alloc]initWithNibName:NSStringFromClass([ActivityRecommendDetailViewController class]) bundle:nil];
-    activityRecommendDetailVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:activityRecommendDetailVC animated:YES];
-}
 
 #pragma mark - <响应RAC>
 -(void)respondWithRAC
@@ -211,12 +170,6 @@
         NSInteger index = [num integerValue];
         [self.segmentView selectIndex:index];
         
-    }];
-    
-    //点击“精选动态”item跳转
-    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"didSelectDynamicItem" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        NSIndexPath *indexPath = x.object;
-        [self jumpToDynamicDetailVC];
     }];
     
     //点击圈子
@@ -232,12 +185,6 @@
     //点击地盘
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickDomainAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         [self jumpToDomainVC];
-    }];
-    
-    //点击"活动推荐"cell跳转
-    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectActivityRecommend" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        NSIndexPath *indexPath = x.object;
-        [self jumpToActivityRecommendDetailVC];
     }];
     
 }
@@ -266,12 +213,16 @@
 #pragma mark - ****** SegmentTapViewDelegate *******
 -(void)selectedIndex:(NSInteger)index
 {
-    NSNumber *indexNum = [NSNumber numberWithInteger:index];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"Discover_Segment" object:indexNum];
-//    if (index == 3) {
-//        [self initReleaseActivity];
-//    }
+//    NSNumber *indexNum = [NSNumber numberWithInteger:index];
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"Discover_Segment" object:indexNum];
     
+    [self.segmentView selectIndex:1];
+    
+    if (index == 1) {
+        [self jumpToHotTopicVC];
+    }else if (index == 2){
+        [self jumpToActivityRecommendVC];
+    }
 }
 
 #pragma mark - ********* UITableViewDelegate,UITableViewDataSource ********
@@ -290,7 +241,9 @@
     if (indexPath.section == 0) {
         return 320;
     }
-    return 2500;
+    DiscoverDynamicCell *cell = [[DiscoverDynamicCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([DiscoverDynamicCell class])];
+    cell.dataArray = [NSMutableArray arrayWithArray:@[@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu"]];
+    return cell.cellHeight;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -298,7 +251,7 @@
     if (section == 0) {
         return 0.1f;
     }
-    return 40;
+    return 41;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -308,7 +261,8 @@
         DiscoverHeaderCell *cell1 = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DiscoverHeaderCell class])];
         cell = cell1;
     }else{
-        DiscoverCell *cell2 = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DiscoverCell class])];
+        DiscoverDynamicCell *cell2 = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DiscoverDynamicCell class])];
+        cell2.dataArray = [NSMutableArray arrayWithArray:@[@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu"]];
         cell = cell2;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -318,6 +272,7 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 40)];
+    headerView.backgroundColor = kColorFromRGB(kLightGray);
     if (section == 1) {
         //segmentView
         NSArray *titleArray = @[@"精选动态",@"热门话题",@"活动推荐"];
@@ -333,7 +288,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (indexPath.section == 1) {
+        [self jumpToDynamicDetailVC];
+    }
 }
 
 @end

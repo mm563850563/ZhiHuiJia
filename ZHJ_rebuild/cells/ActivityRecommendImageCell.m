@@ -8,6 +8,12 @@
 
 #import "ActivityRecommendImageCell.h"
 
+@interface ActivityRecommendImageCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewActivity;
+
+@end
+
 @implementation ActivityRecommendImageCell
 
 - (void)awakeFromNib {
@@ -21,10 +27,22 @@
     // Configure the view for the selected state
 }
 
+-(void)setImgStr:(NSString *)imgStr
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainImage,imgStr];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    [self.imgViewActivity sd_setImageWithURL:url placeholderImage:kPlaceholder];
+}
+
+//-(void)setActivityTitle:(NSString *)activityTitle
+//{
+//    self.labelActivityTitle.text = self.activityTitle;
+//}
+
 #pragma mark - <"我要报名"响应>
 - (IBAction)btnApplyAction:(UIButton *)sender
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"applyAction" object:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"applyAction" object:sender];
 }
 
 
