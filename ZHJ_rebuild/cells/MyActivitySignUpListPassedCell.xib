@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyActivitySignUpListPassedCell" rowHeight="112" id="KGk-i7-Jjw" customClass="MyActivitySignUpListPassedCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="111.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xi6-3T-iLN">
+                        <rect key="frame" x="0.0" y="1" width="320" height="110"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p2n-ex-NDb">
+                                <rect key="frame" x="10" y="25" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="TSF-BF-XgU"/>
+                                    <constraint firstAttribute="width" constant="60" id="wA5-vH-yHD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ic3-cy-eZT">
+                                <rect key="frame" x="80" y="30" width="140" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="dgm-Jf-Vi2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETn-Gf-qD6">
+                                <rect key="frame" x="80" y="50" width="140" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="0NH-kA-lSW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u86-JK-FMX">
+                                <rect key="frame" x="250" y="42.5" width="60" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="eX1-PY-2sU"/>
+                                    <constraint firstAttribute="height" constant="25" id="lFp-VB-ZC3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="+关注">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" title="已关注"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                        <color key="value" red="1" green="0.85490196078431369" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnOnFocusAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="U9B-TX-QZY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u86-JK-FMX" firstAttribute="centerY" secondItem="xi6-3T-iLN" secondAttribute="centerY" id="7YP-ux-ZNe"/>
+                            <constraint firstItem="p2n-ex-NDb" firstAttribute="leading" secondItem="xi6-3T-iLN" secondAttribute="leading" constant="10" id="Dt4-DE-Hr9"/>
+                            <constraint firstAttribute="trailing" secondItem="ic3-cy-eZT" secondAttribute="trailing" constant="100" id="PrB-Zk-LbY"/>
+                            <constraint firstItem="ic3-cy-eZT" firstAttribute="leading" secondItem="p2n-ex-NDb" secondAttribute="trailing" constant="10" id="QPd-Ro-HR9"/>
+                            <constraint firstItem="p2n-ex-NDb" firstAttribute="centerY" secondItem="xi6-3T-iLN" secondAttribute="centerY" id="Qk5-Kl-PAb"/>
+                            <constraint firstAttribute="trailing" secondItem="ETn-Gf-qD6" secondAttribute="trailing" constant="100" id="Tgr-If-AdE"/>
+                            <constraint firstItem="ic3-cy-eZT" firstAttribute="top" secondItem="p2n-ex-NDb" secondAttribute="top" constant="5" id="ePK-jL-tMD"/>
+                            <constraint firstAttribute="trailing" secondItem="u86-JK-FMX" secondAttribute="trailing" constant="10" id="o1u-To-JMY"/>
+                            <constraint firstItem="ETn-Gf-qD6" firstAttribute="leading" secondItem="p2n-ex-NDb" secondAttribute="trailing" constant="10" id="o5Y-gy-Pcb"/>
+                            <constraint firstItem="ETn-Gf-qD6" firstAttribute="top" secondItem="ic3-cy-eZT" secondAttribute="bottom" id="yi1-N8-hn1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="xi6-3T-iLN" secondAttribute="bottom" constant="0.5" id="0lO-fb-yVG"/>
+                    <constraint firstItem="xi6-3T-iLN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="6Rj-sm-DaL"/>
+                    <constraint firstAttribute="trailing" secondItem="xi6-3T-iLN" secondAttribute="trailing" id="Bu3-HL-x3L"/>
+                    <constraint firstItem="xi6-3T-iLN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YOm-9P-DQg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnOnFocus" destination="u86-JK-FMX" id="IKw-3c-X9Z"/>
+                <outlet property="imgViewPortrait" destination="p2n-ex-NDb" id="OuR-2j-C2I"/>
+                <outlet property="labelNickName" destination="ic3-cy-eZT" id="QCF-cW-qKI"/>
+                <outlet property="labelReason" destination="ETn-Gf-qD6" id="RPl-1y-RsO"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="88"/>
+        </tableViewCell>
+    </objects>
+</document>

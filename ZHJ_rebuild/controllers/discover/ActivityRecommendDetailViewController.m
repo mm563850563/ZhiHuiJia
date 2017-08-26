@@ -344,6 +344,58 @@
     }];
 }
 
+
+#pragma mark - <关注／取消关注好友>
+-(void)attentionOrCancelAttentionWithFriendUserID:(NSString *)friend_user_id attentionType:(NSString *)attention_type
+{
+    NSString *urlStr = [NSString string];
+    if ([attention_type isEqualToString:@"1"]) {
+        urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kAttentionFriend];
+    }else{
+        urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kCancelAttention];
+    }
+    
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"friend_user_id":friend_user_id};
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self getSignUpListData];
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+            
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
+
 #pragma mark - <RAC响应>
 -(void)respondWithRAC
 {
@@ -369,6 +421,18 @@
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"signedForActivity" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         
         [self getActivityDetailData];
+    }];
+    
+    //关注好友
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"attentionFriend_activityDetail" object:nil] takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *friend_user_id = x.object;
+        [self attentionOrCancelAttentionWithFriendUserID:friend_user_id attentionType:@"1"];
+    }];
+    
+    //取消关注好友
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"cancelAttention_activityDetail" object:nil] takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *friend_user_id = x.object;
+        [self attentionOrCancelAttentionWithFriendUserID:friend_user_id attentionType:@"0"];
     }];
 }
 

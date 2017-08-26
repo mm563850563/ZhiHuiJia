@@ -206,6 +206,26 @@
 		DD58FFA01F5021F3009EC9F2 /* WaitToReviewActivityResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF9F1F5021F3009EC9F2 /* WaitToReviewActivityResultModel.m */; };
 		DD58FFA41F5023F2009EC9F2 /* WaitToReviewActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFA21F5023F2009EC9F2 /* WaitToReviewActivityCell.m */; };
 		DD58FFA51F5023F2009EC9F2 /* WaitToReviewActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FFA31F5023F2009EC9F2 /* WaitToReviewActivityCell.xib */; };
+		DD58FFA91F510958009EC9F2 /* FailureReviewActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFA71F510958009EC9F2 /* FailureReviewActivityCell.m */; };
+		DD58FFAA1F510958009EC9F2 /* FailureReviewActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FFA81F510958009EC9F2 /* FailureReviewActivityCell.xib */; };
+		DD58FFAE1F51109B009EC9F2 /* RefuseActivityDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFAD1F51109B009EC9F2 /* RefuseActivityDataModel.m */; };
+		DD58FFB11F5110B8009EC9F2 /* RefuseActivityResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFB01F5110B8009EC9F2 /* RefuseActivityResultModel.m */; };
+		DD58FFB41F5118C7009EC9F2 /* MyActivitySignUpListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFB31F5118C7009EC9F2 /* MyActivitySignUpListViewController.m */; };
+		DD58FFB81F511AD4009EC9F2 /* MyActivitySignUpListWaitToReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFB61F511AD4009EC9F2 /* MyActivitySignUpListWaitToReviewViewController.m */; };
+		DD58FFB91F511AD4009EC9F2 /* MyActivitySignUpListWaitToReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FFB71F511AD4009EC9F2 /* MyActivitySignUpListWaitToReviewViewController.xib */; };
+		DD58FFBD1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFBB1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.m */; };
+		DD58FFBE1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FFBC1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.xib */; };
+		DD58FFC21F512E39009EC9F2 /* MyActivitySignUpListPassedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFC01F512E39009EC9F2 /* MyActivitySignUpListPassedCell.m */; };
+		DD58FFC31F512E39009EC9F2 /* MyActivitySignUpListPassedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FFC11F512E39009EC9F2 /* MyActivitySignUpListPassedCell.xib */; };
+		DD58FFC71F512E56009EC9F2 /* MyActivitySignUpListWaitReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFC51F512E56009EC9F2 /* MyActivitySignUpListWaitReviewCell.m */; };
+		DD58FFC81F512E56009EC9F2 /* MyActivitySignUpListWaitReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FFC61F512E56009EC9F2 /* MyActivitySignUpListWaitReviewCell.xib */; };
+		DD58FFCC1F5137BA009EC9F2 /* WaitAuditSignUpDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFCB1F5137BA009EC9F2 /* WaitAuditSignUpDataModel.m */; };
+		DD58FFCF1F5137CA009EC9F2 /* WaitAuditSignUpResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFCE1F5137CA009EC9F2 /* WaitAuditSignUpResultModel.m */; };
+		DD58FFD21F516766009EC9F2 /* MyJoinedActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFD11F516766009EC9F2 /* MyJoinedActivityViewController.m */; };
+		DD58FFD61F5167DB009EC9F2 /* MyJoinedActivityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFD41F5167DB009EC9F2 /* MyJoinedActivityListViewController.m */; };
+		DD58FFD71F5167DB009EC9F2 /* MyJoinedActivityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FFD51F5167DB009EC9F2 /* MyJoinedActivityListViewController.xib */; };
+		DD58FFDB1F517A90009EC9F2 /* HotTopicListDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFDA1F517A90009EC9F2 /* HotTopicListDataModel.m */; };
+		DD58FFDE1F517AA3009EC9F2 /* HotTopicListResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFDD1F517AA3009EC9F2 /* HotTopicListResultModel.m */; };
 		DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */; };
 		DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */; };
 		DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */; };
@@ -897,6 +917,40 @@
 		DD58FFA11F5023F2009EC9F2 /* WaitToReviewActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitToReviewActivityCell.h; path = cells/WaitToReviewActivityCell.h; sourceTree = "<group>"; };
 		DD58FFA21F5023F2009EC9F2 /* WaitToReviewActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaitToReviewActivityCell.m; path = cells/WaitToReviewActivityCell.m; sourceTree = "<group>"; };
 		DD58FFA31F5023F2009EC9F2 /* WaitToReviewActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WaitToReviewActivityCell.xib; path = cells/WaitToReviewActivityCell.xib; sourceTree = "<group>"; };
+		DD58FFA61F510958009EC9F2 /* FailureReviewActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FailureReviewActivityCell.h; path = cells/FailureReviewActivityCell.h; sourceTree = "<group>"; };
+		DD58FFA71F510958009EC9F2 /* FailureReviewActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FailureReviewActivityCell.m; path = cells/FailureReviewActivityCell.m; sourceTree = "<group>"; };
+		DD58FFA81F510958009EC9F2 /* FailureReviewActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FailureReviewActivityCell.xib; path = cells/FailureReviewActivityCell.xib; sourceTree = "<group>"; };
+		DD58FFAC1F51109B009EC9F2 /* RefuseActivityDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RefuseActivityDataModel.h; path = models/RefuseActivityDataModel.h; sourceTree = "<group>"; };
+		DD58FFAD1F51109B009EC9F2 /* RefuseActivityDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RefuseActivityDataModel.m; path = models/RefuseActivityDataModel.m; sourceTree = "<group>"; };
+		DD58FFAF1F5110B8009EC9F2 /* RefuseActivityResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RefuseActivityResultModel.h; path = models/RefuseActivityResultModel.h; sourceTree = "<group>"; };
+		DD58FFB01F5110B8009EC9F2 /* RefuseActivityResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RefuseActivityResultModel.m; path = models/RefuseActivityResultModel.m; sourceTree = "<group>"; };
+		DD58FFB21F5118C7009EC9F2 /* MyActivitySignUpListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyActivitySignUpListViewController.h; path = controllers/discover/MyActivitySignUpListViewController.h; sourceTree = "<group>"; };
+		DD58FFB31F5118C7009EC9F2 /* MyActivitySignUpListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyActivitySignUpListViewController.m; path = controllers/discover/MyActivitySignUpListViewController.m; sourceTree = "<group>"; };
+		DD58FFB51F511AD4009EC9F2 /* MyActivitySignUpListWaitToReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyActivitySignUpListWaitToReviewViewController.h; path = controllers/discover/MyActivitySignUpListWaitToReviewViewController.h; sourceTree = "<group>"; };
+		DD58FFB61F511AD4009EC9F2 /* MyActivitySignUpListWaitToReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyActivitySignUpListWaitToReviewViewController.m; path = controllers/discover/MyActivitySignUpListWaitToReviewViewController.m; sourceTree = "<group>"; };
+		DD58FFB71F511AD4009EC9F2 /* MyActivitySignUpListWaitToReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyActivitySignUpListWaitToReviewViewController.xib; path = controllers/discover/MyActivitySignUpListWaitToReviewViewController.xib; sourceTree = "<group>"; };
+		DD58FFBA1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyActivitySignUpListPassedViewController.h; path = controllers/discover/MyActivitySignUpListPassedViewController.h; sourceTree = "<group>"; };
+		DD58FFBB1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyActivitySignUpListPassedViewController.m; path = controllers/discover/MyActivitySignUpListPassedViewController.m; sourceTree = "<group>"; };
+		DD58FFBC1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyActivitySignUpListPassedViewController.xib; path = controllers/discover/MyActivitySignUpListPassedViewController.xib; sourceTree = "<group>"; };
+		DD58FFBF1F512E39009EC9F2 /* MyActivitySignUpListPassedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyActivitySignUpListPassedCell.h; path = cells/MyActivitySignUpListPassedCell.h; sourceTree = "<group>"; };
+		DD58FFC01F512E39009EC9F2 /* MyActivitySignUpListPassedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyActivitySignUpListPassedCell.m; path = cells/MyActivitySignUpListPassedCell.m; sourceTree = "<group>"; };
+		DD58FFC11F512E39009EC9F2 /* MyActivitySignUpListPassedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyActivitySignUpListPassedCell.xib; path = cells/MyActivitySignUpListPassedCell.xib; sourceTree = "<group>"; };
+		DD58FFC41F512E56009EC9F2 /* MyActivitySignUpListWaitReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyActivitySignUpListWaitReviewCell.h; path = cells/MyActivitySignUpListWaitReviewCell.h; sourceTree = "<group>"; };
+		DD58FFC51F512E56009EC9F2 /* MyActivitySignUpListWaitReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyActivitySignUpListWaitReviewCell.m; path = cells/MyActivitySignUpListWaitReviewCell.m; sourceTree = "<group>"; };
+		DD58FFC61F512E56009EC9F2 /* MyActivitySignUpListWaitReviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyActivitySignUpListWaitReviewCell.xib; path = cells/MyActivitySignUpListWaitReviewCell.xib; sourceTree = "<group>"; };
+		DD58FFCA1F5137BA009EC9F2 /* WaitAuditSignUpDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitAuditSignUpDataModel.h; path = models/WaitAuditSignUpDataModel.h; sourceTree = "<group>"; };
+		DD58FFCB1F5137BA009EC9F2 /* WaitAuditSignUpDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaitAuditSignUpDataModel.m; path = models/WaitAuditSignUpDataModel.m; sourceTree = "<group>"; };
+		DD58FFCD1F5137CA009EC9F2 /* WaitAuditSignUpResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitAuditSignUpResultModel.h; path = models/WaitAuditSignUpResultModel.h; sourceTree = "<group>"; };
+		DD58FFCE1F5137CA009EC9F2 /* WaitAuditSignUpResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaitAuditSignUpResultModel.m; path = models/WaitAuditSignUpResultModel.m; sourceTree = "<group>"; };
+		DD58FFD01F516766009EC9F2 /* MyJoinedActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyJoinedActivityViewController.h; path = controllers/discover/MyJoinedActivityViewController.h; sourceTree = "<group>"; };
+		DD58FFD11F516766009EC9F2 /* MyJoinedActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyJoinedActivityViewController.m; path = controllers/discover/MyJoinedActivityViewController.m; sourceTree = "<group>"; };
+		DD58FFD31F5167DB009EC9F2 /* MyJoinedActivityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyJoinedActivityListViewController.h; path = controllers/discover/MyJoinedActivityListViewController.h; sourceTree = "<group>"; };
+		DD58FFD41F5167DB009EC9F2 /* MyJoinedActivityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyJoinedActivityListViewController.m; path = controllers/discover/MyJoinedActivityListViewController.m; sourceTree = "<group>"; };
+		DD58FFD51F5167DB009EC9F2 /* MyJoinedActivityListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyJoinedActivityListViewController.xib; path = controllers/discover/MyJoinedActivityListViewController.xib; sourceTree = "<group>"; };
+		DD58FFD91F517A90009EC9F2 /* HotTopicListDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotTopicListDataModel.h; path = models/HotTopicListDataModel.h; sourceTree = "<group>"; };
+		DD58FFDA1F517A90009EC9F2 /* HotTopicListDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotTopicListDataModel.m; path = models/HotTopicListDataModel.m; sourceTree = "<group>"; };
+		DD58FFDC1F517AA3009EC9F2 /* HotTopicListResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotTopicListResultModel.h; path = models/HotTopicListResultModel.h; sourceTree = "<group>"; };
+		DD58FFDD1F517AA3009EC9F2 /* HotTopicListResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotTopicListResultModel.m; path = models/HotTopicListResultModel.m; sourceTree = "<group>"; };
 		DD6286F71F1E398C0030331D /* Discover_HotTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_HotTopicCell.h; path = cells/Discover_HotTopicCell.h; sourceTree = "<group>"; };
 		DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_HotTopicCell.m; path = cells/Discover_HotTopicCell.m; sourceTree = "<group>"; };
 		DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_HotTopicCell.xib; path = cells/Discover_HotTopicCell.xib; sourceTree = "<group>"; };
@@ -1843,6 +1897,39 @@
 			name = WaitToReviewActivityModel;
 			sourceTree = "<group>";
 		};
+		DD58FFAB1F511069009EC9F2 /* RefuseActivityModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD58FFAC1F51109B009EC9F2 /* RefuseActivityDataModel.h */,
+				DD58FFAD1F51109B009EC9F2 /* RefuseActivityDataModel.m */,
+				DD58FFAF1F5110B8009EC9F2 /* RefuseActivityResultModel.h */,
+				DD58FFB01F5110B8009EC9F2 /* RefuseActivityResultModel.m */,
+			);
+			name = RefuseActivityModel;
+			sourceTree = "<group>";
+		};
+		DD58FFC91F51378D009EC9F2 /* WaitAuditSignUpModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD58FFCA1F5137BA009EC9F2 /* WaitAuditSignUpDataModel.h */,
+				DD58FFCB1F5137BA009EC9F2 /* WaitAuditSignUpDataModel.m */,
+				DD58FFCD1F5137CA009EC9F2 /* WaitAuditSignUpResultModel.h */,
+				DD58FFCE1F5137CA009EC9F2 /* WaitAuditSignUpResultModel.m */,
+			);
+			name = WaitAuditSignUpModel;
+			sourceTree = "<group>";
+		};
+		DD58FFD81F517A5E009EC9F2 /* HotTopicListModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD58FFD91F517A90009EC9F2 /* HotTopicListDataModel.h */,
+				DD58FFDA1F517A90009EC9F2 /* HotTopicListDataModel.m */,
+				DD58FFDC1F517AA3009EC9F2 /* HotTopicListResultModel.h */,
+				DD58FFDD1F517AA3009EC9F2 /* HotTopicListResultModel.m */,
+			);
+			name = HotTopicListModel;
+			sourceTree = "<group>";
+		};
 		DD6288001F2214F40030331D /* RatingBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2523,6 +2610,15 @@
 				DD58FFA11F5023F2009EC9F2 /* WaitToReviewActivityCell.h */,
 				DD58FFA21F5023F2009EC9F2 /* WaitToReviewActivityCell.m */,
 				DD58FFA31F5023F2009EC9F2 /* WaitToReviewActivityCell.xib */,
+				DD58FFA61F510958009EC9F2 /* FailureReviewActivityCell.h */,
+				DD58FFA71F510958009EC9F2 /* FailureReviewActivityCell.m */,
+				DD58FFA81F510958009EC9F2 /* FailureReviewActivityCell.xib */,
+				DD58FFBF1F512E39009EC9F2 /* MyActivitySignUpListPassedCell.h */,
+				DD58FFC01F512E39009EC9F2 /* MyActivitySignUpListPassedCell.m */,
+				DD58FFC11F512E39009EC9F2 /* MyActivitySignUpListPassedCell.xib */,
+				DD58FFC41F512E56009EC9F2 /* MyActivitySignUpListWaitReviewCell.h */,
+				DD58FFC51F512E56009EC9F2 /* MyActivitySignUpListWaitReviewCell.m */,
+				DD58FFC61F512E56009EC9F2 /* MyActivitySignUpListWaitReviewCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -2656,6 +2752,9 @@
 				DD58FF8F1F4FD5BA009EC9F2 /* ActivityDetailModel */,
 				DD58FF931F5002A3009EC9F2 /* ActivitySignUpListModel */,
 				DD58FF9A1F50219B009EC9F2 /* WaitToReviewActivityModel */,
+				DD58FFAB1F511069009EC9F2 /* RefuseActivityModel */,
+				DD58FFC91F51378D009EC9F2 /* WaitAuditSignUpModel */,
+				DD58FFD81F517A5E009EC9F2 /* HotTopicListModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -2812,9 +2911,22 @@
 				DD6287EA1F21E8C00030331D /* FailureReviewViewController.h */,
 				DD6287EB1F21E8C00030331D /* FailureReviewViewController.m */,
 				DD6287EC1F21E8C00030331D /* FailureReviewViewController.xib */,
+				DD58FFB21F5118C7009EC9F2 /* MyActivitySignUpListViewController.h */,
+				DD58FFB31F5118C7009EC9F2 /* MyActivitySignUpListViewController.m */,
+				DD58FFB51F511AD4009EC9F2 /* MyActivitySignUpListWaitToReviewViewController.h */,
+				DD58FFB61F511AD4009EC9F2 /* MyActivitySignUpListWaitToReviewViewController.m */,
+				DD58FFB71F511AD4009EC9F2 /* MyActivitySignUpListWaitToReviewViewController.xib */,
+				DD58FFBA1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.h */,
+				DD58FFBB1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.m */,
+				DD58FFBC1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.xib */,
 				DD6287DB1F21E3B20030331D /* ActivityViewController.h */,
 				DD6287DC1F21E3B20030331D /* ActivityViewController.m */,
 				DD6287DD1F21E3B20030331D /* ActivityViewController.xib */,
+				DD58FFD01F516766009EC9F2 /* MyJoinedActivityViewController.h */,
+				DD58FFD11F516766009EC9F2 /* MyJoinedActivityViewController.m */,
+				DD58FFD31F5167DB009EC9F2 /* MyJoinedActivityListViewController.h */,
+				DD58FFD41F5167DB009EC9F2 /* MyJoinedActivityListViewController.m */,
+				DD58FFD51F5167DB009EC9F2 /* MyJoinedActivityListViewController.xib */,
 				DD6287CC1F21C26C0030331D /* DomainViewController.h */,
 				DD6287CD1F21C26C0030331D /* DomainViewController.m */,
 				DD6287CE1F21C26C0030331D /* DomainViewController.xib */,
@@ -3083,6 +3195,7 @@
 				DD58FF701F4D7467009EC9F2 /* AddCommentReleaseCell.xib in Resources */,
 				DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */,
 				DD6287C11F21AB890030331D /* HandpickActivitiesCell.xib in Resources */,
+				DD58FFB91F511AD4009EC9F2 /* MyActivitySignUpListWaitToReviewViewController.xib in Resources */,
 				DDFB825F1F187A7900AEAAA7 /* cb_glossy_off@2x.png in Resources */,
 				DD0939081F442E7400A75182 /* OrderListViewController_Four.xib in Resources */,
 				DDFB82671F187A7900AEAAA7 /* cb_mono_off@2x.png in Resources */,
@@ -3108,9 +3221,11 @@
 				DD9A63AA1F2EE20100611FA8 /* AfterSalesViewController.xib in Resources */,
 				DD9A63AF1F2EE29C00611FA8 /* AfterSalesCell.xib in Resources */,
 				DDFB825E1F187A7900AEAAA7 /* cb_glossy_off.png in Resources */,
+				DD58FFC81F512E56009EC9F2 /* MyActivitySignUpListWaitReviewCell.xib in Resources */,
 				DDFB82611F187A7900AEAAA7 /* cb_glossy_on@2x.png in Resources */,
 				DD9A63A01F2ECEF700611FA8 /* OrderListHeaderView.xib in Resources */,
 				DDC52EC31F42C84D00ECF211 /* SuccessPayTableViewCell.xib in Resources */,
+				DD58FFAA1F510958009EC9F2 /* FailureReviewActivityCell.xib in Resources */,
 				DD6287CB1F21AF900030331D /* LookAroundTableCell.xib in Resources */,
 				DD6287EE1F21E8C00030331D /* FailureReviewViewController.xib in Resources */,
 				DDFB82701F18BC4500AEAAA7 /* PersonalCollectCell.xib in Resources */,
@@ -3171,6 +3286,7 @@
 				DD4CF0281F2877EC0024156F /* ActivityRecommendApplyCell.xib in Resources */,
 				DD6287C61F21AE580030331D /* LookAroundViewController.xib in Resources */,
 				DD6287B21F219BA50030331D /* HandpickActivitiesViewController.xib in Resources */,
+				DD58FFBE1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.xib in Resources */,
 				DD6287581F2049A10030331D /* ModifyPasswordViewController.xib in Resources */,
 				DD40B7241F1705A000839748 /* HomeCollectCell1.xib in Resources */,
 				DD69B2B41F39B6980036F368 /* OrderConfirmFeeCell.xib in Resources */,
@@ -3196,6 +3312,7 @@
 				DD6287F81F21EE4C0030331D /* PersonalActivityRankCell.xib in Resources */,
 				DD6287A31F2191C90030331D /* ActivityRankNormalCell.xib in Resources */,
 				DD69B2F31F3AFD390036F368 /* area.plist in Resources */,
+				DD58FFC31F512E39009EC9F2 /* MyActivitySignUpListPassedCell.xib in Resources */,
 				DD6287761F208C0B0030331D /* HotCircleViewController.xib in Resources */,
 				DDE0FD3F1F38714600269DBD /* BrandStoryCell.xib in Resources */,
 				DD9A63A51F2ECF3300611FA8 /* OrderListFooterView.xib in Resources */,
@@ -3217,6 +3334,7 @@
 				DD6898291F30525A008B6A8F /* MoreProductTableViewCell.xib in Resources */,
 				EC4BA0CD1F1359DF00B9BE1A /* SelectThemeColorView.xib in Resources */,
 				DDC52EBE1F42C44000ECF211 /* SuccessPayHeaderView.xib in Resources */,
+				DD58FFD71F5167DB009EC9F2 /* MyJoinedActivityListViewController.xib in Resources */,
 				DDE0FD3A1F38585B00269DBD /* BrandStoryViewController.xib in Resources */,
 				DD62870F1F1EEE1B0030331D /* FocusPersonHeaderCell.xib in Resources */,
 				DD62880F1F22EB090030331D /* SubMessage_CommentViewController.xib in Resources */,
@@ -3295,6 +3413,7 @@
 				DDFB82B51F1D931500AEAAA7 /* PYSearchConst.m in Sources */,
 				DD4CF0AE1F29A8FC0024156F /* AtSomeOneCell.m in Sources */,
 				DD0DBB0A1F3431650098F5FA /* GetSpecPriceDataModel.m in Sources */,
+				DD58FFD21F516766009EC9F2 /* MyJoinedActivityViewController.m in Sources */,
 				DD0939231F45918900A75182 /* UIButton+Badge.m in Sources */,
 				DDC52ECE1F42E43600ECF211 /* SuccessPayRecommedHeaderView.m in Sources */,
 				DD58FF5C1F4C31F8009EC9F2 /* MyTrackGoodsInfoModel.m in Sources */,
@@ -3343,11 +3462,14 @@
 				DD4CF0E91F29BF850024156F /* YQMemoryCache.m in Sources */,
 				EC4BA1341F1462F100B9BE1A /* GiftSendingTableViewCell.m in Sources */,
 				DDFB828E1F1C5E3900AEAAA7 /* MoreProductListCell.m in Sources */,
+				DD58FFBD1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.m in Sources */,
+				DD58FFB41F5118C7009EC9F2 /* MyActivitySignUpListViewController.m in Sources */,
 				DD4CEFF91F2732210024156F /* AllProductViewController.m in Sources */,
 				DD69B2D81F3AB7D80036F368 /* OrderConfirmUserAddressModel.m in Sources */,
 				DD6287F71F21EE4C0030331D /* PersonalActivityRankCell.m in Sources */,
 				DD69B2901F3954A50036F368 /* EditCartNumberModel.m in Sources */,
 				DD6898581F31B5DC008B6A8F /* GoodsDetailGoodsInfoModel.m in Sources */,
+				DD58FFA91F510958009EC9F2 /* FailureReviewActivityCell.m in Sources */,
 				DD6898551F31B56F008B6A8F /* GoodsDetailResultModel.m in Sources */,
 				DDDD17C91F2C9141006BE206 /* MyOrderViewController.m in Sources */,
 				DD62876B1F207A850030331D /* CustomerServiceCenterViewController.m in Sources */,
@@ -3384,6 +3506,7 @@
 				DD62878E1F20C2290030331D /* MyCircleHeaderCell.m in Sources */,
 				DD69B2961F3954D60036F368 /* EditCartNumberResultModel.m in Sources */,
 				DD184E471F3D9537009BFF5B /* PlaceOrderModel.m in Sources */,
+				DD58FFC21F512E39009EC9F2 /* MyActivitySignUpListPassedCell.m in Sources */,
 				DD4CF0E81F29BF850024156F /* YQLRUManager.m in Sources */,
 				DD62875C1F20522F0030331D /* MyCollectProductViewController.m in Sources */,
 				DD69B2F41F3AFD390036F368 /* NSCalendar+STPicker.m in Sources */,
@@ -3401,6 +3524,7 @@
 				DD58FF481F4C1034009EC9F2 /* MyCollectionListResultModel.m in Sources */,
 				DD184E4D1F3D9595009BFF5B /* PlaceOrderResultModel.m in Sources */,
 				DDE0FD1A1F35C8FD00269DBD /* CartListAllSelectedDataModel.m in Sources */,
+				DD58FFDB1F517A90009EC9F2 /* HotTopicListDataModel.m in Sources */,
 				DD69B2931F3954BA0036F368 /* EditCartNumberDataModel.m in Sources */,
 				DD58FF511F4C2D45009EC9F2 /* MyTrackTableViewCell.m in Sources */,
 				DD0938F11F43E89500A75182 /* OrderListGoodsModel.m in Sources */,
@@ -3410,6 +3534,7 @@
 				DD69B2FA1F3AFD390036F368 /* UIView+STPicker.m in Sources */,
 				DD62871D1F1F3D8B0030331D /* PriaseTableViewCell.m in Sources */,
 				DD0DBAD31F32B9970098F5FA /* RecommendGoodsDataModel.m in Sources */,
+				DD58FFCF1F5137CA009EC9F2 /* WaitAuditSignUpResultModel.m in Sources */,
 				DD4CF0A41F2996B60024156F /* MoreCycleViewController.m in Sources */,
 				DD69B2BC1F39D25C0036F368 /* BuyNowSelectSpecView.m in Sources */,
 				DD58FF801F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.m in Sources */,
@@ -3463,7 +3588,9 @@
 				EC4BA0F21F136CA400B9BE1A /* CategateViewController.m in Sources */,
 				DD9A63A31F2ECF1C00611FA8 /* OrderListFooterView.m in Sources */,
 				DD4CEFCC1F25B3720024156F /* ProductColorAndCountView.m in Sources */,
+				DD58FFB11F5110B8009EC9F2 /* RefuseActivityResultModel.m in Sources */,
 				DD4CEFDB1F25E08D0024156F /* CommentListCell.m in Sources */,
+				DD58FFCC1F5137BA009EC9F2 /* WaitAuditSignUpDataModel.m in Sources */,
 				DD9A63BA1F2EF3B600611FA8 /* HomeGoodsDataModel.m in Sources */,
 				DD58FFA41F5023F2009EC9F2 /* WaitToReviewActivityCell.m in Sources */,
 				DDFB82C01F1E059A00AEAAA7 /* DiscoverDynamicCell.m in Sources */,
@@ -3481,6 +3608,7 @@
 				DD4CF0181F285E7D0024156F /* ActivityRecommendImageCell.m in Sources */,
 				EC4BA24B1F14F85000B9BE1A /* UIView+CurrentViewController.m in Sources */,
 				DDFB82781F19B98E00AEAAA7 /* Categate_CategateTableViewCell.m in Sources */,
+				DD58FFC71F512E56009EC9F2 /* MyActivitySignUpListWaitReviewCell.m in Sources */,
 				DD62874D1F2032220030331D /* MyAddressCell.m in Sources */,
 				DD4CEFEC1F26DEDA0024156F /* BrandDetailHeaderCell.m in Sources */,
 				DDC52E9A1F4180B100ECF211 /* PlaceOrderWeChatPayModel.m in Sources */,
@@ -3512,6 +3640,7 @@
 				DD62877F1F208CE60030331D /* RankingListViewController.m in Sources */,
 				DD62881D1F22EC5F0030331D /* SubNotification_AnnouncementViewController.m in Sources */,
 				DD6287611F2053750030331D /* MyCollectProductCell.m in Sources */,
+				DD58FFD61F5167DB009EC9F2 /* MyJoinedActivityListViewController.m in Sources */,
 				DD4CF09F1F2975880024156F /* NewPostImageCell.m in Sources */,
 				DD6287091F1EE3210030331D /* FocusPersonCell.m in Sources */,
 				DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */,
@@ -3591,6 +3720,7 @@
 				EC4BA2541F15EDF000B9BE1A /* DiscoverHeaderCell.m in Sources */,
 				DD69B2F81F3AFD390036F368 /* STPickerView.m in Sources */,
 				DDE0FCF81F35642C00269DBD /* AddToCartDataModel.m in Sources */,
+				DD58FFAE1F51109B009EC9F2 /* RefuseActivityDataModel.m in Sources */,
 				DD6897FF1F2F276C008B6A8F /* AllBrandDataModel.m in Sources */,
 				DD184E4A1F3D957B009BFF5B /* PlaceOrderDataModel.m in Sources */,
 				DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */,
@@ -3600,7 +3730,9 @@
 				DD6288391F233FA30030331D /* SameHobbyPersonListCell.m in Sources */,
 				DDE0FD351F37F7B300269DBD /* BrandDetail_BrandGoodsModel.m in Sources */,
 				DD58FF561F4C31C0009EC9F2 /* MyTrackDataModel.m in Sources */,
+				DD58FFB81F511AD4009EC9F2 /* MyActivitySignUpListWaitToReviewViewController.m in Sources */,
 				DD58FF921F4FD5F7009EC9F2 /* ActivityDetailResultModel.m in Sources */,
+				DD58FFDE1F517AA3009EC9F2 /* HotTopicListResultModel.m in Sources */,
 				DD6898021F2F279A008B6A8F /* AllBrandResultModel.m in Sources */,
 				DD4CEFD21F25D1B90024156F /* ProductStyleSelectionCell.m in Sources */,
 				DD6287D91F21DE0C0030331D /* MyFocusViewController.m in Sources */,

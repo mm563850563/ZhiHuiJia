@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jds-Tu-3RN">
                         <rect key="frame" x="0.0" y="1" width="320" height="90.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FBT-Jb-XLj">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FBT-Jb-XLj">
                                 <rect key="frame" x="10" y="8" width="74.5" height="74.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FBT-Jb-XLj" secondAttribute="height" multiplier="1:1" id="XKD-kE-oVZ"/>
@@ -135,7 +135,7 @@
                 <constraints>
                     <constraint firstItem="jds-Tu-3RN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="GK4-sr-hWf"/>
                     <constraint firstItem="jds-Tu-3RN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="eyP-Zp-8ij"/>
-                    <constraint firstAttribute="bottom" secondItem="jds-Tu-3RN" secondAttribute="bottom" id="kFv-wk-hgj"/>
+                    <constraint firstAttribute="bottom" secondItem="jds-Tu-3RN" secondAttribute="bottom" constant="0.5" id="kFv-wk-hgj"/>
                     <constraint firstAttribute="trailing" secondItem="jds-Tu-3RN" secondAttribute="trailing" id="lii-ON-Tjd"/>
                 </constraints>
             </tableViewCellContentView>

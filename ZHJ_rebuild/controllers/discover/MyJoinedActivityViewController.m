@@ -1,36 +1,32 @@
 //
-//  ActivityViewController.m
+//  MyJoinedActivityViewController.m
 //  ZHJ_rebuild
 //
-//  Created by ZHJ on 2017/7/21.
+//  Created by ZHJ on 2017/8/26.
 //  Copyright © 2017年 sophia. All rights reserved.
 //
 
-#import "ActivityViewController.h"
+#import "MyJoinedActivityViewController.h"
 
 //views
 #import "SegmentTapView.h"
 #import "FlipTableView.h"
 
 //controllers
-#import "WaitForReviewViewController.h"
-#import "AlreadyPassedViewController.h"
-#import "FailureReviewViewController.h"
+#import "MyJoinedActivityListViewController.h"
 
-#import "MyActivitySignUpListViewController.h"
-
-@interface ActivityViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate>
+@interface MyJoinedActivityViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate>
 
 @property (nonatomic, strong)SegmentTapView *segmentView;
 @property (nonatomic, strong)FlipTableView *flipView;
 
 @end
 
-@implementation ActivityViewController
+@implementation MyJoinedActivityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    // Do any additional setup after loading the view.
     
     [self initSegmentView];
     [self initFlipView];
@@ -52,6 +48,9 @@
 }
 */
 
+
+
+
 #pragma mark - <初始化segmentView>
 -(void)initSegmentView
 {
@@ -59,18 +58,24 @@
     self.segmentView = [[SegmentTapView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 40) withDataArray:array withFont:14];
     self.segmentView.delegate = self;
     [self.view addSubview:self.segmentView];
-//    [self.segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
-//    }];
+    //    [self.segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    //    }];
     
 }
 
 #pragma mark - <初始化flipView>
 -(void)initFlipView
 {
-    WaitForReviewViewController *waitReviewVC = [[WaitForReviewViewController alloc]initWithNibName:NSStringFromClass([WaitForReviewViewController class]) bundle:nil];
-    AlreadyPassedViewController *passedVC = [[AlreadyPassedViewController alloc]initWithNibName:NSStringFromClass([AlreadyPassedViewController class]) bundle:nil];
-    FailureReviewViewController *failureReviewVC = [[FailureReviewViewController alloc]initWithNibName:NSStringFromClass([FailureReviewViewController class]) bundle:nil];
+    MyJoinedActivityListViewController *waitReviewVC = [[MyJoinedActivityListViewController alloc]initWithNibName:NSStringFromClass([MyJoinedActivityListViewController class]) bundle:nil];
+    waitReviewVC.status = @"0";
+    
+    MyJoinedActivityListViewController *passedVC = [[MyJoinedActivityListViewController alloc]initWithNibName:NSStringFromClass([MyJoinedActivityListViewController class]) bundle:nil];
+    passedVC.status = @"1";
+    
+    MyJoinedActivityListViewController *failureReviewVC = [[MyJoinedActivityListViewController alloc]initWithNibName:NSStringFromClass([MyJoinedActivityListViewController class]) bundle:nil];
+    failureReviewVC.status = @"2";
+    
     NSMutableArray *vcArray = [NSMutableArray array];
     [vcArray addObject:waitReviewVC];
     [vcArray addObject:passedVC];
@@ -79,26 +84,16 @@
     self.flipView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 40, kSCREEN_WIDTH, self.view.frame.size.height-40-64) withArray:vcArray];
     self.flipView.delegate = self;
     [self.view addSubview:self.flipView];
-//    [self.flipView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
-//    }];
+    //    [self.flipView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    //    }];
 }
 
-#pragma mark - <跳转“报名列表”页面>
--(void)jumpToSignUpListVCWithActivityID:(NSString *)activity_id
-{
-    MyActivitySignUpListViewController *myActivitySignUpListVC = [[MyActivitySignUpListViewController alloc]init];
-    myActivitySignUpListVC.activity_id = activity_id;
-    [self.navigationController pushViewController:myActivitySignUpListVC animated:YES];
-}
 
 #pragma mark - <rac响应>
 -(void)respondWithRAC
 {
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToSignUpListVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        NSString *activity_id = x.object;
-        [self jumpToSignUpListVCWithActivityID:activity_id];
-    }];
+    
 }
 
 
@@ -114,16 +109,5 @@
 {
     [self.segmentView selectIndex:index];
 }
-
-
-
-
-
-
-
-
-
-
-
 
 @end

@@ -114,13 +114,6 @@
                                     <constraint firstAttribute="bottom" secondItem="ALI-I3-igR" secondAttribute="bottom" id="nCm-Tl-hKX"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2u-mZ-hmJ">
-                                <rect key="frame" x="0.0" y="260" width="195" height="1"/>
-                                <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="5Tm-0w-JfG"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -128,14 +121,11 @@
                             <constraint firstAttribute="trailing" secondItem="Pw9-TU-4PL" secondAttribute="trailing" constant="5" id="5Zg-de-JFS"/>
                             <constraint firstItem="Pw9-TU-4PL" firstAttribute="top" secondItem="vnd-fb-s7Z" secondAttribute="bottom" constant="40" id="6lE-NC-f9y"/>
                             <constraint firstItem="fi7-gM-Pb4" firstAttribute="leading" secondItem="MYv-xk-zDi" secondAttribute="leading" constant="5" id="EXR-Fn-ZHc"/>
-                            <constraint firstItem="s2u-mZ-hmJ" firstAttribute="top" secondItem="Pw9-TU-4PL" secondAttribute="bottom" constant="5" id="Gdx-n4-BLL"/>
-                            <constraint firstItem="s2u-mZ-hmJ" firstAttribute="leading" secondItem="MYv-xk-zDi" secondAttribute="leading" id="HKW-AD-KiT"/>
                             <constraint firstItem="vnd-fb-s7Z" firstAttribute="top" secondItem="MYv-xk-zDi" secondAttribute="top" id="eZ8-7j-49N"/>
                             <constraint firstItem="vnd-fb-s7Z" firstAttribute="leading" secondItem="MYv-xk-zDi" secondAttribute="leading" id="hpY-Tl-EKy"/>
                             <constraint firstItem="Pw9-TU-4PL" firstAttribute="leading" secondItem="MYv-xk-zDi" secondAttribute="leading" constant="5" id="q1m-ld-hqn"/>
                             <constraint firstAttribute="trailing" secondItem="fi7-gM-Pb4" secondAttribute="trailing" constant="5" id="roK-8B-Ifr"/>
                             <constraint firstAttribute="trailing" secondItem="vnd-fb-s7Z" secondAttribute="trailing" id="uH2-Zg-1FD"/>
-                            <constraint firstAttribute="trailing" secondItem="s2u-mZ-hmJ" secondAttribute="trailing" id="xUs-yz-MZt"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -147,6 +137,12 @@
                 <constraint firstItem="MYv-xk-zDi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="img-qu-3s9"/>
             </constraints>
             <size key="customSize" width="195" height="314"/>
+            <connections>
+                <outlet property="imgViewProduct" destination="vnd-fb-s7Z" id="hTb-Rc-55W"/>
+                <outlet property="labelCommentCount" destination="4Ee-iX-6l3" id="PiJ-IT-aLI"/>
+                <outlet property="labelPraiseCount" destination="D7y-ZE-Zlu" id="hsP-AV-s72"/>
+                <outlet property="labelTopic" destination="fi7-gM-Pb4" id="jXb-57-slW"/>
+            </connections>
             <point key="canvasLocation" x="-38.5" y="102"/>
         </collectionViewCell>
     </objects>

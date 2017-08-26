@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="555" height="813.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huodong" translatesAutoresizingMaskIntoConstraints="NO" id="1Of-S5-ZIv">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huodong" translatesAutoresizingMaskIntoConstraints="NO" id="1Of-S5-ZIv">
                         <rect key="frame" x="0.0" y="0.0" width="553" height="553.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="1Of-S5-ZIv" secondAttribute="height" multiplier="1:1" id="4a4-ko-uvl"/>

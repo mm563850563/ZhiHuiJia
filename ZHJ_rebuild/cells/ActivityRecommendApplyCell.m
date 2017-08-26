@@ -53,4 +53,14 @@
     }
 }
 
+- (IBAction)btnOnFocusAction:(UIButton *)sender
+{
+    if (!sender.selected) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"attentionFriend_activityDetail" object:self.modelSignUpList.friend_user_id];
+    }else{
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"cancelAttention_activityDetail" object:self.modelSignUpList.friend_user_id];
+    }
+}
+
+
 @end

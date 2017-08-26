@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view from its nib.
     
     self.page = [NSNumber numberWithInt:1];
-    [self getWaitAuditActivitiesData];
+    [self get_MyActivity_WaitAuditActivitiesData];
     [self settingTableView];
 }
 
@@ -60,8 +60,8 @@
 }
 */
 
-#pragma mark - <待审核活动>
--(void)getWaitAuditActivitiesData
+#pragma mark - <待审核活动_我的活动>
+-(void)get_MyActivity_WaitAuditActivitiesData
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kWaitAuditActivities];
     NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
@@ -104,8 +104,8 @@
 }
 
 
-#pragma mark - <获取更多待审核活动数据>
--(void)getMoreWaitAuditActivitiesDataWithPage:(NSNumber *)page
+#pragma mark - <获取更多待审核活动数据——我的活动>
+-(void)getMore_MyActivity_WaitAuditActivitiesDataWithPage:(NSNumber *)page
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kWaitAuditActivities];
     NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
@@ -147,6 +147,7 @@
     }];
 }
 
+
 #pragma mark - <配置tableView>
 -(void)settingTableView
 {
@@ -154,8 +155,8 @@
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 120;
     
-    UINib *nib = [UINib nibWithNibName:NSStringFromClass([WaitToReviewActivityCell class]) bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([WaitToReviewActivityCell class])];
+    UINib *nibMyActivity = [UINib nibWithNibName:NSStringFromClass([WaitToReviewActivityCell class]) bundle:nil];
+    [self.tableView registerNib:nibMyActivity forCellReuseIdentifier:NSStringFromClass([WaitToReviewActivityCell class])];
     
     UINib *nibNull = [UINib nibWithNibName:NSStringFromClass([NULLTableViewCell class]) bundle:nil];
     [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
@@ -164,7 +165,7 @@
         int page = [self.page intValue];
         page++;
         self.page = [NSNumber numberWithInt:page];
-        [self getMoreWaitAuditActivitiesDataWithPage:self.page];
+        [self getMore_MyActivity_WaitAuditActivitiesDataWithPage:self.page];
     }];
 }
 

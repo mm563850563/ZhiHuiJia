@@ -170,7 +170,7 @@
 #pragma mark - <初始化tableView>
 -(void)initTableView
 {
-    self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, self.view.frame.size.height-64) style:UITableViewStylePlain];
     self.tableView.delegate =self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 100;
@@ -180,6 +180,8 @@
     
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([Discover_RecommendCell class]) bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([Discover_RecommendCell class])];
+    
+    
 }
 
 

@@ -19,6 +19,7 @@
 #import "PersonalFileViewController.h"
 #import "MyFocusViewController.h"
 #import "ActivityViewController.h"
+#import "MyJoinedActivityViewController.h"
 #import "PersonalRankActivityViewController.h"
 #import "NewPostViewController.h"
 
@@ -86,11 +87,17 @@
 }
 
 #pragma mark - <跳转“我的活动”页面>
-#pragma mark - <跳转“参与的活动”页面>
 -(void)jumpToMyActivitiesVC
 {
     ActivityViewController *activityVC = [[ActivityViewController alloc]initWithNibName:NSStringFromClass([ActivityViewController class]) bundle:nil];
     [self.navigationController pushViewController:activityVC animated:YES];
+}
+
+#pragma mark - <跳转“参与的活动”页面>
+-(void)jumpToMyJoinedActivityVC
+{
+    MyJoinedActivityViewController *myJoinedActivityVC = [[MyJoinedActivityViewController alloc]init];
+    [self.navigationController pushViewController:myJoinedActivityVC animated:YES];
 }
 
 #pragma mark - <跳转“个人活跃度排名”页面>
@@ -136,8 +143,9 @@
         [self jumpToMyActivitiesVC];
     }];
     
+    //我参与的活动
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToJoinedActivities" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        [self jumpToMyActivitiesVC];
+        [self jumpToMyJoinedActivityVC];
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToRankActivity" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
@@ -171,7 +179,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 340;
+    return 350;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section

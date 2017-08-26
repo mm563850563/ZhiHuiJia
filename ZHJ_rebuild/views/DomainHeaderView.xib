@@ -20,18 +20,18 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqv-qj-ufv">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="yGn-kn-ezp">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96n-w8-CxY">
-                                    <rect key="frame" x="0.0" y="180" width="375" height="30"/>
+                                    <rect key="frame" x="0.0" y="180" width="375" height="40"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwT-gM-ObZ">
-                                            <rect key="frame" x="125.5" y="0.0" width="124.5" height="30"/>
+                                            <rect key="frame" x="125.5" y="0.0" width="124.5" height="40"/>
                                             <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <state key="normal" title="参与的活动">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
@@ -40,9 +40,9 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sjp-gK-oUC">
-                                            <rect key="frame" x="0.0" y="0.0" width="124.5" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="124.5" height="40"/>
                                             <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <state key="normal" title="我的活动">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
@@ -51,9 +51,9 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAD-hq-Fgo">
-                                            <rect key="frame" x="250.5" y="0.0" width="124.5" height="30"/>
+                                            <rect key="frame" x="250.5" y="0.0" width="124.5" height="40"/>
                                             <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <state key="normal" title="个人活跃度排名">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
@@ -186,13 +186,13 @@
                                 <constraint firstItem="TkX-fc-bg9" firstAttribute="centerY" secondItem="2JV-FA-49A" secondAttribute="centerY" id="NuZ-WI-sld"/>
                                 <constraint firstItem="fUK-mT-v1f" firstAttribute="top" secondItem="P1z-b2-zKI" secondAttribute="bottom" id="Piq-zu-zt0"/>
                                 <constraint firstItem="P1z-b2-zKI" firstAttribute="top" secondItem="2bV-81-1VN" secondAttribute="bottom" id="SS6-Qp-qcp"/>
-                                <constraint firstAttribute="height" constant="210" id="Wsu-yi-Miu"/>
+                                <constraint firstAttribute="height" constant="220" id="Wsu-yi-Miu"/>
                                 <constraint firstItem="TkX-fc-bg9" firstAttribute="leading" secondItem="c4E-Na-rvY" secondAttribute="trailing" constant="10" id="Xjz-lo-wml"/>
                                 <constraint firstItem="2lz-rc-aIC" firstAttribute="leading" secondItem="fUK-mT-v1f" secondAttribute="trailing" constant="20" id="ZYc-P8-rSs"/>
                                 <constraint firstAttribute="trailing" secondItem="TkX-fc-bg9" secondAttribute="trailing" constant="15" id="cSd-TF-80n"/>
                                 <constraint firstItem="96n-w8-CxY" firstAttribute="leading" secondItem="hqv-qj-ufv" secondAttribute="leading" id="dmV-6b-ndT"/>
                                 <constraint firstItem="2JV-FA-49A" firstAttribute="top" secondItem="hqv-qj-ufv" secondAttribute="top" constant="15" id="eEH-C6-Gky"/>
-                                <constraint firstAttribute="bottom" secondItem="yGn-kn-ezp" secondAttribute="bottom" constant="30" id="hjp-pd-6aV"/>
+                                <constraint firstAttribute="bottom" secondItem="yGn-kn-ezp" secondAttribute="bottom" constant="40" id="hjp-pd-6aV"/>
                                 <constraint firstItem="2JV-FA-49A" firstAttribute="leading" secondItem="hqv-qj-ufv" secondAttribute="leading" constant="15" id="nN7-uk-urU"/>
                                 <constraint firstItem="5HX-u7-4ru" firstAttribute="leading" secondItem="2lz-rc-aIC" secondAttribute="trailing" constant="20" id="naO-Gv-Ifp"/>
                                 <constraint firstItem="yGn-kn-ezp" firstAttribute="leading" secondItem="hqv-qj-ufv" secondAttribute="leading" id="pdS-uR-c5g"/>
@@ -203,7 +203,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IsU-pV-fwG">
-                            <rect key="frame" x="0.0" y="210" width="375" height="140"/>
+                            <rect key="frame" x="0.0" y="220" width="375" height="140"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fabu" translatesAutoresizingMaskIntoConstraints="NO" id="DaQ-dB-HpA">
                                     <rect key="frame" x="147.5" y="10" width="80" height="80"/>

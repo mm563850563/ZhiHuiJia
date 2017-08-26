@@ -272,6 +272,30 @@
 #pragma mark - <60.已通过活动>
 #define kPassAuditActivities @"/Circle/passAuditActivities"
 
+#pragma mark - <61.审核失败>
+#define kRefuseActivity @"/Circle/refuseActivity"
+
+#pragma mark - <62.待审核的报名活动的用户>
+#define kWaitAuditSignUp @"/Circle/waitAuditSignUp"
+
+#pragma mark - <63.已通过审核的报名活动的用户>
+#define kPassAuditSignUp @"/Circle/passAuditSignUp"
+
+#pragma mark - <64.通过／拒绝用户报名活动>
+#define kAuditSignUp @"/Circle/auditSignUp"
+
+#pragma mark - <65.关注好友>
+#define kAttentionFriend @"/User/attentionFriend"
+
+#pragma mark - <66.取消关注好友>
+#define kCancelAttention @"/user/cancelAttention"
+
+#pragma mark - <67.参与的活动>
+#define kMySignUpActivities @"/Circle/mySignUpActivities"
+
+#pragma mark - <68.热门话题>
+#define kTopicList @"/Circle/topicList"
+
 
 
 

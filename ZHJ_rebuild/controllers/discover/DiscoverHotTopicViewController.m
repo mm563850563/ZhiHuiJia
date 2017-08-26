@@ -11,10 +11,14 @@
 //cells
 #import "Discover_HotTopicCell.h"
 
+//models
+#import "HotTopicListDataModel.h"
+#import "HotTopicListResultModel.h"
 
 @interface DiscoverHotTopicViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong)UICollectionView *collectionView;
+@property (nonatomic, strong)NSMutableArray *topicListArray;
 
 @end
 
@@ -24,12 +28,23 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = kColorFromRGB(kWhite);
+    
+    [self getHotTopicListData];
     [self initCollectionView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - <懒加载>
+-(NSMutableArray *)topicListArray
+{
+    if (_topicListArray) {
+        _topicListArray = [NSMutableArray array];
+    }
+    return _topicListArray;
 }
 
 /*
@@ -41,6 +56,53 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <获取“热门话题”列表>
+-(void)getHotTopicListData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kTopicList];
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:nil progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                HotTopicListDataModel *modelData = [[HotTopicListDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                self.topicListArray = [NSMutableArray arrayWithArray:modelData.result];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.collectionView reloadData];
+                    [hud hideAnimated:YES afterDelay:1.0];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+            
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
+#pragma mark - <获取更多“热门话题”列表>
+-(void)getMoreHotTopicListData
+{
+    
+}
 
 -(void)initCollectionView
 {
@@ -75,7 +137,7 @@
 #pragma mark - **** UICollectionViewDelegate,UICollectionViewDataSource ****
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return self.topicListArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
