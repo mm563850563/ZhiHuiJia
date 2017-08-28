@@ -13,7 +13,7 @@
 //返回带中间穿过线的string
 + (NSMutableAttributedString *)returnThroughLineWithText:(NSString *)text font:(CGFloat)font
 {
-    text = [NSString stringWithFormat:@"$%@", text];
+    text = [NSString stringWithFormat:@"¥%@", text];
     NSDictionary *dict = @{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleThick],   NSStrikethroughColorAttributeName:[UIColor  grayColor], NSFontAttributeName:[UIFont systemFontOfSize:font]};
     
     NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:text];

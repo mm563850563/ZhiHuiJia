@@ -104,6 +104,16 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([HotCircleCell class])];
 }
 
+#pragma mark - <“更多>”按钮响应>
+-(void)btnMoreActionWithButton:(UIButton *)button
+{
+    NSInteger tag = button.tag;
+    GetHotCycleResultModel *modelResult = self.circleClassifyArray[tag];
+    NSDictionary *dict = @{@"classify_id":modelResult.classify_id,
+                           @"moreType":@"moreHot"};
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToMoreHotCircle" object:dict];
+}
+
 
 
 
@@ -161,7 +171,10 @@
     [button setTitle:@"更多>" forState:UIControlStateNormal];
     [button setTitleColor:kColorFromRGB( kBlack) forState:UIControlStateNormal];
     [button.titleLabel setFont:[UIFont systemFontOfSize:13]];
-//    [NSNotificationCenter defaultCenter]postNotificationName:@"moreHotCircle" object:<#(nullable id)#>
+    button.tag = section;
+    [button addTarget:self action:@selector(btnMoreActionWithButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     
     [headerView addSubview:button];
     
@@ -180,7 +193,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    GetHotCycleResultModel *modelResult = self.circleClassifyArray[indexPath.section];
+    GetHotCycleCircleInfoModel *modelCircleInfo = modelResult.circle_info[indexPath.row];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToCircleDetailVC" object:modelCircleInfo.circle_id];
 }
 
 

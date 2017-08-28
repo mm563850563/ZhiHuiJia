@@ -15,13 +15,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="78.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G50-Gx-n6n">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="78.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gxq" translatesAutoresizingMaskIntoConstraints="NO" id="iC7-WK-0fc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gxq" translatesAutoresizingMaskIntoConstraints="NO" id="iC7-WK-0fc">
                                 <rect key="frame" x="10" y="14" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="PJB-CC-g0g"/>
@@ -52,7 +52,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7sd-sq-Prl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="0.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
                                 <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="riq-Ux-faF"/>

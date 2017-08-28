@@ -212,6 +212,9 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 4) {
             [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToMoreCircleFromMyCircle" object:@"moreJoined"];
+        }else{
+            MyJoinedCircleResultModel *modelResult = self.joinedCircleArray[indexPath.row-1];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToCircleDetailVC" object:modelResult.circle_id];
         }
     }
 }

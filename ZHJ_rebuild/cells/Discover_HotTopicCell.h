@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "HotTopicListResultModel.h"
+
 @interface Discover_HotTopicCell : UICollectionViewCell
+
+@property (nonatomic, strong)HotTopicListResultModel *modelTopicResult;
 
 @end

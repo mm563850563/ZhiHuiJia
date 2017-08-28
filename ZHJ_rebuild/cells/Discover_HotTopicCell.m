@@ -24,4 +24,16 @@
     // Initialization code
 }
 
+-(void)setModelTopicResult:(HotTopicListResultModel *)modelTopicResult
+{
+    _modelTopicResult = modelTopicResult;
+    self.labelTopic.text = modelTopicResult.content;
+    self.labelPraiseCount.text = modelTopicResult.like_count;
+    self.labelCommentCount.text = modelTopicResult.reply_count;
+    
+    NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelTopicResult.image];
+    NSURL *url = [NSURL URLWithString:imgStr];
+    [self.imgViewProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
+}
+
 @end

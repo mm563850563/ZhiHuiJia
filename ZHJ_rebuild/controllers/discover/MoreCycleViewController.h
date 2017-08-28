@@ -11,5 +11,6 @@
 @interface MoreCycleViewController : UIViewController
 
 @property (nonatomic, strong)NSString *moreType;
+@property (nonatomic, strong)NSString *classify_id;
 
 @end

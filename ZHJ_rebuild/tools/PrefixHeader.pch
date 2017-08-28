@@ -296,6 +296,12 @@
 #pragma mark - <68.热门话题>
 #define kTopicList @"/Circle/topicList"
 
+#pragma mark - <69.圈子详情>
+#define kCircleDetail @"/Circle/circleDetail"
+
+#pragma mark - <70.更多热门圈子>
+#define kMoreCircle @"/Circle/moreCircle"
+
 
 
 

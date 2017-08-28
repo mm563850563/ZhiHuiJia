@@ -20,6 +20,8 @@
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)NSMutableArray *topicListArray;
 
+@property (nonatomic, strong)NSNumber *page;
+
 @end
 
 @implementation DiscoverHotTopicViewController
@@ -28,9 +30,8 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = kColorFromRGB(kWhite);
-    
+    self.page = [NSNumber numberWithInt:1];
     [self getHotTopicListData];
-    [self initCollectionView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,7 +42,7 @@
 #pragma mark - <懒加载>
 -(NSMutableArray *)topicListArray
 {
-    if (_topicListArray) {
+    if (!_topicListArray) {
         _topicListArray = [NSMutableArray array];
     }
     return _topicListArray;
@@ -71,6 +72,7 @@
                 self.topicListArray = [NSMutableArray arrayWithArray:modelData.result];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [self initCollectionView];
                     [self.collectionView reloadData];
                     [hud hideAnimated:YES afterDelay:1.0];
                 });
@@ -99,16 +101,60 @@
 }
 
 #pragma mark - <获取更多“热门话题”列表>
--(void)getMoreHotTopicListData
+-(void)getMoreHotTopicListDataWithPage:(NSNumber *)page
 {
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kTopicList];
+    NSDictionary *dictParameter = @{@"page":self.page,
+                                    @"page_count":@10};
     
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                HotTopicListDataModel *modelData = [[HotTopicListDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                for (HotTopicListResultModel *modelResult in modelData.result) {
+                    [self.topicListArray addObject:modelResult];
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.collectionView reloadData];
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    [self.collectionView.mj_footer endRefreshing];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [self.collectionView.mj_footer endRefreshing];
+                });
+            }
+            
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [self.collectionView.mj_footer endRefreshing];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [self.collectionView.mj_footer endRefreshing];
+        });
+    }];
 }
 
 -(void)initCollectionView
 {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
     CGFloat itemWidth = kSCREEN_WIDTH/2.1;
-    CGFloat itemHeight = itemWidth/2.0*3.0;
+    CGFloat itemHeight = itemWidth/2.0*2.7;
     flowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
     flowLayout.minimumLineSpacing = 5;
     flowLayout.minimumInteritemSpacing = 0;
@@ -125,6 +171,13 @@
     
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([Discover_HotTopicCell class]) bundle:nil];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([Discover_HotTopicCell class])];
+    
+    self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        int page = [self.page intValue];
+        page++;
+        self.page = [NSNumber numberWithInt:page];
+        [self getMoreHotTopicListDataWithPage:self.page];
+    }];
 }
 
 
@@ -143,6 +196,8 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Discover_HotTopicCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([Discover_HotTopicCell class]) forIndexPath:indexPath];
+    HotTopicListResultModel *model = self.topicListArray[indexPath.row];
+    cell.modelTopicResult = model;
     return cell;
 }
 
