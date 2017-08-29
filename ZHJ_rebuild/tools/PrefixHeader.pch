@@ -302,6 +302,27 @@
 #pragma mark - <70.更多热门圈子>
 #define kMoreCircle @"/Circle/moreCircle"
 
+#pragma mark - <71.圈子所有成员>
+#define kAllCircleMember @"/Circle/getCircleMembers"
+
+#pragma mark - <72.加入圈子>
+#define kJoinCircle @"/Circle/joinCircle"
+
+#pragma mark - <73.圈子签到>
+#define kSignInCircle @"/Circle/signInCircle"
+
+#pragma mark - <74.圈子签到列表>
+#define kGetSignInList @"/Circle/getSignInList"
+
+#pragma mark - <75.退出圈子>
+#define kExitCircle @"/Circle/exitCircle"
+
+#pragma mark - <76.圈子排行榜>
+#define kCircleLivenessRank @"/Circle/circleLivenessRank"
+
+#pragma mark - <77.我的圈子-圈子动态>
+#define kCircleNews @"/circle/circleNews"
+
 
 
 

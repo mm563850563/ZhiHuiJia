@@ -23,13 +23,13 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="yGn-kn-ezp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96n-w8-CxY">
-                                    <rect key="frame" x="0.0" y="180" width="375" height="40"/>
+                                    <rect key="frame" x="0.0" y="185" width="375" height="35"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwT-gM-ObZ">
-                                            <rect key="frame" x="125.5" y="0.0" width="124.5" height="40"/>
+                                            <rect key="frame" x="126" y="0.0" width="124" height="35"/>
                                             <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <state key="normal" title="参与的活动">
@@ -40,7 +40,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sjp-gK-oUC">
-                                            <rect key="frame" x="0.0" y="0.0" width="124.5" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="124" height="35"/>
                                             <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <state key="normal" title="我的活动">
@@ -51,7 +51,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAD-hq-Fgo">
-                                            <rect key="frame" x="250.5" y="0.0" width="124.5" height="40"/>
+                                            <rect key="frame" x="251" y="0.0" width="124" height="35"/>
                                             <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <state key="normal" title="个人活跃度排名">
@@ -115,7 +115,7 @@
                                     </connections>
                                 </button>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appLogo" translatesAutoresizingMaskIntoConstraints="NO" id="2bV-81-1VN">
-                                    <rect key="frame" x="147.5" y="40" width="80" height="80"/>
+                                    <rect key="frame" x="148" y="40" width="80" height="80"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="80" id="Pkf-ok-xcU"/>
                                         <constraint firstAttribute="height" constant="80" id="Tp1-6W-Rvs"/>
@@ -192,7 +192,7 @@
                                 <constraint firstAttribute="trailing" secondItem="TkX-fc-bg9" secondAttribute="trailing" constant="15" id="cSd-TF-80n"/>
                                 <constraint firstItem="96n-w8-CxY" firstAttribute="leading" secondItem="hqv-qj-ufv" secondAttribute="leading" id="dmV-6b-ndT"/>
                                 <constraint firstItem="2JV-FA-49A" firstAttribute="top" secondItem="hqv-qj-ufv" secondAttribute="top" constant="15" id="eEH-C6-Gky"/>
-                                <constraint firstAttribute="bottom" secondItem="yGn-kn-ezp" secondAttribute="bottom" constant="40" id="hjp-pd-6aV"/>
+                                <constraint firstAttribute="bottom" secondItem="yGn-kn-ezp" secondAttribute="bottom" constant="35" id="hjp-pd-6aV"/>
                                 <constraint firstItem="2JV-FA-49A" firstAttribute="leading" secondItem="hqv-qj-ufv" secondAttribute="leading" constant="15" id="nN7-uk-urU"/>
                                 <constraint firstItem="5HX-u7-4ru" firstAttribute="leading" secondItem="2lz-rc-aIC" secondAttribute="trailing" constant="20" id="naO-Gv-Ifp"/>
                                 <constraint firstItem="yGn-kn-ezp" firstAttribute="leading" secondItem="hqv-qj-ufv" secondAttribute="leading" id="pdS-uR-c5g"/>
@@ -206,7 +206,7 @@
                             <rect key="frame" x="0.0" y="220" width="375" height="140"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fabu" translatesAutoresizingMaskIntoConstraints="NO" id="DaQ-dB-HpA">
-                                    <rect key="frame" x="147.5" y="10" width="80" height="80"/>
+                                    <rect key="frame" x="148" y="10" width="80" height="80"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="80" id="4Bx-nB-nUJ"/>
                                         <constraint firstAttribute="width" constant="80" id="vFT-qM-csv"/>

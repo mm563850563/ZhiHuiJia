@@ -16,6 +16,8 @@
 #import "ActivityListDataModel.h"
 #import "ActivityListResultModel.h"
 
+//controllers
+
 @interface MyJoinedActivityListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -236,8 +238,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    ActivityListResultModel *modelResult = self.activityListArray[indexPath.row];
-//    [self jumpToActivityRecommendDetailVCWithActivityID:modelResult.activity_id];
+    ActivityListResultModel *modelResult = self.activityListArray[indexPath.row];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToActivityDetailVCFromMyJoined" object:modelResult.activity_id];
 }
 
 

@@ -20,7 +20,7 @@
 #import "MoreCycleViewController.h"
 #import "CircleDetailViewController.h"
 
-@interface MainCircleViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate>
+@interface MainCircleViewController ()<SegmentTapViewDelegate>
 
 //@property (weak, nonatomic) IBOutlet UIView *segmentBGView;
 //@property (weak, nonatomic) IBOutlet UIView *flipBGView;
@@ -134,16 +134,35 @@
 -(void)initFlipView
 {
     HotCircleViewController *hotCircleVC = [[HotCircleViewController alloc]initWithNibName:NSStringFromClass([HotCircleViewController class]) bundle:nil];
-    MyCircleViewController *myCircleVC = [[MyCircleViewController alloc]initWithNibName:NSStringFromClass([MyCircleViewController class]) bundle:nil];
-    RankingListViewController *rankListVC = [[RankingListViewController alloc]initWithNibName:NSStringFromClass([RankingListViewController class]) bundle:nil];
+    
     NSMutableArray *vcArray = [NSMutableArray array];
     [vcArray addObject:hotCircleVC];
-    [vcArray addObject:myCircleVC];
-    [vcArray addObject:rankListVC];
     
     self.flipView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 41, kSCREEN_WIDTH, self.view.frame.size.height-41-64) withArray:vcArray];
-    self.flipView.delegate = self;
     [self.view addSubview:self.flipView];
+}
+
+#pragma mark - <跳转“我的圈子”页面>
+-(void)jumpToMyCircleVC
+{
+    MyCircleViewController *myCircleVC = [[MyCircleViewController alloc]initWithNibName:NSStringFromClass([MyCircleViewController class]) bundle:nil];
+    [self.navigationController pushViewController:myCircleVC animated:YES];
+}
+
+#pragma mark - <跳转“排行榜”页面>
+-(void)jumpToRankListVC
+{
+    RankingListViewController *rankListVC = [[RankingListViewController alloc]initWithNibName:NSStringFromClass([RankingListViewController class]) bundle:nil];
+    [self.navigationController pushViewController:rankListVC animated:YES];
+}
+
+#pragma mark - <跳转“圈子详情”页面>
+-(void)jumpToCircleDetailVCWithCircleID:(NSString *)circle_id
+{
+    CircleDetailViewController *circleDetailVC = [[CircleDetailViewController alloc]initWithNibName:NSStringFromClass([CircleDetailViewController class]) bundle:nil];
+    circleDetailVC.circle_id = circle_id;
+    circleDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:circleDetailVC animated:YES];
 }
 
 #pragma mark - <跳转更多圈子页面>
@@ -156,24 +175,10 @@
     [self.navigationController pushViewController:moreCircleVC animated:YES];
 }
 
-#pragma mark - <跳转“圈子详情”页面>
--(void)jumpToCircleDetailVCWithCircleID:(NSString *)circle_id
-{
-    CircleDetailViewController *circleDetailVC = [[CircleDetailViewController alloc]initWithNibName:NSStringFromClass([CircleDetailViewController class]) bundle:nil];
-    circleDetailVC.circle_id = circle_id;
-    circleDetailVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:circleDetailVC animated:YES];
-}
 
 #pragma mark - <RAC响应>
 -(void)respondWithRAC
 {
-    //更多我加入的圈子
-    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToMoreCircleFromMyCircle" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        NSString *moreType = x.object;
-        [self jumpToMoreCircleVCWithMoreType:moreType classifyID:nil];
-    }];
-    
     //更多热门圈子
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToMoreHotCircle" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         NSDictionary *dict = x.object;
@@ -181,7 +186,7 @@
     }];
     
     //圈子详情
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToCircleDetailVC" object:nil] takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToCircleDetailVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         NSString *circle_id = x.object;
         [self jumpToCircleDetailVCWithCircleID:circle_id];
     }];
@@ -198,12 +203,13 @@
 #pragma mark - **** SegmentTapViewDelegate,FlipTableViewDelegate ****
 -(void)selectedIndex:(NSInteger)index
 {
-    [self.flipView selectIndex:index];
-}
-
--(void)scrollChangeToIndex:(NSInteger)index
-{
-    [self.segmentView selectIndex:index];
+    [self.segmentView selectIndex:1];
+    
+    if (index == 1) {
+        [self jumpToMyCircleVC];
+    }else if (index == 2){
+        [self jumpToRankListVC];
+    }
 }
 
 

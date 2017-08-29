@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyCircleDynamicResultModel.h"
 
 @interface FocusPersonCell : UITableViewCell
+
+@property (nonatomic, strong)MyCircleDynamicResultModel *modelCircleDynamicResult;
+@property (nonatomic, assign)CGFloat cellHeight;
 
 @end

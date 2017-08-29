@@ -61,6 +61,8 @@
 
 -(void)setModelCircleDetailResult:(CircleDetailResultModel *)modelCircleDetailResult
 {
+    _modelCircleDetailResult = modelCircleDetailResult;
+    
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelCircleDetailResult.img];
     NSURL *url = [NSURL URLWithString:imgStr];
     [self.imgViewCircle sd_setImageWithURL:url placeholderImage:kPlaceholder];
@@ -86,16 +88,25 @@
 {
     if ([sender.titleLabel.text isEqualToString:@"关注"]) {
         //关注圈子
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"joinCircleFromCircleDetail" object:self.modelCircleDetailResult.circle_id];
     }else if ([sender.titleLabel.text isEqualToString:@"签到"]){
         //签到
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"signinCircleFromCircleDetail" object:self.modelCircleDetailResult.circle_id];
     }
 }
 
-- (IBAction)btnConfigureAction:(UIButton *)sender
+- (IBAction)btnCheckSigninListAction:(UIButton *)sender
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToCircleConfigureVC" object:nil];
+    //查看签到列表
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"checkSigninListFromCircleDetail" object:self.modelCircleDetailResult.circle_id];
 }
 
+
+- (IBAction)btnConfigureAction:(UIButton *)sender
+{
+    //跳转“圈子设置页面”
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToCircleConfigureVC" object:nil];
+}
 
 
 

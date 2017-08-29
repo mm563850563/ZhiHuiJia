@@ -14,6 +14,7 @@
 
 //controllers
 #import "MyJoinedActivityListViewController.h"
+#import "ActivityRecommendDetailViewController.h"
 
 @interface MyJoinedActivityViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate>
 
@@ -89,11 +90,24 @@
     //    }];
 }
 
+#pragma mark - <跳转activityRecommendDetailVC>
+-(void)jumpToActivityRecommendDetailVCWithActivityID:(NSString *)activity_id
+{
+    ActivityRecommendDetailViewController *activityRecommendDetailVC = [[ActivityRecommendDetailViewController alloc]initWithNibName:NSStringFromClass([ActivityRecommendDetailViewController class]) bundle:nil];
+    activityRecommendDetailVC.activity_id = activity_id;
+    activityRecommendDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:activityRecommendDetailVC animated:YES];
+}
+
 
 #pragma mark - <rac响应>
 -(void)respondWithRAC
 {
-    
+    //跳转活动详情
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToActivityDetailVCFromMyJoined" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *activity_id = x.object;
+        [self jumpToActivityRecommendDetailVCWithActivityID:activity_id];
+    }];
 }
 
 

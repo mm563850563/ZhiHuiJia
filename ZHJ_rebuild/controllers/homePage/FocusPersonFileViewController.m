@@ -59,8 +59,7 @@
     UINib *nibHeader = [UINib nibWithNibName:NSStringFromClass([FocusPersonHeaderCell class]) bundle:nil];
     [self.tableView registerNib:nibHeader forCellReuseIdentifier:NSStringFromClass([FocusPersonHeaderCell class])];
     
-    UINib *nib = [UINib nibWithNibName:NSStringFromClass([FocusPersonCell class]) bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([FocusPersonCell class])];
+    [self.tableView registerClass:[FocusPersonCell class] forCellReuseIdentifier:NSStringFromClass([FocusPersonCell class])];
 }
 
 #pragma mark - <跳转“个人活跃度排名”页面>

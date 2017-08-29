@@ -13,20 +13,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FocusPersonHeaderCell" rowHeight="216" id="KGk-i7-Jjw" customClass="FocusPersonHeaderCell">
-            <rect key="frame" x="0.0" y="0.0" width="338" height="216"/>
+            <rect key="frame" x="0.0" y="0.0" width="372" height="216"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="338" height="215.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="372" height="215"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3t-JA-sjC">
-                        <rect key="frame" x="0.0" y="0.0" width="338" height="185.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="372" height="180"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="2PL-7n-k3U">
-                                <rect key="frame" x="0.0" y="0.0" width="338" height="185.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="372" height="180"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gxq" translatesAutoresizingMaskIntoConstraints="NO" id="iRK-hv-yPw">
-                                <rect key="frame" x="129" y="30" width="80" height="80"/>
+                                <rect key="frame" x="146" y="30" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="40G-Kk-1eS"/>
                                     <constraint firstAttribute="height" constant="80" id="wQV-ZM-JVC"/>
@@ -38,7 +38,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJb-UH-JNy">
-                                <rect key="frame" x="10" y="115" width="318" height="20"/>
+                                <rect key="frame" x="10" y="115" width="352" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="5rA-Bd-mFN"/>
                                 </constraints>
@@ -61,14 +61,14 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ApH-Zt-JZh">
-                                <rect key="frame" x="168" y="135" width="2" height="50.5"/>
+                                <rect key="frame" x="185" y="135" width="2" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="2" id="RZt-zx-SQg"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QH1-SM-MKc">
-                                <rect key="frame" x="78" y="150.5" width="80" height="20"/>
+                                <rect key="frame" x="95" y="148" width="80" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="1Lb-bz-bJZ"/>
                                     <constraint firstAttribute="height" constant="20" id="sKI-GE-RFJ"/>
@@ -82,7 +82,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfH-nn-y46">
-                                <rect key="frame" x="180" y="150" width="80" height="20"/>
+                                <rect key="frame" x="197" y="148" width="80" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="npx-Ol-DA4"/>
                                     <constraint firstAttribute="height" constant="20" id="tU4-uB-Dkf"/>
@@ -119,12 +119,12 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfs-09-4cw">
-                        <rect key="frame" x="0.0" y="185.5" width="338" height="30"/>
+                        <rect key="frame" x="0.0" y="180" width="372" height="35"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQ6-Hb-sOn">
-                                <rect key="frame" x="0.0" y="0.0" width="112.5" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="124" height="35"/>
                                 <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="+关  注">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -134,9 +134,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTk-0r-Gbu">
-                                <rect key="frame" x="227" y="0.0" width="112.5" height="30"/>
+                                <rect key="frame" x="251" y="0.0" width="124" height="35"/>
                                 <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="个人活跃度排名">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -145,9 +145,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S63-x7-S42">
-                                <rect key="frame" x="113.5" y="0.0" width="112.5" height="30"/>
+                                <rect key="frame" x="125" y="0.0" width="125" height="35"/>
                                 <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="私  信">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -178,13 +178,13 @@
                     <constraint firstAttribute="trailing" secondItem="tfs-09-4cw" secondAttribute="trailing" id="4xC-mA-lLQ"/>
                     <constraint firstItem="tfs-09-4cw" firstAttribute="top" secondItem="x3t-JA-sjC" secondAttribute="bottom" id="NeQ-6I-Tk2"/>
                     <constraint firstAttribute="bottom" secondItem="tfs-09-4cw" secondAttribute="bottom" id="X9Z-ej-Ugt"/>
-                    <constraint firstAttribute="bottom" secondItem="x3t-JA-sjC" secondAttribute="bottom" constant="30" id="aMc-T6-Nob"/>
+                    <constraint firstAttribute="bottom" secondItem="x3t-JA-sjC" secondAttribute="bottom" constant="35" id="aMc-T6-Nob"/>
                     <constraint firstAttribute="trailing" secondItem="x3t-JA-sjC" secondAttribute="trailing" id="biC-QP-qnz"/>
                     <constraint firstItem="x3t-JA-sjC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="dfA-YS-ZBU"/>
                     <constraint firstItem="x3t-JA-sjC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="w84-QL-pQ3"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="56" y="173"/>
+            <point key="canvasLocation" x="39" y="173"/>
         </tableViewCell>
     </objects>
     <resources>

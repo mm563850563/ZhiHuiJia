@@ -29,9 +29,10 @@
             <constraints>
                 <constraint firstItem="3Nk-XN-Jnq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7Jo-zi-40F"/>
                 <constraint firstAttribute="bottom" secondItem="3Nk-XN-Jnq" secondAttribute="bottom" id="Hl4-Em-SYx"/>
+                <constraint firstItem="3Nk-XN-Jnq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NJM-op-hPK"/>
                 <constraint firstAttribute="trailing" secondItem="3Nk-XN-Jnq" secondAttribute="trailing" id="fao-Ki-OYL"/>
-                <constraint firstItem="3Nk-XN-Jnq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nQF-op-zUA"/>
             </constraints>
+            <point key="canvasLocation" x="34.5" y="109.5"/>
         </view>
     </objects>
 </document>

@@ -12,6 +12,9 @@
 #import "CircleDetailConfigItemCell.h"
 #import "CircleDetailConfigQuitCell.h"
 
+//controllers
+#import "AllCircleMemberViewController.h"
+
 @interface CircleDetailConfigViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -57,6 +60,62 @@
 
 }
 
+#pragma mark - <跳转“查看所有成员”页面>
+-(void)jumpToCheckAllMemberVCWithCircleID:(NSString *)circle_id
+{
+    AllCircleMemberViewController *allMemberVC = [[AllCircleMemberViewController alloc]initWithNibName:NSStringFromClass([AllCircleMemberViewController class]) bundle:nil];
+    allMemberVC.circle_id = circle_id;
+    [self.navigationController pushViewController:allMemberVC animated:YES];
+}
+
+#pragma mark - <"退出圈子"请求>
+-(void)requestExitCircle
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kExitCircle];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"circle_id":self.circle_id};
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    hud.completionBlock = ^{
+                        [[NSNotificationCenter defaultCenter]postNotificationName:@"exitCircleRefresh" object:nil];
+                        [self.navigationController popViewControllerAnimated:YES];
+                    };
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
+
+
 
 
 
@@ -78,7 +137,7 @@
     if (indexPath.row == 3) {
         return 100;
     }else{
-        return 70;
+        return 60;
     }
 }
 
@@ -108,10 +167,12 @@
         NSLog(@"分享圈子");
     }else if (indexPath.row == 1){
         //查看全部成员
+        [self jumpToCheckAllMemberVCWithCircleID:self.circle_id];
     }else if (indexPath.row == 2){
         //举报
     }else if (indexPath.row == 3){
         //退出圈子
+        [self requestExitCircle];
     }
 }
 

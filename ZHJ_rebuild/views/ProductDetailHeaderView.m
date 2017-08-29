@@ -107,9 +107,12 @@
 #pragma mark - <添加cycleScrollView>
 -(void)addCycleScollView
 {
-self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:self.cycleScrollBGView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"chang"]];
+    self.cycleScrollView = [[SDCycleScrollView alloc]initWithFrame:self.cycleScrollBGView.bounds];
+    self.cycleScrollView.delegate = self;
+//    self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:self.cycleScrollBGView.bounds delegate:self placeholderImage:[UIImage imageNamed:@"chang"]];
     self.cycleScrollView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
     self.cycleScrollView.autoScroll = NO;
+    self.cycleScrollView.backgroundColor = kColorFromRGB(kWhite);
     self.cycleScrollView.pageDotColor = kColorFromRGB(kThemeYellow);
     [self.cycleScrollBGView addSubview:self.cycleScrollView];
     [self.cycleScrollView mas_makeConstraints:^(MASConstraintMaker *make) {

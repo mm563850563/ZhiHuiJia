@@ -49,8 +49,7 @@
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    UINib *nibDynamic = [UINib nibWithNibName:NSStringFromClass([FocusPersonCell class]) bundle:nil];
-    [self.tableView registerNib:nibDynamic forCellReuseIdentifier:NSStringFromClass([FocusPersonCell class])];
+    [self.tableView registerClass:[FocusPersonCell class] forCellReuseIdentifier:NSStringFromClass([FocusPersonCell class])];
 }
 
 

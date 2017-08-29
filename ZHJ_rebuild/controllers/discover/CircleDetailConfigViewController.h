@@ -10,4 +10,6 @@
 
 @interface CircleDetailConfigViewController : UIViewController
 
+@property (nonatomic, strong)NSString *circle_id;
+
 @end

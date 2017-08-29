@@ -21,6 +21,7 @@
 //controllers
 #import "NewPostViewController.h"
 #import "CircleDetailConfigViewController.h"
+#import "CircleSigninListViewController.h"
 
 @interface CircleDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong)UIView *NewPostView;
@@ -102,6 +103,98 @@
     }];
 }
 
+#pragma mark - <加入圈子请求>
+-(void)requestJoinCircleWithCircleID:(NSString *)circle_id
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kJoinCircle];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"circle_id":circle_id};
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    hud.completionBlock = ^{
+                        [self getCircleDetailData];
+                    };
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
+#pragma mark - <签到圈子请求>
+-(void)requestSigninCircleWithCircleID:(NSString *)circle_id
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kSignInCircle];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"circle_id":circle_id};
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    hud.completionBlock = ^{
+                        [self getCircleDetailData];
+                    };
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
+
+
 #pragma mark - <初始化“发帖”按钮>
 -(void)initNewPostView
 {
@@ -158,10 +251,19 @@
 }
 
 #pragma mark - <跳转“圈子详情设置”页面>
--(void)jumpToCircleDetailConfigVC
+-(void)jumpToCircleDetailConfigVCWithCircleID:(NSString *)circle_id
 {
     CircleDetailConfigViewController *circleDetailConfigVC = [[CircleDetailConfigViewController alloc]initWithNibName:NSStringFromClass([CircleDetailConfigViewController class]) bundle:nil];
+    circleDetailConfigVC.circle_id = circle_id;
     [self.navigationController pushViewController:circleDetailConfigVC animated:YES];
+}
+
+#pragma mark - <跳转“查看签到列表”页面>
+-(void)jumpToCheckSigninListVCWithCircleID:(NSString *)circle_id
+{
+    CircleSigninListViewController *signinListVC = [[CircleSigninListViewController alloc]initWithNibName:NSStringFromClass([CircleSigninListViewController class]) bundle:nil];
+    signinListVC.circle_id = circle_id;
+    [self.navigationController pushViewController:signinListVC animated:YES];
 }
 
 #pragma mark - <配置tableView>
@@ -180,7 +282,30 @@
 {
     //跳转圈子详情设置页面
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToCircleConfigureVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self jumpToCircleDetailConfigVC];
+        [self jumpToCircleDetailConfigVCWithCircleID:self.modelResult.circle_id];
+    }];
+    
+    //点击“关注圈子”
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"joinCircleFromCircleDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *circle_id = x.object;
+        [self requestJoinCircleWithCircleID:circle_id];
+    }];
+    
+    //点击“签到”
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"signinCircleFromCircleDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *circle_id = x.object;
+        [self requestSigninCircleWithCircleID:circle_id];
+    }];
+    
+    //查看签到列表
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"checkSigninListFromCircleDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *circle_id = x.object;
+        [self jumpToCheckSigninListVCWithCircleID:circle_id];
+    }];
+    
+    //退出圈子后重新刷新数据
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"exitCircleRefresh" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        [self getCircleDetailData];
     }];
 }
 
@@ -219,7 +344,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return kSCREEN_WIDTH+70;
+    return kSCREEN_WIDTH+80;
 }
 
 

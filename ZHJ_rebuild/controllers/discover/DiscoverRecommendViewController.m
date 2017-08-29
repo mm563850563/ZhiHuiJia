@@ -158,7 +158,7 @@
     [self.navigationController pushViewController:releaseActivityVC animated:YES];
 }
 
-#pragma mark - <跳转activityRecommendDetailVC>
+#pragma mark - <跳转活动详情页面>
 -(void)jumpToActivityRecommendDetailVCWithActivityID:(NSString *)activity_id
 {
     ActivityRecommendDetailViewController *activityRecommendDetailVC = [[ActivityRecommendDetailViewController alloc]initWithNibName:NSStringFromClass([ActivityRecommendDetailViewController class]) bundle:nil];

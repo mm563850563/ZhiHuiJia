@@ -42,8 +42,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    [self settingOutlets];
     [self settingCollectionView];
 }
 
@@ -70,11 +69,20 @@
     
     self.cellHeight = 120 + self.collectionView.frame.origin.y + self.collectionView.contentSize.height + 100;
     
-    
+}
+
+-(void)settingOutlets
+{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imgViewProtraitAction:)];
+    self.imgPortrait.userInteractionEnabled = YES;
+    [self.imgPortrait addGestureRecognizer:tap];
     
 }
 
-
+-(void)imgViewProtraitAction:(UITapGestureRecognizer *)tap
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToFocusPersonalFileVC" object:nil];
+}
 
 -(void)settingCollectionView
 {

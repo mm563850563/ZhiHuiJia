@@ -27,6 +27,8 @@
 #import "DiscoverHotTopicViewController.h"
 #import "DiscoverRecommendViewController.h"
 
+#import "FocusPersonFileViewController.h"
+
 @interface DiscoverViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,SegmentTapViewDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong)UITableView *mainTableView;
@@ -161,6 +163,13 @@
     [self.navigationController pushViewController:domainVC animated:YES];
 }
 
+#pragma mark - <跳转“个人好友”资料>
+-(void)jumpToFocusPersonalFileVC
+{
+    FocusPersonFileViewController *focusPersonalFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
+    [self.navigationController pushViewController:focusPersonalFileVC animated:YES];
+}
+
 #pragma mark - <响应RAC>
 -(void)respondWithRAC
 {
@@ -185,6 +194,11 @@
     //点击地盘
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickDomainAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         [self jumpToDomainVC];
+    }];
+    
+    //点击用户头像
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalFileVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        [self jumpToFocusPersonalFileVC];
     }];
     
 }

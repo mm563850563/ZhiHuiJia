@@ -13,17 +13,26 @@
 #import "FocusPersonCell.h"
 #import "JoinedCircleCell.h"
 #import "MoreTableViewCell.h"
+#import "NULLTableViewCell.h"
 
 //models
 #import "MyJoinedCircleDataModel.h"
 #import "MyJoinedCircleResultModel.h"
+#import "MyCircleDynamicDataModel.h"
+#import "MyCircleDynamicResultModel.h"
+#import "MyCircleDynamicTips_infoModel.h"
 
 //controllers
+#import "MoreCycleViewController.h"
+#import "CircleDetailViewController.h"
 
 @interface MyCircleViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *joinedCircleArray;
+@property (nonatomic, strong)NSMutableArray *circleDynamicArray;
+
+@property (nonatomic, strong)NSNumber *page;
 
 @end
 
@@ -33,13 +42,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self getMyJoinedCircleData];
+    self.page = @1;
+    [self managerRequestWithGCD];
     [self settingTableView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - <懒加载>
+-(NSMutableArray *)circleDynamicArray
+{
+    if (!_circleDynamicArray) {
+        _circleDynamicArray = [NSMutableArray array];
+    }
+    return _circleDynamicArray;
 }
 
 /*
@@ -52,13 +71,35 @@
 }
 */
 
+#pragma mark - <GCD管理多线程>
+-(void)managerRequestWithGCD
+{
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue1 = dispatch_queue_create("getMyJoinedCircleData", NULL);
+    dispatch_queue_t queue2 = dispatch_queue_create("getMyCircleDynamicData", NULL);
+    
+    dispatch_group_async(group, queue1, ^{
+        [self getMyJoinedCircleData];
+    });
+    dispatch_group_async(group, queue2, ^{
+        [self getMyCircleDynamicDataWithPage:@1];
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+        [hud hideAnimated:YES afterDelay:1.0];
+    });
+}
+
 #pragma mark - <获取“已加入圈子”数据>
 -(void)getMyJoinedCircleData
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kMyJoinedCircle];
     NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
     
-    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+//    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
@@ -68,32 +109,97 @@
                 self.joinedCircleArray = model.result;
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [hud hideAnimated:YES afterDelay:1.0];
+//                    [hud hideAnimated:YES afterDelay:1.0];
                     [self.tableView reloadData];
                 });
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [hud hideAnimated:YES afterDelay:1.0];
+//                    [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
                 });
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
-                [hud hideAnimated:YES afterDelay:1.0];
+//                [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [hud hideAnimated:YES afterDelay:1.0];
+//            [hud hideAnimated:YES afterDelay:1.0];
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:2.0];
         });
     }];
 }
 
+#pragma mark - <获取“我的圈子-圈子动态”数据>
+-(void)getMyCircleDynamicDataWithPage:(NSNumber *)page
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kCircleNews];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"page":page,
+                                    @"page_count":@10};
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                MyCircleDynamicDataModel *modelData = [[MyCircleDynamicDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                for (MyCircleDynamicResultModel *modelDynamicResult in modelData.result) {
+                    [self.circleDynamicArray addObject:modelDynamicResult];
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                    [self.tableView.mj_footer endRefreshing];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [self.tableView.mj_footer endRefreshing];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [self.tableView.mj_footer endRefreshing];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [self.tableView.mj_footer endRefreshing];
+        });
+    }];
+}
+
+#pragma mark - <跳转更多圈子页面>
+-(void)jumpToMoreCircleVCWithMoreType:(NSString *)moreType classifyID:(NSString *)classify_id
+{
+    MoreCycleViewController *moreCircleVC = [[MoreCycleViewController alloc]initWithNibName:NSStringFromClass([MoreCycleViewController class]) bundle:nil];
+    moreCircleVC.moreType = moreType;
+    moreCircleVC.classify_id = classify_id;
+    moreCircleVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:moreCircleVC animated:YES];
+}
+
+#pragma mark - <跳转“圈子详情”页面>
+-(void)jumpToCircleDetailVCWithCircleID:(NSString *)circle_id
+{
+    CircleDetailViewController *circleDetailVC = [[CircleDetailViewController alloc]initWithNibName:NSStringFromClass([CircleDetailViewController class]) bundle:nil];
+    circleDetailVC.circle_id = circle_id;
+    circleDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:circleDetailVC animated:YES];
+}
+
+#pragma mark - <配置tableView>
 -(void)settingTableView
 {
     self.tableView.delegate = self;
@@ -103,14 +209,23 @@
     UINib *nibHeader = [UINib nibWithNibName:NSStringFromClass([MyCircleHeaderCell class]) bundle:nil];
     [self.tableView registerNib:nibHeader forCellReuseIdentifier:NSStringFromClass([MyCircleHeaderCell class])];
     
-    UINib *nibFocusDynamic = [UINib nibWithNibName:NSStringFromClass([FocusPersonCell class]) bundle:nil];
-    [self.tableView registerNib:nibFocusDynamic forCellReuseIdentifier:NSStringFromClass([FocusPersonCell class])];
+    [self.tableView registerClass:[FocusPersonCell class] forCellReuseIdentifier:NSStringFromClass([FocusPersonCell class])];
     
     UINib *nibJoinCircle = [UINib nibWithNibName:NSStringFromClass([JoinedCircleCell class]) bundle:nil];
     [self.tableView registerNib:nibJoinCircle forCellReuseIdentifier:NSStringFromClass([JoinedCircleCell class])];
     
     UINib *nibMore = [UINib nibWithNibName:NSStringFromClass([MoreTableViewCell class]) bundle:nil];
     [self.tableView registerNib:nibMore forCellReuseIdentifier:NSStringFromClass([MoreTableViewCell class])];
+    
+    UINib *nibNull = [UINib nibWithNibName:NSStringFromClass([NULLTableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
+    
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        int page = [self.page intValue];
+        page++;
+        self.page = [NSNumber numberWithInt:page];
+        [self getMyCircleDynamicDataWithPage:self.page];
+    }];
 }
 
 
@@ -136,8 +251,13 @@
             return 5;
         }
         return self.joinedCircleArray.count+1;
+    }else{
+        if (self.circleDynamicArray.count == 0) {
+            return 1;
+        }
+        return self.circleDynamicArray.count;
     }
-    return 5;
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -149,8 +269,15 @@
             return 40;
         }
         return 70;
+    }else{
+        if (self.circleDynamicArray.count == 0) {
+            return 200;
+        }
+        MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
+        FocusPersonCell *cellDynamic = [[FocusPersonCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([FocusPersonCell class])];
+        cellDynamic.modelCircleDynamicResult = modelResult;
+        return cellDynamic.cellHeight;
     }
-    return 120;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -163,9 +290,6 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section == 1) {
-        return 100;
-    }
     return 10;
 }
 
@@ -187,8 +311,15 @@
         }
         
     }else{
-        FocusPersonCell *cellFocusDynamic = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([FocusPersonCell class])];
-        cell = cellFocusDynamic;
+        if (self.circleDynamicArray.count == 0) {
+            NULLTableViewCell *cellNull = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NULLTableViewCell class])];
+            cell = cellNull;
+        }else{
+            FocusPersonCell *cellFocusDynamic = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([FocusPersonCell class])];
+            MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
+            cellFocusDynamic.modelCircleDynamicResult = modelResult;
+            cell = cellFocusDynamic;
+        }
     }
     return cell;
 }
@@ -211,10 +342,14 @@
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 4) {
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToMoreCircleFromMyCircle" object:@"moreJoined"];
+            [self jumpToMoreCircleVCWithMoreType:@"moreJoined" classifyID:nil];
         }else{
             MyJoinedCircleResultModel *modelResult = self.joinedCircleArray[indexPath.row-1];
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToCircleDetailVC" object:modelResult.circle_id];
+            [self jumpToCircleDetailVCWithCircleID:modelResult.circle_id];
+        }
+    }else{
+        if (self.circleDynamicArray.count > 0) {
+            
         }
     }
 }
