@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyCircleDynamicResultModel.h"
 
 @interface DiscoverDynamicCell : UITableViewCell
 
+@property (nonatomic, strong)MyCircleDynamicResultModel *modelCircleDynamicResult;
 @property (nonatomic, assign)CGFloat cellHeight;
-@property (nonatomic, strong)NSMutableArray *dataArray;
 
 @end

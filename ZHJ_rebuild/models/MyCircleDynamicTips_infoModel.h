@@ -10,7 +10,7 @@
 
 @interface MyCircleDynamicTips_infoModel : JSONModel
 
-@property (nonatomic, strong)NSString *user_id;
-@property (nonatomic, strong)NSString *nickname;
+@property (nonatomic, strong)NSString<Optional> *user_id;
+@property (nonatomic, strong)NSString<Optional> *nickname;
 
 @end

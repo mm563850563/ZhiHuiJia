@@ -10,4 +10,6 @@
 
 @interface FocusPersonFileViewController : UIViewController
 
+@property (nonatomic, strong)NSString *friend_user_id;
+
 @end

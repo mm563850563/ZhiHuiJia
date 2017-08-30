@@ -25,6 +25,7 @@
 //controllers
 #import "MoreCycleViewController.h"
 #import "CircleDetailViewController.h"
+#import "FocusPersonFileViewController.h"
 
 @interface MyCircleViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -45,6 +46,8 @@
     self.page = @1;
     [self managerRequestWithGCD];
     [self settingTableView];
+    
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -199,6 +202,14 @@
     [self.navigationController pushViewController:circleDetailVC animated:YES];
 }
 
+#pragma mark - <跳转“好友详情”页面>
+-(void)jumpToFocusPersonalVCWithUserID:(NSString *)user_id
+{
+    FocusPersonFileViewController *focusPersonalVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
+    focusPersonalVC.friend_user_id = user_id;
+    [self.navigationController pushViewController:focusPersonalVC animated:YES];
+}
+
 #pragma mark - <配置tableView>
 -(void)settingTableView
 {
@@ -227,6 +238,21 @@
         [self getMyCircleDynamicDataWithPage:self.page];
     }];
 }
+
+#pragma mark - <rac响应>
+-(void)respondWithRAC
+{
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCFromAtSomeone" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *user_id = x.object;
+        [self jumpToFocusPersonalVCWithUserID:user_id];
+    }];
+}
+
+
+
+
+
+
 
 
 
@@ -271,7 +297,7 @@
         return 70;
     }else{
         if (self.circleDynamicArray.count == 0) {
-            return 200;
+            return 500;
         }
         MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
         FocusPersonCell *cellDynamic = [[FocusPersonCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([FocusPersonCell class])];

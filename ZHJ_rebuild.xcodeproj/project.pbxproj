@@ -74,6 +74,10 @@
 		DD0960161F557339002F4AED /* MyCircleDynamicTips_infoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960151F557339002F4AED /* MyCircleDynamicTips_infoModel.m */; };
 		DD09601F1F557D00002F4AED /* MyCircleDynamicImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09601D1F557D00002F4AED /* MyCircleDynamicImageCell.m */; };
 		DD0960201F557D00002F4AED /* MyCircleDynamicImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD09601E1F557D00002F4AED /* MyCircleDynamicImageCell.xib */; };
+		DD0960241F56A34C002F4AED /* FriendHomePageDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960231F56A34C002F4AED /* FriendHomePageDataModel.m */; };
+		DD0960271F56A36B002F4AED /* FriendHomePageResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960261F56A36B002F4AED /* FriendHomePageResultModel.m */; };
+		DD09602A1F56A37D002F4AED /* FriendHomePageUser_infoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960291F56A37D002F4AED /* FriendHomePageUser_infoModel.m */; };
+		DD09602D1F56BF27002F4AED /* MyCircleDynamicReply_infoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09602C1F56BF27002F4AED /* MyCircleDynamicReply_infoModel.m */; };
 		DD0DBAC91F32B2BE0098F5FA /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAC81F32B2BE0098F5FA /* LoginModel.m */; };
 		DD0DBACC1F32B2DC0098F5FA /* LoginDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBACB1F32B2DC0098F5FA /* LoginDataModel.m */; };
 		DD0DBAD01F32B9810098F5FA /* RecommendGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBACF1F32B9810098F5FA /* RecommendGoodsModel.m */; };
@@ -570,7 +574,6 @@
 		DDFB82B81F1D931500AEAAA7 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82B01F1D931500AEAAA7 /* UIColor+PYSearchExtension.m */; };
 		DDFB82B91F1D931500AEAAA7 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82B21F1D931500AEAAA7 /* UIView+PYSearchExtension.m */; };
 		DDFB82C01F1E059A00AEAAA7 /* DiscoverDynamicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82BE1F1E059A00AEAAA7 /* DiscoverDynamicCell.m */; };
-		DDFB82C11F1E059A00AEAAA7 /* DiscoverDynamicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82BF1F1E059A00AEAAA7 /* DiscoverDynamicCell.xib */; };
 		DDFB82C51F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB82C31F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m */; };
 		DDFB82C61F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB82C41F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib */; };
 		EC4BA05A1F13562700B9BE1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4BA0591F13562700B9BE1A /* main.m */; };
@@ -740,6 +743,14 @@
 		DD09601C1F557D00002F4AED /* MyCircleDynamicImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCircleDynamicImageCell.h; path = cells/MyCircleDynamicImageCell.h; sourceTree = "<group>"; };
 		DD09601D1F557D00002F4AED /* MyCircleDynamicImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCircleDynamicImageCell.m; path = cells/MyCircleDynamicImageCell.m; sourceTree = "<group>"; };
 		DD09601E1F557D00002F4AED /* MyCircleDynamicImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyCircleDynamicImageCell.xib; path = cells/MyCircleDynamicImageCell.xib; sourceTree = "<group>"; };
+		DD0960221F56A34C002F4AED /* FriendHomePageDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendHomePageDataModel.h; path = models/FriendHomePageDataModel.h; sourceTree = "<group>"; };
+		DD0960231F56A34C002F4AED /* FriendHomePageDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendHomePageDataModel.m; path = models/FriendHomePageDataModel.m; sourceTree = "<group>"; };
+		DD0960251F56A36B002F4AED /* FriendHomePageResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendHomePageResultModel.h; path = models/FriendHomePageResultModel.h; sourceTree = "<group>"; };
+		DD0960261F56A36B002F4AED /* FriendHomePageResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendHomePageResultModel.m; path = models/FriendHomePageResultModel.m; sourceTree = "<group>"; };
+		DD0960281F56A37D002F4AED /* FriendHomePageUser_infoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendHomePageUser_infoModel.h; path = models/FriendHomePageUser_infoModel.h; sourceTree = "<group>"; };
+		DD0960291F56A37D002F4AED /* FriendHomePageUser_infoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendHomePageUser_infoModel.m; path = models/FriendHomePageUser_infoModel.m; sourceTree = "<group>"; };
+		DD09602B1F56BF27002F4AED /* MyCircleDynamicReply_infoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCircleDynamicReply_infoModel.h; path = models/MyCircleDynamicReply_infoModel.h; sourceTree = "<group>"; };
+		DD09602C1F56BF27002F4AED /* MyCircleDynamicReply_infoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCircleDynamicReply_infoModel.m; path = models/MyCircleDynamicReply_infoModel.m; sourceTree = "<group>"; };
 		DD0DBAC71F32B2BE0098F5FA /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginModel.h; path = models/LoginModel.h; sourceTree = "<group>"; };
 		DD0DBAC81F32B2BE0098F5FA /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginModel.m; path = models/LoginModel.m; sourceTree = "<group>"; };
 		DD0DBACA1F32B2DC0098F5FA /* LoginDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginDataModel.h; path = models/LoginDataModel.h; sourceTree = "<group>"; };
@@ -1554,7 +1565,6 @@
 		DDFB82B21F1D931500AEAAA7 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
 		DDFB82BD1F1E059A00AEAAA7 /* DiscoverDynamicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoverDynamicCell.h; path = cells/DiscoverDynamicCell.h; sourceTree = "<group>"; };
 		DDFB82BE1F1E059A00AEAAA7 /* DiscoverDynamicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoverDynamicCell.m; path = cells/DiscoverDynamicCell.m; sourceTree = "<group>"; };
-		DDFB82BF1F1E059A00AEAAA7 /* DiscoverDynamicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscoverDynamicCell.xib; path = cells/DiscoverDynamicCell.xib; sourceTree = "<group>"; };
 		DDFB82C21F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_Dynamic_imageViewCell.h; path = cells/Discover_Dynamic_imageViewCell.h; sourceTree = "<group>"; };
 		DDFB82C31F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_Dynamic_imageViewCell.m; path = cells/Discover_Dynamic_imageViewCell.m; sourceTree = "<group>"; };
 		DDFB82C41F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_Dynamic_imageViewCell.xib; path = cells/Discover_Dynamic_imageViewCell.xib; sourceTree = "<group>"; };
@@ -1813,8 +1823,30 @@
 				DD0960121F5571BA002F4AED /* MyCircleDynamicResultModel.m */,
 				DD0960141F557339002F4AED /* MyCircleDynamicTips_infoModel.h */,
 				DD0960151F557339002F4AED /* MyCircleDynamicTips_infoModel.m */,
+				DD09602B1F56BF27002F4AED /* MyCircleDynamicReply_infoModel.h */,
+				DD09602C1F56BF27002F4AED /* MyCircleDynamicReply_infoModel.m */,
 			);
 			name = MyCircleDynamicModel;
+			sourceTree = "<group>";
+		};
+		DD0960211F56A30F002F4AED /* FriendHomePageModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD0960221F56A34C002F4AED /* FriendHomePageDataModel.h */,
+				DD0960231F56A34C002F4AED /* FriendHomePageDataModel.m */,
+				DD0960251F56A36B002F4AED /* FriendHomePageResultModel.h */,
+				DD0960261F56A36B002F4AED /* FriendHomePageResultModel.m */,
+				DD0960281F56A37D002F4AED /* FriendHomePageUser_infoModel.h */,
+				DD0960291F56A37D002F4AED /* FriendHomePageUser_infoModel.m */,
+			);
+			name = FriendHomePageModel;
+			sourceTree = "<group>";
+		};
+		DD09602E1F56EC4B002F4AED /* ThirdLogin */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdLogin;
 			sourceTree = "<group>";
 		};
 		DD0DBAC61F32B29A0098F5FA /* Login */ = {
@@ -1910,6 +1942,7 @@
 		DD184E291F3D7EAF009BFF5B /* SDKs */ = {
 			isa = PBXGroup;
 			children = (
+				DD09602E1F56EC4B002F4AED /* ThirdLogin */,
 				DDC52E8C1F416D6400ECF211 /* WeChatPay */,
 				DD184E4E1F3DA5F9009BFF5B /* AliPay */,
 			);
@@ -2629,7 +2662,6 @@
 				DDFB827B1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib */,
 				DDFB82BD1F1E059A00AEAAA7 /* DiscoverDynamicCell.h */,
 				DDFB82BE1F1E059A00AEAAA7 /* DiscoverDynamicCell.m */,
-				DDFB82BF1F1E059A00AEAAA7 /* DiscoverDynamicCell.xib */,
 				DDFB82C21F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.h */,
 				DDFB82C31F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m */,
 				DDFB82C41F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib */,
@@ -2966,6 +2998,7 @@
 				DD095FF61F551C2D002F4AED /* SigninListModel */,
 				DD095FFD1F55507B002F4AED /* RankListModel */,
 				DD09600D1F557171002F4AED /* MyCircleDynamicModel */,
+				DD0960211F56A30F002F4AED /* FriendHomePageModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -3436,7 +3469,6 @@
 				DDFB82C61F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.xib in Resources */,
 				EC4BA2501F15D43600B9BE1A /* BrandRulesViewController.xib in Resources */,
 				EC4BA0681F13562700B9BE1A /* LaunchScreen.storyboard in Resources */,
-				DDFB82C11F1E059A00AEAAA7 /* DiscoverDynamicCell.xib in Resources */,
 				DDFB82641F187A7900AEAAA7 /* cb_green_on111.png in Resources */,
 				DD6287AD1F219ADA0030331D /* SameTownTopicViewController.xib in Resources */,
 				DDFB827D1F19F38000AEAAA7 /* Categate_BrandCollectionCell.xib in Resources */,
@@ -3772,12 +3804,14 @@
 				DD0938F11F43E89500A75182 /* OrderListGoodsModel.m in Sources */,
 				DD0DBB011F3403670098F5FA /* ProductDetailSpecHeaderView.m in Sources */,
 				DDFB81BF1F18475700AEAAA7 /* SameHobbyPersonCell.m in Sources */,
+				DD09602D1F56BF27002F4AED /* MyCircleDynamicReply_infoModel.m in Sources */,
 				DD0DBB0D1F3431780098F5FA /* GetSpecPriceResultModel.m in Sources */,
 				DD69B2FA1F3AFD390036F368 /* UIView+STPicker.m in Sources */,
 				DD62871D1F1F3D8B0030331D /* PriaseTableViewCell.m in Sources */,
 				DD0DBAD31F32B9970098F5FA /* RecommendGoodsDataModel.m in Sources */,
 				DD58FFCF1F5137CA009EC9F2 /* WaitAuditSignUpResultModel.m in Sources */,
 				DD4CF0A41F2996B60024156F /* MoreCycleViewController.m in Sources */,
+				DD0960241F56A34C002F4AED /* FriendHomePageDataModel.m in Sources */,
 				DD69B2BC1F39D25C0036F368 /* BuyNowSelectSpecView.m in Sources */,
 				DD0960101F557199002F4AED /* MyCircleDynamicDataModel.m in Sources */,
 				DD58FF801F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.m in Sources */,
@@ -3793,8 +3827,10 @@
 				DDFB82B71F1D931500AEAAA7 /* PYSearchViewController.m in Sources */,
 				DD58FF6F1F4D7467009EC9F2 /* AddCommentReleaseCell.m in Sources */,
 				DD095FF91F551C55002F4AED /* SigninListDataModel.m in Sources */,
+				DD0960271F56A36B002F4AED /* FriendHomePageResultModel.m in Sources */,
 				EC4BA1391F14693F00B9BE1A /* ProductDetailViewController.m in Sources */,
 				DD4CEFD71F25DD3A0024156F /* CommentListViewController.m in Sources */,
+				DD09602A1F56A37D002F4AED /* FriendHomePageUser_infoModel.m in Sources */,
 				DD58FFA01F5021F3009EC9F2 /* WaitToReviewActivityResultModel.m in Sources */,
 				DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */,
 				DD6287C01F21AB890030331D /* HandpickActivitiesCell.m in Sources */,
@@ -4172,6 +4208,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs",
 					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/AliPay",
+					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/ThirdLogin/SDK/Required",
+					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/ThirdLogin/SDK/ShareSDK",
+					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/ThirdLogin/SDK/ShareSDK/Support/Optional",
+					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/ThirdLogin/SDK/ShareSDK/Support/PlatformConnector",
+					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/ThirdLogin/SDK/ShareSDK/Support/Required",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/zhj/Desktop/ZhiHuiJia/ZHJ_rebuild/tools/PrefixHeader.pch;
@@ -4238,6 +4279,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs",
 					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/AliPay",
+					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/ThirdLogin/SDK/Required",
+					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/ThirdLogin/SDK/ShareSDK",
+					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/ThirdLogin/SDK/ShareSDK/Support/Optional",
+					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/ThirdLogin/SDK/ShareSDK/Support/PlatformConnector",
+					"$(PROJECT_DIR)/ZHJ_rebuild/SDKs/ThirdLogin/SDK/ShareSDK/Support/Required",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/zhj/Desktop/ZhiHuiJia/ZHJ_rebuild/tools/PrefixHeader.pch;

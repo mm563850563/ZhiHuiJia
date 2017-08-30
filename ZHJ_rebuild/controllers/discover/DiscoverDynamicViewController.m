@@ -50,8 +50,8 @@
     self.tableView.scrollEnabled = NO;
     [self.view addSubview:self.tableView];
     
-    UINib *nibDynamic = [UINib nibWithNibName:NSStringFromClass([DiscoverDynamicCell class]) bundle:nil];
-    [self.tableView registerNib:nibDynamic forCellReuseIdentifier:NSStringFromClass([DiscoverDynamicCell class])];
+    
+    [self.tableView registerClass:[DiscoverDynamicCell class] forCellReuseIdentifier:NSStringFromClass([DiscoverDynamicCell class])];
 }
 
 
@@ -71,14 +71,15 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DiscoverDynamicCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DiscoverDynamicCell class])];
-    cell.dataArray = [NSMutableArray arrayWithArray:@[@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu"]];
+//    MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
+//    cell.modelCircleDynamicResult = modelResult;
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DiscoverDynamicCell *cell = [[DiscoverDynamicCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([DiscoverDynamicCell class])];
-    cell.dataArray = [NSMutableArray arrayWithArray:@[@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu"]];
+//    cell.dataArray = [NSMutableArray arrayWithArray:@[@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu",@"ddtu"]];
     return cell.cellHeight;
 }
 

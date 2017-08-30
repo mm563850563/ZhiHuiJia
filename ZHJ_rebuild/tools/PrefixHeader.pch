@@ -323,6 +323,18 @@
 #pragma mark - <77.我的圈子-圈子动态>
 #define kCircleNews @"/circle/circleNews"
 
+#pragma mark - <78.圈子详情-圈子动态>
+#define kGetCirclePost @"/circle/getCirclePost"
+
+#pragma mark - <79.好友主页>
+#define kFriendHomePage @"/circle/friendHomePage"
+
+#pragma mark - <80.好友动态>
+#define kPersonalNews @"/circle/personalNews"
+
+#pragma mark - <81.精选动态>
+#define kBestNews @"/Circle/bestNews"
+
 
 
 

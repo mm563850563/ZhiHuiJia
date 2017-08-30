@@ -8,6 +8,16 @@
 
 #import "FocusPersonHeaderCell.h"
 
+@interface FocusPersonHeaderCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewPortrait;
+@property (weak, nonatomic) IBOutlet UILabel *labelNickName;
+@property (weak, nonatomic) IBOutlet UIButton *btnFocusCount;
+@property (weak, nonatomic) IBOutlet UIButton *btnFansCount;
+@property (weak, nonatomic) IBOutlet UIButton *btnOnFocus;
+
+@end
+
 @implementation FocusPersonHeaderCell
 
 - (void)awakeFromNib {
@@ -44,8 +54,12 @@
 #pragma mark - <+关注按钮响应>
 - (IBAction)btnOnFocusAction:(UIButton *)sender
 {
+    if (!sender.selected) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"clickOnFocusAttention" object:self.modelFriendResult.user_info.friend_user_id];
+    }else{
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"clickOnFocusCancelAttention" object:self.modelFriendResult.user_info.friend_user_id];
+    }
     sender.selected = !sender.selected;
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickOnFocus" object:nil];
 }
 
 #pragma mark - <私信按钮响应>
@@ -59,5 +73,38 @@
 {
     [[NSNotificationCenter defaultCenter]postNotificationName:@"clickPersonActivitySort" object:nil];
 }
+
+-(void)setModelFriendResult:(FriendHomePageResultModel *)modelFriendResult
+{
+    _modelFriendResult = modelFriendResult;
+    
+    NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelFriendResult.user_info.headimg];
+    NSURL *url = [NSURL URLWithString:imgStr];
+    [self.imgViewPortrait sd_setImageWithURL:url placeholderImage:kPlaceholder];
+    
+    self.labelNickName.text = modelFriendResult.user_info.nickname;
+    [self.btnFocusCount setTitle:[NSString stringWithFormat:@"%@关注",modelFriendResult.attentions] forState:UIControlStateNormal];
+    [self.btnFansCount setTitle:[NSString stringWithFormat:@"%@粉丝",modelFriendResult.fans] forState:UIControlStateNormal];
+    
+    if ([modelFriendResult.is_attentioned isEqualToString:@"1"]) {
+        self.btnOnFocus.selected = YES;
+    }else{
+        self.btnOnFocus.selected = NO;;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end
