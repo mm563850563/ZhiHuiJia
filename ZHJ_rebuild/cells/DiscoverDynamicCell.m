@@ -172,11 +172,11 @@
 {
     if (!_flowLayout) {
         _flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        CGFloat itemWidth = (kSCREEN_WIDTH-20)/3.0;
+        CGFloat itemWidth = (kSCREEN_WIDTH-20)/3.02;
         CGFloat itemHeight = itemWidth;
         self.flowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
         self.flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        self.flowLayout.minimumLineSpacing = 0;
+        self.flowLayout.minimumLineSpacing = 1;
         self.flowLayout.minimumInteritemSpacing = 0;
     }
     return _flowLayout;

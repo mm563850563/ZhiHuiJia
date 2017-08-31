@@ -11,11 +11,20 @@
 #import "MainTabBarViewController.h"
 #import <MLTransition.h>
 #import <IQKeyboardManager.h>
+#import "SearchNetTool.h"
+#import <AFNetworkReachabilityManager.h>
+
+//shareSDK
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import "WeiboSDK.h"
+
+//paySDK
 #import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
 #import "WXApiManager.h"
-#import "SearchNetTool.h"
-#import <AFNetworkReachabilityManager.h>
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -79,6 +88,9 @@
     
     [self settingMainTabbarVC];
     
+    //************ 第三方登录 *************
+    [self registerLoginPlatforms];
+    
     //****************登陆***************
     [self presentLogionVC];
     
@@ -86,6 +98,56 @@
     [WXApi registerApp:kWeChatPay_AppID ];
     
     return YES;
+}
+
+
+#pragma mark - <第三方登录平台注册>
+-(void)registerLoginPlatforms
+{
+    [ShareSDK registerActivePlatforms:@[@(SSDKPlatformTypeWechat),
+                                        @(SSDKPlatformTypeQQ),
+                                        @(SSDKPlatformTypeSinaWeibo)]
+                             onImport:^(SSDKPlatformType platformType) {
+                                            switch (platformType)
+                                            {
+                                                case SSDKPlatformTypeWechat:
+                                                    [ShareSDKConnector connectWeChat:[WXApi class]];
+                                                    break;
+                                                case SSDKPlatformTypeQQ:
+                                                    [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                                                    break;
+                                                case SSDKPlatformTypeSinaWeibo:
+                                                    [ShareSDKConnector connectWeibo:[WeiboSDK class]];
+                                                    break;
+                                                    
+                                                default:
+                                                    break;
+                                            }
+                                        }
+                      onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
+                          switch (platformType) {
+                              case SSDKPlatformTypeSinaWeibo:
+                                  //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
+                                  [appInfo SSDKSetupSinaWeiboByAppKey:@"4152357321"
+                                                            appSecret:@"cd648444ef6c5cc253c33e0fe5751d78"
+                                                          redirectUri:@"http://www.havshark.com/api/LoginApi/callback"
+                                                             authType:SSDKAuthTypeSSO];
+                                  break;
+                              case SSDKPlatformTypeWechat:
+                                  [appInfo SSDKSetupWeChatByAppId:@"wxd8b7051c3bd0f932"
+                                                        appSecret:@"7890cc73b5085d7e14884d297ba4310d"];
+                                  break;
+                              case SSDKPlatformTypeQQ:
+                                  [appInfo SSDKSetupQQByAppId:@"1106054822"
+                                                       appKey:@"hfui5JGPp7tyVjrw"
+                                                     authType:SSDKAuthTypeBoth];
+                                  break;
+                                  
+                              default:
+                                  break;
+                          }
+                      }];
+    
 }
 
 #pragma  mark - <登录页面>

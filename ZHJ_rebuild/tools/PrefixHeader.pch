@@ -335,6 +335,12 @@
 #pragma mark - <81.精选动态>
 #define kBestNews @"/Circle/bestNews"
 
+#pragma mark - <82.动态详情>
+#define kNewsDetail @"/Circle/newsDetail"
+
+#pragma mark - <83.动态详情评论>
+#define kGetPostReview @"/Circle/getPostReview"
+
 
 
 
@@ -347,6 +353,12 @@
 #pragma mark - <微信支付AppID>
 #define kWeChatPay_AppID @"wxd8b7051c3bd0f932"
 
+#pragma mark - <第三方登录>*************************
+#pragma mark - <新浪回调>
+#define kSinaWeiboCallBack @"/LoginApi/callback"
+
+#pragma mark - <三方登陆>
+#define kThirdLogin @"/User/thirdLogin"
 
 
 

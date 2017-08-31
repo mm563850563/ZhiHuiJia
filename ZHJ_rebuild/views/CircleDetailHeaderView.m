@@ -45,7 +45,7 @@
         [self.signinBGView addSubview:imgView];
         __weak typeof(self) weakSelf = self;
         [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(weakSelf.labelSigninCount.mas_right).with.offset(5+20*i);
+            make.left.mas_equalTo(weakSelf.labelSigninCount.mas_right).with.offset(10+25*i);
             make.centerY.mas_equalTo(0);
             make.size.mas_equalTo(CGSizeMake(35, 35));
         }];
@@ -56,7 +56,13 @@
         NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelSigninMember.headimg];
         NSURL *url = [NSURL URLWithString:imgStr];
         [imgView sd_setImageWithURL:url placeholderImage:kPlaceholder];
+        
+        
+        if (i == 7) {
+            break;
+        }
     }
+    
 }
 
 -(void)setModelCircleDetailResult:(CircleDetailResultModel *)modelCircleDetailResult

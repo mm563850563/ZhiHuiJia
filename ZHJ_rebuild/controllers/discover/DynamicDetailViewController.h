@@ -10,4 +10,7 @@
 
 @interface DynamicDetailViewController : UIViewController
 
+@property (nonatomic, strong)NSString *user_id;
+@property (nonatomic, strong)NSString *talk_id;
+
 @end

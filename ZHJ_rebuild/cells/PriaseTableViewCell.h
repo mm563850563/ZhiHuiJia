@@ -10,4 +10,6 @@
 
 @interface PriaseTableViewCell : UITableViewCell
 
+@property (nonatomic, strong)NSArray *likeArray;
+
 @end

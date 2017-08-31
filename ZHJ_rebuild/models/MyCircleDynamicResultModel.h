@@ -9,11 +9,15 @@
 #import <JSONModel/JSONModel.h>
 #import "MyCircleDynamicTips_infoModel.h"
 #import "MyCircleDynamicReply_infoModel.h"
+#import "MyCircleDynamicLike_infoModel.h"
 
 @protocol MyCircleDynamicTips_infoModel <NSObject>
 @end
 
 @protocol MyCircleDynamicReply_infoModel <NSObject>
+@end
+
+@protocol MyCircleDynamicLike_infoModel <NSObject>
 @end
 
 @interface MyCircleDynamicResultModel : JSONModel
@@ -35,6 +39,7 @@
 
 @property (nonatomic, strong)NSString<Optional> *is_attentioned;
 @property (nonatomic, strong)NSArray<MyCircleDynamicReply_infoModel,Optional> *reply_info;
+@property (nonatomic, strong)NSArray<MyCircleDynamicLike_infoModel,Optional> *like_info;
 
 
 

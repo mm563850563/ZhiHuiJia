@@ -257,10 +257,12 @@
 
 
 #pragma mark - <跳转dynamicDetailVC>
--(void)jumpToDynamicDetailVC
+-(void)jumpToDynamicDetailVCWithUserID:(NSString *)user_id talkID:(NSString *)talk_id
 {
     DynamicDetailViewController *dynamicDetailVC = [[DynamicDetailViewController alloc]initWithNibName:NSStringFromClass([DynamicDetailViewController class]) bundle:nil];
     dynamicDetailVC.hidesBottomBarWhenPushed = YES;
+    dynamicDetailVC.user_id = user_id;
+    dynamicDetailVC.talk_id = talk_id;
     [self.navigationController pushViewController:dynamicDetailVC animated:YES];
 }
 #pragma mark - <跳转mainCircleVC>
@@ -450,7 +452,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1) {
-        [self jumpToDynamicDetailVC];
+        MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
+        [self jumpToDynamicDetailVCWithUserID:modelResult.user_id talkID:modelResult.talk_id];
     }
 }
 
