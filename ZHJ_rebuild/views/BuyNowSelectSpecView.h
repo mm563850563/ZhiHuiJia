@@ -24,5 +24,6 @@
 @property (nonatomic, strong)NSArray *dataArray;
 @property (nonatomic, strong)NSString *goods_id;
 @property (nonatomic, strong)NSString *defaultPrice;
+@property (nonatomic, strong)NSString *goods_code;
 
 @end

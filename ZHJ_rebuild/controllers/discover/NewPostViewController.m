@@ -16,10 +16,14 @@
 //cells
 #import "NewPostImageCell.h"
 
+//models
+#import "MyJoinedCircleResultModel.h"
+
 @interface NewPostViewController ()<UITextViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,TZImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForScrollView;
 
+@property (weak, nonatomic) IBOutlet UILabel *labelCircle;
 @property (weak, nonatomic) IBOutlet UITextView *feedbackView;
 @property (weak, nonatomic) IBOutlet UILabel *limitLabel;
 @property (weak, nonatomic) IBOutlet UILabel *placeholder;
@@ -28,6 +32,9 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property(nonatomic, strong)NSMutableArray *imagesArray;
+
+//发布帖子所属圈子
+@property (nonatomic, strong)NSString *circle_id;
 
 @end
 
@@ -79,6 +86,7 @@
 {
     MoreCycleViewController *moreCycleVC = [[MoreCycleViewController alloc]initWithNibName:NSStringFromClass([MoreCycleViewController class]) bundle:nil];
     moreCycleVC.moreType = @"moreJoined";
+    moreCycleVC.whereReuseFrom = @"newPostVC";
     moreCycleVC.hidesBottomBarWhenPushed = NO;
     [self.navigationController pushViewController:moreCycleVC animated:YES];
 }
@@ -131,6 +139,13 @@
         }
         
         [self.collectionView reloadData];
+    }];
+    
+    //选择所属圈子
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectedCircleForNewPost" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        MyJoinedCircleResultModel *model = x.object;
+        self.labelCircle.text = model.circle_name;
+        self.circle_id = model.circle_id;
     }];
 }
 

@@ -341,6 +341,17 @@
 #pragma mark - <83.动态详情评论>
 #define kGetPostReview @"/Circle/getPostReview"
 
+#pragma mark - <84.动态详情点赞列表>
+#define kGetTalkLikeList @"/Circle/getTalkLikeList"
+
+#pragma mark - <85.评论／回复评论>
+#define kAddReview @"/Circle/addReview"
+
+#pragma mark - <86.个人活跃度>
+#define kPersonalLivenessRank @"/Circle/personalLivenessRank"
+
+#pragma mark - <87.产品评论>
+#define kGoodsComment @"/Goods/goodsComments"
 
 
 

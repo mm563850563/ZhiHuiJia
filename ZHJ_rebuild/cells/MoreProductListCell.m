@@ -66,7 +66,7 @@
         self.labelProductRemark.text = modelClassifyList.goods_remark;
         self.labelProductPrice.text = [NSString stringWithFormat:@"¥%@",modelClassifyList.price];
         self.labelCommentCount.text = [NSString stringWithFormat:@"%@条评论",modelClassifyList.comment_count];
-        NSMutableAttributedString *marketPriceStr = [NSMutableAttributedString returnThroughLineWithText:[NSString stringWithFormat:@"¥%@",modelClassifyList.market_price] font:11];
+        NSMutableAttributedString *marketPriceStr = [NSMutableAttributedString returnThroughLineWithText:[NSString stringWithFormat:@"%@",modelClassifyList.market_price] font:11];
         self.labelMarketPrice.attributedText = marketPriceStr;
         self.ratingBar.starNumber = [modelClassifyList.average_score integerValue];
     }
@@ -84,7 +84,7 @@
         self.labelProductRemark.text = _modelBrandGoods.goods_remark;
         self.labelProductPrice.text = [NSString stringWithFormat:@"¥%@",_modelBrandGoods.price];
         self.labelCommentCount.text = [NSString stringWithFormat:@"%@条评论",_modelBrandGoods.comment_count];
-        NSMutableAttributedString *marketPriceStr = [NSMutableAttributedString returnThroughLineWithText:[NSString stringWithFormat:@"¥%@",_modelBrandGoods.market_price] font:11];
+        NSMutableAttributedString *marketPriceStr = [NSMutableAttributedString returnThroughLineWithText:[NSString stringWithFormat:@"%@",_modelBrandGoods.market_price] font:11];
         self.labelMarketPrice.attributedText = marketPriceStr;
         self.ratingBar.starNumber = [_modelBrandGoods.average_score integerValue];
     }

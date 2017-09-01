@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class PersonalLivenessRank_my_first_rank_infoModel;
+
 @interface PersonalActivityRankFooterView : UIView
+
+@property (nonatomic, strong)PersonalLivenessRank_my_first_rank_infoModel *modelMyFirstRankInfo;
 
 @end

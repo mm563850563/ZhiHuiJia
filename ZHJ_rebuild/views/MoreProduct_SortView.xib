@@ -76,22 +76,22 @@
                     <rect key="frame" x="150" y="0.0" width="75" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wHt-Wv-ArK">
-                            <rect key="frame" x="12.5" y="323.5" width="50" height="20"/>
+                            <rect key="frame" x="13" y="324" width="50" height="20"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="销量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oT-ty-1Ua">
-                                    <rect key="frame" x="0.0" y="0.0" width="30" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="销量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oT-ty-1Ua">
+                                    <rect key="frame" x="0.0" y="0.0" width="35" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pWV-G7-506">
-                                    <rect key="frame" x="30" y="0.0" width="20" height="20"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_yellow" translatesAutoresizingMaskIntoConstraints="NO" id="pWV-G7-506">
+                                    <rect key="frame" x="35" y="0.0" width="15" height="20"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="pWV-G7-506" firstAttribute="leading" secondItem="3oT-ty-1Ua" secondAttribute="trailing" id="4Vo-2H-qPD"/>
-                                <constraint firstAttribute="trailing" secondItem="3oT-ty-1Ua" secondAttribute="trailing" constant="20" id="7Yh-Rz-0lF"/>
+                                <constraint firstAttribute="trailing" secondItem="3oT-ty-1Ua" secondAttribute="trailing" constant="15" id="7Yh-Rz-0lF"/>
                                 <constraint firstAttribute="bottom" secondItem="3oT-ty-1Ua" secondAttribute="bottom" id="7bv-RP-gaG"/>
                                 <constraint firstAttribute="height" constant="20" id="GhV-Gs-BW4"/>
                                 <constraint firstAttribute="bottom" secondItem="pWV-G7-506" secondAttribute="bottom" id="Gjx-v9-dRn"/>
@@ -123,22 +123,22 @@
                     <rect key="frame" x="225" y="0.0" width="75" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0n-gD-8WH">
-                            <rect key="frame" x="12.5" y="323.5" width="50" height="20"/>
+                            <rect key="frame" x="13" y="324" width="50" height="20"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NQ-gJ-Lvd">
-                                    <rect key="frame" x="0.0" y="0.0" width="30" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NQ-gJ-Lvd">
+                                    <rect key="frame" x="0.0" y="0.0" width="35" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oZu-ff-HOp">
-                                    <rect key="frame" x="30" y="0.0" width="20" height="20"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_yellow" translatesAutoresizingMaskIntoConstraints="NO" id="oZu-ff-HOp">
+                                    <rect key="frame" x="35" y="0.0" width="15" height="20"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="oZu-ff-HOp" secondAttribute="trailing" id="H0J-4g-loC"/>
-                                <constraint firstAttribute="trailing" secondItem="8NQ-gJ-Lvd" secondAttribute="trailing" constant="20" id="HEG-LP-a43"/>
+                                <constraint firstAttribute="trailing" secondItem="8NQ-gJ-Lvd" secondAttribute="trailing" constant="15" id="HEG-LP-a43"/>
                                 <constraint firstAttribute="bottom" secondItem="8NQ-gJ-Lvd" secondAttribute="bottom" id="Hcc-ma-3G3"/>
                                 <constraint firstItem="oZu-ff-HOp" firstAttribute="top" secondItem="y0n-gD-8WH" secondAttribute="top" id="SH3-6M-qla"/>
                                 <constraint firstAttribute="width" constant="50" id="Sss-uM-1N6"/>
@@ -169,9 +169,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbJ-83-T8X">
                     <rect key="frame" x="300" y="0.0" width="75" height="667"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e1e-8D-Nly">
-                            <rect key="frame" x="27.5" y="323.5" width="20" height="20"/>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layout" translatesAutoresizingMaskIntoConstraints="NO" id="e1e-8D-Nly">
+                            <rect key="frame" x="28" y="324" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="7A5-vg-aUd"/>
                                 <constraint firstAttribute="width" constant="20" id="9wK-fV-s0F"/>
@@ -234,4 +233,8 @@
             <point key="canvasLocation" x="1078.5" y="170.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="down_yellow" width="36" height="36"/>
+        <image name="layout" width="36" height="36"/>
+    </resources>
 </document>

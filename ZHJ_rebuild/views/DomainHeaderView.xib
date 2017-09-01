@@ -122,7 +122,7 @@
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="35"/>
+                                            <integer key="value" value="40"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
@@ -136,7 +136,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUK-mT-v1f">
-                                    <rect key="frame" x="127" y="140" width="40" height="20"/>
+                                    <rect key="frame" x="127" y="150" width="40" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="8br-iP-UUo"/>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="9Bm-p7-Eao"/>
@@ -158,7 +158,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5HX-u7-4ru">
-                                    <rect key="frame" x="208" y="140" width="33" height="20"/>
+                                    <rect key="frame" x="208" y="150" width="33" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="InY-rO-TYz"/>
                                         <constraint firstAttribute="height" constant="20" id="SUU-GW-g4C"/>
@@ -175,7 +175,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="P1z-b2-zKI" firstAttribute="leading" secondItem="hqv-qj-ufv" secondAttribute="leading" constant="10" id="1a3-g0-ZLD"/>
-                                <constraint firstItem="5HX-u7-4ru" firstAttribute="top" secondItem="P1z-b2-zKI" secondAttribute="bottom" id="2y5-71-5Um"/>
+                                <constraint firstItem="5HX-u7-4ru" firstAttribute="top" secondItem="P1z-b2-zKI" secondAttribute="bottom" constant="10" id="2y5-71-5Um"/>
                                 <constraint firstItem="yGn-kn-ezp" firstAttribute="top" secondItem="hqv-qj-ufv" secondAttribute="top" id="9cn-VN-PEJ"/>
                                 <constraint firstItem="c4E-Na-rvY" firstAttribute="centerY" secondItem="2JV-FA-49A" secondAttribute="centerY" id="9e7-Hm-Kxs"/>
                                 <constraint firstItem="96n-w8-CxY" firstAttribute="top" secondItem="yGn-kn-ezp" secondAttribute="bottom" id="AWk-90-8dI"/>
@@ -184,7 +184,7 @@
                                 <constraint firstItem="2lz-rc-aIC" firstAttribute="top" secondItem="P1z-b2-zKI" secondAttribute="bottom" id="GZj-yC-BCM"/>
                                 <constraint firstItem="2lz-rc-aIC" firstAttribute="centerX" secondItem="hqv-qj-ufv" secondAttribute="centerX" id="HJ4-BA-ytf"/>
                                 <constraint firstItem="TkX-fc-bg9" firstAttribute="centerY" secondItem="2JV-FA-49A" secondAttribute="centerY" id="NuZ-WI-sld"/>
-                                <constraint firstItem="fUK-mT-v1f" firstAttribute="top" secondItem="P1z-b2-zKI" secondAttribute="bottom" id="Piq-zu-zt0"/>
+                                <constraint firstItem="fUK-mT-v1f" firstAttribute="top" secondItem="P1z-b2-zKI" secondAttribute="bottom" constant="10" id="Piq-zu-zt0"/>
                                 <constraint firstItem="P1z-b2-zKI" firstAttribute="top" secondItem="2bV-81-1VN" secondAttribute="bottom" id="SS6-Qp-qcp"/>
                                 <constraint firstAttribute="height" constant="220" id="Wsu-yi-Miu"/>
                                 <constraint firstItem="TkX-fc-bg9" firstAttribute="leading" secondItem="c4E-Na-rvY" secondAttribute="trailing" constant="10" id="Xjz-lo-wml"/>
@@ -273,6 +273,12 @@
                 <constraint firstAttribute="bottom" secondItem="I5e-3C-x9r" secondAttribute="bottom" id="f3S-aE-S2i"/>
                 <constraint firstItem="I5e-3C-x9r" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wah-JY-Dcu"/>
             </constraints>
+            <connections>
+                <outlet property="btnFans" destination="5HX-u7-4ru" id="lfU-bJ-cn9"/>
+                <outlet property="btnFocus" destination="fUK-mT-v1f" id="vuP-Se-78z"/>
+                <outlet property="imgViewPortrait" destination="2bV-81-1VN" id="Vtp-NQ-Xiw"/>
+                <outlet property="labelNickName" destination="P1z-b2-zKI" id="Mf6-TQ-WwK"/>
+            </connections>
             <point key="canvasLocation" x="51.5" y="86.5"/>
         </view>
     </objects>

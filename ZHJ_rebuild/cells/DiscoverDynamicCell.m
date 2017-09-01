@@ -25,13 +25,14 @@
 @property (strong, nonatomic) UIImageView *imgViewPortrait;
 @property (strong, nonatomic) UILabel *labelNickName;
 @property (nonatomic, strong)UIButton *btnOnFocus;
+@property (nonatomic, strong)UIButton *btnLike;
+@property (nonatomic, strong)UIButton *btnComment;
 @property (strong, nonatomic) UILabel *labelAddTime;
-//@property (strong, nonatomic) UILabel *labelContent;
 @property (strong, nonatomic) UICollectionView *collectionView;
 @property (strong, nonatomic) UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong)UITableView *tableView;
-@property (nonatomic, strong)UIImageView *imgViewPraise;
-@property (nonatomic, strong)UIImageView *imgViewComment;
+//@property (nonatomic, strong)UIImageView *imgViewPraise;
+//@property (nonatomic, strong)UIImageView *imgViewComment;
 @property (nonatomic, strong)UILabel *labelPraiseCount;
 @property (nonatomic, strong)UILabel *labelCommentCount;
 @property (nonatomic, strong)TTTAttributedLabel *labelContent;
@@ -76,10 +77,20 @@
 
 -(void)btnOnfocusActionWithButton:(UIButton *)button
 {
+    NSString *notifiNameAttention = [NSString string];
+    NSString *notifiNameCancelAttention = [NSString string];
+    if ([self.whereReuseFrom isEqualToString:@"dynamicDetail"]) {
+        notifiNameAttention = @"attentionFriendByDynamicDetail";
+        notifiNameCancelAttention = @"cancelAttentionFriendByDynamicDetail";
+    }else if ([self.whereReuseFrom isEqualToString:@"discover"]){
+        notifiNameAttention = @"attentionFriendByDiscover";
+        notifiNameCancelAttention = @"cancelAttentionFriendByDiscover";
+    }
+    
     if (!button.selected) {
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"attentionFriendByDiscover" object:self.modelCircleDynamicResult.user_id];
+        [[NSNotificationCenter defaultCenter]postNotificationName:notifiNameAttention object:self.modelCircleDynamicResult.user_id];
     }else{
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"cancelAttentionFriendByDiscover" object:self.modelCircleDynamicResult.user_id];
+        [[NSNotificationCenter defaultCenter]postNotificationName:notifiNameCancelAttention object:self.modelCircleDynamicResult.user_id];
     }
 }
 
@@ -122,6 +133,33 @@
         _labelNickName.font = [UIFont systemFontOfSize:15];
     }
     return _labelNickName;
+}
+
+-(UIButton *)btnLike
+{
+    if (!_btnLike) {
+        _btnLike = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btnLike.frame = CGRectMake(0, 0, 50, 50);
+        
+        [_btnLike setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+        [_btnLike setImage:[UIImage imageNamed:@"like_yellow"] forState: UIControlStateSelected];
+        
+//        [_btnLike addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnLike;
+}
+
+-(UIButton *)btnComment
+{
+    if (!_btnComment) {
+        _btnComment = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btnComment.frame = CGRectMake(0, 0, 50, 50);
+        
+        [_btnComment setImage:[UIImage imageNamed:@"message"] forState:UIControlStateNormal];
+        
+        //        [_btnLike addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnComment;
 }
 
 -(UIButton *)btnOnFocus
@@ -197,26 +235,6 @@
     return _collectionView;
 }
 
--(UIImageView *)imgViewPraise
-{
-    if (!_imgViewPraise) {
-        _imgViewPraise = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
-        _imgViewPraise.contentMode = UIViewContentModeScaleAspectFit;
-        _imgViewPraise.backgroundColor = kColorFromRGB(kThemeYellow);
-    }
-    return _imgViewPraise;
-}
-
--(UIImageView *)imgViewComment
-{
-    if (!_imgViewComment) {
-        _imgViewComment = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
-        _imgViewComment.contentMode = UIViewContentModeScaleAspectFit;
-        _imgViewComment.backgroundColor = kColorFromRGB(kThemeYellow);
-    }
-    return _imgViewComment;
-}
-
 -(UILabel *)labelPraiseCount
 {
     if (!_labelPraiseCount) {
@@ -269,8 +287,8 @@
     [self.BGView addSubview:self.labelContent];
     [self.BGView addSubview:self.collectionView];
     [self.BGView addSubview:self.commentBGView];
-    [self.commentBGView addSubview:self.imgViewPraise];
-    [self.commentBGView addSubview:self.imgViewComment];
+    [self.commentBGView addSubview:self.btnLike];
+    [self.commentBGView addSubview:self.btnComment];
     [self.commentBGView addSubview:self.labelPraiseCount];
     [self.commentBGView addSubview:self.labelCommentCount];
     [self.commentBGView addSubview:self.labelAddTime];
@@ -317,23 +335,23 @@
         make.right.mas_equalTo(-10);
         make.height.mas_equalTo(40);
     }];
-    [self.imgViewPraise mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.btnComment mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(10);
         make.size.mas_offset(CGSizeMake(15, 15));
         make.centerY.mas_equalTo(0);
     }];
-    [self.labelPraiseCount mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(weakSelf.imgViewPraise.mas_right).with.offset(5);
+    [self.labelCommentCount mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(weakSelf.btnComment.mas_right).with.offset(5);
         make.size.mas_offset(CGSizeMake(30, 20));
         make.centerY.mas_equalTo(0);
     }];
-    [self.imgViewComment mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(weakSelf.labelPraiseCount.mas_right).with.offset(10);
+    [self.btnLike mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(weakSelf.labelCommentCount.mas_right).with.offset(5);
         make.size.mas_offset(CGSizeMake(15, 15));
         make.centerY.mas_equalTo(0);
     }];
-    [self.labelCommentCount mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(weakSelf.imgViewComment.mas_right).with.offset(5);
+    [self.labelPraiseCount mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(weakSelf.btnLike.mas_right).with.offset(5);
         make.size.mas_offset(CGSizeMake(30, 20));
         make.centerY.mas_equalTo(0);
     }];

@@ -38,6 +38,8 @@
 {
     _likeArray = likeArray;
     
+    self.labelLikeCount.text = [NSString stringWithFormat:@"%lu赞",(unsigned long)likeArray.count];
+    
     for (int i=0; i<likeArray.count; i++) {
         
         //动态添加头像

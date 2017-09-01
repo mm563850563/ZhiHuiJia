@@ -16,11 +16,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="333"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="332.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="332"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iko-6u-NRl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="332.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="332"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huodong" translatesAutoresizingMaskIntoConstraints="NO" id="gWL-UA-WDl">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
@@ -33,7 +33,7 @@
                                 <rect key="frame" x="0.0" y="200" width="320" height="110"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkD-62-0qx">
-                                        <rect key="frame" x="0.0" y="0.0" width="106.5" height="110"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="107" height="110"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nO6-oQ-UBV">
                                                 <rect key="frame" x="23" y="10" width="60" height="90"/>
@@ -90,10 +90,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnq-Tt-ohL">
-                                        <rect key="frame" x="106.5" y="0.0" width="106.5" height="110"/>
+                                        <rect key="frame" x="107" y="0.0" width="107" height="110"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSo-ka-yAf">
-                                                <rect key="frame" x="22.5" y="10" width="60" height="90"/>
+                                                <rect key="frame" x="24" y="10" width="60" height="90"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discover_sameTown" translatesAutoresizingMaskIntoConstraints="NO" id="GZE-wV-PLo">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -147,7 +147,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ku7-eK-E7y">
-                                        <rect key="frame" x="213" y="0.0" width="106.5" height="110"/>
+                                        <rect key="frame" x="214" y="0.0" width="107" height="110"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q5h-RA-55r">
                                                 <rect key="frame" x="23" y="10" width="60" height="90"/>

@@ -14,4 +14,10 @@
 @property (nonatomic, strong)MyCircleDynamicResultModel *modelCircleDynamicResult;
 @property (nonatomic, assign)CGFloat cellHeight;
 
+
+
+//区别：从哪个页面复用cell
+@property (nonatomic, strong)NSString *whereReuseFrom;
+
+
 @end

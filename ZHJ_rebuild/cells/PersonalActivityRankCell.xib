@@ -15,14 +15,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="75.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNt-mq-7uC">
-                        <rect key="frame" x="0.0" y="1" width="320" height="74.5"/>
+                        <rect key="frame" x="0.0" y="1" width="320" height="75"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No.10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pc-56-BSP">
-                                <rect key="frame" x="10" y="27.5" width="45" height="20"/>
+                                <rect key="frame" x="10" y="28" width="45" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="WV7-Le-ctf"/>
                                     <constraint firstAttribute="width" constant="45" id="qZU-qu-fbO"/>
@@ -44,7 +44,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3i-ZD-b4b">
-                                <rect key="frame" x="115" y="17.5" width="40" height="40"/>
+                                <rect key="frame" x="115" y="18" width="40" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="酷出行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOg-8B-uoi">
                                         <rect key="frame" x="0.0" y="10" width="40" height="20"/>
@@ -65,7 +65,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="245.6点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNE-9b-D3c">
-                                <rect key="frame" x="268.5" y="27.5" width="41.5" height="20"/>
+                                <rect key="frame" x="268" y="28" width="42" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="Iwc-al-H02"/>
                                     <constraint firstAttribute="height" constant="20" id="tBu-wG-zRi"/>
@@ -96,6 +96,12 @@
                     <constraint firstAttribute="trailing" secondItem="aNt-mq-7uC" secondAttribute="trailing" id="prJ-pN-e0q"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imgViewPortrait" destination="IZq-H0-bEs" id="lyP-p6-rAS"/>
+                <outlet property="labelLiveness" destination="DNE-9b-D3c" id="PYN-Dm-RCf"/>
+                <outlet property="labelNickName" destination="cOg-8B-uoi" id="iWg-41-xDV"/>
+                <outlet property="labelRank" destination="0pc-56-BSP" id="kgN-8p-5PZ"/>
+            </connections>
             <point key="canvasLocation" x="98" y="103"/>
         </tableViewCell>
     </objects>

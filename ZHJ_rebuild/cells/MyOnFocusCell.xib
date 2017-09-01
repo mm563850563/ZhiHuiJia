@@ -11,48 +11,60 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyOnFocusCell" rowHeight="87" id="KGk-i7-Jjw" customClass="MyOnFocusCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOnFocusCell" rowHeight="87" id="KGk-i7-Jjw" customClass="MyOnFocusCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="86.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="86"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tx" translatesAutoresizingMaskIntoConstraints="NO" id="Nbb-K7-1jM">
-                        <rect key="frame" x="10" y="18.5" width="50" height="50"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cl7-vP-waf">
+                        <rect key="frame" x="0.0" y="1" width="320" height="85"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tx" translatesAutoresizingMaskIntoConstraints="NO" id="Nbb-K7-1jM">
+                                <rect key="frame" x="10" y="17" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="R2T-vJ-VkS"/>
+                                    <constraint firstAttribute="width" constant="50" id="YI2-Lf-ZNp"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小丸子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIS-Fh-ARr">
+                                <rect key="frame" x="70" y="32" width="240" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Oi1-K3-DLO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="R2T-vJ-VkS"/>
-                            <constraint firstAttribute="width" constant="50" id="YI2-Lf-ZNp"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小丸子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIS-Fh-ARr">
-                        <rect key="frame" x="80" y="33.5" width="230" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="Oi1-K3-DLO"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KjY-i1-Kfe">
-                        <rect key="frame" x="0.0" y="85.5" width="320" height="1"/>
-                        <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="KNH-5Y-cdG"/>
+                            <constraint firstItem="Nbb-K7-1jM" firstAttribute="centerY" secondItem="Cl7-vP-waf" secondAttribute="centerY" id="2vj-E1-Na6"/>
+                            <constraint firstAttribute="trailing" secondItem="uIS-Fh-ARr" secondAttribute="trailing" constant="10" id="EsB-Gn-tgG"/>
+                            <constraint firstItem="uIS-Fh-ARr" firstAttribute="centerY" secondItem="Cl7-vP-waf" secondAttribute="centerY" id="XH4-MN-gzx"/>
+                            <constraint firstItem="Nbb-K7-1jM" firstAttribute="leading" secondItem="Cl7-vP-waf" secondAttribute="leading" constant="10" id="a3o-3t-QGH"/>
+                            <constraint firstItem="uIS-Fh-ARr" firstAttribute="leading" secondItem="Nbb-K7-1jM" secondAttribute="trailing" constant="10" id="zvn-J6-zKV"/>
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstItem="KjY-i1-Kfe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="9ja-dJ-1H0"/>
-                    <constraint firstAttribute="bottom" secondItem="KjY-i1-Kfe" secondAttribute="bottom" id="I6w-Lq-udF"/>
-                    <constraint firstItem="Nbb-K7-1jM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qb4-lV-LVe"/>
-                    <constraint firstItem="Nbb-K7-1jM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Sg8-G6-VrM"/>
-                    <constraint firstAttribute="trailing" secondItem="KjY-i1-Kfe" secondAttribute="trailing" id="Vcl-p3-clW"/>
-                    <constraint firstItem="uIS-Fh-ARr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mog-Ke-6wg"/>
-                    <constraint firstAttribute="trailing" secondItem="uIS-Fh-ARr" secondAttribute="trailing" constant="10" id="o7s-vg-1pT"/>
-                    <constraint firstItem="uIS-Fh-ARr" firstAttribute="leading" secondItem="Nbb-K7-1jM" secondAttribute="trailing" constant="20" id="sxS-HE-h7d"/>
+                    <constraint firstItem="Cl7-vP-waf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Dbd-Hu-4Sy"/>
+                    <constraint firstAttribute="bottom" secondItem="Cl7-vP-waf" secondAttribute="bottom" constant="0.5" id="MQP-eh-ZT6"/>
+                    <constraint firstItem="Cl7-vP-waf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="Ot1-Qh-wIK"/>
+                    <constraint firstAttribute="trailing" secondItem="Cl7-vP-waf" secondAttribute="trailing" id="coc-G8-HqE"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imgViewPortrait" destination="Nbb-K7-1jM" id="0Cv-Ru-mhg"/>
+                <outlet property="labelNickName" destination="uIS-Fh-ARr" id="Uv0-sq-fuY"/>
+            </connections>
             <point key="canvasLocation" x="34" y="132.5"/>
         </tableViewCell>
     </objects>

@@ -10,6 +10,7 @@
 
 //cells
 #import "FocusPersonCell.h"
+#import "NULLTableViewCell.h"
 
 //views
 #import "DomainHeaderView.h"
@@ -23,9 +24,22 @@
 #import "PersonalRankActivityViewController.h"
 #import "NewPostViewController.h"
 
+//models
+#import "FriendHomePageDataModel.h"
+#import "FriendHomePageResultModel.h"
+#import "FriendHomePageUser_infoModel.h"
+#import "MyCircleDynamicDataModel.h"
+#import "MyCircleDynamicResultModel.h"
+#import "MyCircleDynamicTips_infoModel.h"
+
 @interface DomainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong)NSMutableArray *circleDynamicArray;
+
+@property (nonatomic, strong)FriendHomePageResultModel *modelResult;
+
+@property (nonatomic, strong)NSNumber *page;
 
 @end
 
@@ -35,6 +49,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.page = @1;
+    [self managerRequestWithGCD];
     [self settingTableView];
     [self respondWithRAC];
 }
@@ -42,6 +58,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - <懒加载>
+-(NSMutableArray *)circleDynamicArray
+{
+    if (!_circleDynamicArray) {
+        _circleDynamicArray = [NSMutableArray array];
+    }
+    return _circleDynamicArray;
 }
 
 /*
@@ -54,7 +79,111 @@
 }
 */
 
+#pragma mark - <GCD管理多线程>
+-(void)managerRequestWithGCD
+{
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue1 = dispatch_queue_create("getPersonalHomePageData", NULL);
+    dispatch_queue_t queue2 = dispatch_queue_create("getMyCircleDynamicData", NULL);
+    
+    dispatch_group_async(group, queue1, ^{
+        [self getPersonalHomePageData];
+    });
+    dispatch_group_async(group, queue2, ^{
+        [self getMyDynamicDataWithPage:@1];
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+        [hud hideAnimated:YES afterDelay:1.0];
+    });
+}
 
+#pragma mark - <获取个人主页资料>
+-(void)getPersonalHomePageData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kFriendHomePage];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"friend_user_id":kUserDefaultObject(kUserInfo)};
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                FriendHomePageDataModel *modelData = [[FriendHomePageDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                self.modelResult = modelData.result;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
+#pragma mark - <获取“我的个人动态”数据>
+-(void)getMyDynamicDataWithPage:(NSNumber *)page
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPersonalNews];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"page":page,
+                                    @"page_count":@10};
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                MyCircleDynamicDataModel *modelData = [[MyCircleDynamicDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                for (MyCircleDynamicResultModel *modelDynamicResult in modelData.result) {
+                    [self.circleDynamicArray addObject:modelDynamicResult];
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                    [self.tableView.mj_footer endRefreshing];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [self.tableView.mj_footer endRefreshing];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [self.tableView.mj_footer endRefreshing];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [self.tableView.mj_footer endRefreshing];
+        });
+    }];
+}
+
+#pragma mark - <配置tableView>
 -(void)settingTableView
 {
     self.tableView.delegate = self;
@@ -62,6 +191,16 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.tableView registerClass:[FocusPersonCell class] forCellReuseIdentifier:NSStringFromClass([FocusPersonCell class])];
+    
+    UINib *nibNull = [UINib nibWithNibName:NSStringFromClass([NULLTableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
+    
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        int page = [self.page intValue];
+        page++;
+        self.page = [NSNumber numberWithInt:page];
+        [self getMyDynamicDataWithPage:self.page];
+    }];
 }
 
 #pragma mark - <跳转“我的关注”页面>
@@ -168,12 +307,21 @@
 #pragma mark - *** UITableViewDelegate,UITableViewDataSource ****
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    if (self.circleDynamicArray.count == 0) {
+        return 1;
+    }
+    return self.circleDynamicArray.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 120;
+    if (self.circleDynamicArray.count == 0) {
+        return 500;
+    }
+    MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
+    FocusPersonCell *cellDynamic = [[FocusPersonCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([FocusPersonCell class])];
+    cellDynamic.modelCircleDynamicResult = modelResult;
+    return cellDynamic.cellHeight;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -188,13 +336,25 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *headerView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([DomainHeaderView class]) owner:nil options:nil].lastObject;
+    DomainHeaderView *headerView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([DomainHeaderView class]) owner:nil options:nil].lastObject;
+    headerView.modelResult = self.modelResult;
     return headerView;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FocusPersonCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([FocusPersonCell class])];
+    UITableViewCell *cell = [[UITableViewCell alloc]init];
+    
+    if (self.circleDynamicArray.count == 0) {
+        NULLTableViewCell *cellNull = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NULLTableViewCell class])];
+        cell = cellNull;
+    }else{
+        FocusPersonCell *cellFocusDynamic = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([FocusPersonCell class])];
+        MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
+        cellFocusDynamic.modelCircleDynamicResult = modelResult;
+        cell = cellFocusDynamic;
+    }
+    
     return cell;
 }
 

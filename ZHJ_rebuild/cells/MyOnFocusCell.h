@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TalkLikeResultModel;
 
 @interface MyOnFocusCell : UITableViewCell
+
+@property (nonatomic, strong)TalkLikeResultModel *modelTalkLikeResult;
 
 @end

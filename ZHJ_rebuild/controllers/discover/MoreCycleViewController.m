@@ -280,14 +280,23 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *circle_id = [[NSString alloc]init];
+    MyJoinedCircleResultModel *model = [[MyJoinedCircleResultModel alloc]init];
     if ([self.moreType isEqualToString:@"moreJoined"]) {
-        MyJoinedCircleResultModel *model = self.joinedCircleArray[indexPath.row];
+        model = self.joinedCircleArray[indexPath.row];
         circle_id = model.circle_id;
+        
     }else if ([self.moreType isEqualToString:@"moreHot"]){
         GetHotCycleCircleInfoModel *model = self.hotCircleArray[indexPath.row];
         circle_id = model.circle_id;
     }
-    [self jumpToCircleDetailVCWithCircleID:circle_id];
+    
+    if ([self.whereReuseFrom isEqualToString:@"newPostVC"]) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"selectedCircleForNewPost" object:model];
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [self jumpToCircleDetailVCWithCircleID:circle_id];
+    }
+    
 }
 
 

@@ -106,6 +106,16 @@
 		DD0960BF1F580E6D002F4AED /* DynamicDetailCommentDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960BE1F580E6D002F4AED /* DynamicDetailCommentDataModel.m */; };
 		DD0960C21F580E83002F4AED /* DynamicDetailCommentResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960C11F580E83002F4AED /* DynamicDetailCommentResultModel.m */; };
 		DD0960C91F581115002F4AED /* DynamicDetailCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960C71F581115002F4AED /* DynamicDetailCommentCell.m */; };
+		DD0960CE1F58F4D4002F4AED /* TalkLikeDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960CD1F58F4D4002F4AED /* TalkLikeDataModel.m */; };
+		DD0960D11F58F4E8002F4AED /* TalkLikeResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960D01F58F4E8002F4AED /* TalkLikeResultModel.m */; };
+		DD0960D51F5960E0002F4AED /* PersonalLivenessRankDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960D41F5960E0002F4AED /* PersonalLivenessRankDataModel.m */; };
+		DD0960D81F5960F4002F4AED /* PersonalLivenessRankResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960D71F5960F4002F4AED /* PersonalLivenessRankResultModel.m */; };
+		DD0960DB1F596134002F4AED /* PersonalLivenessRank_ChampionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960DA1F596134002F4AED /* PersonalLivenessRank_ChampionModel.m */; };
+		DD0960DE1F596156002F4AED /* PersonalLivenessRank_personal_rank_infoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960DD1F596156002F4AED /* PersonalLivenessRank_personal_rank_infoModel.m */; };
+		DD0960E11F596172002F4AED /* PersonalLivenessRank_my_first_rank_infoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960E01F596172002F4AED /* PersonalLivenessRank_my_first_rank_infoModel.m */; };
+		DD0960E51F5988F3002F4AED /* ProductCommentDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960E41F5988F3002F4AED /* ProductCommentDataModel.m */; };
+		DD0960E81F5989FA002F4AED /* ProductCommentResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960E71F5989FA002F4AED /* ProductCommentResultModel.m */; };
+		DD0960EE1F598A2C002F4AED /* ProductCommentServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960ED1F598A2C002F4AED /* ProductCommentServiceModel.m */; };
 		DD0DBAC91F32B2BE0098F5FA /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAC81F32B2BE0098F5FA /* LoginModel.m */; };
 		DD0DBACC1F32B2DC0098F5FA /* LoginDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBACB1F32B2DC0098F5FA /* LoginDataModel.m */; };
 		DD0DBAD01F32B9810098F5FA /* RecommendGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBACF1F32B9810098F5FA /* RecommendGoodsModel.m */; };
@@ -817,6 +827,26 @@
 		DD0960C11F580E83002F4AED /* DynamicDetailCommentResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DynamicDetailCommentResultModel.m; path = models/DynamicDetailCommentResultModel.m; sourceTree = "<group>"; };
 		DD0960C61F581115002F4AED /* DynamicDetailCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynamicDetailCommentCell.h; path = cells/DynamicDetailCommentCell.h; sourceTree = "<group>"; };
 		DD0960C71F581115002F4AED /* DynamicDetailCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DynamicDetailCommentCell.m; path = cells/DynamicDetailCommentCell.m; sourceTree = "<group>"; };
+		DD0960CC1F58F4D4002F4AED /* TalkLikeDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TalkLikeDataModel.h; path = models/TalkLikeDataModel.h; sourceTree = "<group>"; };
+		DD0960CD1F58F4D4002F4AED /* TalkLikeDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TalkLikeDataModel.m; path = models/TalkLikeDataModel.m; sourceTree = "<group>"; };
+		DD0960CF1F58F4E8002F4AED /* TalkLikeResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TalkLikeResultModel.h; path = models/TalkLikeResultModel.h; sourceTree = "<group>"; };
+		DD0960D01F58F4E8002F4AED /* TalkLikeResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TalkLikeResultModel.m; path = models/TalkLikeResultModel.m; sourceTree = "<group>"; };
+		DD0960D31F5960E0002F4AED /* PersonalLivenessRankDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalLivenessRankDataModel.h; path = models/PersonalLivenessRankDataModel.h; sourceTree = "<group>"; };
+		DD0960D41F5960E0002F4AED /* PersonalLivenessRankDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalLivenessRankDataModel.m; path = models/PersonalLivenessRankDataModel.m; sourceTree = "<group>"; };
+		DD0960D61F5960F4002F4AED /* PersonalLivenessRankResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalLivenessRankResultModel.h; path = models/PersonalLivenessRankResultModel.h; sourceTree = "<group>"; };
+		DD0960D71F5960F4002F4AED /* PersonalLivenessRankResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalLivenessRankResultModel.m; path = models/PersonalLivenessRankResultModel.m; sourceTree = "<group>"; };
+		DD0960D91F596134002F4AED /* PersonalLivenessRank_ChampionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalLivenessRank_ChampionModel.h; path = models/PersonalLivenessRank_ChampionModel.h; sourceTree = "<group>"; };
+		DD0960DA1F596134002F4AED /* PersonalLivenessRank_ChampionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalLivenessRank_ChampionModel.m; path = models/PersonalLivenessRank_ChampionModel.m; sourceTree = "<group>"; };
+		DD0960DC1F596156002F4AED /* PersonalLivenessRank_personal_rank_infoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalLivenessRank_personal_rank_infoModel.h; path = models/PersonalLivenessRank_personal_rank_infoModel.h; sourceTree = "<group>"; };
+		DD0960DD1F596156002F4AED /* PersonalLivenessRank_personal_rank_infoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalLivenessRank_personal_rank_infoModel.m; path = models/PersonalLivenessRank_personal_rank_infoModel.m; sourceTree = "<group>"; };
+		DD0960DF1F596172002F4AED /* PersonalLivenessRank_my_first_rank_infoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalLivenessRank_my_first_rank_infoModel.h; path = models/PersonalLivenessRank_my_first_rank_infoModel.h; sourceTree = "<group>"; };
+		DD0960E01F596172002F4AED /* PersonalLivenessRank_my_first_rank_infoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalLivenessRank_my_first_rank_infoModel.m; path = models/PersonalLivenessRank_my_first_rank_infoModel.m; sourceTree = "<group>"; };
+		DD0960E31F5988F3002F4AED /* ProductCommentDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductCommentDataModel.h; path = models/ProductCommentDataModel.h; sourceTree = "<group>"; };
+		DD0960E41F5988F3002F4AED /* ProductCommentDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductCommentDataModel.m; path = models/ProductCommentDataModel.m; sourceTree = "<group>"; };
+		DD0960E61F5989FA002F4AED /* ProductCommentResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductCommentResultModel.h; path = models/ProductCommentResultModel.h; sourceTree = "<group>"; };
+		DD0960E71F5989FA002F4AED /* ProductCommentResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductCommentResultModel.m; path = models/ProductCommentResultModel.m; sourceTree = "<group>"; };
+		DD0960EC1F598A2C002F4AED /* ProductCommentServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductCommentServiceModel.h; path = models/ProductCommentServiceModel.h; sourceTree = "<group>"; };
+		DD0960ED1F598A2C002F4AED /* ProductCommentServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductCommentServiceModel.m; path = models/ProductCommentServiceModel.m; sourceTree = "<group>"; };
 		DD0DBAC71F32B2BE0098F5FA /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginModel.h; path = models/LoginModel.h; sourceTree = "<group>"; };
 		DD0DBAC81F32B2BE0098F5FA /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginModel.m; path = models/LoginModel.m; sourceTree = "<group>"; };
 		DD0DBACA1F32B2DC0098F5FA /* LoginDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginDataModel.h; path = models/LoginDataModel.h; sourceTree = "<group>"; };
@@ -2070,6 +2100,47 @@
 			name = DynamicDetailCommentModel;
 			sourceTree = "<group>";
 		};
+		DD0960CB1F58F4A8002F4AED /* TalkLikeModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD0960CC1F58F4D4002F4AED /* TalkLikeDataModel.h */,
+				DD0960CD1F58F4D4002F4AED /* TalkLikeDataModel.m */,
+				DD0960CF1F58F4E8002F4AED /* TalkLikeResultModel.h */,
+				DD0960D01F58F4E8002F4AED /* TalkLikeResultModel.m */,
+			);
+			name = TalkLikeModel;
+			sourceTree = "<group>";
+		};
+		DD0960D21F5960BB002F4AED /* PersonalLivenessRankModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD0960D31F5960E0002F4AED /* PersonalLivenessRankDataModel.h */,
+				DD0960D41F5960E0002F4AED /* PersonalLivenessRankDataModel.m */,
+				DD0960D61F5960F4002F4AED /* PersonalLivenessRankResultModel.h */,
+				DD0960D71F5960F4002F4AED /* PersonalLivenessRankResultModel.m */,
+				DD0960D91F596134002F4AED /* PersonalLivenessRank_ChampionModel.h */,
+				DD0960DA1F596134002F4AED /* PersonalLivenessRank_ChampionModel.m */,
+				DD0960DC1F596156002F4AED /* PersonalLivenessRank_personal_rank_infoModel.h */,
+				DD0960DD1F596156002F4AED /* PersonalLivenessRank_personal_rank_infoModel.m */,
+				DD0960DF1F596172002F4AED /* PersonalLivenessRank_my_first_rank_infoModel.h */,
+				DD0960E01F596172002F4AED /* PersonalLivenessRank_my_first_rank_infoModel.m */,
+			);
+			name = PersonalLivenessRankModel;
+			sourceTree = "<group>";
+		};
+		DD0960E21F5988C9002F4AED /* ProductCommentModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD0960E31F5988F3002F4AED /* ProductCommentDataModel.h */,
+				DD0960E41F5988F3002F4AED /* ProductCommentDataModel.m */,
+				DD0960E61F5989FA002F4AED /* ProductCommentResultModel.h */,
+				DD0960E71F5989FA002F4AED /* ProductCommentResultModel.m */,
+				DD0960EC1F598A2C002F4AED /* ProductCommentServiceModel.h */,
+				DD0960ED1F598A2C002F4AED /* ProductCommentServiceModel.m */,
+			);
+			name = ProductCommentModel;
+			sourceTree = "<group>";
+		};
 		DD0DBAC61F32B29A0098F5FA /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -3224,6 +3295,9 @@
 				DD0960211F56A30F002F4AED /* FriendHomePageModel */,
 				DD0960B81F580486002F4AED /* DynamicDetailModel */,
 				DD0960BC1F580E31002F4AED /* DynamicDetailCommentModel */,
+				DD0960CB1F58F4A8002F4AED /* TalkLikeModel */,
+				DD0960D21F5960BB002F4AED /* PersonalLivenessRankModel */,
+				DD0960E21F5988C9002F4AED /* ProductCommentModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -3944,6 +4018,7 @@
 				EC4BA25E1F15FE0900B9BE1A /* DiscoverHotTopicViewController.m in Sources */,
 				DD4CF1061F29EDD80024156F /* AllClassifyModel.m in Sources */,
 				EC4BA24F1F15D43600B9BE1A /* BrandRulesViewController.m in Sources */,
+				DD0960DB1F596134002F4AED /* PersonalLivenessRank_ChampionModel.m in Sources */,
 				EC4BA0841F13599A00B9BE1A /* UIImage+Color.m in Sources */,
 				DD095FCF1F540E2D002F4AED /* CircleDetailConfigViewController.m in Sources */,
 				DD0DBAEA1F330CC10098F5FA /* GetUserPrizeDataModel.m in Sources */,
@@ -3998,6 +4073,7 @@
 				DD40B7411F179C3100839748 /* SameHobbyCell.m in Sources */,
 				DDDD17C51F2C6C06006BE206 /* IndexCarouselModel.m in Sources */,
 				EC4BA1191F136DBB00B9BE1A /* MainTabBarViewController.m in Sources */,
+				DD0960E81F5989FA002F4AED /* ProductCommentResultModel.m in Sources */,
 				DD6288091F22EA510030331D /* SubMessage_AboutMeViewController.m in Sources */,
 				DD4CF1191F2AFB9E0024156F /* CategoryProductNameCell.m in Sources */,
 				DD9A63BD1F2EF3D900611FA8 /* HomeGoodsResultModel.m in Sources */,
@@ -4021,6 +4097,7 @@
 				DD58FF991F5014F2009EC9F2 /* ActivitySignUpListDataModel.m in Sources */,
 				DD58FF4C1F4C2A26009EC9F2 /* MyTrackViewController.m in Sources */,
 				EC4BA0D81F1359EC00B9BE1A /* BaseCollectionViewCell.m in Sources */,
+				DD0960D81F5960F4002F4AED /* PersonalLivenessRankResultModel.m in Sources */,
 				DD58FF5F1F4C36CB009EC9F2 /* MyTrackHeaderView.m in Sources */,
 				DD4CF0131F285C020024156F /* ActivityRecommendDetailViewController.m in Sources */,
 				DDFB82B31F1D931500AEAAA7 /* NSBundle+PYSearchExtension.m in Sources */,
@@ -4040,6 +4117,7 @@
 				DD0DBB0D1F3431780098F5FA /* GetSpecPriceResultModel.m in Sources */,
 				DD69B2FA1F3AFD390036F368 /* UIView+STPicker.m in Sources */,
 				DD62871D1F1F3D8B0030331D /* PriaseTableViewCell.m in Sources */,
+				DD0960D11F58F4E8002F4AED /* TalkLikeResultModel.m in Sources */,
 				DD0DBAD31F32B9970098F5FA /* RecommendGoodsDataModel.m in Sources */,
 				DD58FFCF1F5137CA009EC9F2 /* WaitAuditSignUpResultModel.m in Sources */,
 				DD4CF0A41F2996B60024156F /* MoreCycleViewController.m in Sources */,
@@ -4079,6 +4157,7 @@
 				DD40B7391F176E8600839748 /* EqualSpaceFlowLayout.m in Sources */,
 				DD095FDE1F54F8AA002F4AED /* AllCircleMemberViewController.m in Sources */,
 				DD0960BF1F580E6D002F4AED /* DynamicDetailCommentDataModel.m in Sources */,
+				DD0960CE1F58F4D4002F4AED /* TalkLikeDataModel.m in Sources */,
 				DD095FD91F540FDE002F4AED /* CircleDetailConfigQuitCell.m in Sources */,
 				DD0939111F4553B700A75182 /* RegisterViewController.m in Sources */,
 				DDE0FD0D1F35666200269DBD /* UserFavoriteModel.m in Sources */,
@@ -4146,6 +4225,7 @@
 				DD0939221F45918900A75182 /* UIBarButtonItem+Badge.m in Sources */,
 				DD4CF01D1F2868490024156F /* ActivityRecommendInformationCell.m in Sources */,
 				DD6287181F1F32010030331D /* DynamicDetailViewController.m in Sources */,
+				DD0960E51F5988F3002F4AED /* ProductCommentDataModel.m in Sources */,
 				DD58FF381F4BC81A009EC9F2 /* MyJoinedCircleDataModel.m in Sources */,
 				DD9A63B71F2EF31900611FA8 /* HomeGoodsModel.m in Sources */,
 				DDFB829C1F1C78FD00AEAAA7 /* MoreProduct_SortView.m in Sources */,
@@ -4185,6 +4265,7 @@
 				DDC52EBC1F42C39F00ECF211 /* SuccessPayHeaderView.m in Sources */,
 				DD6898141F302BB2008B6A8F /* ClassifyListDataModel.m in Sources */,
 				DD0DBAED1F330CDA0098F5FA /* GetUserPrizeResultModel.m in Sources */,
+				DD0960D51F5960E0002F4AED /* PersonalLivenessRankDataModel.m in Sources */,
 				DD69B2F71F3AFD390036F368 /* STPickerSingle.m in Sources */,
 				DDC52E971F41809300ECF211 /* PlaceOrderAliPayModel.m in Sources */,
 				DD6287DE1F21E3B20030331D /* ActivityViewController.m in Sources */,
@@ -4198,10 +4279,13 @@
 				DDE0FCF51F35641900269DBD /* AddToCartModel.m in Sources */,
 				EC4BA05A1F13562700B9BE1A /* main.m in Sources */,
 				DD4CF0A91F299A7C0024156F /* AtSomeOneViewController.m in Sources */,
+				DD0960DE1F596156002F4AED /* PersonalLivenessRank_personal_rank_infoModel.m in Sources */,
 				DD6287841F2097940030331D /* HotCircleCell.m in Sources */,
 				DD0DBAC91F32B2BE0098F5FA /* LoginModel.m in Sources */,
 				DD6288181F22EB740030331D /* SubMessage_PrivateLetterViewController.m in Sources */,
+				DD0960EE1F598A2C002F4AED /* ProductCommentServiceModel.m in Sources */,
 				DD62873E1F1F5FA20030331D /* GetGiftViewController.m in Sources */,
+				DD0960E11F596172002F4AED /* PersonalLivenessRank_my_first_rank_infoModel.m in Sources */,
 				DD68980B1F2F5C22008B6A8F /* AllBrandContentModel.m in Sources */,
 				DD0960B71F5802AB002F4AED /* MyCircleDynamicLike_infoModel.m in Sources */,
 				DD0938E51F43E7D800A75182 /* OrderListModel.m in Sources */,

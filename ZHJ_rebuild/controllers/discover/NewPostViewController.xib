@@ -16,6 +16,7 @@
                 <outlet property="feedbackView" destination="4jj-bZ-dTx" id="Uwa-sj-4BN"/>
                 <outlet property="flowLayout" destination="r6r-Fv-0Xb" id="JRg-wb-BBJ"/>
                 <outlet property="heightForScrollView" destination="g8n-yA-cO9" id="A8d-C4-RdG"/>
+                <outlet property="labelCircle" destination="F0P-oa-wHd" id="FEL-Lh-IRe"/>
                 <outlet property="limitLabel" destination="eUf-AS-vNT" id="KFE-1d-DTD"/>
                 <outlet property="placeholder" destination="05m-Xb-3r5" id="iJS-0c-7wt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -114,7 +115,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyy-qA-haH">
-                                            <rect key="frame" x="10" y="170.5" width="70" height="20"/>
+                                            <rect key="frame" x="10" y="170" width="70" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="djo-VL-UQZ"/>
                                                 <constraint firstAttribute="width" constant="70" id="euz-DR-DpZ"/>
@@ -130,7 +131,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJd-1g-ISe">
-                                            <rect key="frame" x="90" y="173.5" width="15" height="15"/>
+                                            <rect key="frame" x="90" y="173" width="15" height="15"/>
                                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="PbT-a4-oyg"/>
@@ -150,7 +151,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAH-jd-Jju">
-                                            <rect key="frame" x="125" y="173.5" width="15" height="15"/>
+                                            <rect key="frame" x="125" y="173" width="15" height="15"/>
                                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="By2-9Y-Hsw"/>

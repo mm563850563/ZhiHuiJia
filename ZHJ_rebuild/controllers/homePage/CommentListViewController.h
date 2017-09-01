@@ -10,4 +10,6 @@
 
 @interface CommentListViewController : UIViewController
 
+@property (nonatomic, strong)NSString *goods_id;
+
 @end

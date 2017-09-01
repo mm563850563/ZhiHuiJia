@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DynamicDetailViewController">
             <connections>
                 <outlet property="tableView" destination="hX2-86-CUI" id="LG3-RI-eZq"/>
+                <outlet property="tfComment" destination="lTB-Iz-xHu" id="aJB-I6-MvZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -42,9 +43,12 @@
                             <state key="normal" title="发    送">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="btnSendCommentAction:" destination="-1" eventType="touchUpInside" id="dci-Lt-IIl"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RB6-ut-M2z">
-                            <rect key="frame" x="0.0" y="0.0" width="295" height="0.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="295" height="1"/>
                             <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="44p-FQ-f7g"/>

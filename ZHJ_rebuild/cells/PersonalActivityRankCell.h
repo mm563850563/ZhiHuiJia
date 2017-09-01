@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PersonalLivenessRank_personal_rank_infoModel;
 
 @interface PersonalActivityRankCell : UITableViewCell
+
+@property (nonatomic, strong)PersonalLivenessRank_personal_rank_infoModel *modelPersonalRank;
 
 @end

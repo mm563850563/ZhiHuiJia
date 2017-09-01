@@ -38,6 +38,9 @@
         
         [self.imgDetail sd_setImageWithURL:url placeholderImage:kPlaceholder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             CGSize size = image.size;
+            if (size.width <= 0 || size.height <= 0) {
+                size = CGSizeMake(50, 50);
+            }
             CGFloat scale = kSCREEN_WIDTH / size.width;
             CGFloat height = scale * size.height;
             self.cellHeight = height;

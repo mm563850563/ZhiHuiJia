@@ -19,7 +19,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的排名：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meE-np-ZOh">
-                            <rect key="frame" x="10" y="323.5" width="70" height="20"/>
+                            <rect key="frame" x="10" y="324" width="70" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="C5N-FR-xc6"/>
                                 <constraint firstAttribute="width" constant="70" id="cMj-BS-oiU"/>
@@ -29,7 +29,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="102名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2x-KB-cuW">
-                            <rect key="frame" x="80" y="323.5" width="33" height="20"/>
+                            <rect key="frame" x="80" y="324" width="33" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="I0A-IS-qsl"/>
                                 <constraint firstAttribute="height" constant="20" id="Mai-vS-wg6"/>
@@ -38,8 +38,8 @@
                             <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T58-xI-xUA">
-                            <rect key="frame" x="339.5" y="323.5" width="25.5" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T58-xI-xUA">
+                            <rect key="frame" x="339" y="324" width="26" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="Zbk-EX-A45"/>
                                 <constraint firstAttribute="height" constant="20" id="w87-sG-hFE"/>
@@ -48,8 +48,8 @@
                             <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距离上一名相差：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0W6-N5-K8i">
-                            <rect key="frame" x="239.5" y="323.5" width="100" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的活跃度：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0W6-N5-K8i">
+                            <rect key="frame" x="229" y="324" width="100" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="LBE-Op-1B9"/>
                                 <constraint firstAttribute="height" constant="20" id="mmJ-yn-qtb"/>
@@ -62,7 +62,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="A2x-KB-cuW" firstAttribute="leading" secondItem="meE-np-ZOh" secondAttribute="trailing" id="AqU-5E-D8C"/>
-                        <constraint firstItem="T58-xI-xUA" firstAttribute="leading" secondItem="0W6-N5-K8i" secondAttribute="trailing" id="I7R-Rl-wA7"/>
+                        <constraint firstItem="T58-xI-xUA" firstAttribute="leading" secondItem="0W6-N5-K8i" secondAttribute="trailing" constant="10" id="I7R-Rl-wA7"/>
                         <constraint firstItem="A2x-KB-cuW" firstAttribute="centerY" secondItem="wzD-Tf-hKR" secondAttribute="centerY" id="MoW-nr-Khg"/>
                         <constraint firstAttribute="trailing" secondItem="T58-xI-xUA" secondAttribute="trailing" constant="10" id="aCc-Hq-HNh"/>
                         <constraint firstItem="meE-np-ZOh" firstAttribute="leading" secondItem="wzD-Tf-hKR" secondAttribute="leading" constant="10" id="dXr-jt-Enz"/>
@@ -79,6 +79,10 @@
                 <constraint firstAttribute="bottom" secondItem="wzD-Tf-hKR" secondAttribute="bottom" id="meU-ky-xov"/>
                 <constraint firstItem="wzD-Tf-hKR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nJ1-x8-fhM"/>
             </constraints>
+            <connections>
+                <outlet property="labelMyLiveness" destination="T58-xI-xUA" id="vfn-yJ-6Jm"/>
+                <outlet property="labelMyRank" destination="A2x-KB-cuW" id="odu-rB-rUm"/>
+            </connections>
         </view>
     </objects>
 </document>

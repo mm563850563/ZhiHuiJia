@@ -8,6 +8,14 @@
 
 #import "PersonalActivityRankFooterView.h"
 
+#import "PersonalLivenessRank_my_first_rank_infoModel.h"
+@interface PersonalActivityRankFooterView ()
+
+@property (weak, nonatomic) IBOutlet UILabel *labelMyRank;
+@property (weak, nonatomic) IBOutlet UILabel *labelMyLiveness;
+
+@end
+
 @implementation PersonalActivityRankFooterView
 
 /*
@@ -17,5 +25,14 @@
     // Drawing code
 }
 */
+
+-(void)setModelMyFirstRankInfo:(PersonalLivenessRank_my_first_rank_infoModel *)modelMyFirstRankInfo
+{
+    _modelMyFirstRankInfo = modelMyFirstRankInfo;
+    
+    self.labelMyRank.text = [NSString stringWithFormat:@"%@",modelMyFirstRankInfo.rank];
+    self.labelMyLiveness.text = [NSString stringWithFormat:@"%@点",modelMyFirstRankInfo.total_liveness];
+}
+
 
 @end

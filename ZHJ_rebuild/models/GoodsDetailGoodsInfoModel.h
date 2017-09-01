@@ -17,5 +17,7 @@
 @property (nonatomic, strong)NSString *market_price;
 @property (nonatomic, strong)NSString *comment_count;
 @property (nonatomic, strong)NSString *average_score;
+@property (nonatomic, strong)NSString *brand_id;
+@property (nonatomic, strong)NSString *goods_number;
 
 @end

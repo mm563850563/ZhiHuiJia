@@ -13,4 +13,7 @@
 @property (nonatomic, strong)NSString *moreType;
 @property (nonatomic, strong)NSString *classify_id;
 
+//区别：记录从哪里跳转的
+@property (nonatomic, strong)NSString *whereReuseFrom;
+
 @end

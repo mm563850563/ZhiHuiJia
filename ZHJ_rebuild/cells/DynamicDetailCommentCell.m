@@ -259,11 +259,11 @@
             NSRange rangeReplier = [[mutableAttributedString string]rangeOfString:[NSString stringWithFormat:@"%@:",modelDynamicCommentResult.reply_nickname] options:NSCaseInsensitiveSearch];
             
             //设置可点击文本的颜色;
-            [mutableAttributedString addAttribute:(NSString *)kCTBackgroundColorAttributeName
+            [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName
                                             value:kColorFromRGB(kDeepGray)
                                             range:rangeReply];
-            [mutableAttributedString addAttribute:(NSString *)kCTBackgroundColorAttributeName
-                                            value:kColorFromRGB(kThemeYellow)
+            [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName
+                                            value:kColorFromRGB(kDeepGray)
                                             range:rangeReplier];
             
             

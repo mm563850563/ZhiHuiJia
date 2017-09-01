@@ -71,6 +71,11 @@
     self.labelPrice.text = [NSString stringWithFormat:@"¥ %@",defaultPrice];
 }
 
+-(void)setGoods_code:(NSString *)goods_code
+{
+    self.labelProductCode.text = [NSString stringWithFormat:@"商品编号:%@",goods_code];
+}
+
 -(void)settingCountBGView
 {
     UIBezierPath *maskPath1 = [UIBezierPath bezierPathWithRoundedRect:self.countBGView.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(3, 3)];

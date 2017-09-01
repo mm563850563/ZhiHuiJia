@@ -67,6 +67,12 @@
     
     sender.selected = !sender.selected;
     [[NSNotificationCenter defaultCenter]postNotificationName:@"sort_salesVolunm" object:sender];
+    
+    if (sender.selected) {
+        self.imgViewSalesVolume.image = [UIImage imageNamed:@"up_yellow"];
+    }else{
+        self.imgViewSalesVolume.image = [UIImage imageNamed:@"down_yellow"];
+    }
 }
 - (IBAction)btnPriceAction:(UIButton *)sender
 {
@@ -77,6 +83,12 @@
     
     sender.selected = !sender.selected;
     [[NSNotificationCenter defaultCenter]postNotificationName:@"sort_price" object:sender];
+    
+    if (sender.selected) {
+        self.imgViewPrice.image = [UIImage imageNamed:@"up_yellow"];
+    }else{
+        self.imgViewPrice.image = [UIImage imageNamed:@"down_yellow"];
+    }
 }
 - (IBAction)btnLayoutAction:(UIButton *)sender
 {

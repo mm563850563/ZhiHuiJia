@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelCommentCount;
 @property (weak, nonatomic) IBOutlet UILabel *labelSelectedSpecification;
 @property (weak, nonatomic) IBOutlet UILabel *labelSelectedCount;
+@property (weak, nonatomic) IBOutlet UILabel *labelFreight;
 
 
 
@@ -64,7 +65,7 @@
 
 -(void)setModelInfo:(GoodsDetailGoodsInfoModel *)modelInfo
 {
-    if (_modelInfo != modelInfo) {
+//    if (_modelInfo != modelInfo) {
         _modelInfo = modelInfo;
         self.labelProductName.text = _modelInfo.goods_name;
         self.labelRemark.text = _modelInfo.goods_remark;
@@ -75,7 +76,18 @@
         self.starBar.starNumber = [_modelInfo.average_score integerValue];
         
         self.productMessageView.goods_id = self.modelInfo.goods_id;
-    }
+        
+        self.labelArea.text = @"广东省>广州市>番禺区";
+        NSDate *date = [NSDate dateWithTimeIntervalSinceNow:3*24*60*60 + 28800];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"MM月dd日"];
+        NSString *dateStr = [formatter stringFromDate:date];
+        if ([modelInfo.price floatValue] >= 99.0) {
+            self.labelFreight.text = [NSString stringWithFormat:@"运费：%@元(满%@包邮)，现货%@前完成支付，预计(%@)之前送达",@"0",@"99",@"18:00",dateStr];
+        }else{
+            self.labelFreight.text = [NSString stringWithFormat:@"运费：%@元(满%@包邮)，现货%@前完成支付，预计(%@)之前送达",@"8",@"99",@"18:00",dateStr];
+        }
+//    }
 }
 
 -(void)setBannerArray:(NSArray *)bannerArray
@@ -176,7 +188,8 @@
 #pragma mark - <查看更多评价>
 - (IBAction)btnMoreCommentAction:(UIButton *)sender
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"JumpToMoreCommentVC" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"JumpToMoreCommentVC" object:self.modelInfo.goods_id];
 }
 
 -(void)respondWithRAC

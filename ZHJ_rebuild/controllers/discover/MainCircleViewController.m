@@ -87,8 +87,8 @@
         make.size.mas_offset(CGSizeMake(30, 30));
         make.centerX.mas_equalTo(0);
     }];
-    imgView.image = [UIImage imageNamed:@"pen"];
-    imgView.layer.cornerRadius = 15;
+    imgView.image = [UIImage imageNamed:@"apply"];
+    imgView.layer.cornerRadius = 0;
     imgView.layer.masksToBounds = YES;
     imgView.contentMode = UIViewContentModeScaleAspectFit;
     

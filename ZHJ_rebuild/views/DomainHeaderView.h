@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class FriendHomePageResultModel;
 
 @interface DomainHeaderView : UIView
+
+@property (nonatomic, strong)FriendHomePageResultModel *modelResult;
 
 @end

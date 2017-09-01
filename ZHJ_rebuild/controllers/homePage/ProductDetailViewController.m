@@ -129,10 +129,12 @@
                         //传数据给“立即购买选择规格”view(下面三句不能调换)
                         self.productMessageAndBuyNowView.goods_id = self.modelInfo.goods_id;
                         self.productMessageAndBuyNowView.defaultPrice = self.modelInfo.price;
+                        self.productMessageAndBuyNowView.goods_code = self.modelInfo.goods_number;
                         self.productMessageAndBuyNowView.dataArray = self.spec_listArray;
                         
                         self.productMessageAddToCartView.goods_id = self.modelInfo.goods_id;
                         self.productMessageAddToCartView.defaultPrice = self.modelInfo.price;
+                        self.productMessageAddToCartView.goods_code = self.modelInfo.goods_number;
                         self.productMessageAddToCartView.dataArray = self.spec_listArray;
                         
                         [self.tableView reloadData];
@@ -228,9 +230,10 @@
 }
 
 #pragma mark - <跳转查看更多评论页面>
--(void)jumpToMoreCommentVC
+-(void)jumpToMoreCommentVCWithGoodsID:(NSString *)goods_id
 {
     CommentListViewController *commentListVC = [[CommentListViewController alloc]initWithNibName:NSStringFromClass([CommentListViewController class]) bundle:nil];
+    commentListVC.goods_id = goods_id;
     [self.navigationController pushViewController:commentListVC animated:YES];
 }
 
@@ -323,7 +326,8 @@
 {
     //跳转”更多评论“页面
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"JumpToMoreCommentVC" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        [self jumpToMoreCommentVC];
+        NSString *goods_id = x.object;
+        [self jumpToMoreCommentVCWithGoodsID:goods_id];
     }];
     
     //移除"立即购买"选择规格view

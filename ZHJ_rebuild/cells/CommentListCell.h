@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ProductCommentResultModel;
 
 @interface CommentListCell : UITableViewCell
 
-@property (nonatomic, strong)NSArray *dataArray;
+@property (nonatomic, strong)ProductCommentResultModel *modelProductCommentResult;
 @property (nonatomic, assign)CGFloat cellHeight;
 
 @end

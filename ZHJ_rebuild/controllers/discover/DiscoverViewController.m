@@ -345,6 +345,12 @@
         NSString *user_id = x.object;
         [self attentionOrCancelAttentionWithFriendUserID:user_id attentionType:@"0"];
     }];
+    
+    //动态详情里点击关注后刷新该页面
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshDiscoverVCData" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        [self.circleDynamicArray removeAllObjects];
+        [self getBestDynamicDataWithPage:@1];
+    }];
 }
 
 
@@ -425,6 +431,7 @@
     }else{
         DiscoverDynamicCell *cell2 = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DiscoverDynamicCell class])];
         MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
+        cell2.whereReuseFrom = @"discover";
         cell2.modelCircleDynamicResult = modelResult;
         cell = cell2;
     }
