@@ -14,4 +14,6 @@
 @property (nonatomic, strong)MyCircleDynamicResultModel *modelCircleDynamicResult;
 @property (nonatomic, assign)CGFloat cellHeight;
 
+@property (nonatomic, strong)NSString *whereFrom;
+
 @end

@@ -8,6 +8,9 @@
 
 #import "DiscoverHotTopicViewController.h"
 
+//controllers
+#import "TopicDetailViewController.h"
+
 //cells
 #import "Discover_HotTopicCell.h"
 
@@ -107,7 +110,7 @@
     NSDictionary *dictParameter = @{@"page":self.page,
                                     @"page_count":@10};
     
-    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+//    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
@@ -120,12 +123,12 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.collectionView reloadData];
-                    [hud hideAnimated:YES afterDelay:1.0];
+//                    [hud hideAnimated:YES afterDelay:1.0];
                     [self.collectionView.mj_footer endRefreshing];
                 });
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [hud hideAnimated:YES afterDelay:1.0];
+//                    [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
                     [self.collectionView.mj_footer endRefreshing];
@@ -134,7 +137,7 @@
             
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
-                [hud hideAnimated:YES afterDelay:1.0];
+//                [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
                 [self.collectionView.mj_footer endRefreshing];
@@ -142,7 +145,7 @@
         }
     } failBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [hud hideAnimated:YES afterDelay:1.0];
+//            [hud hideAnimated:YES afterDelay:1.0];
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:2.0];
             [self.collectionView.mj_footer endRefreshing];
@@ -180,6 +183,18 @@
     }];
 }
 
+#pragma mark - <跳转“话题详情”页面>
+-(void)jumpToTopicDetailVCWithTopicID:(NSString *)topic_id
+{
+    TopicDetailViewController *topicDetailVC = [[TopicDetailViewController alloc]initWithNibName:NSStringFromClass([TopicDetailViewController class]) bundle:nil];
+    topicDetailVC.topic_id = topic_id;
+    [self.navigationController pushViewController:topicDetailVC animated:YES];
+}
+
+
+
+
+
 
 
 
@@ -199,6 +214,12 @@
     HotTopicListResultModel *model = self.topicListArray[indexPath.row];
     cell.modelTopicResult = model;
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    HotTopicListResultModel *model = self.topicListArray[indexPath.row];
+    [self jumpToTopicDetailVCWithTopicID:model.topic_id];
 }
 
 @end

@@ -116,6 +116,12 @@
 		DD0960E51F5988F3002F4AED /* ProductCommentDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960E41F5988F3002F4AED /* ProductCommentDataModel.m */; };
 		DD0960E81F5989FA002F4AED /* ProductCommentResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960E71F5989FA002F4AED /* ProductCommentResultModel.m */; };
 		DD0960EE1F598A2C002F4AED /* ProductCommentServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960ED1F598A2C002F4AED /* ProductCommentServiceModel.m */; };
+		DD0960F21F5A687F002F4AED /* TopicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960F01F5A687F002F4AED /* TopicDetailViewController.m */; };
+		DD0960F31F5A687F002F4AED /* TopicDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0960F11F5A687F002F4AED /* TopicDetailViewController.xib */; };
+		DD0960F71F5A6A55002F4AED /* TopicDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960F51F5A6A55002F4AED /* TopicDetailHeaderCell.m */; };
+		DD0960F81F5A6A55002F4AED /* TopicDetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0960F61F5A6A55002F4AED /* TopicDetailHeaderCell.xib */; };
+		DD0960FC1F5A7C03002F4AED /* TopicDetailDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960FB1F5A7C03002F4AED /* TopicDetailDataModel.m */; };
+		DD0960FF1F5A7C16002F4AED /* TopicDetailResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0960FE1F5A7C16002F4AED /* TopicDetailResultModel.m */; };
 		DD0DBAC91F32B2BE0098F5FA /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBAC81F32B2BE0098F5FA /* LoginModel.m */; };
 		DD0DBACC1F32B2DC0098F5FA /* LoginDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBACB1F32B2DC0098F5FA /* LoginDataModel.m */; };
 		DD0DBAD01F32B9810098F5FA /* RecommendGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBACF1F32B9810098F5FA /* RecommendGoodsModel.m */; };
@@ -847,6 +853,16 @@
 		DD0960E71F5989FA002F4AED /* ProductCommentResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductCommentResultModel.m; path = models/ProductCommentResultModel.m; sourceTree = "<group>"; };
 		DD0960EC1F598A2C002F4AED /* ProductCommentServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductCommentServiceModel.h; path = models/ProductCommentServiceModel.h; sourceTree = "<group>"; };
 		DD0960ED1F598A2C002F4AED /* ProductCommentServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductCommentServiceModel.m; path = models/ProductCommentServiceModel.m; sourceTree = "<group>"; };
+		DD0960EF1F5A687F002F4AED /* TopicDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicDetailViewController.h; path = controllers/discover/TopicDetailViewController.h; sourceTree = "<group>"; };
+		DD0960F01F5A687F002F4AED /* TopicDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicDetailViewController.m; path = controllers/discover/TopicDetailViewController.m; sourceTree = "<group>"; };
+		DD0960F11F5A687F002F4AED /* TopicDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicDetailViewController.xib; path = controllers/discover/TopicDetailViewController.xib; sourceTree = "<group>"; };
+		DD0960F41F5A6A55002F4AED /* TopicDetailHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicDetailHeaderCell.h; path = cells/TopicDetailHeaderCell.h; sourceTree = "<group>"; };
+		DD0960F51F5A6A55002F4AED /* TopicDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicDetailHeaderCell.m; path = cells/TopicDetailHeaderCell.m; sourceTree = "<group>"; };
+		DD0960F61F5A6A55002F4AED /* TopicDetailHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicDetailHeaderCell.xib; path = cells/TopicDetailHeaderCell.xib; sourceTree = "<group>"; };
+		DD0960FA1F5A7C03002F4AED /* TopicDetailDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicDetailDataModel.h; path = models/TopicDetailDataModel.h; sourceTree = "<group>"; };
+		DD0960FB1F5A7C03002F4AED /* TopicDetailDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicDetailDataModel.m; path = models/TopicDetailDataModel.m; sourceTree = "<group>"; };
+		DD0960FD1F5A7C16002F4AED /* TopicDetailResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicDetailResultModel.h; path = models/TopicDetailResultModel.h; sourceTree = "<group>"; };
+		DD0960FE1F5A7C16002F4AED /* TopicDetailResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicDetailResultModel.m; path = models/TopicDetailResultModel.m; sourceTree = "<group>"; };
 		DD0DBAC71F32B2BE0098F5FA /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginModel.h; path = models/LoginModel.h; sourceTree = "<group>"; };
 		DD0DBAC81F32B2BE0098F5FA /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginModel.m; path = models/LoginModel.m; sourceTree = "<group>"; };
 		DD0DBACA1F32B2DC0098F5FA /* LoginDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginDataModel.h; path = models/LoginDataModel.h; sourceTree = "<group>"; };
@@ -2141,6 +2157,17 @@
 			name = ProductCommentModel;
 			sourceTree = "<group>";
 		};
+		DD0960F91F5A7BD8002F4AED /* TopicDetailModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD0960FA1F5A7C03002F4AED /* TopicDetailDataModel.h */,
+				DD0960FB1F5A7C03002F4AED /* TopicDetailDataModel.m */,
+				DD0960FD1F5A7C16002F4AED /* TopicDetailResultModel.h */,
+				DD0960FE1F5A7C16002F4AED /* TopicDetailResultModel.m */,
+			);
+			name = TopicDetailModel;
+			sourceTree = "<group>";
+		};
 		DD0DBAC61F32B29A0098F5FA /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -3147,6 +3174,9 @@
 				DD09601E1F557D00002F4AED /* MyCircleDynamicImageCell.xib */,
 				DD0960C61F581115002F4AED /* DynamicDetailCommentCell.h */,
 				DD0960C71F581115002F4AED /* DynamicDetailCommentCell.m */,
+				DD0960F41F5A6A55002F4AED /* TopicDetailHeaderCell.h */,
+				DD0960F51F5A6A55002F4AED /* TopicDetailHeaderCell.m */,
+				DD0960F61F5A6A55002F4AED /* TopicDetailHeaderCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -3298,6 +3328,7 @@
 				DD0960CB1F58F4A8002F4AED /* TalkLikeModel */,
 				DD0960D21F5960BB002F4AED /* PersonalLivenessRankModel */,
 				DD0960E21F5988C9002F4AED /* ProductCommentModel */,
+				DD0960F91F5A7BD8002F4AED /* TopicDetailModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -3524,6 +3555,9 @@
 				EC4BA25A1F15FDE400B9BE1A /* DiscoverDynamicViewController.m */,
 				EC4BA25C1F15FE0900B9BE1A /* DiscoverHotTopicViewController.h */,
 				EC4BA25D1F15FE0900B9BE1A /* DiscoverHotTopicViewController.m */,
+				DD0960EF1F5A687F002F4AED /* TopicDetailViewController.h */,
+				DD0960F01F5A687F002F4AED /* TopicDetailViewController.m */,
+				DD0960F11F5A687F002F4AED /* TopicDetailViewController.xib */,
 				EC4BA25F1F15FE2200B9BE1A /* DiscoverRecommendViewController.h */,
 				EC4BA2601F15FE2200B9BE1A /* DiscoverRecommendViewController.m */,
 				DD58FF781F4E79E0009EC9F2 /* ReleaseActivityViewController.h */,
@@ -3890,6 +3924,7 @@
 				DD9A63A51F2ECF3300611FA8 /* OrderListFooterView.xib in Resources */,
 				DD6287441F1F8C1E0030331D /* MyAddressViewController.xib in Resources */,
 				DD62882D1F2317E60030331D /* ReplyCommentCell.xib in Resources */,
+				DD0960F81F5A6A55002F4AED /* TopicDetailHeaderCell.xib in Resources */,
 				DD40B7291F17250B00839748 /* HomeLeftImageCell.xib in Resources */,
 				EC4BA1351F1462F100B9BE1A /* GiftSendingTableViewCell.xib in Resources */,
 				DD6287621F2053750030331D /* MyCollectProductCell.xib in Resources */,
@@ -3909,6 +3944,7 @@
 				DD58FFD71F5167DB009EC9F2 /* MyJoinedActivityListViewController.xib in Resources */,
 				DDE0FD3A1F38585B00269DBD /* BrandStoryViewController.xib in Resources */,
 				DD62870F1F1EEE1B0030331D /* FocusPersonHeaderCell.xib in Resources */,
+				DD0960F31F5A687F002F4AED /* TopicDetailViewController.xib in Resources */,
 				DD62880F1F22EB090030331D /* SubMessage_CommentViewController.xib in Resources */,
 				DD4CF0231F286E9E0024156F /* ActivityRecommendDetailCell.xib in Resources */,
 				DD69B2FE1F3B09050036F368 /* RegionList.plist in Resources */,
@@ -3989,6 +4025,7 @@
 				DD0DBB0A1F3431650098F5FA /* GetSpecPriceDataModel.m in Sources */,
 				DD58FFD21F516766009EC9F2 /* MyJoinedActivityViewController.m in Sources */,
 				DD0939231F45918900A75182 /* UIButton+Badge.m in Sources */,
+				DD0960FC1F5A7C03002F4AED /* TopicDetailDataModel.m in Sources */,
 				DD095FF41F551B36002F4AED /* SigninListCell.m in Sources */,
 				DDC52ECE1F42E43600ECF211 /* SuccessPayRecommedHeaderView.m in Sources */,
 				DD58FF5C1F4C31F8009EC9F2 /* MyTrackGoodsInfoModel.m in Sources */,
@@ -4015,6 +4052,7 @@
 				DD0DBACC1F32B2DC0098F5FA /* LoginDataModel.m in Sources */,
 				DD68984B1F319E2C008B6A8F /* GetGiftType_gift_typeModel.m in Sources */,
 				DD6287271F1F48000030331D /* CommentTableViewCell.m in Sources */,
+				DD0960FF1F5A7C16002F4AED /* TopicDetailResultModel.m in Sources */,
 				EC4BA25E1F15FE0900B9BE1A /* DiscoverHotTopicViewController.m in Sources */,
 				DD4CF1061F29EDD80024156F /* AllClassifyModel.m in Sources */,
 				EC4BA24F1F15D43600B9BE1A /* BrandRulesViewController.m in Sources */,
@@ -4185,6 +4223,7 @@
 				DDE0FD2F1F37F75500269DBD /* BrandDetailResultModel.m in Sources */,
 				DD095FAF1F53BDC6002F4AED /* CircleDetailResultModel.m in Sources */,
 				EC4BA0F21F136CA400B9BE1A /* CategateViewController.m in Sources */,
+				DD0960F71F5A6A55002F4AED /* TopicDetailHeaderCell.m in Sources */,
 				DD0960161F557339002F4AED /* MyCircleDynamicTips_infoModel.m in Sources */,
 				DD095FA61F53B753002F4AED /* CircleDetailHeaderView.m in Sources */,
 				DD9A63A31F2ECF1C00611FA8 /* OrderListFooterView.m in Sources */,
@@ -4320,6 +4359,7 @@
 				DD6287BB1F21A3700030331D /* LookAroundCell.m in Sources */,
 				DD6287891F20B0BA0030331D /* MainCircleViewController.m in Sources */,
 				DD4CF1121F29F22E0024156F /* AllClassifyChidrenFirstModel.m in Sources */,
+				DD0960F21F5A687F002F4AED /* TopicDetailViewController.m in Sources */,
 				DD69B2A41F39B6130036F368 /* OrderConfirmAddressCell.m in Sources */,
 				EC4BA11C1F1376F600B9BE1A /* CartViewController.m in Sources */,
 				DD6287D31F21C96F0030331D /* DomainHeaderView.m in Sources */,

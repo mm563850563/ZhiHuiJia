@@ -33,6 +33,7 @@
 #import "DiscoverRecommendViewController.h"
 
 #import "FocusPersonFileViewController.h"
+#import "TopicDetailViewController.h"
 
 @interface DiscoverViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,SegmentTapViewDelegate,UINavigationControllerDelegate>
 
@@ -296,6 +297,15 @@
     [self.navigationController pushViewController:focusPersonalFileVC animated:YES];
 }
 
+#pragma mark - <跳转“话题详情”页面>
+-(void)jumpToTopicDetailVCWithTopicID:(NSString *)topic_id
+{
+    TopicDetailViewController *topicDetailVC = [[TopicDetailViewController alloc]initWithNibName:NSStringFromClass([TopicDetailViewController class]) bundle:nil];
+    topicDetailVC.topic_id = topic_id;
+    topicDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:topicDetailVC animated:YES];
+}
+
 #pragma mark - <响应RAC>
 -(void)respondWithRAC
 {
@@ -322,18 +332,6 @@
         [self jumpToDomainVC];
     }];
     
-    //点击用户头像
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalFileVCByClickImgViewPortrait" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        NSString *user_id = x.object;
-        [self jumpToFocusPersonalFileVCWithUserID:user_id];
-    }];
-    
-    //点击富文本跳转到好友主页
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCFromDiscover" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        NSString *user_id = x.object;
-        [self jumpToFocusPersonalFileVCWithUserID:user_id];
-    }];
-    
     //关注好友
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"attentionFriendByDiscover" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         NSString *user_id = x.object;
@@ -350,6 +348,24 @@
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshDiscoverVCData" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         [self.circleDynamicArray removeAllObjects];
         [self getBestDynamicDataWithPage:@1];
+    }];
+    
+    //点击"@人"跳转到好友主页
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCByAtSomeoneFromDiscover" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *user_id = x.object;
+        [self jumpToFocusPersonalFileVCWithUserID:user_id];
+    }];
+    
+    //点击用户头像跳转到好友主页
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCByPortraitFromDiscover" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *user_id = x.object;
+        [self jumpToFocusPersonalFileVCWithUserID:user_id];
+    }];
+    
+    //点击富文本话题跳转话题详情
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCByTopicFromDiscover" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *topic_id = x.object;
+        [self jumpToTopicDetailVCWithTopicID:topic_id];
     }];
 }
 

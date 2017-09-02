@@ -353,6 +353,12 @@
 #pragma mark - <87.产品评论>
 #define kGoodsComment @"/Goods/goodsComments"
 
+#pragma mark - <88.话题详情>
+#define kTopicDetail @"/Circle/topicDetail"
+
+#pragma mark - <89.话题详情评论列表>
+#define kGetTopicReview @"/Circle/getTopicReview"
+
 
 
 

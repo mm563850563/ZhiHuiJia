@@ -65,6 +65,21 @@
     return self;
 }
 
+#pragma mark - <头像点击响应>
+-(void)selectImgViewPortraitAction:(UITapGestureRecognizer *)tap
+{
+    NSString *notifiName = [NSString string];
+    if ([self.whereFrom isEqualToString:@"circleDetail"]) {
+        notifiName = @"jumpToFocusPersonalVCByPortraitFromCircleDetail";
+    }else if ([self.whereFrom isEqualToString:@"myCircleVC"]){
+        notifiName = @"jumpToFocusPersonalVCByPortraitFromMyCircleVC";
+    }else if ([self.whereFrom isEqualToString:@"topicDetail"]){
+        notifiName = @"jumpToFocusPersonalVCByPortraitFromTopicDetail";
+    }
+    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelCircleDynamicResult.user_id];
+}
+
+#pragma mark - <各个控件懒加载>
 -(NSMutableArray *)atRangeArray
 {
     if (!_atRangeArray) {
@@ -89,6 +104,10 @@
         _imgViewPortrait.contentMode = UIViewContentModeScaleAspectFill;
         _imgViewPortrait.layer.cornerRadius = 25;
         _imgViewPortrait.layer.masksToBounds = YES;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectImgViewPortraitAction:)];
+        _imgViewPortrait.userInteractionEnabled = YES;
+        [_imgViewPortrait addGestureRecognizer:tap];
     }
     return _imgViewPortrait;
 }
@@ -348,7 +367,7 @@
         weakSelf.rangeEnable = rangeEnable;
         
         //设置可点击文本的颜色;
-        [mutableAttributedString addAttribute:(NSString *)kCTBackgroundColorAttributeName
+        [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName
                                         value:kColorFromRGB(kThemeYellow)
                                         range:rangeEnable];
         
@@ -422,6 +441,16 @@
     NSString *topic_id = [url absoluteString];
     if (topic_id && ![topic_id isEqualToString:@""]) {
         //跳转话题
+        NSString *notifiName = [NSString string];
+        if ([self.whereFrom isEqualToString:@"circleDetail"]) {
+            notifiName = @"jumpToFocusPersonalVCByTopicFromCircleDetail";
+        }else if ([self.whereFrom isEqualToString:@"myCircleVC"]){
+            notifiName = @"jumpToFocusPersonalVCByTopicFromMyCircleVC";
+        }else if ([self.whereFrom isEqualToString:@"topicDetail"]){
+            notifiName = @"jumpToFocusPersonalVCByTopicFromTopicDetailVC";
+        }
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:topic_id];
     }
 }
 
@@ -429,8 +458,18 @@
 {
     NSString *user_id = addressComponents[@"user_id"];
     if (user_id && ![user_id isEqualToString:@""]) {
+        
         //跳转查看好友详情
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToFocusPersonalVCFromAtSomeone" object:user_id];
+        NSString *notifiName = [NSString string];
+        if ([self.whereFrom isEqualToString:@"circleDetail"]) {
+            notifiName = @"jumpToFocusPersonalVCByAtSomeoneFromCircleDetail";
+        }else if ([self.whereFrom isEqualToString:@"myCircleVC"]){
+            notifiName = @"jumpToFocusPersonalVCByAtSomeoneFromMyCircleVC";
+        }else if ([self.whereFrom isEqualToString:@"topicDetail"]){
+            notifiName = @"jumpToFocusPersonalVCByAtSomeoneFromTopicDetailVC";
+        }
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:user_id];
     }
 }
 

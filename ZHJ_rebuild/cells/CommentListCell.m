@@ -65,6 +65,19 @@
 }
 
 
+#pragma mark - <点击头像响应>
+-(void)clickPortraitAction:(UITapGestureRecognizer *)tap
+{
+//    NSString *notifiName = [NSString string];
+//    if ([self.whereReuseFrom isEqualToString:@"productCommentListVC"]) {
+//        notifiName = @"jumpToFocusPersonalVCByPortraitFromProductCommentListVC";
+//    }
+//    
+//    //跳转查看好友详情
+//    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelProductCommentResult.];
+}
+
+
 
 
 #pragma mark - <懒加载>
@@ -84,6 +97,10 @@
         _imgPortrait.contentMode = UIViewContentModeScaleAspectFill;
         _imgPortrait.layer.cornerRadius = 20;
         _imgPortrait.layer.masksToBounds = YES;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickPortraitAction:)];
+        _imgPortrait.userInteractionEnabled = YES;
+        [_imgPortrait addGestureRecognizer:tap];
     }
     return _imgPortrait;
 }
@@ -100,7 +117,7 @@
 -(RatingBar *)ratingBar
 {
     if (!_ratingBar) {
-        _ratingBar = [[RatingBar alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
+        _ratingBar = [[RatingBar alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
         _ratingBar.enable = NO;
     }
     return _ratingBar;
@@ -122,7 +139,8 @@
     if (!_labelAddTime) {
         _labelAddTime = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
         _labelAddTime.font = [UIFont systemFontOfSize:11];
-        _labelAddTime.textAlignment = NSTextAlignmentRight;
+        _labelAddTime.textColor = kColorFromRGB(kDeepGray);
+        _labelAddTime.textAlignment = NSTextAlignmentLeft;
     }
     return _labelAddTime;
 }
@@ -182,10 +200,10 @@
     [self.contentView addSubview:self.mainBGView];
     [self.mainBGView addSubview:self.imgPortrait];
     [self.mainBGView addSubview:self.labelNickName];
+    [self.mainBGView addSubview:self.ratingBar];
+    [self.mainBGView addSubview:self.labelAddTime];
     [self.mainBGView addSubview:self.labelDescription];
     [self.mainBGView addSubview:self.collectionView];
-    [self.mainBGView addSubview:self.labelAddTime];
-    [self.mainBGView addSubview:self.ratingBar];
     [self.mainBGView addSubview:self.serviceBGView];
     [self.serviceBGView addSubview:self.labelServiceReply];
     
@@ -193,7 +211,7 @@
     
     [self.mainBGView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(1);
-        make.bottom.mas_equalTo(-1);
+        make.bottom.mas_equalTo(-0.5);
         make.left.right.mas_equalTo(0);
     }];
     [self.imgPortrait mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -202,19 +220,19 @@
     }];
     [self.labelNickName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.imgPortrait.mas_right).with.offset(5);
-        make.right.mas_equalTo(10);
+        make.right.mas_equalTo(-120);
         make.height.mas_equalTo(20);
         make.centerY.mas_equalTo(weakSelf.imgPortrait);
     }];
     [self.ratingBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-10);
-        make.size.mas_offset(CGSizeMake(120, 30));
+        make.size.mas_offset(CGSizeMake(100, 30));
         make.centerY.mas_equalTo(weakSelf.imgPortrait);
     }];
     [self.labelAddTime mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.imgPortrait.mas_left);
         make.right.mas_equalTo(-10);
-        make.top.mas_equalTo(weakSelf.collectionView.mas_bottom).with.offset(5);
+        make.top.mas_equalTo(weakSelf.imgPortrait.mas_bottom).with.offset(5);
         make.height.mas_equalTo(20);
     }];
     [self.labelDescription mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -233,7 +251,7 @@
         make.left.mas_equalTo(10);
         make.right.mas_equalTo(-10);
         make.top.mas_equalTo(weakSelf.collectionView.mas_bottom).with.offset(5);
-        make.height.mas_equalTo(5);
+        make.height.mas_equalTo(0);
     }];
     [self.labelServiceReply mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
@@ -287,13 +305,20 @@
     }];
     
     //labelServiceReply
-    self.labelServiceReply.text = [NSString stringWithFormat:@"客服回复：%@",modelProductCommentResult.service.content];
-    CGFloat serviceReplyHeight = [GetHeightOfText getHeightWithContent:self.labelServiceReply.text font:13 contentSize:CGSizeMake(kSCREEN_WIDTH-20, MAXFLOAT)];
-    [self.labelServiceReply mas_updateConstraints:^(MASConstraintMaker *make) {
+    CGFloat serviceReplyHeight = 0;
+    if (![modelProductCommentResult.service.content isEqualToString:@""]) {
+        self.labelServiceReply.text = [NSString stringWithFormat:@"客服回复：%@",modelProductCommentResult.service.content];
+        serviceReplyHeight = [GetHeightOfText getHeightWithContent:self.labelServiceReply.text font:13 contentSize:CGSizeMake(kSCREEN_WIDTH-20, MAXFLOAT)];
+        serviceReplyHeight += 10;
+    }else{
+        serviceReplyHeight = 0;
+    }
+    
+    [self.serviceBGView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(serviceReplyHeight);
     }];
     
-    self.cellHeight = serviceReplyHeight+contentHeight+collectionHeight+100;
+    self.cellHeight = serviceReplyHeight+contentHeight+collectionHeight+110;
 }
 
 

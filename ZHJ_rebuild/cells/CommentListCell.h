@@ -14,4 +14,7 @@
 @property (nonatomic, strong)ProductCommentResultModel *modelProductCommentResult;
 @property (nonatomic, assign)CGFloat cellHeight;
 
+//记录该cell被谁复用
+@property (nonatomic, strong)NSString *whereReuseFrom;
+
 @end

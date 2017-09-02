@@ -70,9 +70,16 @@
     return self;
 }
 
+#pragma mark - <点击头像响应>
 -(void)clickImgViewPortraitAction:(UITapGestureRecognizer *)tap
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToFocusPersonalFileVCByClickImgViewPortrait" object:self.modelCircleDynamicResult.user_id];
+    NSString *notifiName = [NSString string];
+    if ([self.whereReuseFrom isEqualToString:@"discover"]) {
+        notifiName = @"jumpToFocusPersonalVCByPortraitFromDiscover";
+    }
+    
+    //跳转查看好友详情
+    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelCircleDynamicResult.user_id];
 }
 
 -(void)btnOnfocusActionWithButton:(UIButton *)button
@@ -445,7 +452,7 @@
         weakSelf.rangeEnable = rangeEnable;
         
         //设置可点击文本的颜色;
-        [mutableAttributedString addAttribute:(NSString *)kCTBackgroundColorAttributeName
+        [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName
                                         value:kColorFromRGB(kThemeYellow)
                                         range:rangeEnable];
         
@@ -534,7 +541,14 @@
 {
     NSString *topic_id = [url absoluteString];
     if (topic_id && ![topic_id isEqualToString:@""]) {
-        //跳转话题
+        
+        NSString *notifiName = [NSString string];
+        if ([self.whereReuseFrom isEqualToString:@"discover"]) {
+            notifiName = @"jumpToFocusPersonalVCByTopicFromDiscover";
+        }
+        
+        //跳转话题详情
+        [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:topic_id];
     }
 }
 
@@ -542,8 +556,14 @@
 {
     NSString *user_id = addressComponents[@"user_id"];
     if (user_id && ![user_id isEqualToString:@""]) {
+        
+        NSString *notifiName = [NSString string];
+        if ([self.whereReuseFrom isEqualToString:@"discover"]) {
+            notifiName = @"jumpToFocusPersonalVCByAtSomeoneFromDiscover";
+        }
+        
         //跳转查看好友详情
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToFocusPersonalVCFromDiscover" object:user_id];
+        [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:user_id];
     }
 }
 

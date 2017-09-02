@@ -10,6 +10,7 @@
 
 //cells
 #import "CommentListCell.h"
+#import "NULLTableViewCell.h"
 
 //models
 #import "ProductCommentDataModel.h"
@@ -40,6 +41,8 @@
     
     [self getGoodsCommentData];
     [self settingTableView];
+    
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,6 +107,7 @@
     }];
 }
 
+#pragma mark - <配置tableView>
 -(void)settingTableView
 {
     self.tableView.delegate = self;
@@ -113,9 +117,19 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     [self.tableView registerClass:[CommentListCell class] forCellReuseIdentifier:NSStringFromClass([CommentListCell class])];
+    
+    UINib *nibNull = [UINib nibWithNibName:NSStringFromClass([NULLTableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
 }
 
-
+#pragma mark - <rac响应>
+-(void)respondWithRAC
+{
+    //点击头像跳转好友主页
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        
+    }];
+}
 
 
 
@@ -129,19 +143,30 @@
 #pragma mark - **** UITableViewDelegate,UITableViewDataSource ***
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.dataArray.count == 0) {
+        return 1;
+    }
     return self.dataArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.dataArray.count == 0) {
+        NULLTableViewCell *cellNull = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NULLTableViewCell class])];
+        return cellNull;
+    }
     CommentListCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CommentListCell class])];
     ProductCommentResultModel *modelResult = self.dataArray[indexPath.row];
-    cell.modelProductCommentResult = modelResult;;
+    cell.modelProductCommentResult = modelResult;
+    cell.whereReuseFrom = @"productCommentListVC";
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.dataArray.count == 0) {
+        return self.view.frame.size.height;
+    }
     CommentListCell *cell = [[CommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([CommentListCell class])];
     ProductCommentResultModel *modelResult = self.dataArray[indexPath.row];
     cell.modelProductCommentResult = modelResult;

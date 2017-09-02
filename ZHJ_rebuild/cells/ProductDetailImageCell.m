@@ -33,6 +33,7 @@
     if (_model != model) {
         _model = model;
         [self layoutIfNeeded];
+        
         NSString *str = [NSString stringWithFormat:@"%@%@",kDomainImage,model.image_url];
         NSURL *url = [NSURL URLWithString:str];
         

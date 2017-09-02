@@ -28,6 +28,7 @@
 #import "CircleDetailConfigViewController.h"
 #import "CircleSigninListViewController.h"
 #import "FocusPersonFileViewController.h"
+#import "TopicDetailViewController.h"
 
 @interface CircleDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong)UIView *NewPostView;
@@ -360,6 +361,15 @@
     [self.navigationController pushViewController:focusPersonalVC animated:YES];
 }
 
+#pragma mark - <跳转“话题详情”页面>
+-(void)jumpToTopicDetailVCWithTopicID:(NSString *)topic_id
+{
+    TopicDetailViewController *topicDetailVC = [[TopicDetailViewController alloc]initWithNibName:NSStringFromClass([TopicDetailViewController class]) bundle:nil];
+    topicDetailVC.topic_id = topic_id;
+    topicDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:topicDetailVC animated:YES];
+}
+
 #pragma mark - <配置tableView>
 -(void)settingTableView
 {
@@ -411,10 +421,21 @@
         [self getCircleDetailData];
     }];
     
-    //好友主页
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCFromAtSomeone" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+    //点击@人好友主页
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCByAtSomeoneFromCircleDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
             NSString *user_id = x.object;
             [self jumpToFocusPersonalVCWithUserID:user_id];
+    }];
+    //点击头像跳转好友主页
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCByPortraitFromCircleDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *user_id = x.object;
+        [self jumpToFocusPersonalVCWithUserID:user_id];
+    }];
+    
+    //点击富文本话题跳转话题详情
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCByTopicFromCircleDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *topic_id = x.object;
+        [self jumpToTopicDetailVCWithTopicID:topic_id];
     }];
 
 }
@@ -463,6 +484,7 @@
         FocusPersonCell *cellFocusDynamic = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([FocusPersonCell class])];
         MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
         cellFocusDynamic.modelCircleDynamicResult = modelResult;
+        cellFocusDynamic.whereFrom = @"circleDetail";
         cell = cellFocusDynamic;
     }
     return cell;

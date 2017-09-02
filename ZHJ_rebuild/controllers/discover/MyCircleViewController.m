@@ -26,6 +26,7 @@
 #import "MoreCycleViewController.h"
 #import "CircleDetailViewController.h"
 #import "FocusPersonFileViewController.h"
+#import "TopicDetailViewController.h"
 
 @interface MyCircleViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -210,6 +211,15 @@
     [self.navigationController pushViewController:focusPersonalVC animated:YES];
 }
 
+#pragma mark - <跳转“话题详情”页面>
+-(void)jumpToTopicDetailVCWithTopicID:(NSString *)topic_id
+{
+    TopicDetailViewController *topicDetailVC = [[TopicDetailViewController alloc]initWithNibName:NSStringFromClass([TopicDetailViewController class]) bundle:nil];
+    topicDetailVC.topic_id = topic_id;
+    topicDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:topicDetailVC animated:YES];
+}
+
 #pragma mark - <配置tableView>
 -(void)settingTableView
 {
@@ -242,9 +252,22 @@
 #pragma mark - <rac响应>
 -(void)respondWithRAC
 {
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCFromAtSomeone" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+    //点击“@人”跳转好友主页
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCByAtSomeoneFromMyCircleVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         NSString *user_id = x.object;
         [self jumpToFocusPersonalVCWithUserID:user_id];
+    }];
+    
+    //点击头像跳转好友主页
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCByPortraitFromMyCircleVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *user_id = x.object;
+        [self jumpToFocusPersonalVCWithUserID:user_id];
+    }];
+    
+    //点击富文本话题跳转话题详情
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCByTopicFromMyCircleVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *topic_id = x.object;
+        [self jumpToTopicDetailVCWithTopicID:topic_id];
     }];
 }
 
@@ -344,6 +367,7 @@
             FocusPersonCell *cellFocusDynamic = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([FocusPersonCell class])];
             MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
             cellFocusDynamic.modelCircleDynamicResult = modelResult;
+            cellFocusDynamic.whereFrom = @"myCircleVC";
             cell = cellFocusDynamic;
         }
     }
@@ -369,6 +393,8 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 4) {
             [self jumpToMoreCircleVCWithMoreType:@"moreJoined" classifyID:nil];
+        }else if (indexPath.row == 0){
+            
         }else{
             MyJoinedCircleResultModel *modelResult = self.joinedCircleArray[indexPath.row-1];
             [self jumpToCircleDetailVCWithCircleID:modelResult.circle_id];
