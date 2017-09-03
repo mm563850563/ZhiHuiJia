@@ -29,7 +29,7 @@
 {
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} forState:UIControlStateNormal];
     
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor redColor],NSFontAttributeName:[UIFont systemFontOfSize:12]} forState:UIControlStateSelected];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:kColorFromRGB(kThemeYellow),NSFontAttributeName:[UIFont systemFontOfSize:12]} forState:UIControlStateSelected];
     
     //home_image
     UIImage *image1_normal = [UIImage imageNamed:@"themeYellow_home_normal"];

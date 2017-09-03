@@ -144,6 +144,7 @@
 		DD0DBB0A1F3431650098F5FA /* GetSpecPriceDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB091F3431650098F5FA /* GetSpecPriceDataModel.m */; };
 		DD0DBB0D1F3431780098F5FA /* GetSpecPriceResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB0C1F3431780098F5FA /* GetSpecPriceResultModel.m */; };
 		DD0DBB101F34817A0098F5FA /* NSString+ContentWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB0F1F34817A0098F5FA /* NSString+ContentWidth.m */; };
+		DD102EB41F5C032200C6B51F /* BasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD102EB31F5C032200C6B51F /* BasicNavigationController.m */; };
 		DD184E071F3C4EE6009BFF5B /* MyDiscountCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD184E051F3C4EE6009BFF5B /* MyDiscountCouponViewController.m */; };
 		DD184E081F3C4EE6009BFF5B /* MyDiscountCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD184E061F3C4EE6009BFF5B /* MyDiscountCouponViewController.xib */; };
 		DD184E0C1F3C52C6009BFF5B /* MyDiscountCouponCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD184E0A1F3C52C6009BFF5B /* MyDiscountCouponCell.m */; };
@@ -906,6 +907,8 @@
 		DD0DBB0C1F3431780098F5FA /* GetSpecPriceResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetSpecPriceResultModel.m; path = models/GetSpecPriceResultModel.m; sourceTree = "<group>"; };
 		DD0DBB0E1F34817A0098F5FA /* NSString+ContentWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+ContentWidth.h"; path = "tools/NSString+ContentWidth.h"; sourceTree = "<group>"; };
 		DD0DBB0F1F34817A0098F5FA /* NSString+ContentWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+ContentWidth.m"; path = "tools/NSString+ContentWidth.m"; sourceTree = "<group>"; };
+		DD102EB21F5C032200C6B51F /* BasicNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicNavigationController.h; path = controllers/basicNavigation/BasicNavigationController.h; sourceTree = "<group>"; };
+		DD102EB31F5C032200C6B51F /* BasicNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicNavigationController.m; path = controllers/basicNavigation/BasicNavigationController.m; sourceTree = "<group>"; };
 		DD184E041F3C4EE6009BFF5B /* MyDiscountCouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDiscountCouponViewController.h; path = controllers/personal/MyDiscountCouponViewController.h; sourceTree = "<group>"; };
 		DD184E051F3C4EE6009BFF5B /* MyDiscountCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDiscountCouponViewController.m; path = controllers/personal/MyDiscountCouponViewController.m; sourceTree = "<group>"; };
 		DD184E061F3C4EE6009BFF5B /* MyDiscountCouponViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyDiscountCouponViewController.xib; path = controllers/personal/MyDiscountCouponViewController.xib; sourceTree = "<group>"; };
@@ -3681,6 +3684,8 @@
 			children = (
 				EC4BA2411F14B05E00B9BE1A /* CategateNavigationController.h */,
 				EC4BA2421F14B05E00B9BE1A /* CategateNavigationController.m */,
+				DD102EB21F5C032200C6B51F /* BasicNavigationController.h */,
+				DD102EB31F5C032200C6B51F /* BasicNavigationController.m */,
 			);
 			name = basicNavigation;
 			sourceTree = "<group>";
@@ -4237,6 +4242,7 @@
 				DDFB82C01F1E059A00AEAAA7 /* DiscoverDynamicCell.m in Sources */,
 				DD184E111F3C596A009BFF5B /* MyDiscountCouponModel.m in Sources */,
 				DD0938EB1F43E80300A75182 /* OrderListResultModel.m in Sources */,
+				DD102EB41F5C032200C6B51F /* BasicNavigationController.m in Sources */,
 				DD68984F1F31B532008B6A8F /* GoodsDetailModel.m in Sources */,
 				DD6287661F2059F70030331D /* MyBalanceViewController.m in Sources */,
 				DD0960131F5571BA002F4AED /* MyCircleDynamicResultModel.m in Sources */,

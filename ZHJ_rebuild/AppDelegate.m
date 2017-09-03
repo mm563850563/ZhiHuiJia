@@ -80,6 +80,9 @@
     //************全局手势滑动返回*************
     [MLTransition validatePanBackWithMLTransitionGestureRecognizerType:MLTransitionGestureRecognizerTypeScreenEdgePan];
     
+    //************ navigationBar相关设置 ************
+//    [self settingNavigationBar];
+    
     //***************全局键盘自动管理*************
     [self settingIQKeyBoardManager];
     
@@ -98,6 +101,19 @@
     [WXApi registerApp:kWeChatPay_AppID ];
     
     return YES;
+}
+
+
+#pragma mark - <navigationBar相关设置>
+-(void)settingNavigationBar
+{
+    //设置navigationBar颜色
+    [[UINavigationBar appearance] setBarTintColor:kColorFromRGB(kThemeYellow)];
+    
+    //设置返回按钮键
+//    UIImage *imgBack = [[UIImage imageNamed:@"back"]resizableImageWithCapInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
+    [UINavigationBar appearance].backIndicatorTransitionMaskImage = [UIImage imageNamed:@"back"];
+    [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"back"];
 }
 
 

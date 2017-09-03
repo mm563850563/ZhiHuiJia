@@ -226,10 +226,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 {
-    if (self.shouldPay) {
-        MyDiscountCouponAvailableModel *model = self.couponAvailableArray[indexPath.row];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"selectDiscountCoupon" object:model];
-        [self.navigationController popViewControllerAnimated:YES];
+    if (self.couponAvailableArray.count>0) {
+        if (self.shouldPay) {
+            MyDiscountCouponAvailableModel *model = self.couponAvailableArray[indexPath.row];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"selectDiscountCoupon" object:model];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
 }
 

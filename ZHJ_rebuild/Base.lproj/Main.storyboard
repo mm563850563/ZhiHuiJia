@@ -34,9 +34,9 @@
         <!--分类-->
         <scene sceneID="y6x-AX-hBd">
             <objects>
-                <navigationController id="P7p-br-xFT" customClass="CategateNavigationController" sceneMemberID="viewController">
+                <navigationController id="P7p-br-xFT" customClass="BasicNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="分类" id="SfK-nS-Boy"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZVL-CI-AXh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="ZVL-CI-AXh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -51,9 +51,9 @@
         <!--发现-->
         <scene sceneID="2hZ-QL-Sna">
             <objects>
-                <navigationController id="H9h-Ah-7fa" sceneMemberID="viewController">
+                <navigationController id="H9h-Ah-7fa" customClass="BasicNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="发现" id="hGS-a4-oU3"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="4vL-b0-4Ey">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="4vL-b0-4Ey">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -68,7 +68,7 @@
         <!--购物车-->
         <scene sceneID="JCJ-4W-25R">
             <objects>
-                <navigationController id="2XI-cb-DMH" sceneMemberID="viewController">
+                <navigationController id="2XI-cb-DMH" customClass="BasicNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="购物车" id="Eur-OL-aVk"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Olb-Ga-giW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -85,7 +85,7 @@
         <!--我的-->
         <scene sceneID="ZZw-Fi-ZWI">
             <objects>
-                <navigationController id="OLU-Fc-2Jl" sceneMemberID="viewController">
+                <navigationController id="OLU-Fc-2Jl" customClass="BasicNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" id="F2C-8E-hS6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RiU-fz-LXv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -102,7 +102,7 @@
         <!--首页-->
         <scene sceneID="mEI-Ko-CAJ">
             <objects>
-                <navigationController id="8sH-ea-TwR" sceneMemberID="viewController">
+                <navigationController id="8sH-ea-TwR" customClass="BasicNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" id="DEA-uf-QzH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bSR-GF-uE9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -144,7 +144,7 @@
                         <viewControllerLayoutGuide type="bottom" id="OUc-i2-XU8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="T7e-Yz-mGm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

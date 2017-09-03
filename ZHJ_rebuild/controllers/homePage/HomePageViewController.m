@@ -740,6 +740,13 @@
         [navigationController.navigationBar setTranslucent:NO];
         [navigationController setNavigationBarHidden:NO animated:YES];
     }
+    
+//    //设置返回键
+//    UIButton *btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
+//    btnBack.frame = CGRectMake(0, 0, 30, 30);
+//    [btnBack setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+//    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc]initWithCustomView:btnBack];
+//    navigationController.navigationItem.leftBarButtonItem = buttonItem;
 }
 
 #pragma mark - ***** UIScrollViewDelegate ******

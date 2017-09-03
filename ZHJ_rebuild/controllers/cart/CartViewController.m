@@ -562,10 +562,30 @@
                 [self.removeCartArray addObject:modelList.cart_id];
             }
         }
-        [self getRemoveCartDataWithRemoveCartArray:self.removeCartArray];
+        
+        if (self.removeCartArray.count == 0) {
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择要删除的商品"];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }else{
+            [self getRemoveCartDataWithRemoveCartArray:self.removeCartArray];
+        }
+        
     }else{
+        NSMutableArray *tempArray = [NSMutableArray array];
+        //先遍历所有购物车的selected属性
+        for (CartList_CartListModel *modelList in self.cartListArray) {
+            if ([modelList.selected isEqualToString:@"1"]) {
+                [tempArray addObject:modelList.cart_id];
+            }
+        }
         //执行提交
-        [self jumpToOrderConfirmVC];
+        if (tempArray.count == 0) {
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择商品"];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }else{
+            [self jumpToOrderConfirmVC];
+        }
+        
     }
 }
 
