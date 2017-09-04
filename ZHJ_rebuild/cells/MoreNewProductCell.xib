@@ -42,6 +42,9 @@
                     <constraint firstAttribute="trailing" secondItem="KDX-QR-xEN" secondAttribute="trailing" id="yNG-u7-dJL"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="labelTitle" destination="A6K-qO-2w0" id="fvG-Jd-Hbn"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

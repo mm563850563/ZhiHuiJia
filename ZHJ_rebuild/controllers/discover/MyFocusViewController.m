@@ -15,10 +15,17 @@
 #import "TalkLikeDataModel.h"
 #import "TalkLikeResultModel.h"
 
+#import "MyFansAndMyFocusDataModel.h"
+#import "MyFansAndMyFocusResultModel.h"
+
+//controllers
+#import "FocusPersonFileViewController.h"
+
 @interface MyFocusViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *talkLikeArray;
+@property (nonatomic, strong)NSMutableArray *fansOrFocusArray;
 
 @property (nonatomic, strong)NSNumber *page;
 
@@ -30,7 +37,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.page = @1;
-    [self getTalkLikeListData];
+    if (self.talk_id) {
+        [self getTalkLikeListData];
+    }
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    if ([self.myFansOrMyFocus isEqualToString:@"fans"]) {
+        [self getMyFansDataWithHUD:hud];
+    }else if ([self.myFansOrMyFocus isEqualToString:@"focus"]){
+        [self getMyFocusDataWithHUD:hud];
+    }
+    
     [self settingTableView];
 }
 
@@ -47,6 +64,14 @@
     return _talkLikeArray;
 }
 
+-(NSMutableArray *)fansOrFocusArray
+{
+    if (!_fansOrFocusArray) {
+        _fansOrFocusArray = [NSMutableArray array];
+    }
+    return _fansOrFocusArray;
+}
+
 /*
 #pragma mark - Navigation
 
@@ -57,6 +82,102 @@
 }
 */
 
+
+#pragma mark - <获取“为关注的人”数据>
+-(void)getMyFocusDataWithHUD:(MBProgressHUD *)hud
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetMyFriends];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"page":self.page};
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                MyFansAndMyFocusDataModel *modelData = [[MyFansAndMyFocusDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                for (MyFansAndMyFocusResultModel *modelResult in modelData.result) {
+                    [self.fansOrFocusArray addObject:modelResult];
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    [self.tableView reloadData];
+                    [self.tableView.mj_footer endRefreshing];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [self.tableView.mj_footer endRefreshing];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [self.tableView.mj_footer endRefreshing];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [self.tableView.mj_footer endRefreshing];
+        });
+    }];
+}
+
+#pragma mark - <获取“我的粉丝”数据>
+-(void)getMyFansDataWithHUD:(MBProgressHUD *)hud
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetMyFans];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"page":self.page};
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                MyFansAndMyFocusDataModel *modelData = [[MyFansAndMyFocusDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                for (MyFansAndMyFocusResultModel *modelResult in modelData.result) {
+                    [self.fansOrFocusArray addObject:modelResult];
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    [self.tableView reloadData];
+                    [self.tableView.mj_footer endRefreshing];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [self.tableView.mj_footer endRefreshing];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [self.tableView.mj_footer endRefreshing];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [self.tableView.mj_footer endRefreshing];
+        });
+    }];
+}
 
 #pragma mark - <获取“点赞列表”数据>
 -(void)getTalkLikeListData
@@ -156,7 +277,7 @@
     }];
 }
 
-#pragma mark - <settingTableView>
+#pragma mark - <配置tableView>
 -(void)settingTableView
 {
     self.tableView.delegate= self;
@@ -171,10 +292,27 @@
         int page = [self.page intValue];
         page++;
         self.page = [NSNumber numberWithInt:page];
-        [self getMoreTalkLikeListDataWithPage:self.page];
+        
+        if (self.talk_id) {
+            [self getMoreTalkLikeListDataWithPage:self.page];
+        }else if ([self.myFansOrMyFocus isEqualToString:@"fans"]){
+            [self getMyFansDataWithHUD:nil];
+        }else if ([self.myFansOrMyFocus isEqualToString:@"focus"]){
+            [self getMyFocusDataWithHUD:nil];
+        }
+        
     }];
 }
 
+
+#pragma mark - <跳转“好友主页”>
+-(void)jumpToPersonalFileVCWithFriendID:(NSString *)friend_user_id whereReuserFrom:(NSString *)whereReuserFrom
+{
+    FocusPersonFileViewController *personalFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
+    personalFileVC.friend_user_id = friend_user_id;
+    personalFileVC.whereReuseFrom = whereReuserFrom;
+    [self.navigationController pushViewController:personalFileVC animated:YES];
+}
 
 
 
@@ -182,15 +320,40 @@
 #pragma mark - *** UITableViewDelegate,UITableViewDataSource ***
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.talkLikeArray.count;
+    if (self.talk_id) {
+        return self.talkLikeArray.count;
+    }else if (self.myFansOrMyFocus){
+        return self.fansOrFocusArray.count;
+    }
+    return 0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MyOnFocusCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyOnFocusCell class])];
-    TalkLikeResultModel *modelResult = self.talkLikeArray[indexPath.row];
-    cell.modelTalkLikeResult = modelResult;
+    UITableViewCell *cell = [[UITableViewCell alloc]init];
+    if (self.talk_id) {
+        MyOnFocusCell *cellTalk = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyOnFocusCell class])];
+        TalkLikeResultModel *modelResult = self.talkLikeArray[indexPath.row];
+        cellTalk.modelTalkLikeResult = modelResult;
+        cell = cellTalk;
+    }else if (self.myFansOrMyFocus){
+        MyOnFocusCell *cellFansOrFocus = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyOnFocusCell class])];
+        MyFansAndMyFocusResultModel *modelResult = self.fansOrFocusArray[indexPath.row];
+        cellFansOrFocus.modelFansOrFocusResult = modelResult;
+        cell = cellFansOrFocus;
+    }
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.talk_id) {
+        TalkLikeResultModel *modelResult = self.talkLikeArray[indexPath.row];
+        [self jumpToPersonalFileVCWithFriendID:modelResult.user_id whereReuserFrom:@"myFocusVC"];
+    }else if (self.myFansOrMyFocus){
+        MyFansAndMyFocusResultModel *modelResult = self.fansOrFocusArray[indexPath.row];
+        [self jumpToPersonalFileVCWithFriendID:modelResult.user_id whereReuserFrom:@"myFocusVC"];
+    }
 }
 
 

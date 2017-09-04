@@ -45,7 +45,10 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
     //默认布局为collectionView
     self.layoutCode = CollectionLayout;
     
-    [self getClassifyListData];
+    if (self.category_id) {
+        [self getClassifyListData];
+    }
+    
     [self settingNavigation];
     [self initMoreProduct_SortView];
     [self initTableView];

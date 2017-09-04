@@ -10,4 +10,6 @@
 
 @interface MoreNewProductCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
+
 @end

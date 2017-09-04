@@ -46,11 +46,13 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:@"DomainToEdit" object:nil];
 }
 
+#pragma mark - <我关注的人>
 - (IBAction)btnFocusAction:(UIButton *)sender
 {
     [[NSNotificationCenter defaultCenter]postNotificationName:@"DomainToMyFocus" object:nil];
 }
 
+#pragma mark - <我的粉丝>
 - (IBAction)btnFansAction:(UIButton *)sender
 {
     [[NSNotificationCenter defaultCenter]postNotificationName:@"DomainToMyFans" object:nil];

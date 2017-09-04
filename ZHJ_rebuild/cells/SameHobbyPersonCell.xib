@@ -86,6 +86,11 @@
                 <constraint firstAttribute="trailing" secondItem="t6a-pf-45J" secondAttribute="trailing" id="ypy-aA-M3J"/>
             </constraints>
             <size key="customSize" width="96" height="220"/>
+            <connections>
+                <outlet property="btnOnFocus" destination="yCs-96-MT4" id="s3b-M4-7jw"/>
+                <outlet property="imgViewPortrait" destination="brF-nb-r5m" id="Q2L-IY-pGB"/>
+                <outlet property="labelNickName" destination="5Ux-XJ-KYQ" id="oy2-Np-EQJ"/>
+            </connections>
             <point key="canvasLocation" x="55" y="172"/>
         </collectionViewCell>
     </objects>

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GetSimilarUserResultModel;
 
 @interface SameHobbyPersonCell : UICollectionViewCell
+
+@property (nonatomic, strong)GetSimilarUserResultModel *modelSimilarResult;
 
 @end

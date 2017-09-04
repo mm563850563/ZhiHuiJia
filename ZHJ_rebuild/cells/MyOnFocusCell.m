@@ -8,6 +8,7 @@
 
 #import "MyOnFocusCell.h"
 #import "TalkLikeResultModel.h"
+#import "MyFansAndMyFocusResultModel.h"
 
 @interface MyOnFocusCell ()
 
@@ -40,7 +41,16 @@
     [self.imgViewPortrait sd_setImageWithURL:url placeholderImage:kPlaceholder];
 }
 
-
+-(void)setModelFansOrFocusResult:(MyFansAndMyFocusResultModel *)modelFansOrFocusResult
+{
+    _modelFansOrFocusResult = modelFansOrFocusResult;
+    
+    self.labelNickName.text = modelFansOrFocusResult.username;
+    
+    NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelFansOrFocusResult.headimg];
+    NSURL *url = [NSURL URLWithString:imgStr];
+    [self.imgViewPortrait sd_setImageWithURL:url placeholderImage:kPlaceholder];
+}
 
 
 

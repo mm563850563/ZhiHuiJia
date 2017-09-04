@@ -216,6 +216,12 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self getFriendHomePageData];
+                    
+                    //在“好友主页”中点击关注／取消关注后刷新主页
+                    if ([self.whereReuseFrom isEqualToString:@"homePageVC"]) {
+                        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshHomePageVC" object:nil];
+                    }
+                    
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                     [hudWarning hideAnimated:YES afterDelay:2.0];

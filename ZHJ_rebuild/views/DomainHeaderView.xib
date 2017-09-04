@@ -78,38 +78,37 @@
                                         <constraint firstItem="LwT-gM-ObZ" firstAttribute="centerX" secondItem="96n-w8-CxY" secondAttribute="centerX" id="y3b-q2-qgb"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2JV-FA-49A">
-                                    <rect key="frame" x="15" y="15" width="40" height="20"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2JV-FA-49A">
+                                    <rect key="frame" x="20" y="20" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="Gi2-rk-EQK"/>
-                                        <constraint firstAttribute="width" constant="40" id="dWX-o1-8cB"/>
+                                        <constraint firstAttribute="width" constant="20" id="dWX-o1-8cB"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <state key="normal" title="⬅️">
+                                    <state key="normal" image="back">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
                                         <action selector="btnBackAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="hLS-Bd-s8w"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkX-fc-bg9">
-                                    <rect key="frame" x="340" y="15" width="20" height="20"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkX-fc-bg9">
+                                    <rect key="frame" x="340" y="19.5" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="T74-qt-H7F"/>
                                         <constraint firstAttribute="height" constant="20" id="tw2-oK-6MX"/>
                                     </constraints>
-                                    <state key="normal" title="Button"/>
+                                    <state key="normal" image="empty.png"/>
                                     <connections>
                                         <action selector="btnEditAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="MGl-w5-R5z"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4E-Na-rvY">
-                                    <rect key="frame" x="310" y="15" width="20" height="20"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4E-Na-rvY">
+                                    <rect key="frame" x="310" y="19.5" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="fVP-MM-Som"/>
                                         <constraint firstAttribute="width" constant="20" id="yP7-gs-4nl"/>
                                     </constraints>
-                                    <state key="normal" title="Button"/>
+                                    <state key="normal" image="message_white"/>
                                     <connections>
                                         <action selector="btnMessageAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Gvs-2J-rTk"/>
                                     </connections>
@@ -191,9 +190,9 @@
                                 <constraint firstItem="2lz-rc-aIC" firstAttribute="leading" secondItem="fUK-mT-v1f" secondAttribute="trailing" constant="20" id="ZYc-P8-rSs"/>
                                 <constraint firstAttribute="trailing" secondItem="TkX-fc-bg9" secondAttribute="trailing" constant="15" id="cSd-TF-80n"/>
                                 <constraint firstItem="96n-w8-CxY" firstAttribute="leading" secondItem="hqv-qj-ufv" secondAttribute="leading" id="dmV-6b-ndT"/>
-                                <constraint firstItem="2JV-FA-49A" firstAttribute="top" secondItem="hqv-qj-ufv" secondAttribute="top" constant="15" id="eEH-C6-Gky"/>
+                                <constraint firstItem="2JV-FA-49A" firstAttribute="top" secondItem="hqv-qj-ufv" secondAttribute="top" constant="20" id="eEH-C6-Gky"/>
                                 <constraint firstAttribute="bottom" secondItem="yGn-kn-ezp" secondAttribute="bottom" constant="35" id="hjp-pd-6aV"/>
-                                <constraint firstItem="2JV-FA-49A" firstAttribute="leading" secondItem="hqv-qj-ufv" secondAttribute="leading" constant="15" id="nN7-uk-urU"/>
+                                <constraint firstItem="2JV-FA-49A" firstAttribute="leading" secondItem="hqv-qj-ufv" secondAttribute="leading" constant="20" id="nN7-uk-urU"/>
                                 <constraint firstItem="5HX-u7-4ru" firstAttribute="leading" secondItem="2lz-rc-aIC" secondAttribute="trailing" constant="20" id="naO-Gv-Ifp"/>
                                 <constraint firstItem="yGn-kn-ezp" firstAttribute="leading" secondItem="hqv-qj-ufv" secondAttribute="leading" id="pdS-uR-c5g"/>
                                 <constraint firstAttribute="trailing" secondItem="96n-w8-CxY" secondAttribute="trailing" id="r4f-dP-zoO"/>
@@ -285,7 +284,10 @@
     <resources>
         <image name="00bi" width="31" height="35"/>
         <image name="appLogo" width="550" height="550"/>
+        <image name="back" width="37" height="37"/>
         <image name="bgbg" width="540" height="325"/>
+        <image name="empty.png" width="15" height="15"/>
         <image name="fabu" width="256" height="256"/>
+        <image name="message_white" width="18" height="18"/>
     </resources>
 </document>

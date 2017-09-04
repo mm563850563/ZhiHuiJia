@@ -70,9 +70,9 @@
             </constraints>
             <size key="customSize" width="88" height="174"/>
             <connections>
-                <outlet property="imgView" destination="bLs-Eh-SyT" id="ljD-kY-rql"/>
-                <outlet property="labelAround" destination="0zo-cs-1Nc" id="Ohm-Zg-sp4"/>
-                <outlet property="labelName" destination="763-n3-tu3" id="WVw-nE-lDa"/>
+                <outlet property="imgViewPortrait" destination="bLs-Eh-SyT" id="M5J-Zj-t0Z"/>
+                <outlet property="labelDistance" destination="0zo-cs-1Nc" id="Bn2-dz-doN"/>
+                <outlet property="labelNickName" destination="763-n3-tu3" id="BE1-4X-Hav"/>
             </connections>
             <point key="canvasLocation" x="71" y="149"/>
         </collectionViewCell>

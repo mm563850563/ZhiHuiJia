@@ -19,8 +19,9 @@
 
 //tools
 #import "GetHeightOfText.h"
+#import <CXPhotoBrowser.h>
 
-@interface CommentListCell ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface CommentListCell ()<UICollectionViewDelegate, UICollectionViewDataSource,CXPhotoBrowserDelegate,CXPhotoBrowserDataSource>
 
 @property (strong, nonatomic) UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -36,6 +37,8 @@
 
 @property (nonatomic, strong)NSArray *imagesArray;
 
+@property (nonatomic, strong)CXPhotoBrowser *photoBrowser;
+@property (nonatomic, strong)NSMutableArray *photoDataSource;
 
 
 @end
@@ -81,6 +84,22 @@
 
 
 #pragma mark - <懒加载>
+-(CXPhotoBrowser *)photoBrowser
+{
+    if (!_photoBrowser) {
+        _photoBrowser = [[CXPhotoBrowser alloc]initWithDataSource:self delegate:self];
+    }
+    return _photoBrowser;
+}
+
+-(NSMutableArray *)photoDataSource
+{
+    if (!_photoDataSource) {
+        _photoDataSource = [NSMutableArray array];
+    }
+    return _photoDataSource;
+}
+
 -(UIView *)mainBGView
 {
     if (!_mainBGView) {
@@ -278,6 +297,13 @@
         make.height.mas_equalTo(collectionHeight);
     }];
     
+    //配置图片浏览器数据源
+    [self.photoDataSource removeAllObjects];
+    for (NSString *imgStr in self.imagesArray) {
+        CXPhoto *photo = [[CXPhoto alloc]initWithURL:[NSURL URLWithString:imgStr]];
+        [self.photoDataSource addObject:photo];
+    }
+    
     //imgViewPortrait
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelProductCommentResult.headimg];
     NSURL *url = [NSURL URLWithString:imgStr];
@@ -347,6 +373,40 @@
     imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,imgStr];
     cell.imgStr = imgStr;
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    //图片浏览器
+    
+    [self.photoBrowser setInitialPageIndex:indexPath.item];
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            UIViewController *vc = (UIViewController *)nextResponder;
+            [vc.navigationController pushViewController:self.photoBrowser animated:YES];
+        }
+    }
+}
+
+
+#pragma mark - ******* CXPhotoBrowserDelegate,CXPhotoBrowserDataSource ********
+-(NSUInteger)numberOfPhotosInPhotoBrowser:(CXPhotoBrowser *)photoBrowser
+{
+    return self.photoDataSource.count;
+}
+
+-(id<CXPhotoProtocol>)photoBrowser:(CXPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index
+{
+    if (index < self.photoDataSource.count){
+        return [self.photoDataSource objectAtIndex:index];
+    }
+    return nil;
+}
+
+-(CGFloat)heightForNavigationBarInInterfaceOrientation:(UIInterfaceOrientation)orientation
+{
+    return 64;
 }
 
 

@@ -251,6 +251,22 @@
 		DD4CF1151F29F2D00024156F /* AllClassifyChildrenSecondModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF1141F29F2D00024156F /* AllClassifyChildrenSecondModel.m */; };
 		DD4CF1191F2AFB9E0024156F /* CategoryProductNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF1171F2AFB9E0024156F /* CategoryProductNameCell.m */; };
 		DD4CF11A1F2AFB9E0024156F /* CategoryProductNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4CF1181F2AFB9E0024156F /* CategoryProductNameCell.xib */; };
+		DD52ECEE1F5CE4DD00B4CE96 /* GetSimilarUserDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52ECED1F5CE4DD00B4CE96 /* GetSimilarUserDataModel.m */; };
+		DD52ECF11F5CE4EE00B4CE96 /* GetSimilarUserResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52ECF01F5CE4EE00B4CE96 /* GetSimilarUserResultModel.m */; };
+		DD52ECF51F5D4AAA00B4CE96 /* PersonalInfoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52ECF41F5D4AAA00B4CE96 /* PersonalInfoDataModel.m */; };
+		DD52ECF81F5D4AB900B4CE96 /* PersonalInfoResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52ECF71F5D4AB900B4CE96 /* PersonalInfoResultModel.m */; };
+		DD52ECFC1F5D7B7F00B4CE96 /* MyFansAndMyFocusDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52ECFB1F5D7B7F00B4CE96 /* MyFansAndMyFocusDataModel.m */; };
+		DD52ECFF1F5D7B8E00B4CE96 /* MyFansAndMyFocusResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52ECFE1F5D7B8E00B4CE96 /* MyFansAndMyFocusResultModel.m */; };
+		DD52ED031F5D85DF00B4CE96 /* PeopleNearbyDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52ED021F5D85DF00B4CE96 /* PeopleNearbyDataModel.m */; };
+		DD52ED061F5D85EE00B4CE96 /* PeopleNearbyResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52ED051F5D85EE00B4CE96 /* PeopleNearbyResultModel.m */; };
+		DD52ED0A1F5D8ED500B4CE96 /* CreateTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52ED081F5D8ED500B4CE96 /* CreateTopicViewController.m */; };
+		DD52ED0B1F5D8ED500B4CE96 /* CreateTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD52ED091F5D8ED500B4CE96 /* CreateTopicViewController.xib */; };
+		DD52ED0F1F5D94F500B4CE96 /* SelectTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52ED0D1F5D94F500B4CE96 /* SelectTopicViewController.m */; };
+		DD52ED101F5D94F500B4CE96 /* SelectTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD52ED0E1F5D94F500B4CE96 /* SelectTopicViewController.xib */; };
+		DD52ED141F5D962300B4CE96 /* SelectTopic_TitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52ED121F5D962300B4CE96 /* SelectTopic_TitleCell.m */; };
+		DD52ED151F5D962300B4CE96 /* SelectTopic_TitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD52ED131F5D962300B4CE96 /* SelectTopic_TitleCell.xib */; };
+		DD52ED1E1F5D9B5A00B4CE96 /* SelectTopicDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52ED1D1F5D9B5A00B4CE96 /* SelectTopicDataModel.m */; };
+		DD52ED211F5D9B6A00B4CE96 /* SelectTopicResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52ED201F5D9B6A00B4CE96 /* SelectTopicResultModel.m */; };
 		DD58FF261F4A6F32009EC9F2 /* GetHotCycleDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF251F4A6F32009EC9F2 /* GetHotCycleDataModel.m */; };
 		DD58FF291F4A6F4D009EC9F2 /* GetHotCycleResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF281F4A6F4D009EC9F2 /* GetHotCycleResultModel.m */; };
 		DD58FF2C1F4A6F7C009EC9F2 /* GetHotCycleCircleInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FF2B1F4A6F7C009EC9F2 /* GetHotCycleCircleInfoModel.m */; };
@@ -1076,6 +1092,35 @@
 		DD4CF1161F2AFB9E0024156F /* CategoryProductNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryProductNameCell.h; path = cells/CategoryProductNameCell.h; sourceTree = "<group>"; };
 		DD4CF1171F2AFB9E0024156F /* CategoryProductNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryProductNameCell.m; path = cells/CategoryProductNameCell.m; sourceTree = "<group>"; };
 		DD4CF1181F2AFB9E0024156F /* CategoryProductNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryProductNameCell.xib; path = cells/CategoryProductNameCell.xib; sourceTree = "<group>"; };
+		DD52ECEC1F5CE4DD00B4CE96 /* GetSimilarUserDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetSimilarUserDataModel.h; path = models/GetSimilarUserDataModel.h; sourceTree = "<group>"; };
+		DD52ECED1F5CE4DD00B4CE96 /* GetSimilarUserDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetSimilarUserDataModel.m; path = models/GetSimilarUserDataModel.m; sourceTree = "<group>"; };
+		DD52ECEF1F5CE4EE00B4CE96 /* GetSimilarUserResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetSimilarUserResultModel.h; path = models/GetSimilarUserResultModel.h; sourceTree = "<group>"; };
+		DD52ECF01F5CE4EE00B4CE96 /* GetSimilarUserResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetSimilarUserResultModel.m; path = models/GetSimilarUserResultModel.m; sourceTree = "<group>"; };
+		DD52ECF31F5D4AAA00B4CE96 /* PersonalInfoDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalInfoDataModel.h; path = models/PersonalInfoDataModel.h; sourceTree = "<group>"; };
+		DD52ECF41F5D4AAA00B4CE96 /* PersonalInfoDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalInfoDataModel.m; path = models/PersonalInfoDataModel.m; sourceTree = "<group>"; };
+		DD52ECF61F5D4AB900B4CE96 /* PersonalInfoResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalInfoResultModel.h; path = models/PersonalInfoResultModel.h; sourceTree = "<group>"; };
+		DD52ECF71F5D4AB900B4CE96 /* PersonalInfoResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalInfoResultModel.m; path = models/PersonalInfoResultModel.m; sourceTree = "<group>"; };
+		DD52ECFA1F5D7B7F00B4CE96 /* MyFansAndMyFocusDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyFansAndMyFocusDataModel.h; path = models/MyFansAndMyFocusDataModel.h; sourceTree = "<group>"; };
+		DD52ECFB1F5D7B7F00B4CE96 /* MyFansAndMyFocusDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyFansAndMyFocusDataModel.m; path = models/MyFansAndMyFocusDataModel.m; sourceTree = "<group>"; };
+		DD52ECFD1F5D7B8E00B4CE96 /* MyFansAndMyFocusResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyFansAndMyFocusResultModel.h; path = models/MyFansAndMyFocusResultModel.h; sourceTree = "<group>"; };
+		DD52ECFE1F5D7B8E00B4CE96 /* MyFansAndMyFocusResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyFansAndMyFocusResultModel.m; path = models/MyFansAndMyFocusResultModel.m; sourceTree = "<group>"; };
+		DD52ED011F5D85DF00B4CE96 /* PeopleNearbyDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeopleNearbyDataModel.h; path = models/PeopleNearbyDataModel.h; sourceTree = "<group>"; };
+		DD52ED021F5D85DF00B4CE96 /* PeopleNearbyDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeopleNearbyDataModel.m; path = models/PeopleNearbyDataModel.m; sourceTree = "<group>"; };
+		DD52ED041F5D85EE00B4CE96 /* PeopleNearbyResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeopleNearbyResultModel.h; path = models/PeopleNearbyResultModel.h; sourceTree = "<group>"; };
+		DD52ED051F5D85EE00B4CE96 /* PeopleNearbyResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeopleNearbyResultModel.m; path = models/PeopleNearbyResultModel.m; sourceTree = "<group>"; };
+		DD52ED071F5D8ED500B4CE96 /* CreateTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTopicViewController.h; path = controllers/discover/CreateTopicViewController.h; sourceTree = "<group>"; };
+		DD52ED081F5D8ED500B4CE96 /* CreateTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTopicViewController.m; path = controllers/discover/CreateTopicViewController.m; sourceTree = "<group>"; };
+		DD52ED091F5D8ED500B4CE96 /* CreateTopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateTopicViewController.xib; path = controllers/discover/CreateTopicViewController.xib; sourceTree = "<group>"; };
+		DD52ED0C1F5D94F500B4CE96 /* SelectTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectTopicViewController.h; path = controllers/discover/SelectTopicViewController.h; sourceTree = "<group>"; };
+		DD52ED0D1F5D94F500B4CE96 /* SelectTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectTopicViewController.m; path = controllers/discover/SelectTopicViewController.m; sourceTree = "<group>"; };
+		DD52ED0E1F5D94F500B4CE96 /* SelectTopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectTopicViewController.xib; path = controllers/discover/SelectTopicViewController.xib; sourceTree = "<group>"; };
+		DD52ED111F5D962300B4CE96 /* SelectTopic_TitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectTopic_TitleCell.h; path = cells/SelectTopic_TitleCell.h; sourceTree = "<group>"; };
+		DD52ED121F5D962300B4CE96 /* SelectTopic_TitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectTopic_TitleCell.m; path = cells/SelectTopic_TitleCell.m; sourceTree = "<group>"; };
+		DD52ED131F5D962300B4CE96 /* SelectTopic_TitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectTopic_TitleCell.xib; path = cells/SelectTopic_TitleCell.xib; sourceTree = "<group>"; };
+		DD52ED1C1F5D9B5A00B4CE96 /* SelectTopicDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectTopicDataModel.h; path = models/SelectTopicDataModel.h; sourceTree = "<group>"; };
+		DD52ED1D1F5D9B5A00B4CE96 /* SelectTopicDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectTopicDataModel.m; path = models/SelectTopicDataModel.m; sourceTree = "<group>"; };
+		DD52ED1F1F5D9B6A00B4CE96 /* SelectTopicResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectTopicResultModel.h; path = models/SelectTopicResultModel.h; sourceTree = "<group>"; };
+		DD52ED201F5D9B6A00B4CE96 /* SelectTopicResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectTopicResultModel.m; path = models/SelectTopicResultModel.m; sourceTree = "<group>"; };
 		DD58FF241F4A6F32009EC9F2 /* GetHotCycleDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetHotCycleDataModel.h; path = models/GetHotCycleDataModel.h; sourceTree = "<group>"; };
 		DD58FF251F4A6F32009EC9F2 /* GetHotCycleDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetHotCycleDataModel.m; path = models/GetHotCycleDataModel.m; sourceTree = "<group>"; };
 		DD58FF271F4A6F4D009EC9F2 /* GetHotCycleResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetHotCycleResultModel.h; path = models/GetHotCycleResultModel.h; sourceTree = "<group>"; };
@@ -2347,6 +2392,61 @@
 			path = RequestManager;
 			sourceTree = "<group>";
 		};
+		DD52ECEB1F5CE4B100B4CE96 /* GetSimilarUserModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD52ECEC1F5CE4DD00B4CE96 /* GetSimilarUserDataModel.h */,
+				DD52ECED1F5CE4DD00B4CE96 /* GetSimilarUserDataModel.m */,
+				DD52ECEF1F5CE4EE00B4CE96 /* GetSimilarUserResultModel.h */,
+				DD52ECF01F5CE4EE00B4CE96 /* GetSimilarUserResultModel.m */,
+			);
+			name = GetSimilarUserModel;
+			sourceTree = "<group>";
+		};
+		DD52ECF21F5D4A8A00B4CE96 /* PersonalInfoModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD52ECF31F5D4AAA00B4CE96 /* PersonalInfoDataModel.h */,
+				DD52ECF41F5D4AAA00B4CE96 /* PersonalInfoDataModel.m */,
+				DD52ECF61F5D4AB900B4CE96 /* PersonalInfoResultModel.h */,
+				DD52ECF71F5D4AB900B4CE96 /* PersonalInfoResultModel.m */,
+			);
+			name = PersonalInfoModel;
+			sourceTree = "<group>";
+		};
+		DD52ECF91F5D7B4F00B4CE96 /* MyFansAndMyFocusModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD52ECFA1F5D7B7F00B4CE96 /* MyFansAndMyFocusDataModel.h */,
+				DD52ECFB1F5D7B7F00B4CE96 /* MyFansAndMyFocusDataModel.m */,
+				DD52ECFD1F5D7B8E00B4CE96 /* MyFansAndMyFocusResultModel.h */,
+				DD52ECFE1F5D7B8E00B4CE96 /* MyFansAndMyFocusResultModel.m */,
+			);
+			name = MyFansAndMyFocusModel;
+			sourceTree = "<group>";
+		};
+		DD52ED001F5D85C100B4CE96 /* PeopleNearbyModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD52ED011F5D85DF00B4CE96 /* PeopleNearbyDataModel.h */,
+				DD52ED021F5D85DF00B4CE96 /* PeopleNearbyDataModel.m */,
+				DD52ED041F5D85EE00B4CE96 /* PeopleNearbyResultModel.h */,
+				DD52ED051F5D85EE00B4CE96 /* PeopleNearbyResultModel.m */,
+			);
+			name = PeopleNearbyModel;
+			sourceTree = "<group>";
+		};
+		DD52ED1B1F5D9B3400B4CE96 /* SelectTopicModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD52ED1C1F5D9B5A00B4CE96 /* SelectTopicDataModel.h */,
+				DD52ED1D1F5D9B5A00B4CE96 /* SelectTopicDataModel.m */,
+				DD52ED1F1F5D9B6A00B4CE96 /* SelectTopicResultModel.h */,
+				DD52ED201F5D9B6A00B4CE96 /* SelectTopicResultModel.m */,
+			);
+			name = SelectTopicModel;
+			sourceTree = "<group>";
+		};
 		DD58FF231F4A6EEC009EC9F2 /* GetHotCycle */ = {
 			isa = PBXGroup;
 			children = (
@@ -3180,6 +3280,9 @@
 				DD0960F41F5A6A55002F4AED /* TopicDetailHeaderCell.h */,
 				DD0960F51F5A6A55002F4AED /* TopicDetailHeaderCell.m */,
 				DD0960F61F5A6A55002F4AED /* TopicDetailHeaderCell.xib */,
+				DD52ED111F5D962300B4CE96 /* SelectTopic_TitleCell.h */,
+				DD52ED121F5D962300B4CE96 /* SelectTopic_TitleCell.m */,
+				DD52ED131F5D962300B4CE96 /* SelectTopic_TitleCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -3332,6 +3435,11 @@
 				DD0960D21F5960BB002F4AED /* PersonalLivenessRankModel */,
 				DD0960E21F5988C9002F4AED /* ProductCommentModel */,
 				DD0960F91F5A7BD8002F4AED /* TopicDetailModel */,
+				DD52ECEB1F5CE4B100B4CE96 /* GetSimilarUserModel */,
+				DD52ECF91F5D7B4F00B4CE96 /* MyFansAndMyFocusModel */,
+				DD52ECF21F5D4A8A00B4CE96 /* PersonalInfoModel */,
+				DD52ED001F5D85C100B4CE96 /* PeopleNearbyModel */,
+				DD52ED1B1F5D9B3400B4CE96 /* SelectTopicModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -3587,6 +3695,12 @@
 				DD6287151F1F32010030331D /* DynamicDetailViewController.h */,
 				DD6287161F1F32010030331D /* DynamicDetailViewController.m */,
 				DD6287171F1F32010030331D /* DynamicDetailViewController.xib */,
+				DD52ED071F5D8ED500B4CE96 /* CreateTopicViewController.h */,
+				DD52ED081F5D8ED500B4CE96 /* CreateTopicViewController.m */,
+				DD52ED091F5D8ED500B4CE96 /* CreateTopicViewController.xib */,
+				DD52ED0C1F5D94F500B4CE96 /* SelectTopicViewController.h */,
+				DD52ED0D1F5D94F500B4CE96 /* SelectTopicViewController.m */,
+				DD52ED0E1F5D94F500B4CE96 /* SelectTopicViewController.xib */,
 			);
 			name = discover;
 			sourceTree = "<group>";
@@ -3843,6 +3957,7 @@
 				DD62871E1F1F3D8B0030331D /* PriaseTableViewCell.xib in Resources */,
 				DDFB82B41F1D931500AEAAA7 /* PYSearch.bundle in Resources */,
 				DDDD17CF1F2C93A2006BE206 /* OrderListViewController_One.xib in Resources */,
+				DD52ED101F5D94F500B4CE96 /* SelectTopicViewController.xib in Resources */,
 				DD6288231F22EC7A0030331D /* SubNotification_DiscountViewController.xib in Resources */,
 				DD095FCB1F5407E9002F4AED /* SelectTopicListViewController.xib in Resources */,
 				DD4CF03C1F289FB20024156F /* MyOnFocusCell.xib in Resources */,
@@ -3887,6 +4002,7 @@
 				DD6287DA1F21DE0C0030331D /* MyFocusViewController.xib in Resources */,
 				DD4CF00A1F2824B30024156F /* ActivityRuleView.xib in Resources */,
 				EC4BA2661F160F1F00B9BE1A /* DiscoverCell.xib in Resources */,
+				DD52ED0B1F5D8ED500B4CE96 /* CreateTopicViewController.xib in Resources */,
 				DD62881E1F22EC5F0030331D /* SubNotification_AnnouncementViewController.xib in Resources */,
 				DD69B29B1F39A0510036F368 /* BrandAppliedCollectionCell.xib in Resources */,
 				DD4CF0281F2877EC0024156F /* ActivityRecommendApplyCell.xib in Resources */,
@@ -3915,6 +4031,7 @@
 				DD4CF0A01F2975880024156F /* NewPostImageCell.xib in Resources */,
 				DD4CEFCE1F25B38B0024156F /* ProductColorAndCountView.xib in Resources */,
 				DD0960B21F579CFE002F4AED /* README.txt in Resources */,
+				DD52ED151F5D962300B4CE96 /* SelectTopic_TitleCell.xib in Resources */,
 				DD62878F1F20C2290030331D /* MyCircleHeaderCell.xib in Resources */,
 				DD4CF0A51F2996B60024156F /* MoreCycleViewController.xib in Resources */,
 				DD0960201F557D00002F4AED /* MyCircleDynamicImageCell.xib in Resources */,
@@ -4080,6 +4197,7 @@
 				DDE0FD041F35656A00269DBD /* CartListResultModel.m in Sources */,
 				DD6287221F1F41BF0030331D /* DynamicWithoutCommentCell.m in Sources */,
 				DD58FF651F4D12F0009EC9F2 /* CommentViewController.m in Sources */,
+				DD52ED211F5D9B6A00B4CE96 /* SelectTopicResultModel.m in Sources */,
 				DD184E201F3C59ED009BFF5B /* MyDiscountCouponAvailableModel.m in Sources */,
 				DD69B2F51F3AFD390036F368 /* STPickerArea.m in Sources */,
 				DD4CF0E91F29BF850024156F /* YQMemoryCache.m in Sources */,
@@ -4092,6 +4210,7 @@
 				DD6287F71F21EE4C0030331D /* PersonalActivityRankCell.m in Sources */,
 				DD69B2901F3954A50036F368 /* EditCartNumberModel.m in Sources */,
 				DD6898581F31B5DC008B6A8F /* GoodsDetailGoodsInfoModel.m in Sources */,
+				DD52ECF81F5D4AB900B4CE96 /* PersonalInfoResultModel.m in Sources */,
 				DD58FFA91F510958009EC9F2 /* FailureReviewActivityCell.m in Sources */,
 				DD6898551F31B56F008B6A8F /* GoodsDetailResultModel.m in Sources */,
 				DDDD17C91F2C9141006BE206 /* MyOrderViewController.m in Sources */,
@@ -4139,6 +4258,7 @@
 				DD0DBB071F3431460098F5FA /* GetSpecPriceModel.m in Sources */,
 				DD58FF991F5014F2009EC9F2 /* ActivitySignUpListDataModel.m in Sources */,
 				DD58FF4C1F4C2A26009EC9F2 /* MyTrackViewController.m in Sources */,
+				DD52ECF51F5D4AAA00B4CE96 /* PersonalInfoDataModel.m in Sources */,
 				EC4BA0D81F1359EC00B9BE1A /* BaseCollectionViewCell.m in Sources */,
 				DD0960D81F5960F4002F4AED /* PersonalLivenessRankResultModel.m in Sources */,
 				DD58FF5F1F4C36CB009EC9F2 /* MyTrackHeaderView.m in Sources */,
@@ -4203,6 +4323,7 @@
 				DD0960CE1F58F4D4002F4AED /* TalkLikeDataModel.m in Sources */,
 				DD095FD91F540FDE002F4AED /* CircleDetailConfigQuitCell.m in Sources */,
 				DD0939111F4553B700A75182 /* RegisterViewController.m in Sources */,
+				DD52ED1E1F5D9B5A00B4CE96 /* SelectTopicDataModel.m in Sources */,
 				DDE0FD0D1F35666200269DBD /* UserFavoriteModel.m in Sources */,
 				DDFB82931F1C699D00AEAAA7 /* MoreProductListViewController.m in Sources */,
 				DD6287A21F2191C90030331D /* ActivityRankNormalCell.m in Sources */,
@@ -4292,6 +4413,7 @@
 				DD62881D1F22EC5F0030331D /* SubNotification_AnnouncementViewController.m in Sources */,
 				DD6287611F2053750030331D /* MyCollectProductCell.m in Sources */,
 				DD58FFD61F5167DB009EC9F2 /* MyJoinedActivityListViewController.m in Sources */,
+				DD52ED031F5D85DF00B4CE96 /* PeopleNearbyDataModel.m in Sources */,
 				DD4CF09F1F2975880024156F /* NewPostImageCell.m in Sources */,
 				DD6287091F1EE3210030331D /* FocusPersonCell.m in Sources */,
 				DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */,
@@ -4299,12 +4421,14 @@
 				DD0960C21F580E83002F4AED /* DynamicDetailCommentResultModel.m in Sources */,
 				EC4BA0F41F136CA400B9BE1A /* SubCategate_CategateViewController.m in Sources */,
 				DD69B29F1F39B2970036F368 /* OrderConfirmViewController.m in Sources */,
+				DD52ED061F5D85EE00B4CE96 /* PeopleNearbyResultModel.m in Sources */,
 				DD6898281F30525A008B6A8F /* MoreProductTableViewCell.m in Sources */,
 				DD69B2F91F3AFD390036F368 /* STPickerViewUI.m in Sources */,
 				DD6288341F233EE00030331D /* SameHobbyPersonListViewController.m in Sources */,
 				DD58FF8E1F4FAE92009EC9F2 /* NSDictionary+ToJson.m in Sources */,
 				DD6287431F1F8C1E0030331D /* MyAddressViewController.m in Sources */,
 				DD6288221F22EC7A0030331D /* SubNotification_DiscountViewController.m in Sources */,
+				DD52ECFF1F5D7B8E00B4CE96 /* MyFansAndMyFocusResultModel.m in Sources */,
 				DD6897F91F2F0F88008B6A8F /* HomeGoodsListModel.m in Sources */,
 				DD6898451F319D90008B6A8F /* GetGiftTypeDataModel.m in Sources */,
 				DDC52EBC1F42C39F00ECF211 /* SuccessPayHeaderView.m in Sources */,
@@ -4328,6 +4452,7 @@
 				DD6287841F2097940030331D /* HotCircleCell.m in Sources */,
 				DD0DBAC91F32B2BE0098F5FA /* LoginModel.m in Sources */,
 				DD6288181F22EB740030331D /* SubMessage_PrivateLetterViewController.m in Sources */,
+				DD52ECEE1F5CE4DD00B4CE96 /* GetSimilarUserDataModel.m in Sources */,
 				DD0960EE1F598A2C002F4AED /* ProductCommentServiceModel.m in Sources */,
 				DD62873E1F1F5FA20030331D /* GetGiftViewController.m in Sources */,
 				DD0960E11F596172002F4AED /* PersonalLivenessRank_my_first_rank_infoModel.m in Sources */,
@@ -4361,6 +4486,7 @@
 				DD095FE31F54F8DD002F4AED /* AllCircleMemberListCell.m in Sources */,
 				EC4BA0D91F1359EC00B9BE1A /* BaseTableViewCell.m in Sources */,
 				DD184E141F3C597A009BFF5B /* MyDiscountCouponDataModel.m in Sources */,
+				DD52ED141F5D962300B4CE96 /* SelectTopic_TitleCell.m in Sources */,
 				DD58FF9D1F5021E2009EC9F2 /* WaitToReviewActivityDataModel.m in Sources */,
 				DD6287BB1F21A3700030331D /* LookAroundCell.m in Sources */,
 				DD6287891F20B0BA0030331D /* MainCircleViewController.m in Sources */,
@@ -4406,6 +4532,7 @@
 				DD4CEFE31F26D9A60024156F /* BrandDetailCell.m in Sources */,
 				DD4CF0FA1F29BF850024156F /* YQNetworking.m in Sources */,
 				DD69B2C51F39EF2F0036F368 /* UserAddressListDataModel.m in Sources */,
+				DD52ED0F1F5D94F500B4CE96 /* SelectTopicViewController.m in Sources */,
 				EC4BA2651F160F1F00B9BE1A /* DiscoverCell.m in Sources */,
 				DD4CF0E71F29BF850024156F /* YQDiskCache.m in Sources */,
 				DD0DBB101F34817A0098F5FA /* NSString+ContentWidth.m in Sources */,
@@ -4413,10 +4540,13 @@
 				DD4CF0271F2877EC0024156F /* ActivityRecommendApplyCell.m in Sources */,
 				DD69B29A1F39A0510036F368 /* BrandAppliedCollectionCell.m in Sources */,
 				DD6287A71F2198FC0030331D /* SameTownViewController.m in Sources */,
+				DD52ED0A1F5D8ED500B4CE96 /* CreateTopicViewController.m in Sources */,
+				DD52ECF11F5CE4EE00B4CE96 /* GetSimilarUserResultModel.m in Sources */,
 				DD6897FC1F2F2647008B6A8F /* AllBrandModel.m in Sources */,
 				DD184E0C1F3C52C6009BFF5B /* MyDiscountCouponCell.m in Sources */,
 				DD62872B1F1F4EC20030331D /* ConfigurationViewController.m in Sources */,
 				EC4BA08A1F1359A900B9BE1A /* CycleScrollModel.m in Sources */,
+				DD52ECFC1F5D7B7F00B4CE96 /* MyFansAndMyFocusDataModel.m in Sources */,
 				DD095FE81F54FD5C002F4AED /* AllCircleMemberDataModel.m in Sources */,
 				DD0DBADD1F32ED3B0098F5FA /* GetGiftListDataModel.m in Sources */,
 				DD0DBAFE1F33594A0098F5FA /* GoodsDetailSpec_ValueModel.m in Sources */,

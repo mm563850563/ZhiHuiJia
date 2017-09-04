@@ -204,9 +204,10 @@
 }
 
 #pragma mark - <跳转“我的关注”页面>
--(void)jumpToMyOnFocusVC
+-(void)jumpToMyOnFocusVCWithFansOrFocus:(NSString *)fansOrFocus
 {
     MyFocusViewController *myFocusVC = [[MyFocusViewController alloc]initWithNibName:NSStringFromClass([MyFocusViewController class]) bundle:nil];
+    myFocusVC.myFansOrMyFocus = fansOrFocus;
     [self.navigationController pushViewController:myFocusVC animated:YES];
 }
 
@@ -268,12 +269,14 @@
         [self jumpToPersonalFileVC];
     }];
     
+    //查看为关注的人
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToMyFocus" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        [self jumpToMyOnFocusVC];
+        [self jumpToMyOnFocusVCWithFansOrFocus:@"focus"];
     }];
     
+    //查看我的粉丝
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToMyFans" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        [self jumpToMyOnFocusVC];
+        [self jumpToMyOnFocusVCWithFansOrFocus:@"fans"];
     }];
     
     //我的活动

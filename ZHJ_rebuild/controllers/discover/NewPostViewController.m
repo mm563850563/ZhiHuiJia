@@ -12,6 +12,7 @@
 #import <TZImagePickerController.h>
 #import "MoreCycleViewController.h"
 #import "AtSomeOneViewController.h"
+#import "SelectTopicViewController.h"
 
 //cells
 #import "NewPostImageCell.h"
@@ -27,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *feedbackView;
 @property (weak, nonatomic) IBOutlet UILabel *limitLabel;
 @property (weak, nonatomic) IBOutlet UILabel *placeholder;
+@property (weak, nonatomic) IBOutlet UILabel *labelTopic;
 
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -35,6 +37,7 @@
 
 //发布帖子所属圈子
 @property (nonatomic, strong)NSString *circle_id;
+@property (nonatomic, strong)NSString *topic_id;
 
 @end
 
@@ -100,6 +103,12 @@
 #pragma mark - <选择话题>
 - (IBAction)btnSelectTopic:(UIButton *)sender
 {
+    if (self.circle_id) {
+        [self jumpToSelectTopicVCWithCircleID:self.circle_id];
+    }else{
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择圈子"];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }
     
 }
 
@@ -127,6 +136,14 @@
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"selectImageNormal"];
 }
 
+#pragma mark - <跳转“选择话题”>
+-(void)jumpToSelectTopicVCWithCircleID:(NSString *)circle_id
+{
+    SelectTopicViewController *selectTopicVC = [[SelectTopicViewController alloc]initWithNibName:NSStringFromClass([SelectTopicViewController class]) bundle:nil];
+    selectTopicVC.circle_id = circle_id;
+    [self.navigationController pushViewController:selectTopicVC animated:YES];
+}
+
 #pragma mark - <RAC响应>
 -(void)respondWithRAC
 {
@@ -146,6 +163,16 @@
         MyJoinedCircleResultModel *model = x.object;
         self.labelCircle.text = model.circle_name;
         self.circle_id = model.circle_id;
+        
+        //清空话题内容
+        self.labelTopic.text = @"";
+    }];
+    
+    //选择话题
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectTopic" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSDictionary *dict = x.object;
+        self.topic_id = dict[@"topic_id"];
+        self.labelTopic.text = [NSString stringWithFormat:@"#%@#",dict[@"topic_title"]];
     }];
 }
 

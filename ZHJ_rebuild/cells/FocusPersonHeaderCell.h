@@ -9,12 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "FriendHomePageResultModel.h"
 
-//@protocol FocusPersonHeaderCellDelegate <NSObject>
-//
-//<#methods#>
-//
-//@end
-
 @interface FocusPersonHeaderCell : UITableViewCell
 @property (nonatomic, strong)FriendHomePageResultModel *modelFriendResult;
 @end

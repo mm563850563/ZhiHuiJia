@@ -13,4 +13,6 @@
 //获取评论点赞列表参数
 @property (nonatomic, strong)NSString *talk_id;
 
+@property (nonatomic, strong)NSString *myFansOrMyFocus;
+
 @end

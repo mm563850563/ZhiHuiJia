@@ -71,6 +71,15 @@
     self.add_time = modelAli.add_time;
 }
 
+-(void)setModelBlance:(PlaceOrderBalanceModel *)modelBlance
+{
+    self.order_sn = modelBlance.order_sn;
+    self.payables = modelBlance.payables;
+    self.use_money = modelBlance.use_money;
+    self.coupon_price = modelBlance.coupon_price;
+    self.add_time = modelBlance.add_time;
+}
+
 -(void)settingTableView
 {
     self.tableView.delegate = self;
@@ -85,6 +94,10 @@
     
 }
 
+- (IBAction)btnBackAction:(UIButton *)sender
+{
+    [self dismissViewControllerAnimated:YES completion:NO];
+}
 
 
 

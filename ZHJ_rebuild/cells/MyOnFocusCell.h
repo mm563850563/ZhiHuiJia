@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 @class TalkLikeResultModel;
+@class MyFansAndMyFocusResultModel;
 
 @interface MyOnFocusCell : UITableViewCell
 
 @property (nonatomic, strong)TalkLikeResultModel *modelTalkLikeResult;
+@property (nonatomic, strong)MyFansAndMyFocusResultModel *modelFansOrFocusResult;
 
 @end

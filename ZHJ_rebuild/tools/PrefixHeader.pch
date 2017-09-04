@@ -359,6 +359,33 @@
 #pragma mark - <89.话题详情评论列表>
 #define kGetTopicReview @"/Circle/getTopicReview"
 
+#pragma mark - <90.同趣的人>
+#define kGetSimilarUser @"/user/getSimilarUser"
+
+#pragma mark- <91.获取个人资料>
+#define kGetPersonalInfo @"/User/getPersonalInfo"
+
+#pragma mark - <92.修改个人资料>
+#define kUpdatePersonalInfo @"/User/updatePersonalInfo"
+
+#pragma mark - <93.我的粉丝>
+#define kGetMyFans @"/User/getMyFans"
+
+#pragma mark - <94.我关注的人>
+#define kGetMyFriends @"/User/getMyFriends"
+
+#pragma mark - <94.附近的人>
+#define kPeopleNearby @"/Circle/peopleNearby"
+
+#pragma mark - <95.选择话题列表>
+#define kCircleTopic @"/Circle/circleTopic"
+
+#pragma mark - <96.创建话题>
+#define kCreateTopic @"/Circle/createTopic"
+
+
+
+
 
 
 

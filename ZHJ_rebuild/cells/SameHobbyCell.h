@@ -10,4 +10,8 @@
 
 @interface SameHobbyCell : UITableViewCell
 
+@property (nonatomic, strong)NSArray *similarArray;
+
+@property (nonatomic, assign)CGFloat cellHeight;
+
 @end

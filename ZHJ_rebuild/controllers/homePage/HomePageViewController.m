@@ -45,6 +45,9 @@
 #import "GetGiftTypeResultModel.h"
 #import "RecommendGoodsModel.h"
 
+#import "GetSimilarUserDataModel.h"
+#import "GetSimilarUserResultModel.h"
+
 @interface HomePageViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,CycleScrollViewCellDelegate,UISearchBarDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong)UISearchBar *searchBarHomePage;
@@ -56,6 +59,7 @@
 @property (nonatomic, strong)NSArray *homeGoodsResultArray;
 @property (nonatomic, strong)NSArray *homeGoodsListArray;
 @property (nonatomic, strong)NSArray *recommendResultArray;
+@property (nonatomic, strong)NSArray *similarUserArray;
 @property (nonatomic, strong)GetGiftTypeResultModel *getGiftResultModel;
 
 @end
@@ -113,6 +117,7 @@
     dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
     dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
     dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
+    dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
     
     dispatch_group_async(group, queue1, ^{
         [self getIndexCarouselData];
@@ -125,6 +130,9 @@
     });
     dispatch_group_async(group, queue4, ^{
         [self getRecommendGoodsData];
+    });
+    dispatch_group_async(group, queue5, ^{
+        [self getSimilarUserData];
     });
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
@@ -141,6 +149,7 @@
     dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
     dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
     dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
+    dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
     
     dispatch_group_async(group, queue1, ^{
         [self getIndexCarouselData];
@@ -153,6 +162,9 @@
     });
     dispatch_group_async(group, queue4, ^{
         [self getRecommendGoodsData];
+    });
+    dispatch_group_async(group, queue5, ^{
+        [self getSimilarUserData];
     });
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
@@ -272,6 +284,41 @@
         }];
     }
     
+}
+
+#pragma mark - <获取“同趣的人”数据>
+-(void)getSimilarUserData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetSimilarUser];
+    
+    if (kUserDefaultObject(kUserInfo)) {
+        NSString *userID = kUserDefaultObject(kUserInfo);
+        NSDictionary *dictParameter = @{@"user_id":userID};
+        
+        [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:dictParameter progressBlock:nil successBlock:^(id response) {
+            if (response) {
+                NSDictionary *dataDict = (NSDictionary *)response;
+                NSNumber *code = (NSNumber *)dataDict[@"code"];
+                
+                if ([code isEqual:@200]) {
+                    GetSimilarUserDataModel *modelData = [[GetSimilarUserDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                    self.similarUserArray = modelData.result;
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.tableView reloadData];
+                    });
+                }else{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                }
+            }
+        } failBlock:^(NSError *error) {
+            if (error.code == -1009) {
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+        }];
+    }
 }
 
 
@@ -398,11 +445,21 @@
     [self.navigationController pushViewController:productDetailVC animated:YES];
 }
 #pragma mark - <跳转更多产品页面>
--(void)jumpToMoreProductListVC
+-(void)jumpToMoreProductListVCWithCategoryID:(NSString *)category_id
 {
     MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
     moreProductListVC.hidesBottomBarWhenPushed = YES;
+    moreProductListVC.category_id = category_id;
     [self.navigationController pushViewController:moreProductListVC animated:YES];
+}
+#pragma mark - <跳转“好友主页”页面>
+-(void)jumpToFocusPersonFileVCWithFriendUserID:(NSString *)friend_user_id
+{
+    FocusPersonFileViewController *focusPersonFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
+    focusPersonFileVC.whereReuseFrom = @"homePageVC";
+    focusPersonFileVC.friend_user_id = friend_user_id;
+    focusPersonFileVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:focusPersonFileVC animated:YES];
 }
 
 #pragma mark - <rac响应>
@@ -410,9 +467,8 @@
 {
     //点击同趣的人
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"SameHobbyCell"object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        FocusPersonFileViewController *focusPersonFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
-        focusPersonFileVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:focusPersonFileVC animated:YES];
+        NSString *friend_user_id = x.object;
+        [self jumpToFocusPersonFileVCWithFriendUserID:friend_user_id];
     }];
     
     //点击”拿好礼“按钮
@@ -462,6 +518,11 @@
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectIntellectWearNormalItem" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         NSString *goods_id = x.object;
         [self jumpToProductDetailVCWithGoodsID:goods_id];
+    }];
+    
+    //在“好友主页”中点击关注／取消关注后刷新主页
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshHomePageVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        [self pullDownRefresh];
     }];
 }
 
@@ -524,6 +585,15 @@
         cellYouth.recommendGoodsArray = self.recommendResultArray;
         cell = cellYouth;
     }else if (indexPath.section == self.homeGoodsResultArray.count+2){//发现同趣的人
+        if (indexPath.row == 0) {
+            SameHobbyCell *cellSameHobby = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SameHobbyCell class])];
+            cellSameHobby.similarArray = self.similarUserArray;
+            cell = cellSameHobby;
+        }else{
+            MoreNewProductCell *cellMore = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MoreNewProductCell class])];
+            cellMore.labelTitle.text = @"更多同趣的人>";
+            cell = cellMore;
+        }
         
     }else{
         HomeGoodsResultModel *modelResult = self.homeGoodsResultArray[indexPath.section-1];
@@ -542,11 +612,13 @@
                 }
                 if (indexPath.row == 2) {
                     MoreNewProductCell *cellMore = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MoreNewProductCell class])];
+                    cellMore.labelTitle.text = @"更多新品>";
                     cell = cellMore;
                 }
             }else if ([modelResult.id isEqualToString:@"1"] || [modelResult.id isEqualToString:@"4"] || [modelResult.id isEqualToString:@"8"]){
                 if (indexPath.row == modelResult.goods_list.count+1) {
                     MoreNewProductCell *cellMore = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MoreNewProductCell class])];
+                    cellMore.labelTitle.text = @"更多新品>";
                     cell = cellMore;
                 }else{
                     if (indexPath.row % 2 == 0) {
@@ -564,6 +636,7 @@
             }else{
                 if (indexPath.row == 2) {
                     MoreNewProductCell *cellMore = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MoreNewProductCell class])];
+                    cellMore.labelTitle.text = @"更多新品>";
                     cell = cellMore;
                 }
                 if (indexPath.row == 1) {
@@ -588,7 +661,9 @@
         height = cellYouth.cellHeight;
     }else if (indexPath.section == self.homeGoodsResultArray.count+2){
         if (indexPath.row == 0) {
-            return 230;
+            SameHobbyCell *cellSameHobby = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SameHobbyCell class])];
+            cellSameHobby.similarArray = self.similarUserArray;
+            return cellSameHobby.cellHeight;
         }else if (indexPath.row == 1){
             return 40;
         }
@@ -672,9 +747,9 @@
         if (indexPath.row == 0) {
 //            [self jumpToProductDetailVC];
         }
-    }else if (indexPath.section == 13){
+    }else if (indexPath.section == self.homeGoodsResultArray.count + 1){
         return;
-    }else if (indexPath.section == 14){
+    }else if (indexPath.section == self.homeGoodsResultArray.count + 2){
         if (indexPath.row == 1) {
             SameHobbyPersonListViewController *sameHobbyPersonListVC = [[SameHobbyPersonListViewController alloc]initWithNibName:NSStringFromClass([SameHobbyPersonListViewController class]) bundle:nil];
             sameHobbyPersonListVC.hidesBottomBarWhenPushed = YES;
@@ -688,17 +763,25 @@
         }else{
             HomeGoodsResultModel *modelResult = self.homeGoodsResultArray[indexPath.section-1];
             if ([modelResult.id isEqualToString:@"3"] || [modelResult.id isEqualToString:@"6"]) {
-                
+                if (indexPath.row == 2) {
+                    //更多新品
+                    [self jumpToMoreProductListVCWithCategoryID:modelResult.id];
+                }
             }else if ([modelResult.id isEqualToString:@"1"] || [modelResult.id isEqualToString:@"4"] || [modelResult.id isEqualToString:@"8"]){
                 
                 if (indexPath.row == modelResult.goods_list.count+1) {
                     //更多新品
+                    [self jumpToMoreProductListVCWithCategoryID:modelResult.id];
                 }else{
                     HomeGoodsListModel *modelGoodsList = modelResult.goods_list[indexPath.row-1];
                     NSString *goodsID = modelGoodsList.goods_id;
                     [self jumpToProductDetailVCWithGoodsID:goodsID];
                 }
-                
+            }else{
+                if (indexPath.row == 2){
+                    //更多新品
+                    [self jumpToMoreProductListVCWithCategoryID:modelResult.id];
+                }
             }
         }
     }
@@ -771,7 +854,7 @@
 #pragma mark - **** UISearchBarDelegate ****
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    NSArray *array = @[@"杯子",@"背包",@"运动鞋",@"Nike",@"珠穆朗玛峰",@"约翰尼德普"];
+    NSArray *array = [NSArray array];
     PYSearchViewController *searchVC = [PYSearchViewController searchViewControllerWithHotSearches:array searchBarPlaceholder:@"请输入关键字" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
         [searchViewController.navigationController pushViewController:moreProductListVC animated:YES];

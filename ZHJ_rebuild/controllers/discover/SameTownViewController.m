@@ -19,6 +19,11 @@
 #import "SameTownTopicViewController.h"
 #import "HandpickActivitiesViewController.h"
 #import "LookAroundViewController.h"
+#import "FocusPersonFileViewController.h"
+
+//models
+#import "PeopleNearbyDataModel.h"
+#import "PeopleNearbyResultModel.h"
 
 @interface SameTownViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -31,6 +36,8 @@
 @property (nonatomic, strong)SegmentTapView *segmentView;
 @property (nonatomic, strong)FlipTableView *flipView;
 
+@property (nonatomic, strong)NSArray *nearbyArray;
+
 @end
 
 @implementation SameTownViewController
@@ -39,6 +46,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [self getPeopleNearbyDataWithHUD:hud];
     [self initSegmentView];
     [self initFlipView];
     [self settingCollectionView];
@@ -58,6 +67,51 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <获取“附近的人”数据>
+-(void)getPeopleNearbyDataWithHUD:(MBProgressHUD *)hud
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPeopleNearby];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                PeopleNearbyDataModel *modelData = [[PeopleNearbyDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                self.nearbyArray = modelData.result;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    [self.collectionView reloadData];
+//                    [self.tableView.mj_footer endRefreshing];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+//                    [self.tableView.mj_footer endRefreshing];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+//                [self.tableView.mj_footer endRefreshing];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+//            [self.tableView.mj_footer endRefreshing];
+        });
+    }];
+}
 
 #pragma mark - <初始化segmentView>
 -(void)initSegmentView
@@ -115,7 +169,13 @@
     [self.navigationController pushViewController:lookAroundVC animated:YES];
 }
 
-
+#pragma mark - <跳转“好友主页”>
+-(void)jumpToPersonalFileVCWithFriendID:(NSString *)friend_user_id
+{
+    FocusPersonFileViewController *personalFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
+    personalFileVC.friend_user_id = friend_user_id;
+    [self.navigationController pushViewController:personalFileVC animated:YES];
+}
 
 
 
@@ -139,16 +199,22 @@
 #pragma mark - *** UICollectionViewDelegate,UICollectionViewDataSource *****
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return self.nearbyArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     LookAroundCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([LookAroundCell class]) forIndexPath:indexPath];
+    PeopleNearbyResultModel *modelResult = self.nearbyArray[indexPath.item];
+    cell.modelNearbyResult = modelResult;
     return cell;
 }
 
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PeopleNearbyResultModel *modelResult = self.nearbyArray[indexPath.item];
+    [self jumpToPersonalFileVCWithFriendID:modelResult.user_id];
+}
 
 
 

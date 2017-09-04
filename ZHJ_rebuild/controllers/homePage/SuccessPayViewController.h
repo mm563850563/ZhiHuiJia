@@ -10,10 +10,12 @@
 
 #import "PlaceOrderAliPayModel.h"
 #import "PalceOrderOrderInfoModel.h"
+#import "PlaceOrderBalanceModel.h"
 
 @interface SuccessPayViewController : UIViewController
 
 @property (nonatomic, strong)PlaceOrderAliPayModel *modelAli;
 @property (nonatomic, strong)PalceOrderOrderInfoModel *modelWX;
+@property (nonatomic, strong)PlaceOrderBalanceModel *modelBlance;
 
 @end

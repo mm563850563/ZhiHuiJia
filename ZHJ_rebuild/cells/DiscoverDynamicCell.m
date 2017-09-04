@@ -18,9 +18,12 @@
 //models
 #import "MyCircleDynamicReply_infoModel.h"
 
+//tools
+#import <CXPhotoBrowser.h>
+
 #define kSimpleCommentCellID @"SimpleCommentCellID"
 
-@interface DiscoverDynamicCell ()<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,TTTAttributedLabelDelegate>
+@interface DiscoverDynamicCell ()<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,TTTAttributedLabelDelegate,CXPhotoBrowserDelegate,CXPhotoBrowserDataSource>
 
 @property (strong, nonatomic) UIImageView *imgViewPortrait;
 @property (strong, nonatomic) UILabel *labelNickName;
@@ -44,6 +47,9 @@
 
 @property (nonatomic, strong)NSArray *imagesArray;
 @property (nonatomic, strong)NSArray *commentArray;
+
+@property (nonatomic, strong)CXPhotoBrowser *photoBrowser;
+@property (nonatomic, strong)NSMutableArray *photoDataSource;
 
 @end
 
@@ -82,6 +88,7 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelCircleDynamicResult.user_id];
 }
 
+#pragma mark - <关注按钮响应>
 -(void)btnOnfocusActionWithButton:(UIButton *)button
 {
     NSString *notifiNameAttention = [NSString string];
@@ -99,6 +106,23 @@
     }else{
         [[NSNotificationCenter defaultCenter]postNotificationName:notifiNameCancelAttention object:self.modelCircleDynamicResult.user_id];
     }
+}
+
+#pragma mark - <懒加载>
+-(CXPhotoBrowser *)photoBrowser
+{
+    if (!_photoBrowser) {
+        _photoBrowser = [[CXPhotoBrowser alloc]initWithDataSource:self delegate:self];
+    }
+    return _photoBrowser;
+}
+
+-(NSMutableArray *)photoDataSource
+{
+    if (!_photoDataSource) {
+        _photoDataSource = [NSMutableArray array];
+    }
+    return _photoDataSource;
 }
 
 -(NSMutableArray *)atRangeArray
@@ -279,6 +303,7 @@
         _tableView.rowHeight = 20;
         _tableView.scrollEnabled = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.userInteractionEnabled = NO;
         
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kSimpleCommentCellID];
     }
@@ -397,6 +422,14 @@
     [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(collectionHeight);
     }];
+    
+    //配置图片浏览器数据源
+    [self.photoDataSource removeAllObjects];
+    for (NSString *imgStr in self.imagesArray) {
+        CXPhoto *photo = [[CXPhoto alloc]initWithURL:[NSURL URLWithString:imgStr]];
+        [self.photoDataSource addObject:photo];
+    }
+    
     
     //imgViewPortrait
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelCircleDynamicResult.headimg];
@@ -580,8 +613,24 @@
     NSString *imgStr = self.imagesArray[indexPath.item];
     imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,imgStr];
     cell.imgStr = imgStr;
+    
     return cell;
 }
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    //图片浏览器
+    
+    [self.photoBrowser setInitialPageIndex:indexPath.item];
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            UIViewController *vc = (UIViewController *)nextResponder;
+            [vc.navigationController pushViewController:self.photoBrowser animated:YES];
+        }
+    }
+}
+
 
 #pragma mark - ***** UITableViewDelegate,UITableViewDataSource *****
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -596,13 +645,30 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%@:%@",modelReplyInfo.nickname,modelReplyInfo.content];
     cell.textLabel.font = [UIFont systemFontOfSize:12];
     cell.textLabel.textColor = kColorFromRGB(kDeepGray);
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 
 
+#pragma mark - ******* CXPhotoBrowserDelegate,CXPhotoBrowserDataSource ********
+-(NSUInteger)numberOfPhotosInPhotoBrowser:(CXPhotoBrowser *)photoBrowser
+{
+    return self.photoDataSource.count;
+}
 
+-(id<CXPhotoProtocol>)photoBrowser:(CXPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index
+{
+    if (index < self.photoDataSource.count){
+        return [self.photoDataSource objectAtIndex:index];
+    }
+    return nil;
+}
 
+-(CGFloat)heightForNavigationBarInInterfaceOrientation:(UIInterfaceOrientation)orientation
+{
+    return 64;
+}
 
 
 @end

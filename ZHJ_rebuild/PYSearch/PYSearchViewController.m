@@ -97,6 +97,7 @@
 {
     if (self = [super init]) {
         [self setup];
+        self.navigationController.navigationBar.barTintColor = kColorFromRGB(kThemeYellow);
     }
     return self;
 }
@@ -106,6 +107,7 @@
     [super awakeFromNib];
     
     [self setup];
+    self.navigationController.navigationBar.barTintColor = kColorFromRGB(kThemeYellow);
 }
 
 - (void)viewDidLayoutSubviews
@@ -145,7 +147,7 @@
         self.baseSearchTableView.contentInset = UIEdgeInsetsMake(0, 0, self.view.py_y, 0);
         self.searchSuggestionVC.view.frame = CGRectMake(0, 64 - self.view.py_y, self.view.py_width, self.view.py_height + self.view.py_y);
         if (!self.navigationController.navigationBar.barTintColor) {
-            self.navigationController.navigationBar.barTintColor = PYSEARCH_COLOR(249, 249, 249);
+            self.navigationController.navigationBar.barTintColor = PYSEARCH_COLOR(255, 218, 68);
         }
     }
 }
@@ -175,6 +177,12 @@
     PYSearchViewController *searchVC = [self searchViewControllerWithHotSearches:hotSearches searchBarPlaceholder:placeholder];
     searchVC.didSearchBlock = [block copy];
     return searchVC;
+}
+
+#pragma mark - <navigation> 
+-(void)settingNavigation
+{
+    [self.navigationController.navigationBar setBarTintColor:kColorFromRGB(kThemeYellow)];
 }
 
 #pragma mark - Lazy

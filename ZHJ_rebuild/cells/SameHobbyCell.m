@@ -11,6 +11,9 @@
 //cells
 #import "SameHobbyPersonCell.h"
 
+
+#import "GetSimilarUserResultModel.h"
+
 @interface SameHobbyCell ()<UICollectionViewDelegate ,UICollectionViewDataSource>
 
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -31,6 +34,17 @@
     // Configure the view for the selected state
 }
 
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+//        self.contentView.backgroundColor = kColorFromRGB(kLightGray);
+        [self setUI];
+    }
+    return self;
+}
+
 -(UICollectionViewFlowLayout *)flowLayout
 {
     if (!_flowLayout) {
@@ -39,7 +53,7 @@
         _flowLayout.minimumInteritemSpacing = 0;
         _flowLayout.minimumLineSpacing = 0;
         
-        CGFloat itemWidth = self.contentView.frame.size.width/4.0;
+        CGFloat itemWidth = kSCREEN_WIDTH/4.0;
         CGFloat itemHeight = itemWidth/5.0*6.0;
         _flowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
     }
@@ -61,9 +75,24 @@
     return _collectionView;
 }
 
--(void)drawRect:(CGRect)rect
+-(void)setUI
 {
     [self.contentView addSubview:self.collectionView];
+    
+    [self.collectionView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+}
+
+
+-(void)setSimilarArray:(NSArray *)similarArray
+{
+    _similarArray = similarArray;
+    [self.collectionView reloadData];
+    
+    CGFloat itemWidth = kSCREEN_WIDTH/4.0;
+    CGFloat itemHeight = itemWidth/5.0*6.0;
+    self.cellHeight = itemHeight*2+10;
 }
 
 
@@ -75,18 +104,24 @@
 #pragma mark - **** UICollectionViewDelegate ,UICollectionViewDataSource ****
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 8;
+    if (self.similarArray.count >= 8) {
+        return 8;
+    }
+    return self.similarArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SameHobbyPersonCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SameHobbyPersonCell class]) forIndexPath:indexPath];
+    GetSimilarUserResultModel *modelResult = self.similarArray[indexPath.row];
+    cell.modelSimilarResult = modelResult;
     return cell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"SameHobbyCell" object:nil];
+    GetSimilarUserResultModel *modelResult = self.similarArray[indexPath.row];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"SameHobbyCell" object:modelResult.user_id];
 }
 
 

@@ -124,7 +124,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                   if ([code isEqual:@200]) {
                       dispatch_async(dispatch_get_main_queue(), ^{
                           [hud hideAnimated:YES afterDelay:1.0];
-                          MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:EIO warningMessage:dataDict[@"msg"]];
+                          MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                           [hudWarning hideAnimated:YES afterDelay:2.0];
                           hudWarning.completionBlock = ^{
                               [self dismissViewControllerAnimated:YES completion:nil];
@@ -133,14 +133,14 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                   }else{
                       dispatch_async(dispatch_get_main_queue(), ^{
                           [hud hideAnimated:YES afterDelay:1.0];
-                          MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:EIO warningMessage:dataDict[@"msg"]];
+                          MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                           [hudWarning hideAnimated:YES afterDelay:2.0];
                       });
                   }
               }else{
                   dispatch_async(dispatch_get_main_queue(), ^{
                       [hud hideAnimated:YES afterDelay:1.0];
-                      MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:EIO warningMessage:kRequestError];
+                      MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                       [hudWarning hideAnimated:YES afterDelay:2.0];
                   });
               }
@@ -148,7 +148,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               dispatch_async(dispatch_get_main_queue(), ^{
                   [hud hideAnimated:YES afterDelay:1.0];
-                  MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:EIO warningMessage:kRequestError];
+                  MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                   [hudWarning hideAnimated:YES afterDelay:2.0];
               });
           }];

@@ -69,6 +69,11 @@
                     <constraint firstItem="3A4-8W-xVV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="v7p-KC-KwR"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imgViewPortrait" destination="I5V-B8-4Ce" id="klb-SB-aMD"/>
+                <outlet property="labelDistance" destination="1aO-KD-PyZ" id="DMY-gc-zWM"/>
+                <outlet property="labelNickName" destination="hJM-Pz-9TC" id="mMY-Z7-chR"/>
+            </connections>
             <point key="canvasLocation" x="52" y="102.5"/>
         </tableViewCell>
     </objects>

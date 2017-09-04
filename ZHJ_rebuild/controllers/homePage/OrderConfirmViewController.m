@@ -38,6 +38,7 @@
 #import "PlaceOrderWeChatPayModel.h"
 #import "PalceOrderOrderInfoModel.h"
 #import "PlaceOrderCallbackModel.h"
+#import "PlaceOrderBalanceModel.h"
 
 
 @interface OrderConfirmViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -373,6 +374,66 @@
     }];
 }
 
+#pragma mark - <获取立即下单数据_用户余额支付>
+-(void)getPlaceOrderDataWithUserBalance
+{
+    NSString *urlStr = [NSString string];
+    NSDictionary *dictParameter = [NSDictionary dictionary];
+    
+    if ([self.JumpID isEqualToString:@"detail"]) {
+        urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPlaceOrder];
+        dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                          @"goods_id":self.modelGoodsInfo.goods_id,
+                          @"goods_num":self.modelGoodsInfo.goods_num,
+                          @"goods_spec":self.specArray,
+                          @"address_id":self.modelUserAddress.address_id,
+                          @"coupon_id":self.discountCouponID,
+                          @"use_money":self.discountPrice,
+                          @"pay_type":@"0"};
+    }else if ([self.JumpID isEqualToString:@"cart"]){
+        urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPlaceOrder2];
+        dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                          @"address_id":self.modelUserAddress.address_id,
+                          @"coupon_id":self.discountCouponID,
+                          @"pay_type":@"0",
+                          @"use_money":self.discountPrice};
+    }
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            PlaceOrderModel *model = [[PlaceOrderModel alloc]initWithDictionary:dataDict error:nil];
+            if ([model.code isEqualToString:@"200"]) {
+                [hud hideAnimated:YES afterDelay:1.0];
+                PlaceOrderBalanceModel *modelBlance = model.data.result.balance;
+                self.order_sn = modelBlance.order_sn;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付成功"];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    hudWarning.completionBlock = ^{
+                        SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
+                        successPayVC.modelBlance = modelBlance;
+                        [self presentViewController:successPayVC animated:YES completion:^{
+                            [self.navigationController popViewControllerAnimated:YES];
+                        }];
+                    };
+                });
+                
+            }else{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+        }
+    } failBlock:^(NSError *error) {
+        [hud hideAnimated:YES afterDelay:1.0];
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }];
+}
+
 #pragma mark - <获取支付回调的数据>
 -(NSDictionary *)getCallBackDataAfterPayWithResultDict:(NSDictionary *)resultDict
 {
@@ -484,12 +545,13 @@
             if ([self.wayOfPay isEqualToString:@"1"]) {
                 //获取支付串码_支付宝支付
                 [self getPlaceOrderDataWithAliPay];
-            }else{
+            }else if([self.wayOfPay isEqualToString:@"2"]){
                 //微信支付
                 [self getPlaceOrderDataWithWeChatPay];
             }
         }else{
             //跳转支付成功页面
+            [self getPlaceOrderDataWithUserBalance];
         }
     }else{
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请添加收货地址"];

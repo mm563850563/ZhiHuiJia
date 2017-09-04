@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PeopleNearbyResultModel;
 
 @interface LookAroundTableCell : UITableViewCell
+
+@property (nonatomic, strong)PeopleNearbyResultModel *modelNearbyResult;
 
 @end

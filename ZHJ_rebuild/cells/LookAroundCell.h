@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PeopleNearbyResultModel;
 
 @interface LookAroundCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imgView;
-@property (weak, nonatomic) IBOutlet UILabel *labelName;
-@property (weak, nonatomic) IBOutlet UILabel *labelAround;
+@property (nonatomic, strong)PeopleNearbyResultModel *modelNearbyResult;
 
 @end
