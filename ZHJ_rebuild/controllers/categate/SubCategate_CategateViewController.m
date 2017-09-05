@@ -99,7 +99,7 @@
             }
         }
     } failBlock:^(NSError *error) {
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
         [hudWarning hideAnimated:YES afterDelay:2.0];
     }];
     

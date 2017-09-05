@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GetSimilarUserResultModel;
 
 @interface AtSomeOneCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imgPortrait;
-@property (weak, nonatomic) IBOutlet UILabel *labelNickName;
-@property (weak, nonatomic) IBOutlet UIButton *btnSelect;
+@property (nonatomic, strong)GetSimilarUserResultModel *modelResult;
 
 @end

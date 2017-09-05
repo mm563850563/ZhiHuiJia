@@ -13,6 +13,6 @@
 @property (nonatomic, strong)NSString *user_id;
 @property (nonatomic, strong)NSString *nickname;
 @property (nonatomic, strong)NSString *headimg;
-@property (nonatomic, strong)NSString *is_attentioned;
+@property (nonatomic, strong)NSString<Optional> *is_attentioned;
 
 @end

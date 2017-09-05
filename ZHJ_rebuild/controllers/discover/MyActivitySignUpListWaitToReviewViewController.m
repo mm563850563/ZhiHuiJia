@@ -145,7 +145,8 @@
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kAuditSignUp];
     NSDictionary *dictParameter = @{@"signup_id":signUp_id,
-                                    @"pass":auditType};
+                                    @"pass":auditType,
+                                    @"user_id":kUserDefaultObject(kUserInfo)};
     
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {

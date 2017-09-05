@@ -12,4 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnStyleName;
 
+@property (nonatomic, strong)NSString *whereReuseFrom;
+
 @end

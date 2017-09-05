@@ -166,7 +166,7 @@
             }
         } failBlock:^(NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
             });
             
@@ -211,7 +211,7 @@
             }
         } failBlock:^(NSError *error) {
             //            [hud hideAnimated:YES afterDelay:1.0];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.description];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:2.0];
         }];
     }

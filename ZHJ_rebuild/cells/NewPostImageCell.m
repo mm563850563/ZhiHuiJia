@@ -24,8 +24,10 @@
                            @"image_item":image_item};
     if ([self.fromWhere isEqualToString:@"addComment"]) {
         [[NSNotificationCenter defaultCenter]postNotificationName:@"deleteImageFromAddComment" object:dict];
-    }else{
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"deleteImage" object:sender];
+    }else if([self.fromWhere isEqualToString:@"newPostVC"]){
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"deleteImageFromNewPost" object:sender];
+    }else if ([self.fromWhere isEqualToString:@"atSomeoneVC"]){
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"deleteImageFromAtSomeoneVC" object:sender];
     }
     
 }

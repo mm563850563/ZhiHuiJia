@@ -296,6 +296,11 @@
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToRelease" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         [self jumpToReleaseNewPostVC];
     }];
+    
+    //发新动态后刷新该页面
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshMyDomainVCAfterPostMessage" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [self getMyDynamicDataWithPage:@1];
+    }];
 }
 
 
@@ -355,6 +360,7 @@
         FocusPersonCell *cellFocusDynamic = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([FocusPersonCell class])];
         MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
         cellFocusDynamic.modelCircleDynamicResult = modelResult;
+        cellFocusDynamic.whereFrom = @"domainVC";
         cell = cellFocusDynamic;
     }
     
