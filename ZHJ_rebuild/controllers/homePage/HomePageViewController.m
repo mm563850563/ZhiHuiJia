@@ -62,6 +62,8 @@
 @property (nonatomic, strong)NSArray *similarUserArray;
 @property (nonatomic, strong)GetGiftTypeResultModel *getGiftResultModel;
 
+@property (nonatomic, strong)UIImageView *imgViewPortrait;
+
 @end
 
 @implementation HomePageViewController
@@ -231,7 +233,9 @@
 -(void)getGiftTypeData
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetGiftType];
-    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:nil progressBlock:nil successBlock:^(id response) {
+    
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:dictParameter progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             GetGiftTypeModel *model = [[GetGiftTypeModel alloc]initWithDictionary:dataDict error:nil];
@@ -239,6 +243,10 @@
                 self.getGiftResultModel = model.data.result;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
+                    //设置头像
+                    NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,self.getGiftResultModel.headimg];
+                    NSURL *url = [NSURL URLWithString:imgStr];
+                    [self.imgViewPortrait sd_setImageWithURL:url placeholderImage:kPlaceholder];
                 });
             }else{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
@@ -395,6 +403,10 @@
     UIImageView *imgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"appLogo"]];
     imgView.frame = CGRectMake(10, 0, 30, 30);
     [BGView addSubview:imgView];
+    imgView.contentMode = UIViewContentModeScaleAspectFill;
+    imgView.layer.cornerRadius = 15;
+    imgView.layer.masksToBounds = YES;
+    
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 30, 50, 10)];
     label.text = @"因你而不同";
     label.textAlignment = NSTextAlignmentCenter;
@@ -404,6 +416,8 @@
     BGView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(jumpToPersonalFileVC)];
     [BGView addGestureRecognizer:tap];
+    
+    self.imgViewPortrait = imgView;
     
     return BGView;
 }

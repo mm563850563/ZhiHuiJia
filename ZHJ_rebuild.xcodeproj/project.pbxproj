@@ -174,6 +174,8 @@
 		DD184E4D1F3D9595009BFF5B /* PlaceOrderResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD184E4C1F3D9595009BFF5B /* PlaceOrderResultModel.m */; };
 		DD184E511F3DA5F9009BFF5B /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD184E4F1F3DA5F9009BFF5B /* AlipaySDK.bundle */; };
 		DD184E521F3DA5F9009BFF5B /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD184E501F3DA5F9009BFF5B /* AlipaySDK.framework */; };
+		DD2ACB951F5ED1FB00EEFF8F /* commentLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2ACB931F5ED1FB00EEFF8F /* commentLabelCell.m */; };
+		DD2ACB961F5ED1FB00EEFF8F /* commentLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD2ACB941F5ED1FB00EEFF8F /* commentLabelCell.xib */; };
 		DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B7191F164CE000839748 /* HomePageMainCell.m */; };
 		DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD40B71A1F164CE000839748 /* HomePageMainCell.xib */; };
 		DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B71E1F17027E00839748 /* YouthColorCell.m */; };
@@ -967,6 +969,9 @@
 		DD184E4C1F3D9595009BFF5B /* PlaceOrderResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceOrderResultModel.m; path = models/PlaceOrderResultModel.m; sourceTree = "<group>"; };
 		DD184E4F1F3DA5F9009BFF5B /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		DD184E501F3DA5F9009BFF5B /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		DD2ACB921F5ED1FB00EEFF8F /* commentLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentLabelCell.h; sourceTree = "<group>"; };
+		DD2ACB931F5ED1FB00EEFF8F /* commentLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentLabelCell.m; sourceTree = "<group>"; };
+		DD2ACB941F5ED1FB00EEFF8F /* commentLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentLabelCell.xib; sourceTree = "<group>"; };
 		DD40B7181F164CE000839748 /* HomePageMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomePageMainCell.h; path = cells/HomePageMainCell.h; sourceTree = "<group>"; };
 		DD40B7191F164CE000839748 /* HomePageMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomePageMainCell.m; path = cells/HomePageMainCell.m; sourceTree = "<group>"; };
 		DD40B71A1F164CE000839748 /* HomePageMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomePageMainCell.xib; path = cells/HomePageMainCell.xib; sourceTree = "<group>"; };
@@ -3013,6 +3018,9 @@
 		EC4BA07D1F1357AA00B9BE1A /* cells */ = {
 			isa = PBXGroup;
 			children = (
+				DD2ACB921F5ED1FB00EEFF8F /* commentLabelCell.h */,
+				DD2ACB931F5ED1FB00EEFF8F /* commentLabelCell.m */,
+				DD2ACB941F5ED1FB00EEFF8F /* commentLabelCell.xib */,
 				EC4BA0CE1F1359EC00B9BE1A /* BaseCollectionViewCell.h */,
 				EC4BA0CF1F1359EC00B9BE1A /* BaseCollectionViewCell.m */,
 				EC4BA0D01F1359EC00B9BE1A /* BaseTableViewCell.h */,
@@ -4041,6 +4049,7 @@
 				DD6287A31F2191C90030331D /* ActivityRankNormalCell.xib in Resources */,
 				DD69B2F31F3AFD390036F368 /* area.plist in Resources */,
 				DD58FFC31F512E39009EC9F2 /* MyActivitySignUpListPassedCell.xib in Resources */,
+				DD2ACB961F5ED1FB00EEFF8F /* commentLabelCell.xib in Resources */,
 				DD6287761F208C0B0030331D /* HotCircleViewController.xib in Resources */,
 				DDE0FD3F1F38714600269DBD /* BrandStoryCell.xib in Resources */,
 				DD9A63A51F2ECF3300611FA8 /* OrderListFooterView.xib in Resources */,
@@ -4321,6 +4330,7 @@
 				DD095FDE1F54F8AA002F4AED /* AllCircleMemberViewController.m in Sources */,
 				DD0960BF1F580E6D002F4AED /* DynamicDetailCommentDataModel.m in Sources */,
 				DD0960CE1F58F4D4002F4AED /* TalkLikeDataModel.m in Sources */,
+				DD2ACB951F5ED1FB00EEFF8F /* commentLabelCell.m in Sources */,
 				DD095FD91F540FDE002F4AED /* CircleDetailConfigQuitCell.m in Sources */,
 				DD0939111F4553B700A75182 /* RegisterViewController.m in Sources */,
 				DD52ED1E1F5D9B5A00B4CE96 /* SelectTopicDataModel.m in Sources */,

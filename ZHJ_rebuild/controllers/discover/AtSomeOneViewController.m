@@ -206,10 +206,10 @@
     
     self.flowLayout.minimumInteritemSpacing = 2;
     self.flowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    self.collectionView.showsHorizontalScrollIndicator = YES;
     
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([NewPostImageCell class]) bundle:nil];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([NewPostImageCell class])];

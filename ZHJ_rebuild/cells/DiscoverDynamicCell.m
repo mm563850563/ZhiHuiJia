@@ -10,6 +10,7 @@
 
 //cells
 #import "MyCircleDynamicImageCell.h"
+#import "commentLabelCell.h"
 
 //tools
 #import "GetHeightOfText.h"
@@ -86,6 +87,29 @@
     
     //跳转查看好友详情
     [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelCircleDynamicResult.user_id];
+}
+
+#pragma mark - <点击“赞”>
+-(void)btnLikeAction:(UIButton *)sender
+{
+    NSString *notifiName = [NSString string];
+    
+    if (sender.selected) {
+        if ([self.whereReuseFrom isEqualToString:@"discover"]) {
+            notifiName = @"cancelLikeByClickFromDiscover";
+        }else if ([self.whereReuseFrom isEqualToString:@"dynamicDetail"]){
+            notifiName = @"cancelLikeByClickFromDynamicDetail";
+        }
+    }else{
+        if ([self.whereReuseFrom isEqualToString:@"discover"]) {
+            notifiName = @"likeByClickFromDiscover";
+        }else if ([self.whereReuseFrom isEqualToString:@"dynamicDetail"]){
+            notifiName = @"likeByClickFromDynamicDetail";
+        }
+    }
+    
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelCircleDynamicResult.talk_id];
 }
 
 #pragma mark - <关注按钮响应>
@@ -172,10 +196,10 @@
         _btnLike = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnLike.frame = CGRectMake(0, 0, 50, 50);
         
-        [_btnLike setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+        [_btnLike setImage:[UIImage imageNamed:@"like_black"] forState:UIControlStateNormal];
         [_btnLike setImage:[UIImage imageNamed:@"like_yellow"] forState: UIControlStateSelected];
         
-//        [_btnLike addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
+        [_btnLike addTarget:self action:@selector(btnLikeAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnLike;
 }
@@ -305,7 +329,9 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.userInteractionEnabled = NO;
         
-        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kSimpleCommentCellID];
+//        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kSimpleCommentCellID];
+        UINib *nib = [UINib nibWithNibName:NSStringFromClass([commentLabelCell class]) bundle:nil];
+        [_tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([commentLabelCell class])];
     }
     return _tableView;
 }
@@ -368,23 +394,23 @@
         make.height.mas_equalTo(40);
     }];
     [self.btnComment mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(10);
+        make.left.mas_equalTo(0);
         make.size.mas_offset(CGSizeMake(15, 15));
         make.centerY.mas_equalTo(0);
     }];
     [self.labelCommentCount mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.btnComment.mas_right).with.offset(5);
-        make.size.mas_offset(CGSizeMake(30, 20));
+        make.size.mas_offset(CGSizeMake(25, 20));
         make.centerY.mas_equalTo(0);
     }];
     [self.btnLike mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(weakSelf.labelCommentCount.mas_right).with.offset(5);
+        make.left.mas_equalTo(weakSelf.labelCommentCount.mas_right).with.offset(0);
         make.size.mas_offset(CGSizeMake(15, 15));
         make.centerY.mas_equalTo(0);
     }];
     [self.labelPraiseCount mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.btnLike.mas_right).with.offset(5);
-        make.size.mas_offset(CGSizeMake(30, 20));
+        make.size.mas_offset(CGSizeMake(25, 20));
         make.centerY.mas_equalTo(0);
     }];
     [self.labelAddTime mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -441,6 +467,13 @@
         self.btnOnFocus.selected = YES;
     }else{
         self.btnOnFocus.selected = NO;
+    }
+    
+    //btnLike
+    if ([modelCircleDynamicResult.is_liked isEqualToString:@"1"]) {
+        self.btnLike.selected = YES;
+    }else{
+        self.btnLike.selected = NO;
     }
     
     //label
@@ -640,11 +673,14 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSimpleCommentCellID];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSimpleCommentCellID];
+    
+    commentLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([commentLabelCell class])];
     MyCircleDynamicReply_infoModel *modelReplyInfo = self.commentArray[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@:%@",modelReplyInfo.nickname,modelReplyInfo.content];
-    cell.textLabel.font = [UIFont systemFontOfSize:12];
-    cell.textLabel.textColor = kColorFromRGB(kDeepGray);
+    cell.labelComment.text = [NSString stringWithFormat:@"%@:%@",modelReplyInfo.nickname,modelReplyInfo.content];
+//    cell.textLabel.text = [NSString stringWithFormat:@"%@:%@",modelReplyInfo.nickname,modelReplyInfo.content];
+//    cell.textLabel.font = [UIFont systemFontOfSize:12];
+//    cell.textLabel.textColor = kColorFromRGB(kDeepGray);
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

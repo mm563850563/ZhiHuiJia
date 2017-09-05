@@ -16,5 +16,6 @@
 
 @property (nonatomic, strong)NSArray<GetGiftType_gift_typeModel> *gift_type;
 @property (nonatomic, strong)NSString *banner;
+@property (nonatomic, strong)NSString *headimg;
 
 @end

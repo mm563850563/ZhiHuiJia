@@ -156,7 +156,7 @@
                                                 <constraint firstAttribute="height" constant="80" id="UtB-y6-LrT"/>
                                                 <constraint firstAttribute="width" constant="80" id="mdl-tK-b4U"/>
                                             </constraints>
-                                            <state key="normal" backgroundImage="jia"/>
+                                            <state key="normal" image="addPhoto"/>
                                             <connections>
                                                 <action selector="btnCircleMainPhotoAction:" destination="-1" eventType="touchUpInside" id="bof-9P-cQI"/>
                                             </connections>
@@ -190,7 +190,7 @@
                                                 <constraint firstAttribute="height" constant="80" id="9Ku-aG-cPy"/>
                                                 <constraint firstAttribute="width" constant="80" id="jjf-3G-7P9"/>
                                             </constraints>
-                                            <state key="normal" backgroundImage="jia"/>
+                                            <state key="normal" image="addPhoto"/>
                                             <connections>
                                                 <action selector="btnCircleDetailPhotoAction:" destination="-1" eventType="touchUpInside" id="1Sx-Se-yuF"/>
                                             </connections>
@@ -269,6 +269,6 @@
         </view>
     </objects>
     <resources>
-        <image name="jia" width="22" height="22"/>
+        <image name="addPhoto" width="95" height="95"/>
     </resources>
 </document>

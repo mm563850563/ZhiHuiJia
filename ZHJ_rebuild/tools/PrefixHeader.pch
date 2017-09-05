@@ -389,6 +389,9 @@
 #pragma mark - <98.发布帖子>
 #define kPostMessage @"/Circle/postMessage"
 
+#pragma mark - <99.点赞／取消点赞>
+#define kLikeCancel @"/Circle/likeCancel"
+
 
 
 

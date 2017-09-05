@@ -36,7 +36,7 @@
             <objects>
                 <navigationController id="P7p-br-xFT" customClass="BasicNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="分类" id="SfK-nS-Boy"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="ZVL-CI-AXh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ZVL-CI-AXh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -53,7 +53,7 @@
             <objects>
                 <navigationController id="H9h-Ah-7fa" customClass="BasicNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="发现" id="hGS-a4-oU3"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="4vL-b0-4Ey">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="4vL-b0-4Ey">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -757,7 +757,7 @@
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3K-HL-qat">
+                                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3K-HL-qat">
                                                                         <rect key="frame" x="0.0" y="30" width="83" height="20"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="hFG-zc-Mvo"/>
