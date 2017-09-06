@@ -25,6 +25,7 @@
     // Do any additional setup after loading the view from its nib.
     
     [self settingTableView];
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,6 +53,22 @@
     [self.tableView registerClass:[FocusPersonCell class] forCellReuseIdentifier:NSStringFromClass([FocusPersonCell class])];
 }
 
+
+#pragma mark - <rac响应>
+-(void)respondWithRAC
+{
+//    //点赞
+//    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"likeByClickFromMyCircleVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+//        NSString *talk_id = x.object;
+//        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"0"];
+//    }];
+//    
+//    //取消点赞
+//    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"cancelLikeByClickFromMyCircleVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+//        NSString *talk_id = x.object;
+//        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"1"];
+//    }];
+}
 
 
 

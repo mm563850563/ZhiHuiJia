@@ -47,13 +47,13 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lrg-ey-AgO">
+                                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lrg-ey-AgO">
                                     <rect key="frame" x="335" y="5" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="kpN-Lu-xlU"/>
                                         <constraint firstAttribute="height" constant="30" id="nN0-Yb-NTY"/>
                                     </constraints>
-                                    <state key="normal" title="Buttonfgfgfgfgf"/>
+                                    <state key="normal" image="more"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                             <integer key="value" value="15"/>
@@ -211,4 +211,7 @@
             <point key="canvasLocation" x="123.5" y="97.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="more" width="15" height="15"/>
+    </resources>
 </document>

@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnMostNew;
 @property (weak, nonatomic) IBOutlet UILabel *labelMostNew;
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewMostNew;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewSalesVolume;
 @property (weak, nonatomic) IBOutlet UILabel *labelSalesVolume;
@@ -39,6 +40,20 @@
 }
 */
 
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    [self settingOutlets];
+}
+
+-(void)settingOutlets
+{
+    self.imgViewPrice.tag = 0;
+    self.imgViewMostNew.tag = 0;
+    self.imgViewSalesVolume.tag = 0;
+}
+
+
 - (IBAction)btnRecommendAction:(UIButton *)sender
 {
     self.labelRecommend.textColor = kColorFromRGB(kThemeYellow);
@@ -47,6 +62,14 @@
     self.labelPrice.textColor = kColorFromRGB(kBlack);
     
     [[NSNotificationCenter defaultCenter]postNotificationName:@"sort_recommed" object:nil];
+    
+    [self rotationUpToDownWithImageView:self.imgViewMostNew];
+    [self rotationUpToDownWithImageView:self.imgViewSalesVolume];
+    [self rotationUpToDownWithImageView:self.imgViewPrice];
+    
+    self.btnPrice.selected = NO;
+    self.btnMostNew.selected = NO;
+    self.btnSalesVolume.selected = NO;
 }
 - (IBAction)btnMostNewAction:(UIButton *)sender
 {
@@ -57,6 +80,17 @@
     
     sender.selected = !sender.selected;
     [[NSNotificationCenter defaultCenter]postNotificationName:@"sort_newest" object:sender];
+    
+    [self rotationUpToDownWithImageView:self.imgViewPrice];
+    [self rotationUpToDownWithImageView:self.imgViewSalesVolume];
+    self.btnPrice.selected = NO;
+    self.btnSalesVolume.selected = NO;
+    
+    if (sender.selected) {
+        [self rotationDownToUpWithImageView:self.imgViewMostNew];
+    }else{
+        [self rotationUpToDownWithImageView:self.imgViewMostNew];
+    }
 }
 - (IBAction)btnSalesVolumeAction:(UIButton *)sender
 {
@@ -68,10 +102,15 @@
     sender.selected = !sender.selected;
     [[NSNotificationCenter defaultCenter]postNotificationName:@"sort_salesVolunm" object:sender];
     
+    [self rotationUpToDownWithImageView:self.imgViewMostNew];
+    [self rotationUpToDownWithImageView:self.imgViewPrice];
+    self.btnMostNew.selected = NO;
+    self.btnPrice.selected = NO;
+    
     if (sender.selected) {
-        self.imgViewSalesVolume.image = [UIImage imageNamed:@"up_yellow"];
+        [self rotationDownToUpWithImageView:self.imgViewSalesVolume];
     }else{
-        self.imgViewSalesVolume.image = [UIImage imageNamed:@"down_yellow"];
+        [self rotationUpToDownWithImageView:self.imgViewSalesVolume];
     }
 }
 - (IBAction)btnPriceAction:(UIButton *)sender
@@ -84,17 +123,57 @@
     sender.selected = !sender.selected;
     [[NSNotificationCenter defaultCenter]postNotificationName:@"sort_price" object:sender];
     
+    [self rotationUpToDownWithImageView:self.imgViewMostNew];
+    [self rotationUpToDownWithImageView:self.imgViewSalesVolume];
+    self.btnMostNew.selected = NO;
+    self.btnSalesVolume.selected = NO;
+    
     if (sender.selected) {
-        self.imgViewPrice.image = [UIImage imageNamed:@"up_yellow"];
+        [self rotationDownToUpWithImageView:self.imgViewPrice];
     }else{
-        self.imgViewPrice.image = [UIImage imageNamed:@"down_yellow"];
+        [self rotationUpToDownWithImageView:self.imgViewPrice];
     }
 }
 - (IBAction)btnLayoutAction:(UIButton *)sender
 {
     sender.selected = !sender.selected;
+    NSString *notifiName = [NSString string];
+    if ([self.whereReuseFrom isEqualToString:@"moreProductListVC"]) {
+        notifiName = @"changeLayoutFromMoreProductVC";
+    }else if ([self.whereReuseFrom isEqualToString:@"AllProductVC"]){
+        notifiName = @"changeLayoutFromAllProductVC";
+    }
     
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"changeLayout" object:sender];
+    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:sender];
+}
+
+
+
+
+
+#pragma mark - <箭头旋转-由下向上>
+-(void)rotationDownToUpWithImageView:(UIImageView *)imgView
+{
+    if (imgView.tag == 0) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGAffineTransform transform =CGAffineTransformMakeRotation(M_PI);
+            [imgView setTransform:transform];
+        } completion:^(BOOL finished) {
+            imgView.tag = 1;
+        }];
+    }
+}
+
+#pragma mark - <箭头旋转-由上向下>
+-(void)rotationUpToDownWithImageView:(UIImageView *)imgView
+{
+    if (imgView.tag == 1) {
+        [UIView animateWithDuration:0.3 animations:^{
+            imgView.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            imgView.tag = 0;
+        }];
+    }
 }
 
 

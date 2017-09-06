@@ -15,5 +15,6 @@
 @property (nonatomic, assign)CGFloat cellHeight;
 
 @property (nonatomic, strong)NSString *whereFrom;
+@property (nonatomic, strong)NSString *ownID;
 
 @end

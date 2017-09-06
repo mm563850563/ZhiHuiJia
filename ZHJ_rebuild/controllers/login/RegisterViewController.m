@@ -78,18 +78,18 @@
     
     NSDictionary *dictParameter = [NSDictionary dictionary];
     if (self.imgData) {
-        dictParameter = @{@"mobile":self.tfPhone.text,
-                          @"password":password,
-                          @"verify_code":self.tfVerificationCode.text,
-                          @"birthday":self.birthdayStr,
-                          @"sex":self.gender,
-                          @"user_img":self.imgData};
+//        dictParameter = @{@"mobile":self.tfPhone.text,
+//                          @"password":password,
+//                          @"verify_code":self.tfVerificationCode.text,
+//                          @"birthday":self.birthdayStr,
+//                          @"sex":self.gender,
+//                          @"user_img":self.imgData};
     }else{
-        dictParameter = @{@"mobile":self.tfPhone.text,
-                          @"password":password,
-                          @"verify_code":self.tfVerificationCode.text,
-                          @"birthday":self.birthdayStr,
-                          @"sex":self.gender};
+//        dictParameter = @{@"mobile":self.tfPhone.text,
+//                          @"password":password,
+//                          @"verify_code":self.tfVerificationCode.text,
+//                          @"birthday":self.birthdayStr,
+//                          @"sex":self.gender};
     }
     
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
@@ -109,7 +109,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     [formData appendPartWithFormData:[self.tfPhone.text dataUsingEncoding:NSUTF8StringEncoding] name:@"mobile"];
     [formData appendPartWithFormData:[self.tfVerificationCode.text dataUsingEncoding:NSUTF8StringEncoding] name:@"verify_code"];
     [formData appendPartWithFormData:[password dataUsingEncoding:NSUTF8StringEncoding] name:@"password"];
-    [formData appendPartWithFormData:[self.birthdayStr dataUsingEncoding:NSUTF8StringEncoding] name:@"birthday"];
+    //[formData appendPartWithFormData:[self.birthdayStr dataUsingEncoding:NSUTF8StringEncoding] name:@"birthday"];
     [formData appendPartWithFormData:[self.gender dataUsingEncoding:NSUTF8StringEncoding] name:@"sex"];
     
     if (self.imgData) {
@@ -166,8 +166,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             NSNumber *code = (NSNumber *)dataDict[@"code"];
             if ([code isEqual:@200]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    //开启验证码倒计时
-                    [self openBtnVerificationCountDowm];
+                    
                 });
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -366,6 +365,9 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入手机号码"];
         [hudWarning hideAnimated:YES afterDelay:2.0];
     }else{
+        //开启验证码倒计时
+        [self openBtnVerificationCountDowm];
+        
         [self getSendMsgData];
     }
 }

@@ -169,6 +169,7 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 -(void)initMoreProduct_SortView
 {
     MoreProduct_SortView *sortView = [[[NSBundle mainBundle] loadNibNamed:@"MoreProduct_SortView" owner:self options:nil] firstObject];
+    sortView.whereReuseFrom = @"moreProductListVC";
     [self.view addSubview:sortView];
     [sortView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_offset(0);
@@ -190,7 +191,8 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 #pragma mark - <RAC响应>
 -(void)respondWithRAC
 {
-    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"changeLayout" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+    //切换布局
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"changeLayoutFromMoreProductVC" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         UIButton *button = (UIButton *)x.object;
         if (button.isSelected == YES) {
             self.layoutCode = TableLayout;

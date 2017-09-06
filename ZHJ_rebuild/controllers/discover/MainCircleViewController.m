@@ -146,6 +146,7 @@
 -(void)jumpToMyCircleVC
 {
     MyCircleViewController *myCircleVC = [[MyCircleViewController alloc]initWithNibName:NSStringFromClass([MyCircleViewController class]) bundle:nil];
+    myCircleVC.navigationItem.title = @"我的圈子";
     [self.navigationController pushViewController:myCircleVC animated:YES];
 }
 
@@ -153,6 +154,7 @@
 -(void)jumpToRankListVC
 {
     RankingListViewController *rankListVC = [[RankingListViewController alloc]initWithNibName:NSStringFromClass([RankingListViewController class]) bundle:nil];
+    rankListVC.navigationItem.title = @"活跃排行榜";
     [self.navigationController pushViewController:rankListVC animated:YES];
 }
 

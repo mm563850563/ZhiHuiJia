@@ -154,6 +154,7 @@
     BrandDetailViewController *brandDetailVC = [[BrandDetailViewController alloc]initWithNibName:NSStringFromClass([BrandDetailViewController class]) bundle:nil];
     brandDetailVC.brand_id = brand_id;
     brandDetailVC.hidesBottomBarWhenPushed = YES;
+    brandDetailVC.navigationItem.title = @"品牌详情";
     [self.navigationController pushViewController:brandDetailVC animated:YES];
 }
 

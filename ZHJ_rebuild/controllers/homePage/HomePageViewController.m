@@ -128,7 +128,9 @@
         [self getHomeGoodsData];
     });
     dispatch_group_async(group, queue3, ^{
-        [self getGiftTypeData];
+        if (kUserDefaultObject(kUserInfo)) {
+            [self getGiftTypeData];
+        }
     });
     dispatch_group_async(group, queue4, ^{
         [self getRecommendGoodsData];
@@ -160,7 +162,10 @@
         [self getHomeGoodsData];
     });
     dispatch_group_async(group, queue3, ^{
-        [self getGiftTypeData];
+        if (kUserDefaultObject(kUserInfo)) {
+            [self getGiftTypeData];
+        }
+        
     });
     dispatch_group_async(group, queue4, ^{
         [self getRecommendGoodsData];
@@ -222,10 +227,9 @@
             }
         }
     } failBlock:^(NSError *error) {
-        if (error.code == -1009) {
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:@"请检查网络"];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
-        }
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+        
     }];
 }
 
@@ -456,6 +460,7 @@
     ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
     productDetailVC.hidesBottomBarWhenPushed = YES;
     productDetailVC.goods_id = goods_id;
+    productDetailVC.navigationItem.title = @"产品详情概述";
     [self.navigationController pushViewController:productDetailVC animated:YES];
 }
 #pragma mark - <跳转更多产品页面>
@@ -537,6 +542,11 @@
     //在“好友主页”中点击关注／取消关注后刷新主页
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshHomePageVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         [self pullDownRefresh];
+    }];
+    
+    //登陆后刷新该页面
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshHomePageAfterLogin" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        [self managerRequestWithGCD];
     }];
 }
 

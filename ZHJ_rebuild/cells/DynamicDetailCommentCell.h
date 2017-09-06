@@ -14,4 +14,6 @@
 @property (nonatomic, strong)DynamicDetailCommentResultModel *modelDynamicCommentResult;
 @property (nonatomic, assign)CGFloat cellHeight;
 
+@property (nonatomic, strong)NSString *whereReuseFrom;
+
 @end

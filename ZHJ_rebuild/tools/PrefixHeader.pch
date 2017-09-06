@@ -392,7 +392,14 @@
 #pragma mark - <99.点赞／取消点赞>
 #define kLikeCancel @"/Circle/likeCancel"
 
+#pragma mark - <100.删除动态>
+#define kDeleteNews @"/Circle/deleteNews"
 
+#pragma mark - <101.发现轮播>
+#define kGetCarousel @"/Circle/getCarousel"
+
+#pragma mark - <102.发送找回短信>
+#define kForgetPassword @"/User/forgetPassword"
 
 
 

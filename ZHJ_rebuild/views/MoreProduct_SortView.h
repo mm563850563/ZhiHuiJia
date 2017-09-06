@@ -10,4 +10,6 @@
 
 @interface MoreProduct_SortView : UIView
 
+@property (nonatomic, strong)NSString *whereReuseFrom;
+
 @end

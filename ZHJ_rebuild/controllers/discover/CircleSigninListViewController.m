@@ -111,9 +111,11 @@
 }
 
 #pragma mark - <跳转“个人好友”资料>
--(void)jumpToFocusPersonalFileVC
+-(void)jumpToFocusPersonalFileVCWithFriendUserID:(NSString *)friend_user_id
 {
     FocusPersonFileViewController *focusPersonalFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
+    focusPersonalFileVC.friend_user_id = friend_user_id;
+    focusPersonalFileVC.whereReuseFrom = @"circleSigninListVC";
     [self.navigationController pushViewController:focusPersonalFileVC animated:YES];
 }
 
@@ -187,7 +189,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self jumpToFocusPersonalFileVC];
+    SigninListResultModel *modelResult = self.signinListArray[indexPath.row];
+    [self jumpToFocusPersonalFileVCWithFriendUserID:modelResult.user_id];
 }
 
 

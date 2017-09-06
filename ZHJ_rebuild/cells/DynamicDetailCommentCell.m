@@ -54,10 +54,23 @@
     return self;
 }
 
-#pragma mark - <“赞”响应>
-- (void)btnLikeAction:(UIButton *)sender
+#pragma mark - <点击“赞”>
+-(void)btnLikeAction:(UIButton *)sender
 {
-    
+//    NSString *notifiName = [NSString string];
+//    
+//    if (sender.selected) {
+//        if ([self.whereReuseFrom isEqualToString:@"dynamicDetailVC"]) {
+//            notifiName = @"cancelLikeByClickFromDynamicDetailVC";
+//        }
+//    }else{
+//        if ([self.whereReuseFrom isEqualToString:@"dynamicDetailVC"]) {
+//            notifiName = @"likeByClickFromDynamicDetailVC";
+//        }
+//    }
+//    
+//    
+//    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelDynamicCommentResult.talk_id];
 }
 
 #pragma mark - <“更多”响应>
@@ -119,7 +132,11 @@
     if (!_btnLike) {
         _btnLike = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnLike.frame = CGRectMake(0, 0, 50, 50);
-        _btnLike.backgroundColor = kColorFromRGB(kThemeYellow);
+        
+        [_btnLike setImage:[UIImage imageNamed:@"like_black"] forState:UIControlStateNormal];
+        [_btnLike setImage:[UIImage imageNamed:@"like_yellow"] forState:UIControlStateSelected];
+        
+        [_btnLike addTarget:self action:@selector(btnLikeAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnLike;
 }
@@ -130,6 +147,7 @@
         _btnMore = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnMore.frame = CGRectMake(0, 0, 50, 50);
         _btnMore.backgroundColor = kColorFromRGB(kThemeYellow);
+        _btnMore.hidden = YES;
     }
     return _btnMore;
 }
@@ -167,7 +185,7 @@
     [self.peronalBGView addSubview:self.imgViewProtrait];
     [self.peronalBGView addSubview:self.labelNickName];
     [self.peronalBGView addSubview:self.labelAddTime];
-    [self.peronalBGView addSubview:self.btnMore];
+//    [self.peronalBGView addSubview:self.btnMore];
     [self.peronalBGView addSubview:self.btnLike];
     [self.peronalBGView addSubview:self.labelLikeCount];
     
@@ -205,14 +223,14 @@
         make.height.mas_equalTo(20);
         make.centerY.mas_equalTo(10);
     }];
-    [self.btnMore mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-10);
-        make.size.mas_offset(CGSizeMake(20, 20));
-        make.centerY.mas_equalTo(0);
-    }];
+//    [self.btnMore mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.mas_equalTo(-10);
+//        make.size.mas_offset(CGSizeMake(20, 20));
+//        make.centerY.mas_equalTo(0);
+//    }];
     [self.btnLike mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(weakSelf.btnMore.mas_left).with.offset(-10);
-        make.size.mas_offset(CGSizeMake(20, 20));
+        make.right.mas_equalTo(-10);
+        make.size.mas_offset(CGSizeMake(18, 18));
         make.centerY.mas_equalTo(0);
     }];
     [self.labelLikeCount mas_makeConstraints:^(MASConstraintMaker *make) {

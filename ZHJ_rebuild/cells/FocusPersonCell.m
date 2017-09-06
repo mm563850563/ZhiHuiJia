@@ -22,11 +22,13 @@
 @property (strong, nonatomic) UIImageView *imgViewPortrait;
 @property (strong, nonatomic) UILabel *labelNickName;
 @property (strong, nonatomic) UILabel *labelAddTime;
-//@property (strong, nonatomic) UILabel *labelContent;
+@property (nonatomic, strong)UIButton *btnLike;
+@property (nonatomic, strong)UIButton *btnComment;
+@property (nonatomic, strong)UIButton *btnDelete;
 @property (strong, nonatomic) UICollectionView *collectionView;
 @property (strong, nonatomic) UICollectionViewFlowLayout *flowLayout;
-@property (nonatomic, strong)UIImageView *imgViewPraise;
-@property (nonatomic, strong)UIImageView *imgViewComment;
+//@property (nonatomic, strong)UIImageView *imgViewPraise;
+//@property (nonatomic, strong)UIImageView *imgViewComment;
 @property (nonatomic, strong)UILabel *labelPraiseCount;
 @property (nonatomic, strong)UILabel *labelCommentCount;
 @property (nonatomic, strong)TTTAttributedLabel *labelContent;
@@ -85,7 +87,108 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelCircleDynamicResult.user_id];
 }
 
+#pragma mark - <评论点击>
+-(void)clickImgViewPortrait:(UITapGestureRecognizer *)tap
+{
+//    NSString *notifiName = [NSString string];
+//    if ([self.whereFrom isEqualToString:@"circleDetail"]) {
+//        notifiName = @"jumpToFocusPersonalVCByPortraitFromCircleDetail";
+//    }else if ([self.whereFrom isEqualToString:@"myCircleVC"]){
+//        notifiName = @"jumpToFocusPersonalVCByPortraitFromMyCircleVC";
+//    }else if ([self.whereFrom isEqualToString:@"topicDetail"]){
+//        notifiName = @"jumpToFocusPersonalVCByPortraitFromTopicDetail";
+//    }
+//    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelCircleDynamicResult.user_id];
+}
+
+
+#pragma mark - <点击“赞”>
+-(void)btnLikeAction:(UIButton *)sender
+{
+    NSString *notifiName = [NSString string];
+    
+    if (sender.selected) {
+        if ([self.whereFrom isEqualToString:@"circleDetail"]) {
+            notifiName = @"cancelLikeByClickFromCircleDetail";
+        }else if ([self.whereFrom isEqualToString:@"domainVC"]){
+            notifiName = @"cancelLikeByClickFromDomainVC";
+        }else if ([self.whereFrom isEqualToString:@"focusPersonalVC"]){
+            notifiName = @"cancelLikeByClickFromFocusPersonalVC";
+        }else if ([self.whereFrom isEqualToString:@"myCircleVC"]){
+            notifiName = @"cancelLikeByClickFromMyCircleVC";
+        }else if ([self.whereFrom isEqualToString:@"topicDetail"]){
+            notifiName = @"cancelLikeByClickFromTopicDetail";
+        }
+    }else{
+        if ([self.whereFrom isEqualToString:@"circleDetail"]) {
+            notifiName = @"likeByClickFromCircleDetail";
+        }else if ([self.whereFrom isEqualToString:@"domainVC"]){
+            notifiName = @"likeByClickFromDomainVC";
+        }else if ([self.whereFrom isEqualToString:@"focusPersonalVC"]){
+            notifiName = @"likeByClickFromFocusPersonalVC";
+        }else if ([self.whereFrom isEqualToString:@"myCircleVC"]){
+            notifiName = @"likeByClickFromMyCircleVC";
+        }else if ([self.whereFrom isEqualToString:@"topicDetail"]){
+            notifiName = @"likeByClickFromTopicDetail";
+        }
+    }
+    
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelCircleDynamicResult.talk_id];
+}
+
+#pragma mark - <点击“删除”按钮>
+-(void)clickBtnDeleteActionWithButton:(UIButton *)sender
+{
+    NSString *notifiName = [NSString string];
+    if ([self.whereFrom isEqualToString:@"domainVC"]) {
+        notifiName = @"deleteDynamicByClickFromdomainVC";
+    }
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelCircleDynamicResult.talk_id];
+}
+
 #pragma mark - <各个控件懒加载>
+-(UIButton *)btnLike
+{
+    if (!_btnLike) {
+        _btnLike = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btnLike.frame = CGRectMake(0, 0, 50, 50);
+        
+        [_btnLike setImage:[UIImage imageNamed:@"like_black"] forState:UIControlStateNormal];
+        [_btnLike setImage:[UIImage imageNamed:@"like_yellow"] forState: UIControlStateSelected];
+        
+        [_btnLike addTarget:self action:@selector(btnLikeAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnLike;
+}
+
+-(UIButton *)btnComment
+{
+    if (!_btnComment) {
+        _btnComment = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btnComment.frame = CGRectMake(0, 0, 50, 50);
+        
+        [_btnComment setImage:[UIImage imageNamed:@"message"] forState:UIControlStateNormal];
+        _btnComment.userInteractionEnabled = NO;
+        //        [_btnLike addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnComment;
+}
+
+-(UIButton *)btnDelete
+{
+    if (!_btnDelete) {
+        _btnDelete = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btnDelete.frame = CGRectMake(0, 0, 50, 50);
+        _btnDelete.hidden = YES;
+        
+        [_btnDelete setImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
+        [_btnDelete addTarget:self action:@selector(clickBtnDeleteActionWithButton:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnDelete;
+}
+
 -(CXPhotoBrowser *)photoBrowser
 {
     if (!_photoBrowser) {
@@ -195,25 +298,31 @@
     return _collectionView;
 }
 
--(UIImageView *)imgViewPraise
-{
-    if (!_imgViewPraise) {
-        _imgViewPraise = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
-        _imgViewPraise.contentMode = UIViewContentModeScaleAspectFit;
-        _imgViewPraise.backgroundColor = kColorFromRGB(kThemeYellow);
-    }
-    return _imgViewPraise;
-}
-
--(UIImageView *)imgViewComment
-{
-    if (!_imgViewComment) {
-        _imgViewComment = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
-        _imgViewComment.contentMode = UIViewContentModeScaleAspectFit;
-        _imgViewComment.backgroundColor = kColorFromRGB(kThemeYellow);
-    }
-    return _imgViewComment;
-}
+//-(UIImageView *)imgViewPraise
+//{
+//    if (!_imgViewPraise) {
+//        _imgViewPraise = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
+//        _imgViewPraise.contentMode = UIViewContentModeScaleAspectFit;
+////        _imgViewPraise.backgroundColor = kColorFromRGB(kThemeYellow);
+//        
+//        _imgViewPraise.image = [UIImage imageNamed:@"like_black"];
+//    }
+//    return _imgViewPraise;
+//}
+//
+//-(UIImageView *)imgViewComment
+//{
+//    if (!_imgViewComment) {
+//        _imgViewComment = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
+//        _imgViewComment.contentMode = UIViewContentModeScaleAspectFit;
+////        _imgViewComment.backgroundColor = kColorFromRGB(kThemeYellow);
+//        
+//        _imgViewComment.image = [UIImage imageNamed:@"message"];
+//        
+//        UITapGestureRecognizer *tapComment = [UITapGestureRecognizer alloc]initWithTarget:self action:@selector(<#selector#>)
+//    }
+//    return _imgViewComment;
+//}
 
 -(UILabel *)labelPraiseCount
 {
@@ -248,11 +357,12 @@
     [self.contentView addSubview:self.BGView];
     [self.BGView addSubview:self.imgViewPortrait];
     [self.BGView addSubview:self.labelNickName];
+    [self.BGView addSubview:self.btnDelete];
     [self.BGView addSubview:self.labelContent];
     [self.BGView addSubview:self.collectionView];
     [self.BGView addSubview:self.commentBGView];
-    [self.commentBGView addSubview:self.imgViewPraise];
-    [self.commentBGView addSubview:self.imgViewComment];
+    [self.commentBGView addSubview:self.btnLike];
+    [self.commentBGView addSubview:self.btnComment];
     [self.commentBGView addSubview:self.labelPraiseCount];
     [self.commentBGView addSubview:self.labelCommentCount];
     [self.commentBGView addSubview:self.labelAddTime];
@@ -274,6 +384,11 @@
         make.height.mas_equalTo(20);
         make.centerY.mas_equalTo(weakSelf.imgViewPortrait);
     }];
+    [self.btnDelete mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_offset(CGSizeMake(20, 20));
+        make.right.mas_equalTo(-10);
+        make.centerY.mas_equalTo(weakSelf.labelNickName);
+    }];
     [self.labelContent mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(weakSelf.imgViewPortrait.mas_bottom).with.offset(5);
         make.left.mas_equalTo(10);
@@ -292,24 +407,24 @@
         make.right.mas_equalTo(-10);
         make.height.mas_equalTo(40);
     }];
-    [self.imgViewPraise mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(10);
-        make.size.mas_offset(CGSizeMake(15, 15));
-        make.centerY.mas_equalTo(0);
-    }];
-    [self.labelPraiseCount mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(weakSelf.imgViewPraise.mas_right).with.offset(5);
-        make.size.mas_offset(CGSizeMake(30, 20));
-        make.centerY.mas_equalTo(0);
-    }];
-    [self.imgViewComment mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(weakSelf.labelPraiseCount.mas_right).with.offset(10);
+    [self.btnComment mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
         make.size.mas_offset(CGSizeMake(15, 15));
         make.centerY.mas_equalTo(0);
     }];
     [self.labelCommentCount mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(weakSelf.imgViewComment.mas_right).with.offset(5);
-        make.size.mas_offset(CGSizeMake(30, 20));
+        make.left.mas_equalTo(weakSelf.btnComment.mas_right).with.offset(5);
+        make.size.mas_offset(CGSizeMake(25, 20));
+        make.centerY.mas_equalTo(0);
+    }];
+    [self.btnLike mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(weakSelf.labelCommentCount.mas_right).with.offset(0);
+        make.size.mas_offset(CGSizeMake(20, 20));
+        make.centerY.mas_equalTo(0);
+    }];
+    [self.labelPraiseCount mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(weakSelf.btnLike.mas_right).with.offset(5);
+        make.size.mas_offset(CGSizeMake(25, 20));
         make.centerY.mas_equalTo(0);
     }];
     [self.labelAddTime mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -317,6 +432,12 @@
         make.size.mas_offset(CGSizeMake(120, 20));
         make.centerY.mas_equalTo(0);
     }];
+}
+
+-(void)setOwnID:(NSString *)ownID
+{
+    _ownID = ownID;
+    _btnDelete.hidden = NO;
 }
 
 
@@ -360,6 +481,13 @@
     self.labelNickName.text = modelCircleDynamicResult.nickname;
     self.labelPraiseCount.text = modelCircleDynamicResult.like_count;
     self.labelCommentCount.text = modelCircleDynamicResult.reply_count;
+    
+    //btnLike
+    if ([modelCircleDynamicResult.is_liked isEqualToString:@"1"]) {
+        self.btnLike.selected = YES;
+    }else{
+        self.btnLike.selected = NO;
+    }
     
     //labelAddTime
 //    NSInteger t = [modelCircleDynamicResult.addtime integerValue];

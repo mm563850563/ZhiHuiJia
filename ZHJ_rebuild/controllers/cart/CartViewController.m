@@ -53,6 +53,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"购物车";
     
     self.page = [NSNumber numberWithInt:1];
     [self managerRequestWithGCD];

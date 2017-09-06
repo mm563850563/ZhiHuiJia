@@ -211,7 +211,7 @@
         _btnComment.frame = CGRectMake(0, 0, 50, 50);
         
         [_btnComment setImage:[UIImage imageNamed:@"message"] forState:UIControlStateNormal];
-        
+        _btnComment.userInteractionEnabled = NO;
         //        [_btnLike addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnComment;
@@ -405,7 +405,7 @@
     }];
     [self.btnLike mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.labelCommentCount.mas_right).with.offset(0);
-        make.size.mas_offset(CGSizeMake(15, 15));
+        make.size.mas_offset(CGSizeMake(20, 20));
         make.centerY.mas_equalTo(0);
     }];
     [self.labelPraiseCount mas_makeConstraints:^(MASConstraintMaker *make) {

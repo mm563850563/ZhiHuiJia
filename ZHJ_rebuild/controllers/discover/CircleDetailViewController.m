@@ -149,7 +149,8 @@
 -(void)getMyCircleDynamicDataWithPage:(NSNumber *)page
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetCirclePost];
-    NSDictionary *dictParameter = @{@"circle_id":self.circle_id,
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"circle_id":self.circle_id,
                                     @"page":page,
                                     @"page_count":@10};
     
@@ -268,6 +269,58 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
+#pragma mark - <点赞／取消点赞>
+-(void)requestLikeOrCancelLikeWithTalkID:(NSString *)talk_id likeType:(NSString *)like_type
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kLikeCancel];
+    
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"talk_id":talk_id,
+                                    @"is_cancel":like_type};
+    
+    
+    //    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+    //                                    @"friend_user_id":friend_user_id};
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.circleDynamicArray removeAllObjects];
+                    [self getMyCircleDynamicDataWithPage:@1];
+                    
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+            
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
             });
         }
@@ -436,6 +489,19 @@
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCByTopicFromCircleDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         NSString *topic_id = x.object;
         [self jumpToTopicDetailVCWithTopicID:topic_id];
+    }];
+    
+    
+    //点赞
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"likeByClickFromCircleDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *talk_id = x.object;
+        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"0"];
+    }];
+    
+    //取消点赞
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"cancelLikeByClickFromCircleDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *talk_id = x.object;
+        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"1"];
     }];
 
 }

@@ -10,4 +10,6 @@
 
 @interface DomainViewController : UIViewController
 
+@property (nonatomic, strong)NSString *ownID;
+
 @end

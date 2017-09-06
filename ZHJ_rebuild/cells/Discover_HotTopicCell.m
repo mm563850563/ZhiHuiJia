@@ -34,6 +34,7 @@
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelTopicResult.image];
     NSURL *url = [NSURL URLWithString:imgStr];
     [self.imgViewProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
+    
 }
 
 @end

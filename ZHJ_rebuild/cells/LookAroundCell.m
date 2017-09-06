@@ -43,7 +43,7 @@
     
     self.labelNickName.text = modelNearbyResult.nickname;
     float distance = [modelNearbyResult.distance floatValue];
-    self.labelDistance.text = [NSString stringWithFormat:@"%d米",(int)distance];
+    self.labelDistance.text = [NSString stringWithFormat:@"%dkm",(int)distance];
 }
 
 @end

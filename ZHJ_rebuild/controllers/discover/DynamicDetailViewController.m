@@ -551,6 +551,7 @@
     }else if (indexPath.section == 2){
         DynamicDetailCommentCell *cellComment = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DynamicDetailCommentCell class])];
         DynamicDetailCommentResultModel *modelResult = self.commentArray[indexPath.row];
+        cellComment.whereReuseFrom = @"dynamicDetailVC";
         cellComment.modelDynamicCommentResult = modelResult;
         cell = cellComment;
     }

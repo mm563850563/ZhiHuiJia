@@ -296,6 +296,7 @@
 {
     DiscoverHotTopicViewController *hotTopicVC = [[DiscoverHotTopicViewController alloc]init];
     hotTopicVC.hidesBottomBarWhenPushed = YES;
+    hotTopicVC.navigationItem.title = @"热门话题";
     [self.navigationController pushViewController:hotTopicVC animated:YES];
 }
 
@@ -304,6 +305,7 @@
 {
     DiscoverRecommendViewController *activityRecommendVC = [[DiscoverRecommendViewController alloc]init];
     activityRecommendVC.hidesBottomBarWhenPushed = YES;
+    activityRecommendVC.navigationItem.title = @"活动推荐";
     [self.navigationController pushViewController:activityRecommendVC animated:YES];
 }
 
@@ -323,6 +325,7 @@
 {
     MainCircleViewController *mainCircleVC = [[MainCircleViewController alloc]init];
     mainCircleVC.hidesBottomBarWhenPushed = YES;
+    mainCircleVC.navigationItem.title = @"圈子";
     [self.navigationController pushViewController:mainCircleVC animated:YES];
 }
 #pragma mark - <跳转sameTownVC>
@@ -330,6 +333,7 @@
 {
     SameTownViewController *sameTownVC = [[SameTownViewController alloc]initWithNibName:NSStringFromClass([SameTownViewController class]) bundle:nil];
     sameTownVC.hidesBottomBarWhenPushed = YES;
+    sameTownVC.navigationItem.title = @"同城";
     [self.navigationController pushViewController:sameTownVC animated:YES];
 }
 #pragma mark - <跳转domainVC>
@@ -337,6 +341,7 @@
 {
     DomainViewController *domainVC = [[DomainViewController alloc]initWithNibName:NSStringFromClass([DomainViewController class]) bundle:nil];
     domainVC.hidesBottomBarWhenPushed = YES;
+    domainVC.ownID = @"domainID";
     [self.navigationController pushViewController:domainVC animated:YES];
 }
 

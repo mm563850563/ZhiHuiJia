@@ -176,6 +176,8 @@
 		DD184E521F3DA5F9009BFF5B /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD184E501F3DA5F9009BFF5B /* AlipaySDK.framework */; };
 		DD2ACB951F5ED1FB00EEFF8F /* commentLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2ACB931F5ED1FB00EEFF8F /* commentLabelCell.m */; };
 		DD2ACB961F5ED1FB00EEFF8F /* commentLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD2ACB941F5ED1FB00EEFF8F /* commentLabelCell.xib */; };
+		DD2ACB9A1F6002B300EEFF8F /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2ACB981F6002B300EEFF8F /* ForgetPasswordViewController.m */; };
+		DD2ACB9B1F6002B300EEFF8F /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD2ACB991F6002B300EEFF8F /* ForgetPasswordViewController.xib */; };
 		DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B7191F164CE000839748 /* HomePageMainCell.m */; };
 		DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD40B71A1F164CE000839748 /* HomePageMainCell.xib */; };
 		DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B71E1F17027E00839748 /* YouthColorCell.m */; };
@@ -972,6 +974,9 @@
 		DD2ACB921F5ED1FB00EEFF8F /* commentLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentLabelCell.h; sourceTree = "<group>"; };
 		DD2ACB931F5ED1FB00EEFF8F /* commentLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentLabelCell.m; sourceTree = "<group>"; };
 		DD2ACB941F5ED1FB00EEFF8F /* commentLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentLabelCell.xib; sourceTree = "<group>"; };
+		DD2ACB971F6002B300EEFF8F /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgetPasswordViewController.h; path = controllers/login/ForgetPasswordViewController.h; sourceTree = "<group>"; };
+		DD2ACB981F6002B300EEFF8F /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgetPasswordViewController.m; path = controllers/login/ForgetPasswordViewController.m; sourceTree = "<group>"; };
+		DD2ACB991F6002B300EEFF8F /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgetPasswordViewController.xib; path = controllers/login/ForgetPasswordViewController.xib; sourceTree = "<group>"; };
 		DD40B7181F164CE000839748 /* HomePageMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomePageMainCell.h; path = cells/HomePageMainCell.h; sourceTree = "<group>"; };
 		DD40B7191F164CE000839748 /* HomePageMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomePageMainCell.m; path = cells/HomePageMainCell.m; sourceTree = "<group>"; };
 		DD40B71A1F164CE000839748 /* HomePageMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomePageMainCell.xib; path = cells/HomePageMainCell.xib; sourceTree = "<group>"; };
@@ -2593,6 +2598,9 @@
 				DD09390E1F4553B700A75182 /* RegisterViewController.h */,
 				DD09390F1F4553B700A75182 /* RegisterViewController.m */,
 				DD0939101F4553B700A75182 /* RegisterViewController.xib */,
+				DD2ACB971F6002B300EEFF8F /* ForgetPasswordViewController.h */,
+				DD2ACB981F6002B300EEFF8F /* ForgetPasswordViewController.m */,
+				DD2ACB991F6002B300EEFF8F /* ForgetPasswordViewController.xib */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -3913,6 +3921,7 @@
 				DD58FF4D1F4C2A26009EC9F2 /* MyTrackViewController.xib in Resources */,
 				DD58FF311F4A90CF009EC9F2 /* ApplyCircleViewController.xib in Resources */,
 				DD4CF0191F285E7D0024156F /* ActivityRecommendImageCell.xib in Resources */,
+				DD2ACB9B1F6002B300EEFF8F /* ForgetPasswordViewController.xib in Resources */,
 				DD58FF701F4D7467009EC9F2 /* AddCommentReleaseCell.xib in Resources */,
 				DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */,
 				DD6287C11F21AB890030331D /* HandpickActivitiesCell.xib in Resources */,
@@ -4401,6 +4410,7 @@
 				DD0939221F45918900A75182 /* UIBarButtonItem+Badge.m in Sources */,
 				DD4CF01D1F2868490024156F /* ActivityRecommendInformationCell.m in Sources */,
 				DD6287181F1F32010030331D /* DynamicDetailViewController.m in Sources */,
+				DD2ACB9A1F6002B300EEFF8F /* ForgetPasswordViewController.m in Sources */,
 				DD0960E51F5988F3002F4AED /* ProductCommentDataModel.m in Sources */,
 				DD58FF381F4BC81A009EC9F2 /* MyJoinedCircleDataModel.m in Sources */,
 				DD9A63B71F2EF31900611FA8 /* HomeGoodsModel.m in Sources */,

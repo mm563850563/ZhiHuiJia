@@ -294,9 +294,11 @@
     [self.navigationController pushViewController:applyVC animated:YES];
 }
 #pragma mark - <跳转个人页面>
--(void)jumpToPersonalFileVC
+-(void)jumpToPersonalFileVCWithFriendUserID:(NSString *)friend_user_id
 {
     FocusPersonFileViewController *personalFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
+    personalFileVC.friend_user_id = friend_user_id;
+    personalFileVC.whereReuseFrom = @"activityRecommendDetailVC";
     [self.navigationController pushViewController:personalFileVC animated:YES];
 }
 
@@ -560,7 +562,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 3) {
-        [self jumpToPersonalFileVC];
+        ActivitySignUpListResultModel *modelSignUpList = self.signupListArray[indexPath.row];
+        [self jumpToPersonalFileVCWithFriendUserID:modelSignUpList.friend_user_id];
     }
 }
 

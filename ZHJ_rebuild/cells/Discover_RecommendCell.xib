@@ -78,16 +78,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rlp-tD-fuq">
                                 <rect key="frame" x="270" y="62.5" width="50" height="20"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aON-yG-cwW">
-                                        <rect key="frame" x="0.0" y="2.5" width="15" height="15"/>
-                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="member_count" translatesAutoresizingMaskIntoConstraints="NO" id="aON-yG-cwW">
+                                        <rect key="frame" x="0.0" y="4" width="12" height="12"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="VyR-nP-qQY"/>
-                                            <constraint firstAttribute="width" constant="15" id="i4P-fD-iZf"/>
+                                            <constraint firstAttribute="height" constant="12" id="VyR-nP-qQY"/>
+                                            <constraint firstAttribute="width" constant="12" id="i4P-fD-iZf"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuA-h9-RKN">
-                                        <rect key="frame" x="20" y="3" width="15" height="15"/>
+                                        <rect key="frame" x="17" y="3" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="DAU-cX-IaD"/>
                                             <constraint firstAttribute="width" constant="15" id="ews-ok-SPd"/>
@@ -149,4 +148,7 @@
             <point key="canvasLocation" x="36" y="78"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="member_count" width="15" height="15"/>
+    </resources>
 </document>

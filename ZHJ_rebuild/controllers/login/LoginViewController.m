@@ -15,6 +15,7 @@
 
 //controllers
 #import "RegisterViewController.h"
+#import "ForgetPasswordViewController.h"
 
 //SDKs
 #import <ShareSDKExtension/ShareSDK+Extension.h>
@@ -217,6 +218,8 @@
                     //登陆成功后，把user_id保存本地，用作持久化登陆
                     kUserDefaultSetObject(dataDict[@"data"][@"result"][@"user_id"], kUserInfo);
                     kUserDefaultSynchronize;
+                    
+                    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshHomePageAfterLogin" object:nil];
                 });
                 
             }else{
@@ -266,6 +269,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                     hudWarning.completionBlock = ^{
+                        
                         [self dismissViewControllerAnimated:YES completion:nil];
                     };
                     [hudWarning hideAnimated:YES afterDelay:2.0];
@@ -273,6 +277,8 @@
                     //登陆成功后，把user_id保存本地，用作持久化登陆
                     kUserDefaultSetObject(dataDict[@"data"][@"result"][@"user_id"], kUserInfo);
                     kUserDefaultSynchronize;
+                    
+                    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshHomePageAfterLogin" object:nil];
                 });
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -324,7 +330,8 @@
 #pragma mark - <忘记密码按钮响应>
 - (IBAction)btnForgetPassword:(UIButton *)sender
 {
-    
+    ForgetPasswordViewController *forgetPasswordVC = [[ForgetPasswordViewController alloc]initWithNibName:NSStringFromClass([ForgetPasswordViewController class]) bundle:nil];
+    [self presentViewController:forgetPasswordVC animated:YES completion:nil];
 }
 
 #pragma mark - <qq登陆按钮响应>

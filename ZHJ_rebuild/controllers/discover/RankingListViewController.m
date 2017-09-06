@@ -161,6 +161,7 @@
 {
     DisclaimerViewController *disclaimerVC = [[DisclaimerViewController alloc]initWithNibName:NSStringFromClass([DisclaimerViewController class]) bundle:nil];
     disclaimerVC.disclaimer = disclaimer;
+    disclaimerVC.navigationItem.title = @"圈子活跃度规则";
     [self.navigationController pushViewController:disclaimerVC animated:YES];
 }
 
