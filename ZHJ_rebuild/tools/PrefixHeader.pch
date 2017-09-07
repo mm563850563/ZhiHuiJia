@@ -20,6 +20,8 @@
 #define kUserDefaultObject(key) [[NSUserDefaults standardUserDefaults]objectForKey:key]
 //用户偏好设置-设置object
 #define kUserDefaultSetObject(object,key) [[NSUserDefaults standardUserDefaults]setObject:object forKey:key]
+//用户偏好设置-移除object
+#define kUserDefaultRemoveObject(key) [[NSUserDefaults standardUserDefaults]removeObjectForKey:key]
 //用户偏好设置-同步
 #define kUserDefaultSynchronize [[NSUserDefaults standardUserDefaults]synchronize]
 //用户信息-key
@@ -400,6 +402,18 @@
 
 #pragma mark - <102.发送找回短信>
 #define kForgetPassword @"/User/forgetPassword"
+
+#pragma mark - <103.修改密码>
+#define kUpdatePassword @"/User/updatePassword"
+
+#pragma mark - <104.获取你喜欢的品类>
+#define kGetCategory @"/user/getCategory"
+
+#pragma mark - <105.更新用户品类>
+#define kUpdateFavoriteCategory @"/user/updateFavoriteCategory"
+
+#pragma mark - <106.我的圈子-包括已加入圈子>
+#define kMyCircle @"/Circle/myCircle"
 
 
 

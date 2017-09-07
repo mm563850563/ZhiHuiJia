@@ -28,6 +28,7 @@
 #import "DomainViewController.h"
 #import "NotificationViewController.h"
 #import "ReleaseActivityViewController.h"
+#import "MyCircleViewController.h"
 
 #import "DiscoverHotTopicViewController.h"
 #import "DiscoverRecommendViewController.h"
@@ -450,12 +451,24 @@
 //}
 -(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    if ([viewController isKindOfClass:[DomainViewController class]]) {
+    if ([viewController isKindOfClass:[self class]]) {
+        [navigationController setNavigationBarHidden:NO animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[DomainViewController class]]) {
         [navigationController setNavigationBarHidden:YES animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
     }else if ([viewController isKindOfClass:[NotificationViewController class]]) {
         [navigationController setNavigationBarHidden:YES animated:YES];
-    }else{
+        [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[FocusPersonFileViewController class]]) {
+        [navigationController setNavigationBarHidden:YES animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[MainCircleViewController class]]) {
         [navigationController setNavigationBarHidden:NO animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[MyCircleViewController class]]) {
+        [navigationController setNavigationBarHidden:NO animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
     }
 }
 

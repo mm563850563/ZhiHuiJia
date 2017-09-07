@@ -21,6 +21,7 @@
 #import "WeChatAccountViewController.h"
 #import "AboutUsViewController.h"
 #import "MyTrackViewController.h"
+#import "ModifyPasswordViewController.h"
 
 //cells
 #import "PersonalCollectCell.h"
@@ -343,6 +344,9 @@
     }else if ([viewController isKindOfClass:[AfterSalesViewController class]]){
         [navigationController setNavigationBarHidden:NO animated:YES];
         [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[ModifyPasswordViewController class]]){
+        [navigationController setNavigationBarHidden:YES animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
     }else{
         [navigationController setNavigationBarHidden:NO animated:YES];
         [navigationController.navigationBar setTranslucent:NO];
@@ -375,10 +379,10 @@
     }else if (indexPath.item == 2){//我的收藏
         [self jumpToMyCollectionVC];
     }else if (indexPath.item == 3){//分享邀请
-        GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
+//        GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
 //        getGiftVC.category = 1;
-        getGiftVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:getGiftVC animated:YES];
+//        getGiftVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:getGiftVC animated:YES];
     }else if (indexPath.item == 4){//客服中心
         CustomerServiceCenterViewController *customerCenterVC = [[CustomerServiceCenterViewController alloc]initWithNibName:NSStringFromClass([CustomerServiceCenterViewController class]) bundle:nil];
         customerCenterVC.hidesBottomBarWhenPushed = YES;

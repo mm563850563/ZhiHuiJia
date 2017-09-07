@@ -16,6 +16,8 @@
 #import "PersonalFileViewController.h"
 #import "MyAddressViewController.h"
 #import "ModifyPasswordViewController.h"
+#import "LoginViewController.h"
+#import "ModifyPasswordViewController.h"
 
 @interface ConfigurationViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -86,6 +88,42 @@
     [self.tableView registerNib:nibButton forCellReuseIdentifier:NSStringFromClass([Configuration_ButtonCell class])];
 }
 
+#pragma mark - <修改密码>
+-(void)jumpToModifyPasswordVC
+{
+    ModifyPasswordViewController *modifyPasswordVC = [[ModifyPasswordViewController alloc]initWithNibName:NSStringFromClass([ModifyPasswordViewController class]) bundle:nil];
+    [self.navigationController pushViewController:modifyPasswordVC animated:YES];
+}
+
+#pragma mark - <退出登录>
+-(void)logout
+{
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil message:@"退出登录？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionConfirm = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        LoginViewController *loginVC = [[LoginViewController alloc]initWithNibName:NSStringFromClass([LoginViewController class]) bundle:nil];
+        [self presentViewController:loginVC animated:YES completion:^{
+            //清除单例中的userID
+            kUserDefaultRemoveObject(kUserInfo);
+            kUserDefaultSynchronize;
+            
+            //回到首页
+            self.tabBarController.selectedIndex = 0;
+        }];
+    }];
+    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+    [alertVC addAction:actionCancel];
+    [alertVC addAction:actionConfirm];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -132,6 +170,8 @@
     }else if (indexPath.row == 2){//修改密码
         ModifyPasswordViewController *modifyPasswordVC = [[ModifyPasswordViewController alloc]initWithNibName:NSStringFromClass([ModifyPasswordViewController class]) bundle:nil];
         [self.navigationController pushViewController:modifyPasswordVC animated:YES];
+    }else if (indexPath.row == 7){
+        [self logout];
     }
 }
 

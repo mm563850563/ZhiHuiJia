@@ -16,11 +16,16 @@
 #import "NULLTableViewCell.h"
 
 //models
-#import "MyJoinedCircleDataModel.h"
-#import "MyJoinedCircleResultModel.h"
+//#import "MyJoinedCircleDataModel.h"
+//#import "MyJoinedCircleResultModel.h"
 #import "MyCircleDynamicDataModel.h"
 #import "MyCircleDynamicResultModel.h"
 #import "MyCircleDynamicTips_infoModel.h"
+
+#import "MyCircleDataModel.h"
+#import "MyCircleResultModel.h"
+#import "MyCircleUser_infoModel.h"
+#import "MyCircleCircle_infoModel.h"
 
 //controllers
 #import "MoreCycleViewController.h"
@@ -29,6 +34,9 @@
 #import "TopicDetailViewController.h"
 
 @interface MyCircleViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic, strong)MyCircleResultModel *modelResult;
+@property (nonatomic, strong)MyCircleUser_infoModel *modelUser_info;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *joinedCircleArray;
@@ -81,11 +89,11 @@
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     
     dispatch_group_t group = dispatch_group_create();
-    dispatch_queue_t queue1 = dispatch_queue_create("getMyJoinedCircleData", NULL);
+    dispatch_queue_t queue1 = dispatch_queue_create("getMyCircleData", NULL);
     dispatch_queue_t queue2 = dispatch_queue_create("getMyCircleDynamicData", NULL);
     
     dispatch_group_async(group, queue1, ^{
-        [self getMyJoinedCircleData];
+        [self getMyCircleData];
     });
     dispatch_group_async(group, queue2, ^{
         [self getMyCircleDynamicDataWithPage:@1];
@@ -95,6 +103,50 @@
         [self.tableView reloadData];
         [hud hideAnimated:YES afterDelay:1.0];
     });
+}
+
+#pragma mark - <“我的圈子”详情>
+-(void)getMyCircleData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kMyCircle];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
+    
+    //    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                MyCircleDataModel *modelData = [[MyCircleDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                self.modelResult = modelData.result;
+                self.modelUser_info = modelData.result.user_info;
+                self.joinedCircleArray = modelData.result.circle_info;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //                    [hud hideAnimated:YES afterDelay:1.0];
+                    [self.tableView reloadData];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
 }
 
 #pragma mark - <获取“已加入圈子”数据>
@@ -109,8 +161,8 @@
             NSDictionary *dataDict = (NSDictionary *)response;
             NSNumber *code = (NSNumber *)dataDict[@"code"];
             if ([code isEqual:@200]) {
-                MyJoinedCircleDataModel *model = [[MyJoinedCircleDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
-                self.joinedCircleArray = model.result;
+//                MyJoinedCircleDataModel *model = [[MyJoinedCircleDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+//                self.joinedCircleArray = model.result;
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
 //                    [hud hideAnimated:YES afterDelay:1.0];
@@ -360,7 +412,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        if (self.joinedCircleArray.count > 3) {
+        if ([self.modelResult.is_more isEqualToString:@"1"]) {
             return 5;
         }
         return self.joinedCircleArray.count+1;
@@ -412,6 +464,7 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             MyCircleHeaderCell * cellHeader = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyCircleHeaderCell class])];
+            cellHeader.modelUser_info = self.modelUser_info;
             cell = cellHeader;
         }else if (indexPath.row == 4){
             MoreTableViewCell *cellMore = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MoreTableViewCell class])];
@@ -460,7 +513,7 @@
         }else if (indexPath.row == 0){
             
         }else{
-            MyJoinedCircleResultModel *modelResult = self.joinedCircleArray[indexPath.row-1];
+            MyCircleCircle_infoModel *modelResult = self.joinedCircleArray[indexPath.row-1];
             [self jumpToCircleDetailVCWithCircleID:modelResult.circle_id];
         }
     }else{

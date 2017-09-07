@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyCircleUser_infoModel.h"
 
 @interface MyCircleHeaderCell : UITableViewCell
+
+@property (nonatomic, strong)MyCircleUser_infoModel *modelUser_info;
 
 @end

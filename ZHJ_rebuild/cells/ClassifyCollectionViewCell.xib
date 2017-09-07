@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClassifyCollectionViewCell" id="gTV-IL-0wX" customClass="ClassifyCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="202" height="321"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="202" height="321"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XzU-w2-8Zj">
+                        <rect key="frame" x="2" y="5" width="198" height="198"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="XzU-w2-8Zj" secondAttribute="height" multiplier="1:1" id="ahV-07-19r"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qz-Y1-5k0">
+                        <rect key="frame" x="0.0" y="208" width="202" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="YX8-4f-uv1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.21549809640000001" green="0.21549809640000001" blue="0.21549809640000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select_classify" translatesAutoresizingMaskIntoConstraints="NO" id="ZD8-X6-NGd">
+                        <rect key="frame" x="2" y="5" width="198" height="198"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ZD8-X6-NGd" secondAttribute="height" multiplier="1:1" id="PsW-Dl-QzU"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="3qz-Y1-5k0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Cvj-Ge-K6R"/>
+                <constraint firstItem="XzU-w2-8Zj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="I4z-Om-lif"/>
+                <constraint firstItem="ZD8-X6-NGd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="KPC-ZY-g8n"/>
+                <constraint firstAttribute="trailing" secondItem="XzU-w2-8Zj" secondAttribute="trailing" constant="2" id="S7l-qd-X0P"/>
+                <constraint firstItem="XzU-w2-8Zj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="SJN-MJ-goW"/>
+                <constraint firstItem="ZD8-X6-NGd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="d5D-Fq-RQs"/>
+                <constraint firstItem="3qz-Y1-5k0" firstAttribute="top" secondItem="XzU-w2-8Zj" secondAttribute="bottom" constant="5" id="ecb-BA-Zh0"/>
+                <constraint firstAttribute="trailing" secondItem="3qz-Y1-5k0" secondAttribute="trailing" id="rVm-Pk-yFS"/>
+                <constraint firstAttribute="trailing" secondItem="ZD8-X6-NGd" secondAttribute="trailing" constant="2" id="sbC-aU-7iJ"/>
+            </constraints>
+            <size key="customSize" width="202" height="321"/>
+            <connections>
+                <outlet property="imgViewClassify" destination="XzU-w2-8Zj" id="ncs-F0-eT6"/>
+                <outlet property="imgViewSelected" destination="ZD8-X6-NGd" id="Qgx-lm-9Aw"/>
+                <outlet property="labelName" destination="3qz-Y1-5k0" id="wXg-Sm-lNV"/>
+            </connections>
+            <point key="canvasLocation" x="50" y="225.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="select_classify" width="105" height="105"/>
+    </resources>
+</document>

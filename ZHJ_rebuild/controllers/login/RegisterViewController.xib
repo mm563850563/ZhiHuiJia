@@ -177,20 +177,74 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y8Y-UM-1z9">
-                                    <rect key="frame" x="182.5" y="440" width="10" height="45"/>
+                                    <rect key="frame" x="182.5" y="440" width="10" height="50"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="10" id="rZe-AF-hKl"/>
-                                        <constraint firstAttribute="height" constant="45" id="wHo-8Q-XfF"/>
+                                        <constraint firstAttribute="height" constant="50" id="wHo-8Q-XfF"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ia6-nG-RlN">
-                                    <rect key="frame" x="0.0" y="440" width="162.5" height="45"/>
+                                    <rect key="frame" x="0.0" y="440" width="162.5" height="50"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="moK-Ey-eI1">
+                                            <rect key="frame" x="0.0" y="0.0" width="137.5" height="50"/>
+                                            <color key="backgroundColor" red="0.4392156862745098" green="0.76862745098039209" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JqJ-Qp-YOV">
+                                            <rect key="frame" x="112.5" y="0.0" width="50" height="50"/>
+                                            <color key="backgroundColor" red="0.4392156862745098" green="0.76862745098039209" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="fKY-S2-FZ7"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="25"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="JqJ-Qp-YOV" secondAttribute="trailing" id="2bH-A0-S6s"/>
+                                        <constraint firstItem="JqJ-Qp-YOV" firstAttribute="top" secondItem="Ia6-nG-RlN" secondAttribute="top" id="4bt-NH-cJI"/>
+                                        <constraint firstAttribute="bottom" secondItem="JqJ-Qp-YOV" secondAttribute="bottom" id="Cbn-ec-QtH"/>
+                                        <constraint firstAttribute="bottom" secondItem="moK-Ey-eI1" secondAttribute="bottom" id="XoK-yy-M0u"/>
+                                        <constraint firstAttribute="trailing" secondItem="moK-Ey-eI1" secondAttribute="trailing" constant="25" id="anN-CI-pP4"/>
+                                        <constraint firstItem="moK-Ey-eI1" firstAttribute="top" secondItem="Ia6-nG-RlN" secondAttribute="top" id="nhG-bW-zaJ"/>
+                                        <constraint firstItem="moK-Ey-eI1" firstAttribute="leading" secondItem="Ia6-nG-RlN" secondAttribute="leading" id="yqd-Bh-WDF"/>
+                                    </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LqR-Oa-Gso">
-                                    <rect key="frame" x="212.5" y="440" width="162.5" height="45"/>
+                                    <rect key="frame" x="212.5" y="440" width="162.5" height="50"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGu-Kf-EoV">
+                                            <rect key="frame" x="25" y="0.0" width="137.5" height="50"/>
+                                            <color key="backgroundColor" red="0.99607843137254903" green="0.52549019607843139" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Io-QC-eoH">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <color key="backgroundColor" red="0.99607843137254903" green="0.52549019607843139" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="BZl-0y-Agg"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="25"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="5Io-QC-eoH" secondAttribute="bottom" id="7Ku-72-e5o"/>
+                                        <constraint firstAttribute="trailing" secondItem="fGu-Kf-EoV" secondAttribute="trailing" id="8w9-ex-od7"/>
+                                        <constraint firstItem="fGu-Kf-EoV" firstAttribute="top" secondItem="LqR-Oa-Gso" secondAttribute="top" id="O0e-9Q-OQY"/>
+                                        <constraint firstAttribute="bottom" secondItem="fGu-Kf-EoV" secondAttribute="bottom" id="aT2-Ga-e7I"/>
+                                        <constraint firstItem="5Io-QC-eoH" firstAttribute="top" secondItem="LqR-Oa-Gso" secondAttribute="top" id="eTK-qV-036"/>
+                                        <constraint firstItem="5Io-QC-eoH" firstAttribute="leading" secondItem="LqR-Oa-Gso" secondAttribute="leading" id="gAa-Nh-WXD"/>
+                                        <constraint firstItem="fGu-Kf-EoV" firstAttribute="leading" secondItem="LqR-Oa-Gso" secondAttribute="leading" constant="25" id="jFX-kW-uDT"/>
+                                    </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nJ-op-SKM">
                                     <rect key="frame" x="235" y="360" width="120" height="50"/>

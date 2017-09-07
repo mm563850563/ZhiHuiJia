@@ -16,6 +16,7 @@
 //controllers
 #import "RegisterViewController.h"
 #import "ForgetPasswordViewController.h"
+#import "SelectThemeAndClassifyViewController.h"
 
 //SDKs
 #import <ShareSDKExtension/ShareSDK+Extension.h>
@@ -211,6 +212,11 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                     hudWarning.completionBlock = ^{
+                        NSNumber *selected_cat = dataDict[@"data"][@"result"][@"selected_cat"];
+                        if ([selected_cat isEqual:@0]) {
+                            //模态出选择喜欢的品类
+                            [self presentSelectThemeVC];
+                        }
                         [self dismissViewControllerAnimated:YES completion:nil];
                     };
                     [hudWarning hideAnimated:YES afterDelay:2.0];
@@ -220,6 +226,9 @@
                     kUserDefaultSynchronize;
                     
                     [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshHomePageAfterLogin" object:nil];
+                    
+                    
+                    
                 });
                 
             }else{
@@ -302,6 +311,13 @@
             [hudWarning hideAnimated:YES afterDelay:2.0];
         });
     }];
+}
+
+#pragma mark - <模态出选择主题页面>
+-(void)presentSelectThemeVC
+{
+    SelectThemeAndClassifyViewController *selectThemeVC = [[SelectThemeAndClassifyViewController alloc]initWithNibName:NSStringFromClass([SelectThemeAndClassifyViewController class]) bundle:nil];
+    [self presentViewController:selectThemeVC animated:YES completion:nil];
 }
 
 #pragma mark - <登陆按钮响应>

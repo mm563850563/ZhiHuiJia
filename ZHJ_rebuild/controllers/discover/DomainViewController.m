@@ -374,7 +374,7 @@
         [self jumpToPersonalFileVC];
     }];
     
-    //查看为关注的人
+    //查看我关注的人
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"DomainToMyFocus" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         [self jumpToMyOnFocusVCWithFansOrFocus:@"focus"];
     }];

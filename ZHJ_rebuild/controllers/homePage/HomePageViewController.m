@@ -8,7 +8,9 @@
 
 #import "HomePageViewController.h"
 
-
+//views
+#import "HomePageRecommendHeaderView.h"
+#import "HomePageSameHobbyHeaderView.h"
 
 //controllers
 #import "NotificationViewController.h"
@@ -320,15 +322,23 @@
                         [self.tableView reloadData];
                     });
                 }else{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                    });
+                   
                 }
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
             }
         } failBlock:^(NSError *error) {
-            if (error.code == -1009) {
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
-            }
+            });
         }];
     }
 }
@@ -469,6 +479,7 @@
     MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
     moreProductListVC.hidesBottomBarWhenPushed = YES;
     moreProductListVC.category_id = category_id;
+    moreProductListVC.is_root = @"yes";
     [self.navigationController pushViewController:moreProductListVC animated:YES];
 }
 #pragma mark - <跳转“好友主页”页面>
@@ -734,7 +745,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section > self.homeGoodsResultArray.count) {
-        return 50;
+        return 70;
     }
     return 0.1f;
 }
@@ -749,20 +760,18 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
-    headerView.backgroundColor = [UIColor purpleColor];
-    UILabel *label = [[UILabel alloc]initWithFrame:headerView.bounds];
-    label.textColor = kColorFromRGB(kWhite);
-    [headerView addSubview:label];
+    
+    UIView *headerView = [[UIView alloc]init];
+    
     if (section == self.homeGoodsResultArray.count + 1) {
-        label.text = @"为你精心推荐";
-        return headerView;
+        HomePageRecommendHeaderView *headerRecommendView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([HomePageRecommendHeaderView class]) owner:nil options:nil].lastObject;
+        headerView = headerRecommendView;
     }
     if (section == self.homeGoodsResultArray.count + 2) {
-        label.text = @"发现同趣的人";
-        return headerView;
+        HomePageSameHobbyHeaderView *headerSameHobbyView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([HomePageSameHobbyHeaderView class]) owner:nil options:nil].lastObject;
+        headerView = headerSameHobbyView;
     }
-    return nil;
+    return headerView;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -775,8 +784,10 @@
         return;
     }else if (indexPath.section == self.homeGoodsResultArray.count + 2){
         if (indexPath.row == 1) {
+            //更多同趣的人
             SameHobbyPersonListViewController *sameHobbyPersonListVC = [[SameHobbyPersonListViewController alloc]initWithNibName:NSStringFromClass([SameHobbyPersonListViewController class]) bundle:nil];
             sameHobbyPersonListVC.hidesBottomBarWhenPushed = YES;
+            sameHobbyPersonListVC.navigationItem.title = @"与您同趣的人";
             [self.navigationController pushViewController:sameHobbyPersonListVC animated:YES];
         }
     }else{
@@ -878,7 +889,7 @@
 #pragma mark - **** UISearchBarDelegate ****
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    NSArray *array = [NSArray array];
+    NSArray *array = [NSArray arrayWithObjects:@"sfdgfhjg",@"jtyhrtgr",@"sfdgf",@"sdfdgf", nil];
     PYSearchViewController *searchVC = [PYSearchViewController searchViewControllerWithHotSearches:array searchBarPlaceholder:@"请输入关键字" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
         [searchViewController.navigationController pushViewController:moreProductListVC animated:YES];

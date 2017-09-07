@@ -18,6 +18,9 @@
 #import "UIImage+Orientation.h"
 #import <AFNetworking.h>
 
+//controllers
+#import "SelectThemeAndClassifyViewController.h"
+
 @interface RegisterViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate,STPickerDateDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgPotrait;
@@ -245,6 +248,8 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 //    self.maleSlider.thumbImage = [UIImage imageNamed:@"man"];
 //    [self.maleBGView addSubview:self.maleSlider];
     self.maleSlider = [[MySlider alloc]initWithFrame:self.maleBGView.bounds];
+    self.maleSlider.maximumTrackTintColor = kClearColor;
+    self.maleSlider.minimumTrackTintColor = kClearColor;
     [self.maleSlider trackRectForBounds:self.maleBGView.bounds];
     [self.maleBGView addSubview:self.maleSlider];
     self.maleSlider.minimumValue = 0;
@@ -272,6 +277,8 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 //    self.femaleSlider.thumbImage = [UIImage imageNamed:@"women"];
 //    [self.femaleBGView addSubview:self.femaleSlider];
     self.femaleSlider = [[MySlider alloc]initWithFrame:self.femaleBGView.bounds];
+    self.femaleSlider.maximumTrackTintColor = kClearColor;
+    self.femaleSlider.minimumTrackTintColor = kClearColor;
     [self.femaleSlider trackRectForBounds:self.femaleBGView.bounds];
     [self.femaleBGView addSubview:self.femaleSlider];
     self.femaleSlider.minimumValue = 0;
@@ -361,6 +368,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 #pragma mark - <获取验证码响应>
 - (IBAction)btnVerificationCodeAction:(UIButton *)sender
 {
+    
     if ([self.tfPhone.text isEqualToString:@""]) {
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入手机号码"];
         [hudWarning hideAnimated:YES afterDelay:2.0];

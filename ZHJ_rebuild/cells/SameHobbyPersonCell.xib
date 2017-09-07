@@ -33,7 +33,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某某某" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ux-XJ-KYQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ux-XJ-KYQ">
                                 <rect key="frame" x="10" y="60" width="76" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Lg8-dg-7Y2"/>
@@ -43,27 +43,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCs-96-MT4">
-                                <rect key="frame" x="23" y="85" width="50" height="25"/>
+                                <rect key="frame" x="18.5" y="80" width="60" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="IiN-4B-6Uy"/>
-                                    <constraint firstAttribute="width" constant="50" id="WTZ-hV-zgR"/>
+                                    <constraint firstAttribute="height" constant="30" id="IiN-4B-6Uy"/>
+                                    <constraint firstAttribute="width" constant="60" id="WTZ-hV-zgR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <state key="normal" title="关注+">
+                                <state key="normal" image="focus">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <state key="selected" title="已关注"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                        <color key="value" red="1" green="0.85490196078431369" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <state key="selected" image="focused"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,7 +61,7 @@
                             <constraint firstItem="brF-nb-r5m" firstAttribute="centerX" secondItem="t6a-pf-45J" secondAttribute="centerX" id="GoB-R6-RrY"/>
                             <constraint firstItem="brF-nb-r5m" firstAttribute="top" secondItem="t6a-pf-45J" secondAttribute="top" constant="10" id="lZd-1y-93a"/>
                             <constraint firstItem="yCs-96-MT4" firstAttribute="centerX" secondItem="t6a-pf-45J" secondAttribute="centerX" id="orI-gR-3Sr"/>
-                            <constraint firstItem="yCs-96-MT4" firstAttribute="top" secondItem="5Ux-XJ-KYQ" secondAttribute="bottom" constant="5" id="sLl-M0-Ptc"/>
+                            <constraint firstItem="yCs-96-MT4" firstAttribute="top" secondItem="5Ux-XJ-KYQ" secondAttribute="bottom" id="sLl-M0-Ptc"/>
                             <constraint firstAttribute="trailing" secondItem="5Ux-XJ-KYQ" secondAttribute="trailing" constant="10" id="sSR-xD-VLN"/>
                             <constraint firstItem="5Ux-XJ-KYQ" firstAttribute="top" secondItem="brF-nb-r5m" secondAttribute="bottom" id="w8y-mj-Qbt"/>
                         </constraints>
@@ -95,6 +84,8 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="focus" width="57" height="27"/>
+        <image name="focused" width="57" height="27"/>
         <image name="tx" width="123" height="123"/>
     </resources>
 </document>

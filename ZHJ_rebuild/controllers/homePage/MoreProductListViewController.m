@@ -46,7 +46,7 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
     self.layoutCode = CollectionLayout;
     
     if (self.category_id) {
-        [self getClassifyListData];
+        [self getClassifyListDataWithSort:@"recommend" value:nil];
     }
     
     [self settingNavigation];
@@ -72,14 +72,26 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
  */
 
 #pragma mark - <获取数据>
--(void)getClassifyListData
+-(void)getClassifyListDataWithSort:(NSString *)sort value:(NSString *)value
 {
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     
     //分类列表
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kClassifyList];
     //参数
-    NSDictionary *dictParameter = @{@"category_id":self.category_id};
+    NSMutableDictionary *dictParameter = [NSMutableDictionary dictionary];
+    [dictParameter setObject:self.category_id forKey:@"category_id"];
+    [dictParameter setObject:sort forKey:@"sort"];
+    
+    if (self.is_root) {
+        [dictParameter setObject:@"1" forKey:@"is_root"];
+    }else{
+        [dictParameter setObject:@"0" forKey:@"is_root"];
+    }
+    
+    if (value) {
+        [dictParameter setObject:value forKey:@"value"];
+    }
     
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         if (response) {
@@ -202,21 +214,56 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
         [self changeLayout];
     }];
     
-//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_recommed" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-//        
-//    }];
-//    
-//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_newest" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-//        
-//    }];
-//    
-//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_salesVolunm" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-//        
-//    }];
-//    
-//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_price" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-//        
-//    }];
+    //按推荐排序
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_recommed" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        UIButton *button = x.object;
+        NSString *value = [NSString string];
+        if (button.selected) {
+            value = @"1";
+        }else{
+            value = @"0";
+        }
+        [self getClassifyListDataWithSort:@"recommend" value:value];
+    }];
+    
+    //按最新排序
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_newest" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        UIButton *button = x.object;
+        NSString *value = [NSString string];
+        if (button.selected) {
+            value = @"1";
+        }else{
+            value = @"0";
+        }
+        [self getClassifyListDataWithSort:@"lastest" value:value];
+    }];
+    
+    //按销量排序
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_salesVolunm" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        
+        UIButton *button = x.object;
+        NSString *value = [NSString string];
+        if (button.selected) {
+            value = @"1";
+        }else{
+            value = @"0";
+        }
+        [self getClassifyListDataWithSort:@"sales" value:value];
+    }];
+    
+    //按价格排序
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_price" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        
+        UIButton *button = x.object;
+        NSString *value = [NSString string];
+        if (button.selected) {
+            value = @"1";
+        }else{
+            value = @"0";
+        }
+        [self getClassifyListDataWithSort:@"price" value:value];
+        
+    }];
 }
 
 

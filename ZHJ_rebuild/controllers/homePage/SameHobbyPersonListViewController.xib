@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SameHobbyPersonListViewController">
             <connections>
-                <outlet property="tableView" destination="HI9-CZ-shp" id="hOk-cB-Mea"/>
+                <outlet property="tableView" destination="4h3-XN-RmN" id="9wJ-Fa-mbV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,17 +20,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HI9-CZ-shp">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4h3-XN-RmN">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="HI9-CZ-shp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GWY-of-Lhh"/>
-                <constraint firstAttribute="trailing" secondItem="HI9-CZ-shp" secondAttribute="trailing" id="UIh-Cu-3hJ"/>
-                <constraint firstAttribute="bottom" secondItem="HI9-CZ-shp" secondAttribute="bottom" id="Y1K-CZ-NXx"/>
-                <constraint firstItem="HI9-CZ-shp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dkv-Wj-6yE"/>
+                <constraint firstItem="4h3-XN-RmN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AdT-2r-dPV"/>
+                <constraint firstAttribute="trailing" secondItem="4h3-XN-RmN" secondAttribute="trailing" id="OWd-8J-wfW"/>
+                <constraint firstItem="4h3-XN-RmN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="be3-3K-CZ8"/>
+                <constraint firstAttribute="bottom" secondItem="4h3-XN-RmN" secondAttribute="bottom" id="rue-tu-FMF"/>
             </constraints>
         </view>
     </objects>
