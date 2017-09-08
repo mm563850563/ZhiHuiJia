@@ -157,7 +157,10 @@
     if (![user_info[@"cdn_headimg"] isEqualToString:@""]) {
         NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,user_info[@"cdn_headimg"]];
         NSURL *url = [NSURL URLWithString:imgStr];
-        [self.btnPotrait.imageView sd_setImageWithURL:url placeholderImage:kPlaceholder];
+        UIImageView *imgView = [[UIImageView alloc]init];
+        [imgView sd_setImageWithURL:url placeholderImage:kPlaceholder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            [self.btnPotrait setImage:image forState:UIControlStateNormal];
+        }];
     }
     
 }

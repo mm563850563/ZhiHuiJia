@@ -12,7 +12,7 @@
 @interface YouthColorCell : UITableViewCell
 
 @property (nonatomic, strong)HomeGoodsResultModel *model;
-@property (nonatomic, strong)NSArray *recommendGoodsArray;
+//@property (nonatomic, strong)NSArray *recommendGoodsArray;
 @property (nonatomic,assign)CGFloat cellHeight;
 @property (nonatomic, strong)NSArray *userFavoriteArray;
 

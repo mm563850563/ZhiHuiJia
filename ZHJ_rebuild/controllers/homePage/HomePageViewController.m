@@ -31,6 +31,7 @@
 #import "GiftSendingTableViewCell.h"
 #import "HomePageMainCell.h"
 #import "YouthColorCell.h"//青春色彩大的tableViewCell
+#import "RecommendGoodsCell.h"//为您推荐cell
 #import "HomeLeftImageCell.h"
 #import "HomeRightImageCell.h"
 #import "IntellectWearsCell.h"//智能穿戴大的tableViewCell
@@ -60,11 +61,13 @@
 @property (nonatomic, strong)NSArray *carouselResultArray;
 @property (nonatomic, strong)NSArray *homeGoodsResultArray;
 @property (nonatomic, strong)NSArray *homeGoodsListArray;
-@property (nonatomic, strong)NSArray *recommendResultArray;
+//@property (nonatomic, strong)NSArray *recommendResultArray;
 @property (nonatomic, strong)NSArray *similarUserArray;
 @property (nonatomic, strong)GetGiftTypeResultModel *getGiftResultModel;
 
 @property (nonatomic, strong)UIImageView *imgViewPortrait;
+
+@property (nonatomic, strong)RecommendGoodsDataModel *modelRecommendData;
 
 @end
 
@@ -281,7 +284,7 @@
                 NSDictionary *dataDict = (NSDictionary *)response;
                 RecommendGoodsModel *model = [[RecommendGoodsModel alloc]initWithDictionary:dataDict error:nil];
                 if ([model.code isEqualToString:@"200"]) {
-                    self.recommendResultArray = model.data.result;
+                    self.modelRecommendData = model.data;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.tableView reloadData];
                     });
@@ -369,6 +372,8 @@
     [self.tableView registerNib:nibHomeMain forCellReuseIdentifier:NSStringFromClass([HomePageMainCell class])];
     
     [self.tableView registerClass:[YouthColorCell class] forCellReuseIdentifier:NSStringFromClass([YouthColorCell class])];
+    
+    [self.tableView registerClass:[RecommendGoodsCell class] forCellReuseIdentifier:NSStringFromClass([RecommendGoodsCell class])];
     
     UINib *nibLeftImage = [UINib nibWithNibName:NSStringFromClass([HomeLeftImageCell class]) bundle:nil];
     [self.tableView registerNib:nibLeftImage forCellReuseIdentifier:NSStringFromClass([HomeLeftImageCell class])];
@@ -616,9 +621,9 @@
             cell = giftCell;
         }
     }else if (indexPath.section == self.homeGoodsResultArray.count+1){//为你精心推荐
-        YouthColorCell *cellYouth = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([YouthColorCell class])];
-        cellYouth.recommendGoodsArray = self.recommendResultArray;
-        cell = cellYouth;
+        RecommendGoodsCell *cellRecommend = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([RecommendGoodsCell class])];
+        cellRecommend.modelRecommendData = self.modelRecommendData;
+        cell = cellRecommend;
     }else if (indexPath.section == self.homeGoodsResultArray.count+2){//发现同趣的人
         if (indexPath.row == 0) {
             SameHobbyCell *cellSameHobby = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SameHobbyCell class])];
@@ -691,9 +696,9 @@
     if (indexPath.section == 0) {
         height = kSCREEN_WIDTH/5.2*3.5;
     }else if (indexPath.section == self.homeGoodsResultArray.count+1){
-        YouthColorCell *cellYouth = [[YouthColorCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([YouthColorCell class])];
-        cellYouth.recommendGoodsArray = self.recommendResultArray;
-        height = cellYouth.cellHeight;
+        RecommendGoodsCell *cellRecommendGoods = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([RecommendGoodsCell class])];
+        cellRecommendGoods.modelRecommendData = self.modelRecommendData;
+        height = cellRecommendGoods.cellHeight;
     }else if (indexPath.section == self.homeGoodsResultArray.count+2){
         if (indexPath.row == 0) {
             SameHobbyCell *cellSameHobby = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SameHobbyCell class])];

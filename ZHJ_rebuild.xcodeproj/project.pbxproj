@@ -356,6 +356,8 @@
 		DD5E86DC1F61768800690729 /* MyCircleResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86DB1F61768800690729 /* MyCircleResultModel.m */; };
 		DD5E86DF1F6176E400690729 /* MyCircleUser_infoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86DE1F6176E400690729 /* MyCircleUser_infoModel.m */; };
 		DD5E86E21F61770000690729 /* MyCircleCircle_infoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86E11F61770000690729 /* MyCircleCircle_infoModel.m */; };
+		DD5E86EF1F62C23C00690729 /* RecommendGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86EE1F62C23C00690729 /* RecommendGoodsCell.m */; };
+		DD5E86F21F62C39200690729 /* RecommendGoodsResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86F11F62C39200690729 /* RecommendGoodsResultModel.m */; };
 		DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */; };
 		DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */; };
 		DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */; };
@@ -1291,6 +1293,10 @@
 		DD5E86DE1F6176E400690729 /* MyCircleUser_infoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCircleUser_infoModel.m; path = models/MyCircleUser_infoModel.m; sourceTree = "<group>"; };
 		DD5E86E01F61770000690729 /* MyCircleCircle_infoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCircleCircle_infoModel.h; path = models/MyCircleCircle_infoModel.h; sourceTree = "<group>"; };
 		DD5E86E11F61770000690729 /* MyCircleCircle_infoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCircleCircle_infoModel.m; path = models/MyCircleCircle_infoModel.m; sourceTree = "<group>"; };
+		DD5E86ED1F62C23C00690729 /* RecommendGoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecommendGoodsCell.h; path = cells/RecommendGoodsCell.h; sourceTree = "<group>"; };
+		DD5E86EE1F62C23C00690729 /* RecommendGoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecommendGoodsCell.m; path = cells/RecommendGoodsCell.m; sourceTree = "<group>"; };
+		DD5E86F01F62C39200690729 /* RecommendGoodsResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecommendGoodsResultModel.h; path = models/RecommendGoodsResultModel.h; sourceTree = "<group>"; };
+		DD5E86F11F62C39200690729 /* RecommendGoodsResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecommendGoodsResultModel.m; path = models/RecommendGoodsResultModel.m; sourceTree = "<group>"; };
 		DD6286F71F1E398C0030331D /* Discover_HotTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_HotTopicCell.h; path = cells/Discover_HotTopicCell.h; sourceTree = "<group>"; };
 		DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_HotTopicCell.m; path = cells/Discover_HotTopicCell.m; sourceTree = "<group>"; };
 		DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_HotTopicCell.xib; path = cells/Discover_HotTopicCell.xib; sourceTree = "<group>"; };
@@ -2289,6 +2295,8 @@
 				DD0DBACF1F32B9810098F5FA /* RecommendGoodsModel.m */,
 				DD0DBAD11F32B9970098F5FA /* RecommendGoodsDataModel.h */,
 				DD0DBAD21F32B9970098F5FA /* RecommendGoodsDataModel.m */,
+				DD5E86F01F62C39200690729 /* RecommendGoodsResultModel.h */,
+				DD5E86F11F62C39200690729 /* RecommendGoodsResultModel.m */,
 			);
 			name = GetRecommendGoods;
 			sourceTree = "<group>";
@@ -3125,6 +3133,8 @@
 				DD40B71A1F164CE000839748 /* HomePageMainCell.xib */,
 				DD40B71D1F17027E00839748 /* YouthColorCell.h */,
 				DD40B71E1F17027E00839748 /* YouthColorCell.m */,
+				DD5E86ED1F62C23C00690729 /* RecommendGoodsCell.h */,
+				DD5E86EE1F62C23C00690729 /* RecommendGoodsCell.m */,
 				DD40B7201F1705A000839748 /* HomeCollectCell1.h */,
 				DD40B7211F1705A000839748 /* HomeCollectCell1.m */,
 				DD40B7221F1705A000839748 /* HomeCollectCell1.xib */,
@@ -4462,6 +4472,7 @@
 				DD69B2CC1F3AB5FA0036F368 /* OrderConfirmModel.m in Sources */,
 				DD4CF1091F29EE010024156F /* AllClassifyDataModel.m in Sources */,
 				DD095FB61F53C587002F4AED /* CircleDetailDynamicCell.m in Sources */,
+				DD5E86F21F62C39200690729 /* RecommendGoodsResultModel.m in Sources */,
 				DDFB82C51F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m in Sources */,
 				DDE0FD2F1F37F75500269DBD /* BrandDetailResultModel.m in Sources */,
 				DD095FAF1F53BDC6002F4AED /* CircleDetailResultModel.m in Sources */,
@@ -4664,6 +4675,7 @@
 				DD52ED0A1F5D8ED500B4CE96 /* CreateTopicViewController.m in Sources */,
 				DD52ECF11F5CE4EE00B4CE96 /* GetSimilarUserResultModel.m in Sources */,
 				DD6897FC1F2F2647008B6A8F /* AllBrandModel.m in Sources */,
+				DD5E86EF1F62C23C00690729 /* RecommendGoodsCell.m in Sources */,
 				DD184E0C1F3C52C6009BFF5B /* MyDiscountCouponCell.m in Sources */,
 				DD62872B1F1F4EC20030331D /* ConfigurationViewController.m in Sources */,
 				EC4BA08A1F1359A900B9BE1A /* CycleScrollModel.m in Sources */,

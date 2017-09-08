@@ -7,13 +7,13 @@
 //
 
 #import <JSONModel/JSONModel.h>
-#import "HomeGoodsListModel.h"
+#import "RecommendGoodsResultModel.h"
 
-@protocol HomeGoodsListModel <NSObject>
+@protocol RecommendGoodsResultModel <NSObject>
 @end
 
 @interface RecommendGoodsDataModel : JSONModel
 
-@property (nonatomic, strong)NSArray<HomeGoodsListModel> *result;
+@property (nonatomic, strong)NSArray<RecommendGoodsResultModel> *result;
 
 @end

@@ -721,7 +721,7 @@
                                                                 <state key="normal" title="Button" image="appLogo"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="40"/>
+                                                                        <integer key="value" value="45"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </button>

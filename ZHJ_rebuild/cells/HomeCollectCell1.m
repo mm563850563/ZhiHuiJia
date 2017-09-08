@@ -8,6 +8,7 @@
 
 #import "HomeCollectCell1.h"
 #import "HomeGoodsListModel.h"
+#import "RecommendGoodsResultModel.h"
 #import "UserFavoriteResultModel.h"
 #import "NSMutableAttributedString+ThroughLine.h"
 
@@ -53,6 +54,22 @@
         self.labelPrice.text = [NSString stringWithFormat:@"¥%@",modelUserFavorite.price];
         self.labelProductDetail.text = modelUserFavorite.goods_remark;
     }
+}
+
+-(void)setModelRecommendResult:(RecommendGoodsResultModel *)modelRecommendResult
+{
+    _modelRecommendResult = modelRecommendResult;
+    
+    NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelRecommendResult.img];
+    NSURL *url = [NSURL URLWithString:imgStr];
+    [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
+    
+    NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:modelRecommendResult.market_price font:11];
+    self.labelCompare.attributedText = throughLineText;
+    
+    self.labelProductName.text = modelRecommendResult.goods_name;
+    self.labelPrice.text = [NSString stringWithFormat:@"¥%@",modelRecommendResult.price];
+    self.labelProductDetail.text = modelRecommendResult.goods_remark;
 }
 
 @end
