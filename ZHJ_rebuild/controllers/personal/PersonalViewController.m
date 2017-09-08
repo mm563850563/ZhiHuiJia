@@ -22,6 +22,7 @@
 #import "AboutUsViewController.h"
 #import "MyTrackViewController.h"
 #import "ModifyPasswordViewController.h"
+#import "NotificationViewController.h"
 
 //cells
 #import "PersonalCollectCell.h"
@@ -153,8 +154,8 @@
     
     
     self.labelUserName.text = user_info[@"nickname"];
-    if (![user_info[@"headimg"] isEqualToString:@""]) {
-        NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,user_info[@"headimg"]];
+    if (![user_info[@"cdn_headimg"] isEqualToString:@""]) {
+        NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,user_info[@"cdn_headimg"]];
         NSURL *url = [NSURL URLWithString:imgStr];
         [self.btnPotrait.imageView sd_setImageWithURL:url placeholderImage:kPlaceholder];
     }
@@ -257,6 +258,15 @@
     configVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:configVC animated:YES];
 }
+
+#pragma mark - <跳转“消息”页面>
+- (IBAction)btnMessageAction:(UIButton *)sender
+{
+    NotificationViewController *notificationVC = [[NotificationViewController alloc]init];
+    [self.navigationController pushViewController:notificationVC animated:YES];
+    
+}
+
 
 #pragma mark - <设置“我的订单”响应>
 - (IBAction)btnMyOrderAction:(UIButton *)sender

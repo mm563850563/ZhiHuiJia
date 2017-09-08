@@ -712,7 +712,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             </imageView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cq9-a4-ScC">
+                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cq9-a4-ScC">
                                                                 <rect key="frame" x="25" y="60" width="90" height="90"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="90" id="0zF-jP-L3C"/>
@@ -746,6 +746,9 @@
                                                                     <constraint firstAttribute="width" constant="15" id="pcA-Z1-SJs"/>
                                                                 </constraints>
                                                                 <state key="normal" image="message_white"/>
+                                                                <connections>
+                                                                    <action selector="btnMessageAction:" destination="M3C-mp-T32" eventType="touchUpInside" id="oNf-Go-6hO"/>
+                                                                </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBB-XB-gpb">
                                                                 <rect key="frame" x="125" y="80" width="230" height="50"/>

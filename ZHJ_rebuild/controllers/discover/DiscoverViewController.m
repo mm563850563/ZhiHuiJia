@@ -29,6 +29,11 @@
 #import "NotificationViewController.h"
 #import "ReleaseActivityViewController.h"
 #import "MyCircleViewController.h"
+#import "PersonalFileViewController.h"
+#import "MyFocusViewController.h"
+#import "ActivityViewController.h"
+#import "PersonalRankActivityViewController.h"
+#import "MyJoinedActivityViewController.h"
 
 #import "DiscoverHotTopicViewController.h"
 #import "DiscoverRecommendViewController.h"
@@ -467,6 +472,24 @@
         [navigationController setNavigationBarHidden:NO animated:YES];
         [navigationController.navigationBar setTranslucent:NO];
     }else if ([viewController isKindOfClass:[MyCircleViewController class]]) {
+        [navigationController setNavigationBarHidden:NO animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[PersonalFileViewController class]]) {
+        [navigationController setNavigationBarHidden:NO animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[MyFocusViewController class]]) {
+        [navigationController setNavigationBarHidden:NO animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[ActivityViewController class]]) {
+        [navigationController setNavigationBarHidden:NO animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[PersonalRankActivityViewController class]]) {
+        [navigationController setNavigationBarHidden:NO animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[MyJoinedActivityViewController class]]) {
+        [navigationController setNavigationBarHidden:NO animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
+    }else{
         [navigationController setNavigationBarHidden:NO animated:YES];
         [navigationController.navigationBar setTranslucent:NO];
     }

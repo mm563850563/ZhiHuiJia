@@ -17,7 +17,8 @@
 #import "MyAddressViewController.h"
 #import "ModifyPasswordViewController.h"
 #import "LoginViewController.h"
-#import "ModifyPasswordViewController.h"
+#import "SelectThemeAndClassifyViewController.h"
+#import "AboutUsViewController.h"
 
 @interface ConfigurationViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -54,7 +55,7 @@
 #pragma mark - <获取数据>
 -(void)getData
 {
-    self.dataArray = @[@"编辑个人资料",@"收货地址管理",@"修改密码",@"设置个性主题",@"选择喜欢的品类",@"当前版本",@"关于我们"];
+    self.dataArray = @[@"编辑个人资料",@"收货地址管理",@"修改密码",@"选择喜欢的类别",@"当前版本",@"关于我们"];
     [self getCurrentVersion];
 }
 
@@ -108,6 +109,8 @@
             
             //回到首页
             self.tabBarController.selectedIndex = 0;
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }];
     }];
     UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
@@ -116,6 +119,20 @@
     [self presentViewController:alertVC animated:YES completion:nil];
 }
 
+#pragma mark - <模态选择喜欢的品类页面>
+-(void)presentSelectThemeAndClassifyVC
+{
+    SelectThemeAndClassifyViewController *selectThemeAndClassifyVC = [[SelectThemeAndClassifyViewController alloc]initWithNibName:NSStringFromClass([SelectThemeAndClassifyViewController class]) bundle:nil];
+    selectThemeAndClassifyVC.whereReuseFrom = @"configVC";
+    [self presentViewController:selectThemeAndClassifyVC animated:YES completion:nil];
+}
+
+#pragma mark - <跳转“关于我们”页面>
+-(void)jumpToAboutUsVC
+{
+    AboutUsViewController *aboutUsVC = [[AboutUsViewController alloc]initWithNibName:NSStringFromClass([AboutUsViewController class]) bundle:nil];
+    [self.navigationController pushViewController:aboutUsVC animated:YES];
+}
 
 
 
@@ -130,12 +147,12 @@
 #pragma mark - *** UITableViewDelegate,UITableViewDataSource ***
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return 7;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 7) {
+    if (indexPath.row == 6) {
         return 80;
     }
     return 60;
@@ -144,13 +161,13 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc]init];
-    if (indexPath.row == 7) {
+    if (indexPath.row == 6) {
         Configuration_ButtonCell *cellButton = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([Configuration_ButtonCell class])];
         cell = cellButton;
     }else{
         ConfigurationCell *cellNormal = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ConfigurationCell class])];
         cellNormal.labelTitle.text = self.dataArray[indexPath.row];
-        if (indexPath.row == 5) {
+        if (indexPath.row == 4) {
             cellNormal.labelSubTitle.text = self.currentVersion;
         }
         cell = cellNormal;
@@ -170,7 +187,11 @@
     }else if (indexPath.row == 2){//修改密码
         ModifyPasswordViewController *modifyPasswordVC = [[ModifyPasswordViewController alloc]initWithNibName:NSStringFromClass([ModifyPasswordViewController class]) bundle:nil];
         [self.navigationController pushViewController:modifyPasswordVC animated:YES];
-    }else if (indexPath.row == 7){
+    }else if (indexPath.row == 3){//选择喜欢的类别
+        [self presentSelectThemeAndClassifyVC];
+    }else if (indexPath.row == 5){
+        [self jumpToAboutUsVC];
+    }else if (indexPath.row == 6){
         [self logout];
     }
 }

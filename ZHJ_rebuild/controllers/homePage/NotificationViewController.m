@@ -69,12 +69,12 @@
     //返回按钮
     UIButton *btnGoback = [UIButton buttonWithType:UIButtonTypeCustom];
     [placeNaviView addSubview:btnGoback];
-    [btnGoback setTitle:@"返回" forState:UIControlStateNormal];
+    [btnGoback setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     btnGoback.titleLabel.font = [UIFont systemFontOfSize:13];
     [btnGoback mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_offset(10);
         make.bottom.mas_equalTo(-10);
-        make.size.mas_equalTo(CGSizeMake(30, 20));
+        make.size.mas_equalTo(CGSizeMake(20, 20));
     }];
     [btnGoback addTarget:self action:@selector(btnGobackAction:) forControlEvents:UIControlEventTouchUpInside];
     

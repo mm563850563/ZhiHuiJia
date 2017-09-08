@@ -222,16 +222,18 @@
     if (!_btnOnFocus) {
         _btnOnFocus = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnOnFocus.frame = CGRectMake(0, 0, 50, 50);
-        _btnOnFocus.layer.borderWidth = 1;
-        _btnOnFocus.layer.borderColor = kColorFromRGB(kThemeYellow).CGColor;
+//        _btnOnFocus.layer.borderWidth = 1;
+//        _btnOnFocus.layer.borderColor = kColorFromRGB(kThemeYellow).CGColor;
         _btnOnFocus.layer.cornerRadius = 3;
         _btnOnFocus.layer.masksToBounds = YES;
         _btnOnFocus.titleLabel.font = [UIFont systemFontOfSize:12];
         
-        [_btnOnFocus setTitle:@"+关注" forState:UIControlStateNormal];
-        [_btnOnFocus setTitleColor:kColorFromRGB(kThemeYellow) forState:UIControlStateNormal];
-        [_btnOnFocus setTitle:@"已关注" forState:UIControlStateSelected];
-        [_btnOnFocus setTitleColor:kColorFromRGB(kThemeYellow) forState:UIControlStateSelected];
+        [_btnOnFocus setImage:[UIImage imageNamed:@"focus"] forState:UIControlStateNormal];
+        [_btnOnFocus setImage:[UIImage imageNamed:@"focused"] forState:UIControlStateSelected];
+//        [_btnOnFocus setTitle:@"+关注" forState:UIControlStateNormal];
+//        [_btnOnFocus setTitleColor:kColorFromRGB(kThemeYellow) forState:UIControlStateNormal];
+//        [_btnOnFocus setTitle:@"已关注" forState:UIControlStateSelected];
+//        [_btnOnFocus setTitleColor:kColorFromRGB(kThemeYellow) forState:UIControlStateSelected];
         
         [_btnOnFocus addTarget:self action:@selector(btnOnfocusActionWithButton:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -365,14 +367,14 @@
     }];
     [self.labelNickName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.imgViewPortrait.mas_right).with.offset(5);
-        make.right.mas_equalTo(-60);
+        make.right.mas_equalTo(-70);
         make.height.mas_equalTo(20);
         make.centerY.mas_equalTo(weakSelf.imgViewPortrait);
     }];
     [self.btnOnFocus mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.labelNickName.mas_right);
         make.right.mas_equalTo(-10);
-        make.height.mas_equalTo(25);
+        make.height.mas_equalTo(30);
         make.centerY.mas_equalTo(weakSelf.labelNickName);
     }];
     [self.labelContent mas_makeConstraints:^(MASConstraintMaker *make) {

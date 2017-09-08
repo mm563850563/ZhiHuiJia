@@ -23,6 +23,7 @@
 
 @interface RegisterViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate,STPickerDateDelegate,UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPotrait;
 @property (weak, nonatomic) IBOutlet UITextField *tfPhone;
 @property (weak, nonatomic) IBOutlet UITextField *tfPassword;
@@ -53,6 +54,7 @@
     // Do any additional setup after loading the view from its nib.
     
     [self settingOutlets];
+    [self settingHeightForScrollView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -255,18 +257,24 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     self.maleSlider.minimumValue = 0;
     self.maleSlider.maximumValue = 1;
     self.maleSlider.value = 1;
+    [self.maleSlider setThumbImage:[UIImage imageNamed:@"select_male"] forState:UIControlStateNormal];
 //    self.maleSlider.continuous = YES;
     
     self.labelMale = [[UILabel alloc]initWithFrame:self.maleBGView.bounds];
-    self.labelMale.text = @"<<";
+    self.labelMale.text = @"<<   男神左滑";
     self.labelMale.font = [UIFont systemFontOfSize:15];
-    self.labelMale.textAlignment = NSTextAlignmentCenter;
+    self.labelMale.textAlignment = NSTextAlignmentLeft;
     self.labelMale.textColor = kColorFromRGB(kWhite);
     self.labelMale.layer.masksToBounds = YES;
     self.labelMale.layer.cornerRadius = self.maleBGView.frame.size.height/2.0;
     [self.maleBGView addSubview:self.labelMale];
     
-//    [self.maleSlider setThumbImage:[UIImage imageNamed:@"man"] forState:UIControlStateNormal];
+    [self.labelMale mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    [self.maleSlider mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
     [self.maleSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
 
     
@@ -284,18 +292,24 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     self.femaleSlider.minimumValue = 0;
     self.femaleSlider.maximumValue = 1;
     self.femaleSlider.value = 0;
+    [self.femaleSlider setThumbImage:[UIImage imageNamed:@"select_female"] forState:UIControlStateNormal];
     //    self.femaleSlider.continuous = YES;
     
     self.labelFemale = [[UILabel alloc]initWithFrame:self.maleBGView.bounds];
-    self.labelFemale.text = @">>";
+    self.labelFemale.text = @"女神右滑   >>";
     self.labelFemale.font = [UIFont systemFontOfSize:15];
-    self.labelFemale.textAlignment = NSTextAlignmentCenter;
+    self.labelFemale.textAlignment = NSTextAlignmentRight;
     self.labelFemale.textColor = kColorFromRGB(kWhite);
     self.labelFemale.layer.masksToBounds = YES;
     self.labelFemale.layer.cornerRadius = self.maleBGView.frame.size.height/2.0;
     [self.femaleBGView addSubview:self.labelFemale];
     
-    //    [self.maleSlider setThumbImage:[UIImage imageNamed:@"man"] forState:UIControlStateNormal];
+    [self.labelFemale mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    [self.femaleSlider mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
     [self.femaleSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
@@ -440,6 +454,14 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         pickerVC.delegate = self;
         //模态显示界面
         [self presentViewController:pickerVC animated:YES completion:nil];
+    }
+}
+
+#pragma mark - <计算页面高度>
+-(void)settingHeightForScrollView
+{
+    if (kSCREENH_HEIGHT > self.heightForScrollView.constant) {
+        self.heightForScrollView.constant = kSCREENH_HEIGHT;
     }
 }
 

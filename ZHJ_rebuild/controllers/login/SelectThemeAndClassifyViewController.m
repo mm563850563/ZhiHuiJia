@@ -84,7 +84,7 @@
 -(void)getClassifyData
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetCategory];
-    NSDictionary *dictParameter = @{@"user_id":@"3560"};
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
     
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
@@ -94,6 +94,13 @@
             if ([code isEqual:@200]) {
                 ClassifyDataModel *modelData = [[ClassifyDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
                 self.classifyArray = modelData.result;
+                //默认选中
+                for (ClassifyResultModel *modelResult in self.classifyArray) {
+                    if ([modelResult.is_selected isEqualToString:@"1"]) {
+                        [self.selectClassifyArray addObject:modelResult.cat_id];
+                    }
+                }
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     //设置heightForClassifyBGView
                     CGFloat itemWidth = (kSCREEN_WIDTH-20)/4.0;
@@ -109,16 +116,13 @@
                     if (kSCREENH_HEIGHT>self.heightForScrollView.constant) {
                         self.heightForScrollView.constant = kSCREENH_HEIGHT;
                     }
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.collectionViewClassify reloadData];
-                        //默认选中
-                        for (ClassifyResultModel *modelResult in self.classifyArray) {
-                            if ([modelResult.is_selected isEqualToString:@"1"]) {
-                                [self.selectClassifyArray addObject:modelResult.cat_id];
-                            }
-                        }
-                        [hud hideAnimated:YES afterDelay:1.0];
-                    });
+                    
+                    
+                    
+                    
+                    [self.collectionViewClassify reloadData];
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    
                     
                 });
             }else{
@@ -183,7 +187,13 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                           MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                           [hudWarning hideAnimated:YES afterDelay:2.0];
                           hudWarning.completionBlock = ^{
-                              [self dismissViewControllerAnimated:YES completion:nil];
+                              
+                              if ([self.whereReuseFrom isEqualToString:@"configVC"]) {
+                                  [self dismissViewControllerAnimated:YES completion:nil];
+                              }else if ([self.whereReuseFrom isEqualToString:@"loginVC"]){
+                                  [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                              }
+                              
                           };
                       });
                   }else{
@@ -208,41 +218,6 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                   [hudWarning hideAnimated:YES afterDelay:2.0];
               });
           }];
-//    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
-//    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:nil progressBlock:nil successBlock:^(id response) {
-//        if (response) {
-//            NSDictionary *dataDict = (NSDictionary *)response;
-//            NSNumber *code = (NSNumber *)dataDict[@"code"];
-//            if ([code isEqual:@200]) {
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [hud hideAnimated:YES afterDelay:1.0];
-//                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-//                    [hudWarning hideAnimated:YES afterDelay:2.0];
-//                    hudWarning.completionBlock = ^{
-//                        [self dismissViewControllerAnimated:YES completion:nil];
-//                    };
-//                });
-//            }else{
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [hud hideAnimated:YES afterDelay:1.0];
-//                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-//                    [hudWarning hideAnimated:YES afterDelay:2.0];
-//                });
-//            }
-//        }else{
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [hud hideAnimated:YES afterDelay:1.0];
-//                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-//                [hudWarning hideAnimated:YES afterDelay:2.0];
-//            });
-//        }
-//    } failBlock:^(NSError *error) {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [hud hideAnimated:YES afterDelay:1.0];
-//            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-//            [hudWarning hideAnimated:YES afterDelay:2.0];
-//        });
-//    }];
 }
 
 #pragma mark - <配置collectionViewTheme>
@@ -324,8 +299,14 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 #pragma mark - <选好按钮>
 - (IBAction)btnSelectedAction:(UIButton *)sender
 {
-    NSDictionary *dict = @{@"user_id":@"3560"};
-    [self updateUserFavouriteClassifyWithDictParameter:dict cat_ids:self.selectClassifyArray];
+    if (self.selectClassifyArray.count == 0) {
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择你喜欢的品类"];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }else{
+        NSDictionary *dict = @{@"user_id":kUserDefaultObject(kUserInfo)};
+        [self updateUserFavouriteClassifyWithDictParameter:dict cat_ids:self.selectClassifyArray];
+    }
+    
 }
 
 
@@ -379,7 +360,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                 [self.selectClassifyArray addObject:modelResult.cat_id];
                 
             }else{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"最多选择2项"];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"不要太贪心哟"];
                 [hudWarning hideAnimated:YES afterDelay:YES];
             }
         }
@@ -394,12 +375,12 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     if (collectionView == self.collectionViewClassify) {
         ClassifyResultModel *modelResult = self.classifyArray[indexPath.item];
         if ([self.selectClassifyArray containsObject:modelResult.cat_id]) {
-            if (self.selectClassifyArray.count > 1) {
+//            if (self.selectClassifyArray.count > 1) {
                 ClassifyCollectionViewCell *cell = (ClassifyCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
                 cell.imgViewSelected.hidden = YES;
                 [self.selectClassifyArray removeObject:modelResult.cat_id];
                 
-            }
+//            }
         }
         
     }

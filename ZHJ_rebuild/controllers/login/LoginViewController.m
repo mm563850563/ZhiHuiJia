@@ -210,20 +210,24 @@
             NSNumber *code = dataDict[@"code"];
             if ([code isEqual:@200]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    //登陆成功后，把user_id保存本地，用作持久化登陆
+                    kUserDefaultSetObject(dataDict[@"data"][@"result"][@"user_id"], kUserInfo);
+                    kUserDefaultSynchronize;
+                    
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                     hudWarning.completionBlock = ^{
                         NSNumber *selected_cat = dataDict[@"data"][@"result"][@"selected_cat"];
                         if ([selected_cat isEqual:@0]) {
                             //模态出选择喜欢的品类
                             [self presentSelectThemeVC];
+                        }else{
+                            [self dismissViewControllerAnimated:YES completion:nil];
                         }
-                        [self dismissViewControllerAnimated:YES completion:nil];
+                        
                     };
                     [hudWarning hideAnimated:YES afterDelay:2.0];
                     
-                    //登陆成功后，把user_id保存本地，用作持久化登陆
-                    kUserDefaultSetObject(dataDict[@"data"][@"result"][@"user_id"], kUserInfo);
-                    kUserDefaultSynchronize;
+                    
                     
                     [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshHomePageAfterLogin" object:nil];
                     
@@ -317,6 +321,7 @@
 -(void)presentSelectThemeVC
 {
     SelectThemeAndClassifyViewController *selectThemeVC = [[SelectThemeAndClassifyViewController alloc]initWithNibName:NSStringFromClass([SelectThemeAndClassifyViewController class]) bundle:nil];
+    selectThemeVC.whereReuseFrom = @"loginVC";
     [self presentViewController:selectThemeVC animated:YES completion:nil];
 }
 

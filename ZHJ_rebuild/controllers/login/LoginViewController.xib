@@ -53,15 +53,15 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LxU-CU-LoT">
                                             <rect key="frame" x="0.0" y="160" width="335" height="50"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9dC-D3-0AO">
-                                                    <rect key="frame" x="5" y="18" width="15" height="15"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mobile_yellow" translatesAutoresizingMaskIntoConstraints="NO" id="9dC-D3-0AO">
+                                                    <rect key="frame" x="2" y="10.5" width="30" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="15" id="22b-i4-iti"/>
-                                                        <constraint firstAttribute="height" constant="15" id="4gk-C4-Beg"/>
+                                                        <constraint firstAttribute="width" constant="30" id="22b-i4-iti"/>
+                                                        <constraint firstAttribute="height" constant="30" id="4gk-C4-Beg"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+86" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCN-Gw-U0e">
-                                                    <rect key="frame" x="25" y="0.0" width="40" height="50"/>
+                                                    <rect key="frame" x="37" y="0.0" width="40" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="tda-br-cl2"/>
                                                     </constraints>
@@ -70,7 +70,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LGl-Z8-gTt">
-                                                    <rect key="frame" x="75" y="0.0" width="250" height="50"/>
+                                                    <rect key="frame" x="87" y="0.0" width="238" height="50"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -82,7 +82,7 @@
                                                 <constraint firstItem="VCN-Gw-U0e" firstAttribute="leading" secondItem="9dC-D3-0AO" secondAttribute="trailing" constant="5" id="Hnc-Uc-i8z"/>
                                                 <constraint firstAttribute="bottom" secondItem="LGl-Z8-gTt" secondAttribute="bottom" id="ckU-8S-Mpu"/>
                                                 <constraint firstItem="VCN-Gw-U0e" firstAttribute="top" secondItem="LxU-CU-LoT" secondAttribute="top" id="eeJ-Qh-48H"/>
-                                                <constraint firstItem="9dC-D3-0AO" firstAttribute="leading" secondItem="LxU-CU-LoT" secondAttribute="leading" constant="5" id="fGB-hv-9Z9"/>
+                                                <constraint firstItem="9dC-D3-0AO" firstAttribute="leading" secondItem="LxU-CU-LoT" secondAttribute="leading" constant="2" id="fGB-hv-9Z9"/>
                                                 <constraint firstAttribute="trailing" secondItem="LGl-Z8-gTt" secondAttribute="trailing" constant="10" id="h1o-D7-P2h"/>
                                                 <constraint firstItem="LGl-Z8-gTt" firstAttribute="top" secondItem="LxU-CU-LoT" secondAttribute="top" id="ipF-Qf-mui"/>
                                                 <constraint firstItem="LGl-Z8-gTt" firstAttribute="leading" secondItem="VCN-Gw-U0e" secondAttribute="trailing" constant="10" id="jFP-JL-7yy"/>
@@ -98,15 +98,15 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXh-Vo-61t">
                                             <rect key="frame" x="0.0" y="230" width="335" height="50"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A3c-cK-YZk">
-                                                    <rect key="frame" x="5" y="18" width="15" height="15"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock_yellow" translatesAutoresizingMaskIntoConstraints="NO" id="A3c-cK-YZk">
+                                                    <rect key="frame" x="7" y="14.5" width="22" height="22"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="15" id="TZD-Br-5Kb"/>
-                                                        <constraint firstAttribute="width" constant="15" id="tzV-Dz-iu5"/>
+                                                        <constraint firstAttribute="height" constant="22" id="TZD-Br-5Kb"/>
+                                                        <constraint firstAttribute="width" constant="22" id="tzV-Dz-iu5"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUN-sj-CHu">
-                                                    <rect key="frame" x="25" y="0.0" width="40" height="50"/>
+                                                    <rect key="frame" x="34" y="0.0" width="40" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="N7T-Co-mfr"/>
                                                     </constraints>
@@ -115,7 +115,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKo-mM-LsT">
-                                                    <rect key="frame" x="75" y="0.0" width="250" height="50"/>
+                                                    <rect key="frame" x="84" y="0.0" width="241" height="50"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -126,7 +126,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="dKo-mM-LsT" secondAttribute="bottom" id="01q-dl-xRL"/>
                                                 <constraint firstItem="dKo-mM-LsT" firstAttribute="top" secondItem="TXh-Vo-61t" secondAttribute="top" id="1Uh-0n-yP8"/>
                                                 <constraint firstItem="A3c-cK-YZk" firstAttribute="centerY" secondItem="TXh-Vo-61t" secondAttribute="centerY" id="8VT-hE-jz2"/>
-                                                <constraint firstItem="A3c-cK-YZk" firstAttribute="leading" secondItem="TXh-Vo-61t" secondAttribute="leading" constant="5" id="90O-w6-ZW5"/>
+                                                <constraint firstItem="A3c-cK-YZk" firstAttribute="leading" secondItem="TXh-Vo-61t" secondAttribute="leading" constant="7" id="90O-w6-ZW5"/>
                                                 <constraint firstAttribute="trailing" secondItem="dKo-mM-LsT" secondAttribute="trailing" constant="10" id="KsR-Kw-hfn"/>
                                                 <constraint firstAttribute="bottom" secondItem="eUN-sj-CHu" secondAttribute="bottom" id="N78-tf-yvb"/>
                                                 <constraint firstItem="dKo-mM-LsT" firstAttribute="leading" secondItem="eUN-sj-CHu" secondAttribute="trailing" constant="10" id="YQu-kH-7j3"/>
@@ -348,7 +348,9 @@
     </objects>
     <resources>
         <image name="appLogo" width="550" height="550"/>
+        <image name="lock_yellow" width="30" height="30"/>
         <image name="loginBG1" width="1080" height="1920"/>
+        <image name="mobile_yellow" width="30" height="30"/>
         <image name="qq" width="53" height="53"/>
         <image name="wecaht" width="110" height="108"/>
         <image name="weibo" width="53" height="53"/>

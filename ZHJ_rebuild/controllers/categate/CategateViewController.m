@@ -162,15 +162,15 @@
 -(void)respondWithRAC
 {
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"ApplyForAdmission" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        BrandApplyViewController *brandApplyVC = [[BrandApplyViewController alloc]init];
-        brandApplyVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:brandApplyVC animated:YES];
+//        BrandApplyViewController *brandApplyVC = [[BrandApplyViewController alloc]init];
+//        brandApplyVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:brandApplyVC animated:YES];
     }];
     
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"RulesOfApply" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        BrandRulesViewController *brandRulesVC = [[BrandRulesViewController alloc]init];
-        brandRulesVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:brandRulesVC animated:YES];
+//        BrandRulesViewController *brandRulesVC = [[BrandRulesViewController alloc]init];
+//        brandRulesVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:brandRulesVC animated:YES];
     }];
     
     //点击分类选项卡中的产品

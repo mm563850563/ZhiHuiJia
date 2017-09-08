@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="btnVerificationCode" destination="0nJ-op-SKM" id="eYf-eo-NFt"/>
                 <outlet property="femaleBGView" destination="LqR-Oa-Gso" id="a5N-Bn-CaE"/>
+                <outlet property="heightForScrollView" destination="3md-Is-pKb" id="49f-jZ-YCb"/>
                 <outlet property="imgPotrait" destination="ZQR-yH-L3d" id="psG-Pi-trz"/>
                 <outlet property="maleBGView" destination="Ia6-nG-RlN" id="8bh-fc-fPK"/>
                 <outlet property="tfPassword" destination="Ct0-9q-a15" id="XUM-Pg-Ur8"/>
@@ -120,7 +121,7 @@
                                             </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

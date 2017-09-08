@@ -10,6 +10,7 @@
 
 @interface ForgetPasswordViewController ()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *tfPhone;
 @property (weak, nonatomic) IBOutlet UITextField *tfCode;
 @property (weak, nonatomic) IBOutlet UIButton *btnGetCode;
@@ -23,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self settingHeightForScrollView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -130,7 +133,13 @@
 #pragma mark - <下一步>
 - (IBAction)btnNextStepAction:(UIButton *)sender
 {
-    
+    if ([self.tfPhone.text isEqualToString:@""]) {
+        MBProgressHUD *hud = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入手机号码"];
+        [hud hideAnimated:YES afterDelay:2.0];
+    }else if ([self.tfCode.text isEqualToString:@""]){
+        MBProgressHUD *hud = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入验证码"];
+        [hud hideAnimated:YES afterDelay:2.0];
+    }
 }
 
 #pragma mark - <返回按钮>
@@ -139,7 +148,13 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
+#pragma mark - <计算页面高度>
+-(void)settingHeightForScrollView
+{
+    if (kSCREENH_HEIGHT > self.heightForScrollView.constant) {
+        self.heightForScrollView.constant = kSCREENH_HEIGHT;
+    }
+}
 
 
 

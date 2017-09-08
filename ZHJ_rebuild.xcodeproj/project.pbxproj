@@ -4822,6 +4822,7 @@
 			baseConfigurationReference = 63013718528BCE08784575AC /* Pods-ZHJ_rebuild.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CATY6HDQZF;
 				ENABLE_BITCODE = NO;
@@ -4888,6 +4889,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhiHuiJia.ZHJ-rebuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -4896,6 +4898,7 @@
 			baseConfigurationReference = 452A45259DE5E7099BAE637E /* Pods-ZHJ_rebuild.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CATY6HDQZF;
 				ENABLE_BITCODE = NO;
@@ -4962,6 +4965,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhiHuiJia.ZHJ-rebuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

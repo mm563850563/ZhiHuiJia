@@ -17,6 +17,7 @@
 #import "DynamicDetailViewController.h"
 #import "PersonalRankActivityViewController.h"
 #import "FocusPersonFileViewController.h"
+#import "MyFocusViewController.h"
 
 //models
 #import "FriendHomePageDataModel.h"
@@ -27,6 +28,7 @@
 #import "MyCircleDynamicTips_infoModel.h"
 
 @interface FocusPersonFileViewController ()<UITableViewDataSource,UITableViewDelegate>
+
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *circleDynamicArray;
@@ -45,7 +47,6 @@
     
     self.page = @1;
     [self managerRequestWithGCD];
-    [self settingNavigation];
     [self settingTableView];
     [self respondWithRAC];
 }
@@ -73,11 +74,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-
--(void)settingNavigation
-{
-    self.navigationController.navigationBar.hidden = YES;
-}
 
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -342,6 +338,14 @@
     [self.navigationController pushViewController:focusPersonalVC animated:YES];
 }
 
+#pragma mark - <跳转“我的关注”页面>
+-(void)jumpToMyOnFocusVCWithFansOrFocus:(NSString *)fansOrFocus
+{
+    MyFocusViewController *myFocusVC = [[MyFocusViewController alloc]initWithNibName:NSStringFromClass([MyFocusViewController class]) bundle:nil];
+    myFocusVC.myFansOrMyFocus = fansOrFocus;
+    [self.navigationController pushViewController:myFocusVC animated:YES];
+}
+
 #pragma mark - <响应RAC>
 -(void)respondWithRAC
 {
@@ -370,13 +374,13 @@
     }];
     
     
-//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"CheckFocusAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-//        NS
-//    }];
-//    
-//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"CheckFansAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-//        
-//    }];
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"CheckFocusAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [self jumpToMyOnFocusVCWithFansOrFocus:@"focus"];
+    }];
+    
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"CheckFansAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        [self jumpToMyOnFocusVCWithFansOrFocus:@"fans"];
+    }];
     
     //好友主页
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {

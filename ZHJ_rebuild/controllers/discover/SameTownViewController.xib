@@ -11,9 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SameTownViewController">
             <connections>
+                <outlet property="BGView" destination="ram-FV-D6o" id="r9O-n0-Nd4"/>
                 <outlet property="collectionBGView" destination="DTg-x5-TXl" id="6xo-Os-Fs4"/>
                 <outlet property="collectionView" destination="VXE-0J-AUQ" id="Mpj-0o-M4K"/>
-                <outlet property="flipBGView" destination="8F3-Jj-y8O" id="7DV-zf-Sbo"/>
                 <outlet property="flowLayout" destination="YFK-uN-35T" id="SAz-Lf-a0G"/>
                 <outlet property="segmentBGView" destination="wEk-re-OCy" id="t76-ZT-QUG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -111,20 +111,12 @@
                         <constraint firstItem="DTg-x5-TXl" firstAttribute="top" secondItem="406-16-Q4b" secondAttribute="bottom" constant="1" id="sps-EU-StI"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8F3-Jj-y8O">
-                    <rect key="frame" x="0.0" y="190" width="375" height="477"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ram-FV-D6o" secondAttribute="trailing" id="3gU-xk-uzn"/>
                 <constraint firstItem="ram-FV-D6o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Fca-Km-DJf"/>
                 <constraint firstItem="ram-FV-D6o" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ps9-h9-ITp"/>
-                <constraint firstAttribute="trailing" secondItem="8F3-Jj-y8O" secondAttribute="trailing" id="lIv-Ax-a3p"/>
-                <constraint firstAttribute="bottom" secondItem="8F3-Jj-y8O" secondAttribute="bottom" id="p2u-1N-9Vx"/>
-                <constraint firstItem="8F3-Jj-y8O" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="v6A-zx-kbB"/>
-                <constraint firstItem="8F3-Jj-y8O" firstAttribute="top" secondItem="ram-FV-D6o" secondAttribute="bottom" id="xOU-uK-poU"/>
             </constraints>
             <point key="canvasLocation" x="51.5" y="86.5"/>
         </view>

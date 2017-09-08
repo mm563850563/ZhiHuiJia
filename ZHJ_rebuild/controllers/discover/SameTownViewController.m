@@ -21,15 +21,22 @@
 #import "LookAroundViewController.h"
 #import "FocusPersonFileViewController.h"
 
+//替换controllers
+#import "DiscoverHotTopicViewController.h"
+#import "DiscoverRecommendViewController.h"
+#import "TopicDetailViewController.h"
+
 //models
 #import "PeopleNearbyDataModel.h"
 #import "PeopleNearbyResultModel.h"
 
 @interface SameTownViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UIView *BGView;
+
 @property (weak, nonatomic) IBOutlet UIView *collectionBGView;
 @property (weak, nonatomic) IBOutlet UIView *segmentBGView;
-@property (weak, nonatomic) IBOutlet UIView *flipBGView;
+//@property (weak, nonatomic) IBOutlet UIView *flipBGView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 
@@ -51,6 +58,8 @@
     [self initSegmentView];
     [self initFlipView];
     [self settingCollectionView];
+    
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,22 +135,39 @@
     
 }
 
+#pragma mark - <跳转“活动推荐”页面>
+-(void)jumpToActivityVC
+{
+    DiscoverRecommendViewController *activityVC = [[DiscoverRecommendViewController alloc]init];
+    activityVC.navigationItem.title = @"精选活动";
+    [self.navigationController pushViewController:activityVC animated:YES];
+}
+
+#pragma mark - <跳转“话题详情”页面>
+-(void)jumpToTopicDetailVCWithTopicID:(NSString *)topic_id
+{
+    TopicDetailViewController *topicDetailVC = [[TopicDetailViewController alloc]initWithNibName:NSStringFromClass([TopicDetailViewController class]) bundle:nil];
+    topicDetailVC.navigationItem.title = @"话题详情";
+    topicDetailVC.topic_id = topic_id;
+    [self.navigationController pushViewController:topicDetailVC animated:YES];
+}
+
 #pragma mark - <初始化flipView>
 -(void)initFlipView
 {
-    SameTownTopicViewController *sameTownTopicVC = [[SameTownTopicViewController alloc]initWithNibName:NSStringFromClass([SameTownTopicViewController class]) bundle:nil];
-    HandpickActivitiesViewController *handpickVC = [[HandpickActivitiesViewController alloc]initWithNibName:NSStringFromClass([HandpickActivitiesViewController class]) bundle:nil];
+    DiscoverHotTopicViewController *hotTopicVC = [[DiscoverHotTopicViewController alloc]init];
+    hotTopicVC.whereReuseFrom = @"SameTownVC";
+//    DiscoverRecommendViewController *activityVC = [[DiscoverRecommendViewController alloc]init];
+//    SameTownTopicViewController *sameTownTopicVC = [[SameTownTopicViewController alloc]initWithNibName:NSStringFromClass([SameTownTopicViewController class]) bundle:nil];
+//    HandpickActivitiesViewController *handpickVC = [[HandpickActivitiesViewController alloc]initWithNibName:NSStringFromClass([HandpickActivitiesViewController class]) bundle:nil];
     
     NSMutableArray *vcArray = [NSMutableArray array];
-    [vcArray addObject:sameTownTopicVC];
-    [vcArray addObject:handpickVC];
+    [vcArray addObject:hotTopicVC];
+//    [vcArray addObject:activityVC];
     
-    self.flipView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, self.flipBGView.frame.size.height) withArray:vcArray];
-    self.flipView.delegate = self;
-    [self.flipBGView addSubview:self.flipView];
-    [self.flipView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
-    }];
+    self.flipView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 190, kSCREEN_WIDTH, self.view.frame.size.height-190-64) withArray:vcArray];
+//    self.flipView.delegate = self;
+    [self.view addSubview:self.flipView];
 }
 
 #pragma mark - <配置collectionView>
@@ -177,6 +203,22 @@
     [self.navigationController pushViewController:personalFileVC animated:YES];
 }
 
+#pragma mark - <rac响应>
+-(void)respondWithRAC
+{
+    //跳转同城话题
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToTopicDetailVCFromSameTownVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *topic_id = x.object;
+        [self jumpToTopicDetailVCWithTopicID:topic_id];
+    }];
+}
+
+
+
+
+
+
+
 
 
 
@@ -188,12 +230,11 @@
 #pragma mark - **** SegmentTapViewDelegate,FlipTableViewDelegate ****
 -(void)selectedIndex:(NSInteger)index
 {
-    [self.flipView selectIndex:index];
-}
-
--(void)scrollChangeToIndex:(NSInteger)index
-{
-    [self.segmentView selectIndex:index];
+    [self.segmentView selectIndex:1];
+    
+    if (index == 1) {
+        [self jumpToActivityVC];
+    }
 }
 
 #pragma mark - *** UICollectionViewDelegate,UICollectionViewDataSource *****

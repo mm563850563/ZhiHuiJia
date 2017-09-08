@@ -232,6 +232,9 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     self.labelBorthDate.text = dateStr;
     self.dateStamp = model.birthday;
     
+    //保存本地头像链接，下次修改资料时用于判断是否修改头像，节省资源
+    kUserDefaultSetObject(model.headimg, kUserHeadimg);
+    kUserDefaultSynchronize;
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,model.headimg];
     NSURL *url = [NSURL URLWithString:imgStr];
     [self.imgHeaderPortrat sd_setImageWithURL:url placeholderImage:kPlaceholder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
@@ -241,16 +244,21 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     }];
     
     if ([model.sex isEqualToString:@"1"]) {
-        [self.btnSelectMale setBackgroundColor:kColorFromRGB(kBlack)];
-        [self.btnSelectFemale setBackgroundColor:kColorFromRGB(kLightGray)];
+//        [self.btnSelectMale setBackgroundColor:kColorFromRGB(kBlack)];
+//        [self.btnSelectFemale setBackgroundColor:kColorFromRGB(kLightGray)];
+        self.btnSelectMale.selected = YES;
+        self.btnSelectFemale.selected = NO;
     }else{
-        [self.btnSelectMale setBackgroundColor:kColorFromRGB(kLightGray)];
-        [self.btnSelectFemale setBackgroundColor:kColorFromRGB(kBlack)];
+//        [self.btnSelectMale setBackgroundColor:kColorFromRGB(kLightGray)];
+//        [self.btnSelectFemale setBackgroundColor:kColorFromRGB(kBlack)];
+        self.btnSelectMale.selected = NO;
+        self.btnSelectFemale.selected = YES;
     }
 }
 
 -(void)settingNavigation
 {
+    self.navigationItem.title = @"个人资料";
     self.navigationController.navigationBar.translucent = NO;
 }
 
@@ -361,7 +369,12 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [dictParameter setObject:self.tvSignature.text forKey:@"signature"];
     }
     
-    [self updatePersonalInfoDataWithPara:dictParameter dataImage:self.dataImg];
+    if (kUserDefaultObject(kUserHeadimg)) {
+        [self updatePersonalInfoDataWithPara:dictParameter dataImage:nil];
+    }else{
+        [self updatePersonalInfoDataWithPara:dictParameter dataImage:self.dataImg];
+    }
+    
 }
 
 
@@ -434,6 +447,10 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     UIImage *imgMain = [UIImage fixOrientation:image];
     NSData *dataMainImg = UIImageJPEGRepresentation(imgMain,0.3);
     self.dataImg = dataMainImg;
+    
+    //用户选择了头像，移除原本的头像链接
+    kUserDefaultRemoveObject(kUserHeadimg);
+    kUserDefaultSynchronize;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

@@ -26,11 +26,15 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 @property (weak, nonatomic) IBOutlet UIImageView *imgProgress;
-@property (weak, nonatomic) IBOutlet UILabel *labelAddress;
-@property (weak, nonatomic) IBOutlet UILabel *labelFinishSendGift;
-@property (weak, nonatomic) IBOutlet UILabel *labelPayFreight;
-@property (weak, nonatomic) IBOutlet UILabel *labelWaitToSendOut;
-@property (weak, nonatomic) IBOutlet UILabel *labelConfirm;
+//@property (weak, nonatomic) IBOutlet UILabel *labelAddress;
+//@property (weak, nonatomic) IBOutlet UILabel *labelFinishSendGift;
+//@property (weak, nonatomic) IBOutlet UILabel *labelPayFreight;
+//@property (weak, nonatomic) IBOutlet UILabel *labelWaitToSendOut;
+//@property (weak, nonatomic) IBOutlet UILabel *labelConfirm;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForImgViewHeader;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForScrollView;
+
 
 @property (nonatomic, strong)NSArray *giftListArray;
 @property (nonatomic, strong)GetGiftListResultModel *modelResult;
@@ -102,43 +106,52 @@
 {
     NSString *strBanner = [NSString stringWithFormat:@"%@%@",kDomainImage,self.modelResult.banner];
     NSURL *urlBanner = [NSURL URLWithString:strBanner];
-    [self.imgViewHeader sd_setImageWithURL:urlBanner placeholderImage:kPlaceholder];
+    [self.imgViewHeader sd_setImageWithURL:urlBanner placeholderImage:kPlaceholder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        CGSize size = image.size;
+        if (size.width <= 0 || size.height <= 0) {
+            size = CGSizeMake(50, 50);
+        }
+        CGFloat scale = kSCREEN_WIDTH / size.width;
+        CGFloat height = scale * size.height;
+        self.heightForImgViewHeader.constant = height;
+        self.heightForScrollView.constant = 450 + self.heightForImgViewHeader.constant;
+    }];
     
-    if ([self.modelResult.status isEqualToString:@"1"]) {
-        self.labelAddress.textColor = kColorFromRGB(kLightBlue);
-    }else if ([self.modelResult.status isEqualToString:@"2"]){
-        self.labelPayFreight.textColor = kColorFromRGB(kLightBlue);
-    }else if ([self.modelResult.status isEqualToString:@"3"]){
-        self.labelWaitToSendOut.textColor = kColorFromRGB(kLightBlue);
-    }else if ([self.modelResult.status isEqualToString:@"4"]){
-        self.labelConfirm.textColor = kColorFromRGB(kLightBlue);
-    }else if ([self.modelResult.status isEqualToString:@"5"]){
-        self.labelFinishSendGift.textColor = kColorFromRGB(kLightBlue);
-    }
+//    if ([self.modelResult.status isEqualToString:@"1"]) {
+//        self.labelAddress.textColor = kColorFromRGB(kLightBlue);
+//    }else if ([self.modelResult.status isEqualToString:@"2"]){
+//        self.labelPayFreight.textColor = kColorFromRGB(kLightBlue);
+//    }else if ([self.modelResult.status isEqualToString:@"3"]){
+//        self.labelWaitToSendOut.textColor = kColorFromRGB(kLightBlue);
+//    }else if ([self.modelResult.status isEqualToString:@"4"]){
+//        self.labelConfirm.textColor = kColorFromRGB(kLightBlue);
+//    }else if ([self.modelResult.status isEqualToString:@"5"]){
+//        self.labelFinishSendGift.textColor = kColorFromRGB(kLightBlue);
+//    }
 }
 
 #pragma mark - <settingOutlets>
 -(void)settingOutlets
 {
     
-    //画“填写地址”和“送礼完成”圆角
-    UIBezierPath *maskPath1 = [UIBezierPath bezierPathWithRoundedRect:self.labelAddress.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerTopLeft cornerRadii:self.labelAddress.bounds.size];
-    CAShapeLayer *maskLayer1 = [[CAShapeLayer alloc] init];
-    maskLayer1.lineWidth = 0.5;
-    maskLayer1.strokeColor = [UIColor blackColor].CGColor;
-    maskLayer1.fillColor = nil;
-    maskLayer1.frame = self.labelAddress.bounds;
-    maskLayer1.path = maskPath1.CGPath;
-    [self.labelAddress.layer addSublayer:maskLayer1];
-    
-    UIBezierPath *maskPath2 = [UIBezierPath bezierPathWithRoundedRect:self.labelAddress.bounds byRoundingCorners:UIRectCornerBottomRight | UIRectCornerTopRight cornerRadii:self.labelFinishSendGift.bounds.size];
-    CAShapeLayer *maskLayer2 = [[CAShapeLayer alloc] init];
-    maskLayer2.lineWidth = 0.5;
-    maskLayer2.strokeColor = [UIColor blackColor].CGColor;
-    maskLayer2.fillColor = nil;
-    maskLayer2.frame = self.labelAddress.bounds;
-    maskLayer2.path = maskPath2.CGPath;
-    [self.labelFinishSendGift.layer addSublayer:maskLayer2];
+//    //画“填写地址”和“送礼完成”圆角
+//    UIBezierPath *maskPath1 = [UIBezierPath bezierPathWithRoundedRect:self.labelAddress.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerTopLeft cornerRadii:self.labelAddress.bounds.size];
+//    CAShapeLayer *maskLayer1 = [[CAShapeLayer alloc] init];
+//    maskLayer1.lineWidth = 0.5;
+//    maskLayer1.strokeColor = [UIColor blackColor].CGColor;
+//    maskLayer1.fillColor = nil;
+//    maskLayer1.frame = self.labelAddress.bounds;
+//    maskLayer1.path = maskPath1.CGPath;
+//    [self.labelAddress.layer addSublayer:maskLayer1];
+//    
+//    UIBezierPath *maskPath2 = [UIBezierPath bezierPathWithRoundedRect:self.labelAddress.bounds byRoundingCorners:UIRectCornerBottomRight | UIRectCornerTopRight cornerRadii:self.labelFinishSendGift.bounds.size];
+//    CAShapeLayer *maskLayer2 = [[CAShapeLayer alloc] init];
+//    maskLayer2.lineWidth = 0.5;
+//    maskLayer2.strokeColor = [UIColor blackColor].CGColor;
+//    maskLayer2.fillColor = nil;
+//    maskLayer2.frame = self.labelAddress.bounds;
+//    maskLayer2.path = maskPath2.CGPath;
+//    [self.labelFinishSendGift.layer addSublayer:maskLayer2];
     
     //collection
     self.flowLayout.minimumLineSpacing = 5;

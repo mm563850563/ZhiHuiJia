@@ -10,4 +10,7 @@
 
 @interface SelectThemeAndClassifyViewController : UIViewController
 
+@property (nonatomic, strong)NSString *user_id;
+@property (nonatomic, strong)NSString *whereReuseFrom;
+
 @end

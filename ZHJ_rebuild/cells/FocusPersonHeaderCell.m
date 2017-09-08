@@ -32,18 +32,18 @@
 }
 
 
-//#pragma mark - <查看关注的人>
-//- (IBAction)btnCheckFocusAction:(UIButton *)sender
-//{
-//    [[NSNotificationCenter defaultCenter]postNotificationName:@"CheckFocusAction" object:nil];
-//}
-//
-//#pragma mark - <查看粉丝>
-//- (IBAction)btnCheckFansAction:(UIButton *)sender
-//{
-//    [[NSNotificationCenter defaultCenter]postNotificationName:@"CheckFansAction" object:nil
-//     ];
-//}
+#pragma mark - <查看关注的人>
+- (IBAction)btnCheckFocusAction:(UIButton *)sender
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"CheckFocusAction" object:nil];
+}
+
+#pragma mark - <查看粉丝>
+- (IBAction)btnCheckFansAction:(UIButton *)sender
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"CheckFansAction" object:nil
+     ];
+}
 
 #pragma mark - <返回按钮响应>
 - (IBAction)btnGoBackAction:(UIButton *)sender

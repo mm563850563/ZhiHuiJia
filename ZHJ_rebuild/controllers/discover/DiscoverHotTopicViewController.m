@@ -220,6 +220,10 @@
 {
     HotTopicListResultModel *model = self.topicListArray[indexPath.row];
     [self jumpToTopicDetailVCWithTopicID:model.topic_id];
+    
+    if ([self.whereReuseFrom isEqualToString:@"SameTownVC"]) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToTopicDetailVCFromSameTownVC" object:model.topic_id];
+    }
 }
 
 @end
