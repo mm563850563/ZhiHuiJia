@@ -188,10 +188,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbJ-83-T8X">
                     <rect key="frame" x="300" y="0.0" width="75" height="667"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layout" translatesAutoresizingMaskIntoConstraints="NO" id="e1e-8D-Nly">
-                            <rect key="frame" x="28" y="324" width="20" height="20"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layout_collectionView" translatesAutoresizingMaskIntoConstraints="NO" id="e1e-8D-Nly">
+                            <rect key="frame" x="28" y="323" width="20" height="22"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="7A5-vg-aUd"/>
+                                <constraint firstAttribute="height" constant="22" id="7A5-vg-aUd"/>
                                 <constraint firstAttribute="width" constant="20" id="9wK-fV-s0F"/>
                             </constraints>
                         </imageView>
@@ -256,6 +256,6 @@
     </objects>
     <resources>
         <image name="down_yellow" width="30" height="30"/>
-        <image name="layout" width="36" height="36"/>
+        <image name="layout_collectionView" width="30" height="30"/>
     </resources>
 </document>

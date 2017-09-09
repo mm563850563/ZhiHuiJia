@@ -475,7 +475,6 @@
     ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
     productDetailVC.hidesBottomBarWhenPushed = YES;
     productDetailVC.goods_id = goods_id;
-    productDetailVC.navigationItem.title = @"产品详情概述";
     [self.navigationController pushViewController:productDetailVC animated:YES];
 }
 #pragma mark - <跳转更多产品页面>

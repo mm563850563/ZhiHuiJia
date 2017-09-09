@@ -137,6 +137,11 @@
 - (IBAction)btnLayoutAction:(UIButton *)sender
 {
     sender.selected = !sender.selected;
+    if (sender.selected) {
+        self.imgViewLayout.image = [UIImage imageNamed:@"layout_tableView"];
+    }else{
+        self.imgViewLayout.image = [UIImage imageNamed:@"layout_collectionView"];
+    }
     NSString *notifiName = [NSString string];
     if ([self.whereReuseFrom isEqualToString:@"moreProductListVC"]) {
         notifiName = @"changeLayoutFromMoreProductVC";

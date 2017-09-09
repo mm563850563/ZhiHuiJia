@@ -20,6 +20,7 @@
 #import "MyCircleDynamicDataModel.h"
 #import "MyCircleDynamicResultModel.h"
 #import "MyCircleDynamicTips_infoModel.h"
+#import "DiscoverBannerDataModel.h"
 
 //controllers
 #import "DynamicDetailViewController.h"
@@ -34,6 +35,7 @@
 #import "ActivityViewController.h"
 #import "PersonalRankActivityViewController.h"
 #import "MyJoinedActivityViewController.h"
+#import "CircleDetailViewController.h"
 
 #import "DiscoverHotTopicViewController.h"
 #import "DiscoverRecommendViewController.h"
@@ -45,6 +47,7 @@
 
 @property (nonatomic, strong)UITableView *mainTableView;
 @property (nonatomic, strong)NSMutableArray *circleDynamicArray;
+@property (nonatomic, strong)NSArray *bannerArray;
 
 @property (nonatomic, strong)NSNumber *page;
 
@@ -60,7 +63,7 @@
     [super viewDidLoad];
     
     self.page = @1;
-    [self getBestDynamicDataWithPage:@1];
+    [self managerRequestWithGCD];
     [self settingNavigation];
     [self initMianTableView];
     
@@ -91,6 +94,69 @@
 }
 */
 
+#pragma mark - <GCD多线程管理任务>
+-(void)managerRequestWithGCD
+{
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.navigationController.view animated:YES];
+    
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_queue_t queue1 = dispatch_queue_create("getBannerData", NULL);
+    dispatch_queue_t queue2 = dispatch_queue_create("getBestDynamicData", NULL);
+    
+    dispatch_group_async(group, queue1, ^{
+        [self getBannerData];
+    });
+    dispatch_group_async(group, queue2, ^{
+        [self getBestDynamicDataWithPage:@1];
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        [self.mainTableView reloadData];
+        [hud hideAnimated:YES afterDelay:1.0];
+        [self.mainTableView.mj_header endRefreshing];
+    });
+}
+
+#pragma mark - <获取“banner”数据>
+-(void)getBannerData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetCarousel];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                NSError *error = nil;
+                DiscoverBannerDataModel *modelData = [[DiscoverBannerDataModel alloc]initWithDictionary:dataDict[@"data"] error:&error];
+                self.bannerArray = modelData.result;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.mainTableView reloadData];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
 #pragma mark - <获取“精选圈子动态”数据>
 -(void)getBestDynamicDataWithPage:(NSNumber *)page
 {
@@ -111,6 +177,10 @@
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    int page = [self.page intValue];
+                    page++;
+                    self.page = [NSNumber numberWithInt:page];
+                    
                     [self.mainTableView reloadData];
                     [self.mainTableView.mj_footer endRefreshing];
                 });
@@ -287,10 +357,13 @@
     
     [self.mainTableView registerClass:[DiscoverDynamicCell class] forCellReuseIdentifier:NSStringFromClass([DiscoverDynamicCell class])];
     
+    self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        self.page = @1;
+        [self managerRequestWithGCD];
+    }];
+    
     self.mainTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        int page = [self.page intValue];
-        page++;
-        self.page = [NSNumber numberWithInt:page];
+        
         [self getBestDynamicDataWithPage:self.page];
     }];
 }
@@ -489,6 +562,12 @@
     }else if ([viewController isKindOfClass:[MyJoinedActivityViewController class]]) {
         [navigationController setNavigationBarHidden:NO animated:YES];
         [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[CircleDetailViewController class]]) {
+        [navigationController setNavigationBarHidden:YES animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[TopicDetailViewController class]]) {
+        [navigationController setNavigationBarHidden:YES animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
     }else{
         [navigationController setNavigationBarHidden:NO animated:YES];
         [navigationController.navigationBar setTranslucent:NO];
@@ -548,6 +627,7 @@
     UITableViewCell *cell = [[UITableViewCell alloc]init];
     if (indexPath.section == 0) {
         DiscoverHeaderCell *cell1 = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DiscoverHeaderCell class])];
+        cell1.cycleScrollDataArray = self.bannerArray;
         cell = cell1;
     }else{
         DiscoverDynamicCell *cell2 = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DiscoverDynamicCell class])];

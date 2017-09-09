@@ -117,29 +117,12 @@
     self.releaseActivity.layer.cornerRadius = 30;
     self.releaseActivity.layer.masksToBounds = YES;
     
-    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+    UIImageView *imgView = [[UIImageView alloc]initWithFrame:self.releaseActivity.bounds];
     [self.releaseActivity addSubview:imgView];
-    [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(5);
-        make.size.mas_offset(CGSizeMake(30, 30));
-        make.centerX.mas_equalTo(0);
-    }];
-    imgView.image = [UIImage imageNamed:@"pen"];
-    imgView.layer.cornerRadius = 15;
+    imgView.image = [UIImage imageNamed:@"release_activity"];
+    imgView.layer.cornerRadius = 30;
     imgView.layer.masksToBounds = YES;
     imgView.contentMode = UIViewContentModeScaleAspectFit;
-    
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [self.releaseActivity addSubview:label];
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(0);
-        make.top.mas_equalTo(imgView.mas_bottom);
-        make.height.mas_equalTo(20);
-    }];
-    label.text = @"发布活动";
-    label.font = [UIFont systemFontOfSize:10];
-    label.textColor = kColorFromRGB(kDeepGray);
-    label.textAlignment = NSTextAlignmentCenter;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = self.releaseActivity.bounds;
@@ -158,12 +141,13 @@
     [self.navigationController pushViewController:releaseActivityVC animated:YES];
 }
 
-#pragma mark - <跳转活动详情页面>
+#pragma mark - <跳转"活动详情"页面>
 -(void)jumpToActivityRecommendDetailVCWithActivityID:(NSString *)activity_id
 {
     ActivityRecommendDetailViewController *activityRecommendDetailVC = [[ActivityRecommendDetailViewController alloc]initWithNibName:NSStringFromClass([ActivityRecommendDetailViewController class]) bundle:nil];
     activityRecommendDetailVC.activity_id = activity_id;
     activityRecommendDetailVC.hidesBottomBarWhenPushed = YES;
+    activityRecommendDetailVC.navigationItem.title = @"活动详情";
     [self.navigationController pushViewController:activityRecommendDetailVC animated:YES];
 }
 

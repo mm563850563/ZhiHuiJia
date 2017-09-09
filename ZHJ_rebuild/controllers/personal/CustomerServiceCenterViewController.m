@@ -24,6 +24,7 @@
     // Do any additional setup after loading the view from its nib.
     
     [self getCustomerServiceData];
+    [self settingNavigation];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +41,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+#pragma mark - <配置navigation>
+-(void)settingNavigation
+{
+    self.navigationItem.title = @"客服中心";
+}
 
 
 #pragma mark - <获取客服中心数据>

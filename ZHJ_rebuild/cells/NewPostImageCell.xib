@@ -23,18 +23,12 @@
                     </imageView>
                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLO-oW-cRa">
                         <rect key="frame" x="159" y="0.0" width="20" height="20"/>
-                        <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="MgE-2m-3wW"/>
                             <constraint firstAttribute="width" constant="20" id="hHd-I8-qRE"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <state key="normal" backgroundImage="hahaclose"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="12"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
+                        <state key="normal" image="guan_bi_zhong_jian"/>
                         <connections>
                             <action selector="btnDeleteImageAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="1mm-vl-3aE"/>
                         </connections>
@@ -58,6 +52,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="hahaclose" width="46" height="46"/>
+        <image name="guan_bi_zhong_jian" width="104" height="104"/>
     </resources>
 </document>

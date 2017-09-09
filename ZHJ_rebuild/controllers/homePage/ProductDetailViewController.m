@@ -52,6 +52,7 @@
     
     [self userBrowseGoods];
     [self getGoodsDetailData];
+    [self settingNavigation];
     [self settingTableView];
 //    [self initBuyNowProductMessageView];
 //    [self initAddToCartProductMessageView];
@@ -83,6 +84,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <设置navigation>
+-(void)settingNavigation
+{
+    self.navigationItem.title = @"商品详情概述";
+}
 
 #pragma mark - <记录用户浏览内容>
 -(void)userBrowseGoods
@@ -234,6 +241,7 @@
 {
     CommentListViewController *commentListVC = [[CommentListViewController alloc]initWithNibName:NSStringFromClass([CommentListViewController class]) bundle:nil];
     commentListVC.goods_id = goods_id;
+    commentListVC.navigationItem.title = @"评论列表";
     [self.navigationController pushViewController:commentListVC animated:YES];
 }
 
@@ -244,6 +252,7 @@
     orderConfirmVC.Parameter = dictParameter;
     orderConfirmVC.JumpID = @"detail";
     orderConfirmVC.hidesBottomBarWhenPushed = YES;
+    orderConfirmVC.navigationItem.title = @"确认订单";
     [self.navigationController pushViewController:orderConfirmVC animated:YES];
 }
 

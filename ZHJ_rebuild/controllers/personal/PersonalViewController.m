@@ -211,6 +211,7 @@
 {
     MyDiscountCouponViewController *myCouponVC = [[MyDiscountCouponViewController alloc]initWithNibName:NSStringFromClass([MyDiscountCouponViewController class]) bundle:nil];
     myCouponVC.hidesBottomBarWhenPushed = YES;
+    myCouponVC.navigationItem.title = @"优惠券";
     [self.navigationController pushViewController:myCouponVC animated:YES];
 }
 
@@ -219,6 +220,7 @@
 {
     MyCollectProductViewController *myCollectProductVC = [[MyCollectProductViewController alloc]initWithNibName:NSStringFromClass([MyCollectProductViewController class]) bundle:nil];
     myCollectProductVC.hidesBottomBarWhenPushed = YES;
+    myCollectProductVC.navigationItem.title = @"我的收藏";
     [self.navigationController pushViewController:myCollectProductVC animated:YES];
 }
 
@@ -227,6 +229,7 @@
 {
     AfterSalesViewController *afterSalesVC = [[AfterSalesViewController alloc]initWithNibName:NSStringFromClass([AfterSalesViewController class]) bundle:nil];
     afterSalesVC.hidesBottomBarWhenPushed = YES;
+    afterSalesVC.navigationItem.title = @"退款/维修";
     [self.navigationController pushViewController:afterSalesVC animated:YES];
 }
 
@@ -235,14 +238,16 @@
 {
     WeChatAccountViewController *weChatAccountVC = [[WeChatAccountViewController alloc]initWithNibName:NSStringFromClass([WeChatAccountViewController class]) bundle:nil];
     weChatAccountVC.hidesBottomBarWhenPushed = YES;
+    weChatAccountVC.navigationItem.title = @"微信公众号";
     [self.navigationController pushViewController:weChatAccountVC animated:YES];
 }
 
-#pragma mark - <跳转“微信公众号”页面>
+#pragma mark - <跳转“关于我们”页面>
 -(void)jumpToAboutUsVC
 {
     AboutUsViewController *aboutUsVC = [[AboutUsViewController alloc]initWithNibName:NSStringFromClass([AboutUsViewController class]) bundle:nil];
     aboutUsVC.hidesBottomBarWhenPushed = YES;
+    aboutUsVC.navigationItem.title = @"关于我们";
     [self.navigationController pushViewController:aboutUsVC animated:YES];
 }
 
@@ -251,6 +256,7 @@
 {
     MyTrackViewController *myTrackVC = [[MyTrackViewController alloc]initWithNibName:NSStringFromClass([MyTrackViewController class]) bundle:nil];
     myTrackVC.hidesBottomBarWhenPushed = YES;
+    myTrackVC.navigationItem.title = @"我的足迹";
     [self.navigationController pushViewController:myTrackVC animated:YES];
 }
 
@@ -360,6 +366,9 @@
     }else if ([viewController isKindOfClass:[ModifyPasswordViewController class]]){
         [navigationController setNavigationBarHidden:YES animated:YES];
         [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[NotificationViewController class]]){
+        [navigationController setNavigationBarHidden:YES animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
     }else{
         [navigationController setNavigationBarHidden:NO animated:YES];
         [navigationController.navigationBar setTranslucent:NO];
@@ -409,6 +418,7 @@
     }else if (indexPath.item == 8){//意见反馈
         FeedbackViewController *feedBackVC = [[FeedbackViewController alloc]initWithNibName:NSStringFromClass([FeedbackViewController class]) bundle:nil];
         feedBackVC.hidesBottomBarWhenPushed = YES;
+        feedBackVC.navigationItem.title = @"意见反馈";
         [self.navigationController pushViewController:feedBackVC animated:YES];
     }
 }

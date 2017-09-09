@@ -605,6 +605,7 @@
     OrderConfirmViewController *orderConfirmVC = [[OrderConfirmViewController alloc]initWithNibName:NSStringFromClass([OrderConfirmViewController class]) bundle:nil];
     orderConfirmVC.hidesBottomBarWhenPushed = YES;
     orderConfirmVC.JumpID = @"cart";
+    orderConfirmVC.navigationItem.title = @"确认订单";
     [self.navigationController pushViewController:orderConfirmVC animated:YES];
 }
 

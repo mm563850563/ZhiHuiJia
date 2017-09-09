@@ -35,6 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [self settingNavigation];
     [self initSegment];
     [self initFlipTableView];
     
@@ -56,6 +57,11 @@
 }
 */
 
+#pragma mark - <配置navigation>
+-(void)settingNavigation
+{
+    self.navigationItem.title = @"我的订单";
+}
 
 #pragma mark - <添加segmentView>
 -(void)initSegment{

@@ -28,8 +28,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelBorthDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelArea;
 @property (weak, nonatomic) IBOutlet UITextView *tvSignature;
-@property (weak, nonatomic) IBOutlet UIButton *btnSelectMale;
-@property (weak, nonatomic) IBOutlet UIButton *btnSelectFemale;
+//@property (weak, nonatomic) IBOutlet UIButton *btnSelectMale;
+//@property (weak, nonatomic) IBOutlet UIButton *btnSelectFemale;
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewGender;
+@property (weak, nonatomic) IBOutlet UILabel *labelGender;
 
 
 @property (nonatomic, strong)STPickerArea *areaPicker;
@@ -244,15 +246,11 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     }];
     
     if ([model.sex isEqualToString:@"1"]) {
-//        [self.btnSelectMale setBackgroundColor:kColorFromRGB(kBlack)];
-//        [self.btnSelectFemale setBackgroundColor:kColorFromRGB(kLightGray)];
-        self.btnSelectMale.selected = YES;
-        self.btnSelectFemale.selected = NO;
+        self.imgViewGender.image = [UIImage imageNamed:@"male"];
+        self.labelGender.text = @"男神";
     }else{
-//        [self.btnSelectMale setBackgroundColor:kColorFromRGB(kLightGray)];
-//        [self.btnSelectFemale setBackgroundColor:kColorFromRGB(kBlack)];
-        self.btnSelectMale.selected = NO;
-        self.btnSelectFemale.selected = YES;
+        self.imgViewGender.image = [UIImage imageNamed:@"female"];
+        self.labelGender.text = @"女神";
     }
 }
 

@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
     TableLayout  //tableView布局
 };
 
-@interface MoreProductListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource>
+@interface MoreProductListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 
 @property (nonatomic, assign)LayoutCode layoutCode;
 @property (nonatomic, strong)MoreProduct_SortView *sortView;
@@ -35,6 +35,8 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)UITableView *tableView;
 @property (nonatomic, strong)NSArray *classifyListResultArray;
+
+@property (nonatomic, strong)UISearchBar *searchBar;
 
 @end
 
@@ -175,6 +177,46 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 -(void)settingNavigation
 {
     self.navigationController.navigationBar.translucent = NO;
+    
+    [self settingSearchBar];
+}
+
+#pragma mark - <配置searchBar>
+-(void)settingSearchBar
+{
+    UISearchBar *searchBar = [[UISearchBar alloc]init];
+    searchBar.delegate = self;
+    UIColor *color = kColorFromRGBAndAlpha(kWhite, 1.0);
+    UIImage *image = [UIImage imageWithColor:color height:30.0];
+    [searchBar setSearchFieldBackgroundImage:image forState:UIControlStateNormal];
+    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    searchBar.placeholder = @"请输入关键字";
+    self.navigationItem.titleView = searchBar;
+    self.searchBar = searchBar;
+    
+    UIButton *btnSearch = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnSearch.frame = CGRectMake(0, 0, 35, 35);
+    [btnSearch setTitle:@"搜索" forState:UIControlStateNormal];
+    [btnSearch setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    btnSearch.titleLabel.font = [UIFont systemFontOfSize:15];
+    [btnSearch addTarget:self action:@selector(btnSearchAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *barBtnSearch = [[UIBarButtonItem alloc]initWithCustomView:btnSearch];
+    self.navigationItem.rightBarButtonItem = barBtnSearch;
+}
+
+#pragma mark - <搜索按钮响应>
+-(void)btnSearchAction:(UIButton *)sender
+{
+    //释放编辑状态
+    [self.searchBar endEditing:YES];
+    
+    if (![self.searchBar.text isEqualToString:@""]) {
+        
+//        [self.friendsArray removeAllObjects];
+//        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+//        [self requestSearchFriendsWithHUD:hud page:@1];
+    }
 }
 
 #pragma mark - <初始化sortView>

@@ -10,4 +10,6 @@
 
 @interface DiscoverHeaderCell : UITableViewCell
 
+@property (nonatomic, strong)NSArray *cycleScrollDataArray;
+
 @end

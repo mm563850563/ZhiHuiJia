@@ -52,5 +52,21 @@
     }];
 }
 
+#pragma mark - <返回按钮响应>
+- (IBAction)btnBackAction:(UIButton *)sender
+{
+    //在当前当前控件遍历所在的viewcontroller
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            UIViewController *vc = (UIViewController *)nextResponder;
+            [vc.navigationController popViewControllerAnimated:YES];
+        }
+    }
+}
+
+
+
+
 
 @end

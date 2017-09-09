@@ -51,6 +51,7 @@
             make.centerY.mas_equalTo(0);
             make.size.mas_equalTo(CGSizeMake(35, 35));
         }];
+        imgView.contentMode = UIViewContentModeScaleAspectFill;
         imgView.layer.cornerRadius = 17.5;
         imgView.layer.masksToBounds = YES;
         

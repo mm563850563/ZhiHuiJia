@@ -101,6 +101,7 @@
 {
     if (!_imgViewProtrait) {
         _imgViewProtrait = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+        _imgViewProtrait.contentMode = UIViewContentModeScaleAspectFill;
         _imgViewProtrait.layer.cornerRadius = 15;
         _imgViewProtrait.layer.masksToBounds = YES;
     }

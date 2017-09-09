@@ -41,10 +41,10 @@
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <inset key="titleEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="70" maxY="0.0"/>
-                        <state key="normal" title="我要报名" image="male">
+                        <state key="normal" title="我要报名" image="signup_yellow">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
-                        <state key="selected" title="已报名" image="male"/>
+                        <state key="selected" title="已报名" image="signup_yellow"/>
                         <connections>
                             <action selector="btnApplyAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lGc-A8-wGO"/>
                         </connections>
@@ -82,6 +82,6 @@
     </objects>
     <resources>
         <image name="huodong" width="553" height="318"/>
-        <image name="male" width="30" height="30"/>
+        <image name="signup_yellow" width="30" height="30"/>
     </resources>
 </document>

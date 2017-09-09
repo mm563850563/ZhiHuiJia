@@ -110,7 +110,8 @@
     NSInteger tag = button.tag;
     GetHotCycleResultModel *modelResult = self.circleClassifyArray[tag];
     NSDictionary *dict = @{@"classify_id":modelResult.classify_id,
-                           @"moreType":@"moreHot"};
+                           @"moreType":@"moreHot",
+                           @"classify_name":modelResult.classify_name};
     [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToMoreHotCircle" object:dict];
 }
 

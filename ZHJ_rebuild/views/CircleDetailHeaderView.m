@@ -49,6 +49,7 @@
             make.centerY.mas_equalTo(0);
             make.size.mas_equalTo(CGSizeMake(35, 35));
         }];
+        imgView.contentMode = UIViewContentModeScaleAspectFill;
         imgView.layer.cornerRadius = 17.5;
         imgView.layer.masksToBounds = YES;
         
@@ -112,6 +113,19 @@
 {
     //跳转“圈子设置页面”
     [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToCircleConfigureVC" object:nil];
+}
+
+#pragma mark - <返回按钮响应>
+- (IBAction)btnBackAction:(UIButton *)sender
+{
+    //在当前当前控件遍历所在的viewcontroller
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            UIViewController *vc = (UIViewController *)nextResponder;
+            [vc.navigationController popViewControllerAnimated:YES];
+        }
+    }
 }
 
 

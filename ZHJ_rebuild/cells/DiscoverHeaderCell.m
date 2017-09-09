@@ -8,6 +8,16 @@
 
 #import "DiscoverHeaderCell.h"
 
+#import <SDCycleScrollView.h>
+#import "DiscoverBannerResultModel.h"
+
+@interface DiscoverHeaderCell ()<SDCycleScrollViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIView *carouselBGView;
+@property (nonatomic, strong)SDCycleScrollView *cycleScrollView;
+
+@end
+
 @implementation DiscoverHeaderCell
 
 - (void)awakeFromNib {
@@ -39,5 +49,57 @@
 {
     [[NSNotificationCenter defaultCenter]postNotificationName:@"clickDomainAction" object:nil];
 }
+
+
+-(SDCycleScrollView *)cycleScrollView
+{
+    if (!_cycleScrollView) {
+        _cycleScrollView = [[SDCycleScrollView alloc]initWithFrame:self.carouselBGView.bounds];
+        _cycleScrollView.delegate = self;
+        _cycleScrollView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
+        _cycleScrollView.autoScroll = NO;
+        _cycleScrollView.backgroundColor = kColorFromRGB(kWhite);
+        _cycleScrollView.pageDotColor = kColorFromRGB(kThemeYellow);
+        _cycleScrollView.placeholderImage = kPlaceholder;
+    }
+    return _cycleScrollView;
+}
+
+-(void)drawRect:(CGRect)rect
+{
+    [self.contentView addSubview:self.cycleScrollView];
+}
+
+-(void)setCycleScrollDataArray:(NSArray *)cycleScrollDataArray
+{
+    NSMutableArray *array = [NSMutableArray array];
+    for (DiscoverBannerResultModel *model in cycleScrollDataArray) {
+        NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,model.ad_code];
+        [array addObject:imgStr];
+    }
+    _cycleScrollView.imageURLStringsGroup = array;
+}
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - *****  ******
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
+{
+    
+}
+
+
+
+
+
+
 
 @end

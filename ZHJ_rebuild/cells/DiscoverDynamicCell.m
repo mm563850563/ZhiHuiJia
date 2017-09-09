@@ -497,7 +497,7 @@
     NSMutableString *atStr = [NSMutableString string];
     for (MyCircleDynamicTips_infoModel *modelTipsInfo in atArray) {
         //        if (![modelTipsInfo.nickname isEqualToString:@""]) {
-        [atStr appendFormat:@" @%@",modelTipsInfo.nickname];
+        [atStr appendFormat:@" @%@ ",modelTipsInfo.nickname];
         //        }
     }
     
@@ -532,7 +532,7 @@
         //处理at某人
         for (MyCircleDynamicTips_infoModel *modelTipsInfo in atArray) {
             //            if (![modelTipsInfo.nickname isEqualToString:@""]) {
-            NSString *tempAtStr = [NSString stringWithFormat:@"@%@",modelTipsInfo.nickname];
+            NSString *tempAtStr = [NSString stringWithFormat:@"@%@ ",modelTipsInfo.nickname];
             //设置可点击文字的范围
             NSRange rangeAt = [[mutableAttributedString string]rangeOfString:tempAtStr options:NSCaseInsensitiveSearch];
             NSData *rangeData = [NSData dataWithBytes:&rangeAt length:sizeof(rangeAt)];

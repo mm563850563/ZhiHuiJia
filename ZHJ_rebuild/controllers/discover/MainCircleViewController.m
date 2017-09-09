@@ -80,29 +80,12 @@
     self.applyCircleView.layer.cornerRadius = 30;
     self.applyCircleView.layer.masksToBounds = YES;
     
-    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+    UIImageView *imgView = [[UIImageView alloc]initWithFrame:self.applyCircleView.bounds];
     [self.applyCircleView addSubview:imgView];
-    [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(5);
-        make.size.mas_offset(CGSizeMake(30, 30));
-        make.centerX.mas_equalTo(0);
-    }];
-    imgView.image = [UIImage imageNamed:@"apply"];
-    imgView.layer.cornerRadius = 0;
+    imgView.image = [UIImage imageNamed:@"apply_circle"];
+    imgView.layer.cornerRadius = 30;
     imgView.layer.masksToBounds = YES;
     imgView.contentMode = UIViewContentModeScaleAspectFit;
-    
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [self.applyCircleView addSubview:label];
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(0);
-        make.top.mas_equalTo(imgView.mas_bottom);
-        make.height.mas_equalTo(20);
-    }];
-    label.text = @"申请圈子";
-    label.font = [UIFont systemFontOfSize:10];
-    label.textColor = kColorFromRGB(kDeepGray);
-    label.textAlignment = NSTextAlignmentCenter;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = self.applyCircleView.bounds;
@@ -168,12 +151,13 @@
 }
 
 #pragma mark - <跳转更多圈子页面>
--(void)jumpToMoreCircleVCWithMoreType:(NSString *)moreType classifyID:(NSString *)classify_id
+-(void)jumpToMoreCircleVCWithMoreType:(NSString *)moreType classifyID:(NSString *)classify_id navigationItemTitle:(NSString *)title
 {
     MoreCycleViewController *moreCircleVC = [[MoreCycleViewController alloc]initWithNibName:NSStringFromClass([MoreCycleViewController class]) bundle:nil];
     moreCircleVC.moreType = moreType;
     moreCircleVC.classify_id = classify_id;
     moreCircleVC.hidesBottomBarWhenPushed = YES;
+    moreCircleVC.navigationItem.title = title;
     [self.navigationController pushViewController:moreCircleVC animated:YES];
 }
 
@@ -184,7 +168,7 @@
     //更多热门圈子
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToMoreHotCircle" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         NSDictionary *dict = x.object;
-        [self jumpToMoreCircleVCWithMoreType:dict[@"moreType"] classifyID:dict[@"classify_id"]];
+        [self jumpToMoreCircleVCWithMoreType:dict[@"moreType"] classifyID:dict[@"classify_id"] navigationItemTitle:dict[@"classify_name"]];
     }];
     
     //圈子详情

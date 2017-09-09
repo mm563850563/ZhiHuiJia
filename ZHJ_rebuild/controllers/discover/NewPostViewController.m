@@ -451,6 +451,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             NewPostImageCell *cellImage = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NewPostImageCell class]) forIndexPath:indexPath];
             cellImage.imgView.image = self.imagesArray[indexPath.row];
             cellImage.btnDeleteImage.tag = indexPath.row;
+            cellImage.fromWhere = @"newPostVC";
             cell = cellImage;
         }
     }

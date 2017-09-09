@@ -358,6 +358,8 @@
 		DD5E86E21F61770000690729 /* MyCircleCircle_infoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86E11F61770000690729 /* MyCircleCircle_infoModel.m */; };
 		DD5E86EF1F62C23C00690729 /* RecommendGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86EE1F62C23C00690729 /* RecommendGoodsCell.m */; };
 		DD5E86F21F62C39200690729 /* RecommendGoodsResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86F11F62C39200690729 /* RecommendGoodsResultModel.m */; };
+		DD5E86F61F639A2900690729 /* DiscoverBannerDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86F51F639A2900690729 /* DiscoverBannerDataModel.m */; };
+		DD5E86F91F639A3A00690729 /* DiscoverBannerResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86F81F639A3A00690729 /* DiscoverBannerResultModel.m */; };
 		DD6286FA1F1E398C0030331D /* Discover_HotTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */; };
 		DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */; };
 		DD6286FF1F1E405A0030331D /* Discover_RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6286FD1F1E405A0030331D /* Discover_RecommendCell.m */; };
@@ -1297,6 +1299,10 @@
 		DD5E86EE1F62C23C00690729 /* RecommendGoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecommendGoodsCell.m; path = cells/RecommendGoodsCell.m; sourceTree = "<group>"; };
 		DD5E86F01F62C39200690729 /* RecommendGoodsResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecommendGoodsResultModel.h; path = models/RecommendGoodsResultModel.h; sourceTree = "<group>"; };
 		DD5E86F11F62C39200690729 /* RecommendGoodsResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecommendGoodsResultModel.m; path = models/RecommendGoodsResultModel.m; sourceTree = "<group>"; };
+		DD5E86F41F639A2900690729 /* DiscoverBannerDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoverBannerDataModel.h; path = models/DiscoverBannerDataModel.h; sourceTree = "<group>"; };
+		DD5E86F51F639A2900690729 /* DiscoverBannerDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoverBannerDataModel.m; path = models/DiscoverBannerDataModel.m; sourceTree = "<group>"; };
+		DD5E86F71F639A3A00690729 /* DiscoverBannerResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoverBannerResultModel.h; path = models/DiscoverBannerResultModel.h; sourceTree = "<group>"; };
+		DD5E86F81F639A3A00690729 /* DiscoverBannerResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoverBannerResultModel.m; path = models/DiscoverBannerResultModel.m; sourceTree = "<group>"; };
 		DD6286F71F1E398C0030331D /* Discover_HotTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discover_HotTopicCell.h; path = cells/Discover_HotTopicCell.h; sourceTree = "<group>"; };
 		DD6286F81F1E398C0030331D /* Discover_HotTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discover_HotTopicCell.m; path = cells/Discover_HotTopicCell.m; sourceTree = "<group>"; };
 		DD6286F91F1E398C0030331D /* Discover_HotTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Discover_HotTopicCell.xib; path = cells/Discover_HotTopicCell.xib; sourceTree = "<group>"; };
@@ -2657,6 +2663,17 @@
 			name = MyCircleModel;
 			sourceTree = "<group>";
 		};
+		DD5E86F31F6399FC00690729 /* DiscoverBannerModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD5E86F41F639A2900690729 /* DiscoverBannerDataModel.h */,
+				DD5E86F51F639A2900690729 /* DiscoverBannerDataModel.m */,
+				DD5E86F71F639A3A00690729 /* DiscoverBannerResultModel.h */,
+				DD5E86F81F639A3A00690729 /* DiscoverBannerResultModel.m */,
+			);
+			name = DiscoverBannerModel;
+			sourceTree = "<group>";
+		};
 		DD6288001F2214F40030331D /* RatingBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -3552,6 +3569,7 @@
 				DD52ED001F5D85C100B4CE96 /* PeopleNearbyModel */,
 				DD52ED1B1F5D9B3400B4CE96 /* SelectTopicModel */,
 				DD5E86CF1F614A0100690729 /* ClassifyModel */,
+				DD5E86F31F6399FC00690729 /* DiscoverBannerModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -4324,8 +4342,10 @@
 				DD184E201F3C59ED009BFF5B /* MyDiscountCouponAvailableModel.m in Sources */,
 				DD69B2F51F3AFD390036F368 /* STPickerArea.m in Sources */,
 				DD4CF0E91F29BF850024156F /* YQMemoryCache.m in Sources */,
+				DD5E86F61F639A2900690729 /* DiscoverBannerDataModel.m in Sources */,
 				EC4BA1341F1462F100B9BE1A /* GiftSendingTableViewCell.m in Sources */,
 				DDFB828E1F1C5E3900AEAAA7 /* MoreProductListCell.m in Sources */,
+				DD5E86F91F639A3A00690729 /* DiscoverBannerResultModel.m in Sources */,
 				DD58FFBD1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.m in Sources */,
 				DD58FFB41F5118C7009EC9F2 /* MyActivitySignUpListViewController.m in Sources */,
 				DD4CEFF91F2732210024156F /* AllProductViewController.m in Sources */,

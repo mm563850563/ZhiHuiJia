@@ -25,9 +25,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7rD-lf-4ft">
                                 <rect key="frame" x="0.0" y="0.0" width="204" height="130.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huodong" translatesAutoresizingMaskIntoConstraints="NO" id="VTm-Tc-ygv">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huodong" translatesAutoresizingMaskIntoConstraints="NO" id="VTm-Tc-ygv">
                                         <rect key="frame" x="0.0" y="0.0" width="204" height="130.5"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6A-oe-xX1">
                                         <rect key="frame" x="10" y="10" width="184" height="20"/>
@@ -60,7 +59,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="shadowOffset" width="1" height="1.5"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNj-Fo-Znc">
@@ -95,7 +93,7 @@
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="1" height="0.5"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myQ-0D-xgd">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myQ-0D-xgd">
                                         <rect key="frame" x="0.0" y="0.0" width="204" height="130.5"/>
                                         <connections>
                                             <action selector="btnSelectOneAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="LkS-HQ-vHu"/>
@@ -132,9 +130,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UG5-sF-4rI">
                                 <rect key="frame" x="0.0" y="132.5" width="204" height="130.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="PZJ-tG-ohg">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="PZJ-tG-ohg">
                                         <rect key="frame" x="0.0" y="0.0" width="204" height="130.5"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ba-G9-ec1">
                                         <rect key="frame" x="10" y="10" width="184" height="20"/>
@@ -201,7 +198,7 @@
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="1" height="0.5"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0XH-To-6Ra">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0XH-To-6Ra">
                                         <rect key="frame" x="0.0" y="0.0" width="204" height="130.5"/>
                                         <connections>
                                             <action selector="btnSelectTwoAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="uGt-8f-6rd"/>

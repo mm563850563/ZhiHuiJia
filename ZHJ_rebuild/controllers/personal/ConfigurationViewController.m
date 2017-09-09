@@ -34,6 +34,7 @@
     [super viewDidLoad];
     
     [self getData];
+    [self settingNavigation];
     [self initTableView];
 }
 
@@ -51,6 +52,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <配置navigation>
+-(void)settingNavigation
+{
+    self.navigationItem.title = @"设置";
+}
 
 #pragma mark - <获取数据>
 -(void)getData
