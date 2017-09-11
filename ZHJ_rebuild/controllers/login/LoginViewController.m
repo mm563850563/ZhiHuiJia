@@ -217,6 +217,7 @@
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                     hudWarning.completionBlock = ^{
                         NSNumber *selected_cat = dataDict[@"data"][@"result"][@"selected_cat"];
+#warning *********************** test:记得改回“@0” ******************************
                         if ([selected_cat isEqual:@0]) {
                             //模态出选择喜欢的品类
                             [self presentSelectThemeVC];

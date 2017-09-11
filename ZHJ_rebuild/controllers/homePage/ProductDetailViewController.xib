@@ -33,10 +33,10 @@
                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="service" translatesAutoresizingMaskIntoConstraints="NO" id="OJv-pC-vqB">
-                                    <rect key="frame" x="13" y="5" width="25" height="25"/>
+                                    <rect key="frame" x="15.5" y="10" width="20" height="20"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="25" id="R0Z-sS-ajd"/>
-                                        <constraint firstAttribute="width" constant="25" id="omQ-QM-3tW"/>
+                                        <constraint firstAttribute="height" constant="20" id="R0Z-sS-ajd"/>
+                                        <constraint firstAttribute="width" constant="20" id="omQ-QM-3tW"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuK-F7-c9L">
@@ -60,7 +60,7 @@
                                 <constraint firstAttribute="width" constant="49.5" id="FW3-F2-a9l"/>
                                 <constraint firstItem="OJv-pC-vqB" firstAttribute="centerX" secondItem="5sg-hG-frI" secondAttribute="centerX" id="Sdv-cU-kU5"/>
                                 <constraint firstItem="VuK-F7-c9L" firstAttribute="top" secondItem="OJv-pC-vqB" secondAttribute="bottom" id="eyG-WB-twY"/>
-                                <constraint firstItem="OJv-pC-vqB" firstAttribute="top" secondItem="5sg-hG-frI" secondAttribute="top" constant="5" id="hhw-7y-OjT"/>
+                                <constraint firstItem="OJv-pC-vqB" firstAttribute="top" secondItem="5sg-hG-frI" secondAttribute="top" constant="10" id="hhw-7y-OjT"/>
                                 <constraint firstItem="vyk-aO-QQO" firstAttribute="leading" secondItem="5sg-hG-frI" secondAttribute="leading" id="oeW-BR-ZiV"/>
                                 <constraint firstAttribute="bottom" secondItem="VuK-F7-c9L" secondAttribute="bottom" id="x0G-3K-AeY"/>
                                 <constraint firstItem="vyk-aO-QQO" firstAttribute="top" secondItem="5sg-hG-frI" secondAttribute="top" id="ztW-X6-3QF"/>
@@ -71,10 +71,10 @@
                             <rect key="frame" x="51" y="0.0" width="50" height="50"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="store" translatesAutoresizingMaskIntoConstraints="NO" id="50i-9O-QC9">
-                                    <rect key="frame" x="12" y="5" width="25" height="25"/>
+                                    <rect key="frame" x="14.5" y="10" width="20" height="20"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="25" id="dBe-Ux-eHf"/>
-                                        <constraint firstAttribute="width" constant="25" id="yHK-iw-5nm"/>
+                                        <constraint firstAttribute="height" constant="20" id="dBe-Ux-eHf"/>
+                                        <constraint firstAttribute="width" constant="20" id="yHK-iw-5nm"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店铺" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQ4-Vh-heh">
@@ -97,7 +97,7 @@
                                 <constraint firstAttribute="trailing" secondItem="b8e-i7-ph1" secondAttribute="trailing" id="Xoc-gS-sHb"/>
                                 <constraint firstItem="qQ4-Vh-heh" firstAttribute="top" secondItem="50i-9O-QC9" secondAttribute="bottom" id="d6W-Mw-xAi"/>
                                 <constraint firstAttribute="bottom" secondItem="qQ4-Vh-heh" secondAttribute="bottom" id="ggQ-Hv-HBb"/>
-                                <constraint firstItem="50i-9O-QC9" firstAttribute="top" secondItem="gHa-e1-kb3" secondAttribute="top" constant="5" id="oIb-bZ-4aO"/>
+                                <constraint firstItem="50i-9O-QC9" firstAttribute="top" secondItem="gHa-e1-kb3" secondAttribute="top" constant="10" id="oIb-bZ-4aO"/>
                                 <constraint firstAttribute="trailing" secondItem="qQ4-Vh-heh" secondAttribute="trailing" id="rU8-k4-VI7"/>
                                 <constraint firstItem="b8e-i7-ph1" firstAttribute="top" secondItem="gHa-e1-kb3" secondAttribute="top" id="vPL-Da-TVA"/>
                                 <constraint firstItem="50i-9O-QC9" firstAttribute="centerX" secondItem="gHa-e1-kb3" secondAttribute="centerX" id="vbR-Gp-q4f"/>
@@ -114,7 +114,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collect" translatesAutoresizingMaskIntoConstraints="NO" id="UOV-z6-i3N">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_black" translatesAutoresizingMaskIntoConstraints="NO" id="UOV-z6-i3N">
                                     <rect key="frame" x="13" y="5" width="25" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="25" id="moV-XX-KBa"/>
@@ -225,8 +225,8 @@
         </view>
     </objects>
     <resources>
-        <image name="collect" width="15" height="15"/>
         <image name="service" width="18" height="18"/>
+        <image name="star_black" width="30" height="30"/>
         <image name="store" width="18" height="18"/>
     </resources>
 </document>

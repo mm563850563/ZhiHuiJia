@@ -137,6 +137,8 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                       });
                   }else{
                       dispatch_async(dispatch_get_main_queue(), ^{
+                          self.maleSlider.value = 1;
+                          self.femaleSlider.value = 0;
                           [hud hideAnimated:YES afterDelay:1.0];
                           MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                           [hudWarning hideAnimated:YES afterDelay:2.0];
@@ -144,6 +146,8 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                   }
               }else{
                   dispatch_async(dispatch_get_main_queue(), ^{
+                      self.maleSlider.value = 1;
+                      self.femaleSlider.value = 0;
                       [hud hideAnimated:YES afterDelay:1.0];
                       MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                       [hudWarning hideAnimated:YES afterDelay:2.0];
@@ -152,6 +156,8 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
           }
           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               dispatch_async(dispatch_get_main_queue(), ^{
+                  self.maleSlider.value = 1;
+                  self.femaleSlider.value = 0;
                   [hud hideAnimated:YES afterDelay:1.0];
                   MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                   [hudWarning hideAnimated:YES afterDelay:2.0];
@@ -244,11 +250,6 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     self.tfBirthday.delegate = self;
     
 //    //添加左滑选择男性
-//    self.maleSlider = [[HBLockSliderView alloc]initWithFrame:self.maleBGView.bounds];
-//    self.maleSlider.delegate = self;
-//    self.maleSlider.value = 1;
-//    self.maleSlider.thumbImage = [UIImage imageNamed:@"man"];
-//    [self.maleBGView addSubview:self.maleSlider];
     self.maleSlider = [[MySlider alloc]initWithFrame:self.maleBGView.bounds];
     self.maleSlider.maximumTrackTintColor = kClearColor;
     self.maleSlider.minimumTrackTintColor = kClearColor;
@@ -258,7 +259,6 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     self.maleSlider.maximumValue = 1;
     self.maleSlider.value = 1;
     [self.maleSlider setThumbImage:[UIImage imageNamed:@"select_male"] forState:UIControlStateNormal];
-//    self.maleSlider.continuous = YES;
     
     self.labelMale = [[UILabel alloc]initWithFrame:self.maleBGView.bounds];
     self.labelMale.text = @"<<   男神左滑";
@@ -280,10 +280,6 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     
     
 //    //添加右滑选择女生
-//    self.femaleSlider = [[HBLockSliderView alloc]initWithFrame:self.femaleBGView.bounds];
-//    self.femaleSlider.delegate = self;
-//    self.femaleSlider.thumbImage = [UIImage imageNamed:@"women"];
-//    [self.femaleBGView addSubview:self.femaleSlider];
     self.femaleSlider = [[MySlider alloc]initWithFrame:self.femaleBGView.bounds];
     self.femaleSlider.maximumTrackTintColor = kClearColor;
     self.femaleSlider.minimumTrackTintColor = kClearColor;
@@ -293,7 +289,6 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     self.femaleSlider.maximumValue = 1;
     self.femaleSlider.value = 0;
     [self.femaleSlider setThumbImage:[UIImage imageNamed:@"select_female"] forState:UIControlStateNormal];
-    //    self.femaleSlider.continuous = YES;
     
     self.labelFemale = [[UILabel alloc]initWithFrame:self.maleBGView.bounds];
     self.labelFemale.text = @"女神右滑   >>";

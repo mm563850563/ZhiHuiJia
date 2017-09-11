@@ -121,9 +121,9 @@
                     
                     //判断是否已经收藏
                     if ([model.data.result.is_collected isEqualToString:@"0"]) {
-                        self.imgViewCollection.image = [UIImage imageNamed:@"collect"];
+                        self.imgViewCollection.image = [UIImage imageNamed:@"star_black"];
                     }else{
-                        self.imgViewCollection.image = [UIImage imageNamed:@"collect_yellow"];
+                        self.imgViewCollection.image = [UIImage imageNamed:@"star_yellow"];
                     }
                     
                     for (GoodsDetailImageModel *modelImage in model.data.result.goods_images) {
@@ -181,7 +181,7 @@
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
             [hudWarning hideAnimated:YES afterDelay:2.0];
             if ([model.code isEqualToString:@"200"]) {
-                self.imgViewCollection.image = [UIImage imageNamed:@"collect_yellow"];
+                self.imgViewCollection.image = [UIImage imageNamed:@"star_yellow"];
             }
         }
     } failBlock:^(NSError *error) {

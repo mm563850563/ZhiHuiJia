@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelProductName;
 @property (weak, nonatomic) IBOutlet UILabel *labelSpec;
 @property (weak, nonatomic) IBOutlet UILabel *labelGoodsPrice;
+@property (weak, nonatomic) IBOutlet UILabel *labelMarketPrice;
 
 @property (nonatomic, strong)CartList_CartListModel *model;
 

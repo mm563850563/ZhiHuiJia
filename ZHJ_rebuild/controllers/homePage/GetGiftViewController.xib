@@ -61,7 +61,7 @@
                                                         <action selector="shakeAndWinAction:" destination="-1" eventType="touchUpInside" id="qSp-F2-3gU"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSm-J4-0sS">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSm-J4-0sS">
                                                     <rect key="frame" x="10" y="70" width="355" height="40"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -197,6 +197,6 @@
     <resources>
         <image name="back" width="37" height="37"/>
         <image name="gift_progress" width="591" height="25"/>
-        <image name="gift_status" width="615" height="60"/>
+        <image name="gift_status" width="1230" height="120"/>
     </resources>
 </document>

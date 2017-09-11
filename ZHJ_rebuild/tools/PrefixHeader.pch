@@ -417,6 +417,9 @@
 #pragma mark - <106.我的圈子-包括已加入圈子>
 #define kMyCircle @"/Circle/myCircle"
 
+#pragma mark - <107.搜索商品>
+#define kSearchGoods @"/Goods/searchGoods"
+
 
 
 

@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "star_green.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "未标题-5-8.png",
       "scale" : "2x"
     },
     {

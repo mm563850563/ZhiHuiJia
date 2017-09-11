@@ -63,7 +63,7 @@
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetUserPrize];
     NSString *userID = kUserDefaultObject(kUserInfo);
-    NSDictionary *dictParameter = @{@"user_id":@"2596",
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
                                     @"type_id":self.type_id};
     [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         [hud hideAnimated:YES afterDelay:1.0];

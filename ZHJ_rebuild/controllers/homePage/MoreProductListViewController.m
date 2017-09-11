@@ -34,9 +34,12 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 @property (nonatomic, strong)UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)UITableView *tableView;
-@property (nonatomic, strong)NSArray *classifyListResultArray;
+@property (nonatomic, strong)NSMutableArray *classifyListResultArray;
 
 @property (nonatomic, strong)UISearchBar *searchBar;
+
+@property (nonatomic, strong)NSNumber *page;
+@property (nonatomic, strong)NSString *sort;
 
 @end
 
@@ -46,9 +49,13 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
     [super viewDidLoad];
     //默认布局为collectionView
     self.layoutCode = CollectionLayout;
+    self.page = @1;
+    self.sort = @"recommend";
     
     if (self.category_id) {
         [self getClassifyListDataWithSort:@"recommend" value:nil];
+    }else if ([self.whereReuseFrom isEqualToString:@"searchGoods"]){
+        [self getSearchGoodsDataWithKeyword:self.keyword sort:@"recommend" value:nil page:@1];
     }
     
     [self settingNavigation];
@@ -63,6 +70,17 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - <懒加载>
+-(NSMutableArray *)classifyListResultArray
+{
+    if (!_classifyListResultArray) {
+        _classifyListResultArray = [NSMutableArray array];
+    }
+    return _classifyListResultArray;
+}
+
+
 /*
  #pragma mark - Navigation
  
@@ -73,7 +91,7 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
  }
  */
 
-#pragma mark - <获取数据>
+#pragma mark - <获取“更多商品”数据>
 -(void)getClassifyListDataWithSort:(NSString *)sort value:(NSString *)value
 {
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
@@ -101,8 +119,65 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
             NSDictionary *dataDict = (NSDictionary *)response;
             ClassifyListModel *model = [[ClassifyListModel alloc]initWithDictionary:dataDict error:nil];
             if ([model.code isEqualToString:@"200"]) {
-                self.classifyListResultArray = model.data.result;
+//                for (ClassifyListResultModel *modelResult in model.data.result) {
+//                    [self.classifyListResultArray addObject:modelResult];
+//                }
+                self.classifyListResultArray = [NSMutableArray arrayWithArray:model.data.result];
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.collectionView reloadData];
+                    [self.tableView reloadData];
+                });
+            }else{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }
+        }
+    } failBlock:^(NSError *error) {
+        [hud hideAnimated:YES afterDelay:1.0];
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+        [hudWarning hideAnimated:YES afterDelay:2.0];
+    }];
+}
+
+#pragma mark - <获取“搜索商品”数据>
+-(void)getSearchGoodsDataWithKeyword:(NSString *)keyword sort:(NSString *)sort value:(NSString *)value page:(NSNumber *)page
+{
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    
+    //分类列表
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kSearchGoods];
+    //参数
+    NSMutableDictionary *dictParameter = [NSMutableDictionary dictionary];
+    [dictParameter setObject:keyword forKey:@"keyword"];
+    [dictParameter setObject:kUserDefaultObject(kUserInfo) forKey:@"user_id"];
+    [dictParameter setObject:sort forKey:@"sort"];
+    [dictParameter setObject:self.page forKey:@"page"];
+    
+//    if (self.is_root) {
+//        [dictParameter setObject:@"1" forKey:@"is_root"];
+//    }else{
+//        [dictParameter setObject:@"0" forKey:@"is_root"];
+//    }
+    
+    if (value) {
+        [dictParameter setObject:value forKey:@"value"];
+    }
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            [hud hideAnimated:YES afterDelay:1.0];
+            NSDictionary *dataDict = (NSDictionary *)response;
+            ClassifyListModel *model = [[ClassifyListModel alloc]initWithDictionary:dataDict error:nil];
+            if ([model.code isEqualToString:@"200"]) {
+                for (ClassifyListResultModel *modelResult in model.data.result) {
+                    [self.classifyListResultArray addObject:modelResult];
+                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    int page = [self.page intValue];
+                    page++;
+                    self.page = [NSNumber numberWithInt:page];
+                    
                     [self.collectionView reloadData];
                     [self.tableView reloadData];
                 });
@@ -134,6 +209,14 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
     
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([MoreProductTableViewCell class]) bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([MoreProductTableViewCell class])];
+    
+    self.tableView.mj_footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
+        if ([self.whereReuseFrom isEqualToString:@"searchGoods"]) {
+            [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:@"1" page:self.page];
+        }else{
+            [self getClassifyListDataWithSort:self.sort value:@"1"];
+        }
+    }];
 }
 
 #pragma mark - <初始化collectionView>
@@ -161,6 +244,14 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
         
         UINib *nib = [UINib nibWithNibName:NSStringFromClass([MoreProductListCell class]) bundle:nil];
         [_collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([MoreProductListCell class])];
+        
+        _collectionView.mj_footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
+            if ([self.whereReuseFrom isEqualToString:@"searchGoods"]) {
+                [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:@"1" page:self.page];
+            }else{
+                [self getClassifyListDataWithSort:self.sort value:@"1"];
+            }
+        }];
     }
     return _collectionView;
 }
@@ -211,11 +302,16 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
     //释放编辑状态
     [self.searchBar endEditing:YES];
     
+    self.keyword = self.searchBar.text;
+    
     if (![self.searchBar.text isEqualToString:@""]) {
-        
-//        [self.friendsArray removeAllObjects];
-//        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
-//        [self requestSearchFriendsWithHUD:hud page:@1];
+        self.page = @1;
+        [self.classifyListResultArray removeAllObjects];
+        if ([self.whereReuseFrom isEqualToString:@"searchGoods"]) {
+            [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:@"1" page:@1];
+        }else{
+            [self getClassifyListDataWithSort:self.sort value:@"1"];
+        }
     }
 }
 
@@ -258,6 +354,8 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
     
     //按推荐排序
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_recommed" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        
+        self.sort = @"recommend";
         UIButton *button = x.object;
         NSString *value = [NSString string];
         if (button.selected) {
@@ -265,11 +363,20 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
         }else{
             value = @"0";
         }
-        [self getClassifyListDataWithSort:@"recommend" value:value];
+        
+        [self.classifyListResultArray removeAllObjects];
+        if ([self.whereReuseFrom isEqualToString:@"searchGoods"]) {
+            [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:value page:@1];
+        }else{
+            [self getClassifyListDataWithSort:self.sort value:value];
+        }
+        
     }];
     
     //按最新排序
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_newest" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        
+        self.sort = @"lastest";
         UIButton *button = x.object;
         NSString *value = [NSString string];
         if (button.selected) {
@@ -277,12 +384,19 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
         }else{
             value = @"0";
         }
-        [self getClassifyListDataWithSort:@"lastest" value:value];
+        
+        [self.classifyListResultArray removeAllObjects];
+        if ([self.whereReuseFrom isEqualToString:@"searchGoods"]) {
+            [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:value page:@1];
+        }else{
+            [self getClassifyListDataWithSort:self.sort value:value];
+        }
     }];
     
     //按销量排序
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_salesVolunm" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         
+        self.sort = @"sales";
         UIButton *button = x.object;
         NSString *value = [NSString string];
         if (button.selected) {
@@ -290,12 +404,19 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
         }else{
             value = @"0";
         }
-        [self getClassifyListDataWithSort:@"sales" value:value];
+        
+        [self.classifyListResultArray removeAllObjects];
+        if ([self.whereReuseFrom isEqualToString:@"searchGoods"]) {
+            [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:value page:@1];
+        }else{
+            [self getClassifyListDataWithSort:self.sort value:value];
+        }
     }];
     
     //按价格排序
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"sort_price" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         
+        self.sort = @"price";
         UIButton *button = x.object;
         NSString *value = [NSString string];
         if (button.selected) {
@@ -303,7 +424,13 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
         }else{
             value = @"0";
         }
-        [self getClassifyListDataWithSort:@"price" value:value];
+        
+        [self.classifyListResultArray removeAllObjects];
+        if ([self.whereReuseFrom isEqualToString:@"searchGoods"]) {
+            [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:value page:@1];
+        }else{
+            [self getClassifyListDataWithSort:self.sort value:value];
+        }
         
     }];
 }
@@ -318,7 +445,18 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 
 
 
-
+#pragma mark - ******* UISearchBarDelegate ******
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    self.page = @1;
+    [self.classifyListResultArray removeAllObjects];
+    if ([self.whereReuseFrom isEqualToString:@"searchGoods"]) {
+        [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:@"1" page:@1];
+    }else{
+        [self getClassifyListDataWithSort:self.sort value:@"1"];
+    }
+}
 
 
 #pragma mark - ** UICollectionViewDelegate,UICollectionViewDataSource ***

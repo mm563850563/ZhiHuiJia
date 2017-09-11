@@ -19,6 +19,9 @@
 //tools
 #import <AFHTTPSessionManager.h>
 
+//views
+#import "MySlider.h"
+
 @interface SelectThemeAndClassifyViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForScrollView;
@@ -29,10 +32,13 @@
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayoutTheme;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionViewClassify;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayoutClassify;
+@property (weak, nonatomic) IBOutlet UIView *sliderBGView;
 
 @property (nonatomic, strong)NSMutableArray *themeArray;
 @property (nonatomic, strong)NSArray *classifyArray;
 @property (nonatomic, strong)NSMutableArray *selectClassifyArray;
+
+@property (nonatomic, strong)MySlider *selectSlider;
 
 @end
 
@@ -43,6 +49,7 @@
     // Do any additional setup after loading the view from its nib.
     
     [self getClassifyData];
+    [self initSelectSlider];
     [self settingCollectionViewTheme];
     [self settingCollectionViewClassify];
 }
@@ -198,6 +205,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                       });
                   }else{
                       dispatch_async(dispatch_get_main_queue(), ^{
+                          self.selectSlider.value = 1;
                           [hud hideAnimated:YES afterDelay:1.0];
                           MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                           [hudWarning hideAnimated:YES afterDelay:2.0];
@@ -205,6 +213,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                   }
               }else{
                   dispatch_async(dispatch_get_main_queue(), ^{
+                      self.selectSlider.value = 1;
                       [hud hideAnimated:YES afterDelay:1.0];
                       MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                       [hudWarning hideAnimated:YES afterDelay:2.0];
@@ -213,11 +222,66 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
           }
           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               dispatch_async(dispatch_get_main_queue(), ^{
+                  self.selectSlider.value = 1;
                   [hud hideAnimated:YES afterDelay:1.0];
                   MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                   [hudWarning hideAnimated:YES afterDelay:2.0];
               });
           }];
+}
+
+#pragma mark - <初始化slider>
+-(void)initSelectSlider
+{
+    self.selectSlider = [[MySlider alloc]initWithFrame:self.sliderBGView.bounds];
+    self.selectSlider.maximumTrackTintColor = kClearColor;
+    self.selectSlider.minimumTrackTintColor = kClearColor;
+    [self.selectSlider trackRectForBounds:self.sliderBGView.bounds];
+    
+    self.selectSlider.minimumValue = 0;
+    self.selectSlider.maximumValue = 1;
+    self.selectSlider.value = 1;
+    [self.selectSlider setThumbImage:[UIImage imageNamed:@"go"] forState:UIControlStateNormal];
+    [self.sliderBGView addSubview:self.selectSlider];
+    
+//    self.labelMale = [[UILabel alloc]initWithFrame:self.maleBGView.bounds];
+//    self.labelMale.text = @"<<   男神左滑";
+//    self.labelMale.font = [UIFont systemFontOfSize:15];
+//    self.labelMale.textAlignment = NSTextAlignmentLeft;
+//    self.labelMale.textColor = kColorFromRGB(kWhite);
+//    self.labelMale.layer.masksToBounds = YES;
+//    self.labelMale.layer.cornerRadius = self.maleBGView.frame.size.height/2.0;
+//    [self.maleBGView addSubview:self.labelMale];
+    
+//    [self.labelMale mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+//    }];
+    [self.selectSlider mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+    [self.selectSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+}
+
+#pragma mark - <滑块滑动方法>
+- (void)sliderValueChanged:(UISlider *)slider{
+    if (slider == self.selectSlider) {
+        [slider setValue:slider.value animated:NO];
+        if (!slider.isTracking && slider.value > 0.2) {
+            [slider setValue:1 animated:YES];
+        }else if(!slider.isTracking && slider.value < 0.2){
+            NSLog(@"完成滑动");
+            
+            //滑动完成
+            if (self.selectClassifyArray.count == 0) {
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择你喜欢的品类"];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            }else{
+                NSDictionary *dict = @{@"user_id":kUserDefaultObject(kUserInfo)};
+                [self updateUserFavouriteClassifyWithDictParameter:dict cat_ids:self.selectClassifyArray];
+            }
+        }
+    }
+    
 }
 
 #pragma mark - <配置collectionViewTheme>
@@ -299,13 +363,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 #pragma mark - <选好按钮>
 - (IBAction)btnSelectedAction:(UIButton *)sender
 {
-    if (self.selectClassifyArray.count == 0) {
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择你喜欢的品类"];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
-    }else{
-        NSDictionary *dict = @{@"user_id":kUserDefaultObject(kUserInfo)};
-        [self updateUserFavouriteClassifyWithDictParameter:dict cat_ids:self.selectClassifyArray];
-    }
+    
     
 }
 

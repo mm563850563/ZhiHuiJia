@@ -36,6 +36,8 @@
 #import "PersonalRankActivityViewController.h"
 #import "MyJoinedActivityViewController.h"
 #import "CircleDetailViewController.h"
+#import "PYSearchViewController.h"
+#import "MoreProductListViewController.h"
 
 #import "DiscoverHotTopicViewController.h"
 #import "DiscoverRecommendViewController.h"
@@ -587,6 +589,22 @@
     }else if (index == 2){
         [self jumpToActivityRecommendVC];
     }
+}
+
+#pragma mark - ****** UISearchBarDelegate *******
+-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    NSArray *array = [NSArray arrayWithObjects:@"sfdgfhjg",@"jtyhrtgr",@"sfdgf",@"sdfdgf", nil];
+    
+    PYSearchViewController *searchVC = [PYSearchViewController searchViewControllerWithHotSearches:nil searchBarPlaceholder:@"请输入关键字" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+        MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
+        moreProductListVC.whereReuseFrom = @"searchGoods";
+        moreProductListVC.keyword = searchText;
+        [searchViewController.navigationController pushViewController:moreProductListVC animated:YES];
+    }];
+    searchVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:searchVC animated:YES];
+    return NO;
 }
 
 #pragma mark - ********* UITableViewDelegate,UITableViewDataSource ********

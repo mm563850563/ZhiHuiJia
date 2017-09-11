@@ -11,6 +11,9 @@
 //views
 #import "SSCheckBoxView.h"
 
+//tools
+#import "NSMutableAttributedString+ThroughLine.h"
+
 @implementation CartProductListCell
 
 - (void)awakeFromNib {
@@ -45,6 +48,9 @@
         self.labelSpec.text = model.key_name;
         self.labelGoodsPrice.text = [NSString stringWithFormat:@"¥ %@",model.goods_price];
         self.labelProductName.text = model.goods_name;
+        
+        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:model.market_price font:10];
+        self.labelMarketPrice.attributedText = throughLineText;
         
         if ([model.selected isEqualToString:@"1"]) {
             self.checkBox.checked = YES;

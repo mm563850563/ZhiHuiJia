@@ -11,6 +11,9 @@
 @interface MoreProductListViewController : UIViewController
 
 @property (nonatomic, strong)NSString *category_id;
+@property (nonatomic, strong)NSString *keyword;
 @property (nonatomic, strong)NSString *is_root;
+
+@property (nonatomic, strong)NSString *whereReuseFrom;
 
 @end
