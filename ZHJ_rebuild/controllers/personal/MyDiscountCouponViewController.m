@@ -69,7 +69,6 @@
                 NSDictionary *dataDict = (NSDictionary *)response;
                 MyDiscountCouponModel *model = [[MyDiscountCouponModel alloc]initWithDictionary:dataDict error:nil];
                 if ([model.code isEqualToString:@"200"]) {
-                    [hud hideAnimated:YES afterDelay:1.0];
                     self.couponAvailableArray = model.data.result.available;
                     self.couponUsedArray = model.data.result.used;
                     self.couponExpiredArray = model.data.result.expired;
@@ -77,21 +76,29 @@
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.tableView reloadData];
+                        [hud hideAnimated:YES afterDelay:1.0];
                     });
                 }else{
-                    [hud hideAnimated:YES afterDelay:1.0];
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [hud hideAnimated:YES afterDelay:1.0];
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                    });
+                    
                 }
             }else{
-                [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
             }
         } failBlock:^(NSError *error) {
-            [hud hideAnimated:YES afterDelay:1.0];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
         }];
     }
 }
@@ -109,25 +116,34 @@
             NSDictionary *dataDict = (NSDictionary *)response;
             NSNumber *code = (NSNumber *)dataDict[@"code"];
             if ([code isEqual:@200]) {
-                [hud hideAnimated:YES afterDelay:1.0];
                 self.couponAvailableArray = dataDict[@"data"][@"result"];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    [self.tableView reloadData];
+                });
             }else{
-                [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+                
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
         }else{
-            [hud hideAnimated:YES afterDelay:1.0];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestEmptyData];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+            
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
     }];
 
 }

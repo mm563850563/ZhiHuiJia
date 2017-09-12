@@ -8,6 +8,8 @@
 
 #import "ForgetPasswordViewController.h"
 
+#import "ResetPasswordViewController.h"
+
 @interface ForgetPasswordViewController ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForScrollView;
@@ -130,6 +132,14 @@
     }
 }
 
+#pragma mark - <跳转“重置密码”页面>
+-(void)jumpToResetPasswordVC
+{
+    ResetPasswordViewController *resetPasswordVC = [[ResetPasswordViewController alloc]initWithNibName:NSStringFromClass([ResetPasswordViewController class]) bundle:nil];
+    resetPasswordVC.verify_code = self.tfCode.text;
+    [self presentViewController:resetPasswordVC animated:YES completion:nil];
+}
+
 #pragma mark - <下一步>
 - (IBAction)btnNextStepAction:(UIButton *)sender
 {
@@ -139,6 +149,8 @@
     }else if ([self.tfCode.text isEqualToString:@""]){
         MBProgressHUD *hud = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入验证码"];
         [hud hideAnimated:YES afterDelay:2.0];
+    }else{
+        [self jumpToResetPasswordVC];
     }
 }
 

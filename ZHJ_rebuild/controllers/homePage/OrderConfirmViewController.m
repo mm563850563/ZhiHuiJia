@@ -134,7 +134,6 @@
             NSDictionary *dataDict = (NSDictionary *)response;
             OrderConfirmModel *model = [[OrderConfirmModel alloc]initWithDictionary:dataDict error:nil];
             if ([model.code isEqualToString:@"200"]) {
-                [hud hideAnimated:YES afterDelay:1.0];
                 self.goodsArray = model.data.result.goods_info;
                 self.modelGoodsInfo = self.goodsArray[0];
                 self.modelResult = model.data.result;
@@ -143,24 +142,33 @@
                 [self fillDataToOutletsWithModel:self.modelResult];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
+                    [hud hideAnimated:YES afterDelay:1.0];
                     //默认选中支付方式第一项
                     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:4];
                     [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
                 });
             }else{
-                [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+                
             }
         }else{
-            [hud hideAnimated:YES afterDelay:1.0];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"数据为空"];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+            
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
     }];
 
 }
@@ -178,7 +186,6 @@
             OrderConfirmModel *model = [[OrderConfirmModel alloc]initWithDictionary:dataDict error:&error];
             if (!error) {
                 if ([model.code isEqualToString:@"200"]) {
-                    [hud hideAnimated:YES afterDelay:1.0];
                     self.goodsArray = model.data.result.goods_info;
                     self.modelGoodsInfo = self.goodsArray[0];
                     self.modelResult = model.data.result;
@@ -187,14 +194,17 @@
                     [self fillDataToOutletsWithModel:self.modelResult];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.tableView reloadData];
+                        [hud hideAnimated:YES afterDelay:1.0];
                         //默认选中支付方式第一项
                         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:4];
                         [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
                     });
                 }else{
-                    [hud hideAnimated:YES afterDelay:1.0];
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [hud hideAnimated:YES afterDelay:1.0];
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                    });
                 }
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -250,7 +260,6 @@
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         if (response) {
-            [hud hideAnimated:YES afterDelay:1.0];
             NSDictionary *dataDict = (NSDictionary *)response;
             NSError *error = nil;
             PlaceOrderModel *model = [[PlaceOrderModel alloc]initWithDictionary:dataDict error:&error];
@@ -266,45 +275,70 @@
                             NSString *resultStatus = resultDic[@"resultStatus"];
                             if ([resultStatus isEqualToString:@"9000"]) {
                                 
-                                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付成功"];
-                                [hudWarning hideAnimated:YES afterDelay:2.0];
-                                hudWarning.completionBlock = ^{
-                                    SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
-                                    successPayVC.modelAli = modelAliPay;
-                                    [self presentViewController:successPayVC animated:YES completion:^{
-                                        [self.navigationController popViewControllerAnimated:YES];
-                                    }];
-                                };
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [hud hideAnimated:YES afterDelay:1.0];
+                                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付成功"];
+                                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                                    hudWarning.completionBlock = ^{
+                                        SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
+                                        successPayVC.modelAli = modelAliPay;
+                                        [self presentViewController:successPayVC animated:YES completion:^{
+                                            [self.navigationController popViewControllerAnimated:YES];
+                                        }];
+                                    };
+                                });
+                                
                                 
                             }else{
-                                [self.navigationController popViewControllerAnimated:YES];
-                                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付失败"];
-                                [hudWarning hideAnimated:YES afterDelay:2.0];
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [hud hideAnimated:YES afterDelay:1.0];
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付失败"];
+                                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                                });
+                                
                             }
                         }];
                     }else{
-                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [hud hideAnimated:YES afterDelay:1.0];
+                            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                            [hudWarning hideAnimated:YES afterDelay:2.0];
+                        });
+                        
                     }
                 }else{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [hud hideAnimated:YES afterDelay:1.0];
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                    });
+                    
                 }
             }else{
-                [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.localizedDescription];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:error.localizedDescription];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+                
             }
             
         }else{
-            [hud hideAnimated:YES afterDelay:1.0];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请稍后再试"];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+            
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+        
     }];
 }
 
@@ -352,25 +386,36 @@
                 payreq.timeStamp = (UInt32)[modelCallback.timestamp intValue];
                 payreq.nonceStr = modelCallback.noncestr;
                 if (![WXApi isWXAppInstalled]) {
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请安装微信"];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请安装微信"];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                    });
+                    
                 }else if (![WXApi isWXAppSupportApi]){
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"不支持微信支付"];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"不支持微信支付"];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                    });
                 }else{
                     [WXApi sendReq:payreq];
                 }
                 
             }else{
-                [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+                
             }
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+        
     }];
 }
 
@@ -422,15 +467,21 @@
                 });
                 
             }else{
-                [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+                
             }
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+        
     }];
 }
 

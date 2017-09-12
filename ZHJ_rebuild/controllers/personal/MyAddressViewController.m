@@ -66,10 +66,10 @@
                 NSDictionary *dataDict = (NSDictionary *)response;
                 UserAddressListModel *model = [[UserAddressListModel alloc]initWithDictionary:dataDict error:nil];
                 if ([model.code isEqualToString:@"200"]) {
-                    [hud hideAnimated:YES afterDelay:1.0];
                     self.addressListArray = [NSMutableArray arrayWithArray:model.data.result];
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        [hud hideAnimated:YES afterDelay:1.0];
                         if (afterDelete) {
                             if (self.addressListArray.count == 0) {
                                 [[NSNotificationCenter defaultCenter]postNotificationName:@"afterDeleteAddressRefresh" object:nil];
@@ -79,19 +79,26 @@
                         [self.tableView reloadData];
                     });
                 }else{
-                    [hud hideAnimated:YES afterDelay:1.0];
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [hud hideAnimated:YES afterDelay:1.0];
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                    });
+                    
                 }
             }else{
-                [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"数据为空"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
             }
         } failBlock:^(NSError *error) {
-            [hud hideAnimated:YES afterDelay:1.0];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
         }];
     }
 }
@@ -104,23 +111,32 @@
     NSDictionary *dictParameter = @{@"user_id":user_id,
                                     @"address_id":address_id};
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
-        [hud hideAnimated:YES afterDelay:1.0];
         NSDictionary *dataDict = (NSDictionary *)response;
         NSNumber *code = (NSNumber *)dataDict[@"code"];
         if ([code isEqual:@200]) {
             //设置成功后重新请求页面数据
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self getUserAddressListDataAfterDelete:NO];
+                
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hud hideAnimated:YES afterDelay:1.0];
             });
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
-        }else{
             
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hud hideAnimated:YES afterDelay:1.0];
+            });
+            
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hud hideAnimated:YES afterDelay:1.0];
+        });
     }];
 }
 
@@ -132,22 +148,31 @@
     NSDictionary *dictParameter = @{@"user_id":user_id,
                                     @"address_id":address_id};
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
-        [hud hideAnimated:YES afterDelay:1.0];
         NSDictionary *dataDict = (NSDictionary *)response;
         NSNumber *code = (NSNumber *)dataDict[@"code"];
         if ([code isEqual:@200]) {
             //设置成功后重新请求页面数据
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self getUserAddressListDataAfterDelete:YES];
+                
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hud hideAnimated:YES afterDelay:1.0];
             });
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            
         }else{
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hud hideAnimated:YES afterDelay:1.0];
+            });
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hud hideAnimated:YES afterDelay:1.0];
+        });
     }];
 }
 

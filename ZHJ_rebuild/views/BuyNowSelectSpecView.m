@@ -218,16 +218,22 @@
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             AddToCartModel *model = [[AddToCartModel alloc]initWithDictionary:dataDict error:nil];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:model.msg];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+            
             
             //发送通知刷新购物车页面
             [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCartList" object:nil];
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:kRequestError];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
     }];
     
 }

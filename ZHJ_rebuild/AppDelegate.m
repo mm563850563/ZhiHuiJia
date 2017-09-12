@@ -17,12 +17,18 @@
 //shareSDK
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKConnector/ShareSDKConnector.h>
+
+//腾讯SDK
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <TencentOpenAPI/QQApiInterface.h>
+
+//微博SDK
 #import "WeiboSDK.h"
 
 //paySDK
 #import <AlipaySDK/AlipaySDK.h>
+
+//微信SDK
 #import "WXApi.h"
 #import "WXApiManager.h"
 
@@ -91,6 +97,9 @@
     
     [self settingMainTabbarVC];
     
+    //*********** 注册第三方平台 *************
+    [self registerApp];
+    
     //************ 第三方登录 *************
     [self registerLoginPlatforms];
     
@@ -114,6 +123,13 @@
 //    UIImage *imgBack = [[UIImage imageNamed:@"back"]resizableImageWithCapInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
     [UINavigationBar appearance].backIndicatorTransitionMaskImage = [UIImage imageNamed:@"back"];
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"back"];
+}
+
+#pragma mark - <注册第三方平台> 
+-(void)registerApp
+{
+    [WXApi registerApp:@"wxd8b7051c3bd0f932"];
+    [WeiboSDK registerApp:@"4152357321"];
 }
 
 

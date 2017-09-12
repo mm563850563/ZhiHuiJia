@@ -81,7 +81,7 @@
     
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:dictPara progressBlock:nil successBlock:^(id response) {
-        [hud hideAnimated:YES afterDelay:1.0];
+        
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             BrandDetailModel *model = [[BrandDetailModel alloc]initWithDictionary:dataDict error:nil];
@@ -91,18 +91,31 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
+                    [hud hideAnimated:YES afterDelay:1.0];
                     self.tableView.delegate = self;
                     self.tableView.dataSource = self;
                 });
             }else{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hud hideAnimated:YES afterDelay:1.0];
+                });
+                
             }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hud hideAnimated:YES afterDelay:1.0];
+            });
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hud hideAnimated:YES afterDelay:1.0];
+        });
     }];
 }
 
@@ -161,17 +174,30 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
+                    [hud hideAnimated:YES afterDelay:1.0];
                     [self.tableView.mj_footer endRefreshing];
                 });
             }else{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hud hideAnimated:YES afterDelay:1.0];
+                });
+                
             }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hud hideAnimated:YES afterDelay:1.0];
+            });
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hud hideAnimated:YES afterDelay:1.0];
+        });
     }];
 }
 

@@ -275,6 +275,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             if (self.selectClassifyArray.count == 0) {
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择你喜欢的品类"];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
+                [slider setValue:1 animated:YES];
             }else{
                 NSDictionary *dict = @{@"user_id":kUserDefaultObject(kUserInfo)};
                 [self updateUserFavouriteClassifyWithDictParameter:dict cat_ids:self.selectClassifyArray];

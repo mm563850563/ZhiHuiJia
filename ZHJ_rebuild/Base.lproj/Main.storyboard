@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -712,13 +711,12 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             </imageView>
-                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cq9-a4-ScC">
+                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cq9-a4-ScC">
                                                                 <rect key="frame" x="25" y="60" width="90" height="90"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="90" id="0zF-jP-L3C"/>
                                                                     <constraint firstAttribute="height" constant="90" id="yzw-zg-lmK"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Button" image="appLogo"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                         <integer key="value" value="45"/>
@@ -796,6 +794,18 @@
                                                                     <constraint firstAttribute="bottom" secondItem="y3K-HL-qat" secondAttribute="bottom" id="ayi-FG-Hmj"/>
                                                                 </constraints>
                                                             </view>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="obL-oZ-L1c">
+                                                                <rect key="frame" x="25" y="60" width="90" height="90"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="90" id="Ewc-Am-in7"/>
+                                                                    <constraint firstAttribute="height" constant="90" id="kvS-4w-LCK"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="45"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -807,6 +817,8 @@
                                                             <constraint firstAttribute="trailing" secondItem="DBB-XB-gpb" secondAttribute="trailing" constant="20" id="JYJ-1e-nKD"/>
                                                             <constraint firstItem="XrS-gg-YaV" firstAttribute="top" secondItem="nIN-kR-x2v" secondAttribute="top" id="Jmj-Vg-OTS"/>
                                                             <constraint firstItem="QOt-CO-7fa" firstAttribute="top" secondItem="nIN-kR-x2v" secondAttribute="top" constant="10" id="MAP-5l-FQ6"/>
+                                                            <constraint firstAttribute="bottom" secondItem="obL-oZ-L1c" secondAttribute="bottom" constant="30" id="MV3-ly-FDh"/>
+                                                            <constraint firstItem="obL-oZ-L1c" firstAttribute="leading" secondItem="nIN-kR-x2v" secondAttribute="leading" constant="25" id="WEZ-7X-kfh"/>
                                                             <constraint firstItem="XrS-gg-YaV" firstAttribute="leading" secondItem="nIN-kR-x2v" secondAttribute="leading" id="YBr-VU-crf"/>
                                                             <constraint firstItem="DBB-XB-gpb" firstAttribute="leading" secondItem="cq9-a4-ScC" secondAttribute="trailing" constant="10" id="Yqf-I5-W8u"/>
                                                             <constraint firstAttribute="height" constant="180" id="dlS-oP-dpJ"/>
@@ -1230,6 +1242,7 @@
                         <outlet property="heightForCollectBGView" destination="aHf-fA-cYm" id="03t-9C-uKe"/>
                         <outlet property="heightForHeaderView" destination="Tvr-3E-uXw" id="stR-zc-fZj"/>
                         <outlet property="heightForScrollView" destination="sq4-d8-37T" id="8no-cS-6PI"/>
+                        <outlet property="imgViewPortrait" destination="obL-oZ-L1c" id="sNo-F8-M3i"/>
                         <outlet property="labelUserName" destination="b9b-2O-iWz" id="ZpG-qw-3ty"/>
                     </connections>
                 </viewController>
@@ -1239,7 +1252,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="appLogo" width="550" height="550"/>
         <image name="bgbg" width="540" height="325"/>
         <image name="config" width="30" height="30"/>
         <image name="message" width="18" height="18"/>

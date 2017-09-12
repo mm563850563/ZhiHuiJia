@@ -42,7 +42,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string></string>
+			<string>qq</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>tencent1106054822</string>
@@ -52,7 +52,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string></string>
+			<string>weibo</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wb4152357321</string>
@@ -94,8 +94,6 @@
 	<string>需要您的同意,才能访问相机</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>需要您的同意,才能访问相册</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

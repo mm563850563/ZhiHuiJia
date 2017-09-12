@@ -78,7 +78,6 @@
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             AllClassifyModel *model = [[AllClassifyModel alloc]initWithDictionary:dataDict error:nil];
-            [hud hideAnimated:YES afterDelay:1.0];
             
             if ([model.code isEqualToNumber:[NSNumber numberWithInteger:200]]) {
                 self.model = model;
@@ -88,19 +87,33 @@
                 
                 //回到主线程初始化
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
                     [self.leftTableView reloadData];
                     [self.rightTableView reloadData];
                     //默认选中第一个
                     [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
                 });
             }else{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+                
             }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
         }
     } failBlock:^(NSError *error) {
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
     }];
     
     

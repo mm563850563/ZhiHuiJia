@@ -59,35 +59,46 @@
                                @"password":password};
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self animated:YES];
     [YQNetworking postWithUrl:strLogin refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
-        [hud hideAnimated:YES afterDelay:1.0];
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             NSError *error = nil;
             LoginModel *model = [[LoginModel alloc]initWithDictionary:dataDict error:&error];
             if ([model.code isEqualToString:@"200"]) {
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:model.msg];
-                hudWarning.completionBlock = ^{
-                    [self removeFromSuperview];
-                };
-                [hudWarning hideAnimated:YES afterDelay:2.0];
                 
-                //登陆成功后，把user_id保存本地，用作持久化登陆
-                kUserDefaultSetObject(model.data.result.user_id, kUserInfo);
-                kUserDefaultSynchronize;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:model.msg];
+                    hudWarning.completionBlock = ^{
+                        [self removeFromSuperview];
+                    };
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    
+                    //登陆成功后，把user_id保存本地，用作持久化登陆
+                    kUserDefaultSetObject(model.data.result.user_id, kUserInfo);
+                    kUserDefaultSynchronize;
+                });
+                
             }else{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:model.msg];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:model.msg];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hud hideAnimated:YES afterDelay:1.0];
+                });
+                
             }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hud hideAnimated:YES afterDelay:1.0];
+            });
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
-        if (error.code == -1009) {
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:@"请检查网络"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:2.0];
-        }else{
-            
-        }
-        
+        });
     }];
 }
 

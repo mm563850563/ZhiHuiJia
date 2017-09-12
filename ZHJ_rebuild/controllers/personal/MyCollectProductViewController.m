@@ -159,7 +159,7 @@
                 }
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"数据为空"];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
                 });
                 
@@ -201,18 +201,25 @@
                     });
                 }else{
                     //                    [hud hideAnimated:YES afterDelay:1.0];
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                    });
+                    
                 }
             }else{
                 //                [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"数据为空"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
             }
         } failBlock:^(NSError *error) {
             //            [hud hideAnimated:YES afterDelay:1.0];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
         }];
     }
 }

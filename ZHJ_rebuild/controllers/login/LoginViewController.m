@@ -20,6 +20,9 @@
 
 //SDKs
 #import <ShareSDKExtension/ShareSDK+Extension.h>
+#import "WXApi.h"
+#import <TencentOpenAPI/QQApiInterface.h>
+#import "WeiboSDK.h"
 
 @interface LoginViewController ()
 
@@ -42,7 +45,6 @@
     // Do any additional setup after loading the view from its nib.
     
     [self checkCurrentThirdApp];
-    [self displayInstalledAppIcon];
     [self settingHeightForScrollView];
 }
 
@@ -73,15 +75,19 @@
 #pragma mark - <检测是否安装“qq”，“微信”，“新浪”>
 -(void)checkCurrentThirdApp
 {
-    [self.currentThirdAppArray removeAllObjects];
     
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mqq://"]]) {
+    if ([QQApiInterface isQQInstalled]) {
         [self.currentThirdAppArray addObject:@"qq"];
-    }else if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]]){
+    }
+    if ([WXApi isWXAppInstalled]){
         [self.currentThirdAppArray addObject:@"weixin"];
-    }else if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weibo://"]]){
+    }
+    if ([WeiboSDK isWeiboAppInstalled]){
         [self.currentThirdAppArray addObject:@"weibo"];
     }
+    
+    //显示已安装的appIcon
+    [self displayInstalledAppIcon];
 }
 
 #pragma mark - <根据用户安装的第三方app显示>
@@ -135,13 +141,13 @@
                 [self.btnQQLogin setHidden:YES];
                 [self.btnWeixinLogin mas_remakeConstraints:^(MASConstraintMaker *make) {
                     make.size.mas_offset(CGSizeMake(50, 50));
-                    make.centerY.mas_equalTo(0);
-                    make.centerX.mas_equalTo(-20);
+                    make.centerY.mas_equalTo(weakSelf.thirdLoginBGView);
+                    make.centerX.mas_equalTo(weakSelf.thirdLoginBGView.mas_centerX).with.offset(40);
                 }];
                 [self.btnWeiboLogin mas_remakeConstraints:^(MASConstraintMaker *make) {
                     make.size.mas_offset(CGSizeMake(50, 50));
-                    make.centerY.mas_equalTo(0);
-                    make.centerX.mas_equalTo(20);
+                    make.centerY.mas_equalTo(weakSelf.thirdLoginBGView);
+                    make.centerX.mas_equalTo(weakSelf.thirdLoginBGView.mas_centerX).with.offset(-40);
                 }];
             }else if (![self.currentThirdAppArray containsObject:@"weixin"]) {
                 [self.btnWeiboLogin setHidden:NO];
@@ -149,13 +155,13 @@
                 [self.btnQQLogin setHidden:NO];
                 [self.btnQQLogin mas_remakeConstraints:^(MASConstraintMaker *make) {
                     make.size.mas_offset(CGSizeMake(50, 50));
-                    make.centerY.mas_equalTo(0);
-                    make.centerX.mas_equalTo(-20);
+                    make.centerY.mas_equalTo(weakSelf.thirdLoginBGView);
+                    make.centerX.mas_equalTo(weakSelf.thirdLoginBGView.mas_centerX).with.offset(40);
                 }];
                 [self.btnWeiboLogin mas_remakeConstraints:^(MASConstraintMaker *make) {
                     make.size.mas_offset(CGSizeMake(50, 50));
-                    make.centerY.mas_equalTo(0);
-                    make.centerX.mas_equalTo(20);
+                    make.centerY.mas_equalTo(weakSelf.thirdLoginBGView);
+                    make.centerX.mas_equalTo(weakSelf.thirdLoginBGView.mas_centerX).with.offset(-40);
                 }];
             }else if (![self.currentThirdAppArray containsObject:@"weibo"]) {
                 [self.btnWeiboLogin setHidden:YES];
@@ -163,13 +169,13 @@
                 [self.btnQQLogin setHidden:NO];
                 [self.btnQQLogin mas_remakeConstraints:^(MASConstraintMaker *make) {
                     make.size.mas_offset(CGSizeMake(50, 50));
-                    make.centerY.mas_equalTo(0);
-                    make.centerX.mas_equalTo(-20);
+                    make.centerY.mas_equalTo(weakSelf.thirdLoginBGView);
+                    make.centerX.mas_equalTo(weakSelf.thirdLoginBGView.mas_centerX).with.offset(40);
                 }];
                 [self.btnWeixinLogin mas_remakeConstraints:^(MASConstraintMaker *make) {
                     make.size.mas_offset(CGSizeMake(50, 50));
-                    make.centerY.mas_equalTo(0);
-                    make.centerX.mas_equalTo(20);
+                    make.centerY.mas_equalTo(weakSelf.thirdLoginBGView);
+                    make.centerX.mas_equalTo(weakSelf.thirdLoginBGView.mas_centerX).with.offset(-40);
                 }];
             }
             break;
@@ -204,20 +210,20 @@
                                     @"password":password};
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:strLogin refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
-        [hud hideAnimated:YES afterDelay:1.0];
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             NSNumber *code = dataDict[@"code"];
             if ([code isEqual:@200]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     //登陆成功后，把user_id保存本地，用作持久化登陆
-                    kUserDefaultSetObject(dataDict[@"data"][@"result"][@"user_id"], kUserInfo);
+                    NSString *user_id = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"user_id"]];
+                    kUserDefaultSetObject(user_id, kUserInfo);
                     kUserDefaultSynchronize;
                     
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                     hudWarning.completionBlock = ^{
                         NSNumber *selected_cat = dataDict[@"data"][@"result"][@"selected_cat"];
-#warning *********************** test:记得改回“@0” ******************************
+                        
                         if ([selected_cat isEqual:@0]) {
                             //模态出选择喜欢的品类
                             [self presentSelectThemeVC];
@@ -227,12 +233,9 @@
                         
                     };
                     [hudWarning hideAnimated:YES afterDelay:2.0];
-                    
-                    
+                    [hud hideAnimated:YES afterDelay:1.0];
                     
                     [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshHomePageAfterLogin" object:nil];
-                    
-                    
                     
                 });
                 
@@ -240,14 +243,23 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hud hideAnimated:YES afterDelay:1.0];
                 });
             }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
         }
     } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
         
-        [hud hideAnimated:YES afterDelay:1.0];
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
     }];
 }
 
@@ -292,7 +304,21 @@
                     kUserDefaultSetObject(dataDict[@"data"][@"result"][@"user_id"], kUserInfo);
                     kUserDefaultSynchronize;
                     
+                    hudWarning.completionBlock = ^{
+                        NSNumber *selected_cat = dataDict[@"data"][@"result"][@"selected_cat"];
+                        
+                        if ([selected_cat isEqual:@0]) {
+                            //模态出选择喜欢的品类
+                            [self presentSelectThemeVC];
+                        }else{
+                            [self dismissViewControllerAnimated:YES completion:nil];
+                        }
+                        
+                    };
+                    
                     [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshHomePageAfterLogin" object:nil];
+                    
+                    [hud hideAnimated:YES afterDelay:1.0];
                 });
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{

@@ -73,12 +73,11 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetGiftList];
     
     NSString *userID = kUserDefaultObject(kUserInfo);
-    NSDictionary *dictParameter = @{@"user_id":@"2596",
+    NSDictionary *dictParameter = @{@"user_id":userID,
                                     @"type_id":self.type_id};
     
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
-        [hud hideAnimated:YES afterDelay:1.0];
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             GetGiftListModel *model = [[GetGiftListModel alloc]initWithDictionary:dataDict error:nil];
@@ -87,17 +86,31 @@
                 self.giftListArray = model.data.result.gift_list;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.collectionView reloadData];
+                    [hud hideAnimated:YES afterDelay:1.0];
                     [self sendDataToOutlets];
                 });
             }else{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hud hideAnimated:YES afterDelay:1.0];
+                });
+                
             }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hud hideAnimated:YES afterDelay:1.0];
+            });
+            
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
     }];
 }
 

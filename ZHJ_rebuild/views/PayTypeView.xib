@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12121"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Xc-Tw-E2O">
+                    <rect key="frame" x="37" y="293" width="300" height="80"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xs-TA-ibE">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qce-KD-mbG">
+                            <rect key="frame" x="0.0" y="40" width="300" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="qce-KD-mbG" firstAttribute="leading" secondItem="2Xc-Tw-E2O" secondAttribute="leading" id="6Hh-Gh-5XW"/>
+                        <constraint firstAttribute="width" constant="300" id="91r-e1-1kZ"/>
+                        <constraint firstAttribute="height" constant="80" id="NFz-Mm-blg"/>
+                        <constraint firstItem="9xs-TA-ibE" firstAttribute="leading" secondItem="2Xc-Tw-E2O" secondAttribute="leading" id="QCn-ms-rec"/>
+                        <constraint firstAttribute="trailing" secondItem="9xs-TA-ibE" secondAttribute="trailing" id="TXU-rq-dJ9"/>
+                        <constraint firstItem="9xs-TA-ibE" firstAttribute="top" secondItem="2Xc-Tw-E2O" secondAttribute="top" id="XO7-6b-642"/>
+                        <constraint firstItem="qce-KD-mbG" firstAttribute="top" secondItem="9xs-TA-ibE" secondAttribute="bottom" id="XVy-Ag-mY6"/>
+                        <constraint firstItem="9xs-TA-ibE" firstAttribute="height" secondItem="2Xc-Tw-E2O" secondAttribute="height" multiplier="1:2" id="YWZ-re-eyL"/>
+                        <constraint firstAttribute="bottom" secondItem="qce-KD-mbG" secondAttribute="bottom" id="c1Z-nR-Tyx"/>
+                        <constraint firstAttribute="trailing" secondItem="qce-KD-mbG" secondAttribute="trailing" id="g9a-rF-Mcz"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="2Xc-Tw-E2O" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1qo-n8-QV8"/>
+                <constraint firstItem="2Xc-Tw-E2O" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="DcJ-TM-mVp"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="106.5"/>
+        </view>
+    </objects>
+</document>

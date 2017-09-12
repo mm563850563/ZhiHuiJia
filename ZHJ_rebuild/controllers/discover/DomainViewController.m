@@ -319,9 +319,9 @@
 #pragma mark - <跳转“消息通知”页面>
 -(void)jumpToMessageVC
 {
-//    NotificationViewController *notificationVC = [[NotificationViewController alloc]init];
-//    
-//    [self.navigationController pushViewController:notificationVC animated:YES];
+    NotificationViewController *notificationVC = [[NotificationViewController alloc]init];
+    
+    [self.navigationController pushViewController:notificationVC animated:YES];
 }
 
 #pragma mark - <跳转“个人资料”页面>

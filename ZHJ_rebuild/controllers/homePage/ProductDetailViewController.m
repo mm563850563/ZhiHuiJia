@@ -178,16 +178,23 @@
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             AddToCollectionModel *model = [[AddToCollectionModel alloc]initWithDictionary:dataDict error:nil];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+            
             if ([model.code isEqualToString:@"200"]) {
                 self.imgViewCollection.image = [UIImage imageNamed:@"star_yellow"];
             }
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+        
     }];
 }
 
@@ -208,16 +215,23 @@
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             AddToCollectionModel *model = [[AddToCollectionModel alloc]initWithDictionary:dataDict error:nil];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+            
             if ([model.code isEqualToString:@"200"]) {
                 self.imgViewCollection.image = [UIImage imageNamed:@"collect"];
             }
         }
     } failBlock:^(NSError *error) {
-        [hud hideAnimated:YES afterDelay:1.0];
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+        
     }];
 }
 

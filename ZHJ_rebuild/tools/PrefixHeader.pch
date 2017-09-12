@@ -420,6 +420,21 @@
 #pragma mark - <107.搜索商品>
 #define kSearchGoods @"/Goods/searchGoods"
 
+#pragma mark - <108.重置密码>
+#define kResetPassword @"/User/resetPassword"
+
+#pragma mark - <109.摇一摇>
+#define kShake @"/User/shake"
+
+#pragma mark - <110.获取摇一摇礼品>
+#define kGetPrize @"/User/getPrize"
+
+#pragma mark - <111.领取礼品发送短信>
+#define kSendBindMsg @"/User/sendBindMsg"
+
+#pragma mark - <112.领取礼品绑定手机>
+#define kBindMobile @"/User/bindMobile"
+
 
 
 

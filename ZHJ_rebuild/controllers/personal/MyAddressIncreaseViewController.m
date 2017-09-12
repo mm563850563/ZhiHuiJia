@@ -73,29 +73,38 @@
                 NSDictionary *dataDict = (NSDictionary *)response;
                 NSNumber *code = (NSNumber *)response[@"code"];
                 if ([code isEqual:@200]) {
-                    //通知地址列表刷新页面
-                    [[NSNotificationCenter defaultCenter]postNotificationName:@"submitAfterModifyAddress" object:nil];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //通知地址列表刷新页面
+                        [[NSNotificationCenter defaultCenter]postNotificationName:@"submitAfterModifyAddress" object:nil];
+                        
+                        [hud hideAnimated:YES afterDelay:1.0];
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        hudWarning.completionBlock = ^{
+                            [self.navigationController popViewControllerAnimated:YES];
+                        };
+                    });
                     
-                    [hud hideAnimated:YES afterDelay:1.0];
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
-                    hudWarning.completionBlock = ^{
-                        [self.navigationController popViewControllerAnimated:YES];
-                    };
                 }else{
-                    [hud hideAnimated:YES afterDelay:1.0];
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [hud hideAnimated:YES afterDelay:1.0];
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                    });
                 }
             }else{
-                [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"数据为空"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
             }
         } failBlock:^(NSError *error) {
-            [hud hideAnimated:YES afterDelay:1.0];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
         }];
     }
 }

@@ -340,6 +340,14 @@
 		DD58FFD71F5167DB009EC9F2 /* MyJoinedActivityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD58FFD51F5167DB009EC9F2 /* MyJoinedActivityListViewController.xib */; };
 		DD58FFDB1F517A90009EC9F2 /* HotTopicListDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFDA1F517A90009EC9F2 /* HotTopicListDataModel.m */; };
 		DD58FFDE1F517AA3009EC9F2 /* HotTopicListResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58FFDD1F517AA3009EC9F2 /* HotTopicListResultModel.m */; };
+		DD5AEE4B1F668BAC002E4F49 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5AEE491F668BAC002E4F49 /* ResetPasswordViewController.m */; };
+		DD5AEE4C1F668BAC002E4F49 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5AEE4A1F668BAC002E4F49 /* ResetPasswordViewController.xib */; };
+		DD5AEE4F1F66CEE2002E4F49 /* CashingPrizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5AEE4E1F66CEE2002E4F49 /* CashingPrizeView.m */; };
+		DD5AEE511F66CEF2002E4F49 /* CashingPrizeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5AEE501F66CEF2002E4F49 /* CashingPrizeView.xib */; };
+		DD5AEE551F66E199002E4F49 /* ShakeDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5AEE541F66E199002E4F49 /* ShakeDataModel.m */; };
+		DD5AEE581F66E1B0002E4F49 /* ShakeResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5AEE571F66E1B0002E4F49 /* ShakeResultModel.m */; };
+		DD5AEE5B1F67AFC5002E4F49 /* PayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5AEE5A1F67AFC5002E4F49 /* PayTypeView.m */; };
+		DD5AEE5D1F67AFD1002E4F49 /* PayTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5AEE5C1F67AFD1002E4F49 /* PayTypeView.xib */; };
 		DD5E86B41F611C8700690729 /* SameHobbyPersonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86B21F611C8700690729 /* SameHobbyPersonListViewController.m */; };
 		DD5E86B51F611C8700690729 /* SameHobbyPersonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5E86B31F611C8700690729 /* SameHobbyPersonListViewController.xib */; };
 		DD5E86B91F6120C000690729 /* SameHobbyPersonListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86B71F6120C000690729 /* SameHobbyPersonListCell.m */; };
@@ -1268,6 +1276,19 @@
 		DD58FFDA1F517A90009EC9F2 /* HotTopicListDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotTopicListDataModel.m; path = models/HotTopicListDataModel.m; sourceTree = "<group>"; };
 		DD58FFDC1F517AA3009EC9F2 /* HotTopicListResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotTopicListResultModel.h; path = models/HotTopicListResultModel.h; sourceTree = "<group>"; };
 		DD58FFDD1F517AA3009EC9F2 /* HotTopicListResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotTopicListResultModel.m; path = models/HotTopicListResultModel.m; sourceTree = "<group>"; };
+		DD5AEE481F668BAC002E4F49 /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResetPasswordViewController.h; path = controllers/login/ResetPasswordViewController.h; sourceTree = "<group>"; };
+		DD5AEE491F668BAC002E4F49 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResetPasswordViewController.m; path = controllers/login/ResetPasswordViewController.m; sourceTree = "<group>"; };
+		DD5AEE4A1F668BAC002E4F49 /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResetPasswordViewController.xib; path = controllers/login/ResetPasswordViewController.xib; sourceTree = "<group>"; };
+		DD5AEE4D1F66CEE2002E4F49 /* CashingPrizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CashingPrizeView.h; path = views/CashingPrizeView.h; sourceTree = "<group>"; };
+		DD5AEE4E1F66CEE2002E4F49 /* CashingPrizeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CashingPrizeView.m; path = views/CashingPrizeView.m; sourceTree = "<group>"; };
+		DD5AEE501F66CEF2002E4F49 /* CashingPrizeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CashingPrizeView.xib; path = views/CashingPrizeView.xib; sourceTree = "<group>"; };
+		DD5AEE531F66E199002E4F49 /* ShakeDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShakeDataModel.h; path = models/ShakeDataModel.h; sourceTree = "<group>"; };
+		DD5AEE541F66E199002E4F49 /* ShakeDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShakeDataModel.m; path = models/ShakeDataModel.m; sourceTree = "<group>"; };
+		DD5AEE561F66E1B0002E4F49 /* ShakeResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShakeResultModel.h; path = models/ShakeResultModel.h; sourceTree = "<group>"; };
+		DD5AEE571F66E1B0002E4F49 /* ShakeResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShakeResultModel.m; path = models/ShakeResultModel.m; sourceTree = "<group>"; };
+		DD5AEE591F67AFC5002E4F49 /* PayTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayTypeView.h; path = views/PayTypeView.h; sourceTree = "<group>"; };
+		DD5AEE5A1F67AFC5002E4F49 /* PayTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayTypeView.m; path = views/PayTypeView.m; sourceTree = "<group>"; };
+		DD5AEE5C1F67AFD1002E4F49 /* PayTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayTypeView.xib; path = views/PayTypeView.xib; sourceTree = "<group>"; };
 		DD5E86B11F611C8700690729 /* SameHobbyPersonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameHobbyPersonListViewController.h; path = controllers/homePage/SameHobbyPersonListViewController.h; sourceTree = "<group>"; };
 		DD5E86B21F611C8700690729 /* SameHobbyPersonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameHobbyPersonListViewController.m; path = controllers/homePage/SameHobbyPersonListViewController.m; sourceTree = "<group>"; };
 		DD5E86B31F611C8700690729 /* SameHobbyPersonListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SameHobbyPersonListViewController.xib; path = controllers/homePage/SameHobbyPersonListViewController.xib; sourceTree = "<group>"; };
@@ -2637,6 +2658,17 @@
 			name = HotTopicListModel;
 			sourceTree = "<group>";
 		};
+		DD5AEE521F66E174002E4F49 /* ShakeModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD5AEE531F66E199002E4F49 /* ShakeDataModel.h */,
+				DD5AEE541F66E199002E4F49 /* ShakeDataModel.m */,
+				DD5AEE561F66E1B0002E4F49 /* ShakeResultModel.h */,
+				DD5AEE571F66E1B0002E4F49 /* ShakeResultModel.m */,
+			);
+			name = ShakeModel;
+			sourceTree = "<group>";
+		};
 		DD5E86CF1F614A0100690729 /* ClassifyModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2698,6 +2730,9 @@
 				DD5E86C01F613FBA00690729 /* SelectThemeAndClassifyViewController.h */,
 				DD5E86C11F613FBA00690729 /* SelectThemeAndClassifyViewController.m */,
 				DD5E86C21F613FBA00690729 /* SelectThemeAndClassifyViewController.xib */,
+				DD5AEE481F668BAC002E4F49 /* ResetPasswordViewController.h */,
+				DD5AEE491F668BAC002E4F49 /* ResetPasswordViewController.m */,
+				DD5AEE4A1F668BAC002E4F49 /* ResetPasswordViewController.xib */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -3486,6 +3521,12 @@
 				DD2ACBA11F60ED5300EEFF8F /* HomePageSameHobbyHeaderView.h */,
 				DD2ACBA21F60ED5300EEFF8F /* HomePageSameHobbyHeaderView.m */,
 				DD2ACBA41F60ED5F00EEFF8F /* HomePageSameHobbyHeaderView.xib */,
+				DD5AEE4D1F66CEE2002E4F49 /* CashingPrizeView.h */,
+				DD5AEE4E1F66CEE2002E4F49 /* CashingPrizeView.m */,
+				DD5AEE501F66CEF2002E4F49 /* CashingPrizeView.xib */,
+				DD5AEE591F67AFC5002E4F49 /* PayTypeView.h */,
+				DD5AEE5A1F67AFC5002E4F49 /* PayTypeView.m */,
+				DD5AEE5C1F67AFD1002E4F49 /* PayTypeView.xib */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -3570,6 +3611,7 @@
 				DD52ED1B1F5D9B3400B4CE96 /* SelectTopicModel */,
 				DD5E86CF1F614A0100690729 /* ClassifyModel */,
 				DD5E86F31F6399FC00690729 /* DiscoverBannerModel */,
+				DD5AEE521F66E174002E4F49 /* ShakeModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -4006,6 +4048,7 @@
 				DD095FDF1F54F8AA002F4AED /* AllCircleMemberViewController.xib in Resources */,
 				DD184E281F3D5658009BFF5B /* NULLTableViewCell.xib in Resources */,
 				DD6287941F2185A10030331D /* JoinedCircleCell.xib in Resources */,
+				DD5AEE4C1F668BAC002E4F49 /* ResetPasswordViewController.xib in Resources */,
 				DD69B3031F3B309E0036F368 /* EditMyAddressViewController.xib in Resources */,
 				DD0960B01F579CFE002F4AED /* WeiboSDK.bundle in Resources */,
 				DDFB825D1F187A7900AEAAA7 /* cb_dark_on@2x.png in Resources */,
@@ -4126,6 +4169,7 @@
 				DD40B73E1F1788B000839748 /* HomeCollectCell3.xib in Resources */,
 				DD4CF0321F2885660024156F /* ActivityApplyViewController.xib in Resources */,
 				DD184E511F3DA5F9009BFF5B /* AlipaySDK.bundle in Resources */,
+				DD5AEE511F66CEF2002E4F49 /* CashingPrizeView.xib in Resources */,
 				DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */,
 				DD095FF01F5518BB002F4AED /* CircleSigninListViewController.xib in Resources */,
 				DD6287BC1F21A3700030331D /* LookAroundCell.xib in Resources */,
@@ -4144,6 +4188,7 @@
 				DD6287B21F219BA50030331D /* HandpickActivitiesViewController.xib in Resources */,
 				DD58FFBE1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.xib in Resources */,
 				DD6287581F2049A10030331D /* ModifyPasswordViewController.xib in Resources */,
+				DD5AEE5D1F67AFD1002E4F49 /* PayTypeView.xib in Resources */,
 				DD40B7241F1705A000839748 /* HomeCollectCell1.xib in Resources */,
 				DD69B2B41F39B6980036F368 /* OrderConfirmFeeCell.xib in Resources */,
 				DD184E081F3C4EE6009BFF5B /* MyDiscountCouponViewController.xib in Resources */,
@@ -4343,11 +4388,13 @@
 				DD69B2F51F3AFD390036F368 /* STPickerArea.m in Sources */,
 				DD4CF0E91F29BF850024156F /* YQMemoryCache.m in Sources */,
 				DD5E86F61F639A2900690729 /* DiscoverBannerDataModel.m in Sources */,
+				DD5AEE581F66E1B0002E4F49 /* ShakeResultModel.m in Sources */,
 				EC4BA1341F1462F100B9BE1A /* GiftSendingTableViewCell.m in Sources */,
 				DDFB828E1F1C5E3900AEAAA7 /* MoreProductListCell.m in Sources */,
 				DD5E86F91F639A3A00690729 /* DiscoverBannerResultModel.m in Sources */,
 				DD58FFBD1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.m in Sources */,
 				DD58FFB41F5118C7009EC9F2 /* MyActivitySignUpListViewController.m in Sources */,
+				DD5AEE5B1F67AFC5002E4F49 /* PayTypeView.m in Sources */,
 				DD4CEFF91F2732210024156F /* AllProductViewController.m in Sources */,
 				DD69B2D81F3AB7D80036F368 /* OrderConfirmUserAddressModel.m in Sources */,
 				DD6287F71F21EE4C0030331D /* PersonalActivityRankCell.m in Sources */,
@@ -4492,6 +4539,7 @@
 				DD69B2CC1F3AB5FA0036F368 /* OrderConfirmModel.m in Sources */,
 				DD4CF1091F29EE010024156F /* AllClassifyDataModel.m in Sources */,
 				DD095FB61F53C587002F4AED /* CircleDetailDynamicCell.m in Sources */,
+				DD5AEE4B1F668BAC002E4F49 /* ResetPasswordViewController.m in Sources */,
 				DD5E86F21F62C39200690729 /* RecommendGoodsResultModel.m in Sources */,
 				DDFB82C51F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m in Sources */,
 				DDE0FD2F1F37F75500269DBD /* BrandDetailResultModel.m in Sources */,
@@ -4508,6 +4556,7 @@
 				DD9A63BA1F2EF3B600611FA8 /* HomeGoodsDataModel.m in Sources */,
 				DD095FA21F53B5A9002F4AED /* CircleDetailViewController.m in Sources */,
 				DD58FFA41F5023F2009EC9F2 /* WaitToReviewActivityCell.m in Sources */,
+				DD5AEE4F1F66CEE2002E4F49 /* CashingPrizeView.m in Sources */,
 				DDFB82C01F1E059A00AEAAA7 /* DiscoverDynamicCell.m in Sources */,
 				DD184E111F3C596A009BFF5B /* MyDiscountCouponModel.m in Sources */,
 				DD0938EB1F43E80300A75182 /* OrderListResultModel.m in Sources */,
@@ -4705,6 +4754,7 @@
 				DD0DBAFE1F33594A0098F5FA /* GoodsDetailSpec_ValueModel.m in Sources */,
 				DD184E071F3C4EE6009BFF5B /* MyDiscountCouponViewController.m in Sources */,
 				DD6287AC1F219ADA0030331D /* SameTownTopicViewController.m in Sources */,
+				DD5AEE551F66E199002E4F49 /* ShakeDataModel.m in Sources */,
 				DD095FCA1F5407E9002F4AED /* SelectTopicListViewController.m in Sources */,
 				DD69B2AE1F39B6610036F368 /* OrderConfirmDisCountCell.m in Sources */,
 				DD69B2B31F39B6980036F368 /* OrderConfirmFeeCell.m in Sources */,
@@ -4777,7 +4827,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
@@ -4827,7 +4878,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
@@ -4854,7 +4906,8 @@
 			baseConfigurationReference = 63013718528BCE08784575AC /* Pods-ZHJ_rebuild.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CATY6HDQZF;
 				ENABLE_BITCODE = NO;
@@ -4872,7 +4925,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/zhj/Desktop/ZhiHuiJia/ZHJ_rebuild/tools/PrefixHeader.pch;
 				INFOPLIST_FILE = ZHJ_rebuild/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4920,6 +4973,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhiHuiJia.ZHJ-rebuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -4930,7 +4984,8 @@
 			baseConfigurationReference = 452A45259DE5E7099BAE637E /* Pods-ZHJ_rebuild.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CATY6HDQZF;
 				ENABLE_BITCODE = NO;
@@ -4948,7 +5003,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/zhj/Desktop/ZhiHuiJia/ZHJ_rebuild/tools/PrefixHeader.pch;
 				INFOPLIST_FILE = ZHJ_rebuild/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4996,6 +5051,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhiHuiJia.ZHJ-rebuild";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
