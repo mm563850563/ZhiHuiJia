@@ -235,6 +235,10 @@
     
     //选择收货地址
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectAddress" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        UserAddressListResultModel *model = x.object;
+        if ([self.whereReuseFrom isEqualToString:@"shakeAndWinVC"]) {
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"getPrizeSelectAddressFromShakeAndWinVC" object:model.address_id];
+        }
         [self.navigationController popViewControllerAnimated:YES];
     }];
     
@@ -293,7 +297,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if ([self.whereReuseFrom isEqualToString:@"shakeAndWinVC"]) {
+        
+    }
 }
 
 @end

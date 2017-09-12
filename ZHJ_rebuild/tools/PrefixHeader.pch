@@ -441,6 +441,9 @@
 #pragma mark - <114.感兴趣的圈子>
 #define kGetInterestedCircle @"/Circle/getInterestedCircle"
 
+#pragma mark - <115.设置礼品收货地址>
+#define kSetPrizeUserAddress @"/User/setPrizeUserAddress"
+
 
 
 

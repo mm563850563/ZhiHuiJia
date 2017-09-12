@@ -10,4 +10,6 @@
 
 @interface MyAddressViewController : UIViewController
 
+@property (nonatomic, strong)NSString *whereReuseFrom;
+
 @end

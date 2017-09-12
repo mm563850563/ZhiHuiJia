@@ -42,6 +42,9 @@
 //WechatPay
 #import "WXApi.h"
 
+//controllers
+#import "MyAddressViewController.h"
+
 @interface ShakeAndWinViewController ()<PayTypeViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *scrollLabelBGView;
@@ -56,6 +59,7 @@
 @property (nonatomic, strong)UIView *burView;
 @property (nonatomic, strong)UIView *payTypeBurView;
 @property (nonatomic, strong)NSDictionary *payParameter;
+@property (nonatomic, strong)NSString *address_id;
 
 //支付宝支付串码
 @property (nonatomic, strong)NSString *pay_code;
@@ -214,7 +218,7 @@
                     [hudWarning hideAnimated:YES afterDelay:2.0];
                     hudWarning.completionBlock = ^{
                         [self.imgViewPrize removeFromSuperview];
-                        [self popPayTypeView];
+                        [self jumpToMyAddressVC];
                     };
                 });
             }else if ([code isEqual:@301]){
@@ -296,7 +300,7 @@
                     [hudWarning hideAnimated:YES afterDelay:2.0];
                     hudWarning.completionBlock = ^{
                         [self.burView removeFromSuperview];
-                        [self popPayTypeView];
+                        [self jumpToMyAddressVC];
                     };
                 });
             }else{
@@ -521,6 +525,53 @@
     }
 }
 
+#pragma mark - <设置礼品收货地址>
+-(void)setPrizeUserAddressWithAddressID:(NSString *)address_id prizeID:(NSString *)prize_id
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kSetPrizeUserAddress];
+    
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"address_id":address_id,
+                                    @"prize_id":prize_id};
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    hudWarning.completionBlock = ^{
+                        [self.burView removeFromSuperview];
+                        [self popPayTypeView];
+                    };
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:2.0];
+        });
+    }];
+}
+
 #pragma mark - <填充数据>
 -(void)sendDataToOutletsWithModel:(GetUserPrizeResultModel *)model
 {
@@ -555,6 +606,14 @@
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,model.my_prize.image];
     NSURL *imgURL = [NSURL URLWithString:imgStr];
     [self.imgViewPrize sd_setImageWithURL:imgURL];
+}
+
+#pragma mark - <跳转“我的地址”页面>
+-(void)jumpToMyAddressVC
+{
+    MyAddressViewController *myAddressVC = [[MyAddressViewController alloc]initWithNibName:NSStringFromClass([MyAddressViewController class]) bundle:nil];
+    myAddressVC.whereReuseFrom = @"shakeAndWinVC";
+    [self.navigationController pushViewController:myAddressVC animated:YES];
 }
 
 #pragma mark - <中奖后弹出礼品窗口>
@@ -732,6 +791,14 @@
     //微信回调二次请求
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"WX_PaySuccess" object:nil] takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         [self verifyWXPayResult];
+    }];
+    
+    //选择了地址
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"getPrizeSelectAddressFromShakeAndWinVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *address_id = x.object;
+        if (self.modelPrizeResult.my_prize.prize_id && address_id) {
+            [self setPrizeUserAddressWithAddressID:address_id prizeID:self.modelPrizeResult.my_prize.prize_id];
+        }
     }];
 }
 
