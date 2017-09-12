@@ -118,7 +118,6 @@
                     self.contentArray = model.data.result.goods_content;
                     self.spec_listArray = model.data.result.spec_list;
                     
-                    
                     //判断是否已经收藏
                     if ([model.data.result.is_collected isEqualToString:@"0"]) {
                         self.imgViewCollection.image = [UIImage imageNamed:@"star_black"];
@@ -145,6 +144,14 @@
                         self.productMessageAddToCartView.dataArray = self.spec_listArray;
                         
                         [self.tableView reloadData];
+                    });
+                }else if ([model.code isEqualToString:@"400"]){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        hudWarning.completionBlock = ^{
+                            [self.navigationController popViewControllerAnimated:YES];
+                        };
                     });
                 }else{
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -222,7 +229,7 @@
             });
             
             if ([model.code isEqualToString:@"200"]) {
-                self.imgViewCollection.image = [UIImage imageNamed:@"collect"];
+                self.imgViewCollection.image = [UIImage imageNamed:@"star_black"];
             }
         }
     } failBlock:^(NSError *error) {
@@ -281,13 +288,15 @@
 #pragma mark - <客服>
 - (IBAction)btnSalesCenterAction:(UIButton *)sender
 {
-    
+    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"客服"];
+    [hudWarning hideAnimated:YES afterDelay:1.0];
 }
 
 #pragma mark - <店铺>
 - (IBAction)btnStoreAction:(UIButton *)sender
 {
-    
+    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"店铺"];
+    [hudWarning hideAnimated:YES afterDelay:1.0];
 }
 
 #pragma mark - <收藏>

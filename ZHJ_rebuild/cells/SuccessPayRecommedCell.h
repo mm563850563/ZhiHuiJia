@@ -10,4 +10,7 @@
 
 @interface SuccessPayRecommedCell : UITableViewCell
 
+@property (nonatomic, strong)NSArray *interestingCircleArray;
+@property (nonatomic, assign)CGFloat cellHeight;
+
 @end

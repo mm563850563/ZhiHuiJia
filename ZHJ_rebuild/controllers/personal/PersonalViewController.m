@@ -23,6 +23,8 @@
 #import "MyTrackViewController.h"
 #import "ModifyPasswordViewController.h"
 #import "NotificationViewController.h"
+//***************test********
+#import "SuccessPayViewController.h"
 
 //cells
 #import "PersonalCollectCell.h"
@@ -367,6 +369,9 @@
     }else if ([viewController isKindOfClass:[NotificationViewController class]]){
         [navigationController setNavigationBarHidden:YES animated:YES];
         [navigationController.navigationBar setTranslucent:NO];
+    }else if ([viewController isKindOfClass:[SuccessPayViewController class]]){
+        [navigationController setNavigationBarHidden:YES animated:YES];
+        [navigationController.navigationBar setTranslucent:NO];
     }else{
         [navigationController setNavigationBarHidden:NO animated:YES];
         [navigationController.navigationBar setTranslucent:NO];
@@ -399,6 +404,8 @@
     }else if (indexPath.item == 2){//我的收藏
         [self jumpToMyCollectionVC];
     }else if (indexPath.item == 3){//分享邀请
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"分享邀请"];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
 //        GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
 //        getGiftVC.category = 1;
 //        getGiftVC.hidesBottomBarWhenPushed = YES;

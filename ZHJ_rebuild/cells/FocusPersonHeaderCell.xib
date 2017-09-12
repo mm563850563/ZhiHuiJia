@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +24,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="2PL-7n-k3U">
                                 <rect key="frame" x="0.0" y="0.0" width="372" height="214"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gxq" translatesAutoresizingMaskIntoConstraints="NO" id="iRK-hv-yPw">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gxq" translatesAutoresizingMaskIntoConstraints="NO" id="iRK-hv-yPw">
                                 <rect key="frame" x="146" y="50" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="40G-Kk-1eS"/>

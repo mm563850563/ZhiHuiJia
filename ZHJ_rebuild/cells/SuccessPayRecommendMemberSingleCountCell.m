@@ -1,16 +1,16 @@
 //
-//  SuccessPayRecommendMemberCell.m
+//  SuccessPayRecommendMemberSingleCountCell.m
 //  ZHJ_rebuild
 //
-//  Created by ZHJ on 2017/8/15.
+//  Created by ZHJ on 2017/9/12.
 //  Copyright © 2017年 sophia. All rights reserved.
 //
 
-#import "SuccessPayRecommendMemberCell.h"
+#import "SuccessPayRecommendMemberSingleCountCell.h"
 
 #import "GetInterestingCircleResultModel.h"
 
-@interface SuccessPayRecommendMemberCell ()
+@interface SuccessPayRecommendMemberSingleCountCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewCircle;
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation SuccessPayRecommendMemberCell
+@implementation SuccessPayRecommendMemberSingleCountCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -49,5 +49,13 @@
 {
     
 }
+
+
+
+
+
+
+
+
 
 @end

@@ -11,11 +11,11 @@
 @interface PlaceOrderAliPayModel : JSONModel
 
 //支付宝支付
-@property (nonatomic, strong)NSString *payables;
-@property (nonatomic, strong)NSString *order_sn;
-@property (nonatomic, strong)NSString *use_money;
-@property (nonatomic, strong)NSString *coupon_price;
-@property (nonatomic, strong)NSString *add_time;
-@property (nonatomic, strong)NSString *pay_code;
+@property (nonatomic, strong)NSString<Optional> *payables;
+@property (nonatomic, strong)NSString<Optional> *order_sn;
+@property (nonatomic, strong)NSString<Optional> *use_money;
+@property (nonatomic, strong)NSString<Optional> *coupon_price;
+@property (nonatomic, strong)NSString<Optional> *add_time;
+@property (nonatomic, strong)NSString<Optional> *pay_code;
 
 @end

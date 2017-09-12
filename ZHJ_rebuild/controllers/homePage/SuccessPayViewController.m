@@ -16,9 +16,14 @@
 #import "SuccessPayTableViewCell.h"
 #import "SuccessPayRecommedCell.h"
 
+//models
+#import "GetInterestingCircleDataModel.h"
+#import "GetInterestingCircleResultModel.h"
+
 @interface SuccessPayViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong)NSArray *interestingCircleArray;
 
 @property (nonatomic, strong)NSString *payables;
 @property (nonatomic, strong)NSString *order_sn;
@@ -34,13 +39,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
+    [self getInterestingCircleData];
     [self settingTableView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - <懒加载>
+-(NSArray *)interestingCircleArray
+{
+    if (!_interestingCircleArray) {
+        _interestingCircleArray = [NSArray array];
+    }
+    return _interestingCircleArray;
 }
 
 /*
@@ -52,6 +66,49 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <获取感兴趣的圈子>
+-(void)getInterestingCircleData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetInterestedCircle];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = dataDict[@"code"];
+            
+            if ([code isEqual:@200]) {
+                GetInterestingCircleDataModel *modelData = [[GetInterestingCircleDataModel alloc]initWithDictionary:dataDict[@"data"] error:nil];
+                self.interestingCircleArray = modelData.result;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    [self.tableView reloadData];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        if (error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:2.0];
+            });
+        }
+    }];
+}
 
 -(void)setModelWX:(PalceOrderOrderInfoModel *)modelWX
 {
@@ -138,8 +195,13 @@
     if (section == 0) {
         return 80.0f;
     }else if (section == 1){
-        return 100.0f;
+        return 60.0f;
     }
+    return 0.1f;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
     return 0.1f;
 }
 
@@ -150,16 +212,34 @@
         SuccessPayTableViewCell *successPayCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SuccessPayTableViewCell class])];
         if (indexPath.row == 0) {
             successPayCell.labelItemName.text = @"订单编号：";
-            successPayCell.labelItemValue.text = self.order_sn;
+            if (self.order_sn) {
+                successPayCell.labelItemValue.text = self.order_sn;
+            }
+            
         }else if (indexPath.row == 1){
             successPayCell.labelItemName.text = @"交易金额：";
-            successPayCell.labelItemValue.text = [NSString stringWithFormat:@"¥%@",self.payables];
+            if (self.payables) {
+                successPayCell.labelItemValue.text = [NSString stringWithFormat:@"¥%@",self.payables];
+            }else{
+                successPayCell.labelItemValue.text = [NSString stringWithFormat:@"¥%@",@"0"];
+            }
+            
         }else if (indexPath.row == 2){
             successPayCell.labelItemName.text = @"用户余额：";
-            successPayCell.labelItemValue.text = [NSString stringWithFormat:@"-¥%@",self.use_money];
+            if (self.use_money) {
+                successPayCell.labelItemValue.text = [NSString stringWithFormat:@"-¥%@",self.use_money];
+            }else{
+                successPayCell.labelItemValue.text = [NSString stringWithFormat:@"-¥%@",@"0"];
+            }
+            
         }else if (indexPath.row == 3){
             successPayCell.labelItemName.text = @"优惠金额：";
-            successPayCell.labelItemValue.text = [NSString stringWithFormat:@"-¥%@",self.coupon_price];
+            if (self.coupon_price) {
+                successPayCell.labelItemValue.text = [NSString stringWithFormat:@"-¥%@",self.coupon_price];
+            }else{
+                successPayCell.labelItemValue.text = [NSString stringWithFormat:@"-¥%@",@"0"];
+            }
+            
         }else if (indexPath.row == 4){
             
             NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
@@ -173,6 +253,7 @@
         cell = successPayCell;
     }else if (indexPath.section == 1){
         SuccessPayRecommedCell *successPayRecommedCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SuccessPayRecommedCell class])];
+        successPayRecommedCell.interestingCircleArray = self.interestingCircleArray;
         cell = successPayRecommedCell;
     }
     return cell;
@@ -183,7 +264,9 @@
     if (indexPath.section == 0) {
         return 35.0f;
     }else if (indexPath.section == 1){
-        return 200.0f;
+        SuccessPayRecommedCell *cell = [[SuccessPayRecommedCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([SuccessPayRecommedCell class])];
+        cell.interestingCircleArray = self.interestingCircleArray;
+        return cell.cellHeight;
     }
     return 0.1f;
 }

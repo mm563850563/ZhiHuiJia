@@ -165,11 +165,15 @@
 {
     if (indexPath.row == 0) {
         NSLog(@"分享圈子");
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"分享圈子"];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
     }else if (indexPath.row == 1){
         //查看全部成员
         [self jumpToCheckAllMemberVCWithCircleID:self.circle_id];
     }else if (indexPath.row == 2){
         //举报
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"举报"];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
     }else if (indexPath.row == 3){
         //退出圈子
         [self requestExitCircle];

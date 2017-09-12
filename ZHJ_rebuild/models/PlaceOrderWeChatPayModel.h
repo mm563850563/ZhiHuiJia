@@ -13,7 +13,7 @@
 
 @interface PlaceOrderWeChatPayModel : JSONModel
 
-@property (nonatomic, strong)PalceOrderOrderInfoModel *order_info;
-@property (nonatomic, strong)PlaceOrderCallbackModel *callback;
+@property (nonatomic, strong)PalceOrderOrderInfoModel<Optional> *order_info;
+@property (nonatomic, strong)PlaceOrderCallbackModel<Optional> *callback;
 
 @end

@@ -10,8 +10,8 @@
 
 @interface GetUserPrize_MyPrizeModel : JSONModel
 
-@property (nonatomic, strong)NSString *gift_name;
-@property (nonatomic, strong)NSString *image;
-@property (nonatomic, strong)NSString *prize_id;
+@property (nonatomic, strong)NSString<Optional> *gift_name;
+@property (nonatomic, strong)NSString<Optional> *image;
+@property (nonatomic, strong)NSString<Optional> *prize_id;
 
 @end

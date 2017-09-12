@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PayTypeViewDelegate <NSObject>
+
+-(void)didSelectPayType:(NSString *)payType;
+-(void)didClickConfirmWithButton:(UIButton *)button;
+
+@end
+
 @interface PayTypeView : UIView
+
+@property (nonatomic, weak)id<PayTypeViewDelegate> delegate;
+@property (nonatomic, strong)NSString *feeDetail;
 
 @end

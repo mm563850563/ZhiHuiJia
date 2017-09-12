@@ -8,8 +8,16 @@
 
 #import "SuccessPayRecommedCell.h"
 
+
+//controllers
+#import "CircleDetailViewController.h"
+
 //cells
 #import "SuccessPayRecommendMemberCell.h"
+#import "SuccessPayRecommendMemberSingleCountCell.h"
+
+//models
+#import "GetInterestingCircleResultModel.h"
 
 @interface SuccessPayRecommedCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -37,7 +45,7 @@
 {
     [self.contentView addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
+        make.edges.mas_offset(UIEdgeInsetsMake(5, 10, 5, 10));
     }];
 }
 
@@ -47,7 +55,7 @@
         _flowLayout = [[UICollectionViewFlowLayout alloc]init];
         _flowLayout.minimumLineSpacing = 0;
         _flowLayout.minimumInteritemSpacing = 0;
-        _flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
+        _flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
         
         CGFloat itemWidth = (kSCREEN_WIDTH-20)/2.0;
         CGFloat itemHeight = itemWidth/3.0*2;
@@ -62,15 +70,50 @@
         _collectionView = [[UICollectionView alloc]initWithFrame:self.contentView.bounds collectionViewLayout:self.flowLayout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
+        _collectionView.scrollEnabled = NO;
         _collectionView.backgroundColor = kColorFromRGB(kLightGray);
         
         UINib *nib = [UINib nibWithNibName:NSStringFromClass([SuccessPayRecommendMemberCell class]) bundle:nil];
         [_collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([SuccessPayRecommendMemberCell class])];
+        
+        UINib *nibSingleCount = [UINib nibWithNibName:NSStringFromClass([SuccessPayRecommendMemberSingleCountCell class]) bundle:nil];
+        [_collectionView registerNib:nibSingleCount forCellWithReuseIdentifier:NSStringFromClass([SuccessPayRecommendMemberSingleCountCell class])];
     }
     return _collectionView;
 }
 
+-(void)setInterestingCircleArray:(NSArray *)interestingCircleArray
+{
+    _interestingCircleArray = interestingCircleArray;
+    
+    [self.collectionView reloadData];
+    [self.collectionView layoutIfNeeded];
+    
+    CGFloat itemWidth = (kSCREEN_WIDTH-20)/2.0;
+    CGFloat itemHeight = itemWidth/3.0*2;
+    NSUInteger count = interestingCircleArray.count/2;
+    if (interestingCircleArray.count%2>0) {
+        count++;
+    }
+    
+    self.cellHeight = itemHeight*count;
+}
 
+#pragma mark - <跳转“圈子详情”页面>
+-(void)jumpToCircleDetailVCWithCircleID:(NSString *)circle_id
+{
+    CircleDetailViewController *circleDetailVC = [[CircleDetailViewController alloc]initWithNibName:NSStringFromClass([CircleDetailViewController class]) bundle:nil];
+    circleDetailVC.circle_id = circle_id;
+    
+    //在当前当前控件遍历所在的viewcontroller
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            UIViewController *vc = (UIViewController *)nextResponder;
+            [vc presentViewController:circleDetailVC animated:YES completion:nil];
+        }
+    }
+}
 
 
 
@@ -85,13 +128,34 @@
 #pragma mark - **** UICollectionViewDelegate,UICollectionViewDataSource *****
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    if (self.interestingCircleArray.count>6) {
+        return 6;
+    }else{
+        return self.interestingCircleArray.count;
+    }
+    
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    SuccessPayRecommendMemberCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SuccessPayRecommendMemberCell class]) forIndexPath:indexPath];
-    return cell;
+    if (indexPath.item%2 == 0) {
+        SuccessPayRecommendMemberSingleCountCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SuccessPayRecommendMemberSingleCountCell class]) forIndexPath:indexPath];
+        GetInterestingCircleResultModel *modelInterestCircle = self.interestingCircleArray[indexPath.item];
+        cell.modelInterestCircle = modelInterestCircle;
+        return cell;
+    }else{
+        SuccessPayRecommendMemberCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SuccessPayRecommendMemberCell class]) forIndexPath:indexPath];
+        GetInterestingCircleResultModel *modelInterestCircle = self.interestingCircleArray[indexPath.item];
+        cell.modelInterestCircle = modelInterestCircle;
+        return cell;
+    }
+    
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    GetInterestingCircleResultModel *model = self.interestingCircleArray[indexPath.item];
+    [self jumpToCircleDetailVCWithCircleID:model.circle_id];
 }
 
 

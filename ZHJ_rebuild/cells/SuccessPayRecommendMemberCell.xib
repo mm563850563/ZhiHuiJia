@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,15 +20,20 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3n-pz-aKz">
                         <rect key="frame" x="0.0" y="0.0" width="189" height="163"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pks-MF-TLG">
-                                <rect key="frame" x="30" y="51.5" width="60" height="60"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pks-MF-TLG">
+                                <rect key="frame" x="10" y="46.5" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="3kR-Uv-yId"/>
-                                    <constraint firstAttribute="width" constant="60" id="lHl-P5-ihI"/>
+                                    <constraint firstAttribute="height" constant="70" id="3kR-Uv-yId"/>
+                                    <constraint firstAttribute="width" constant="70" id="lHl-P5-ihI"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="35"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ii-F7-AgQ">
-                                <rect key="frame" x="95" y="51" width="84" height="20"/>
+                                <rect key="frame" x="85" y="46" width="94" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="uga-TX-3Ah"/>
                                 </constraints>
@@ -38,7 +42,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfa-e4-fd3">
-                                <rect key="frame" x="95" y="71" width="84" height="20"/>
+                                <rect key="frame" x="85" y="66" width="94" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="GdO-DN-9b5"/>
                                 </constraints>
@@ -47,13 +51,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4Y-kF-Fi6">
-                                <rect key="frame" x="95" y="91" width="20" height="20"/>
+                                <rect key="frame" x="85" y="89" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="GbM-pK-zGy"/>
                                     <constraint firstAttribute="width" constant="20" id="u4i-I5-Pim"/>
                                 </constraints>
                                 <state key="normal" image="jia"/>
                                 <state key="selected" image="yijia"/>
+                                <connections>
+                                    <action selector="btnJoinCircleAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="esn-nr-Zxu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,10 +68,10 @@
                             <constraint firstItem="t4Y-kF-Fi6" firstAttribute="leading" secondItem="6ii-F7-AgQ" secondAttribute="leading" id="3vh-4p-2Q1"/>
                             <constraint firstItem="pks-MF-TLG" firstAttribute="centerY" secondItem="X3n-pz-aKz" secondAttribute="centerY" id="D7R-4R-52F"/>
                             <constraint firstItem="6ii-F7-AgQ" firstAttribute="leading" secondItem="pks-MF-TLG" secondAttribute="trailing" constant="5" id="G5O-Rn-JJh"/>
-                            <constraint firstItem="t4Y-kF-Fi6" firstAttribute="top" secondItem="Sfa-e4-fd3" secondAttribute="bottom" id="Ppg-KZ-RRg"/>
+                            <constraint firstItem="t4Y-kF-Fi6" firstAttribute="top" secondItem="Sfa-e4-fd3" secondAttribute="bottom" constant="3" id="Ppg-KZ-RRg"/>
                             <constraint firstItem="Sfa-e4-fd3" firstAttribute="top" secondItem="6ii-F7-AgQ" secondAttribute="bottom" id="aAU-iV-oWq"/>
                             <constraint firstItem="Sfa-e4-fd3" firstAttribute="trailing" secondItem="6ii-F7-AgQ" secondAttribute="trailing" id="bH9-kW-xLa"/>
-                            <constraint firstItem="pks-MF-TLG" firstAttribute="leading" secondItem="X3n-pz-aKz" secondAttribute="leading" constant="30" id="ipW-vH-1Jy"/>
+                            <constraint firstItem="pks-MF-TLG" firstAttribute="leading" secondItem="X3n-pz-aKz" secondAttribute="leading" constant="10" id="ipW-vH-1Jy"/>
                             <constraint firstItem="Sfa-e4-fd3" firstAttribute="leading" secondItem="6ii-F7-AgQ" secondAttribute="leading" id="unP-aD-AQu"/>
                             <constraint firstAttribute="trailing" secondItem="6ii-F7-AgQ" secondAttribute="trailing" constant="10" id="xCK-Ee-qzU"/>
                             <constraint firstItem="6ii-F7-AgQ" firstAttribute="top" secondItem="pks-MF-TLG" secondAttribute="top" id="zRy-Ib-SB4"/>
@@ -79,6 +86,12 @@
                 <constraint firstAttribute="bottom" secondItem="X3n-pz-aKz" secondAttribute="bottom" id="sXW-Yn-gnd"/>
             </constraints>
             <size key="customSize" width="189" height="163"/>
+            <connections>
+                <outlet property="btnIsJoined" destination="t4Y-kF-Fi6" id="wq5-Pn-fra"/>
+                <outlet property="imgViewCircle" destination="pks-MF-TLG" id="t6a-Fk-bVw"/>
+                <outlet property="labelMemberCount" destination="Sfa-e4-fd3" id="3RO-Hz-sEF"/>
+                <outlet property="labelName" destination="6ii-F7-AgQ" id="UPY-y1-kDN"/>
+            </connections>
             <point key="canvasLocation" x="-13.5" y="172.5"/>
         </collectionViewCell>
     </objects>

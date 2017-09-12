@@ -16,6 +16,6 @@
 
 @property (nonatomic, strong)PlaceOrderAliPayModel *aliPay;
 @property (nonatomic, strong)PlaceOrderWeChatPayModel *wxPay;
-@property (nonatomic, strong)PlaceOrderBalanceModel *balance;
+@property (nonatomic, strong)PlaceOrderBalanceModel<Optional> *balance;
 
 @end

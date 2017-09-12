@@ -435,6 +435,12 @@
 #pragma mark - <112.领取礼品绑定手机>
 #define kBindMobile @"/User/bindMobile"
 
+#pragma mark - <113.支付礼品运费>
+#define kPayPrizeFreight @"/User/payPrizeFreight"
+
+#pragma mark - <114.感兴趣的圈子>
+#define kGetInterestedCircle @"/Circle/getInterestedCircle"
+
 
 
 

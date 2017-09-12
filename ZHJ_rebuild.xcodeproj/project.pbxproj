@@ -348,6 +348,10 @@
 		DD5AEE581F66E1B0002E4F49 /* ShakeResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5AEE571F66E1B0002E4F49 /* ShakeResultModel.m */; };
 		DD5AEE5B1F67AFC5002E4F49 /* PayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5AEE5A1F67AFC5002E4F49 /* PayTypeView.m */; };
 		DD5AEE5D1F67AFD1002E4F49 /* PayTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5AEE5C1F67AFD1002E4F49 /* PayTypeView.xib */; };
+		DD5AEE611F680751002E4F49 /* GetInterestingCircleDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5AEE601F680751002E4F49 /* GetInterestingCircleDataModel.m */; };
+		DD5AEE641F680762002E4F49 /* GetInterestingCircleResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5AEE631F680762002E4F49 /* GetInterestingCircleResultModel.m */; };
+		DD5AEE6D1F681C80002E4F49 /* SuccessPayRecommendMemberSingleCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5AEE6B1F681C80002E4F49 /* SuccessPayRecommendMemberSingleCountCell.m */; };
+		DD5AEE6E1F681C80002E4F49 /* SuccessPayRecommendMemberSingleCountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5AEE6C1F681C80002E4F49 /* SuccessPayRecommendMemberSingleCountCell.xib */; };
 		DD5E86B41F611C8700690729 /* SameHobbyPersonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86B21F611C8700690729 /* SameHobbyPersonListViewController.m */; };
 		DD5E86B51F611C8700690729 /* SameHobbyPersonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5E86B31F611C8700690729 /* SameHobbyPersonListViewController.xib */; };
 		DD5E86B91F6120C000690729 /* SameHobbyPersonListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E86B71F6120C000690729 /* SameHobbyPersonListCell.m */; };
@@ -1289,6 +1293,13 @@
 		DD5AEE591F67AFC5002E4F49 /* PayTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayTypeView.h; path = views/PayTypeView.h; sourceTree = "<group>"; };
 		DD5AEE5A1F67AFC5002E4F49 /* PayTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayTypeView.m; path = views/PayTypeView.m; sourceTree = "<group>"; };
 		DD5AEE5C1F67AFD1002E4F49 /* PayTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayTypeView.xib; path = views/PayTypeView.xib; sourceTree = "<group>"; };
+		DD5AEE5F1F680751002E4F49 /* GetInterestingCircleDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetInterestingCircleDataModel.h; path = models/GetInterestingCircleDataModel.h; sourceTree = "<group>"; };
+		DD5AEE601F680751002E4F49 /* GetInterestingCircleDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetInterestingCircleDataModel.m; path = models/GetInterestingCircleDataModel.m; sourceTree = "<group>"; };
+		DD5AEE621F680762002E4F49 /* GetInterestingCircleResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetInterestingCircleResultModel.h; path = models/GetInterestingCircleResultModel.h; sourceTree = "<group>"; };
+		DD5AEE631F680762002E4F49 /* GetInterestingCircleResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetInterestingCircleResultModel.m; path = models/GetInterestingCircleResultModel.m; sourceTree = "<group>"; };
+		DD5AEE6A1F681C80002E4F49 /* SuccessPayRecommendMemberSingleCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuccessPayRecommendMemberSingleCountCell.h; path = cells/SuccessPayRecommendMemberSingleCountCell.h; sourceTree = "<group>"; };
+		DD5AEE6B1F681C80002E4F49 /* SuccessPayRecommendMemberSingleCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuccessPayRecommendMemberSingleCountCell.m; path = cells/SuccessPayRecommendMemberSingleCountCell.m; sourceTree = "<group>"; };
+		DD5AEE6C1F681C80002E4F49 /* SuccessPayRecommendMemberSingleCountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SuccessPayRecommendMemberSingleCountCell.xib; path = cells/SuccessPayRecommendMemberSingleCountCell.xib; sourceTree = "<group>"; };
 		DD5E86B11F611C8700690729 /* SameHobbyPersonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SameHobbyPersonListViewController.h; path = controllers/homePage/SameHobbyPersonListViewController.h; sourceTree = "<group>"; };
 		DD5E86B21F611C8700690729 /* SameHobbyPersonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SameHobbyPersonListViewController.m; path = controllers/homePage/SameHobbyPersonListViewController.m; sourceTree = "<group>"; };
 		DD5E86B31F611C8700690729 /* SameHobbyPersonListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SameHobbyPersonListViewController.xib; path = controllers/homePage/SameHobbyPersonListViewController.xib; sourceTree = "<group>"; };
@@ -2669,6 +2680,17 @@
 			name = ShakeModel;
 			sourceTree = "<group>";
 		};
+		DD5AEE5E1F680727002E4F49 /* GetInterestingCircleModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD5AEE5F1F680751002E4F49 /* GetInterestingCircleDataModel.h */,
+				DD5AEE601F680751002E4F49 /* GetInterestingCircleDataModel.m */,
+				DD5AEE621F680762002E4F49 /* GetInterestingCircleResultModel.h */,
+				DD5AEE631F680762002E4F49 /* GetInterestingCircleResultModel.m */,
+			);
+			name = GetInterestingCircleModel;
+			sourceTree = "<group>";
+		};
 		DD5E86CF1F614A0100690729 /* ClassifyModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -3377,6 +3399,9 @@
 				DDC52EC71F42E0F100ECF211 /* SuccessPayRecommendMemberCell.h */,
 				DDC52EC81F42E0F100ECF211 /* SuccessPayRecommendMemberCell.m */,
 				DDC52EC91F42E0F100ECF211 /* SuccessPayRecommendMemberCell.xib */,
+				DD5AEE6A1F681C80002E4F49 /* SuccessPayRecommendMemberSingleCountCell.h */,
+				DD5AEE6B1F681C80002E4F49 /* SuccessPayRecommendMemberSingleCountCell.m */,
+				DD5AEE6C1F681C80002E4F49 /* SuccessPayRecommendMemberSingleCountCell.xib */,
 				DD58FF4E1F4C2D45009EC9F2 /* MyTrackTableViewCell.h */,
 				DD58FF4F1F4C2D45009EC9F2 /* MyTrackTableViewCell.m */,
 				DD58FF501F4C2D45009EC9F2 /* MyTrackTableViewCell.xib */,
@@ -3612,6 +3637,7 @@
 				DD5E86CF1F614A0100690729 /* ClassifyModel */,
 				DD5E86F31F6399FC00690729 /* DiscoverBannerModel */,
 				DD5AEE521F66E174002E4F49 /* ShakeModel */,
+				DD5AEE5E1F680727002E4F49 /* GetInterestingCircleModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -4202,6 +4228,7 @@
 				DDFB82561F187A7900AEAAA7 /* cb_box_off.png in Resources */,
 				DD6287231F1F41BF0030331D /* DynamicWithoutCommentCell.xib in Resources */,
 				DD6287D51F21C9930030331D /* DomainHeaderView.xib in Resources */,
+				DD5AEE6E1F681C80002E4F49 /* SuccessPayRecommendMemberSingleCountCell.xib in Resources */,
 				DD184E0D1F3C52C6009BFF5B /* MyDiscountCouponCell.xib in Resources */,
 				DD6287A81F2198FC0030331D /* SameTownViewController.xib in Resources */,
 				DD6898341F3172B5008B6A8F /* LoginViewController.xib in Resources */,
@@ -4608,6 +4635,7 @@
 				DD184E1A1F3C59AC009BFF5B /* MyDiscountCouponNormalModel.m in Sources */,
 				DDE0FD211F35D09000269DBD /* AddToCollectionDataModel.m in Sources */,
 				EC4BA10B1F136CBD00B9BE1A /* HomePageViewController.m in Sources */,
+				DD5AEE6D1F681C80002E4F49 /* SuccessPayRecommendMemberSingleCountCell.m in Sources */,
 				DD62877F1F208CE60030331D /* RankingListViewController.m in Sources */,
 				DD62881D1F22EC5F0030331D /* SubNotification_AnnouncementViewController.m in Sources */,
 				DD6287611F2053750030331D /* MyCollectProductCell.m in Sources */,
@@ -4678,6 +4706,7 @@
 				DD58FF8A1F4E839B009EC9F2 /* ReleaseActivitySubmitToReviewCell.m in Sources */,
 				DDFB82B91F1D931500AEAAA7 /* UIView+PYSearchExtension.m in Sources */,
 				DD6287E31F21E8120030331D /* WaitForReviewViewController.m in Sources */,
+				DD5AEE611F680751002E4F49 /* GetInterestingCircleDataModel.m in Sources */,
 				DD6898481F319DA8008B6A8F /* GetGiftTypeResultModel.m in Sources */,
 				DDC52EC21F42C84D00ECF211 /* SuccessPayTableViewCell.m in Sources */,
 				DD6287C51F21AE580030331D /* LookAroundViewController.m in Sources */,
@@ -4701,6 +4730,7 @@
 				DDFB826B1F187A7900AEAAA7 /* SSCheckBoxView.m in Sources */,
 				DD58FF6A1F4D56CB009EC9F2 /* AddCommentTableViewCell.m in Sources */,
 				DDE0FD241F35D74E00269DBD /* AddToCollectionResultModel.m in Sources */,
+				DD5AEE641F680762002E4F49 /* GetInterestingCircleResultModel.m in Sources */,
 				DDFB82A21F1C81E300AEAAA7 /* PersonalFileViewController.m in Sources */,
 				DD09601F1F557D00002F4AED /* MyCircleDynamicImageCell.m in Sources */,
 				DD0960061F5550F7002F4AED /* RankList_circle_rank_championModel.m in Sources */,

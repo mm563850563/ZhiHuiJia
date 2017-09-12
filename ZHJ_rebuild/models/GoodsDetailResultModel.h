@@ -23,10 +23,10 @@
 
 @interface GoodsDetailResultModel : JSONModel
 
-@property (nonatomic, strong)NSString *is_collected;
-@property (nonatomic, strong)GoodsDetailGoodsInfoModel *goods_info;
-@property (nonatomic, strong)NSArray<GoodsDetailContentModel> *goods_content;
-@property (nonatomic, strong)NSArray<GoodsDetailImageModel> *goods_images;
-@property (nonatomic, strong)NSArray<GoodsDetailSpec_ListModel> *spec_list;
+@property (nonatomic, strong)NSString<Optional> *is_collected;
+@property (nonatomic, strong)GoodsDetailGoodsInfoModel<Optional> *goods_info;
+@property (nonatomic, strong)NSArray<GoodsDetailContentModel,Optional> *goods_content;
+@property (nonatomic, strong)NSArray<GoodsDetailImageModel,Optional> *goods_images;
+@property (nonatomic, strong)NSArray<GoodsDetailSpec_ListModel,Optional> *spec_list;
 
 @end

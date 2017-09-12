@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,11 +31,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8B-0C-LLX">
-                        <rect key="frame" x="280" y="36.5" width="30" height="30"/>
+                        <rect key="frame" x="285" y="39" width="25" height="25"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="2pq-xG-Vpk"/>
-                            <constraint firstAttribute="height" constant="30" id="Le9-fe-stV"/>
+                            <constraint firstAttribute="width" constant="25" id="2pq-xG-Vpk"/>
+                            <constraint firstAttribute="height" constant="25" id="Le9-fe-stV"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MWg-b0-Hs7">

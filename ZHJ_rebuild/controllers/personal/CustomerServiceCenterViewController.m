@@ -118,7 +118,8 @@
 #pragma mark - <客服聊天>
 - (IBAction)btnChatAction:(UIButton *)sender
 {
-    
+    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"在线客服"];
+    [hudWarning hideAnimated:YES afterDelay:1.0];
 }
 
 

@@ -683,9 +683,8 @@
     }];
     
     //微信回调二次请求
-    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"WX_PaySuccess" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"WX_PaySuccess" object:nil] takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         [self verifyWXPayResult];
-    
     }];
 }
 
