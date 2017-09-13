@@ -23,6 +23,7 @@
 #import "MyJoinedActivityViewController.h"
 #import "PersonalRankActivityViewController.h"
 #import "NewPostViewController.h"
+#import "DynamicDetailViewController.h"
 
 //models
 #import "FriendHomePageDataModel.h"
@@ -360,6 +361,16 @@
     [self.navigationController pushViewController:newPostVC animated:YES];
 }
 
+#pragma mark - <跳转“动态详情”页面>
+-(void)jumpToDynamicDetailVCWithTalkID:(NSString *)talk_id userID:(NSString *)user_id
+{
+    DynamicDetailViewController *dynamicDetailVC = [[DynamicDetailViewController alloc]initWithNibName:NSStringFromClass([DynamicDetailViewController class]) bundle:nil];
+    dynamicDetailVC.talk_id = talk_id;
+    dynamicDetailVC.user_id = user_id;
+    dynamicDetailVC.whereReuseFrom = @"domainVC";
+    [self.navigationController pushViewController:dynamicDetailVC animated:YES];
+}
+
 #pragma mark - <RAC响应>
 -(void)respondWithRAC
 {
@@ -502,6 +513,14 @@
     }
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.circleDynamicArray.count>0) {
+        MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
+        [self jumpToDynamicDetailVCWithTalkID:modelResult.talk_id userID:modelResult.user_id];
+    }
 }
 
 

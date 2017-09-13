@@ -794,7 +794,7 @@
                                                                     <constraint firstAttribute="bottom" secondItem="y3K-HL-qat" secondAttribute="bottom" id="ayi-FG-Hmj"/>
                                                                 </constraints>
                                                             </view>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="obL-oZ-L1c">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appLogo" translatesAutoresizingMaskIntoConstraints="NO" id="obL-oZ-L1c">
                                                                 <rect key="frame" x="25" y="60" width="90" height="90"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="90" id="Ewc-Am-in7"/>
@@ -874,10 +874,10 @@
                                                         <rect key="frame" x="0.0" y="226" width="375" height="74"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMg-e2-58c">
-                                                                <rect key="frame" x="0.0" y="0.0" width="75" height="74"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="94" height="74"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVo-2M-C4h">
-                                                                        <rect key="frame" x="12" y="7" width="50" height="60"/>
+                                                                        <rect key="frame" x="21.5" y="7" width="50" height="60"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wait_to_pay" translatesAutoresizingMaskIntoConstraints="NO" id="bX4-Tg-FPB">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
@@ -925,10 +925,10 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4W-Tf-tOu">
-                                                                <rect key="frame" x="75" y="0.0" width="75" height="74"/>
+                                                                <rect key="frame" x="94" y="0.0" width="93.5" height="74"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbx-eN-9Bk">
-                                                                        <rect key="frame" x="12" y="7" width="50" height="60"/>
+                                                                        <rect key="frame" x="21" y="7" width="50" height="60"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wait_to_sendOut" translatesAutoresizingMaskIntoConstraints="NO" id="WAx-21-Bu9">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
@@ -976,10 +976,10 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dx-72-cMg">
-                                                                <rect key="frame" x="150" y="0.0" width="75" height="74"/>
+                                                                <rect key="frame" x="187.5" y="0.0" width="94" height="74"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNj-6C-y1Q">
-                                                                        <rect key="frame" x="12" y="7" width="50" height="60"/>
+                                                                        <rect key="frame" x="21.5" y="7" width="50" height="60"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="send_out_goods" translatesAutoresizingMaskIntoConstraints="NO" id="wGg-a9-7wc">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
@@ -1027,10 +1027,10 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXn-KM-rgm">
-                                                                <rect key="frame" x="225" y="0.0" width="75" height="74"/>
+                                                                <rect key="frame" x="281.5" y="0.0" width="93.5" height="74"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4O9-dX-0pc">
-                                                                        <rect key="frame" x="12" y="7" width="50" height="60"/>
+                                                                        <rect key="frame" x="21" y="7" width="50" height="60"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wait_to_comment" translatesAutoresizingMaskIntoConstraints="NO" id="Z83-YO-l4u">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
@@ -1078,10 +1078,10 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vd2-mo-twu">
-                                                                <rect key="frame" x="300" y="0.0" width="75" height="74"/>
+                                                                <rect key="frame" x="375" y="0.0" width="94" height="74"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLu-Qv-1N9">
-                                                                        <rect key="frame" x="12" y="7" width="50" height="60"/>
+                                                                        <rect key="frame" x="21.5" y="7" width="50" height="60"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reimburse" translatesAutoresizingMaskIntoConstraints="NO" id="AAe-wz-lPM">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
@@ -1147,7 +1147,7 @@
                                                             <constraint firstItem="vXn-KM-rgm" firstAttribute="leading" secondItem="3dx-72-cMg" secondAttribute="trailing" id="piI-xb-M3p"/>
                                                             <constraint firstItem="3dx-72-cMg" firstAttribute="leading" secondItem="v4W-Tf-tOu" secondAttribute="trailing" id="rbY-gC-LaL"/>
                                                             <constraint firstItem="v4W-Tf-tOu" firstAttribute="top" secondItem="CYw-9i-JPt" secondAttribute="top" id="uiD-Nh-9hx"/>
-                                                            <constraint firstItem="yMg-e2-58c" firstAttribute="width" secondItem="CYw-9i-JPt" secondAttribute="width" multiplier="1:5" id="ulJ-LE-EC7"/>
+                                                            <constraint firstItem="yMg-e2-58c" firstAttribute="width" secondItem="CYw-9i-JPt" secondAttribute="width" multiplier="1:4" id="ulJ-LE-EC7"/>
                                                             <constraint firstItem="3dx-72-cMg" firstAttribute="top" secondItem="CYw-9i-JPt" secondAttribute="top" id="xG8-QU-GyH"/>
                                                             <constraint firstItem="3dx-72-cMg" firstAttribute="width" secondItem="v4W-Tf-tOu" secondAttribute="width" id="zFH-uY-08d"/>
                                                             <constraint firstAttribute="bottom" secondItem="yMg-e2-58c" secondAttribute="bottom" id="zMl-JJ-efS"/>
@@ -1252,6 +1252,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="appLogo" width="550" height="550"/>
         <image name="bgbg" width="540" height="325"/>
         <image name="config" width="30" height="30"/>
         <image name="message" width="18" height="18"/>

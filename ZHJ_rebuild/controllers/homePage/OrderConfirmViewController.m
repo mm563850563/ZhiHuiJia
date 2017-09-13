@@ -265,6 +265,7 @@
             PlaceOrderModel *model = [[PlaceOrderModel alloc]initWithDictionary:dataDict error:&error];
             if (!error) {
                 if ([model.code isEqualToString:@"200"]) {
+                    [hud hideAnimated:YES afterDelay:1.0];
                     PlaceOrderAliPayModel *modelAliPay = model.data.result.aliPay;
                     self.pay_code = modelAliPay.pay_code;
                     
@@ -272,6 +273,9 @@
                     if (![self.pay_code isEqualToString:@""]) {
                         NSString *scheme = @"ZhiHuiJia";
                         [[AlipaySDK defaultService]payOrder:self.pay_code fromScheme:scheme callback:^(NSDictionary *resultDic) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [hud hideAnimated:YES afterDelay:1.0];
+                            });
                             NSString *resultStatus = resultDic[@"resultStatus"];
                             if ([resultStatus isEqualToString:@"9000"]) {
                                 

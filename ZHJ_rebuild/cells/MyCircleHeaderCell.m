@@ -8,6 +8,8 @@
 
 #import "MyCircleHeaderCell.h"
 
+#import "PersonalFileViewController.h"
+
 @interface MyCircleHeaderCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *labelNickName;
@@ -53,6 +55,19 @@
     self.labelLiveness.text = [NSString stringWithFormat:@"%@点",modelUser_info.total_liveness];
 }
 
+#pragma mark - <编辑按钮响应>
+- (IBAction)btnEidtAction:(UIButton *)sender
+{
+    //在当前当前控件遍历所在的viewcontroller
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            UIViewController *vc = (UIViewController *)nextResponder;
+            PersonalFileViewController *personalFileVC = [[PersonalFileViewController alloc]initWithNibName:NSStringFromClass([PersonalFileViewController class]) bundle:nil];
+            [vc.navigationController pushViewController:personalFileVC animated:YES];
+        }
+    }
+}
 
 
 

@@ -13,4 +13,6 @@
 @property (nonatomic, strong)NSString *user_id;
 @property (nonatomic, strong)NSString *talk_id;
 
+@property (nonatomic, strong)NSString *whereReuseFrom;
+
 @end

@@ -229,6 +229,9 @@
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
+                    hudWarning.completionBlock = ^{
+                        [self.imgViewPrize removeFromSuperview];
+                    };
                 });
                 
             }
@@ -353,13 +356,7 @@
                                     [hud hideAnimated:YES afterDelay:1.0];
                                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付成功"];
                                     [hudWarning hideAnimated:YES afterDelay:2.0];
-                                    hudWarning.completionBlock = ^{
-                                        SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
-                                        successPayVC.modelAli = modelAliPay;
-                                        [self presentViewController:successPayVC animated:YES completion:^{
-                                            [self.navigationController popViewControllerAnimated:YES];
-                                        }];
-                                    };
+                                    
                                 });
                                 
                                 
@@ -786,11 +783,6 @@
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"confirmGetPrizeFromCashingView" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         NSDictionary *dictParameter = x.object;
         [self requestBindMobileWithDictParameter:dictParameter];
-    }];
-    
-    //微信回调二次请求
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"WX_PaySuccess" object:nil] takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self verifyWXPayResult];
     }];
     
     //选择了地址

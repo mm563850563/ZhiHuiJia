@@ -230,10 +230,7 @@
         
         [_btnOnFocus setImage:[UIImage imageNamed:@"focus"] forState:UIControlStateNormal];
         [_btnOnFocus setImage:[UIImage imageNamed:@"focused"] forState:UIControlStateSelected];
-//        [_btnOnFocus setTitle:@"+关注" forState:UIControlStateNormal];
-//        [_btnOnFocus setTitleColor:kColorFromRGB(kThemeYellow) forState:UIControlStateNormal];
-//        [_btnOnFocus setTitle:@"已关注" forState:UIControlStateSelected];
-//        [_btnOnFocus setTitleColor:kColorFromRGB(kThemeYellow) forState:UIControlStateSelected];
+        
         
         [_btnOnFocus addTarget:self action:@selector(btnOnfocusActionWithButton:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -434,6 +431,11 @@
 {
     _modelCircleDynamicResult = modelCircleDynamicResult;
     [self.atRangeArray removeAllObjects];
+    
+    //隐藏“关注”按钮
+    if ([self.whereReuseFrom isEqualToString:@"domainVC"]) {
+        _btnOnFocus.hidden = YES;
+    }
     
     //collectionView
     self.imagesArray = modelCircleDynamicResult.images;

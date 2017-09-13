@@ -50,7 +50,8 @@
     
     self.page = @1;
     [self managerRequestWithGCD];
-    [self initNewPostView];
+#warning *********** 暂时隐藏该功能 **********
+//    [self initNewPostView];
     [self settingTableView];
     
     [self respondWithRAC];

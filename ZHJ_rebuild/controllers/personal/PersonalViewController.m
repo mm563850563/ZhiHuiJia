@@ -157,11 +157,11 @@
     
     
     self.labelUserName.text = user_info[@"nickname"];
-    if (![user_info[@"cdn_headimg"] isEqualToString:@""]) {
-        NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,user_info[@"cdn_headimg"]];
-        NSURL *url = [NSURL URLWithString:imgStr];
-        [self.imgViewPortrait sd_setImageWithURL:url placeholderImage:kPlaceholder];
-    }
+    
+    NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,user_info[@"cdn_headimg"]];
+    NSURL *url = [NSURL URLWithString:imgStr];
+    [self.imgViewPortrait sd_setImageWithURL:url placeholderImage:kPlaceholder];
+    
     
 }
 
@@ -174,8 +174,11 @@
 #pragma mark - <初始化collectionView>
 -(void)initCollectionView
 {
-    NSArray *arrayTitle = @[@"我的钱包",@"优惠券",@"我的收藏",@"分享邀请",@"客服中心",@"足迹",@"关注公众号",@"关于我们",@"意见反馈"];
-    NSArray *arrayPhoto = @[@"my_ wallet",@"discount",@"my_collection",@"share_invite",@"customer_center",@"footprint",@"focus_public",@"about_us",@"feedback"];
+#warning ************************
+    NSArray *arrayTitle = @[@"我的钱包",@"优惠券",@"我的收藏",@"足迹",@"关注公众号",@"关于我们"];
+    NSArray *arrayPhoto = @[@"my_ wallet",@"discount",@"my_collection",@"footprint",@"focus_public",@"about_us"];
+//    NSArray *arrayTitle = @[@"我的钱包",@"优惠券",@"我的收藏",@"分享邀请",@"客服中心",@"足迹",@"关注公众号",@"关于我们",@"意见反馈"];
+//    NSArray *arrayPhoto = @[@"my_ wallet",@"discount",@"my_collection",@"share_invite",@"customer_center",@"footprint",@"focus_public",@"about_us",@"feedback"];
     self.arrayCollection = @[arrayTitle,arrayPhoto];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
@@ -318,7 +321,9 @@
 #pragma mark - <计算页面高度>
 -(void)settingHeightForScrollView
 {
-    self.heightForCollectBGView.constant = kSCREEN_WIDTH;
+#warning ******************
+    self.heightForCollectBGView.constant = kSCREEN_WIDTH/3.0*2.0;
+//    self.heightForCollectBGView.constant = kSCREEN_WIDTH;
     CGFloat height1 = self.heightForHeaderView.constant;
     CGFloat height2 = self.heightForCollectBGView.constant;
     self.heightForScrollView.constant = height1 + height2 + 60;
@@ -382,7 +387,7 @@
 #pragma mark - *** UICollectionViewDelegate,UICollectionViewDataSource ****
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 9;
+    return 6;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath

@@ -541,6 +541,9 @@
     if (indexPath.section == 0) {
         DiscoverDynamicCell *cell2 = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DiscoverDynamicCell class])];
         cell2.whereReuseFrom = @"dynamicDetail";
+        if (self.whereReuseFrom) {
+            cell2.whereReuseFrom = self.whereReuseFrom;
+        }
         cell2.modelCircleDynamicResult = self.modelResult;
         cell = cell2;
     }else if (indexPath.section == 1){

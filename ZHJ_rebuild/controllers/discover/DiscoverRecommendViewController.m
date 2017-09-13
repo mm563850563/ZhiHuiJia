@@ -33,7 +33,8 @@
     
     [self getActivityListData];
     [self initTableView];
-    [self initReleaseActivity];
+#warning  ************ 暂时隐藏该功能 ***********
+//    [self initReleaseActivity];
 }
 
 - (void)didReceiveMemoryWarning {

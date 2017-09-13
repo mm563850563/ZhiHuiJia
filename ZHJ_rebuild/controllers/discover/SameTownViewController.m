@@ -159,16 +159,11 @@
     
     NSMutableArray *vcArray = [NSMutableArray array];
     [vcArray addObject:hotTopicVC];
-//    [vcArray addObject:activityVC];
     
-    self.flipView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 190, kSCREEN_WIDTH, kSCREENH_HEIGHT-64-190) withArray:vcArray];
+#warning ********** 暂时隐藏附近的人 ***********
+    self.flipView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREENH_HEIGHT-64) withArray:vcArray];
+//    self.flipView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 190, kSCREEN_WIDTH, kSCREENH_HEIGHT-64-190) withArray:vcArray];
     [self.view addSubview:self.flipView];
-//    __weak typeof(self) weakSelf = self;
-//    [self.flipView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(190);
-//        make.left.right.mas_equalTo(0);
-//        make.height.mas_equalTo(weakSelf.view.frame.size.height-190-64);
-//    }];
 }
 
 #pragma mark - <配置collectionView>

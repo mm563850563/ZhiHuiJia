@@ -168,6 +168,7 @@
     if (!_btnComment) {
         _btnComment = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnComment.frame = CGRectMake(0, 0, 50, 50);
+        _btnComment.userInteractionEnabled = NO;
         
         [_btnComment setImage:[UIImage imageNamed:@"message"] forState:UIControlStateNormal];
         _btnComment.userInteractionEnabled = NO;

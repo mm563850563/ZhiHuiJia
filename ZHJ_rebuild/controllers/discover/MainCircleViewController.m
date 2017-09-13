@@ -41,7 +41,8 @@
     [self settingSelf];
     [self initSegmentView];
     [self initFlipView];
-    [self initApplyCircle];
+#warning *********** 暂时隐藏该功能 **********
+//    [self initApplyCircle];
     
     [self respondWithRAC];
 }
