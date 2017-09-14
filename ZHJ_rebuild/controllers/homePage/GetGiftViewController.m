@@ -11,6 +11,9 @@
 //cells
 #import "GiftListCell.h"
 
+//tools
+#import "ShareTool.h"
+
 //controllers
 #import "ShakeAndWinViewController.h"
 
@@ -18,6 +21,12 @@
 #import "GetGiftListModel.h"
 #import "GetGiftListResultModel.h"
 #import "GetGiftList_GiftListModel.h"
+
+//SDKs
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDKUI.h>
+//#import <ShareSDKUI/SSUIShareActionSheetStyle.h>
+//#import <ShareSDKUI/SSUIEditorViewStyle.h>
 
 @interface GetGiftViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -147,25 +156,6 @@
 -(void)settingOutlets
 {
     
-//    //画“填写地址”和“送礼完成”圆角
-//    UIBezierPath *maskPath1 = [UIBezierPath bezierPathWithRoundedRect:self.labelAddress.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerTopLeft cornerRadii:self.labelAddress.bounds.size];
-//    CAShapeLayer *maskLayer1 = [[CAShapeLayer alloc] init];
-//    maskLayer1.lineWidth = 0.5;
-//    maskLayer1.strokeColor = [UIColor blackColor].CGColor;
-//    maskLayer1.fillColor = nil;
-//    maskLayer1.frame = self.labelAddress.bounds;
-//    maskLayer1.path = maskPath1.CGPath;
-//    [self.labelAddress.layer addSublayer:maskLayer1];
-//    
-//    UIBezierPath *maskPath2 = [UIBezierPath bezierPathWithRoundedRect:self.labelAddress.bounds byRoundingCorners:UIRectCornerBottomRight | UIRectCornerTopRight cornerRadii:self.labelFinishSendGift.bounds.size];
-//    CAShapeLayer *maskLayer2 = [[CAShapeLayer alloc] init];
-//    maskLayer2.lineWidth = 0.5;
-//    maskLayer2.strokeColor = [UIColor blackColor].CGColor;
-//    maskLayer2.fillColor = nil;
-//    maskLayer2.frame = self.labelAddress.bounds;
-//    maskLayer2.path = maskPath2.CGPath;
-//    [self.labelFinishSendGift.layer addSublayer:maskLayer2];
-    
     //collection
     self.flowLayout.minimumLineSpacing = 5;
     CGFloat itemWidth = self.collectionView.frame.size.width/4.2;
@@ -179,11 +169,30 @@
     [self.collectionView registerNib:nibGift forCellWithReuseIdentifier:NSStringFromClass([GiftListCell class])];
 }
 
+#pragma mark - <第三方分享-配置要分享的参数>
+-(void)settingShareParameter
+{
+    //1.创建分享参数 注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
+    UIImage *image = [UIImage imageNamed:@"touxiang"];
+    NSArray *imageArray = @[image];
+    
+    if (imageArray) {
+        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+        [shareParams SSDKSetupShareParamsByText:@"ZHJ" images:imageArray url:[NSURL URLWithString:@"https://www.apple.com"] title:@"智惠加" type:SSDKContentTypeAuto];
+        
+        //有的平台要客户端分享需要加此方法，例如微博
+        [shareParams SSDKEnableUseClientShare];
+        
+        //2.分享（可以弹出我们的分享菜单和编辑界面）
+        [ShareTool shareWithParams:shareParams];
+    }
+}
+
 
 #pragma mark - <立即分享>
 - (IBAction)btnShareAction:(UIButton *)sender
 {
-    
+    [self settingShareParameter];
 }
 
 #pragma mark - <返回按钮响应>

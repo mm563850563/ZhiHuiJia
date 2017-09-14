@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,30 +63,20 @@
                         <size key="shadowOffset" width="1" height="1.5"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某东价:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgP-Hd-li3">
-                        <rect key="frame" x="15" y="70" width="40" height="20"/>
+                        <rect key="frame" x="15" y="70" width="127" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="4Vh-d1-Uu3"/>
-                            <constraint firstAttribute="width" constant="40" id="Zog-KI-GKk"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                         <size key="shadowOffset" width="1" height="1.5"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥233" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBq-RB-u98">
-                        <rect key="frame" x="55" y="70" width="87" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="meM-Jg-69m"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                        <size key="shadowOffset" width="1" height="0.5"/>
                     </label>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="TRg-wZ-ItZ" secondAttribute="trailing" constant="10" id="68W-oD-wNb"/>
+                <constraint firstAttribute="trailing" secondItem="QgP-Hd-li3" secondAttribute="trailing" constant="10" id="91D-Ur-v1L"/>
                 <constraint firstAttribute="trailing" secondItem="Y5z-6u-SGA" secondAttribute="trailing" constant="10" id="ISl-Ly-lpD"/>
                 <constraint firstItem="Y5z-6u-SGA" firstAttribute="top" secondItem="TRg-wZ-ItZ" secondAttribute="bottom" id="LMW-VY-qbp"/>
                 <constraint firstItem="TRg-wZ-ItZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="NtR-db-Unf"/>
@@ -102,15 +91,12 @@
                 <constraint firstItem="QgP-Hd-li3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="cAr-jT-xIr"/>
                 <constraint firstAttribute="trailing" secondItem="AhO-9b-qX8" secondAttribute="trailing" id="dcF-CS-LYK"/>
                 <constraint firstItem="Goh-tV-Fau" firstAttribute="top" secondItem="Y5z-6u-SGA" secondAttribute="bottom" constant="5" id="hYy-jZ-LdT"/>
-                <constraint firstAttribute="trailing" secondItem="VBq-RB-u98" secondAttribute="trailing" constant="10" id="hyo-n5-SWP"/>
-                <constraint firstItem="VBq-RB-u98" firstAttribute="centerY" secondItem="QgP-Hd-li3" secondAttribute="centerY" id="jUr-4u-3qu"/>
-                <constraint firstItem="VBq-RB-u98" firstAttribute="leading" secondItem="QgP-Hd-li3" secondAttribute="trailing" id="lIz-h2-7yZ"/>
                 <constraint firstItem="TRg-wZ-ItZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="nb9-gf-6jj"/>
             </constraints>
             <size key="customSize" width="152" height="194"/>
             <connections>
                 <outlet property="imgProduct" destination="AhO-9b-qX8" id="XOX-XN-Ael"/>
-                <outlet property="labelMarketPrice" destination="VBq-RB-u98" id="YsD-Qt-Rig"/>
+                <outlet property="labelMarketPrice" destination="QgP-Hd-li3" id="Ze6-Kk-RJ3"/>
                 <outlet property="labelPrice" destination="Goh-tV-Fau" id="VyU-WF-mn8"/>
                 <outlet property="labelProductName" destination="TRg-wZ-ItZ" id="RWR-jB-TPH"/>
                 <outlet property="labelProductRemark" destination="Y5z-6u-SGA" id="Vi9-Z0-Q5w"/>

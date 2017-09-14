@@ -724,10 +724,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOt-CO-7fa">
-                                                                <rect key="frame" x="315" y="10" width="50" height="20"/>
+                                                                <rect key="frame" x="310" y="10" width="55" height="25"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="50" id="ILS-3C-ptW"/>
-                                                                    <constraint firstAttribute="height" constant="20" id="Oxp-ex-4Zd"/>
+                                                                    <constraint firstAttribute="width" constant="55" id="ILS-3C-ptW"/>
+                                                                    <constraint firstAttribute="height" constant="25" id="Oxp-ex-4Zd"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <inset key="titleEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -738,10 +738,10 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ys6-Z5-AJP">
-                                                                <rect key="frame" x="290" y="12.5" width="15" height="15"/>
+                                                                <rect key="frame" x="280" y="12.5" width="20" height="20"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="15" id="ldh-wg-Sjr"/>
-                                                                    <constraint firstAttribute="width" constant="15" id="pcA-Z1-SJs"/>
+                                                                    <constraint firstAttribute="height" constant="20" id="ldh-wg-Sjr"/>
+                                                                    <constraint firstAttribute="width" constant="20" id="pcA-Z1-SJs"/>
                                                                 </constraints>
                                                                 <state key="normal" image="message_white"/>
                                                                 <connections>

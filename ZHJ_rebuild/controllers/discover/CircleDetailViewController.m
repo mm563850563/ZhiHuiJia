@@ -366,6 +366,28 @@
     [button addTarget:self action:@selector(jumpToReleaseNewPostVC) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (IBAction)btnConfigureAction:(UIButton *)sender
+{
+    //跳转“圈子设置页面”
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToCircleConfigureVC" object:nil];
+    
+    [self jumpToCircleDetailConfigVCWithCircleID:self.modelResult.circle_id];
+}
+
+#pragma mark - <返回按钮响应>
+- (IBAction)btnBackAction:(UIButton *)sender
+{
+    //在当前当前控件遍历所在的viewcontroller
+//    for (UIView* next = [self superview]; next; next = next.superview) {
+//        UIResponder* nextResponder = [next nextResponder];
+//        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+//            UIViewController *vc = (UIViewController *)nextResponder;
+//            [vc.navigationController popViewControllerAnimated:YES];
+//        }
+//    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - <跳转发布新帖子页面>
 -(void)jumpToReleaseNewPostVC
 {
@@ -430,10 +452,10 @@
 #pragma mark - <rac响应>
 -(void)respondWithRAC
 {
-    //跳转圈子详情设置页面
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToCircleConfigureVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self jumpToCircleDetailConfigVCWithCircleID:self.modelResult.circle_id];
-    }];
+//    //跳转圈子详情设置页面
+//    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToCircleConfigureVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+//        [self jumpToCircleDetailConfigVCWithCircleID:self.modelResult.circle_id];
+//    }];
     
     //点击“关注圈子”
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"joinCircleFromCircleDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {

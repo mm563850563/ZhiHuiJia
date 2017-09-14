@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -96,17 +95,7 @@
                                         <constraint firstAttribute="width" constant="45" id="jaJ-J7-Dd4"/>
                                         <constraint firstAttribute="height" constant="20" id="jzm-gI-w2g"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4g-DB-SK0">
-                                    <rect key="frame" x="55" y="50" width="50" height="20"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="RF4-Gv-GeV"/>
-                                        <constraint firstAttribute="height" constant="20" id="SxR-AA-YtZ"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -183,16 +172,14 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="n4g-DB-SK0" firstAttribute="leading" secondItem="1PG-D2-IEP" secondAttribute="trailing" id="0RD-if-qNc"/>
                                 <constraint firstItem="1PG-D2-IEP" firstAttribute="leading" secondItem="xTE-2M-84i" secondAttribute="leading" constant="10" id="20x-7q-w1I"/>
                                 <constraint firstItem="S4l-LL-E4P" firstAttribute="leading" secondItem="xTE-2M-84i" secondAttribute="leading" constant="10" id="2K1-Ui-uBx"/>
-                                <constraint firstItem="n4g-DB-SK0" firstAttribute="centerY" secondItem="1PG-D2-IEP" secondAttribute="centerY" id="3T2-4C-oN1"/>
                                 <constraint firstAttribute="height" constant="140" id="7KV-9a-mP8"/>
-                                <constraint firstItem="Jzz-Db-eSP" firstAttribute="top" secondItem="n4g-DB-SK0" secondAttribute="bottom" id="J5j-5c-UqZ"/>
                                 <constraint firstAttribute="trailing" secondItem="AVu-Tp-Q51" secondAttribute="trailing" constant="10" id="W1B-Uy-Vcv"/>
                                 <constraint firstItem="S4l-LL-E4P" firstAttribute="top" secondItem="AVu-Tp-Q51" secondAttribute="bottom" id="azd-7U-lE8"/>
                                 <constraint firstAttribute="trailing" secondItem="Jzz-Db-eSP" secondAttribute="trailing" constant="10" id="cxA-B3-DNE"/>
                                 <constraint firstItem="Jzz-Db-eSP" firstAttribute="leading" secondItem="xTE-2M-84i" secondAttribute="leading" constant="10" id="gG3-Eg-mVr"/>
+                                <constraint firstItem="Jzz-Db-eSP" firstAttribute="top" secondItem="1PG-D2-IEP" secondAttribute="bottom" id="kNu-o8-IVi"/>
                                 <constraint firstItem="AVu-Tp-Q51" firstAttribute="top" secondItem="xTE-2M-84i" secondAttribute="top" id="mBz-uw-wYv"/>
                                 <constraint firstItem="AVu-Tp-Q51" firstAttribute="leading" secondItem="xTE-2M-84i" secondAttribute="leading" constant="10" id="qcT-vM-IdI"/>
                                 <constraint firstItem="1PG-D2-IEP" firstAttribute="top" secondItem="S4l-LL-E4P" secondAttribute="bottom" id="vno-of-ObB"/>
@@ -383,7 +370,7 @@
                 <outlet property="labelArea" destination="Ho2-hZ-rHH" id="FpC-Hu-Z6l"/>
                 <outlet property="labelCommentCount" destination="05e-up-HRF" id="BAI-RX-9Ka"/>
                 <outlet property="labelFreight" destination="VKY-5P-eky" id="7fA-P5-naE"/>
-                <outlet property="labelMarketPrice" destination="n4g-DB-SK0" id="FY2-m0-yxX"/>
+                <outlet property="labelMarketPrice" destination="1PG-D2-IEP" id="xd1-qX-G7L"/>
                 <outlet property="labelPrice" destination="S4l-LL-E4P" id="dVs-AZ-Y7H"/>
                 <outlet property="labelProductName" destination="AVu-Tp-Q51" id="jRJ-mO-aCR"/>
                 <outlet property="labelRemark" destination="Png-yg-qJW" id="gCN-99-Kr8"/>

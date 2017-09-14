@@ -11,16 +11,13 @@
 @implementation NSMutableAttributedString (ThroughLine)
 
 //返回带中间穿过线的string
-+ (NSMutableAttributedString *)returnThroughLineWithText:(NSString *)text font:(CGFloat)font
++ (NSMutableAttributedString *)returnThroughLineWithText:(NSString *)text
 {
-    text = [NSString stringWithFormat:@"¥%@", text];
-    NSDictionary *dict = @{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleThick],   NSStrikethroughColorAttributeName:[UIColor  grayColor], NSFontAttributeName:[UIFont systemFontOfSize:font]};
+    //中划线
+    NSMutableAttributedString *attributeMarket = [[NSMutableAttributedString alloc] initWithString:text];
+    [attributeMarket setAttributes:@{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle], NSBaselineOffsetAttributeName : @(NSUnderlineStyleSingle)} range:NSMakeRange(0,text.length)];
     
-    NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:text];
-    
-    [attribtStr addAttributes:dict range:NSMakeRange(0, text.length)];
-    
-    return attribtStr;
+    return attributeMarket;
 }
 
 @end

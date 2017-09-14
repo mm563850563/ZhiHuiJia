@@ -20,8 +20,8 @@
         
         //默认
         self.textNomalColor    = [UIColor blackColor];
-        self.textSelectedColor = [UIColor redColor];
-        self.lineColor = [UIColor redColor];
+        self.textSelectedColor = kColorFromRGB(kThemeYellow);
+        self.lineColor = kColorFromRGB(kThemeYellow);
         
         [self addSubSegmentView];
     }
@@ -60,8 +60,12 @@
 //            [self bringSubviewToFront:line];
 //            [self addSubview:line];
 //        }
+//        self.lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*width+width/3.0, self.frame.size.height-2, width/3.0, 2)];
+//        self.lineImageView.backgroundColor = _lineColor;
+//        [self addSubview:self.lineImageView];
+
     }
-    self.lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-1, width, 1)];
+    self.lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(width/3.0, self.frame.size.height-2, width/3.0, 2)];
     self.lineImageView.backgroundColor = _lineColor;
     [self addSubview:self.lineImageView];
 }
@@ -69,7 +73,7 @@
 -(void)tapAction:(id)sender{
     UIButton *button = (UIButton *)sender;
     [UIView animateWithDuration:0.2 animations:^{
-       self.lineImageView.frame = CGRectMake(button.frame.origin.x, self.frame.size.height-1, button.frame.size.width, 1);
+       self.lineImageView.frame = CGRectMake(button.frame.origin.x + button.frame.size.width/3.0, self.frame.size.height-2, button.frame.size.width/3.0, 2);
     }];
     for (UIButton *subButton in self.buttonsArray) {
         if (button == subButton) {
@@ -92,7 +96,7 @@
         else{
             subButton.selected = YES;
             [UIView animateWithDuration:0.2 animations:^{
-                self.lineImageView.frame = CGRectMake(subButton.frame.origin.x, self.frame.size.height-1, subButton.frame.size.width, 1);
+                self.lineImageView.frame = CGRectMake(subButton.frame.origin.x + subButton.frame.size.width/3.0, self.frame.size.height-2, subButton.frame.size.width/3.0, 2);
             }];
         }
     }

@@ -49,7 +49,8 @@
         self.labelGoodsPrice.text = [NSString stringWithFormat:@"¥ %@",model.goods_price];
         self.labelProductName.text = model.goods_name;
         
-        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:model.market_price font:10];
+        NSString *market = [NSString stringWithFormat:@"某东价:¥%@",model.market_price];
+        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:market];
         self.labelMarketPrice.attributedText = throughLineText;
         
         if ([model.selected isEqualToString:@"1"]) {

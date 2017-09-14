@@ -27,7 +27,8 @@
         NSURL *url1 = [NSURL URLWithString:imgStr1];
         [self.imgProduct1 sd_setImageWithURL:url1 placeholderImage:kPlaceholder];
         
-        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:model1.market_price font:10];
+        NSString *market = [NSString stringWithFormat:@"某东价:¥%@",model1.market_price];
+        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:market];
         self.labelMarketPrice1.attributedText = throughLineText;
         
         self.labelProductName1.text = model1.goods_name;
@@ -40,7 +41,8 @@
             NSURL *url2 = [NSURL URLWithString:imgStr2];
             [self.imgProduct2 sd_setImageWithURL:url2 placeholderImage:kPlaceholder];
             
-            NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:model2.market_price font:10];
+            NSString *market = [NSString stringWithFormat:@"某东价:¥%@",model2.market_price];
+            NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:market];
             self.labelMarketPrice2.attributedText = throughLineText;
             
             self.labelProductName2.text = model2.goods_name;

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,38 +20,6 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q3x-2a-MOK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="263"/>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKv-4u-OV1">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <subviews>
-                            <button opaque="NO" clipsSubviews="YES" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6R-8I-Mgp">
-                                <rect key="frame" x="10" y="9.5" width="25" height="25"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Rcz-il-r1q"/>
-                                    <constraint firstAttribute="width" constant="25" id="tUb-8r-bzc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
-                                <state key="normal" image="back"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <real key="value" value="12.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="btnBackAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NcI-MD-LqI"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="ab3-EO-aeT"/>
-                            <constraint firstAttribute="height" constant="44" id="ebw-dV-neI"/>
-                            <constraint firstItem="H6R-8I-Mgp" firstAttribute="leading" secondItem="VKv-4u-OV1" secondAttribute="leading" constant="10" id="fbx-ds-Paw"/>
-                            <constraint firstItem="H6R-8I-Mgp" firstAttribute="centerY" secondItem="VKv-4u-OV1" secondAttribute="centerY" id="qZp-q7-hhh"/>
-                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="vTy-OO-a5T"/>
-                        </constraints>
-                    </view>
                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXY-1A-CW2">
                         <rect key="frame" x="0.0" y="213" width="320" height="50"/>
                         <subviews>
@@ -100,15 +67,12 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="VKv-4u-OV1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="KYE-ve-4jp"/>
                     <constraint firstItem="q3x-2a-MOK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LAL-UO-RUg"/>
                     <constraint firstAttribute="bottom" secondItem="TXY-1A-CW2" secondAttribute="bottom" id="XcX-ST-U42"/>
                     <constraint firstAttribute="bottom" secondItem="q3x-2a-MOK" secondAttribute="bottom" id="dVl-nE-gkM"/>
                     <constraint firstItem="q3x-2a-MOK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="o82-OK-Fvq"/>
                     <constraint firstAttribute="trailing" secondItem="q3x-2a-MOK" secondAttribute="trailing" id="sLU-Zh-cQ3"/>
-                    <constraint firstAttribute="trailing" secondItem="VKv-4u-OV1" secondAttribute="trailing" id="tum-uf-Otk"/>
                     <constraint firstItem="TXY-1A-CW2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="vUm-JE-4lr"/>
-                    <constraint firstItem="VKv-4u-OV1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="vzB-a4-5ya"/>
                     <constraint firstAttribute="trailing" secondItem="TXY-1A-CW2" secondAttribute="trailing" id="xba-Sy-Q0b"/>
                 </constraints>
             </tableViewCellContentView>
@@ -120,7 +84,4 @@
             <point key="canvasLocation" x="34" y="0.0"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="back" width="37" height="37"/>
-    </resources>
 </document>

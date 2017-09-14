@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "nv.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "login_women.png",
       "scale" : "2x"
     },
     {

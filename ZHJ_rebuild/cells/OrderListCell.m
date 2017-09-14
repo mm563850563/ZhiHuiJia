@@ -43,7 +43,8 @@
     self.labelPrice.text = [NSString stringWithFormat:@"¥%@",modelGoods.goods_price];
     self.labelCount.text = [NSString stringWithFormat:@"x%@",modelGoods.goods_num];
     
-    NSMutableAttributedString *thoughLineText = [NSMutableAttributedString returnThroughLineWithText:[NSString stringWithFormat:@"%@",modelGoods.market_price] font:11];
+    NSString *market = [NSString stringWithFormat:@"¥%@",modelGoods.market_price];
+    NSMutableAttributedString *thoughLineText = [NSMutableAttributedString returnThroughLineWithText:market];
     self.labelMarketPrice.attributedText = thoughLineText;
     
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelGoods.image];

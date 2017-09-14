@@ -45,6 +45,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = kColorFromRGB(kLightGray);
 
     [self initLeftTableView];
     [self initRightTableView];
@@ -149,7 +150,7 @@
     [self.view addSubview:self.rightTableView];
     __weak typeof(self) weakSelf = self;
     [self.rightTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(weakSelf.leftTableView.mas_right);
+        make.left.mas_equalTo(weakSelf.leftTableView.mas_right).with.offset(5);
         make.bottom.right.mas_equalTo(0);
         make.top.mas_equalTo(0);
     }];

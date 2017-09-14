@@ -8,6 +8,9 @@
 
 #import "AtSomeOneViewController.h"
 
+//tolls
+#import "UIView+Utils.h"
+
 //cells
 #import "AtSomeOneCell.h"
 #import "NULLTableViewCell.h"
@@ -17,7 +20,7 @@
 #import "GetSimilarUserDataModel.h"
 #import "GetSimilarUserResultModel.h"
 
-@interface AtSomeOneViewController ()<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface AtSomeOneViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *friendsArray;
@@ -27,7 +30,7 @@
 
 @property (nonatomic, strong)NSNumber *page;
 
-@property (nonatomic, strong)UISearchBar *searchBarHomePage;
+@property (nonatomic, strong)UITextField *searchBarHomePage;
 
 //用于记录已选择的cell的index
 @property (nonatomic, strong)NSMutableArray *selectedArray;
@@ -83,14 +86,32 @@
 #pragma mark - <配置searchBar>
 -(void)settingSearchBar
 {
-    UISearchBar *searchBar = [[UISearchBar alloc]init];
-    searchBar.delegate = self;
-    UIColor *color = kColorFromRGBAndAlpha(kWhite, 1.0);
-    UIImage *image = [UIImage imageWithColor:color height:30.0];
-    [searchBar setSearchFieldBackgroundImage:image forState:UIControlStateNormal];
-    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    UIView *searchBGView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH-80, 30)];
+    searchBGView.backgroundColor = kColorFromRGB(kWhite);
+    searchBGView.layer.cornerRadius = 2;
+    searchBGView.layer.masksToBounds = YES;
+    
+    //利用textFiled代替searchBar
+    UITextField *searchBar = [[UITextField alloc]initWithFrame:CGRectMake(5, 0, searchBGView.bounds.size.width-5, searchBGView.frame.size.height)];
+    UIImageView *leftView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 20)];
+    leftView.contentMode = UIViewContentModeScaleAspectFit;
+    [leftView setImage:[UIImage imageNamed:@"search"]];
+    
+    searchBar.leftView = leftView;
+    searchBar.leftViewMode = UITextFieldViewModeAlways;
     searchBar.placeholder = @"请输入要查找的用户名";
-    self.navigationItem.titleView = searchBar;
+    searchBar.font = [UIFont systemFontOfSize:14];
+    searchBar.delegate = self;
+    [searchBGView addSubview:searchBar];
+    
+//    UISearchBar *searchBar = [[UISearchBar alloc]init];
+//    searchBar.delegate = self;
+//    UIColor *color = kColorFromRGBAndAlpha(kWhite, 1.0);
+//    UIImage *image = [UIImage imageWithColor:color height:30.0];
+//    [searchBar setSearchFieldBackgroundImage:image forState:UIControlStateNormal];
+//    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+//    searchBar.placeholder = @"请输入要查找的用户名";
+    self.navigationItem.titleView = searchBGView;
     self.searchBarHomePage = searchBar;
 
     UIButton *btnSearch = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -324,14 +345,15 @@
 }
 
 
-#pragma mark - **** UISearchBarDelegate ****
--(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+#pragma mark - **** UITextFieldDelegate ****
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     return YES;
 }
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self btnSearchAction:nil];
+    return YES;
 }
 
 

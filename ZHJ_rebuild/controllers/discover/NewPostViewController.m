@@ -227,17 +227,18 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [dictParameter setObject:self.latitude forKey:@"latitude"];
     }
     
+    //content
+    if (![self.feedbackView.text isEqualToString:@""]) {
+        [dictParameter setObject:self.feedbackView.text forKey:@"content"];
+    }
+    
     //at_user_ids
     //images
     
     //content
-    if ([self.feedbackView.text isEqualToString:@""]) {
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入想要发表的内容"];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
-    }else if (!kUserDefaultObject(kUserInfo)){
+    if (!kUserDefaultObject(kUserInfo)){
         
     }else{
-        [dictParameter setObject:self.feedbackView.text forKey:@"content"];
         //user_id
         [dictParameter setObject:kUserDefaultObject(kUserInfo) forKey:@"user_id"];
         [self requestPostMessageWithDictParameter:dictParameter imgDataArray:self.imageDataArray atUserIDs:self.atUserIDArray];

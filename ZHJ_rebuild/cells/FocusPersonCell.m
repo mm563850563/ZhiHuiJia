@@ -386,7 +386,7 @@
         make.centerY.mas_equalTo(weakSelf.imgViewPortrait);
     }];
     [self.btnDelete mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_offset(CGSizeMake(20, 20));
+        make.size.mas_offset(CGSizeMake(25, 25));
         make.right.mas_equalTo(-10);
         make.centerY.mas_equalTo(weakSelf.labelNickName);
     }];
@@ -520,6 +520,9 @@
         make.height.mas_equalTo(contentHeight);
     }];
     
+    //富文本不加下划线（加了下划线会影响富文本颜色）
+    self.labelContent.linkAttributes = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:(NSString *)kCTUnderlineStyleAttributeName];
+    
     __weak typeof(self) weakSelf = self;
     [self.labelContent setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         //设置可点击文字的范围
@@ -532,9 +535,9 @@
                                         range:rangeEnable];
         
         //加上下划线
-        [mutableAttributedString addAttribute:NSUnderlineColorAttributeName
-                                        value:[UIColor clearColor]
-                                        range:rangeEnable];
+//        [mutableAttributedString addAttribute:NSUnderlineColorAttributeName
+//                                        value:[UIColor clearColor]
+//                                        range:rangeEnable];
         
         //处理at某人
         for (MyCircleDynamicTips_infoModel *modelTipsInfo in atArray) {
@@ -547,9 +550,9 @@
                 //设置可点击文本的颜色;
                 [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:kColorFromRGB(kThemeYellow) range:rangeAt];
                 //加上下划线
-                [mutableAttributedString addAttribute:NSUnderlineColorAttributeName
-                                                value:[UIColor clearColor]
-                                                range:rangeAt];
+//                [mutableAttributedString addAttribute:NSUnderlineColorAttributeName
+//                                                value:[UIColor clearColor]
+//                                                range:rangeAt];
 //            }
         }
         

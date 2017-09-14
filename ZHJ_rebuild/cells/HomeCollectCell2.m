@@ -38,7 +38,8 @@
         NSURL *url = [NSURL URLWithString:imgStr];
         [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
         
-        NSMutableAttributedString *throughLineStr = [NSMutableAttributedString returnThroughLineWithText:model.market_price font:10];
+        NSString *market = [NSString stringWithFormat:@"某东价:¥%@",model.market_price];
+        NSMutableAttributedString *throughLineStr = [NSMutableAttributedString returnThroughLineWithText:market];
         self.labelMarketPrice.attributedText = throughLineStr;
         
         self.labelProductName.text = model.goods_name;

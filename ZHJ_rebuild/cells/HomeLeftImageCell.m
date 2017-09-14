@@ -46,7 +46,8 @@
         NSURL *url = [NSURL URLWithString:imgStr];
         [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
         
-        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:model.market_price font:12];
+        NSString *market = [NSString stringWithFormat:@"某东价:¥%@",model.market_price];
+        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:market];
         self.labelMarketPrice.attributedText = throughLineText;
     }
 }

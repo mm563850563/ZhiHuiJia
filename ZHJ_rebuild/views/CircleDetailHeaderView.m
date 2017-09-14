@@ -80,7 +80,7 @@
     self.labelSigninCount.text = [NSString stringWithFormat:@"%@人",modelCircleDetailResult.signin_count];
     
     if ([modelCircleDetailResult.is_attentioned isEqualToString:@"0"]) {
-        [self.btnFocusOrSign setTitle:@"关注" forState:UIControlStateNormal];
+        [self.btnFocusOrSign setTitle:@"+关注" forState:UIControlStateNormal];
     }else{
         if ([modelCircleDetailResult.is_signin isEqualToString:@"0"]) {
             [self.btnFocusOrSign setTitle:@"签到" forState:UIControlStateNormal];
@@ -93,7 +93,7 @@
 
 - (IBAction)btnFocusOrSignAction:(UIButton *)sender
 {
-    if ([sender.titleLabel.text isEqualToString:@"关注"]) {
+    if ([sender.titleLabel.text isEqualToString:@"+关注"]) {
         //关注圈子
         [[NSNotificationCenter defaultCenter]postNotificationName:@"joinCircleFromCircleDetail" object:self.modelCircleDetailResult.circle_id];
     }else if ([sender.titleLabel.text isEqualToString:@"签到"]){
@@ -109,24 +109,24 @@
 }
 
 
-- (IBAction)btnConfigureAction:(UIButton *)sender
-{
-    //跳转“圈子设置页面”
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToCircleConfigureVC" object:nil];
-}
-
-#pragma mark - <返回按钮响应>
-- (IBAction)btnBackAction:(UIButton *)sender
-{
-    //在当前当前控件遍历所在的viewcontroller
-    for (UIView* next = [self superview]; next; next = next.superview) {
-        UIResponder* nextResponder = [next nextResponder];
-        if ([nextResponder isKindOfClass:[UIViewController class]]) {
-            UIViewController *vc = (UIViewController *)nextResponder;
-            [vc.navigationController popViewControllerAnimated:YES];
-        }
-    }
-}
+//- (IBAction)btnConfigureAction:(UIButton *)sender
+//{
+//    //跳转“圈子设置页面”
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToCircleConfigureVC" object:nil];
+//}
+//
+//#pragma mark - <返回按钮响应>
+//- (IBAction)btnBackAction:(UIButton *)sender
+//{
+//    //在当前当前控件遍历所在的viewcontroller
+//    for (UIView* next = [self superview]; next; next = next.superview) {
+//        UIResponder* nextResponder = [next nextResponder];
+//        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+//            UIViewController *vc = (UIViewController *)nextResponder;
+//            [vc.navigationController popViewControllerAnimated:YES];
+//        }
+//    }
+//}
 
 
 

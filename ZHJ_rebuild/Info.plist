@@ -58,6 +58,16 @@
 				<string>wb4152357321</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>qqshare</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>QQ41ED0EA6</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0.4</string>

@@ -10,6 +10,6 @@
 
 @interface NSMutableAttributedString (ThroughLine)
 
-+ (NSMutableAttributedString *)returnThroughLineWithText:(NSString *)text font:(CGFloat)font;
++ (NSMutableAttributedString *)returnThroughLineWithText:(NSString *)text;
 
 @end

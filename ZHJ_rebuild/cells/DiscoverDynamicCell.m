@@ -515,6 +515,9 @@
         make.height.mas_equalTo(contentHeight);
     }];
     
+    //富文本不加下划线（加了下划线会影响富文本颜色）
+    self.labelContent.linkAttributes = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:(NSString *)kCTUnderlineStyleAttributeName];
+    
     __weak typeof(self) weakSelf = self;
     [self.labelContent setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         //设置可点击文字的范围
@@ -527,9 +530,9 @@
                                         range:rangeEnable];
         
         //加上下划线
-        [mutableAttributedString addAttribute:NSUnderlineColorAttributeName
-                                        value:[UIColor clearColor]
-                                        range:rangeEnable];
+//        [mutableAttributedString addAttribute:NSUnderlineColorAttributeName
+//                                        value:[UIColor clearColor]
+//                                        range:rangeEnable];
         
         //处理at某人
         for (MyCircleDynamicTips_infoModel *modelTipsInfo in atArray) {
@@ -540,11 +543,12 @@
             NSData *rangeData = [NSData dataWithBytes:&rangeAt length:sizeof(rangeAt)];
             [weakSelf.atRangeArray addObject:rangeData];
             //设置可点击文本的颜色;
+//            [mutableAttributedString addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)[[UIColor yellowColor] CGColor] range:rangeAt];
             [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:kColorFromRGB(kThemeYellow) range:rangeAt];
             //加上下划线
-            [mutableAttributedString addAttribute:NSUnderlineColorAttributeName
-                                            value:[UIColor clearColor]
-                                            range:rangeAt];
+//            [mutableAttributedString addAttribute:NSUnderlineColorAttributeName
+//                                            value:[UIColor clearColor]
+//                                            range:rangeAt];
             //            }
         }
         

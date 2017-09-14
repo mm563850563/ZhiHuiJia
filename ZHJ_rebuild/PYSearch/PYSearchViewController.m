@@ -893,7 +893,7 @@
         return;
     }
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)keyboardDidShow:(NSNotification *)noti

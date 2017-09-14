@@ -51,9 +51,9 @@
 #import "GetSimilarUserDataModel.h"
 #import "GetSimilarUserResultModel.h"
 
-@interface HomePageViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,CycleScrollViewCellDelegate,UISearchBarDelegate,UINavigationControllerDelegate>
+@interface HomePageViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,CycleScrollViewCellDelegate,UISearchBarDelegate,UINavigationControllerDelegate>
 
-@property (nonatomic, strong)UISearchBar *searchBarHomePage;
+@property (nonatomic, strong)UITextField *searchBarHomePage;
 
 @property (nonatomic, strong)UITableView *tableView;
 
@@ -474,14 +474,35 @@
 #pragma mark - <添加searchBar到navigationBar>
 -(void)addSearchBarIntoNavigationBar
 {
-    UISearchBar *searchBar = [[UISearchBar alloc]init];
-    searchBar.delegate = self;
-    UIColor *color = kColorFromRGBAndAlpha(kWhite, 1.0);
-    UIImage *image = [UIImage imageWithColor:color height:30.0];
-    [searchBar setSearchFieldBackgroundImage:image forState:UIControlStateNormal];
-    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    UIView *searchBGView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH-80, 30)];
+    searchBGView.backgroundColor = kColorFromRGB(kWhite);
+    searchBGView.layer.cornerRadius = 2;
+    searchBGView.layer.masksToBounds = YES;
+    
+    //利用textFiled代替searchBar
+    UITextField *searchBar = [[UITextField alloc]initWithFrame:CGRectMake(5, 0, searchBGView.bounds.size.width-5, searchBGView.frame.size.height)];
+    UIImageView *leftView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 20)];
+    leftView.contentMode = UIViewContentModeScaleAspectFit;
+    [leftView setImage:[UIImage imageNamed:@"search"]];
+    
+    searchBar.leftView = leftView;
+    searchBar.leftViewMode = UITextFieldViewModeAlways;
     searchBar.placeholder = @"搜索";
-    self.navigationItem.titleView = searchBar;
+    searchBar.font = [UIFont systemFontOfSize:14];
+    searchBar.delegate = self;
+    [searchBGView addSubview:searchBar];
+    
+//    UISearchBar *searchBar = [[UISearchBar alloc]initWithFrame:searchBGView.bounds];
+//    searchBar.delegate = self;
+//    searchBar.backgroundColor = kColorFromRGB(kWhite);
+//    UIColor *color = kColorFromRGBAndAlpha(kWhite, 0);
+//    UIImage *image = [UIImage imageWithColor:color height:30.0];
+//    [searchBar setSearchFieldBackgroundImage:image forState:UIControlStateNormal];
+//    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+//    searchBar.placeholder = @"搜索                        ";
+//    [searchBGView addSubview:searchBar];
+    
+    self.navigationItem.titleView = searchBGView;
     self.searchBarHomePage = searchBar;
 }
 
@@ -514,6 +535,7 @@
     moreProductListVC.hidesBottomBarWhenPushed = YES;
     moreProductListVC.category_id = category_id;
     moreProductListVC.is_root = @"yes";
+    moreProductListVC.whereReuseFrom = @"searchGoods";
     [self.navigationController pushViewController:moreProductListVC animated:YES];
 }
 #pragma mark - <跳转“好友主页”页面>
@@ -886,6 +908,9 @@
     }else if ([viewController isKindOfClass:[ShakeAndWinViewController class]]){
         [navigationController.navigationBar setTranslucent:NO];
         [navigationController setNavigationBarHidden:NO animated:YES];
+    }else if ([viewController isKindOfClass:[MoreProductListViewController class]]){
+        [navigationController.navigationBar setTranslucent:NO];
+        [navigationController setNavigationBarHidden:NO animated:YES];
     }
     
 //    //设置返回键
@@ -915,8 +940,8 @@
     [self jumpToProductDetailVCWithGoodsID:modelIndexCarouselModel.ad_link];
 }
 
-#pragma mark - **** UISearchBarDelegate ****
--(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+#pragma mark - **** UITextFiledDelegate ****
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     NSArray *array = [NSArray arrayWithObjects:@"sfdgfhjg",@"jtyhrtgr",@"sfdgf",@"sdfdgf", nil];
     

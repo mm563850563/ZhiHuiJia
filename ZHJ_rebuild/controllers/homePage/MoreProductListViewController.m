@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
     TableLayout  //tableView布局
 };
 
-@interface MoreProductListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
+@interface MoreProductListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property (nonatomic, assign)LayoutCode layoutCode;
 @property (nonatomic, strong)MoreProduct_SortView *sortView;
@@ -36,7 +36,7 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 @property (nonatomic, strong)UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *classifyListResultArray;
 
-@property (nonatomic, strong)UISearchBar *searchBar;
+@property (nonatomic, strong)UITextField *searchBar;
 
 @property (nonatomic, strong)NSNumber *page;
 @property (nonatomic, strong)NSString *sort;
@@ -250,12 +250,12 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 {
     if (!_flowLayout) {
         _flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        _flowLayout.minimumLineSpacing = 5;
+        _flowLayout.minimumLineSpacing = 1;
         _flowLayout.minimumInteritemSpacing = 0;
-        CGFloat itemWidth = self.view.frame.size.width/2.02;
+        CGFloat itemWidth = self.view.frame.size.width/2.01;
         CGFloat itemHeight = itemWidth/2.0*3.1;
         _flowLayout.itemSize = CGSizeMake(itemWidth, itemHeight);
-        _flowLayout.sectionInset = UIEdgeInsetsMake(5, 0, 0, 0);
+        _flowLayout.sectionInset = UIEdgeInsetsMake(3, 0, 0, 0);
 //        _flowLayout.headerReferenceSize = CGSizeMake(kSCREEN_WIDTH, 50);
     }
     return _flowLayout;
@@ -301,14 +301,32 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 #pragma mark - <配置searchBar>
 -(void)settingSearchBar
 {
-    UISearchBar *searchBar = [[UISearchBar alloc]init];
-    searchBar.delegate = self;
-    UIColor *color = kColorFromRGBAndAlpha(kWhite, 1.0);
-    UIImage *image = [UIImage imageWithColor:color height:30.0];
-    [searchBar setSearchFieldBackgroundImage:image forState:UIControlStateNormal];
-    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    UIView *searchBGView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH-80, 30)];
+    searchBGView.backgroundColor = kColorFromRGB(kWhite);
+    searchBGView.layer.cornerRadius = 2;
+    searchBGView.layer.masksToBounds = YES;
+    
+    //利用textFiled代替searchBar
+    UITextField *searchBar = [[UITextField alloc]initWithFrame:CGRectMake(5, 0, searchBGView.bounds.size.width-5, searchBGView.frame.size.height)];
+    UIImageView *leftView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 20)];
+    leftView.contentMode = UIViewContentModeScaleAspectFit;
+    [leftView setImage:[UIImage imageNamed:@"search"]];
+    
+    searchBar.leftView = leftView;
+    searchBar.leftViewMode = UITextFieldViewModeAlways;
     searchBar.placeholder = @"请输入关键字";
-    self.navigationItem.titleView = searchBar;
+    searchBar.font = [UIFont systemFontOfSize:14];
+    searchBar.delegate = self;
+    [searchBGView addSubview:searchBar];
+    
+//    UISearchBar *searchBar = [[UISearchBar alloc]init];
+//    searchBar.delegate = self;
+//    UIColor *color = kColorFromRGBAndAlpha(kWhite, 1.0);
+//    UIImage *image = [UIImage imageWithColor:color height:30.0];
+//    [searchBar setSearchFieldBackgroundImage:image forState:UIControlStateNormal];
+//    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+//    searchBar.placeholder = @"请输入关键字";
+    self.navigationItem.titleView = searchBGView;
     self.searchBar = searchBar;
     
     UIButton *btnSearch = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -471,10 +489,12 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 
 
 
-#pragma mark - ******* UISearchBarDelegate ******
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+#pragma mark - ******* UITextFiledDelegate ******
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [searchBar resignFirstResponder];
+    [textField resignFirstResponder];
+    
+    self.keyword = self.searchBar.text;
     self.page = @1;
     [self.classifyListResultArray removeAllObjects];
     if ([self.whereReuseFrom isEqualToString:@"searchGoods"]) {
@@ -482,6 +502,7 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
     }else{
         [self getClassifyListDataWithSort:self.sort value:@"1"];
     }
+    return YES;
 }
 
 

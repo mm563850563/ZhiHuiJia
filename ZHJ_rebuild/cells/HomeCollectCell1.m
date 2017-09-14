@@ -29,7 +29,8 @@
         NSURL *url = [NSURL URLWithString:imgStr];
         [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
         
-        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:model.market_price font:11];
+        NSString *market = [NSString stringWithFormat:@"某东价:¥%@",model.market_price];
+        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:market];
         self.labelCompare.attributedText = throughLineText;
         
         self.labelProductName.text = model.goods_name;
@@ -47,7 +48,8 @@
         NSURL *url = [NSURL URLWithString:imgStr];
         [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
         
-        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:modelUserFavorite.market_price font:11];
+        NSString *market = [NSString stringWithFormat:@"某东价:¥%@",modelUserFavorite.market_price];
+        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:market];
         self.labelCompare.attributedText = throughLineText;
         
         self.labelProductName.text = modelUserFavorite.goods_name;
@@ -64,7 +66,8 @@
     NSURL *url = [NSURL URLWithString:imgStr];
     [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
     
-    NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:modelRecommendResult.market_price font:11];
+    NSString *market = [NSString stringWithFormat:@"某东价:¥%@",modelRecommendResult.market_price];
+    NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:market];
     self.labelCompare.attributedText = throughLineText;
     
     self.labelProductName.text = modelRecommendResult.goods_name;

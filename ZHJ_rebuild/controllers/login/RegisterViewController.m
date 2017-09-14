@@ -256,7 +256,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     [self.maleSlider trackRectForBounds:self.maleBGView.bounds];
     [self.maleBGView addSubview:self.maleSlider];
     self.maleSlider.minimumValue = 0;
-    self.maleSlider.maximumValue = 1;
+    self.maleSlider.maximumValue = 1.05;
     self.maleSlider.value = 1;
     [self.maleSlider setThumbImage:[UIImage imageNamed:@"select_male"] forState:UIControlStateNormal];
     
@@ -285,7 +285,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     self.femaleSlider.minimumTrackTintColor = kClearColor;
     [self.femaleSlider trackRectForBounds:self.femaleBGView.bounds];
     [self.femaleBGView addSubview:self.femaleSlider];
-    self.femaleSlider.minimumValue = 0;
+    self.femaleSlider.minimumValue = -0.05;
     self.femaleSlider.maximumValue = 1;
     self.femaleSlider.value = 0;
     [self.femaleSlider setThumbImage:[UIImage imageNamed:@"select_female"] forState:UIControlStateNormal];
@@ -318,19 +318,19 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             NSLog(@"完成滑动");
             if ([self.tfPhone.text isEqualToString:@""]) {
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入手机号码"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
                 [slider setValue:1 animated:YES];
             }else if ([self.tfPassword.text isEqualToString:@""]){
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入密码"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
                 [slider setValue:1 animated:YES];
             }else if ([self.tfBirthday.text isEqualToString:@""]){
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择生日"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
                 [slider setValue:1 animated:YES];
             }else if ([self.tfVerificationCode.text isEqualToString:@""]){
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入验证码"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
                 [slider setValue:1 animated:YES];
             }else{
                 self.gender = @"1";
@@ -345,19 +345,19 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             NSLog(@"完成滑动");
             if ([self.tfPhone.text isEqualToString:@""]) {
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入手机号码"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
                 [slider setValue:0 animated:YES];
             }else if ([self.tfPassword.text isEqualToString:@""]){
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入密码"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
                 [slider setValue:0 animated:YES];
             }else if ([self.tfBirthday.text isEqualToString:@""]){
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择生日"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
                 [slider setValue:0 animated:YES];
             }else if ([self.tfVerificationCode.text isEqualToString:@""]){
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入验证码"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
                 [slider setValue:0 animated:YES];
             }else{
                 self.gender = @"2";

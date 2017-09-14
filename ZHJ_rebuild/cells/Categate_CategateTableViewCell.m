@@ -98,7 +98,7 @@
 -(void)drawRect:(CGRect)rect
 {
     self.contentView.backgroundColor = kColorFromRGB(kWhite);
-    self.layer.cornerRadius = 10;
+    self.layer.cornerRadius = 3;
     self.layer.masksToBounds = YES;
     [self.contentView addSubview:self.collectionView];
     

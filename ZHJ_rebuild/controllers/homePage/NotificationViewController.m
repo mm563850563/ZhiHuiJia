@@ -82,6 +82,9 @@
     NSArray *array = @[@"消息",@"通知"];
     self.segmentView = [[SegmentTapView alloc]initWithFrame:CGRectMake(0, placeNaviView.frame.size.height-40, kSCREEN_WIDTH/2.0, 30) withDataArray:array withFont:15];
     self.segmentView.dataArray = array;
+//    self.segmentView.backgroundColor = kColorFromRGB(kThemeYellow);
+    self.segmentView.textSelectedColor = kColorFromRGB(kBlack);
+    self.segmentView.lineColor = kColorFromRGB(kBlack);
     [placeNaviView addSubview:self.segmentView];
     [placeNaviView setBackgroundColor:kColorFromRGB(kThemeYellow)];
     self.segmentView.delegate = self;

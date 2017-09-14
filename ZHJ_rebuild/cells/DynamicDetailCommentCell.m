@@ -270,6 +270,9 @@
     }];
     
     //富文本
+    //富文本不加下划线（加了下划线会影响富文本颜色）
+    self.labelContent.linkAttributes = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:(NSString *)kCTUnderlineStyleAttributeName];
+    
 //    __weak typeof(self) weakSelf = self;
     [self.labelContent setText:strContent afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         if (![modelDynamicCommentResult.tips isEqualToString:@""]) {
@@ -287,12 +290,12 @@
             
             
             //加上下划线
-            [mutableAttributedString addAttribute:NSUnderlineColorAttributeName
-                                            value:[UIColor clearColor]
-                                            range:rangeReply];
-            [mutableAttributedString addAttribute:NSUnderlineColorAttributeName
-                                            value:[UIColor clearColor]
-                                            range:rangeReplier];
+//            [mutableAttributedString addAttribute:NSUnderlineColorAttributeName
+//                                            value:[UIColor clearColor]
+//                                            range:rangeReply];
+//            [mutableAttributedString addAttribute:NSUnderlineColorAttributeName
+//                                            value:[UIColor clearColor]
+//                                            range:rangeReplier];
         }
         return mutableAttributedString;
     }];

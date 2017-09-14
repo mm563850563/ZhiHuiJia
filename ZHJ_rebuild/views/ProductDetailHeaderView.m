@@ -70,7 +70,9 @@
         self.labelProductName.text = _modelInfo.goods_name;
         self.labelRemark.text = _modelInfo.goods_remark;
         self.labelPrice.text = [NSString stringWithFormat:@"¥%@",_modelInfo.price];
-        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:_modelInfo.market_price font:12];
+    
+    NSString *market = [NSString stringWithFormat:@"某东价:¥%@",modelInfo.market_price];
+        NSMutableAttributedString *throughLineText = [NSMutableAttributedString returnThroughLineWithText:market];
         self.labelMarketPrice.attributedText = throughLineText;
         self.labelCommentCount.text = [NSString stringWithFormat:@"全部评论（%@）",_modelInfo.comment_count];
         self.starBar.starNumber = [_modelInfo.average_score integerValue];
@@ -83,7 +85,7 @@
         [formatter setDateFormat:@"MM月dd日"];
         NSString *dateStr = [formatter stringFromDate:date];
         if ([modelInfo.price floatValue] >= 99.0) {
-            self.labelFreight.text = [NSString stringWithFormat:@"运费：%@元(满%@包邮)，现货%@前完成支付，预计(%@)之前送达",@"0",@"99",@"18:00",dateStr];
+            self.labelFreight.text = [NSString stringWithFormat:@"运费：包邮，现货%@前完成支付，预计(%@)之前送达",@"18:00",dateStr];
         }else{
             self.labelFreight.text = [NSString stringWithFormat:@"运费：%@元(满%@包邮)，现货%@前完成支付，预计(%@)之前送达",@"8",@"99",@"18:00",dateStr];
         }

@@ -358,6 +358,7 @@
 {
     NewPostViewController *newPostVC = [[NewPostViewController alloc]initWithNibName:NSStringFromClass([NewPostViewController class]) bundle:nil];
     newPostVC.hidesBottomBarWhenPushed = YES;
+    newPostVC.navigationItem.title = @"新帖子";
     [self.navigationController pushViewController:newPostVC animated:YES];
 }
 
@@ -467,7 +468,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.circleDynamicArray.count == 0) {
-        return 500;
+        return 400;
     }
     MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
     FocusPersonCell *cellDynamic = [[FocusPersonCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([FocusPersonCell class])];
@@ -477,7 +478,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 350;
+    return 400;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section

@@ -65,6 +65,9 @@
     NSArray *array = @[@"评论",@"@我",@"私信",@"点赞"];
     self.segmentView = [[SegmentTapView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 30) withDataArray:array withFont:13];
     self.segmentView.delegate = self;
+    self.segmentView.backgroundColor = kColorFromRGB(kThemeYellow);
+    self.segmentView.textSelectedColor = kColorFromRGB(kBlack);
+    self.segmentView.lineColor = kColorFromRGB(kBlack);
     [self.view addSubview:self.segmentView];
 }
 
