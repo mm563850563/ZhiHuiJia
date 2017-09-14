@@ -56,8 +56,8 @@
 }
 -(void)postNotificationWithRAC
 {
-    
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickImgBrandApply" object:self.model.goods_id];
+#warning *******************************
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickImgBrandApply" object:self.model.goods_id];
 }
 
 
@@ -95,7 +95,8 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     AllBrandListModel *modelBrandList = self.model.brand_list[indexPath.item];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand" object:modelBrandList];
+#warning **********************
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"clickBtnBrand" object:modelBrandList];
 }
 
 

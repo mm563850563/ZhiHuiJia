@@ -108,11 +108,33 @@
     
     [self setup];
     self.navigationController.navigationBar.barTintColor = kColorFromRGB(kThemeYellow);
+    
+}
+
+#pragma mark - <设置左箭头>
+-(void)settingLeftArrow
+{
+    UIButton *btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnBack.frame = CGRectMake(0, 0, 20, 20);
+    [btnBack setImage:[UIImage imageNamed:@"back_black"] forState:UIControlStateNormal];
+    [btnBack addTarget:self action:@selector(btnBackAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *barBtnBack = [[UIBarButtonItem alloc]initWithCustomView:btnBack];
+    self.navigationItem.leftBarButtonItem = barBtnBack;
+}
+
+#pragma mark - <返回按钮响应>
+-(void)btnBackAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    
+    
+    [self settingLeftArrow];
 
     if (self.currentOrientation != [[UIDevice currentDevice] orientation]) { // orientation changed, reload layout
         self.hotSearches = self.hotSearches;

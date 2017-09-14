@@ -17,6 +17,7 @@
 #import "RegisterViewController.h"
 #import "ForgetPasswordViewController.h"
 #import "SelectThemeAndClassifyViewController.h"
+#import "MainTabBarViewController.h"
 
 //SDKs
 #import <ShareSDKExtension/ShareSDK+Extension.h>
@@ -43,6 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
     
     [self checkCurrentThirdApp];
     [self settingHeightForScrollView];
@@ -71,6 +73,18 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <用户是否已登陆>
+-(void)checkUserIsLogined
+{
+    if (!kUserDefaultObject(kUserInfo)) {
+        NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
+        
+    }else{
+        NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
+        [self presentMainTabVC];
+    }
+}
 
 #pragma mark - <检测是否安装“qq”，“微信”，“新浪”>
 -(void)checkCurrentThirdApp
@@ -199,6 +213,14 @@
     }
 }
 
+#pragma mark - <模态mainTabVC>
+-(void)presentMainTabVC
+{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainTabBarViewController *mainTabbarVC = [sb instantiateViewControllerWithIdentifier:NSStringFromClass([MainTabBarViewController class])];
+    [self presentViewController:mainTabbarVC animated:NO completion:nil];
+}
+
 #pragma mark - <发送登陆请求>
 -(void)postLoginRequest
 {
@@ -215,27 +237,21 @@
             NSNumber *code = dataDict[@"code"];
             if ([code isEqual:@200]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES];
                     //登陆成功后，把user_id保存本地，用作持久化登陆
                     NSString *user_id = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"user_id"]];
                     kUserDefaultSetObject(user_id, kUserInfo);
                     kUserDefaultSynchronize;
                     
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    hudWarning.completionBlock = ^{
-                        NSNumber *selected_cat = dataDict[@"data"][@"result"][@"selected_cat"];
-                        
-                        if ([selected_cat isEqual:@0]) {
-                            //模态出选择喜欢的品类
-                            [self presentSelectThemeVC];
-                        }else{
-                            [self dismissViewControllerAnimated:YES completion:nil];
-                        }
-                        
-                    };
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
-                    [hud hideAnimated:YES afterDelay:1.0];
+                    //判断是否已经选择过颜色主题
+                    NSNumber *selected_cat = dataDict[@"data"][@"result"][@"selected_cat"];
                     
-                    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshHomePageAfterLogin" object:nil];
+                    if ([selected_cat isEqual:@0]) {
+                        //模态出选择喜欢的品类页面
+                        [self presentSelectThemeVC];
+                    }else{
+                        [self presentMainTabVC];
+                    }
                     
                 });
                 
@@ -291,35 +307,50 @@
             NSDictionary *dataDict = (NSDictionary *)response;
             NSNumber *code = (NSNumber *)dataDict[@"code"];
             if ([code isEqual:@200]) {
-                
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    hudWarning.completionBlock = ^{
-                        
-                        [self dismissViewControllerAnimated:YES completion:nil];
-                    };
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
-                    
+                    [hud hideAnimated:YES];
                     //登陆成功后，把user_id保存本地，用作持久化登陆
-                    kUserDefaultSetObject(dataDict[@"data"][@"result"][@"user_id"], kUserInfo);
+                    NSString *user_id = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"user_id"]];
+                    kUserDefaultSetObject(user_id, kUserInfo);
                     kUserDefaultSynchronize;
                     
-                    hudWarning.completionBlock = ^{
-                        NSNumber *selected_cat = dataDict[@"data"][@"result"][@"selected_cat"];
-                        
-                        if ([selected_cat isEqual:@0]) {
-                            //模态出选择喜欢的品类
-                            [self presentSelectThemeVC];
-                        }else{
-                            [self dismissViewControllerAnimated:YES completion:nil];
-                        }
-                        
-                    };
+                    //判断是否已经选择过颜色主题
+                    NSNumber *selected_cat = dataDict[@"data"][@"result"][@"selected_cat"];
                     
-                    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshHomePageAfterLogin" object:nil];
+                    if ([selected_cat isEqual:@0]) {
+                        //模态出选择喜欢的品类页面
+                        [self presentSelectThemeVC];
+                    }else{
+                        [self presentMainTabVC];
+                    }
                     
-                    [hud hideAnimated:YES afterDelay:1.0];
                 });
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+//                    hudWarning.completionBlock = ^{
+//                        
+//                        [self dismissViewControllerAnimated:YES completion:nil];
+//                    };
+//                    [hudWarning hideAnimated:YES afterDelay:2.0];
+//                    
+//                    //登陆成功后，把user_id保存本地，用作持久化登陆
+//                    kUserDefaultSetObject(dataDict[@"data"][@"result"][@"user_id"], kUserInfo);
+//                    kUserDefaultSynchronize;
+//                    
+//                    hudWarning.completionBlock = ^{
+//                        NSNumber *selected_cat = dataDict[@"data"][@"result"][@"selected_cat"];
+//                        
+//                        if ([selected_cat isEqual:@0]) {
+//                            //模态出选择喜欢的品类
+//                            [self presentSelectThemeVC];
+//                        }else{
+//                            [self dismissViewControllerAnimated:YES completion:nil];
+//                        }
+//                        
+//                    };
+//                    
+//                    [hud hideAnimated:YES afterDelay:1.0];
+//                });
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
@@ -385,7 +416,9 @@
 #pragma mark - <qq登陆按钮响应>
 - (IBAction)btnQQLoginAction:(UIButton *)sender
 {
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [ShareSDK getUserInfo:SSDKPlatformTypeQQ onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
+        
         if (state == SSDKResponseStateSuccess)
         {
             NSString *oauth = @"qq";
@@ -407,13 +440,21 @@
             [self requestThirdLoginWithOauth:oauth openid:openid nickname:nickname headimg:headimg sex:sex unionid:nil];
         }else{
             NSLog(@"%@",error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"授权失败,请稍后再试"];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
+            });
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES];
+        });
     }];
 }
 
 #pragma mark - <微信登陆按钮响应>
 - (IBAction)btnWechatLoginAction:(UIButton *)sender
 {
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [ShareSDK getUserInfo:SSDKPlatformTypeWechat onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
         if (state == SSDKResponseStateSuccess)
         {
@@ -437,13 +478,21 @@
             
         }else{
             NSLog(@"%@",error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"授权失败,请稍后再试"];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
+            });
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES];
+        });
     }];
 }
 
 #pragma mark - <微博登陆按钮响应>
 - (IBAction)btnWeiboLoginAction:(UIButton *)sender
 {
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [ShareSDK getUserInfo:SSDKPlatformTypeSinaWeibo onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
         if (state == SSDKResponseStateSuccess)
         {
@@ -466,7 +515,14 @@
             [self requestThirdLoginWithOauth:oauth openid:openid nickname:nickname headimg:headimg sex:sex unionid:nil];
         }else{
             NSLog(@"%@",error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"授权失败,请稍后再试"];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
+            });
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES];
+        });
     }];
 }
 

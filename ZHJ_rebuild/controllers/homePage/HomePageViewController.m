@@ -588,11 +588,6 @@
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshHomePageVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         [self pullDownRefresh];
     }];
-    
-    //登陆后刷新该页面
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshHomePageAfterLogin" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self managerRequestWithGCD];
-    }];
 }
 
 

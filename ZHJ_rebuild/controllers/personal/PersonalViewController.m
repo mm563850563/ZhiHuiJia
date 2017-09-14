@@ -409,18 +409,20 @@
     }else if (indexPath.item == 2){//我的收藏
         [self jumpToMyCollectionVC];
     }else if (indexPath.item == 3){//分享邀请
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"分享邀请"];
-        [hudWarning hideAnimated:YES afterDelay:1.0];
-//        GetGiftViewController *getGiftVC = [[GetGiftViewController alloc]initWithNibName:NSStringFromClass([GetGiftViewController class]) bundle:nil];
-//        getGiftVC.category = 1;
-//        getGiftVC.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:getGiftVC animated:YES];
-    }else if (indexPath.item == 4){//客服中心
-        CustomerServiceCenterViewController *customerCenterVC = [[CustomerServiceCenterViewController alloc]initWithNibName:NSStringFromClass([CustomerServiceCenterViewController class]) bundle:nil];
-        customerCenterVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:customerCenterVC animated:YES];
-    }else if (indexPath.item == 5){//足迹
+#warning *************************
         [self jumpToMyTrackVC];
+//        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"分享邀请"];
+//        [hudWarning hideAnimated:YES afterDelay:1.0];
+    }else if (indexPath.item == 4){//客服中心
+#warning ****************************
+        [self jumpToWeChatAccountVC];
+//        CustomerServiceCenterViewController *customerCenterVC = [[CustomerServiceCenterViewController alloc]initWithNibName:NSStringFromClass([CustomerServiceCenterViewController class]) bundle:nil];
+//        customerCenterVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:customerCenterVC animated:YES];
+    }else if (indexPath.item == 5){//足迹
+#warning ***************************
+        [self jumpToAboutUsVC];
+//        [self jumpToMyTrackVC];
     }else if (indexPath.item == 6){//关注公众号
         [self jumpToWeChatAccountVC];
     }else if (indexPath.item == 7){//关于我们

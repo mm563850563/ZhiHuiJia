@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnConfirm;
 @property (weak, nonatomic) IBOutlet UIButton *btnShare;
 @property (weak, nonatomic) IBOutlet UIButton *btnPay;
+@property (weak, nonatomic) IBOutlet UILabel *labelFreight;
 
 //@property (nonatomic, strong)
 
@@ -39,6 +40,7 @@
     
     self.labelProductCount.text = [NSString stringWithFormat:@"共%@件商品",modelOrderList.goods_count];
     self.labelTotalPrice.text = [NSString stringWithFormat:@"合计：¥%@",modelOrderList.goods_price];
+    self.labelFreight.text = [NSString stringWithFormat:@"(含运费¥%@)",modelOrderList.freight];
     
     
     if ([modelOrderList.order_status_desc isEqualToString:@"待支付"]) {

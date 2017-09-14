@@ -8,6 +8,9 @@
 
 #import "SelectThemeAndClassifyViewController.h"
 
+//viewControllers
+#import "MainTabBarViewController.h"
+
 //cells
 #import "ClassifyCollectionViewCell.h"
 #import "ThemeCollectionViewCell.h"
@@ -198,7 +201,8 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                               if ([self.whereReuseFrom isEqualToString:@"configVC"]) {
                                   [self dismissViewControllerAnimated:YES completion:nil];
                               }else if ([self.whereReuseFrom isEqualToString:@"loginVC"]){
-                                  [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+//                                  [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                  [self presentMainTabVC];
                               }
                               
                           };
@@ -228,6 +232,15 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                   [hudWarning hideAnimated:YES afterDelay:2.0];
               });
           }];
+}
+
+
+#pragma mark - <模态mainTabVC>
+-(void)presentMainTabVC
+{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainTabBarViewController *mainTabbarVC = [sb instantiateViewControllerWithIdentifier:NSStringFromClass([MainTabBarViewController class])];
+    [self presentViewController:mainTabbarVC animated:NO completion:nil];
 }
 
 #pragma mark - <初始化slider>

@@ -108,17 +108,27 @@
 {
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil message:@"退出登录？" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actionConfirm = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        LoginViewController *loginVC = [[LoginViewController alloc]initWithNibName:NSStringFromClass([LoginViewController class]) bundle:nil];
-        [self presentViewController:loginVC animated:YES completion:^{
-            //清除单例中的userID
+        UIViewController *parent = self.presentingViewController;
+        while (![parent isKindOfClass:[LoginViewController class]]) {
+            parent = parent.presentingViewController;
+        }
+        [parent dismissViewControllerAnimated:YES completion:^{
             kUserDefaultRemoveObject(kUserInfo);
             kUserDefaultSynchronize;
-            
-            //回到首页
-            self.tabBarController.selectedIndex = 0;
-            
-            [self.navigationController popToRootViewControllerAnimated:YES];
         }];
+        
+//        LoginViewController *loginVC = [[LoginViewController alloc]initWithNibName:NSStringFromClass([LoginViewController class]) bundle:nil];
+        
+//        [self presentViewController:loginVC animated:YES completion:^{
+//            //清除单例中的userID
+//            kUserDefaultRemoveObject(kUserInfo);
+//            kUserDefaultSynchronize;
+//            
+//            //回到首页
+//            self.tabBarController.selectedIndex = 0;
+//            
+//            [self.navigationController popToRootViewControllerAnimated:YES];
+//        }];
     }];
     UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
     [alertVC addAction:actionCancel];

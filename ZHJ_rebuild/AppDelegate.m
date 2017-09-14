@@ -95,16 +95,17 @@
     //**************支持摇一摇******************
     [self settingShake];
     
-    [self settingMainTabbarVC];
-    
     //*********** 注册第三方平台 *************
     [self registerApp];
     
     //************ 第三方登录 *************
     [self registerLoginPlatforms];
     
-    //****************登陆***************
-    [self presentLogionVC];
+    //*********** 设置rootVC ***********
+    [self settingRootVC];
+    
+    //****************判断用户是否已登陆***************
+    [self presentMainTabVC];
     
     //****************微信支付*****************
     [WXApi registerApp:kWeChatPay_AppID ];
@@ -182,27 +183,33 @@
     
 }
 
-#pragma  mark - <登录页面>
--(void)presentLogionVC
+#pragma  mark - <mainTabVC页面>
+-(void)presentMainTabVC
 {
     if (!kUserDefaultObject(kUserInfo)) {
         NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
         
-        LoginViewController *loginVC = [[LoginViewController alloc]initWithNibName:NSStringFromClass([LoginViewController class]) bundle:nil];
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:loginVC animated:YES completion:nil];
     }else{
         NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        MainTabBarViewController *mainTabbarVC = [sb instantiateViewControllerWithIdentifier:NSStringFromClass([MainTabBarViewController class])];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:mainTabbarVC animated:NO completion:nil];
     }
 }
 
-#pragma mark - <设置mainTabbar>
--(void)settingMainTabbarVC
+#pragma mark - <设置rootVC>
+-(void)settingRootVC
 {
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainTabBarViewController *mainTabbarVC = [sb instantiateViewControllerWithIdentifier:NSStringFromClass([MainTabBarViewController class])];
+    LoginViewController *loginVC = [[LoginViewController alloc]initWithNibName:NSStringFromClass([LoginViewController class]) bundle:nil];
     self.window = [[UIWindow alloc]initWithFrame:kScreeFrame];
-    self.window.rootViewController = mainTabbarVC;
+    self.window.rootViewController = loginVC;
     [self.window makeKeyAndVisible];
+    
+//    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    MainTabBarViewController *mainTabbarVC = [sb instantiateViewControllerWithIdentifier:NSStringFromClass([MainTabBarViewController class])];
+//    self.window = [[UIWindow alloc]initWithFrame:kScreeFrame];
+//    self.window.rootViewController = mainTabbarVC;
+//    [self.window makeKeyAndVisible];
 }
 
 #pragma mark - <支持摇一摇功能>

@@ -137,6 +137,9 @@
     }];
     self.brandBGView = brandBGView;
     
+#warning ***************************
+    self.brandBGView.hidden = YES;
+    
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn1 setTitle:@"品牌申请入驻" forState:UIControlStateNormal];
     [btn1 setTitleColor:kColorFromRGB(kBlack) forState:UIControlStateNormal];
@@ -190,7 +193,9 @@
     
     __weak typeof(self) weakSelf = self;
     [self.leftTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(weakSelf.brandBGView.mas_bottom);
+#warning **************
+        make.top.mas_equalTo(0);
+//        make.top.mas_equalTo(weakSelf.brandBGView.mas_bottom);
         make.left.bottom.mas_equalTo(0);
         make.width.mas_equalTo(110);
     }];
@@ -225,6 +230,9 @@
     [self.rightCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.leftTableView.mas_right);
         make.bottom.right.mas_equalTo(0);
+        
+#warning ******************
+        make.top.mas_equalTo(5);
         make.top.mas_equalTo(weakSelf.brandBGView.mas_bottom).with.offset(10);
     }];
     
