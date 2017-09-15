@@ -472,4 +472,9 @@
 
 
 
+
+#pragma mark - <该应用所在AppStore的链接>
+#define kZHJAppStoreLink @"https://itunes.apple.com/us/app/%E6%99%BA%E6%83%A0%E5%8A%A0-1%E4%BA%BF%E7%A4%BC%E5%93%81%E5%BA%93-%E6%B3%A8%E5%86%8C%E5%BF%85%E9%80%81%E7%A4%BC/id1282021926?l=zh&ls=1&mt=8"
+
+
 #endif

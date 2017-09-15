@@ -17,4 +17,6 @@
 
 @property (nonatomic, strong)OrderList_OrderListModel *modelOrderList;
 
+@property (nonatomic, strong)NSString *whereReuseFrom;
+
 @end

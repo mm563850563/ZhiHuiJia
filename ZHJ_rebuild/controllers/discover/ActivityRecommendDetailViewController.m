@@ -18,6 +18,7 @@
 #import "ActivityApplyViewController.h"
 #import "DisclaimerViewController.h"
 #import "FocusPersonFileViewController.h"
+#import "ActivityConfigViewController.h"
 
 //models
 #import "ActivityDetailResultModel.h"
@@ -82,6 +83,7 @@
     
     self.page = [NSNumber numberWithInt:1];
     [self managerRequestWithGCD];
+    [self settingNavigation];
     [self settingTableView];
     [self respondWithRAC];
 }
@@ -100,6 +102,26 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <设置navigation>
+-(void)settingNavigation
+{
+    UIButton *btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnShare setImage:[UIImage imageNamed:@"more_white"] forState:UIControlStateNormal];
+    btnShare.frame = CGRectMake(0, 0, 30, 30);
+    [btnShare addTarget:self action:@selector(jumpToActivityConfigVC) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *btnBarShare = [[UIBarButtonItem alloc]initWithCustomView:btnShare];
+    self.navigationItem.rightBarButtonItem = btnBarShare;
+}
+
+#pragma mark - <跳转“活动设置”页面>
+-(void)jumpToActivityConfigVC
+{
+    ActivityConfigViewController *activityConfigVC = [[ActivityConfigViewController alloc]initWithNibName:NSStringFromClass([ActivityConfigViewController class]) bundle:nil];
+    activityConfigVC.activity_id = self.model.activity_id;
+    [self.navigationController pushViewController:activityConfigVC animated:YES];
+}
 
 #pragma mark - <GCD多线程管理任务>
 -(void)managerRequestWithGCD

@@ -181,7 +181,19 @@
 
 - (IBAction)btnShareAction:(UIButton *)sender
 {
-    
+    NSString *notifiName = [NSString string];
+    if ([self.whereReuseFrom isEqualToString:@"allOrderListVC"]) {
+        notifiName = @"clickBtnShareFromAllOrderVC";
+    }else if ([self.whereReuseFrom isEqualToString:@"waitToPayVC"]){
+        notifiName = @"clickBtnShareFromWaitToPayVC";
+    }else if ([self.whereReuseFrom isEqualToString:@"waitToSendoutVC"]){
+        notifiName = @"clickBtnShareFromWaitToSendoutVC";
+    }else if ([self.whereReuseFrom isEqualToString:@"sendedGoodsVC"]){
+        notifiName = @"clickBtnShareFromSendedGoodsVC";
+    }else if ([self.whereReuseFrom isEqualToString:@"waitToCommentVC"]){
+        notifiName = @"clickBtnShareFromWaitToCommentVC";
+    }
+    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelOrderList];
 }
 
 - (IBAction)btnCheckLogisticsAction:(UIButton *)sender
@@ -208,10 +220,16 @@
 - (IBAction)btnPayAction:(UIButton *)sender
 {
     NSString *notifiName = [NSString string];
-    if ([self.modelOrderList.order_status_desc isEqualToString:@"待支付"]) {
-        notifiName = @"clickBtnPayFromWaitToPayVC";
-    }else{
+    if ([self.whereReuseFrom isEqualToString:@"allOrderListVC"]) {
         notifiName = @"clickBtnPayFromAllOrderVC";
+    }else if ([self.whereReuseFrom isEqualToString:@"waitToPayVC"]){
+        notifiName = @"clickBtnPayFromWaitToPayVC";
+    }else if ([self.whereReuseFrom isEqualToString:@"waitToSendoutVC"]){
+        notifiName = @"clickBtnPayFromWaitToSendoutVC";
+    }else if ([self.whereReuseFrom isEqualToString:@"sendedGoodsVC"]){
+        notifiName = @"clickBtnPayFromSendedGoodsVC";
+    }else if ([self.whereReuseFrom isEqualToString:@"waitToCommentVC"]){
+        notifiName = @"clickBtnPayFromWaitToCommentVC";
     }
     [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelOrderList];
 }

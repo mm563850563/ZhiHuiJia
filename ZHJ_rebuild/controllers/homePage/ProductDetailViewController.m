@@ -28,6 +28,13 @@
 #import "GoodsDetailGoodsInfoModel.h"
 #import "AddToCollectionModel.h"
 
+//tools
+#import "ShareTool.h"
+
+//SDKs
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDKUI.h>
+
 @interface ProductDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -89,6 +96,33 @@
 -(void)settingNavigation
 {
     self.navigationItem.title = @"商品详情概述";
+    
+    UIButton *btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnShare setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
+    btnShare.frame = CGRectMake(0, 0, 30, 30);
+    [btnShare addTarget:self action:@selector(settingShareParameter) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *btnBarShare = [[UIBarButtonItem alloc]initWithCustomView:btnShare];
+    self.navigationItem.rightBarButtonItem = btnBarShare;
+}
+
+#pragma mark - <第三方分享-配置要分享的参数>
+-(void)settingShareParameter
+{
+    //1.创建分享参数 注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
+    UIImage *image = [UIImage imageNamed:@"appLogo"];
+    NSArray *imageArray = @[image];
+    
+    if (imageArray) {
+        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+        [shareParams SSDKSetupShareParamsByText:@"1亿礼品库,注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
+        
+        //有的平台要客户端分享需要加此方法，例如微博
+        [shareParams SSDKEnableUseClientShare];
+        
+        //2.分享（可以弹出我们的分享菜单和编辑界面）
+        [ShareTool shareWithParams:shareParams];
+    }
 }
 
 #pragma mark - <记录用户浏览内容>

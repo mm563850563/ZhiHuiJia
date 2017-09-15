@@ -553,6 +553,8 @@
 		DD69B2FE1F3B09050036F368 /* RegionList.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD69B2FD1F3B09050036F368 /* RegionList.plist */; };
 		DD69B3021F3B309E0036F368 /* EditMyAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B3001F3B309E0036F368 /* EditMyAddressViewController.m */; };
 		DD69B3031F3B309E0036F368 /* EditMyAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69B3011F3B309E0036F368 /* EditMyAddressViewController.xib */; };
+		DD7D8DF51F6BD99D00155FF1 /* ActivityConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7D8DF31F6BD99D00155FF1 /* ActivityConfigViewController.m */; };
+		DD7D8DF61F6BD99D00155FF1 /* ActivityConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7D8DF41F6BD99D00155FF1 /* ActivityConfigViewController.xib */; };
 		DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63981F2EB56800611FA8 /* OrderListCell.m */; };
 		DD9A639B1F2EB56800611FA8 /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A63991F2EB56800611FA8 /* OrderListCell.xib */; };
 		DD9A639E1F2ECEE400611FA8 /* OrderListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A639D1F2ECEE400611FA8 /* OrderListHeaderView.m */; };
@@ -1631,6 +1633,9 @@
 		DD69B2FF1F3B309E0036F368 /* EditMyAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditMyAddressViewController.h; path = controllers/personal/EditMyAddressViewController.h; sourceTree = "<group>"; };
 		DD69B3001F3B309E0036F368 /* EditMyAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditMyAddressViewController.m; path = controllers/personal/EditMyAddressViewController.m; sourceTree = "<group>"; };
 		DD69B3011F3B309E0036F368 /* EditMyAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditMyAddressViewController.xib; path = controllers/personal/EditMyAddressViewController.xib; sourceTree = "<group>"; };
+		DD7D8DF21F6BD99D00155FF1 /* ActivityConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityConfigViewController.h; path = controllers/ActivityConfigViewController.h; sourceTree = "<group>"; };
+		DD7D8DF31F6BD99D00155FF1 /* ActivityConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityConfigViewController.m; path = controllers/ActivityConfigViewController.m; sourceTree = "<group>"; };
+		DD7D8DF41F6BD99D00155FF1 /* ActivityConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityConfigViewController.xib; path = controllers/ActivityConfigViewController.xib; sourceTree = "<group>"; };
 		DD9A63971F2EB56800611FA8 /* OrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListCell.h; path = cells/OrderListCell.h; sourceTree = "<group>"; };
 		DD9A63981F2EB56800611FA8 /* OrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListCell.m; path = cells/OrderListCell.m; sourceTree = "<group>"; };
 		DD9A63991F2EB56800611FA8 /* OrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListCell.xib; path = cells/OrderListCell.xib; sourceTree = "<group>"; };
@@ -3893,6 +3898,9 @@
 				DD4CF0101F285C020024156F /* ActivityRecommendDetailViewController.h */,
 				DD4CF0111F285C020024156F /* ActivityRecommendDetailViewController.m */,
 				DD4CF0121F285C020024156F /* ActivityRecommendDetailViewController.xib */,
+				DD7D8DF21F6BD99D00155FF1 /* ActivityConfigViewController.h */,
+				DD7D8DF31F6BD99D00155FF1 /* ActivityConfigViewController.m */,
+				DD7D8DF41F6BD99D00155FF1 /* ActivityConfigViewController.xib */,
 				DD4CF0291F2882AF0024156F /* DisclaimerViewController.h */,
 				DD4CF02A1F2882AF0024156F /* DisclaimerViewController.m */,
 				DD4CF02B1F2882AF0024156F /* DisclaimerViewController.xib */,
@@ -4269,6 +4277,7 @@
 				DD2ACB961F5ED1FB00EEFF8F /* commentLabelCell.xib in Resources */,
 				DD6287761F208C0B0030331D /* HotCircleViewController.xib in Resources */,
 				DDE0FD3F1F38714600269DBD /* BrandStoryCell.xib in Resources */,
+				DD7D8DF61F6BD99D00155FF1 /* ActivityConfigViewController.xib in Resources */,
 				DD9A63A51F2ECF3300611FA8 /* OrderListFooterView.xib in Resources */,
 				DD6287441F1F8C1E0030331D /* MyAddressViewController.xib in Resources */,
 				DD62882D1F2317E60030331D /* ReplyCommentCell.xib in Resources */,
@@ -4763,6 +4772,7 @@
 				DDE0FCF81F35642C00269DBD /* AddToCartDataModel.m in Sources */,
 				DD58FFAE1F51109B009EC9F2 /* RefuseActivityDataModel.m in Sources */,
 				DD6897FF1F2F276C008B6A8F /* AllBrandDataModel.m in Sources */,
+				DD7D8DF51F6BD99D00155FF1 /* ActivityConfigViewController.m in Sources */,
 				DD184E4A1F3D957B009BFF5B /* PlaceOrderDataModel.m in Sources */,
 				DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */,
 				DD0939071F442E7400A75182 /* OrderListViewController_Four.m in Sources */,

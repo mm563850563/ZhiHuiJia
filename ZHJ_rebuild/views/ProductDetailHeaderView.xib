@@ -90,9 +90,8 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某东价：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PG-D2-IEP">
-                                    <rect key="frame" x="10" y="50" width="45" height="20"/>
+                                    <rect key="frame" x="10" y="50" width="345" height="20"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="45" id="jaJ-J7-Dd4"/>
                                         <constraint firstAttribute="height" constant="20" id="jzm-gI-w2g"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -179,6 +178,7 @@
                                 <constraint firstItem="S4l-LL-E4P" firstAttribute="top" secondItem="AVu-Tp-Q51" secondAttribute="bottom" id="azd-7U-lE8"/>
                                 <constraint firstAttribute="trailing" secondItem="Jzz-Db-eSP" secondAttribute="trailing" constant="10" id="cxA-B3-DNE"/>
                                 <constraint firstItem="Jzz-Db-eSP" firstAttribute="leading" secondItem="xTE-2M-84i" secondAttribute="leading" constant="10" id="gG3-Eg-mVr"/>
+                                <constraint firstAttribute="trailing" secondItem="1PG-D2-IEP" secondAttribute="trailing" constant="20" id="gq9-Qg-w3q"/>
                                 <constraint firstItem="Jzz-Db-eSP" firstAttribute="top" secondItem="1PG-D2-IEP" secondAttribute="bottom" id="kNu-o8-IVi"/>
                                 <constraint firstItem="AVu-Tp-Q51" firstAttribute="top" secondItem="xTE-2M-84i" secondAttribute="top" id="mBz-uw-wYv"/>
                                 <constraint firstItem="AVu-Tp-Q51" firstAttribute="leading" secondItem="xTE-2M-84i" secondAttribute="leading" constant="10" id="qcT-vM-IdI"/>
