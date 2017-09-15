@@ -444,6 +444,12 @@
 #pragma mark - <115.设置礼品收货地址>
 #define kSetPrizeUserAddress @"/User/setPrizeUserAddress"
 
+#pragma mark - <116.获取订单待支付信息>
+#define kGetOrderPayInfo @"/Order/getOrderPayInfo"
+
+#pragma mark - <117.在订单列表中付款>
+#define kOrderRepay @"/Order/orderRepay"
+
 
 
 
