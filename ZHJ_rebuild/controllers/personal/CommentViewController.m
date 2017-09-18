@@ -170,7 +170,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                     hudWarning.completionBlock = ^{
                         [self.navigationController popViewControllerAnimated:YES];
                     };
@@ -179,7 +179,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
             
@@ -187,14 +187,14 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES afterDelay:1.0];
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
 }
@@ -208,7 +208,7 @@
     for (AddCommentTableViewCell *cell in self.commentCellArray) {
         if ([cell.tvCommentContent.text isEqualToString:@""]) {
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请填写评价内容"];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
             return;
         }else{
             NSNumber *grade = [NSNumber numberWithInteger:cell.goods_grade];

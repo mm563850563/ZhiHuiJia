@@ -553,6 +553,10 @@
 		DD69B2FE1F3B09050036F368 /* RegionList.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD69B2FD1F3B09050036F368 /* RegionList.plist */; };
 		DD69B3021F3B309E0036F368 /* EditMyAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69B3001F3B309E0036F368 /* EditMyAddressViewController.m */; };
 		DD69B3031F3B309E0036F368 /* EditMyAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69B3011F3B309E0036F368 /* EditMyAddressViewController.xib */; };
+		DD6D7D441F6FA52900F8FEF5 /* MessageDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6D7D431F6FA52900F8FEF5 /* MessageDataModel.m */; };
+		DD6D7D471F6FA53B00F8FEF5 /* MessageResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6D7D461F6FA53B00F8FEF5 /* MessageResultModel.m */; };
+		DD6D7D4B1F6FB0B000F8FEF5 /* CommentAndAboutMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6D7D491F6FB0B000F8FEF5 /* CommentAndAboutMeCell.m */; };
+		DD6D7D4C1F6FB0B000F8FEF5 /* CommentAndAboutMeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6D7D4A1F6FB0B000F8FEF5 /* CommentAndAboutMeCell.xib */; };
 		DD7D8DF51F6BD99D00155FF1 /* ActivityConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7D8DF31F6BD99D00155FF1 /* ActivityConfigViewController.m */; };
 		DD7D8DF61F6BD99D00155FF1 /* ActivityConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7D8DF41F6BD99D00155FF1 /* ActivityConfigViewController.xib */; };
 		DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63981F2EB56800611FA8 /* OrderListCell.m */; };
@@ -1633,6 +1637,13 @@
 		DD69B2FF1F3B309E0036F368 /* EditMyAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditMyAddressViewController.h; path = controllers/personal/EditMyAddressViewController.h; sourceTree = "<group>"; };
 		DD69B3001F3B309E0036F368 /* EditMyAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditMyAddressViewController.m; path = controllers/personal/EditMyAddressViewController.m; sourceTree = "<group>"; };
 		DD69B3011F3B309E0036F368 /* EditMyAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditMyAddressViewController.xib; path = controllers/personal/EditMyAddressViewController.xib; sourceTree = "<group>"; };
+		DD6D7D421F6FA52900F8FEF5 /* MessageDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageDataModel.h; path = models/MessageDataModel.h; sourceTree = "<group>"; };
+		DD6D7D431F6FA52900F8FEF5 /* MessageDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageDataModel.m; path = models/MessageDataModel.m; sourceTree = "<group>"; };
+		DD6D7D451F6FA53B00F8FEF5 /* MessageResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageResultModel.h; path = models/MessageResultModel.h; sourceTree = "<group>"; };
+		DD6D7D461F6FA53B00F8FEF5 /* MessageResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageResultModel.m; path = models/MessageResultModel.m; sourceTree = "<group>"; };
+		DD6D7D481F6FB0B000F8FEF5 /* CommentAndAboutMeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentAndAboutMeCell.h; path = cells/CommentAndAboutMeCell.h; sourceTree = "<group>"; };
+		DD6D7D491F6FB0B000F8FEF5 /* CommentAndAboutMeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentAndAboutMeCell.m; path = cells/CommentAndAboutMeCell.m; sourceTree = "<group>"; };
+		DD6D7D4A1F6FB0B000F8FEF5 /* CommentAndAboutMeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentAndAboutMeCell.xib; path = cells/CommentAndAboutMeCell.xib; sourceTree = "<group>"; };
 		DD7D8DF21F6BD99D00155FF1 /* ActivityConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityConfigViewController.h; path = controllers/ActivityConfigViewController.h; sourceTree = "<group>"; };
 		DD7D8DF31F6BD99D00155FF1 /* ActivityConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityConfigViewController.m; path = controllers/ActivityConfigViewController.m; sourceTree = "<group>"; };
 		DD7D8DF41F6BD99D00155FF1 /* ActivityConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityConfigViewController.xib; path = controllers/ActivityConfigViewController.xib; sourceTree = "<group>"; };
@@ -2978,6 +2989,17 @@
 			path = STPickerView;
 			sourceTree = "<group>";
 		};
+		DD6D7D411F6FA4BC00F8FEF5 /* MessageModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD6D7D421F6FA52900F8FEF5 /* MessageDataModel.h */,
+				DD6D7D431F6FA52900F8FEF5 /* MessageDataModel.m */,
+				DD6D7D451F6FA53B00F8FEF5 /* MessageResultModel.h */,
+				DD6D7D461F6FA53B00F8FEF5 /* MessageResultModel.m */,
+			);
+			name = MessageModel;
+			sourceTree = "<group>";
+		};
 		DDC52E8C1F416D6400ECF211 /* WeChatPay */ = {
 			isa = PBXGroup;
 			children = (
@@ -3484,6 +3506,9 @@
 				DD5E86CA1F61457B00690729 /* ClassifyCollectionViewCell.h */,
 				DD5E86CB1F61457B00690729 /* ClassifyCollectionViewCell.m */,
 				DD5E86CC1F61457B00690729 /* ClassifyCollectionViewCell.xib */,
+				DD6D7D481F6FB0B000F8FEF5 /* CommentAndAboutMeCell.h */,
+				DD6D7D491F6FB0B000F8FEF5 /* CommentAndAboutMeCell.m */,
+				DD6D7D4A1F6FB0B000F8FEF5 /* CommentAndAboutMeCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -3658,6 +3683,7 @@
 				DD5E86F31F6399FC00690729 /* DiscoverBannerModel */,
 				DD5AEE521F66E174002E4F49 /* ShakeModel */,
 				DD5AEE5E1F680727002E4F49 /* GetInterestingCircleModel */,
+				DD6D7D411F6FA4BC00F8FEF5 /* MessageModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -4125,6 +4151,7 @@
 				DDFB825B1F187A7900AEAAA7 /* cb_dark_off@2x.png in Resources */,
 				DD9A639B1F2EB56800611FA8 /* OrderListCell.xib in Resources */,
 				DDFB82691F187A7900AEAAA7 /* cb_mono_on@2x.png in Resources */,
+				DD6D7D4C1F6FB0B000F8FEF5 /* CommentAndAboutMeCell.xib in Resources */,
 				DD4CF00F1F283D500024156F /* ProductDetailImageCell.xib in Resources */,
 				DD6287051F1EE19C0030331D /* FocusPersonFileViewController.xib in Resources */,
 				DD4CF11A1F2AFB9E0024156F /* CategoryProductNameCell.xib in Resources */,
@@ -4638,6 +4665,7 @@
 				DD62879D1F2191A90030331D /* ActivityRankFirstCell.m in Sources */,
 				DD58FF291F4A6F4D009EC9F2 /* GetHotCycleResultModel.m in Sources */,
 				DD6898331F3172B5008B6A8F /* LoginViewController.m in Sources */,
+				DD6D7D4B1F6FB0B000F8FEF5 /* CommentAndAboutMeCell.m in Sources */,
 				DD0DBAF01F330D070098F5FA /* GetUserPrize_MyPrizeModel.m in Sources */,
 				DD40B7281F17250B00839748 /* HomeLeftImageCell.m in Sources */,
 				DD0939221F45918900A75182 /* UIBarButtonItem+Badge.m in Sources */,
@@ -4755,6 +4783,7 @@
 				DD6287D31F21C96F0030331D /* DomainHeaderView.m in Sources */,
 				DD6287ED1F21E8C00030331D /* FailureReviewViewController.m in Sources */,
 				DD68980E1F302B03008B6A8F /* ClassifyListModel.m in Sources */,
+				DD6D7D471F6FA53B00F8FEF5 /* MessageResultModel.m in Sources */,
 				DDFB826B1F187A7900AEAAA7 /* SSCheckBoxView.m in Sources */,
 				DD58FF6A1F4D56CB009EC9F2 /* AddCommentTableViewCell.m in Sources */,
 				DDE0FD241F35D74E00269DBD /* AddToCollectionResultModel.m in Sources */,
@@ -4774,6 +4803,7 @@
 				DD6897FF1F2F276C008B6A8F /* AllBrandDataModel.m in Sources */,
 				DD7D8DF51F6BD99D00155FF1 /* ActivityConfigViewController.m in Sources */,
 				DD184E4A1F3D957B009BFF5B /* PlaceOrderDataModel.m in Sources */,
+				DD6D7D441F6FA52900F8FEF5 /* MessageDataModel.m in Sources */,
 				DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */,
 				DD0939071F442E7400A75182 /* OrderListViewController_Four.m in Sources */,
 				DD69B2D21F3AB62E0036F368 /* OrderConfirmResultModel.m in Sources */,

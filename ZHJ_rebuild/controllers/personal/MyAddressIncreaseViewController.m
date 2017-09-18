@@ -79,7 +79,7 @@
                         
                         [hud hideAnimated:YES afterDelay:1.0];
                         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
                         hudWarning.completionBlock = ^{
                             [self.navigationController popViewControllerAnimated:YES];
                         };
@@ -89,21 +89,21 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [hud hideAnimated:YES afterDelay:1.0];
                         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
                     });
                 }
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         } failBlock:^(NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }];
     }
@@ -155,7 +155,7 @@
             warningStr = @"请选择所在地区";
         }
         MBProgressHUD *hud = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:warningStr];
-        [hud hideAnimated:YES afterDelay:2.0];
+        [hud hideAnimated:YES afterDelay:1.0];
     }else{
         [self getSubmitData];
     }

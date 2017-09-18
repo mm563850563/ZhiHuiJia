@@ -186,19 +186,19 @@
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
 }
@@ -222,21 +222,21 @@
                     });
                 }else{ dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
                     
                 }
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"数据为空"];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
             });
                 
             }
         } failBlock:^(NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
             
         }];
@@ -272,7 +272,7 @@
                     //                    [hud hideAnimated:YES afterDelay:1.0];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
                     });
                     
                 }
@@ -280,14 +280,14 @@
                 //                [hud hideAnimated:YES afterDelay:1.0];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         } failBlock:^(NSError *error) {
             //            [hud hideAnimated:YES afterDelay:1.0];
             dispatch_async(dispatch_get_main_queue(), ^{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }];
     }
@@ -344,7 +344,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [hud hideAnimated:YES afterDelay:1.0];
                         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
                     });
                     
                 }
@@ -352,14 +352,14 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         } failBlock:^(NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }];
     }
@@ -386,21 +386,21 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [hud hideAnimated:YES afterDelay:1.0];
                         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.code];
-                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
                     });
                 }
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         } failBlock:^(NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }];
     }
@@ -438,7 +438,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [hud hideAnimated:YES afterDelay:1.0];
                         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
                     });
                     
                 }
@@ -446,14 +446,14 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         } failBlock:^(NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }];
     }
@@ -475,7 +475,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [hud hideAnimated:YES afterDelay:1.0];
                         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
                         //删除成功后重新请求刷新数据
                         hud.completionBlock = ^{
                             [self getCartListAfterRemoveCart];
@@ -486,7 +486,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [hud hideAnimated:YES afterDelay:1.0];
                         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
                     });
                     
                 }
@@ -494,14 +494,14 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         } failBlock:^(NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }];
     }
@@ -546,7 +546,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
                 
             }
@@ -554,7 +554,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
             
         }
@@ -562,7 +562,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES afterDelay:1.0];
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
 }
@@ -616,7 +616,7 @@
         
         if (self.removeCartArray.count == 0) {
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择要删除的商品"];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         }else{
             [self getRemoveCartDataWithRemoveCartArray:self.removeCartArray];
         }
@@ -632,7 +632,7 @@
         //执行提交
         if (tempArray.count == 0) {
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择商品"];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         }else{
             [self jumpToOrderConfirmVC];
         }

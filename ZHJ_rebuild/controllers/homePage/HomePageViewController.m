@@ -8,6 +8,9 @@
 
 #import "HomePageViewController.h"
 
+//tools
+#import "UIButton+Badge.h"
+
 //views
 #import "HomePageRecommendHeaderView.h"
 #import "HomePageSameHobbyHeaderView.h"
@@ -56,7 +59,7 @@
 @property (nonatomic, strong)UITextField *searchBarHomePage;
 
 @property (nonatomic, strong)UITableView *tableView;
-
+@property (nonatomic, strong)UIButton *btnMessage;
 @property (nonatomic, strong)NSMutableArray *dataArray;
 @property (nonatomic, strong)NSArray *carouselResultArray;
 @property (nonatomic, strong)NSArray *homeGoodsResultArray;
@@ -120,11 +123,19 @@
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.navigationController.view animated:YES];
     
     dispatch_group_t group = dispatch_group_create();
+    
+//    //获取全局并发队列
+//    dispatch_queue_t queue12 = dispatch_queue_create("zxc", DISPATCH_QUEUE_CONCURRENT);
+//    dispatch_queue_t queue11 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    //获取串行队列
+//    dispatch_queue_t queue13 = dispatch_queue_create("zxc", DISPATCH_QUEUE_SERIAL);
+    
     dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
     dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
     dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
     dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
     dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
+    dispatch_queue_t queue6 = dispatch_queue_create("getMessageCount", NULL);
     
     dispatch_group_async(group, queue1, ^{
         [self getIndexCarouselData];
@@ -143,6 +154,9 @@
     dispatch_group_async(group, queue5, ^{
         [self getSimilarUserData];
     });
+    dispatch_group_async(group, queue6, ^{
+        [self getMessageCount];
+    });
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
@@ -159,6 +173,7 @@
     dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
     dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
     dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
+    dispatch_queue_t queue6 = dispatch_queue_create("getMessageCount", NULL);
     
     dispatch_group_async(group, queue1, ^{
         [self getIndexCarouselData];
@@ -178,11 +193,56 @@
     dispatch_group_async(group, queue5, ^{
         [self getSimilarUserData];
     });
+    dispatch_group_async(group, queue6, ^{
+        [self getMessageCount];
+    });
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     });
+}
+
+#pragma mark - <获取消息数量>
+-(void)getMessageCount
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetMessageCount];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                //回到主线程刷新数据
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSString *messageCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
+                    if (![messageCount isEqualToString:@"0"]) {
+                        self.btnMessage.badgeValue = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
+                        self.btnMessage.badgeFont = [UIFont systemFontOfSize:8];
+                        self.btnMessage.badgeMinSize = 1;
+                        self.btnMessage.badgeOriginY = -5;
+                        self.btnMessage.badgeOriginX = 12;
+                    }
+                    
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
+        });
+    }];
 }
 
 #pragma mark - <获取轮播图数据>
@@ -202,20 +262,20 @@
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
                 
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
 }
@@ -237,19 +297,19 @@
             }else{
                 dispatch_async( dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         }else{
             dispatch_async( dispatch_get_main_queue(), ^{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async( dispatch_get_main_queue(), ^{
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
 }
@@ -276,19 +336,19 @@
             }else{
                 dispatch_async( dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         }else{
             dispatch_async( dispatch_get_main_queue(), ^{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async( dispatch_get_main_queue(), ^{
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
 }
@@ -314,19 +374,19 @@
                 }else{
                     dispatch_async( dispatch_get_main_queue(), ^{
                         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
-                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
                     });
                 }
             }else{
                 dispatch_async( dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         } failBlock:^(NSError *error) {
             dispatch_async( dispatch_get_main_queue(), ^{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }];
     }
@@ -357,20 +417,20 @@
                 }else{
                     dispatch_async(dispatch_get_main_queue(), ^{
                         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
                     });
                    
                 }
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         } failBlock:^(NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }];
     }
@@ -436,6 +496,8 @@
     button.frame = CGRectMake(0, 0, 20, 20);
     [button setImage:[UIImage imageNamed:@"message"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(jumpToNotificationVC) forControlEvents:UIControlEventTouchUpInside];
+    self.btnMessage = button;
+    
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = rightBtn;
     

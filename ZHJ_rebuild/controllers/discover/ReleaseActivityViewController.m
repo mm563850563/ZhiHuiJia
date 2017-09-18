@@ -145,7 +145,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                     hudWarning.completionBlock = ^{
                         [self.navigationController popViewControllerAnimated:YES];
                     };
@@ -154,21 +154,21 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES afterDelay:1.0];
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
 }
@@ -188,7 +188,7 @@
 -(void)showWarningHudWithText:(NSString *)text
 {
     MBProgressHUD *hud = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:text];
-    [hud hideAnimated:YES afterDelay:2.0];
+    [hud hideAnimated:YES afterDelay:1.0];
 }
 
 #pragma mark - <提交审核按钮响应>

@@ -81,7 +81,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                       dispatch_async(dispatch_get_main_queue(), ^{
                           [hud hideAnimated:YES afterDelay:1.0];
                           MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                          [hudWarning hideAnimated:YES afterDelay:2.0];
+                          [hudWarning hideAnimated:YES afterDelay:1.0];
                           hudWarning.completionBlock = ^{
                               [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshTopicLitOnSelectTopicVC" object:nil];
                               [self.navigationController popViewControllerAnimated:YES];
@@ -91,14 +91,14 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                       dispatch_async(dispatch_get_main_queue(), ^{
                           [hud hideAnimated:YES afterDelay:1.0];
                           MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                          [hudWarning hideAnimated:YES afterDelay:2.0];
+                          [hudWarning hideAnimated:YES afterDelay:1.0];
                       });
                   }
               }else{
                   dispatch_async(dispatch_get_main_queue(), ^{
                       [hud hideAnimated:YES afterDelay:1.0];
                       MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                      [hudWarning hideAnimated:YES afterDelay:2.0];
+                      [hudWarning hideAnimated:YES afterDelay:1.0];
                   });
               }
           }
@@ -106,7 +106,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
               dispatch_async(dispatch_get_main_queue(), ^{
                   [hud hideAnimated:YES afterDelay:1.0];
                   MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                  [hudWarning hideAnimated:YES afterDelay:2.0];
+                  [hudWarning hideAnimated:YES afterDelay:1.0];
               });
           }];
 }
@@ -140,13 +140,13 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 {
     if ([self.tfTitle.text isEqualToString:@""]) {
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请填写活动标题"];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
     }else if (!self.dataMainImg){
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请上传主图"];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
     }else if (!self.dataDetailImg){
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请上传详情图"];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
     }else{
         NSDictionary *dictParameter = @{@"title":self.tfTitle.text,
                                         @"user_id":kUserDefaultObject(kUserInfo),

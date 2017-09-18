@@ -139,21 +139,21 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES afterDelay:1.0];
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
 }
@@ -195,7 +195,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                       dispatch_async(dispatch_get_main_queue(), ^{
                           [hud hideAnimated:YES afterDelay:1.0];
                           MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                          [hudWarning hideAnimated:YES afterDelay:2.0];
+                          [hudWarning hideAnimated:YES afterDelay:1.0];
                           hudWarning.completionBlock = ^{
                               
                               if ([self.whereReuseFrom isEqualToString:@"configVC"]) {
@@ -212,7 +212,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                           self.selectSlider.value = 1;
                           [hud hideAnimated:YES afterDelay:1.0];
                           MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                          [hudWarning hideAnimated:YES afterDelay:2.0];
+                          [hudWarning hideAnimated:YES afterDelay:1.0];
                       });
                   }
               }else{
@@ -220,7 +220,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                       self.selectSlider.value = 1;
                       [hud hideAnimated:YES afterDelay:1.0];
                       MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                      [hudWarning hideAnimated:YES afterDelay:2.0];
+                      [hudWarning hideAnimated:YES afterDelay:1.0];
                   });
               }
           }
@@ -229,7 +229,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                   self.selectSlider.value = 1;
                   [hud hideAnimated:YES afterDelay:1.0];
                   MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                  [hudWarning hideAnimated:YES afterDelay:2.0];
+                  [hudWarning hideAnimated:YES afterDelay:1.0];
               });
           }];
 }
@@ -287,7 +287,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             //滑动完成
             if (self.selectClassifyArray.count == 0) {
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请选择你喜欢的品类"];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
                 [slider setValue:1 animated:YES];
             }else{
                 NSDictionary *dict = @{@"user_id":kUserDefaultObject(kUserInfo)};

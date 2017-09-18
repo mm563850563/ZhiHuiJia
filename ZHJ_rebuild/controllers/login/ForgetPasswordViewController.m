@@ -62,19 +62,19 @@
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
 }
@@ -123,7 +123,7 @@
 {
     if ([self.tfPhone.text isEqualToString:@""]) {
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入手机号码"];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
     }else{
         //开启验证码倒计时
         [self openBtnVerificationCountDowm];
@@ -145,10 +145,10 @@
 {
     if ([self.tfPhone.text isEqualToString:@""]) {
         MBProgressHUD *hud = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入手机号码"];
-        [hud hideAnimated:YES afterDelay:2.0];
+        [hud hideAnimated:YES afterDelay:1.0];
     }else if ([self.tfCode.text isEqualToString:@""]){
         MBProgressHUD *hud = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入验证码"];
-        [hud hideAnimated:YES afterDelay:2.0];
+        [hud hideAnimated:YES afterDelay:1.0];
     }else{
         [self jumpToResetPasswordVC];
     }

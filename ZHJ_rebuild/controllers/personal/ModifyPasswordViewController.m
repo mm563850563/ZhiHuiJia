@@ -82,7 +82,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [hud hideAnimated:YES afterDelay:1.0];
                         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                        [hudWarning hideAnimated:YES afterDelay:2.0];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
                     });
                     
                 }
@@ -90,14 +90,14 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         } failBlock:^(NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }];
     }
@@ -132,19 +132,19 @@
     //修改密码请求
     if ([self.tfOriginPassword.text isEqualToString:@""]) {
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入旧密码"];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
     }else if([self.tfInputPassword.text isEqualToString:@""]){
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入新密码"];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
     }else if([self.tfInputPasswordAgain.text isEqualToString:@""]){
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请再次输入新密码"];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
     }else{
         if ([self.tfInputPasswordAgain.text isEqualToString:self.tfInputPassword.text]) {
             [self requestModifyPassword];
         }else{
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"新密码不一致"];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         }
         
     }

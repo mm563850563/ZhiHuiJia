@@ -4,13 +4,13 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubMessage_LikedViewController">
             <connections>
+                <outlet property="tableView" destination="Qe3-7l-foA" id="wrR-J2-dG2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,22 +19,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="null" translatesAutoresizingMaskIntoConstraints="NO" id="hRp-ob-YQ3">
-                    <rect key="frame" x="87.5" y="50" width="200" height="200"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="200" id="2UX-DR-JWN"/>
-                        <constraint firstAttribute="height" constant="200" id="2hn-BA-12v"/>
-                    </constraints>
-                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qe3-7l-foA">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="hRp-ob-YQ3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="WoX-uh-APW"/>
-                <constraint firstItem="hRp-ob-YQ3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wN8-2Q-LPw"/>
+                <constraint firstItem="Qe3-7l-foA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="12D-Cf-dRK"/>
+                <constraint firstItem="Qe3-7l-foA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="h48-un-GhG"/>
+                <constraint firstAttribute="bottom" secondItem="Qe3-7l-foA" secondAttribute="bottom" id="wNU-8k-VNh"/>
+                <constraint firstAttribute="trailing" secondItem="Qe3-7l-foA" secondAttribute="trailing" id="zeB-rT-Zc2"/>
             </constraints>
         </view>
     </objects>
-    <resources>
-        <image name="null" width="433" height="432"/>
-    </resources>
 </document>

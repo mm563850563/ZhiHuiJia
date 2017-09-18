@@ -130,7 +130,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                       dispatch_async(dispatch_get_main_queue(), ^{
                           [hud hideAnimated:YES afterDelay:1.0];
                           MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                          [hudWarning hideAnimated:YES afterDelay:2.0];
+                          [hudWarning hideAnimated:YES afterDelay:1.0];
                           hudWarning.completionBlock = ^{
                               [self dismissViewControllerAnimated:YES completion:nil];
                           };
@@ -141,7 +141,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                           self.femaleSlider.value = 0;
                           [hud hideAnimated:YES afterDelay:1.0];
                           MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                          [hudWarning hideAnimated:YES afterDelay:2.0];
+                          [hudWarning hideAnimated:YES afterDelay:1.0];
                       });
                   }
               }else{
@@ -150,7 +150,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                       self.femaleSlider.value = 0;
                       [hud hideAnimated:YES afterDelay:1.0];
                       MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                      [hudWarning hideAnimated:YES afterDelay:2.0];
+                      [hudWarning hideAnimated:YES afterDelay:1.0];
                   });
               }
           }
@@ -160,7 +160,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                   self.femaleSlider.value = 0;
                   [hud hideAnimated:YES afterDelay:1.0];
                   MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                  [hudWarning hideAnimated:YES afterDelay:2.0];
+                  [hudWarning hideAnimated:YES afterDelay:1.0];
               });
           }];
     
@@ -182,19 +182,19 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
 }
@@ -380,7 +380,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     
     if ([self.tfPhone.text isEqualToString:@""]) {
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入手机号码"];
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
     }else{
         //开启验证码倒计时
         [self openBtnVerificationCountDowm];

@@ -70,7 +70,7 @@
                     hudWarning.completionBlock = ^{
                         [self removeFromSuperview];
                     };
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                     [hud hideAnimated:YES afterDelay:1.0];
                     
                     //登陆成功后，把user_id保存本地，用作持久化登陆
@@ -81,7 +81,7 @@
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:model.msg];
-                    [hudWarning hideAnimated:YES afterDelay:2.0];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
                     [hud hideAnimated:YES afterDelay:1.0];
                 });
                 
@@ -89,7 +89,7 @@
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:2.0];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
                 [hud hideAnimated:YES afterDelay:1.0];
             });
         }
@@ -97,7 +97,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES afterDelay:1.0];
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:2.0];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
 }
@@ -108,11 +108,11 @@
     if ([self.tfPhone.text isEqualToString:@""]) {
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:nil];
         hudWarning.label.text = @"请输入手机号码";
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
     }else if ([self.tfPassword.text isEqualToString:@""]){
         MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self animated:YES warningMessage:nil];
         hudWarning.label.text = @"请输入密码";
-        [hudWarning hideAnimated:YES afterDelay:2.0];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
     }else{
         [self postLoginRequest];
     }

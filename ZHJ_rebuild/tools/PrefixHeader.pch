@@ -450,6 +450,12 @@
 #pragma mark - <117.在订单列表中付款>
 #define kOrderRepay @"/Order/orderRepay"
 
+#pragma mark - <118.获取消息数量>
+#define kGetMessageCount @"/Circle/getMessageCount"
+
+#pragma mark - <119.获取消息数据>
+#define kGetMessage @"/Circle/getMessage"
+
 
 
 
