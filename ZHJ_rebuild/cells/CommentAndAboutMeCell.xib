@@ -72,9 +72,9 @@
                 </subviews>
                 <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstItem="EOX-yS-dTE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="JI9-mY-9kg"/>
+                    <constraint firstItem="EOX-yS-dTE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="0.5" id="JI9-mY-9kg"/>
                     <constraint firstAttribute="trailing" secondItem="EOX-yS-dTE" secondAttribute="trailing" id="UGR-07-KKo"/>
-                    <constraint firstAttribute="bottom" secondItem="EOX-yS-dTE" secondAttribute="bottom" constant="0.5" id="bCT-mR-O7Q"/>
+                    <constraint firstAttribute="bottom" secondItem="EOX-yS-dTE" secondAttribute="bottom" constant="1" id="bCT-mR-O7Q"/>
                     <constraint firstItem="EOX-yS-dTE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="o00-of-dQv"/>
                 </constraints>
             </tableViewCellContentView>
