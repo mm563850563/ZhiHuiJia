@@ -35,6 +35,9 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDKUI.h>
 
+//IM
+#import "EaseUI.h"
+
 @interface ProductDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -99,7 +102,7 @@
     
     UIButton *btnShare = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnShare setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
-    btnShare.frame = CGRectMake(0, 0, 30, 30);
+    btnShare.frame = CGRectMake(0, 0, 25, 25);
     [btnShare addTarget:self action:@selector(settingShareParameter) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *btnBarShare = [[UIBarButtonItem alloc]initWithCustomView:btnShare];
@@ -319,11 +322,20 @@
     [self.navigationController pushViewController:myOrderVC animated:NO];
 }
 
+#pragma mark - <跳转“聊天界面”>
+-(void)jumpToSingleChatVCWithChatter:(NSString *)chatter
+{
+    EaseMessageViewController *singleChatVC = [[EaseMessageViewController alloc]initWithConversationChatter:chatter conversationType:EMConversationTypeChat];
+    singleChatVC.navigationItem.title = chatter;
+    [self.navigationController pushViewController:singleChatVC animated:YES];
+}
+
 #pragma mark - <客服>
 - (IBAction)btnSalesCenterAction:(UIButton *)sender
 {
-    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"客服"];
-    [hudWarning hideAnimated:YES afterDelay:1.0];
+//    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"客服"];
+//    [hudWarning hideAnimated:YES afterDelay:1.0];
+    [self jumpToSingleChatVCWithChatter:@"3553"];
 }
 
 #pragma mark - <店铺>

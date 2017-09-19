@@ -865,8 +865,8 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section == 14) {
-        return 20;
+    if (section == self.homeGoodsResultArray.count+2) {
+        return 10;
     }
     return 0.1f;
 }

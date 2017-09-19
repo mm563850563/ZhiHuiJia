@@ -13,6 +13,7 @@
 #import <IQKeyboardManager.h>
 #import "SearchNetTool.h"
 #import <AFNetworkReachabilityManager.h>
+#import <UserNotifications/UserNotifications.h>
 
 //shareSDK
 #import <ShareSDK/ShareSDK.h>
@@ -31,6 +32,9 @@
 //微信SDK
 #import "WXApi.h"
 #import "WXApiManager.h"
+
+//IM SDK
+#import <Hyphenate/Hyphenate.h>
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -110,6 +114,9 @@
     //****************微信支付*****************
     [WXApi registerApp:kWeChatPay_AppID ];
     
+    //**************注册环信SDK***************
+    [self registerIM];
+    
     return YES;
 }
 
@@ -126,7 +133,54 @@
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"back"];
 }
 
-#pragma mark - <注册第三方平台> 
+#pragma mark - <注册环信SDK>
+-(void)registerIM
+{
+    EMOptions *options = [EMOptions optionsWithAppkey:@"1145170815178204#zhihuijia"];
+    options.apnsCertName = @"zhj_ios";
+    [[EMClient sharedClient]initializeSDKWithOptions:options];
+    
+    //注册离线推送
+    UIApplication *application = [UIApplication sharedApplication];
+    //ios10注册
+    if (NSClassFromString(@"UNUserNotificationCenter")) {
+        [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionBadge|UNAuthorizationOptionAlert|UNAuthorizationOptionSound completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            if (granted) {
+                [application registerForRemoteNotifications];
+            }
+        }];
+    }
+    
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationType notiationTypes = UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notiationTypes categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }
+    
+    if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
+        [application registerForRemoteNotifications];
+    }else{
+        UIRemoteNotificationType notiticationType = UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound;
+        //*************************************
+        [application registerForRemoteNotificationTypes:notiticationType];
+    }
+    
+    if (kUserDefaultObject(kUserInfo)) {
+        //登陆环信
+        [[EMClient sharedClient]loginWithUsername:@"3560" password:@"e7b5107f7f6fe217a3d18a34fefd7d44" completion:^(NSString *aUsername, EMError *aError) {
+            if (!aError) {
+                NSLog(@"%@",aUsername);
+                //下次自动登陆
+                [[EMClient sharedClient].options setIsAutoLogin:YES];
+            }else{
+                NSLog(@"%@",aError);
+            }
+        }];
+    }
+    
+}
+
+#pragma mark - <注册第三方平台>
 -(void)registerApp
 {
     [WXApi registerApp:@"wxd8b7051c3bd0f932"];
@@ -191,6 +245,7 @@
         
     }else{
         NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
+        
         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         MainTabBarViewController *mainTabbarVC = [sb instantiateViewControllerWithIdentifier:NSStringFromClass([MainTabBarViewController class])];
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:mainTabbarVC animated:NO completion:nil];
@@ -241,6 +296,18 @@
     keyboardManager.keyboardDistanceFromTextField = 10.0f; // 输入框距离键盘的距离
 }
 
+#pragma mark - <注册了推送功能，会回调以下两个方法，得到deviceToken，需要将deviceToken传给SDK>
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [[EMClient sharedClient]bindDeviceToken:deviceToken];
+}
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"IM_Push_error:--%@--",error);
+}
+
+
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -248,13 +315,12 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[EMClient sharedClient]applicationDidEnterBackground:application];
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    [[EMClient sharedClient] applicationWillEnterForeground:application];
 }
 
 

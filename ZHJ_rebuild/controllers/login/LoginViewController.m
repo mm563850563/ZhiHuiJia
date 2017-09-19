@@ -24,6 +24,7 @@
 #import "WXApi.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "WeiboSDK.h"
+#import <Hyphenate/Hyphenate.h>
 
 @interface LoginViewController ()
 
@@ -78,10 +79,10 @@
 -(void)checkUserIsLogined
 {
     if (!kUserDefaultObject(kUserInfo)) {
-        NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
+//        NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
         
     }else{
-        NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
+//        NSLog(@"--------%@-------",kUserDefaultObject(kUserInfo));
         [self presentMainTabVC];
     }
 }
@@ -252,6 +253,17 @@
                     }else{
                         [self presentMainTabVC];
                     }
+                    
+                    //登陆环信
+                    [[EMClient sharedClient]loginWithUsername:@"3560" password:@"e7b5107f7f6fe217a3d18a34fefd7d44" completion:^(NSString *aUsername, EMError *aError) {
+                        if (!aError) {
+                            NSLog(@"%@",aUsername);
+                            //下次自动登陆
+                            [[EMClient sharedClient].options setIsAutoLogin:YES];
+                        }else{
+                            NSLog(@"%@",aError);
+                        }
+                    }];
                     
                 });
                 

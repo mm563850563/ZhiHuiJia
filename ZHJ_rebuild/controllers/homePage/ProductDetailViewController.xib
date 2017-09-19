@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -106,7 +105,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5p-1o-Rpa">
-                            <rect key="frame" x="1" y="0.0" width="50" height="50"/>
+                            <rect key="frame" x="102" y="0.0" width="50" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收藏" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vQ-9g-q7D">
                                     <rect key="frame" x="0.0" y="30" width="50" height="20"/>
@@ -144,10 +143,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hR-3Y-WPV">
-                            <rect key="frame" x="51" y="0.0" width="324" height="50"/>
+                            <rect key="frame" x="152" y="0.0" width="223" height="50"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LF9-Up-Zs9">
-                                    <rect key="frame" x="0.0" y="0.0" width="162.5" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="112" height="50"/>
                                     <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <state key="normal" title="加入购物车">
@@ -158,7 +157,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaT-hm-K8z">
-                                    <rect key="frame" x="164" y="0.0" width="160" height="50"/>
+                                    <rect key="frame" x="113" y="0.0" width="110" height="50"/>
                                     <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <state key="normal" title="立即购买">
@@ -196,6 +195,7 @@
                         <constraint firstItem="6hR-3Y-WPV" firstAttribute="top" secondItem="eWL-HD-qR3" secondAttribute="top" id="Bi0-xx-quO"/>
                         <constraint firstItem="6hR-3Y-WPV" firstAttribute="leading" secondItem="a5p-1o-Rpa" secondAttribute="trailing" id="ElM-UY-tAb"/>
                         <constraint firstItem="Yuu-18-h0T" firstAttribute="top" secondItem="eWL-HD-qR3" secondAttribute="top" id="Ra7-Gc-lwA"/>
+                        <constraint firstItem="a5p-1o-Rpa" firstAttribute="leading" secondItem="gHa-e1-kb3" secondAttribute="trailing" constant="1" id="Rgg-oj-tvd"/>
                         <constraint firstAttribute="height" constant="50" id="Upc-Na-n9s"/>
                         <constraint firstAttribute="bottom" secondItem="gHa-e1-kb3" secondAttribute="bottom" id="Woa-ea-BK6"/>
                         <constraint firstAttribute="bottom" secondItem="a5p-1o-Rpa" secondAttribute="bottom" id="Yuw-Lr-uHK"/>
@@ -204,7 +204,6 @@
                         <constraint firstItem="gHa-e1-kb3" firstAttribute="top" secondItem="eWL-HD-qR3" secondAttribute="top" id="eaF-In-kKI"/>
                         <constraint firstAttribute="bottom" secondItem="6hR-3Y-WPV" secondAttribute="bottom" id="hdw-34-hUn"/>
                         <constraint firstItem="5sg-hG-frI" firstAttribute="top" secondItem="eWL-HD-qR3" secondAttribute="top" id="nPY-hM-K45"/>
-                        <constraint firstItem="a5p-1o-Rpa" firstAttribute="leading" secondItem="eWL-HD-qR3" secondAttribute="leading" constant="1" id="o4J-5e-llm"/>
                         <constraint firstAttribute="bottom" secondItem="5sg-hG-frI" secondAttribute="bottom" id="oUO-Jj-GV1"/>
                         <constraint firstItem="5sg-hG-frI" firstAttribute="leading" secondItem="eWL-HD-qR3" secondAttribute="leading" id="qPu-Jd-15M"/>
                         <constraint firstAttribute="trailing" secondItem="Yuu-18-h0T" secondAttribute="trailing" id="tqh-H3-YVF"/>

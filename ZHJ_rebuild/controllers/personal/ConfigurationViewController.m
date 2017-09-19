@@ -20,6 +20,9 @@
 #import "SelectThemeAndClassifyViewController.h"
 #import "AboutUsViewController.h"
 
+//IM
+#import <Hyphenate/Hyphenate.h>
+
 @interface ConfigurationViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong)UITableView *tableView;
@@ -113,22 +116,13 @@
             parent = parent.presentingViewController;
         }
         [parent dismissViewControllerAnimated:YES completion:^{
-            kUserDefaultRemoveObject(kUserInfo);
-            kUserDefaultSynchronize;
+            //退出登录环信
+            [[EMClient sharedClient] logout:YES completion:^(EMError *aError) {
+                NSLog(@"退出登录环信");
+                kUserDefaultRemoveObject(kUserInfo);
+                kUserDefaultSynchronize;
+            }];
         }];
-        
-//        LoginViewController *loginVC = [[LoginViewController alloc]initWithNibName:NSStringFromClass([LoginViewController class]) bundle:nil];
-        
-//        [self presentViewController:loginVC animated:YES completion:^{
-//            //清除单例中的userID
-//            kUserDefaultRemoveObject(kUserInfo);
-//            kUserDefaultSynchronize;
-//            
-//            //回到首页
-//            self.tabBarController.selectedIndex = 0;
-//            
-//            [self.navigationController popToRootViewControllerAnimated:YES];
-//        }];
     }];
     UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
     [alertVC addAction:actionCancel];
@@ -208,7 +202,7 @@
         [self presentSelectThemeAndClassifyVC];
     }else if (indexPath.row == 5){
         [self jumpToAboutUsVC];
-    }else if (indexPath.row == 6){
+    }else if (indexPath.row == 6){//退出登录
         [self logout];
     }
 }

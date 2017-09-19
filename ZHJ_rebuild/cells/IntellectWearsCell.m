@@ -50,7 +50,7 @@
         CGFloat itemWidth = kSCREEN_WIDTH/2.02;
         CGFloat itemHeight = itemWidth/2.0*3.0;
         
-        NSLog(@"%f,%f",itemWidth,itemHeight);
+//        NSLog(@"%f,%f",itemWidth,itemHeight);
         if (itemHeight > (itemWidth+90)) {
             itemHeight = itemWidth+90;
         }

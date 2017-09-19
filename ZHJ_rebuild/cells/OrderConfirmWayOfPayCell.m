@@ -44,10 +44,10 @@
     [super setSelected:selected animated:animated];
 
     if (selected) {
-        NSLog(@"%ld",(long)self.tag);
+//        NSLog(@"%ld",(long)self.tag);
         self.checkBox.checked = YES;
     }else{
-        NSLog(@"%ld",(long)self.tag);
+//        NSLog(@"%ld",(long)self.tag);
         self.checkBox.checked = NO;
     }
 }
