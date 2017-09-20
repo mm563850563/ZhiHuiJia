@@ -126,7 +126,8 @@
     dispatch_queue_t queue3 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t queue4 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t queue5 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t queue6 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue6 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
 //    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
 //    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
 //    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
@@ -154,6 +155,7 @@
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
         [hud hideAnimated:YES afterDelay:1.0];
+        [self.tableView.mj_header endRefreshing];
     });
 }
 
@@ -166,7 +168,8 @@
     dispatch_queue_t queue3 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t queue4 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t queue5 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t queue6 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue6 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
 //    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
 //    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
 //    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
@@ -430,7 +433,7 @@
     
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self pullDownRefresh];
+        [self managerRequestWithGCDWithHUD:nil];
     }];
 }
 
@@ -599,7 +602,7 @@
     
     //在“好友主页”中点击关注／取消关注后刷新主页
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshHomePageVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self pullDownRefresh];
+        [self managerRequestWithGCDWithHUD:nil];
     }];
     
     //登陆后刷新该页面
@@ -936,7 +939,7 @@
 #pragma mark - **** UISearchBarDelegate ****
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    NSArray *array = [NSArray arrayWithObjects:@"sfdgfhjg",@"jtyhrtgr",@"sfdgf",@"sdfdgf", nil];
+//    NSArray *array = [NSArray arrayWithObjects:@"sfdgfhjg",@"jtyhrtgr",@"sfdgf",@"sdfdgf", nil];
     
     PYSearchViewController *searchVC = [PYSearchViewController searchViewControllerWithHotSearches:nil searchBarPlaceholder:@"请输入关键字" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
