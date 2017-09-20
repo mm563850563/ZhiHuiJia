@@ -85,8 +85,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self managerRequestWithGCD];
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [self managerRequestWithGCDWithHUD:hud];
     [self settingNavigationBar];
     [self initTableView];
     [self addSearchBarIntoNavigationBar];
@@ -115,16 +115,23 @@
 //}
 
 #pragma mark - <GCD管理多线程>
--(void)managerRequestWithGCD
+-(void)managerRequestWithGCDWithHUD:(MBProgressHUD *)hud
 {
-    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.navigationController.view animated:YES];
+//    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     
     dispatch_group_t group = dispatch_group_create();
-    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
-    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
-    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
-    dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
-    dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
+//    dispatch_queue_t queue1 = dispatch_queue_create(@"getIndexCarousel", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_queue_t queue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue3 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue4 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue5 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue6 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
+//    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
+//    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
+//    dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
+//    dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
     
     dispatch_group_async(group, queue1, ^{
         [self getIndexCarouselData];
@@ -154,11 +161,17 @@
 -(void)pullDownRefresh
 {
     dispatch_group_t group = dispatch_group_create();
-    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
-    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
-    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
-    dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
-    dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
+    dispatch_queue_t queue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue3 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue4 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue5 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue6 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
+//    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
+//    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
+//    dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
+//    dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
     
     dispatch_group_async(group, queue1, ^{
         [self getIndexCarouselData];
@@ -201,20 +214,20 @@
                 });
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
                 });
                 
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:2.0];
         });
     }];
@@ -236,19 +249,19 @@
                 });
             }else{
                 dispatch_async( dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
                 });
             }
         }else{
             dispatch_async( dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async( dispatch_get_main_queue(), ^{
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:2.0];
         });
     }];
@@ -275,19 +288,19 @@
                 });
             }else{
                 dispatch_async( dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
                 });
             }
         }else{
             dispatch_async( dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async( dispatch_get_main_queue(), ^{
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:2.0];
         });
     }];
@@ -313,19 +326,19 @@
                     });
                 }else{
                     dispatch_async( dispatch_get_main_queue(), ^{
-                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
                         [hudWarning hideAnimated:YES afterDelay:2.0];
                     });
                 }
             }else{
                 dispatch_async( dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                     [hudWarning hideAnimated:YES afterDelay:2.0];
                 });
             }
         } failBlock:^(NSError *error) {
             dispatch_async( dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:2.0];
             });
         }];
@@ -591,7 +604,7 @@
     
     //登陆后刷新该页面
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshHomePageAfterLogin" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self managerRequestWithGCD];
+        [self managerRequestWithGCDWithHUD:nil];
     }];
 }
 
