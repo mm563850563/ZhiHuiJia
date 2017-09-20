@@ -64,8 +64,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     self.page = @1;
-    [self managerRequestWithGCD];
+    [self managerRequestWithGCDWithHUD:hud];
     [self settingNavigation];
     [self initMianTableView];
     
@@ -97,20 +99,17 @@
 */
 
 #pragma mark - <GCD多线程管理任务>
--(void)managerRequestWithGCD
+-(void)managerRequestWithGCDWithHUD:(MBProgressHUD *)hud
 {
-    
-    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.navigationController.view animated:YES];
-    
     dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue1 = dispatch_queue_create("getBannerData", NULL);
+//    dispatch_queue_t queue2 = dispatch_queue_create("getBestDynamicData", NULL);
     
-    dispatch_queue_t queue1 = dispatch_queue_create("getBannerData", NULL);
-    dispatch_queue_t queue2 = dispatch_queue_create("getBestDynamicData", NULL);
-    
-    dispatch_group_async(group, queue1, ^{
+    dispatch_group_async(group, queue, ^{
         [self getBannerData];
     });
-    dispatch_group_async(group, queue2, ^{
+    dispatch_group_async(group, queue, ^{
         [self getBestDynamicDataWithPage:@1];
     });
     
@@ -361,7 +360,7 @@
     
     self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         self.page = @1;
-        [self managerRequestWithGCD];
+        [self managerRequestWithGCDWithHUD:nil];
     }];
     
     self.mainTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
@@ -594,7 +593,7 @@
 #pragma mark - ****** UISearchBarDelegate *******
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    NSArray *array = [NSArray arrayWithObjects:@"sfdgfhjg",@"jtyhrtgr",@"sfdgf",@"sdfdgf", nil];
+//    NSArray *array = [NSArray arrayWithObjects:@"sfdgfhjg",@"jtyhrtgr",@"sfdgf",@"sdfdgf", nil];
     
     PYSearchViewController *searchVC = [PYSearchViewController searchViewControllerWithHotSearches:nil searchBarPlaceholder:@"请输入关键字" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];

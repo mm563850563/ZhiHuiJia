@@ -671,6 +671,7 @@
 		DD6D7D4C1F6FB0B000F8FEF5 /* CommentAndAboutMeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6D7D4A1F6FB0B000F8FEF5 /* CommentAndAboutMeCell.xib */; };
 		DD7D8DF51F6BD99D00155FF1 /* ActivityConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7D8DF31F6BD99D00155FF1 /* ActivityConfigViewController.m */; };
 		DD7D8DF61F6BD99D00155FF1 /* ActivityConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7D8DF41F6BD99D00155FF1 /* ActivityConfigViewController.xib */; };
+		DD80F51F1F725B9F0036647C /* ZHJMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD80F51E1F725B9F0036647C /* ZHJMessageViewController.m */; };
 		DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63981F2EB56800611FA8 /* OrderListCell.m */; };
 		DD9A639B1F2EB56800611FA8 /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A63991F2EB56800611FA8 /* OrderListCell.xib */; };
 		DD9A639E1F2ECEE400611FA8 /* OrderListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A639D1F2ECEE400611FA8 /* OrderListHeaderView.m */; };
@@ -2000,6 +2001,8 @@
 		DD7D8DF21F6BD99D00155FF1 /* ActivityConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityConfigViewController.h; path = controllers/ActivityConfigViewController.h; sourceTree = "<group>"; };
 		DD7D8DF31F6BD99D00155FF1 /* ActivityConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityConfigViewController.m; path = controllers/ActivityConfigViewController.m; sourceTree = "<group>"; };
 		DD7D8DF41F6BD99D00155FF1 /* ActivityConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityConfigViewController.xib; path = controllers/ActivityConfigViewController.xib; sourceTree = "<group>"; };
+		DD80F51D1F725B9F0036647C /* ZHJMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHJMessageViewController.h; sourceTree = "<group>"; };
+		DD80F51E1F725B9F0036647C /* ZHJMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHJMessageViewController.m; sourceTree = "<group>"; };
 		DD9A63971F2EB56800611FA8 /* OrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListCell.h; path = cells/OrderListCell.h; sourceTree = "<group>"; };
 		DD9A63981F2EB56800611FA8 /* OrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListCell.m; path = cells/OrderListCell.m; sourceTree = "<group>"; };
 		DD9A63991F2EB56800611FA8 /* OrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListCell.xib; path = cells/OrderListCell.xib; sourceTree = "<group>"; };
@@ -2734,6 +2737,8 @@
 			children = (
 				DD4CD3031F70DE730002C3BD /* EaseUI */,
 				DD4CD2FB1F70AE680002C3BD /* HyphenateFullSDK */,
+				DD80F51D1F725B9F0036647C /* ZHJMessageViewController.h */,
+				DD80F51E1F725B9F0036647C /* ZHJMessageViewController.m */,
 			);
 			name = IM;
 			sourceTree = "<group>";
@@ -5317,6 +5322,7 @@
 				DD4CD48E1F70DE730002C3BD /* EaseCustomMessageCell.m in Sources */,
 				DD184E271F3D5658009BFF5B /* NULLTableViewCell.m in Sources */,
 				DDE0FCFE1F35653800269DBD /* CartListModel.m in Sources */,
+				DD80F51F1F725B9F0036647C /* ZHJMessageViewController.m in Sources */,
 				DD4CF0311F2885660024156F /* ActivityApplyViewController.m in Sources */,
 				DD09600C1F55512A002F4AED /* RankList_my_first_rank_infoModel.m in Sources */,
 				DD6898371F31903B008B6A8F /* LoginView.m in Sources */,

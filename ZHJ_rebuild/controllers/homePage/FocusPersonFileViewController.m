@@ -86,13 +86,14 @@
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     
     dispatch_group_t group = dispatch_group_create();
-    dispatch_queue_t queue1 = dispatch_queue_create("getFriendHomePageData", NULL);
-    dispatch_queue_t queue2 = dispatch_queue_create("getMyCircleDynamicData", NULL);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue1 = dispatch_queue_create("getFriendHomePageData", NULL);
+//    dispatch_queue_t queue2 = dispatch_queue_create("getMyCircleDynamicData", NULL);
     
-    dispatch_group_async(group, queue1, ^{
+    dispatch_group_async(group, queue, ^{
         [self getFriendHomePageData];
     });
-    dispatch_group_async(group, queue2, ^{
+    dispatch_group_async(group, queue, ^{
         [self getMyCircleDynamicDataWithPage:@1];
     });
     
@@ -353,10 +354,12 @@
         [self.navigationController popViewControllerAnimated:YES];
     }];
     
+    //私信
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickPrivateChat" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         NSLog(@"私信");
     }];
     
+    //个人活跃度排名
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickPersonActivitySort" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         [self jumpToPersonalRankVC];
     }];
@@ -373,31 +376,32 @@
         [self attentionOrCancelAttentionWithFriendUserID:friend_user_id attentionType:@"0"];
     }];
     
-    
+    //我关注的人
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"CheckFocusAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         [self jumpToMyOnFocusVCWithFansOrFocus:@"focus"];
     }];
     
+    //我的粉丝
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"CheckFansAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         [self jumpToMyOnFocusVCWithFansOrFocus:@"fans"];
     }];
     
-    //好友主页
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        NSString *user_id = x.object;
-        [self jumpToFocusPersonalVCWithUserID:user_id];
-    }];
+//    //好友主页
+//    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+//        NSString *user_id = x.object;
+//        [self jumpToFocusPersonalVCWithUserID:user_id];
+//    }];
     
     //点赞
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"cancelLikeByClickFromFocusPersonalVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         NSString *talk_id = x.object;
-        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"0"];
+        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"1"];
     }];
     
     //取消点赞
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"likeByClickFromFocusPersonalVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         NSString *talk_id = x.object;
-        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"1"];
+        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"0"];
     }];
 }
 
@@ -464,9 +468,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row != 0) {
-        DynamicDetailViewController *dynamicDetailVC = [[DynamicDetailViewController alloc]initWithNibName:NSStringFromClass([DynamicDetailViewController class]) bundle:nil];
-        [self.navigationController pushViewController:dynamicDetailVC animated:YES];
+    if (indexPath.section != 0) {
+        if (self.circleDynamicArray.count>0) {
+            MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
+            DynamicDetailViewController *dynamicDetailVC = [[DynamicDetailViewController alloc]initWithNibName:NSStringFromClass([DynamicDetailViewController class]) bundle:nil];
+            dynamicDetailVC.user_id = modelResult.user_id;
+            dynamicDetailVC.talk_id = modelResult.talk_id;
+            dynamicDetailVC.whereReuseFrom = @"dynamicDetail";
+            [self.navigationController pushViewController:dynamicDetailVC animated:YES];
+        }
+        
     }
 }
 

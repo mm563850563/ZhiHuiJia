@@ -88,8 +88,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self managerRequestWithGCD];
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [self managerRequestWithGCDWithHUD:hud];
     [self settingNavigationBar];
     [self initTableView];
     [self addSearchBarIntoNavigationBar];
@@ -118,10 +118,8 @@
 //}
 
 #pragma mark - <GCD管理多线程>
--(void)managerRequestWithGCD
+-(void)managerRequestWithGCDWithHUD:(MBProgressHUD *)hud
 {
-    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.navigationController.view animated:YES];
-    
     dispatch_group_t group = dispatch_group_create();
     
 //    //获取全局并发队列
@@ -130,12 +128,13 @@
 //    //获取串行队列
 //    dispatch_queue_t queue13 = dispatch_queue_create("zxc", DISPATCH_QUEUE_SERIAL);
     
-    dispatch_queue_t queue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t queue2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t queue3 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t queue4 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t queue5 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t queue6 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue3 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue4 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue5 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue6 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 //    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
 //    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
 //    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
@@ -143,30 +142,31 @@
 //    dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
 //    dispatch_queue_t queue6 = dispatch_queue_create("getMessageCount", NULL);
     
-    dispatch_group_async(group, queue1, ^{
+    dispatch_group_async(group, queue, ^{
         [self getIndexCarouselData];
     });
-    dispatch_group_async(group, queue2, ^{
+    dispatch_group_async(group, queue, ^{
         [self getHomeGoodsData];
     });
-    dispatch_group_async(group, queue3, ^{
+    dispatch_group_async(group, queue, ^{
         if (kUserDefaultObject(kUserInfo)) {
             [self getGiftTypeData];
         }
     });
-    dispatch_group_async(group, queue4, ^{
+    dispatch_group_async(group, queue, ^{
         [self getRecommendGoodsData];
     });
-    dispatch_group_async(group, queue5, ^{
+    dispatch_group_async(group, queue, ^{
         [self getSimilarUserData];
     });
-    dispatch_group_async(group, queue6, ^{
+    dispatch_group_async(group, queue, ^{
         [self getMessageCount];
     });
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
         [hud hideAnimated:YES afterDelay:1.0];
+        [self.tableView.mj_header endRefreshing];
     });
 }
 
@@ -174,12 +174,13 @@
 -(void)pullDownRefresh
 {
     dispatch_group_t group = dispatch_group_create();
-    dispatch_queue_t queue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t queue2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t queue3 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t queue4 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t queue5 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t queue6 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue3 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue4 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue5 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue6 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 //    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
 //    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
 //    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
@@ -187,32 +188,32 @@
 //    dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
 //    dispatch_queue_t queue6 = dispatch_queue_create("getMessageCount", NULL);
     
-    dispatch_group_async(group, queue1, ^{
-        [self getIndexCarouselData];
-    });
-    dispatch_group_async(group, queue2, ^{
-        [self getHomeGoodsData];
-    });
-    dispatch_group_async(group, queue3, ^{
-        if (kUserDefaultObject(kUserInfo)) {
-            [self getGiftTypeData];
-        }
-        
-    });
-    dispatch_group_async(group, queue4, ^{
-        [self getRecommendGoodsData];
-    });
-    dispatch_group_async(group, queue5, ^{
-        [self getSimilarUserData];
-    });
-    dispatch_group_async(group, queue6, ^{
-        [self getMessageCount];
-    });
-    
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-        [self.tableView.mj_header endRefreshing];
-    });
+//    dispatch_group_async(group, queue1, ^{
+//        [self getIndexCarouselData];
+//    });
+//    dispatch_group_async(group, queue2, ^{
+//        [self getHomeGoodsData];
+//    });
+//    dispatch_group_async(group, queue3, ^{
+//        if (kUserDefaultObject(kUserInfo)) {
+//            [self getGiftTypeData];
+//        }
+//        
+//    });
+//    dispatch_group_async(group, queue4, ^{
+//        [self getRecommendGoodsData];
+//    });
+//    dispatch_group_async(group, queue5, ^{
+//        [self getSimilarUserData];
+//    });
+//    dispatch_group_async(group, queue6, ^{
+//        [self getMessageCount];
+//    });
+//    
+//    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+//        [self.tableView reloadData];
+//        [self.tableView.mj_header endRefreshing];
+//    });
 }
 
 #pragma mark - <获取消息数量>
@@ -489,7 +490,7 @@
     
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self pullDownRefresh];
+        [self managerRequestWithGCDWithHUD:nil];
     }];
 }
 
@@ -609,7 +610,7 @@
     moreProductListVC.hidesBottomBarWhenPushed = YES;
     moreProductListVC.category_id = category_id;
     moreProductListVC.is_root = @"yes";
-    moreProductListVC.whereReuseFrom = @"searchGoods";
+//    moreProductListVC.whereReuseFrom = @"searchGoods";
     [self.navigationController pushViewController:moreProductListVC animated:YES];
 }
 #pragma mark - <跳转“好友主页”页面>
@@ -682,7 +683,7 @@
     
     //在“好友主页”中点击关注／取消关注后刷新主页
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshHomePageVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self pullDownRefresh];
+        [self managerRequestWithGCDWithHUD:nil];
     }];
 }
 

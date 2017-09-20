@@ -121,6 +121,9 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 //                for (ClassifyListResultModel *modelResult in model.data.result) {
 //                    [self.classifyListResultArray addObject:modelResult];
 //                }
+                int page = [self.page intValue];
+                page++;
+                self.page = [NSNumber numberWithInt:page];
                 self.classifyListResultArray = [NSMutableArray arrayWithArray:model.data.result];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -162,7 +165,11 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kSearchGoods];
     //参数
     NSMutableDictionary *dictParameter = [NSMutableDictionary dictionary];
-    [dictParameter setObject:keyword forKey:@"keyword"];
+    
+    if (![keyword isEqualToString:@""] && keyword) {
+        [dictParameter setObject:keyword forKey:@"keyword"];
+    }
+    
     [dictParameter setObject:kUserDefaultObject(kUserInfo) forKey:@"user_id"];
     [dictParameter setObject:sort forKey:@"sort"];
     [dictParameter setObject:self.page forKey:@"page"];
@@ -219,6 +226,74 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
     }];
 }
 
+#pragma mark - <上拉加载更多>
+-(void)getMoreClassifyListDataWithSort:(NSString *)sort value:(NSString *)value page:(NSNumber *)page
+{
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    
+    //分类列表
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kClassifyList];
+    //参数
+    NSMutableDictionary *dictParameter = [NSMutableDictionary dictionary];
+    [dictParameter setObject:self.category_id forKey:@"category_id"];
+    [dictParameter setObject:sort forKey:@"sort"];
+    
+    if (self.is_root) {
+        [dictParameter setObject:@"1" forKey:@"is_root"];
+    }else{
+        [dictParameter setObject:@"0" forKey:@"is_root"];
+    }
+    
+    if (value) {
+        [dictParameter setObject:value forKey:@"value"];
+    }
+    
+    [dictParameter setObject:self.page forKey:@"page"];
+    
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            ClassifyListModel *model = [[ClassifyListModel alloc]initWithDictionary:dataDict error:nil];
+            if ([model.code isEqualToString:@"200"]) {
+                int page = [self.page intValue];
+                page++;
+                self.page = [NSNumber numberWithInt:page];
+                
+                for (ClassifyListResultModel *modelResult in model.data.result) {
+                    [self.classifyListResultArray addObject:modelResult];
+                }
+//                self.classifyListResultArray = [NSMutableArray arrayWithArray:model.data.result];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.collectionView reloadData];
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    [self.tableView reloadData];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
+                    [hud hideAnimated:YES afterDelay:1.0];
+                });
+                
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES afterDelay:1.0];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
+        });
+        
+    }];
+}
+
 #pragma mark - <初始化tableView>
 -(void)initTableView
 {
@@ -240,7 +315,7 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
         if ([self.whereReuseFrom isEqualToString:@"searchGoods"]) {
             [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:@"1" page:self.page];
         }else{
-            [self getClassifyListDataWithSort:self.sort value:@"1"];
+            [self getMoreClassifyListDataWithSort:self.sort value:@"1" page:self.page];
         }
     }];
 }
@@ -275,7 +350,7 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
             if ([self.whereReuseFrom isEqualToString:@"searchGoods"]) {
                 [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:@"1" page:self.page];
             }else{
-                [self getClassifyListDataWithSort:self.sort value:@"1"];
+                [self getMoreClassifyListDataWithSort:self.sort value:@"1" page:self.page];
             }
         }];
     }
@@ -354,7 +429,8 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
         if ([self.whereReuseFrom isEqualToString:@"searchGoods"]) {
             [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:@"1" page:@1];
         }else{
-            [self getClassifyListDataWithSort:self.sort value:@"1"];
+            [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:@"1" page:@1];
+//            [self getClassifyListDataWithSort:self.sort value:@"1"];
         }
     }
 }
@@ -497,10 +573,11 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
     self.keyword = self.searchBar.text;
     self.page = @1;
     [self.classifyListResultArray removeAllObjects];
+    
     if ([self.whereReuseFrom isEqualToString:@"searchGoods"]) {
         [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:@"1" page:@1];
     }else{
-        [self getClassifyListDataWithSort:self.sort value:@"1"];
+        [self getSearchGoodsDataWithKeyword:self.keyword sort:self.sort value:@"1" page:@1];
     }
     return YES;
 }

@@ -37,8 +37,9 @@
 
 //IM
 #import "EaseUI.h"
+#import "ZHJMessageViewController.h"
 
-@interface ProductDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ProductDetailViewController ()<UITableViewDelegate,UITableViewDataSource,EaseMessageViewControllerDelegate,EaseMessageViewControllerDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewCollection;
@@ -325,23 +326,23 @@
 #pragma mark - <跳转“聊天界面”>
 -(void)jumpToSingleChatVCWithChatter:(NSString *)chatter
 {
-    EaseMessageViewController *singleChatVC = [[EaseMessageViewController alloc]initWithConversationChatter:chatter conversationType:EMConversationTypeChat];
-    singleChatVC.navigationItem.title = chatter;
+    ZHJMessageViewController *singleChatVC = [[ZHJMessageViewController alloc]initWithConversationChatter:chatter conversationType:EMConversationTypeChat];
+    singleChatVC.delegate = self;
+    singleChatVC.dataSource = self;
+    singleChatVC.navigationItem.title = @"智惠加客服";
     [self.navigationController pushViewController:singleChatVC animated:YES];
 }
 
 #pragma mark - <客服>
 - (IBAction)btnSalesCenterAction:(UIButton *)sender
 {
-//    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"客服"];
-//    [hudWarning hideAnimated:YES afterDelay:1.0];
     [self jumpToSingleChatVCWithChatter:@"3553"];
 }
 
 #pragma mark - <店铺>
 - (IBAction)btnStoreAction:(UIButton *)sender
 {
-    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"店铺"];
+    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"该商品为平台商品,没有商家"];
     [hudWarning hideAnimated:YES afterDelay:1.0];
 }
 
@@ -498,6 +499,25 @@
     cell.model = model;
     return cell.cellHeight;
 }
+
+
+
+#pragma mark - **** EaseMessageViewControllerDelegate,EaseMessageViewControllerDataSource ****
+-(id<IMessageModel>)messageViewController:(EaseMessageViewController *)viewController modelForMessage:(EMMessage *)message
+{
+    id<IMessageModel> model = nil;
+    model = [[EaseMessageModel alloc] initWithMessage:message];
+    if (model.isSender) {
+        model.avatarURLPath = @"http://img.51zhihuijia.com/users/2017/09-07/59b0bb6ce0691.jpg";
+//        model.nickname =
+    }else{
+        model.avatarImage = [UIImage imageNamed:@"appLogo"];
+        model.nickname = @"智惠加客服";
+    }
+    model.failImageName = @"imageDownloadFail";
+    return model;
+}
+
 
 
 @end

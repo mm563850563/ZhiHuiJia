@@ -131,13 +131,14 @@
     
     dispatch_group_t group = dispatch_group_create();
     
-    dispatch_queue_t queue1 = dispatch_queue_create("getActivityDetailData", NULL);
-    dispatch_queue_t queue2 = dispatch_queue_create("getActivitySignUpListData", NULL);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue1 = dispatch_queue_create("getActivityDetailData", NULL);
+//    dispatch_queue_t queue2 = dispatch_queue_create("getActivitySignUpListData", NULL);
     
-    dispatch_group_async(group, queue1, ^{
+    dispatch_group_async(group, queue, ^{
         [self getActivityDetailData];
     });
-    dispatch_group_async(group, queue2, ^{
+    dispatch_group_async(group, queue, ^{
         [self getSignUpListData];
     });
     

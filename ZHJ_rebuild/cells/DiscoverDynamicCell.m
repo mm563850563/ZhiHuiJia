@@ -100,12 +100,18 @@
         }else if ([self.whereReuseFrom isEqualToString:@"dynamicDetail"]){
             notifiName = @"cancelLikeByClickFromDynamicDetail";
         }
+//        else if ([self.whereReuseFrom isEqualToString:@"focusPersonalVC"]){
+//            notifiName = @"cancelLikeByClickFromFocusPersonalVC";
+//        }
     }else{
         if ([self.whereReuseFrom isEqualToString:@"discover"]) {
             notifiName = @"likeByClickFromDiscover";
         }else if ([self.whereReuseFrom isEqualToString:@"dynamicDetail"]){
             notifiName = @"likeByClickFromDynamicDetail";
         }
+//        else if ([self.whereReuseFrom isEqualToString:@"focusPersonalVC"]){
+//            notifiName = @"likeByClickFromFocusPersonalVC";
+//        }
     }
     
     
@@ -124,6 +130,10 @@
         notifiNameAttention = @"attentionFriendByDiscover";
         notifiNameCancelAttention = @"cancelAttentionFriendByDiscover";
     }
+//    else if ([self.whereReuseFrom isEqualToString:@"focusPersonalVC"]){
+//        notifiNameAttention = @"attentionFriendByFocusPersonalVC";
+//        notifiNameCancelAttention = @"cancelAttentionFriendByFocusPersonalVC";
+//    }
     
     if (!button.selected) {
         [[NSNotificationCenter defaultCenter]postNotificationName:notifiNameAttention object:self.modelCircleDynamicResult.user_id];

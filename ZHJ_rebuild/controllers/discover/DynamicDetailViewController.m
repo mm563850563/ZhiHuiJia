@@ -94,13 +94,14 @@
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     
     dispatch_group_t group = dispatch_group_create();
-    dispatch_queue_t queue1 = dispatch_queue_create("getDynamicDetailData", NULL);
-    dispatch_queue_t queue2 = dispatch_queue_create("getDynamicCommentData", NULL);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue1 = dispatch_queue_create("getDynamicDetailData", NULL);
+//    dispatch_queue_t queue2 = dispatch_queue_create("getDynamicCommentData", NULL);
     
-    dispatch_group_async(group, queue1, ^{
+    dispatch_group_async(group, queue, ^{
         [self getDynamicDetailData];
     });
-    dispatch_group_async(group, queue2, ^{
+    dispatch_group_async(group, queue, ^{
         [self getDynamicDetailCommentDataWithPage:@1];
     });
     

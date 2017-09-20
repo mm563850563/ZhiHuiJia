@@ -299,7 +299,10 @@
 #pragma mark - <注册了推送功能，会回调以下两个方法，得到deviceToken，需要将deviceToken传给SDK>
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    [[EMClient sharedClient]bindDeviceToken:deviceToken];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[EMClient sharedClient]bindDeviceToken:deviceToken];
+    });
+    
 }
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
