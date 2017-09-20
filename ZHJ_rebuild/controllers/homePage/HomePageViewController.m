@@ -130,12 +130,18 @@
 //    //获取串行队列
 //    dispatch_queue_t queue13 = dispatch_queue_create("zxc", DISPATCH_QUEUE_SERIAL);
     
-    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
-    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
-    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
-    dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
-    dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
-    dispatch_queue_t queue6 = dispatch_queue_create("getMessageCount", NULL);
+    dispatch_queue_t queue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue3 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue4 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue5 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue6 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
+//    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
+//    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
+//    dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
+//    dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
+//    dispatch_queue_t queue6 = dispatch_queue_create("getMessageCount", NULL);
     
     dispatch_group_async(group, queue1, ^{
         [self getIndexCarouselData];
@@ -168,12 +174,18 @@
 -(void)pullDownRefresh
 {
     dispatch_group_t group = dispatch_group_create();
-    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
-    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
-    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
-    dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
-    dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
-    dispatch_queue_t queue6 = dispatch_queue_create("getMessageCount", NULL);
+    dispatch_queue_t queue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue3 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue4 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue5 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue6 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t queue1 = dispatch_queue_create("getIndexCarousel", NULL);
+//    dispatch_queue_t queue2 = dispatch_queue_create("getHomeGoods", NULL);
+//    dispatch_queue_t queue3 = dispatch_queue_create("getGiftType", NULL);
+//    dispatch_queue_t queue4 = dispatch_queue_create("getRecommendGoods", NULL);
+//    dispatch_queue_t queue5 = dispatch_queue_create("getSimilarUser", NULL);
+//    dispatch_queue_t queue6 = dispatch_queue_create("getMessageCount", NULL);
     
     dispatch_group_async(group, queue1, ^{
         [self getIndexCarouselData];
@@ -208,7 +220,7 @@
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetMessageCount];
     NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
-    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:dictParameter progressBlock:nil successBlock:^(id response) {
+    [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             NSNumber *code = dataDict[@"code"];
@@ -227,19 +239,19 @@
                 });
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:dataDict[@"msg"]];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                     [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
@@ -249,11 +261,11 @@
 -(void)getIndexCarouselData
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kIndexCarousel];
-    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:nil progressBlock:nil successBlock:^(id response) {
+    [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:nil progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             IndexCarouselModel *model = [[IndexCarouselModel alloc]initWithDictionary:dataDict error:nil];
-            if ([model.code isEqualToNumber:[NSNumber numberWithInteger:200]]) {
+            if ([model.code isEqualToString:@"200"]) {
                 self.carouselResultArray = model.data.result;
                 //回到主线程刷新数据
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -261,20 +273,20 @@
                 });
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
                     [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
                 
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
@@ -284,31 +296,31 @@
 -(void)getHomeGoodsData
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kHomeGoods];
-    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:nil progressBlock:nil successBlock:^(id response) {
+    [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:nil progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             HomeGoodsModel *model = [[HomeGoodsModel alloc]initWithDictionary:dataDict error:nil];
             
-            if ([model.code isEqualToNumber:[NSNumber numberWithInteger:200]]) {
+            if ([model.code isEqualToString:@"200"]) {
                 self.homeGoodsResultArray = model.data.result;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
                 });
             }else{
                 dispatch_async( dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
                     [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         }else{
             dispatch_async( dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async( dispatch_get_main_queue(), ^{
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
@@ -320,7 +332,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetGiftType];
     
     NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
-    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:dictParameter progressBlock:nil successBlock:^(id response) {
+    [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
             GetGiftTypeModel *model = [[GetGiftTypeModel alloc]initWithDictionary:dataDict error:nil];
@@ -335,19 +347,19 @@
                 });
             }else{
                 dispatch_async( dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
                     [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         }else{
             dispatch_async( dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async( dispatch_get_main_queue(), ^{
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
@@ -362,7 +374,7 @@
         NSString *userID = kUserDefaultObject(kUserInfo);
         NSDictionary *dictParameter = @{@"user_id":userID};
         
-        [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:dictParameter progressBlock:nil successBlock:^(id response) {
+        [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
             if (response) {
                 NSDictionary *dataDict = (NSDictionary *)response;
                 RecommendGoodsModel *model = [[RecommendGoodsModel alloc]initWithDictionary:dataDict error:nil];
@@ -373,19 +385,19 @@
                     });
                 }else{
                     dispatch_async( dispatch_get_main_queue(), ^{
-                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:model.msg];
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:model.msg];
                         [hudWarning hideAnimated:YES afterDelay:1.0];
                     });
                 }
             }else{
                 dispatch_async( dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                     [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         } failBlock:^(NSError *error) {
             dispatch_async( dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.navigationController.view animated:YES warningMessage:kRequestError];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }];
@@ -402,7 +414,7 @@
         NSString *userID = kUserDefaultObject(kUserInfo);
         NSDictionary *dictParameter = @{@"user_id":userID};
         
-        [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:YES params:dictParameter progressBlock:nil successBlock:^(id response) {
+        [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
             if (response) {
                 NSDictionary *dataDict = (NSDictionary *)response;
                 NSNumber *code = (NSNumber *)dataDict[@"code"];
