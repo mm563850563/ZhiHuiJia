@@ -193,7 +193,6 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="btnPayAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="TTX-O7-h6Y"/>
-                                        <action selector="btnShareAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="aus-UC-Emy"/>
                                     </connections>
                                 </button>
                             </subviews>

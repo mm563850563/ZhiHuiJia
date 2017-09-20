@@ -216,13 +216,13 @@
                 //回到主线程刷新数据
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSString *messageCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
-                    if (![messageCount isEqualToString:@"0"]) {
-                        self.btnMessage.badgeValue = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
-                        self.btnMessage.badgeFont = [UIFont systemFontOfSize:8];
-                        self.btnMessage.badgeMinSize = 1;
-                        self.btnMessage.badgeOriginY = -5;
-                        self.btnMessage.badgeOriginX = 12;
-                    }
+//                    if (![messageCount isEqualToString:@"0"]) {
+//                        self.btnMessage.badgeValue = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
+//                        self.btnMessage.badgeFont = [UIFont systemFontOfSize:8];
+//                        self.btnMessage.badgeMinSize = 1;
+//                        self.btnMessage.badgeOriginY = -5;
+//                        self.btnMessage.badgeOriginX = 12;
+//                    }
                     
                 });
             }else{
