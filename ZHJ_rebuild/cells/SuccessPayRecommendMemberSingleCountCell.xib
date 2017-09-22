@@ -20,18 +20,32 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41K-29-z6r">
                         <rect key="frame" x="0.0" y="0.0" width="212" height="154"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ENd-c3-L4s">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFN-Cz-Nc7">
                                 <rect key="frame" x="30" y="42" width="70" height="70"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ENd-c3-L4s">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="RgB-ut-1yI"/>
+                                            <constraint firstAttribute="height" constant="70" id="eM7-8T-kty"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="35"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="RgB-ut-1yI"/>
-                                    <constraint firstAttribute="height" constant="70" id="eM7-8T-kty"/>
+                                    <constraint firstAttribute="trailing" secondItem="ENd-c3-L4s" secondAttribute="trailing" id="6oy-Hy-fFd"/>
+                                    <constraint firstItem="ENd-c3-L4s" firstAttribute="leading" secondItem="jFN-Cz-Nc7" secondAttribute="leading" id="beo-7M-bmW"/>
+                                    <constraint firstItem="ENd-c3-L4s" firstAttribute="top" secondItem="jFN-Cz-Nc7" secondAttribute="top" id="hFQ-Yz-rfL"/>
+                                    <constraint firstAttribute="height" constant="70" id="kl3-oz-xaQ"/>
+                                    <constraint firstAttribute="width" constant="70" id="so0-k5-tln"/>
+                                    <constraint firstAttribute="bottom" secondItem="ENd-c3-L4s" secondAttribute="bottom" id="vDt-HP-uFU"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="35"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSh-NH-uov">
                                 <rect key="frame" x="105" y="41.5" width="97" height="20"/>
                                 <constraints>
@@ -62,15 +76,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ENd-c3-L4s" firstAttribute="leading" secondItem="41K-29-z6r" secondAttribute="leading" constant="30" id="9yB-Po-iaH"/>
+                            <constraint firstItem="jFN-Cz-Nc7" firstAttribute="centerY" secondItem="41K-29-z6r" secondAttribute="centerY" id="7Cm-c0-Ecf"/>
+                            <constraint firstItem="XSh-NH-uov" firstAttribute="top" secondItem="jFN-Cz-Nc7" secondAttribute="top" id="9H0-vG-Vvd"/>
                             <constraint firstItem="S3d-v4-ujB" firstAttribute="top" secondItem="nyQ-Tu-mSI" secondAttribute="bottom" constant="3" id="P5P-ni-v0a"/>
                             <constraint firstAttribute="trailing" secondItem="XSh-NH-uov" secondAttribute="trailing" constant="10" id="QwE-83-XXd"/>
                             <constraint firstItem="S3d-v4-ujB" firstAttribute="leading" secondItem="XSh-NH-uov" secondAttribute="leading" id="Udq-RS-Cdt"/>
                             <constraint firstItem="nyQ-Tu-mSI" firstAttribute="trailing" secondItem="XSh-NH-uov" secondAttribute="trailing" id="Wxz-GZ-jbO"/>
                             <constraint firstItem="nyQ-Tu-mSI" firstAttribute="top" secondItem="XSh-NH-uov" secondAttribute="bottom" id="gvl-ZE-hJX"/>
-                            <constraint firstItem="XSh-NH-uov" firstAttribute="top" secondItem="ENd-c3-L4s" secondAttribute="top" id="mpU-ni-h6a"/>
-                            <constraint firstItem="XSh-NH-uov" firstAttribute="leading" secondItem="ENd-c3-L4s" secondAttribute="trailing" constant="5" id="nWE-LB-MPK"/>
-                            <constraint firstItem="ENd-c3-L4s" firstAttribute="centerY" secondItem="41K-29-z6r" secondAttribute="centerY" id="rHD-ql-5AS"/>
+                            <constraint firstItem="XSh-NH-uov" firstAttribute="leading" secondItem="jFN-Cz-Nc7" secondAttribute="trailing" constant="5" id="hR6-eH-GDd"/>
+                            <constraint firstItem="jFN-Cz-Nc7" firstAttribute="leading" secondItem="41K-29-z6r" secondAttribute="leading" constant="30" id="wf1-6N-52O"/>
                             <constraint firstItem="nyQ-Tu-mSI" firstAttribute="leading" secondItem="XSh-NH-uov" secondAttribute="leading" id="zbn-y2-QzX"/>
                         </constraints>
                     </view>

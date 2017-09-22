@@ -24,7 +24,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7rD-lf-4ft">
                                 <rect key="frame" x="0.0" y="0.0" width="204" height="130.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huodong" translatesAutoresizingMaskIntoConstraints="NO" id="VTm-Tc-ygv">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huodong" translatesAutoresizingMaskIntoConstraints="NO" id="VTm-Tc-ygv">
                                         <rect key="frame" x="0.0" y="0.0" width="204" height="130.5"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6A-oe-xX1">
@@ -114,13 +114,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UG5-sF-4rI">
-                                <rect key="frame" x="0.0" y="132.5" width="204" height="130.5"/>
+                                <rect key="frame" x="0.0" y="130.5" width="204" height="132.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="PZJ-tG-ohg">
-                                        <rect key="frame" x="0.0" y="0.0" width="204" height="130.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="PZJ-tG-ohg">
+                                        <rect key="frame" x="0.0" y="0.5" width="204" height="132"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ba-G9-ec1">
-                                        <rect key="frame" x="10" y="10" width="184" height="20"/>
+                                        <rect key="frame" x="10" y="10.5" width="184" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="ZDn-VN-iCP"/>
                                         </constraints>
@@ -130,7 +130,7 @@
                                         <size key="shadowOffset" width="1" height="1.5"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGE-ee-nUY">
-                                        <rect key="frame" x="10" y="30" width="184" height="15"/>
+                                        <rect key="frame" x="10" y="30.5" width="184" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="mIH-Fb-VMI"/>
                                         </constraints>
@@ -140,7 +140,7 @@
                                         <size key="shadowOffset" width="1" height="1.5"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kC-wg-qB0">
-                                        <rect key="frame" x="10" y="50" width="10" height="20"/>
+                                        <rect key="frame" x="10" y="50.5" width="10" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="DSC-3o-PDw"/>
                                             <constraint firstAttribute="width" constant="10" id="L7J-4a-xHG"/>
@@ -153,7 +153,7 @@
                                         <size key="shadowOffset" width="1" height="1.5"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nd-Wd-T8U">
-                                        <rect key="frame" x="20" y="50" width="11.5" height="20"/>
+                                        <rect key="frame" x="20" y="50.5" width="11.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="1pk-WL-ySF"/>
                                             <constraint firstAttribute="height" constant="20" id="1s2-S7-QJS"/>
@@ -164,7 +164,7 @@
                                         <size key="shadowOffset" width="1" height="1.5"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某东价:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMA-0g-tZR">
-                                        <rect key="frame" x="10" y="70" width="184" height="20"/>
+                                        <rect key="frame" x="10" y="70.5" width="184" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="V5q-fB-5Fj"/>
                                         </constraints>
@@ -174,7 +174,7 @@
                                         <size key="shadowOffset" width="1" height="1.5"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0XH-To-6Ra">
-                                        <rect key="frame" x="0.0" y="0.0" width="204" height="130.5"/>
+                                        <rect key="frame" x="0.0" y="0.5" width="204" height="132"/>
                                         <connections>
                                             <action selector="btnSelectTwoAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="uGt-8f-6rd"/>
                                         </connections>
@@ -213,9 +213,9 @@
                             <constraint firstItem="7rD-lf-4ft" firstAttribute="height" secondItem="RLx-kH-RaK" secondAttribute="height" multiplier="14.9:30" id="D7g-qq-h0y"/>
                             <constraint firstAttribute="trailing" secondItem="UG5-sF-4rI" secondAttribute="trailing" id="DvW-ic-ZyM"/>
                             <constraint firstItem="UG5-sF-4rI" firstAttribute="leading" secondItem="RLx-kH-RaK" secondAttribute="leading" id="Jib-Tr-cLr"/>
-                            <constraint firstItem="UG5-sF-4rI" firstAttribute="height" secondItem="7rD-lf-4ft" secondAttribute="height" id="YGw-jX-9cR"/>
                             <constraint firstAttribute="trailing" secondItem="7rD-lf-4ft" secondAttribute="trailing" id="iut-Jk-7ak"/>
                             <constraint firstItem="7rD-lf-4ft" firstAttribute="top" secondItem="RLx-kH-RaK" secondAttribute="top" id="m80-1d-4hU"/>
+                            <constraint firstItem="UG5-sF-4rI" firstAttribute="top" secondItem="7rD-lf-4ft" secondAttribute="bottom" id="sYH-5U-RU0"/>
                         </constraints>
                     </view>
                 </subviews>

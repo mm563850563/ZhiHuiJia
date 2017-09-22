@@ -10,7 +10,7 @@
 
 //cells
 #import "NULLTableViewCell.h"
-#import "CommentAndAboutMeCell.h"
+#import "LikeTableViewCell.h"
 
 //models
 #import "MessageDataModel.h"
@@ -115,8 +115,8 @@
     UINib *nibNull = [UINib nibWithNibName:NSStringFromClass([NULLTableViewCell class]) bundle:nil];
     [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
     
-    UINib *nibComment = [UINib nibWithNibName:NSStringFromClass([CommentAndAboutMeCell class]) bundle:nil];
-    [self.tableView registerNib:nibComment forCellReuseIdentifier:NSStringFromClass([CommentAndAboutMeCell class])];
+    UINib *nibLike = [UINib nibWithNibName:NSStringFromClass([LikeTableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nibLike forCellReuseIdentifier:NSStringFromClass([LikeTableViewCell class])];
 }
 
 
@@ -146,10 +146,10 @@
         NULLTableViewCell *cellNull = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NULLTableViewCell class])];
         return cellNull;
     }else{
-        CommentAndAboutMeCell *cellComment = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CommentAndAboutMeCell class])];
+        LikeTableViewCell *cellLike = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([LikeTableViewCell class])];
         MessageResultModel *model = self.likeArray[indexPath.row];
-        cellComment.modelMessageResult = model;
-        return cellComment;
+        cellLike.modelMessageResult = model;
+        return cellLike;
     }
 }
 

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MessageResultModel;
 
 @interface LikeTableViewCell : UITableViewCell
+
+@property (nonatomic, strong)MessageResultModel *modelMessageResult;
 
 @end

@@ -40,6 +40,10 @@
 #define kUserInfo @"userInfo"
 //用户头像链接-key
 #define kUserHeadimg @"userHeadimg"
+//用户登陆token-key
+#define kUserLoginToken @"userLoginToken"
+//环信密码password-key
+#define kUserPassword @"userPassword"
 
 //RGB颜色
 #define kColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -467,6 +471,9 @@
 
 #pragma mark - <119.获取消息数据>
 #define kGetMessage @"/Circle/getMessage"
+
+#pragma mark - <120.获取环信会话列表个人信息>
+#define kGetUserInfo @"/User/getUserInfo"
 
 
 

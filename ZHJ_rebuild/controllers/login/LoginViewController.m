@@ -239,10 +239,34 @@
             if ([code isEqual:@200]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES];
-                    //登陆成功后，把user_id保存本地，用作持久化登陆
+                    //登陆成功后，把用户信息保存本地，用作持久化登陆
+                    //user_id
                     NSString *user_id = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"user_id"]];
                     kUserDefaultSetObject(user_id, kUserInfo);
+                    //headimg
+                    NSString *headimg = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"headimg"]];
+                    kUserDefaultSetObject(headimg, kUserHeadimg);
+                    //token
+                    NSString *token = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"token"]];
+                    kUserDefaultSetObject(token, kUserLoginToken);
+                    //password
+                    NSString *password = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"password"]];
+                    kUserDefaultSetObject(password, kUserPassword);
+                    //同步
                     kUserDefaultSynchronize;
+                    
+                    //登陆环信
+                    if (kUserDefaultObject(kUserInfo) && kUserDefaultObject(kUserPassword)) {
+                        [[EMClient sharedClient]loginWithUsername:kUserDefaultObject(kUserInfo) password:kUserDefaultObject(kUserPassword) completion:^(NSString *aUsername, EMError *aError) {
+                            if (!aError) {
+                                NSLog(@"%@",aUsername);
+                                //下次自动登陆
+                                [[EMClient sharedClient].options setIsAutoLogin:YES];
+                            }else{
+                                NSLog(@"%@",aError);
+                            }
+                        }];
+                    }
                     
                     //判断是否已经选择过颜色主题
                     NSNumber *selected_cat = dataDict[@"data"][@"result"][@"selected_cat"];
@@ -254,16 +278,8 @@
                         [self presentMainTabVC];
                     }
                     
-                    //登陆环信
-                    [[EMClient sharedClient]loginWithUsername:@"3560" password:@"e7b5107f7f6fe217a3d18a34fefd7d44" completion:^(NSString *aUsername, EMError *aError) {
-                        if (!aError) {
-                            NSLog(@"%@",aUsername);
-                            //下次自动登陆
-                            [[EMClient sharedClient].options setIsAutoLogin:YES];
-                        }else{
-                            NSLog(@"%@",aError);
-                        }
-                    }];
+                    
+                    
                     
                 });
                 
@@ -321,10 +337,34 @@
             if ([code isEqual:@200]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES];
-                    //登陆成功后，把user_id保存本地，用作持久化登陆
+                    //登陆成功后，把用户信息保存本地，用作持久化登陆
+                    //user_id
                     NSString *user_id = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"user_id"]];
                     kUserDefaultSetObject(user_id, kUserInfo);
+                    //headimg
+                    NSString *headimg = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"headimg"]];
+                    kUserDefaultSetObject(headimg, kUserHeadimg);
+                    //token
+                    NSString *token = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"token"]];
+                    kUserDefaultSetObject(token, kUserLoginToken);
+                    //password-用于环信登陆
+                    NSString *password = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"password"]];
+                    kUserDefaultSetObject(password, kUserPassword);
+                    //同步
                     kUserDefaultSynchronize;
+                    
+                    //登陆环信
+                    if (kUserDefaultObject(kUserInfo) && kUserDefaultObject(kUserPassword)) {
+                        [[EMClient sharedClient]loginWithUsername:kUserDefaultObject(kUserInfo) password:kUserDefaultObject(kUserPassword) completion:^(NSString *aUsername, EMError *aError) {
+                            if (!aError) {
+                                NSLog(@"%@",aUsername);
+                                //下次自动登陆
+                                [[EMClient sharedClient].options setIsAutoLogin:YES];
+                            }else{
+                                NSLog(@"%@",aError);
+                            }
+                        }];
+                    }
                     
                     //判断是否已经选择过颜色主题
                     NSNumber *selected_cat = dataDict[@"data"][@"result"][@"selected_cat"];
@@ -335,6 +375,8 @@
                     }else{
                         [self presentMainTabVC];
                     }
+                    
+                    
                     
                 });
 //                dispatch_async(dispatch_get_main_queue(), ^{

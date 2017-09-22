@@ -8,7 +8,11 @@
 
 #import "CustomerServiceCenterViewController.h"
 
-@interface CustomerServiceCenterViewController ()
+//IM
+#import "EaseUI.h"
+#import "ZHJMessageViewController.h"
+
+@interface CustomerServiceCenterViewController ()<EaseMessageViewControllerDelegate,EaseMessageViewControllerDataSource>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgBGView;
 @property (weak, nonatomic) IBOutlet UILabel *labelHotLine;
@@ -106,6 +110,16 @@
     self.phoneStr = array[0];
 }
 
+#pragma mark - <跳转“聊天界面”>
+-(void)jumpToSingleChatVCWithChatter:(NSString *)chatter
+{
+    ZHJMessageViewController *singleChatVC = [[ZHJMessageViewController alloc]initWithConversationChatter:chatter conversationType:EMConversationTypeChat];
+    singleChatVC.delegate = self;
+    singleChatVC.dataSource = self;
+    singleChatVC.navigationItem.title = @"智惠加客服";
+    [self.navigationController pushViewController:singleChatVC animated:YES];
+}
+
 #pragma mark - <拨打热线>
 - (IBAction)btnHotLineAction:(UIButton *)sender
 {
@@ -118,12 +132,35 @@
 #pragma mark - <客服聊天>
 - (IBAction)btnChatAction:(UIButton *)sender
 {
-    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"在线客服"];
-    [hudWarning hideAnimated:YES afterDelay:1.0];
+    [self jumpToSingleChatVCWithChatter:@"160"];//客服id为160；
 }
 
 
 
+
+
+
+
+
+
+
+
+#pragma mark - **** EaseMessageViewControllerDelegate,EaseMessageViewControllerDataSource ****
+-(id<IMessageModel>)messageViewController:(EaseMessageViewController *)viewController modelForMessage:(EMMessage *)message
+{
+    id<IMessageModel> model = nil;
+    model = [[EaseMessageModel alloc] initWithMessage:message];
+    if (model.isSender) {
+        NSString *headimg = kUserDefaultObject(kUserHeadimg);
+        model.avatarURLPath = headimg;
+        model.nickname = @"";
+    }else{
+        model.avatarImage = [UIImage imageNamed:@"appLogo"];
+        model.nickname = @"";
+    }
+    model.failImageName = @"huantu";
+    return model;
+}
 
 
 

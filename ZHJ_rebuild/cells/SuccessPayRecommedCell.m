@@ -11,6 +11,7 @@
 
 //controllers
 #import "CircleDetailViewController.h"
+#import "BasicNavigationController.h"
 
 //cells
 #import "SuccessPayRecommendMemberCell.h"
@@ -109,8 +110,10 @@
     for (UIView* next = [self superview]; next; next = next.superview) {
         UIResponder* nextResponder = [next nextResponder];
         if ([nextResponder isKindOfClass:[UIViewController class]]) {
+//            UIViewController *vc = (UIViewController *)nextResponder;
+            //            [vc presentViewController:circleDetailVC animated:YES completion:nil];
             UIViewController *vc = (UIViewController *)nextResponder;
-            [vc presentViewController:circleDetailVC animated:YES completion:nil];
+            [vc.navigationController pushViewController:circleDetailVC animated:YES];
         }
     }
 }

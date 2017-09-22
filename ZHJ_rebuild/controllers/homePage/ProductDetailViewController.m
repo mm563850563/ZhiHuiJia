@@ -336,7 +336,7 @@
 #pragma mark - <客服>
 - (IBAction)btnSalesCenterAction:(UIButton *)sender
 {
-    [self jumpToSingleChatVCWithChatter:@"3553"];
+    [self jumpToSingleChatVCWithChatter:@"160"];//客服id为160；
 }
 
 #pragma mark - <店铺>
@@ -508,13 +508,14 @@
     id<IMessageModel> model = nil;
     model = [[EaseMessageModel alloc] initWithMessage:message];
     if (model.isSender) {
-        model.avatarURLPath = @"http://img.51zhihuijia.com/users/2017/09-07/59b0bb6ce0691.jpg";
-//        model.nickname =
+        NSString *headimg = kUserDefaultObject(kUserHeadimg);
+        model.avatarURLPath = headimg;
+        model.nickname = @"";
     }else{
         model.avatarImage = [UIImage imageNamed:@"appLogo"];
-        model.nickname = @"智惠加客服";
+        model.nickname = @"";
     }
-    model.failImageName = @"imageDownloadFail";
+    model.failImageName = @"huantu";
     return model;
 }
 

@@ -10,6 +10,10 @@
 
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDKUI.h>
+// 自定义分享菜单栏需要导入的头文件
+#import <ShareSDKUI/SSUIShareActionSheetStyle.h>
+//自定义分享编辑界面所需要导入的头文件
+#import <ShareSDKUI/SSUIEditorViewStyle.h>
 
 @implementation ShareTool
 

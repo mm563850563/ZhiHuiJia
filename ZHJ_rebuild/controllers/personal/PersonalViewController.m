@@ -28,9 +28,14 @@
 
 //cells
 #import "PersonalCollectCell.h"
+#import "ShareTool.h"
 
 //tools
 #import "UIButton+Badge.h"
+
+//SDKs
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDKUI.h>
 
 
 @interface PersonalViewController ()<UINavigationControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
@@ -174,11 +179,8 @@
 #pragma mark - <初始化collectionView>
 -(void)initCollectionView
 {
-#warning ************************
-    NSArray *arrayTitle = @[@"我的钱包",@"优惠券",@"我的收藏",@"足迹",@"关注公众号",@"关于我们"];
-    NSArray *arrayPhoto = @[@"my_ wallet",@"discount",@"my_collection",@"footprint",@"focus_public",@"about_us"];
-//    NSArray *arrayTitle = @[@"我的钱包",@"优惠券",@"我的收藏",@"分享邀请",@"客服中心",@"足迹",@"关注公众号",@"关于我们",@"意见反馈"];
-//    NSArray *arrayPhoto = @[@"my_ wallet",@"discount",@"my_collection",@"share_invite",@"customer_center",@"footprint",@"focus_public",@"about_us",@"feedback"];
+    NSArray *arrayTitle = @[@"我的钱包",@"优惠券",@"我的收藏",@"分享邀请",@"客服中心",@"足迹",@"关注公众号",@"关于我们",@"意见反馈"];
+    NSArray *arrayPhoto = @[@"my_ wallet",@"discount",@"my_collection",@"share_invite",@"customer_center",@"footprint",@"focus_public",@"about_us",@"feedback"];
     self.arrayCollection = @[arrayTitle,arrayPhoto];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
@@ -200,6 +202,15 @@
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([PersonalCollectCell class])];
 }
 
+#pragma mark - <跳转“我的钱包”页面>
+-(void)jumpToMyBalanceVC
+{
+    MyBalanceViewController *myBalanceVC = [[MyBalanceViewController alloc]initWithNibName:NSStringFromClass([MyBalanceViewController class]) bundle:nil];
+    myBalanceVC.hidesBottomBarWhenPushed = YES;
+    myBalanceVC.navigationItem.title = @"我的钱包";
+    [self.navigationController pushViewController:myBalanceVC animated:YES];
+}
+
 #pragma mark - <跳转“我的订单”页面>
 -(void)jumpToMyOrderVCWithSelectedIndex:(NSInteger)selectedIndex
 {
@@ -216,6 +227,14 @@
     myCouponVC.hidesBottomBarWhenPushed = YES;
     myCouponVC.navigationItem.title = @"优惠券";
     [self.navigationController pushViewController:myCouponVC animated:YES];
+}
+
+#pragma mark - <跳转“客服中心”页面>
+-(void)jumpToCustomerCenterVC
+{
+    CustomerServiceCenterViewController *customerCenterVC = [[CustomerServiceCenterViewController alloc]initWithNibName:NSStringFromClass([CustomerServiceCenterViewController class]) bundle:nil];
+    customerCenterVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:customerCenterVC animated:YES];
 }
 
 #pragma mark - <跳转“我的收藏”页面>
@@ -261,6 +280,15 @@
     myTrackVC.hidesBottomBarWhenPushed = YES;
     myTrackVC.navigationItem.title = @"我的足迹";
     [self.navigationController pushViewController:myTrackVC animated:YES];
+}
+
+#pragma mark - <跳转”意见反馈“页面>
+-(void)jumpToFeedbackVC
+{
+    FeedbackViewController *feedBackVC = [[FeedbackViewController alloc]initWithNibName:NSStringFromClass([FeedbackViewController class]) bundle:nil];
+    feedBackVC.hidesBottomBarWhenPushed = YES;
+    feedBackVC.navigationItem.title = @"意见反馈";
+    [self.navigationController pushViewController:feedBackVC animated:YES];
 }
 
 #pragma mark - <设置按钮响应>
@@ -321,9 +349,7 @@
 #pragma mark - <计算页面高度>
 -(void)settingHeightForScrollView
 {
-#warning ******************
-    self.heightForCollectBGView.constant = kSCREEN_WIDTH/3.0*2.0;
-//    self.heightForCollectBGView.constant = kSCREEN_WIDTH;
+    self.heightForCollectBGView.constant = kSCREEN_WIDTH;
     CGFloat height1 = self.heightForHeaderView.constant;
     CGFloat height2 = self.heightForCollectBGView.constant;
     self.heightForScrollView.constant = height1 + height2 + 60;
@@ -331,6 +357,25 @@
     [self.collectionView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_offset(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
+}
+
+#pragma mark - <第三方分享-配置要分享的参数>
+-(void)settingShareParameter
+{
+    //1.创建分享参数 注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
+    UIImage *image = [UIImage imageNamed:@"appLogo"];
+    NSArray *imageArray = @[image];
+    
+    if (imageArray) {
+        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+        [shareParams SSDKSetupShareParamsByText:@"1亿礼品库,注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
+        
+        //有的平台要客户端分享需要加此方法，例如微博
+        [shareParams SSDKEnableUseClientShare];
+        
+        //2.分享（可以弹出我们的分享菜单和编辑界面）
+        [ShareTool shareWithParams:shareParams];
+    }
 }
 
 #pragma mark - <rac响应>
@@ -387,7 +432,7 @@
 #pragma mark - *** UICollectionViewDelegate,UICollectionViewDataSource ****
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    return 9;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -401,37 +446,23 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.item == 0) {//我的钱包
-        MyBalanceViewController *myBalanceVC = [[MyBalanceViewController alloc]initWithNibName:NSStringFromClass([MyBalanceViewController class]) bundle:nil];
-        myBalanceVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:myBalanceVC animated:YES];
+        [self jumpToMyBalanceVC];
     }else if (indexPath.item == 1){//优惠券
         [self jumpToDiscountCouponVC];
     }else if (indexPath.item == 2){//我的收藏
         [self jumpToMyCollectionVC];
     }else if (indexPath.item == 3){//分享邀请
-#warning *************************
-        [self jumpToMyTrackVC];
-//        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"分享邀请"];
-//        [hudWarning hideAnimated:YES afterDelay:1.0];
+        [self settingShareParameter];
     }else if (indexPath.item == 4){//客服中心
-#warning ****************************
-        [self jumpToWeChatAccountVC];
-//        CustomerServiceCenterViewController *customerCenterVC = [[CustomerServiceCenterViewController alloc]initWithNibName:NSStringFromClass([CustomerServiceCenterViewController class]) bundle:nil];
-//        customerCenterVC.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:customerCenterVC animated:YES];
+        [self jumpToCustomerCenterVC];
     }else if (indexPath.item == 5){//足迹
-#warning ***************************
-        [self jumpToAboutUsVC];
-//        [self jumpToMyTrackVC];
+        [self jumpToMyTrackVC];
     }else if (indexPath.item == 6){//关注公众号
         [self jumpToWeChatAccountVC];
     }else if (indexPath.item == 7){//关于我们
         [self jumpToAboutUsVC];
     }else if (indexPath.item == 8){//意见反馈
-        FeedbackViewController *feedBackVC = [[FeedbackViewController alloc]initWithNibName:NSStringFromClass([FeedbackViewController class]) bundle:nil];
-        feedBackVC.hidesBottomBarWhenPushed = YES;
-        feedBackVC.navigationItem.title = @"意见反馈";
-        [self.navigationController pushViewController:feedBackVC animated:YES];
+        [self jumpToFeedbackVC];
     }
 }
 

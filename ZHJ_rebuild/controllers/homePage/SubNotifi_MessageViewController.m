@@ -77,18 +77,18 @@
     SubMessage_AboutMeViewController *subMessage_AboutMeViewVC = [[SubMessage_AboutMeViewController alloc]initWithNibName:NSStringFromClass([SubMessage_AboutMeViewController class]) bundle:nil];
     SubMessage_CommentViewController *subMessage_CommentVC = [[SubMessage_CommentViewController alloc]initWithNibName:NSStringFromClass([SubMessage_CommentViewController class]) bundle:nil];
     SubMessage_LikedViewController *subMessage_LikedVC = [[SubMessage_LikedViewController alloc]initWithNibName:NSStringFromClass([SubMessage_LikedViewController class]) bundle:nil];
-    SubMessage_PrivateLetterViewController *subMessage_PrivateVC = [[SubMessage_PrivateLetterViewController alloc]initWithNibName:NSStringFromClass([SubMessage_PrivateLetterViewController class]) bundle:nil];
+//    SubMessage_PrivateLetterViewController *subMessage_PrivateVC = [[SubMessage_PrivateLetterViewController alloc]initWithNibName:NSStringFromClass([SubMessage_PrivateLetterViewController class]) bundle:nil];
+    SubMessage_PrivateLetterViewController *subMessage_PrivateVC = [[SubMessage_PrivateLetterViewController alloc]init];
     
     [self.controllersArray addObject:subMessage_CommentVC];
     [self.controllersArray addObject:subMessage_AboutMeViewVC];
     [self.controllersArray addObject:subMessage_PrivateVC];
     [self.controllersArray addObject:subMessage_LikedVC];
     
-    self.flipTableView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 30, kSCREEN_WIDTH, self.view.frame.size.height-30) withArray:self.controllersArray];
+    self.flipTableView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 30, kSCREEN_WIDTH, self.view.frame.size.height-94) withArray:self.controllersArray];
     self.flipTableView.delegate = self;
     [self.view addSubview:self.flipTableView];
 }
-
 
 
 

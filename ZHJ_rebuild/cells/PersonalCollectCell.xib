@@ -4,8 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,14 +26,13 @@
                                 <rect key="frame" x="10" y="40" width="134" height="80"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sctu1" translatesAutoresizingMaskIntoConstraints="NO" id="Bdv-uF-7Sw">
-                                        <rect key="frame" x="47" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="40" y="0.0" width="54" height="53"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="kEC-vT-u8p"/>
-                                            <constraint firstAttribute="width" constant="40" id="sWF-Vi-Z4B"/>
+                                            <constraint firstAttribute="width" secondItem="Bdv-uF-7Sw" secondAttribute="height" multiplier="1:1" id="KQ9-BG-LTR"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tur-ek-J7G">
-                                        <rect key="frame" x="0.0" y="45" width="134" height="20"/>
+                                        <rect key="frame" x="0.0" y="58" width="134" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="kRv-fM-izf"/>
                                         </constraints>
@@ -42,10 +42,10 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="Fd1-jk-Hl1"/>
                                     <constraint firstItem="Tur-ek-J7G" firstAttribute="top" secondItem="Bdv-uF-7Sw" secondAttribute="bottom" constant="5" id="GgH-D8-bMT"/>
                                     <constraint firstItem="Tur-ek-J7G" firstAttribute="leading" secondItem="qrv-vk-1EE" secondAttribute="leading" id="a8u-SI-bcj"/>
                                     <constraint firstItem="Bdv-uF-7Sw" firstAttribute="top" secondItem="qrv-vk-1EE" secondAttribute="top" id="nVu-es-e01"/>
+                                    <constraint firstItem="Bdv-uF-7Sw" firstAttribute="width" secondItem="qrv-vk-1EE" secondAttribute="width" multiplier="1:2.5" id="p7W-sp-5tC"/>
                                     <constraint firstAttribute="trailing" secondItem="Tur-ek-J7G" secondAttribute="trailing" id="xii-zf-YpU"/>
                                     <constraint firstItem="Bdv-uF-7Sw" firstAttribute="centerX" secondItem="qrv-vk-1EE" secondAttribute="centerX" id="zMP-Ze-HzX"/>
                                 </constraints>
@@ -55,6 +55,7 @@
                         <constraints>
                             <constraint firstItem="qrv-vk-1EE" firstAttribute="centerY" secondItem="GcX-VM-cfB" secondAttribute="centerY" id="5C4-Qr-U4L"/>
                             <constraint firstAttribute="trailing" secondItem="qrv-vk-1EE" secondAttribute="trailing" constant="10" id="KXc-Dg-oJC"/>
+                            <constraint firstItem="qrv-vk-1EE" firstAttribute="height" secondItem="GcX-VM-cfB" secondAttribute="height" multiplier="1:2" id="Tzw-LL-dm5"/>
                             <constraint firstItem="qrv-vk-1EE" firstAttribute="leading" secondItem="GcX-VM-cfB" secondAttribute="leading" constant="10" id="gdG-8v-Tyq"/>
                         </constraints>
                     </view>

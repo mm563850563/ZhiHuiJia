@@ -586,8 +586,6 @@
 		DD62880F1F22EB090030331D /* SubMessage_CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62880D1F22EB090030331D /* SubMessage_CommentViewController.xib */; };
 		DD6288131F22EB440030331D /* SubMessage_LikedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6288111F22EB440030331D /* SubMessage_LikedViewController.m */; };
 		DD6288141F22EB440030331D /* SubMessage_LikedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6288121F22EB440030331D /* SubMessage_LikedViewController.xib */; };
-		DD6288181F22EB740030331D /* SubMessage_PrivateLetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6288161F22EB740030331D /* SubMessage_PrivateLetterViewController.m */; };
-		DD6288191F22EB740030331D /* SubMessage_PrivateLetterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6288171F22EB740030331D /* SubMessage_PrivateLetterViewController.xib */; };
 		DD62881D1F22EC5F0030331D /* SubNotification_AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD62881B1F22EC5F0030331D /* SubNotification_AnnouncementViewController.m */; };
 		DD62881E1F22EC5F0030331D /* SubNotification_AnnouncementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD62881C1F22EC5F0030331D /* SubNotification_AnnouncementViewController.xib */; };
 		DD6288221F22EC7A0030331D /* SubNotification_DiscountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6288201F22EC7A0030331D /* SubNotification_DiscountViewController.m */; };
@@ -672,6 +670,17 @@
 		DD7D8DF51F6BD99D00155FF1 /* ActivityConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7D8DF31F6BD99D00155FF1 /* ActivityConfigViewController.m */; };
 		DD7D8DF61F6BD99D00155FF1 /* ActivityConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7D8DF41F6BD99D00155FF1 /* ActivityConfigViewController.xib */; };
 		DD80F51F1F725B9F0036647C /* ZHJMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD80F51E1F725B9F0036647C /* ZHJMessageViewController.m */; };
+		DD80F5231F73B8CA0036647C /* PrivateLetterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD80F5211F73B8CA0036647C /* PrivateLetterCell.m */; };
+		DD80F5241F73B8CA0036647C /* PrivateLetterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD80F5221F73B8CA0036647C /* PrivateLetterCell.xib */; };
+		DD80F5301F74F6D70036647C /* SubMessage_PrivateLetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD80F52E1F74F6D70036647C /* SubMessage_PrivateLetterViewController.m */; };
+		DD80F5311F74F6D70036647C /* SubMessage_PrivateLetterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD80F52F1F74F6D70036647C /* SubMessage_PrivateLetterViewController.xib */; };
+		DD80F5351F751EA60036647C /* GetUserInfoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD80F5341F751EA60036647C /* GetUserInfoDataModel.m */; };
+		DD80F5381F751EC80036647C /* GetUserInfoResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD80F5371F751EC80036647C /* GetUserInfoResultModel.m */; };
+		DD80F53B1F753DA90036647C /* UIImageView+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DD80F53A1F753DA90036647C /* UIImageView+Rotation.m */; };
+		DD80F53E1F7543580036647C /* share_qq.png in Resources */ = {isa = PBXBuildFile; fileRef = DD80F53D1F7543580036647C /* share_qq.png */; };
+		DD80F5401F7543700036647C /* share_sina.png in Resources */ = {isa = PBXBuildFile; fileRef = DD80F53F1F7543700036647C /* share_sina.png */; };
+		DD80F5421F7543820036647C /* share_wechat.png in Resources */ = {isa = PBXBuildFile; fileRef = DD80F5411F7543820036647C /* share_wechat.png */; };
+		DD80F5441F7543940036647C /* share_moment.png in Resources */ = {isa = PBXBuildFile; fileRef = DD80F5431F7543940036647C /* share_moment.png */; };
 		DD9A639A1F2EB56800611FA8 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A63981F2EB56800611FA8 /* OrderListCell.m */; };
 		DD9A639B1F2EB56800611FA8 /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9A63991F2EB56800611FA8 /* OrderListCell.xib */; };
 		DD9A639E1F2ECEE400611FA8 /* OrderListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9A639D1F2ECEE400611FA8 /* OrderListHeaderView.m */; };
@@ -1853,9 +1862,6 @@
 		DD6288101F22EB440030331D /* SubMessage_LikedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubMessage_LikedViewController.h; path = controllers/homePage/SubMessage_LikedViewController.h; sourceTree = "<group>"; };
 		DD6288111F22EB440030331D /* SubMessage_LikedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubMessage_LikedViewController.m; path = controllers/homePage/SubMessage_LikedViewController.m; sourceTree = "<group>"; };
 		DD6288121F22EB440030331D /* SubMessage_LikedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SubMessage_LikedViewController.xib; path = controllers/homePage/SubMessage_LikedViewController.xib; sourceTree = "<group>"; };
-		DD6288151F22EB740030331D /* SubMessage_PrivateLetterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubMessage_PrivateLetterViewController.h; path = controllers/homePage/SubMessage_PrivateLetterViewController.h; sourceTree = "<group>"; };
-		DD6288161F22EB740030331D /* SubMessage_PrivateLetterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubMessage_PrivateLetterViewController.m; path = controllers/homePage/SubMessage_PrivateLetterViewController.m; sourceTree = "<group>"; };
-		DD6288171F22EB740030331D /* SubMessage_PrivateLetterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SubMessage_PrivateLetterViewController.xib; path = controllers/homePage/SubMessage_PrivateLetterViewController.xib; sourceTree = "<group>"; };
 		DD62881A1F22EC5F0030331D /* SubNotification_AnnouncementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubNotification_AnnouncementViewController.h; path = controllers/homePage/SubNotification_AnnouncementViewController.h; sourceTree = "<group>"; };
 		DD62881B1F22EC5F0030331D /* SubNotification_AnnouncementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubNotification_AnnouncementViewController.m; path = controllers/homePage/SubNotification_AnnouncementViewController.m; sourceTree = "<group>"; };
 		DD62881C1F22EC5F0030331D /* SubNotification_AnnouncementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SubNotification_AnnouncementViewController.xib; path = controllers/homePage/SubNotification_AnnouncementViewController.xib; sourceTree = "<group>"; };
@@ -2003,6 +2009,22 @@
 		DD7D8DF41F6BD99D00155FF1 /* ActivityConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityConfigViewController.xib; path = controllers/ActivityConfigViewController.xib; sourceTree = "<group>"; };
 		DD80F51D1F725B9F0036647C /* ZHJMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHJMessageViewController.h; sourceTree = "<group>"; };
 		DD80F51E1F725B9F0036647C /* ZHJMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHJMessageViewController.m; sourceTree = "<group>"; };
+		DD80F5201F73B8CA0036647C /* PrivateLetterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrivateLetterCell.h; path = cells/PrivateLetterCell.h; sourceTree = "<group>"; };
+		DD80F5211F73B8CA0036647C /* PrivateLetterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrivateLetterCell.m; path = cells/PrivateLetterCell.m; sourceTree = "<group>"; };
+		DD80F5221F73B8CA0036647C /* PrivateLetterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PrivateLetterCell.xib; path = cells/PrivateLetterCell.xib; sourceTree = "<group>"; };
+		DD80F52D1F74F6D70036647C /* SubMessage_PrivateLetterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubMessage_PrivateLetterViewController.h; path = controllers/homePage/SubMessage_PrivateLetterViewController.h; sourceTree = "<group>"; };
+		DD80F52E1F74F6D70036647C /* SubMessage_PrivateLetterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubMessage_PrivateLetterViewController.m; path = controllers/homePage/SubMessage_PrivateLetterViewController.m; sourceTree = "<group>"; };
+		DD80F52F1F74F6D70036647C /* SubMessage_PrivateLetterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SubMessage_PrivateLetterViewController.xib; path = controllers/homePage/SubMessage_PrivateLetterViewController.xib; sourceTree = "<group>"; };
+		DD80F5331F751EA60036647C /* GetUserInfoDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetUserInfoDataModel.h; path = models/GetUserInfoDataModel.h; sourceTree = "<group>"; };
+		DD80F5341F751EA60036647C /* GetUserInfoDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetUserInfoDataModel.m; path = models/GetUserInfoDataModel.m; sourceTree = "<group>"; };
+		DD80F5361F751EC80036647C /* GetUserInfoResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetUserInfoResultModel.h; path = models/GetUserInfoResultModel.h; sourceTree = "<group>"; };
+		DD80F5371F751EC80036647C /* GetUserInfoResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetUserInfoResultModel.m; path = models/GetUserInfoResultModel.m; sourceTree = "<group>"; };
+		DD80F5391F753DA90036647C /* UIImageView+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Rotation.h"; path = "tools/UIImageView+Rotation.h"; sourceTree = "<group>"; };
+		DD80F53A1F753DA90036647C /* UIImageView+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Rotation.m"; path = "tools/UIImageView+Rotation.m"; sourceTree = "<group>"; };
+		DD80F53D1F7543580036647C /* share_qq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_qq.png; sourceTree = "<group>"; };
+		DD80F53F1F7543700036647C /* share_sina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_sina.png; sourceTree = "<group>"; };
+		DD80F5411F7543820036647C /* share_wechat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_wechat.png; sourceTree = "<group>"; };
+		DD80F5431F7543940036647C /* share_moment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_moment.png; sourceTree = "<group>"; };
 		DD9A63971F2EB56800611FA8 /* OrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderListCell.h; path = cells/OrderListCell.h; sourceTree = "<group>"; };
 		DD9A63981F2EB56800611FA8 /* OrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderListCell.m; path = cells/OrderListCell.m; sourceTree = "<group>"; };
 		DD9A63991F2EB56800611FA8 /* OrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderListCell.xib; path = cells/OrderListCell.xib; sourceTree = "<group>"; };
@@ -2517,11 +2539,13 @@
 			name = FriendHomePageModel;
 			sourceTree = "<group>";
 		};
-		DD09602E1F56EC4B002F4AED /* ThirdLogin */ = {
+		DD09602E1F56EC4B002F4AED /* Share */ = {
 			isa = PBXGroup;
 			children = (
+				DD80F53C1F7543410036647C /* images */,
 				DD5AEE6F1F6A6D19002E4F49 /* SDK */,
 			);
+			name = Share;
 			path = ThirdLogin;
 			sourceTree = "<group>";
 		};
@@ -2693,7 +2717,7 @@
 			isa = PBXGroup;
 			children = (
 				DD4CD2FA1F70AE290002C3BD /* IM */,
-				DD09602E1F56EC4B002F4AED /* ThirdLogin */,
+				DD09602E1F56EC4B002F4AED /* Share */,
 				DDC52E8C1F416D6400ECF211 /* WeChatPay */,
 				DD184E4E1F3DA5F9009BFF5B /* AliPay */,
 			);
@@ -3879,6 +3903,28 @@
 			name = MessageModel;
 			sourceTree = "<group>";
 		};
+		DD80F5321F751E660036647C /* GetUserInfoModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD80F5331F751EA60036647C /* GetUserInfoDataModel.h */,
+				DD80F5341F751EA60036647C /* GetUserInfoDataModel.m */,
+				DD80F5361F751EC80036647C /* GetUserInfoResultModel.h */,
+				DD80F5371F751EC80036647C /* GetUserInfoResultModel.m */,
+			);
+			name = GetUserInfoModel;
+			sourceTree = "<group>";
+		};
+		DD80F53C1F7543410036647C /* images */ = {
+			isa = PBXGroup;
+			children = (
+				DD80F53D1F7543580036647C /* share_qq.png */,
+				DD80F53F1F7543700036647C /* share_sina.png */,
+				DD80F5411F7543820036647C /* share_wechat.png */,
+				DD80F5431F7543940036647C /* share_moment.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		DDC52E8C1F416D6400ECF211 /* WeChatPay */ = {
 			isa = PBXGroup;
 			children = (
@@ -4392,6 +4438,9 @@
 				DD4CD2F51F70AA760002C3BD /* LikeTableViewCell.h */,
 				DD4CD2F61F70AA760002C3BD /* LikeTableViewCell.m */,
 				DD4CD2F71F70AA760002C3BD /* LikeTableViewCell.xib */,
+				DD80F5201F73B8CA0036647C /* PrivateLetterCell.h */,
+				DD80F5211F73B8CA0036647C /* PrivateLetterCell.m */,
+				DD80F5221F73B8CA0036647C /* PrivateLetterCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -4567,6 +4616,7 @@
 				DD5AEE521F66E174002E4F49 /* ShakeModel */,
 				DD5AEE5E1F680727002E4F49 /* GetInterestingCircleModel */,
 				DD6D7D411F6FA4BC00F8FEF5 /* MessageModel */,
+				DD80F5321F751E660036647C /* GetUserInfoModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -4604,6 +4654,8 @@
 				DD58FF8D1F4FAE92009EC9F2 /* NSDictionary+ToJson.m */,
 				DD5AEEA91F6A95B3002E4F49 /* UIView+Utils.h */,
 				DD5AEEAA1F6A95B3002E4F49 /* UIView+Utils.m */,
+				DD80F5391F753DA90036647C /* UIImageView+Rotation.h */,
+				DD80F53A1F753DA90036647C /* UIImageView+Rotation.m */,
 			);
 			name = tools;
 			sourceTree = "<group>";
@@ -4653,9 +4705,9 @@
 				DD6288101F22EB440030331D /* SubMessage_LikedViewController.h */,
 				DD6288111F22EB440030331D /* SubMessage_LikedViewController.m */,
 				DD6288121F22EB440030331D /* SubMessage_LikedViewController.xib */,
-				DD6288151F22EB740030331D /* SubMessage_PrivateLetterViewController.h */,
-				DD6288161F22EB740030331D /* SubMessage_PrivateLetterViewController.m */,
-				DD6288171F22EB740030331D /* SubMessage_PrivateLetterViewController.xib */,
+				DD80F52D1F74F6D70036647C /* SubMessage_PrivateLetterViewController.h */,
+				DD80F52E1F74F6D70036647C /* SubMessage_PrivateLetterViewController.m */,
+				DD80F52F1F74F6D70036647C /* SubMessage_PrivateLetterViewController.xib */,
 				EC4BA1011F136CBD00B9BE1A /* SubNotifi_MessageViewController.h */,
 				EC4BA1021F136CBD00B9BE1A /* SubNotifi_MessageViewController.m */,
 				EC4BA1031F136CBD00B9BE1A /* SubNotifi_NotificationViewController.h */,
@@ -5092,6 +5144,7 @@
 				DD4CF0011F274B480024156F /* ShakeAndWinViewController.xib in Resources */,
 				DD69B2AF1F39B6610036F368 /* OrderConfirmDisCountCell.xib in Resources */,
 				DD6287E41F21E8120030331D /* WaitForReviewViewController.xib in Resources */,
+				DD80F5241F73B8CA0036647C /* PrivateLetterCell.xib in Resources */,
 				DD9A63B41F2EE86700611FA8 /* AfterSalesHeaderView.xib in Resources */,
 				DDC52EB91F42C00900ECF211 /* SuccessPayViewController.xib in Resources */,
 				DD6287DF1F21E3B20030331D /* ActivityViewController.xib in Resources */,
@@ -5139,7 +5192,9 @@
 				DD40B73E1F1788B000839748 /* HomeCollectCell3.xib in Resources */,
 				DD4CF0321F2885660024156F /* ActivityApplyViewController.xib in Resources */,
 				DD184E511F3DA5F9009BFF5B /* AlipaySDK.bundle in Resources */,
+				DD80F5401F7543700036647C /* share_sina.png in Resources */,
 				DD5AEE511F66CEF2002E4F49 /* CashingPrizeView.xib in Resources */,
+				DD80F53E1F7543580036647C /* share_qq.png in Resources */,
 				DD6286FB1F1E398C0030331D /* Discover_HotTopicCell.xib in Resources */,
 				DD095FF01F5518BB002F4AED /* CircleSigninListViewController.xib in Resources */,
 				DD6287BC1F21A3700030331D /* LookAroundCell.xib in Resources */,
@@ -5196,6 +5251,7 @@
 				DD58FFC31F512E39009EC9F2 /* MyActivitySignUpListPassedCell.xib in Resources */,
 				DD2ACB961F5ED1FB00EEFF8F /* commentLabelCell.xib in Resources */,
 				DD6287761F208C0B0030331D /* HotCircleViewController.xib in Resources */,
+				DD80F5421F7543820036647C /* share_wechat.png in Resources */,
 				DDE0FD3F1F38714600269DBD /* BrandStoryCell.xib in Resources */,
 				DD7D8DF61F6BD99D00155FF1 /* ActivityConfigViewController.xib in Resources */,
 				DD9A63A51F2ECF3300611FA8 /* OrderListFooterView.xib in Resources */,
@@ -5208,7 +5264,6 @@
 				DD6287621F2053750030331D /* MyCollectProductCell.xib in Resources */,
 				DD4CEFED1F26DEDA0024156F /* BrandDetailHeaderCell.xib in Resources */,
 				DD4CF02D1F2882AF0024156F /* DisclaimerViewController.xib in Resources */,
-				DD6288191F22EB740030331D /* SubMessage_PrivateLetterViewController.xib in Resources */,
 				EC4BA13A1F14693F00B9BE1A /* ProductDetailViewController.xib in Resources */,
 				EC4BA0631F13562700B9BE1A /* Main.storyboard in Resources */,
 				DD62876C1F207A850030331D /* CustomerServiceCenterViewController.xib in Resources */,
@@ -5225,12 +5280,14 @@
 				DD0960F31F5A687F002F4AED /* TopicDetailViewController.xib in Resources */,
 				DD62880F1F22EB090030331D /* SubMessage_CommentViewController.xib in Resources */,
 				DD4CF0231F286E9E0024156F /* ActivityRecommendDetailCell.xib in Resources */,
+				DD80F5311F74F6D70036647C /* SubMessage_PrivateLetterViewController.xib in Resources */,
 				DD69B2FE1F3B09050036F368 /* RegionList.plist in Resources */,
 				DD6287E91F21E85D0030331D /* AlreadyPassedViewController.xib in Resources */,
 				DD58FF611F4C36EB009EC9F2 /* MyTrackHeaderView.xib in Resources */,
 				DD095FB71F53C587002F4AED /* CircleDetailDynamicCell.xib in Resources */,
 				EC4BA0EA1F136C8100B9BE1A /* FeedbackViewController.xib in Resources */,
 				DDFB82571F187A7900AEAAA7 /* cb_box_off@2x.png in Resources */,
+				DD80F5441F7543940036647C /* share_moment.png in Resources */,
 				DD6287801F208CE60030331D /* RankingListViewController.xib in Resources */,
 				DDFB82A31F1C81E300AEAAA7 /* PersonalFileViewController.xib in Resources */,
 				DD6287F31F21ED4F0030331D /* PersonalRankActivityViewController.xib in Resources */,
@@ -5569,6 +5626,7 @@
 				DD4CD4661F70DE730002C3BD /* UIView+EMWebCacheOperation.m in Sources */,
 				DDFB82C51F1E25AF00AEAAA7 /* Discover_Dynamic_imageViewCell.m in Sources */,
 				DDE0FD2F1F37F75500269DBD /* BrandDetailResultModel.m in Sources */,
+				DD80F5351F751EA60036647C /* GetUserInfoDataModel.m in Sources */,
 				DD4CD4761F70DE730002C3BD /* EaseConversationModel.m in Sources */,
 				DD4CD45B1F70DE730002C3BD /* EMSDWebImageDownloaderOperation.m in Sources */,
 				DD095FAF1F53BDC6002F4AED /* CircleDetailResultModel.m in Sources */,
@@ -5599,6 +5657,7 @@
 				DD6287661F2059F70030331D /* MyBalanceViewController.m in Sources */,
 				DD0960131F5571BA002F4AED /* MyCircleDynamicResultModel.m in Sources */,
 				DD4CD45C1F70DE730002C3BD /* EMSDWebImageManager.m in Sources */,
+				DD80F5231F73B8CA0036647C /* PrivateLetterCell.m in Sources */,
 				DDFB826F1F18BC4500AEAAA7 /* PersonalCollectCell.m in Sources */,
 				EC4BA0891F1359A900B9BE1A /* BaseModel.m in Sources */,
 				DD6288271F22ECBC0030331D /* SubNotification_OtherViewController.m in Sources */,
@@ -5703,7 +5762,6 @@
 				DD0960DE1F596156002F4AED /* PersonalLivenessRank_personal_rank_infoModel.m in Sources */,
 				DD6287841F2097940030331D /* HotCircleCell.m in Sources */,
 				DD0DBAC91F32B2BE0098F5FA /* LoginModel.m in Sources */,
-				DD6288181F22EB740030331D /* SubMessage_PrivateLetterViewController.m in Sources */,
 				DD4CD47A1F70DE730002C3BD /* NSDateFormatter+Category.m in Sources */,
 				DD52ECEE1F5CE4DD00B4CE96 /* GetSimilarUserDataModel.m in Sources */,
 				DD0960EE1F598A2C002F4AED /* ProductCommentServiceModel.m in Sources */,
@@ -5717,6 +5775,8 @@
 				DD4CD4991F70DE730002C3BD /* EaseChatToolbar.m in Sources */,
 				DDFB82B61F1D931500AEAAA7 /* PYSearchSuggestionViewController.m in Sources */,
 				DD0960001F5550AC002F4AED /* RankListDataModel.m in Sources */,
+				DD80F53B1F753DA90036647C /* UIImageView+Rotation.m in Sources */,
+				DD80F5301F74F6D70036647C /* SubMessage_PrivateLetterViewController.m in Sources */,
 				DD6287751F208C0B0030331D /* HotCircleViewController.m in Sources */,
 				DD095FD41F540F95002F4AED /* CircleDetailConfigItemCell.m in Sources */,
 				DD4CD4881F70DE730002C3BD /* EaseMessageViewController.m in Sources */,
@@ -5852,6 +5912,7 @@
 				DDFB827C1F19F38000AEAAA7 /* Categate_BrandCollectionCell.m in Sources */,
 				EC4BA0CB1F1359DF00B9BE1A /* SegmentTapView.m in Sources */,
 				EC4BA0F31F136CA400B9BE1A /* SubCategate_BrandViewController.m in Sources */,
+				DD80F5381F751EC80036647C /* GetUserInfoResultModel.m in Sources */,
 				DD6898081F2F2861008B6A8F /* AllBrandGoodsListModel.m in Sources */,
 				DD69B2C21F39EF1E0036F368 /* UserAddressListModel.m in Sources */,
 				DD5AEEAB1F6A95B3002E4F49 /* UIView+Utils.m in Sources */,

@@ -26,6 +26,9 @@
 #import "SameHobbyPersonListViewController.h"
 #import "DynamicDetailViewController.h"
 #import "ShakeAndWinViewController.h"
+#import "ZHJMessageViewController.h"
+#import "SuccessPayViewController.h"
+#import "BasicNavigationController.h"
 
 //cells
 //#import "BaseTableViewCell.h"
@@ -584,9 +587,14 @@
 #pragma mark - <跳转NotificationViewController>
 -(void)jumpToNotificationVC
 {
-    NotificationViewController *notificationVC = [[NotificationViewController alloc]init];
-    notificationVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:notificationVC animated:YES];
+//    NotificationViewController *notificationVC = [[NotificationViewController alloc]init];
+//    notificationVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:notificationVC animated:YES];
+    
+#warning ******************************************
+    SuccessPayViewController *testVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
+    BasicNavigationController *basenavivc = [[BasicNavigationController alloc]initWithRootViewController:testVC];
+    [self presentViewController:basenavivc animated:YES completion:nil];
 }
 #pragma mark - <跳转个人资料页面>
 -(void)jumpToPersonalFileVC
@@ -984,6 +992,9 @@
         [navigationController.navigationBar setTranslucent:NO];
         [navigationController setNavigationBarHidden:NO animated:YES];
     }else if ([viewController isKindOfClass:[MoreProductListViewController class]]){
+        [navigationController.navigationBar setTranslucent:NO];
+        [navigationController setNavigationBarHidden:NO animated:YES];
+    }else if ([viewController isKindOfClass:[ZHJMessageViewController class]]){
         [navigationController.navigationBar setTranslucent:NO];
         [navigationController setNavigationBarHidden:NO animated:YES];
     }

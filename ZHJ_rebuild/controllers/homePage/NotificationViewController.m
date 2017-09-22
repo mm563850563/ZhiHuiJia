@@ -16,11 +16,20 @@
 #import "SegmentTapView.h"
 #import "FlipTableView.h"
 
-@interface NotificationViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate>
+//models
+#import "GetUserInfoResultModel.h"
+
+//IM
+#import "EaseUI.h"
+#import "ZHJMessageViewController.h"
+
+@interface NotificationViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,EaseMessageViewControllerDelegate,EaseMessageViewControllerDataSource>
 
 @property (nonatomic, strong)SegmentTapView *segmentView;
 @property (nonatomic, strong)FlipTableView *flipTableView;
 @property (nonatomic, strong)NSMutableArray *controllersArray;
+
+@property (nonatomic, strong)GetUserInfoResultModel *modelUserInfoResult;
 
 @end
 
@@ -41,6 +50,8 @@
 
     [self settingNavigationAndAddSegmentView];
     [self initFlipTableView];
+    
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -115,6 +126,35 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - <跳转“私信聊天”页面>
+-(void)jumpToSingleChatVCWithModel:(GetUserInfoResultModel *)model
+{
+    ZHJMessageViewController *singleChatVC = [[ZHJMessageViewController alloc]initWithConversationChatter:model.user_id conversationType:EMConversationTypeChat];
+    singleChatVC.delegate = self;
+    singleChatVC.dataSource = self;
+    singleChatVC.navigationItem.title = model.nickname;
+    
+    [self.navigationController pushViewController:singleChatVC animated:YES];
+}
+
+#pragma mark - <RAC响应>
+-(void)respondWithRAC
+{
+    //跳转“单聊”页面
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToSingleChatVCFromPrivateLetterVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        self.modelUserInfoResult = x.object;
+        [self jumpToSingleChatVCWithModel:self.modelUserInfoResult];
+    }];
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -135,7 +175,22 @@
     [self.segmentView selectIndex:index];
 }
 
-
+#pragma mark - **** EaseMessageViewControllerDelegate,EaseMessageViewControllerDataSource ****
+-(id<IMessageModel>)messageViewController:(EaseMessageViewController *)viewController modelForMessage:(EMMessage *)message
+{
+    id<IMessageModel> model = nil;
+    model = [[EaseMessageModel alloc] initWithMessage:message];
+    if (model.isSender) {
+        NSString *headimg = kUserDefaultObject(kUserHeadimg);
+        model.avatarURLPath = headimg;
+        model.nickname = @"";
+    }else{
+        model.avatarURLPath = self.modelUserInfoResult.headimg;
+        model.nickname = @"";
+    }
+    model.failImageName = @"huantu";
+    return model;
+}
 
 
 

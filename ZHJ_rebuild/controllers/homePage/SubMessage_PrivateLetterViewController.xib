@@ -4,13 +4,13 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubMessage_PrivateLetterViewController">
             <connections>
+                <outlet property="tableView" destination="bM4-2S-6xh" id="Ibd-aO-Zhb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,22 +19,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="null" translatesAutoresizingMaskIntoConstraints="NO" id="kme-db-s2d">
-                    <rect key="frame" x="87.5" y="50" width="200" height="200"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="BSJ-vE-30d"/>
-                        <constraint firstAttribute="width" constant="200" id="dvw-Ws-21W"/>
-                    </constraints>
-                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bM4-2S-6xh">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="kme-db-s2d" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="jFc-74-YGD"/>
-                <constraint firstItem="kme-db-s2d" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lFc-T5-lNp"/>
+                <constraint firstItem="bM4-2S-6xh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BfW-Ns-zaT"/>
+                <constraint firstItem="bM4-2S-6xh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="F81-IF-v51"/>
+                <constraint firstAttribute="trailing" secondItem="bM4-2S-6xh" secondAttribute="trailing" id="Qig-Zy-bCs"/>
+                <constraint firstAttribute="bottom" secondItem="bM4-2S-6xh" secondAttribute="bottom" id="eVE-Zh-Qbx"/>
             </constraints>
         </view>
     </objects>
-    <resources>
-        <image name="null" width="433" height="432"/>
-    </resources>
 </document>

@@ -38,9 +38,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self getInterestingCircleData];
     [self settingTableView];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -153,7 +158,7 @@
 
 - (IBAction)btnBackAction:(UIButton *)sender
 {
-    [self dismissViewControllerAnimated:YES completion:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

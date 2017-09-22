@@ -20,18 +20,32 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3n-pz-aKz">
                         <rect key="frame" x="0.0" y="0.0" width="189" height="163"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pks-MF-TLG">
-                                <rect key="frame" x="10" y="46.5" width="70" height="70"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXr-qK-A1L">
+                                <rect key="frame" x="10" y="46" width="70" height="70"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pks-MF-TLG">
+                                        <rect key="frame" x="0.0" y="-0.5" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="3kR-Uv-yId"/>
+                                            <constraint firstAttribute="width" constant="70" id="lHl-P5-ihI"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="35"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="3kR-Uv-yId"/>
-                                    <constraint firstAttribute="width" constant="70" id="lHl-P5-ihI"/>
+                                    <constraint firstAttribute="height" constant="70" id="5uH-VH-4JN"/>
+                                    <constraint firstItem="pks-MF-TLG" firstAttribute="leading" secondItem="KXr-qK-A1L" secondAttribute="leading" id="K0k-ye-ITr"/>
+                                    <constraint firstAttribute="bottom" secondItem="pks-MF-TLG" secondAttribute="bottom" id="KfN-dg-Esd"/>
+                                    <constraint firstItem="pks-MF-TLG" firstAttribute="top" secondItem="KXr-qK-A1L" secondAttribute="top" id="UIB-Ho-g3C"/>
+                                    <constraint firstAttribute="width" constant="70" id="i1m-nR-nrO"/>
+                                    <constraint firstAttribute="trailing" secondItem="pks-MF-TLG" secondAttribute="trailing" id="zdH-n3-2IM"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="35"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ii-F7-AgQ">
                                 <rect key="frame" x="85" y="46" width="94" height="20"/>
                                 <constraints>
@@ -66,15 +80,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="t4Y-kF-Fi6" firstAttribute="leading" secondItem="6ii-F7-AgQ" secondAttribute="leading" id="3vh-4p-2Q1"/>
-                            <constraint firstItem="pks-MF-TLG" firstAttribute="centerY" secondItem="X3n-pz-aKz" secondAttribute="centerY" id="D7R-4R-52F"/>
-                            <constraint firstItem="6ii-F7-AgQ" firstAttribute="leading" secondItem="pks-MF-TLG" secondAttribute="trailing" constant="5" id="G5O-Rn-JJh"/>
+                            <constraint firstItem="6ii-F7-AgQ" firstAttribute="leading" secondItem="KXr-qK-A1L" secondAttribute="trailing" constant="5" id="CQ8-VA-ygb"/>
                             <constraint firstItem="t4Y-kF-Fi6" firstAttribute="top" secondItem="Sfa-e4-fd3" secondAttribute="bottom" constant="3" id="Ppg-KZ-RRg"/>
+                            <constraint firstItem="KXr-qK-A1L" firstAttribute="leading" secondItem="X3n-pz-aKz" secondAttribute="leading" constant="10" id="Xll-nl-D2w"/>
                             <constraint firstItem="Sfa-e4-fd3" firstAttribute="top" secondItem="6ii-F7-AgQ" secondAttribute="bottom" id="aAU-iV-oWq"/>
                             <constraint firstItem="Sfa-e4-fd3" firstAttribute="trailing" secondItem="6ii-F7-AgQ" secondAttribute="trailing" id="bH9-kW-xLa"/>
-                            <constraint firstItem="pks-MF-TLG" firstAttribute="leading" secondItem="X3n-pz-aKz" secondAttribute="leading" constant="10" id="ipW-vH-1Jy"/>
+                            <constraint firstItem="KXr-qK-A1L" firstAttribute="centerY" secondItem="X3n-pz-aKz" secondAttribute="centerY" id="bXe-Md-w5Q"/>
+                            <constraint firstItem="6ii-F7-AgQ" firstAttribute="top" secondItem="KXr-qK-A1L" secondAttribute="top" id="fsK-Vk-6w9"/>
                             <constraint firstItem="Sfa-e4-fd3" firstAttribute="leading" secondItem="6ii-F7-AgQ" secondAttribute="leading" id="unP-aD-AQu"/>
                             <constraint firstAttribute="trailing" secondItem="6ii-F7-AgQ" secondAttribute="trailing" constant="10" id="xCK-Ee-qzU"/>
-                            <constraint firstItem="6ii-F7-AgQ" firstAttribute="top" secondItem="pks-MF-TLG" secondAttribute="top" id="zRy-Ib-SB4"/>
                         </constraints>
                     </view>
                 </subviews>

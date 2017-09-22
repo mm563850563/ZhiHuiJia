@@ -27,7 +27,13 @@
 #import "MyCircleDynamicResultModel.h"
 #import "MyCircleDynamicTips_infoModel.h"
 
-@interface FocusPersonFileViewController ()<UITableViewDataSource,UITableViewDelegate>
+//IM
+#import "EaseUI.h"
+#import "ZHJMessageViewController.h"
+
+
+
+@interface FocusPersonFileViewController ()<UITableViewDataSource,UITableViewDelegate,EaseMessageViewControllerDelegate,EaseMessageViewControllerDataSource>
 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -347,6 +353,16 @@
     [self.navigationController pushViewController:myFocusVC animated:YES];
 }
 
+#pragma mark - <跳转“私信聊天”页面>
+-(void)jumpToSingleChatVCWithModel:(FriendHomePageUser_infoModel *)model
+{
+    ZHJMessageViewController *singleChatVC = [[ZHJMessageViewController alloc]initWithConversationChatter:model.friend_user_id conversationType:EMConversationTypeChat];
+    singleChatVC.delegate = self;
+    singleChatVC.dataSource = self;
+    singleChatVC.navigationItem.title = model.nickname;
+    [self.navigationController pushViewController:singleChatVC animated:YES];
+}
+
 #pragma mark - <响应RAC>
 -(void)respondWithRAC
 {
@@ -356,7 +372,7 @@
     
     //私信
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickPrivateChat" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        NSLog(@"私信");
+        [self jumpToSingleChatVCWithModel:self.modelResult.user_info];
     }];
     
     //个人活跃度排名
@@ -479,6 +495,26 @@
         }
         
     }
+}
+
+
+#pragma mark - **** EaseMessageViewControllerDelegate,EaseMessageViewControllerDataSource ****
+-(id<IMessageModel>)messageViewController:(EaseMessageViewController *)viewController modelForMessage:(EMMessage *)message
+{
+    id<IMessageModel> model = nil;
+    model = [[EaseMessageModel alloc] initWithMessage:message];
+    if (model.isSender) {
+        NSString *headimg = kUserDefaultObject(kUserHeadimg);
+        model.avatarURLPath = headimg;
+        model.nickname = @"";
+    }else{
+        NSString *headimg = self.modelResult.user_info.headimg;
+        NSString *nickname = self.modelResult.user_info.nickname;
+        model.avatarURLPath = headimg;
+        model.nickname = nickname;
+    }
+    model.failImageName = @"huantu";
+    return model;
 }
 
 

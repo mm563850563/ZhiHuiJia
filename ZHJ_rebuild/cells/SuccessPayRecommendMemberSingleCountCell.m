@@ -10,6 +10,9 @@
 
 #import "GetInterestingCircleResultModel.h"
 
+//tools
+#import "UIImageView+Rotation.h"
+
 @interface SuccessPayRecommendMemberSingleCountCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewCircle;
@@ -24,10 +27,24 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    [self settingOutlets];
 }
+
+
+#pragma mark - <配置outlets>
+-(void)settingOutlets
+{
+    [self.imgViewCircle startRotating];
+}
+
+
 
 -(void)setModelInterestCircle:(GetInterestingCircleResultModel *)modelInterestCircle
 {
+    //恢复动画
+    [self.imgViewCircle resumeRotate];
+    
     _modelInterestCircle = modelInterestCircle;
     
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelInterestCircle.logo];
