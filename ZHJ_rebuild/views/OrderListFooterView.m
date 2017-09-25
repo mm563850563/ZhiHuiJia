@@ -198,7 +198,12 @@
 
 - (IBAction)btnCheckLogisticsAction:(UIButton *)sender
 {
-    
+    NSString *order_id = self.modelOrderList.order_id;
+    NSString *notifiName = [NSString string];
+    if ([self.whereReuseFrom isEqualToString:@"sendedGoodsVC"]) {
+        notifiName = @"clickBtnCheckLogisticsFromSendedGoodsVC";
+    }
+    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:order_id];
 }
 
 - (IBAction)btnDeleteOrderAction:(UIButton *)sender

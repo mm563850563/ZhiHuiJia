@@ -15,12 +15,17 @@
 //cells
 #import "SuccessPayTableViewCell.h"
 #import "SuccessPayRecommedCell.h"
+#import "RefreshCircleTableViewCell.h"
 
 //models
 #import "GetInterestingCircleDataModel.h"
 #import "GetInterestingCircleResultModel.h"
 
-@interface SuccessPayViewController ()<UITableViewDelegate, UITableViewDataSource>
+//controllers
+#import "CircleDetailViewController.h"
+#import "FocusPersonFileViewController.h"
+
+@interface SuccessPayViewController ()<UITableViewDelegate, UITableViewDataSource,UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSArray *interestingCircleArray;
@@ -38,14 +43,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationController.delegate = self;
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self getInterestingCircleData];
     [self settingTableView];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -154,6 +155,9 @@
     
     [self.tableView registerClass:[SuccessPayRecommedCell class] forCellReuseIdentifier:NSStringFromClass([SuccessPayRecommedCell class])];
     
+    UINib *nibRefreshCircle = [UINib nibWithNibName:NSStringFromClass([RefreshCircleTableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nibRefreshCircle forCellReuseIdentifier:NSStringFromClass([RefreshCircleTableViewCell class])];
+    
 }
 
 - (IBAction)btnBackAction:(UIButton *)sender
@@ -166,20 +170,40 @@
 
 
 
-
+#pragma mark - ******** UINavigationViewControllerDelegate *********
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if ([viewController isKindOfClass:[self class]]){
+        [navigationController.navigationBar setTranslucent:NO];
+        [navigationController setNavigationBarHidden:YES animated:YES];
+    }else if ([viewController isKindOfClass:[FocusPersonFileViewController class]]){
+        [navigationController.navigationBar setTranslucent:NO];
+        [navigationController setNavigationBarHidden:YES animated:YES];
+    }else if ([viewController isKindOfClass:[CircleDetailViewController class]]){
+        [navigationController.navigationBar setTranslucent:NO];
+        [navigationController setNavigationBarHidden:YES animated:YES];
+    }else{
+        [navigationController.navigationBar setTranslucent:NO];
+        [navigationController setNavigationBarHidden:NO animated:YES];
+    }
+}
 
 #pragma mark - ******** UITableViewDelegate, UITableViewDataSource ********
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
         return 5;
+    }else if (section == 1){
+        return 1;
+    }else{
+        return 1;
     }
-    return 1;
+    
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -198,9 +222,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 80.0f;
-    }else if (section == 1){
         return 60.0f;
+    }else if (section == 1){
+        return 70.0f;
     }
     return 0.1f;
 }
@@ -230,7 +254,7 @@
             }
             
         }else if (indexPath.row == 2){
-            successPayCell.labelItemName.text = @"用户余额：";
+            successPayCell.labelItemName.text = @"抵扣余额：";
             if (self.use_money) {
                 successPayCell.labelItemValue.text = [NSString stringWithFormat:@"-¥%@",self.use_money];
             }else{
@@ -259,7 +283,12 @@
     }else if (indexPath.section == 1){
         SuccessPayRecommedCell *successPayRecommedCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SuccessPayRecommedCell class])];
         successPayRecommedCell.interestingCircleArray = self.interestingCircleArray;
+        successPayRecommedCell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell = successPayRecommedCell;
+    }else if (indexPath.section == 2){
+        RefreshCircleTableViewCell *cellRefreshCircle = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([RefreshCircleTableViewCell class])];
+        
+        cell = cellRefreshCircle;
     }
     return cell;
 }
@@ -272,13 +301,17 @@
         SuccessPayRecommedCell *cell = [[SuccessPayRecommedCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([SuccessPayRecommedCell class])];
         cell.interestingCircleArray = self.interestingCircleArray;
         return cell.cellHeight;
+    }else if (indexPath.section == 2){
+        return 50;
     }
     return 0.1f;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (indexPath.section == 2) {
+        [self getInterestingCircleData];
+    }
 }
 
 

@@ -35,15 +35,29 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="action_music" translatesAutoresizingMaskIntoConstraints="NO" id="PkJ-hr-g2x">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gou" translatesAutoresizingMaskIntoConstraints="NO" id="ODb-Fo-jPK">
+                                        <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ENd-c3-L4s" secondAttribute="trailing" id="6oy-Hy-fFd"/>
+                                    <constraint firstAttribute="bottom" secondItem="PkJ-hr-g2x" secondAttribute="bottom" id="L8G-nf-9HP"/>
+                                    <constraint firstAttribute="trailing" secondItem="PkJ-hr-g2x" secondAttribute="trailing" id="NnD-PN-YHt"/>
+                                    <constraint firstItem="ODb-Fo-jPK" firstAttribute="leading" secondItem="jFN-Cz-Nc7" secondAttribute="leading" constant="10" id="RgM-7R-9O1"/>
+                                    <constraint firstItem="PkJ-hr-g2x" firstAttribute="top" secondItem="jFN-Cz-Nc7" secondAttribute="top" id="Rv8-fS-1A8"/>
+                                    <constraint firstItem="PkJ-hr-g2x" firstAttribute="leading" secondItem="jFN-Cz-Nc7" secondAttribute="leading" id="T7u-Jx-Srs"/>
                                     <constraint firstItem="ENd-c3-L4s" firstAttribute="leading" secondItem="jFN-Cz-Nc7" secondAttribute="leading" id="beo-7M-bmW"/>
+                                    <constraint firstAttribute="bottom" secondItem="ODb-Fo-jPK" secondAttribute="bottom" constant="10" id="h3r-QW-9th"/>
                                     <constraint firstItem="ENd-c3-L4s" firstAttribute="top" secondItem="jFN-Cz-Nc7" secondAttribute="top" id="hFQ-Yz-rfL"/>
                                     <constraint firstAttribute="height" constant="70" id="kl3-oz-xaQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ODb-Fo-jPK" secondAttribute="trailing" constant="10" id="sJB-DS-v5R"/>
                                     <constraint firstAttribute="width" constant="70" id="so0-k5-tln"/>
                                     <constraint firstAttribute="bottom" secondItem="ENd-c3-L4s" secondAttribute="bottom" id="vDt-HP-uFU"/>
+                                    <constraint firstItem="ODb-Fo-jPK" firstAttribute="top" secondItem="jFN-Cz-Nc7" secondAttribute="top" constant="10" id="ypd-5h-ugp"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSh-NH-uov">
@@ -99,6 +113,7 @@
             <size key="customSize" width="212" height="154"/>
             <connections>
                 <outlet property="btnIsJoined" destination="S3d-v4-ujB" id="18l-ab-vSc"/>
+                <outlet property="imgJoined" destination="ODb-Fo-jPK" id="QK4-ts-pmv"/>
                 <outlet property="imgViewCircle" destination="ENd-c3-L4s" id="9hy-fH-bYp"/>
                 <outlet property="labelMemberCount" destination="nyQ-Tu-mSI" id="f93-hq-It1"/>
                 <outlet property="labelName" destination="XSh-NH-uov" id="vg4-8H-JfA"/>
@@ -107,6 +122,8 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="action_music" width="170" height="170"/>
+        <image name="gou" width="43" height="29"/>
         <image name="jia" width="22" height="22"/>
         <image name="yijia" width="22" height="22"/>
     </resources>

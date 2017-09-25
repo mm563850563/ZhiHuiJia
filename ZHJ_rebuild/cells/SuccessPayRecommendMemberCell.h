@@ -12,5 +12,7 @@
 @interface SuccessPayRecommendMemberCell : UICollectionViewCell
 
 @property (nonatomic, strong)GetInterestingCircleResultModel *modelInterestCircle;
+//旋转指令
+@property (nonatomic, strong)NSString *rotationOrder;
 
 @end

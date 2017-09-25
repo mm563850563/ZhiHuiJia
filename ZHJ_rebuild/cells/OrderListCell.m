@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelMarketPrice;
 @property (weak, nonatomic) IBOutlet UILabel *labelCount;
 @property (weak, nonatomic) IBOutlet UILabel *labelRefund;
+@property (weak, nonatomic) IBOutlet UIButton *btnApplyAfterSale;
 
 @end
 
@@ -38,6 +39,8 @@
 
 -(void)setModelGoods:(OrderListGoodsModel *)modelGoods
 {
+    _modelGoods = modelGoods;
+    
     self.labelProductName.text = modelGoods.goods_name;
     self.labelSpec.text = modelGoods.spec_key_name;
     self.labelPrice.text = [NSString stringWithFormat:@"¥%@",modelGoods.goods_price];
@@ -50,7 +53,22 @@
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelGoods.image];
     NSURL *url = [NSURL URLWithString:imgStr];
     [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
+    
+    //待评价中可以“申请售后”
+    if ([self.whereReuseFrom isEqualToString:@"waitToCommentVC"]) {
+        self.btnApplyAfterSale.hidden = NO;
+    }
 }
+
+
+- (IBAction)btnApplyAfterSaleAction:(UIButton *)sender
+{
+    NSDictionary *dict = @{@"goodsModel":self.modelGoods,
+                           @"order_sn":self.order_sn,
+                           @"order_id":self.order_id};
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"JumpToApplyAfterSaleVC" object:dict];
+}
+
 
 
 

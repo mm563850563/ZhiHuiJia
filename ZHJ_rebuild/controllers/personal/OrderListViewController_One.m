@@ -603,7 +603,7 @@
     
     if (imageArray) {
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-        [shareParams SSDKSetupShareParamsByText:@"1亿礼品库,注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
+        [shareParams SSDKSetupShareParamsByText:@"全球首个爆品推荐+智慧社交平台！1亿礼品库、注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
         
         //有的平台要客户端分享需要加此方法，例如微博
         [shareParams SSDKEnableUseClientShare];
@@ -732,6 +732,11 @@
     self.goodsArray = modelOrderList.goods;
     OrderListGoodsModel *modelGoods = self.goodsArray[indexPath.row];
     OrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OrderListCell class])];
+    if ([modelOrderList.order_status_desc isEqualToString:@"待评价"]){
+        cell.whereReuseFrom = @"waitToCommentVC";
+        cell.order_sn = modelOrderList.order_sn;
+        cell.order_id = modelOrderList.order_id;
+    }
     cell.modelGoods = modelGoods;
     return cell;
 }

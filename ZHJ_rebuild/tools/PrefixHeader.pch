@@ -52,6 +52,7 @@
 // clear背景颜色
 #define kClearColor [UIColor clearColor]
 
+
 //placeholder
 #define kPlaceholder [UIImage imageNamed:@"huantu"]
 
@@ -65,7 +66,8 @@
 
 //主题色
 #define kThemeYellow 0xffda44
-
+//物流文字颜色
+#define kLogisticsColor 0x28AD5C
 
 
 #pragma mark - <错误提示>*********************
@@ -475,9 +477,14 @@
 #pragma mark - <120.获取环信会话列表个人信息>
 #define kGetUserInfo @"/User/getUserInfo"
 
+#pragma mark - <121.查看物流>
+#define kQueryExpress @"/order/queryExpress"
 
+#pragma mark - <122.退换货申请>
+#define kReturnGoods @"/User/returnGoods"
 
-
+#pragma mark - <123.退换货列表>
+#define kReturnGoodsList @"/User/returnGoodsList"
 
 
 

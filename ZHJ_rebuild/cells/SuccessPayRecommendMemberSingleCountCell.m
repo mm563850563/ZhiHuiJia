@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 @property (weak, nonatomic) IBOutlet UILabel *labelMemberCount;
 @property (weak, nonatomic) IBOutlet UIButton *btnIsJoined;
+@property (weak, nonatomic) IBOutlet UIImageView *imgJoined;
 
 @end
 
@@ -42,8 +43,6 @@
 
 -(void)setModelInterestCircle:(GetInterestingCircleResultModel *)modelInterestCircle
 {
-    //恢复动画
-    [self.imgViewCircle resumeRotate];
     
     _modelInterestCircle = modelInterestCircle;
     
@@ -56,8 +55,21 @@
     
     if ([modelInterestCircle.is_joined isEqualToString:@"1"]) {
         self.btnIsJoined.selected = YES;
+        self.imgJoined.hidden = NO;
     }else{
         self.btnIsJoined.selected = NO;
+        self.imgJoined.hidden = YES;
+    }
+}
+
+
+
+-(void)setRotationOrder:(NSString *)rotationOrder
+{
+    if ([rotationOrder isEqualToString:@"resume"]) {
+        [self.imgViewCircle resumeRotate];
+    }else if ([rotationOrder isEqualToString:@"pause"]){
+        [self.imgViewCircle stopRotating];
     }
 }
 

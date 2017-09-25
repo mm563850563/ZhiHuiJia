@@ -14,6 +14,14 @@
 
 //controllers
 #import "AllCircleMemberViewController.h"
+#import "ActivityReportViewcontroller.h"
+
+//tools
+#import "ShareTool.h"
+
+//SDKs
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDKUI.h>
 
 @interface CircleDetailConfigViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -68,6 +76,15 @@
     [self.navigationController pushViewController:allMemberVC animated:YES];
 }
 
+#pragma mark - <跳转“举报”页面>
+-(void)jumpToReportVC
+{
+    ActivityReportViewcontroller *reportVC = [[ActivityReportViewcontroller alloc]initWithNibName:NSStringFromClass([ActivityReportViewcontroller class]) bundle:nil];
+    reportVC.hidesBottomBarWhenPushed = YES;
+    reportVC.navigationItem.title = @"举报";
+    [self.navigationController pushViewController:reportVC animated:YES];
+}
+
 #pragma mark - <"退出圈子"请求>
 -(void)requestExitCircle
 {
@@ -112,6 +129,25 @@
             [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
+}
+
+#pragma mark - <第三方分享-配置要分享的参数>
+-(void)settingShareParameter
+{
+    //1.创建分享参数 注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
+    UIImage *image = [UIImage imageNamed:@"appLogo"];
+    NSArray *imageArray = @[image];
+    
+    if (imageArray) {
+        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+        [shareParams SSDKSetupShareParamsByText:@"全球首个爆品推荐+智慧社交平台！1亿礼品库、注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
+        
+        //有的平台要客户端分享需要加此方法，例如微博
+        [shareParams SSDKEnableUseClientShare];
+        
+        //2.分享（可以弹出我们的分享菜单和编辑界面）
+        [ShareTool shareWithParams:shareParams];
+    }
 }
 
 
@@ -164,16 +200,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        NSLog(@"分享圈子");
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"分享圈子"];
-        [hudWarning hideAnimated:YES afterDelay:1.0];
+        [self settingShareParameter];
     }else if (indexPath.row == 1){
         //查看全部成员
         [self jumpToCheckAllMemberVCWithCircleID:self.circle_id];
     }else if (indexPath.row == 2){
         //举报
-        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"举报"];
-        [hudWarning hideAnimated:YES afterDelay:1.0];
+        [self jumpToReportVC];
     }else if (indexPath.row == 3){
         //退出圈子
         [self requestExitCircle];

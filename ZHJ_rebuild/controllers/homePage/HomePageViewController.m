@@ -176,8 +176,8 @@
 #pragma mark - <下拉刷新请求>
 -(void)pullDownRefresh
 {
-    dispatch_group_t group = dispatch_group_create();
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_group_t group = dispatch_group_create();
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 //    dispatch_queue_t queue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 //    dispatch_queue_t queue2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 //    dispatch_queue_t queue3 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -232,13 +232,13 @@
                 //回到主线程刷新数据
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSString *messageCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
-//                    if (![messageCount isEqualToString:@"0"]) {
-//                        self.btnMessage.badgeValue = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
-//                        self.btnMessage.badgeFont = [UIFont systemFontOfSize:8];
-//                        self.btnMessage.badgeMinSize = 1;
-//                        self.btnMessage.badgeOriginY = -5;
-//                        self.btnMessage.badgeOriginX = 12;
-//                    }
+                    if (![messageCount isEqualToString:@"0"]) {
+                        self.btnMessage.badgeValue = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
+                        self.btnMessage.badgeFont = [UIFont systemFontOfSize:8];
+                        self.btnMessage.badgeMinSize = 1;
+                        self.btnMessage.badgeOriginY = -5;
+                        self.btnMessage.badgeOriginX = 12;
+                    }
                     
                 });
             }else{
@@ -587,14 +587,9 @@
 #pragma mark - <跳转NotificationViewController>
 -(void)jumpToNotificationVC
 {
-//    NotificationViewController *notificationVC = [[NotificationViewController alloc]init];
-//    notificationVC.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:notificationVC animated:YES];
-    
-#warning ******************************************
-    SuccessPayViewController *testVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
-    BasicNavigationController *basenavivc = [[BasicNavigationController alloc]initWithRootViewController:testVC];
-    [self presentViewController:basenavivc animated:YES completion:nil];
+    NotificationViewController *notificationVC = [[NotificationViewController alloc]init];
+    notificationVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:notificationVC animated:YES];
 }
 #pragma mark - <跳转个人资料页面>
 -(void)jumpToPersonalFileVC

@@ -221,11 +221,19 @@
             NSNumber *code = (NSNumber *)dataDict[@"code"];
             if ([code isEqual:@200]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    for (OrderList_OrderListModel *model in self.orderListArray) {
+                    
+                    //操作数组删除时不推荐forin
+                    [self.orderListArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        OrderList_OrderListModel *model = (OrderList_OrderListModel *)obj;
                         if ([model.order_id isEqualToString:order_id]) {
                             [self.orderListArray removeObject:model];
                         }
-                    }
+                    }];
+//                    for (OrderList_OrderListModel *model in self.orderListArray) {
+//                        if ([model.order_id isEqualToString:order_id]) {
+//                            [self.orderListArray removeObject:model];
+//                        }
+//                    }
                     [self.tableView reloadData];
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
@@ -289,7 +297,7 @@
     
     if (imageArray) {
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-        [shareParams SSDKSetupShareParamsByText:@"1亿礼品库,注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
+        [shareParams SSDKSetupShareParamsByText:@"全球首个爆品推荐+智慧社交平台！1亿礼品库、注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
         
         //有的平台要客户端分享需要加此方法，例如微博
         [shareParams SSDKEnableUseClientShare];
@@ -305,9 +313,17 @@
     //确认收货
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"confirmReceipt" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
         NSString *order_id = x.object;
-        [self getConfirmReceiptDataWithOrderID:order_id];
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil message:@"确认收货?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *actionConfirm = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self getConfirmReceiptDataWithOrderID:order_id];
+        }];
+        [alertVC addAction:actionCancel];
+        [alertVC addAction:actionConfirm];
+        [self presentViewController:alertVC animated:YES completion:nil];
     }];
     
+    //查看物流
     
     
     //分享

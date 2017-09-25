@@ -8,6 +8,8 @@
 
 #import "BasicNavigationController.h"
 
+#import "PersonalViewController.h"
+
 @interface BasicNavigationController ()
 
 @end
@@ -18,6 +20,11 @@
     [super viewDidLoad];
     
     [self.navigationBar setBarTintColor:kColorFromRGB(kThemeYellow)];
+    
+//    /*改变状态栏的背景颜色,因为状态栏的层级比较高，所以按照如下添加就可以出来效果*/
+//    UIView *stateView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, kSCREEN_WIDTH, 20)];
+//    [self.navigationBar addSubview:stateView];
+//    stateView.backgroundColor = kColorFromRGB(kThemeYellow);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +41,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+//-(UIViewController *)childViewControllerForStatusBarStyle
+//{
+//    UIStoryboard *sb  = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    PersonalViewController *personalVC = [sb instantiateViewControllerWithIdentifier:NSStringFromClass([PersonalViewController class])];
+//    return personalVC;
+//}
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
@@ -83,5 +99,21 @@
 {
     [self popViewControllerAnimated:YES];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

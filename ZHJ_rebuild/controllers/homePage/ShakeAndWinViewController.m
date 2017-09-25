@@ -482,7 +482,8 @@
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kVerifyPayResult];
     if (![self.order_sn isEqualToString:@""]) {
-        NSDictionary *dictParameter = @{@"order_sn":self.order_sn};
+        NSDictionary *dictParameter = @{@"order_sn":self.order_sn,
+                                        @"user_id":kUserDefaultObject(kUserInfo)};
         
         MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
         [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {

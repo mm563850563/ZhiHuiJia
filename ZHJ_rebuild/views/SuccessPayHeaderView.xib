@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,18 +15,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDD-PE-j6M">
-                    <rect key="frame" x="87" y="293" width="200" height="80"/>
+                    <rect key="frame" x="117" y="303" width="140" height="60"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zhi_fu_choice" translatesAutoresizingMaskIntoConstraints="NO" id="D0Z-j7-roC">
-                            <rect key="frame" x="0.0" y="15" width="50" height="50"/>
+                            <rect key="frame" x="0.0" y="15" width="30" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="50" id="WcX-1e-aEd"/>
-                                <constraint firstAttribute="height" constant="50" id="wo7-as-SUW"/>
+                                <constraint firstAttribute="width" constant="30" id="WcX-1e-aEd"/>
+                                <constraint firstAttribute="height" constant="30" id="wo7-as-SUW"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交易成功" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qac-u7-XuT">
-                            <rect key="frame" x="50" y="0.0" width="150" height="80"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                            <rect key="frame" x="30" y="0.0" width="110" height="60"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -37,11 +36,11 @@
                         <constraint firstItem="D0Z-j7-roC" firstAttribute="centerY" secondItem="rDD-PE-j6M" secondAttribute="centerY" id="4SN-mG-AB7"/>
                         <constraint firstAttribute="trailing" secondItem="Qac-u7-XuT" secondAttribute="trailing" id="8ll-F7-gk1"/>
                         <constraint firstItem="D0Z-j7-roC" firstAttribute="leading" secondItem="rDD-PE-j6M" secondAttribute="leading" id="DqW-Mn-Wgb"/>
-                        <constraint firstAttribute="width" constant="200" id="YNP-Bh-f0e"/>
+                        <constraint firstAttribute="width" constant="140" id="YNP-Bh-f0e"/>
                         <constraint firstAttribute="bottom" secondItem="Qac-u7-XuT" secondAttribute="bottom" id="Zd7-od-FXO"/>
                         <constraint firstItem="Qac-u7-XuT" firstAttribute="top" secondItem="rDD-PE-j6M" secondAttribute="top" id="e1o-mM-gXT"/>
                         <constraint firstItem="Qac-u7-XuT" firstAttribute="leading" secondItem="D0Z-j7-roC" secondAttribute="trailing" id="mZW-Sq-ept"/>
-                        <constraint firstAttribute="height" constant="80" id="ohn-Vx-xqg"/>
+                        <constraint firstAttribute="height" constant="60" id="ohn-Vx-xqg"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnF-Kz-BEl">

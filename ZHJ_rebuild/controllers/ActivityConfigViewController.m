@@ -15,6 +15,9 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDKUI.h>
 
+//controllers
+#import "ActivityReportViewcontroller.h"
+
 @interface ActivityConfigViewController ()
 
 @end
@@ -58,8 +61,10 @@
 #pragma mark - <举报按钮响应>
 - (IBAction)btnReportAction:(UIButton *)sender
 {
-    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"举报"];
-    [hudWarning hideAnimated:YES afterDelay:1.0];
+    ActivityReportViewcontroller *reportVC = [[ActivityReportViewcontroller alloc]initWithNibName:NSStringFromClass([ActivityReportViewcontroller class]) bundle:nil];
+    reportVC.hidesBottomBarWhenPushed = YES;
+    reportVC.navigationItem.title = @"举报";
+    [self.navigationController pushViewController:reportVC animated:YES];
 }
 
 #pragma mark - <退出活动>
@@ -77,7 +82,7 @@
     
     if (imageArray) {
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-        [shareParams SSDKSetupShareParamsByText:@"1亿礼品库,注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
+        [shareParams SSDKSetupShareParamsByText:@"全球首个爆品推荐+智慧社交平台！1亿礼品库、注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
         
         //有的平台要客户端分享需要加此方法，例如微博
         [shareParams SSDKEnableUseClientShare];

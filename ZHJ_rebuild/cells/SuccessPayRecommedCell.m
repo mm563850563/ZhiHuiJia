@@ -24,6 +24,8 @@
 
 @property (nonatomic, strong)UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong)UICollectionView *collectionView;
+//旋转指令
+@property (nonatomic, strong)NSString *rotationOrder;
 
 @end
 
@@ -48,6 +50,28 @@
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_offset(UIEdgeInsetsMake(5, 10, 5, 10));
     }];
+    
+//    UIButton *btnPlayPause = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [btnPlayPause setImage:[UIImage imageNamed:@"action_pause"] forState:UIControlStateNormal];
+//    [btnPlayPause setImage:[UIImage imageNamed:@"action_play"] forState:UIControlStateSelected];
+//    [btnPlayPause addTarget:self action:@selector(startOrPauseRatationWithSender:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.contentView addSubview:btnPlayPause];
+//    [btnPlayPause mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.top.mas_equalTo(0);
+//        make.size.mas_offset(CGSizeMake(35, 35));
+//    }];
+}
+
+#pragma mark - <开始／暂停旋转>
+-(void)startOrPauseRatationWithSender:(UIButton *)sender
+{
+    if (sender.selected) {
+        self.rotationOrder = @"pause";
+    }else{
+        self.rotationOrder = @"resume";
+    }
+    sender.selected = !sender.selected;
+    [self.collectionView reloadData];
 }
 
 -(UICollectionViewFlowLayout *)flowLayout
@@ -145,11 +169,13 @@
         SuccessPayRecommendMemberSingleCountCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SuccessPayRecommendMemberSingleCountCell class]) forIndexPath:indexPath];
         GetInterestingCircleResultModel *modelInterestCircle = self.interestingCircleArray[indexPath.item];
         cell.modelInterestCircle = modelInterestCircle;
+        cell.rotationOrder = self.rotationOrder;
         return cell;
     }else{
         SuccessPayRecommendMemberCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SuccessPayRecommendMemberCell class]) forIndexPath:indexPath];
         GetInterestingCircleResultModel *modelInterestCircle = self.interestingCircleArray[indexPath.item];
         cell.modelInterestCircle = modelInterestCircle;
+        cell.rotationOrder = self.rotationOrder;
         return cell;
     }
     

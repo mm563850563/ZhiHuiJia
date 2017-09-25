@@ -39,9 +39,12 @@
 
 
 @interface PersonalViewController ()<UINavigationControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForHeaderView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForCollectBGView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForScrollView;
+@property (weak, nonatomic) IBOutlet UIButton *btnMessage;
 
 @property (weak, nonatomic) IBOutlet UIView *collectionBGView;
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -64,10 +67,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self getPersonalCenterData];
     [self setNavigationController];
     [self initCollectionView];
-    
     [self settingHeightForScrollView];
     
     [self respondWithRAC];
@@ -76,6 +77,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self managerRequestWithGCDWithHUD:nil];
 }
 
 
@@ -90,13 +96,73 @@
 }
 */
 
+#pragma mark - <GCD多线程管理>
+-(void)managerRequestWithGCDWithHUD:(MBProgressHUD *)hud
+{
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_group_async(group, queue, ^{
+        [self getMessageCount];
+    });
+    dispatch_group_async(group, queue, ^{
+        [self getPersonalCenterDataWithHUD:nil];
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        [self.collectionView reloadData];
+    });
+}
+
+#pragma mark - <获取消息数量>
+-(void)getMessageCount
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetMessageCount];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
+    [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                //回到主线程刷新数据
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSString *messageCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
+                    if (![messageCount isEqualToString:@"0"]) {
+                        self.btnMessage.badgeValue = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
+                        self.btnMessage.badgeFont = [UIFont systemFontOfSize:8];
+                        self.btnMessage.badgeMinSize = 1;
+                        self.btnMessage.badgeOriginY = -5;
+                        self.btnMessage.badgeOriginX = 12;
+                    }
+                    
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
+            });
+        }
+    } failBlock:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            [hudWarning hideAnimated:YES afterDelay:1.0];
+        });
+    }];
+}
+
 #pragma mark - <获取个人中心数据>
--(void)getPersonalCenterData
+-(void)getPersonalCenterDataWithHUD:(MBProgressHUD *)hud
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPersonalCenter];
     NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
     
-    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
@@ -108,6 +174,7 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
+                    [self.scrollView.mj_header endRefreshing];
                 });
                 
             }else{
@@ -115,6 +182,7 @@
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
                     [hudWarning hideAnimated:YES afterDelay:1.0];
+                    [self.scrollView.mj_header endRefreshing];
                 });
             }
         }else{
@@ -122,6 +190,7 @@
                 [hud hideAnimated:YES afterDelay:1.0];
                 MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
                 [hudWarning hideAnimated:YES afterDelay:1.0];
+                [self.scrollView.mj_header endRefreshing];
             });
         }
     } failBlock:^(NSError *error) {
@@ -129,6 +198,7 @@
             [hud hideAnimated:YES afterDelay:1.0];
             MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
             [hudWarning hideAnimated:YES afterDelay:1.0];
+            [self.scrollView.mj_header endRefreshing];
         });
     }];
 }
@@ -174,6 +244,11 @@
 -(void)setNavigationController
 {
     self.navigationController.delegate = self;
+    
+//    /*改变状态栏的背景颜色,因为状态栏的层级比较高，所以按照如下添加就可以出来效果*/
+//    UIView *stateView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, kSCREEN_WIDTH, 20)];
+//    [self.navigationController.navigationBar addSubview:stateView];
+//    stateView.backgroundColor = kColorFromRGB(kThemeYellow);
 }
 
 #pragma mark - <初始化collectionView>
@@ -200,6 +275,14 @@
     
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([PersonalCollectCell class]) bundle:nil];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([PersonalCollectCell class])];
+}
+
+#pragma mark - <配置ScrollView>
+-(void)settingScrollView
+{
+    self.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self getPersonalCenterDataWithHUD:nil];
+    }];
 }
 
 #pragma mark - <跳转“我的钱包”页面>
@@ -368,7 +451,7 @@
     
     if (imageArray) {
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-        [shareParams SSDKSetupShareParamsByText:@"1亿礼品库,注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
+        [shareParams SSDKSetupShareParamsByText:@"全球首个爆品推荐+智慧社交平台！1亿礼品库、注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
         
         //有的平台要客户端分享需要加此方法，例如微博
         [shareParams SSDKEnableUseClientShare];

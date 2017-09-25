@@ -201,7 +201,7 @@
     if (self.privateLetterArray.count==0) {
         return 1;
     }else{
-        return  self.privateLetterArray.count;
+        return self.privateLetterArray.count;
     }
 }
 
@@ -278,20 +278,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    //获取单条会话
-//    EMConversation *conversation = self.conversationArray[indexPath.row];
-//    //获取最新的消息
-//    EMMessage *lastMessage = conversation.latestMessage;
-//    
-//    //获取对方的ID
-//    NSString *user_id = [NSString string];
-//    if (lastMessage.direction == EMMessageDirectionSend) {
-//        user_id = lastMessage.to;
-//    }else if (lastMessage.direction == EMMessageDirectionReceive){
-//        user_id = lastMessage.from;
-//    }
-    
-    
     GetUserInfoResultModel *modelResult = self.privateLetterArray[indexPath.row];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToSingleChatVCFromPrivateLetterVC" object:modelResult];
 }

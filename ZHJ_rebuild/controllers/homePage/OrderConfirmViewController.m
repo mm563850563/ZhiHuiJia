@@ -25,6 +25,7 @@
 #import "MyDiscountCouponViewController.h"
 #import "SuccessPayViewController.h"
 #import "MyOrderViewController.h"
+#import "BasicNavigationController.h"
 
 //models
 #import "OrderConfirmModel.h"
@@ -284,11 +285,7 @@
                                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付成功"];
                                     [hudWarning hideAnimated:YES afterDelay:1.0];
                                     hudWarning.completionBlock = ^{
-                                        SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
-                                        successPayVC.modelAli = modelAliPay;
-                                        [self presentViewController:successPayVC animated:YES completion:^{
-                                            [self.navigationController popViewControllerAnimated:YES];
-                                        }];
+                                        [self jumpToAliSuccessPayVCWithModel:modelAliPay];
                                     };
                                 });
                                 
@@ -462,11 +459,7 @@
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"支付成功"];
                     [hudWarning hideAnimated:YES afterDelay:1.0];
                     hudWarning.completionBlock = ^{
-                        SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
-                        successPayVC.modelBlance = modelBlance;
-                        [self presentViewController:successPayVC animated:YES completion:^{
-                            [self.navigationController popViewControllerAnimated:YES];
-                        }];
+                        [self jumpToUserBalanceSuccessPayVCWithModel:modelBlance];
                     };
                 });
                 
@@ -502,7 +495,8 @@
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kVerifyPayResult];
     if (![self.order_sn isEqualToString:@""]) {
-        NSDictionary *dictParameter = @{@"order_sn":self.order_sn};
+        NSDictionary *dictParameter = @{@"order_sn":self.order_sn,
+                                        @"user_id":kUserDefaultObject(kUserInfo)};
         
         MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
         [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
@@ -513,11 +507,7 @@
                     [hud hideAnimated:YES afterDelay:1.0];
                     NSError *error = nil;
                     PalceOrderOrderInfoModel *modelWXPay = [[PalceOrderOrderInfoModel alloc]initWithDictionary:dataDict[@"data"][@"result"] error:&error]; ;
-                    SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
-                    successPayVC.modelWX = modelWXPay;
-                    [self presentViewController:successPayVC animated:YES completion:^{
-                        [self.navigationController popViewControllerAnimated:YES];
-                    }];
+                    [self jumpToWechatSuccessPayVCWithModel:modelWXPay];
                 }else{
                     [hud hideAnimated:YES afterDelay:1.0];
                     [[NSNotificationCenter defaultCenter]postNotificationName:@"failurePayJumpToMyOrderVC" object:nil];
@@ -540,6 +530,31 @@
             }
         }];
     }
+}
+
+#pragma mark - <跳转“ALi支付成功”页面>
+-(void)jumpToAliSuccessPayVCWithModel:(PlaceOrderAliPayModel *)model
+{
+    SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
+    successPayVC.modelAli = model;
+    BasicNavigationController *basenavivc = [[BasicNavigationController alloc]initWithRootViewController:successPayVC];
+    [self presentViewController:basenavivc animated:YES completion:nil];
+}
+#pragma mark - <跳转“Wechat支付成功”页面>
+-(void)jumpToWechatSuccessPayVCWithModel:(PalceOrderOrderInfoModel *)model
+{
+    SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
+    successPayVC.modelWX = model;
+    BasicNavigationController *basenavivc = [[BasicNavigationController alloc]initWithRootViewController:successPayVC];
+    [self presentViewController:basenavivc animated:YES completion:nil];
+}
+#pragma mark - <跳转“用户余额支付成功”页面>
+-(void)jumpToUserBalanceSuccessPayVCWithModel:(PlaceOrderBalanceModel *)model
+{
+    SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
+    successPayVC.modelBlance = model;
+    BasicNavigationController *basenavivc = [[BasicNavigationController alloc]initWithRootViewController:successPayVC];
+    [self presentViewController:basenavivc animated:YES completion:nil];
 }
 
 

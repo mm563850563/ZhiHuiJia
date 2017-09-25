@@ -13,5 +13,8 @@
 @interface OrderListCell : UITableViewCell
 
 @property (nonatomic, strong)OrderListGoodsModel *modelGoods;
+@property (nonatomic ,strong)NSString *whereReuseFrom;
+@property (nonatomic, strong)NSString *order_sn;
+@property (nonatomic, strong)NSString *order_id;
 
 @end

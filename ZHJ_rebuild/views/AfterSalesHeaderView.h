@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class AfterSaleListResultModel;
 
 @interface AfterSalesHeaderView : UIView
 
-@property (weak, nonatomic) IBOutlet UILabel *labelProductCode;
-@property (weak, nonatomic) IBOutlet UILabel *labelTime;
+@property (nonatomic, strong)AfterSaleListResultModel *modelAfterSaleResult;
 
 @end

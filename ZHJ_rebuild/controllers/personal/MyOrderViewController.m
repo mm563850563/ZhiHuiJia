@@ -19,8 +19,12 @@
 #import "OrderListViewController_Four.h"
 #import "OrderListViewController_Five.h"
 #import "CommentViewController.h"
+#import "LogisticsViewController.h"
+#import "ApplyAfterSaleViewController.h"
 
+//models
 #import "OrderList_OrderListModel.h"
+#import "OrderListGoodsModel.h"
 
 @interface MyOrderViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,MBProgressHUDDelegate>
 
@@ -157,6 +161,25 @@
     [self.navigationController pushViewController:commentVC animated:YES];
 }
 
+#pragma mark - <跳转“查看物流”页面>
+-(void)jumpToLogisticsVCWithOrderID:(NSString *)order_id
+{
+    LogisticsViewController *logisticsVC = [[LogisticsViewController alloc]initWithNibName:NSStringFromClass([LogisticsViewController class]) bundle:nil];
+    logisticsVC.order_id = order_id;
+    [self.navigationController pushViewController:logisticsVC animated:YES];
+}
+
+#pragma mark - <跳转“申请售后页面”>
+-(void)jumpToApplyAfterSaleVCWithModel:(OrderListGoodsModel *)model order_sn:(NSString *)order_sn order_id:(NSString *)order_id
+{
+    ApplyAfterSaleViewController *applyAfterSaleVC = [[ApplyAfterSaleViewController alloc]initWithNibName:NSStringFromClass([ApplyAfterSaleViewController class]) bundle:nil];
+    applyAfterSaleVC.hidesBottomBarWhenPushed = YES;
+    applyAfterSaleVC.modelGoods = model;
+    applyAfterSaleVC.order_sn = order_sn;
+    applyAfterSaleVC.order_id = order_id;
+    [self.navigationController pushViewController:applyAfterSaleVC animated:YES];
+}
+
 #pragma mark - <rac响应>
 -(void)respondWithRAC
 {
@@ -180,7 +203,20 @@
         [self jumpToCommentVCWithModel:model];
     }];
     
+    //推出查看物流页面
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnCheckLogisticsFromSendedGoodsVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *order_id = x.object;
+        [self jumpToLogisticsVCWithOrderID:order_id];
+    }];
     
+    //推出申请售后页面
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"JumpToApplyAfterSaleVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSDictionary *dict = (NSDictionary *)x.object;
+        OrderListGoodsModel *model = (OrderListGoodsModel *)dict[@"goodsModel"];
+        NSString *order_sn = dict[@"order_sn"];
+        NSString *order_id = dict[@"order_id"];
+        [self jumpToApplyAfterSaleVCWithModel:model order_sn:order_sn order_id:order_id];
+    }];
 }
 
 

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class AfterSaleListResultModel;
 
 @interface AfterSalesCell : UITableViewCell
+
+@property (nonatomic, strong)AfterSaleListResultModel *modelAfterSaleResult;
 
 @end

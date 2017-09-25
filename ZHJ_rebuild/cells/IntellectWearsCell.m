@@ -44,7 +44,7 @@
 {
     if (!_flowLayout) {
         _flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        _flowLayout.sectionInset = UIEdgeInsetsMake(5, 0, 5, 0);
+        _flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 5, 0);
         _flowLayout.minimumLineSpacing = 5;
         _flowLayout.minimumInteritemSpacing = 0;
         CGFloat itemWidth = kSCREEN_WIDTH/2.02;
@@ -110,7 +110,7 @@
         if ((self.dataArray.count-1)%2 != 0) {
             lineCount++;
         }
-        self.cellHeight = itemHeight*lineCount + 10;
+        self.cellHeight = itemHeight*lineCount + 5;
     }
 }
 
