@@ -364,8 +364,8 @@
     __weak typeof(self) weakSelf = self;
     
     [self.BGView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(1);
-        make.bottom.mas_equalTo(-1);
+        make.top.mas_equalTo(0.5);
+        make.bottom.mas_equalTo(-0.5);
         make.left.right.mas_equalTo(0);
     }];
     [self.imgViewPortrait mas_makeConstraints:^(MASConstraintMaker *make) {

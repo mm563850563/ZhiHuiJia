@@ -3,6 +3,10 @@
 //  SegmentTapView
 
 #import "SegmentTapView.h"
+
+#import "UIButton+Badge.h"
+
+
 @interface SegmentTapView ()
 @property (nonatomic, strong)NSMutableArray *buttonsArray;
 @property (nonatomic, strong)UIImageView *lineImageView;
@@ -132,4 +136,24 @@
         _titleFont = titleFont;
     }
 }
+
+
+
+
+#pragma mark - <添加未读消息数量>
+-(void)addUnreadCountWithCount:(NSString *)count index:(NSInteger)index
+{
+    UIButton *button = self.buttonsArray[index];
+    CGFloat position = (CGFloat)kSCREEN_WIDTH/self.buttonsArray.count;
+    //写在第一句才起作用
+    button.shouldHideBadgeAtZero = YES;
+    button.badgeValue = count;
+    button.badgeFont = [UIFont systemFontOfSize:7];
+    button.badgeMinSize = 1;
+    button.badgeOriginX = position-30;
+    button.badgeOriginY = 3;
+}
+
+
+
 @end

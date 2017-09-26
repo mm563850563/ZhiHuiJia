@@ -232,14 +232,13 @@
                 //回到主线程刷新数据
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSString *messageCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
-                    if (![messageCount isEqualToString:@"0"]) {
-                        self.btnMessage.badgeValue = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
-                        self.btnMessage.badgeFont = [UIFont systemFontOfSize:8];
-                        self.btnMessage.badgeMinSize = 1;
-                        self.btnMessage.badgeOriginY = -5;
-                        self.btnMessage.badgeOriginX = 12;
-                    }
-                    
+                    //该方法写在第一句才起作用
+                    self.btnMessage.shouldHideBadgeAtZero = YES;
+                    self.btnMessage.badgeValue = [NSString stringWithFormat:@"%@",messageCount];
+                    self.btnMessage.badgeFont = [UIFont systemFontOfSize:8];
+                    self.btnMessage.badgeMinSize = 1;
+                    self.btnMessage.badgeOriginY = -5;
+                    self.btnMessage.badgeOriginX = 12;
                 });
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -687,6 +686,11 @@
     //在“好友主页”中点击关注／取消关注后刷新主页
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshHomePageVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         [self managerRequestWithGCDWithHUD:nil];
+    }];
+    
+    //收到环信消息后刷新消息数据
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshMyMessage" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        [self getMessageCount];
     }];
 }
 

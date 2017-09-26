@@ -360,6 +360,7 @@
     
     self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         self.page = @1;
+        [self.circleDynamicArray removeAllObjects];
         [self managerRequestWithGCDWithHUD:nil];
     }];
     
@@ -596,10 +597,10 @@
 //    NSArray *array = [NSArray arrayWithObjects:@"sfdgfhjg",@"jtyhrtgr",@"sfdgf",@"sdfdgf", nil];
     
     PYSearchViewController *searchVC = [PYSearchViewController searchViewControllerWithHotSearches:nil searchBarPlaceholder:@"请输入关键字" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
-        MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
-        moreProductListVC.whereReuseFrom = @"searchGoods";
-        moreProductListVC.keyword = searchText;
-        [searchViewController.navigationController pushViewController:moreProductListVC animated:YES];
+//        MoreProductListViewController *moreProductListVC = [[MoreProductListViewController alloc]init];
+//        moreProductListVC.whereReuseFrom = @"searchGoods";
+//        moreProductListVC.keyword = searchText;
+//        [searchViewController.navigationController pushViewController:moreProductListVC animated:YES];
     }];
     searchVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:searchVC animated:YES];

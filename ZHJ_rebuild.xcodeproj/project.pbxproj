@@ -181,6 +181,8 @@
 		DD3DA0871F790D6C00FC839F /* ApplyAfterSaleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD3DA0851F790D6C00FC839F /* ApplyAfterSaleViewController.xib */; };
 		DD3DA08B1F792DAF00FC839F /* AfterSaleListDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA08A1F792DAF00FC839F /* AfterSaleListDataModel.m */; };
 		DD3DA08E1F792DC400FC839F /* AfterSaleListResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA08D1F792DC400FC839F /* AfterSaleListResultModel.m */; };
+		DD3DA0921F7A061800FC839F /* ReportTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA0901F7A061800FC839F /* ReportTypeViewController.m */; };
+		DD3DA0931F7A061800FC839F /* ReportTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD3DA0911F7A061800FC839F /* ReportTypeViewController.xib */; };
 		DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B7191F164CE000839748 /* HomePageMainCell.m */; };
 		DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD40B71A1F164CE000839748 /* HomePageMainCell.xib */; };
 		DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B71E1F17027E00839748 /* YouthColorCell.m */; };
@@ -1179,6 +1181,9 @@
 		DD3DA08A1F792DAF00FC839F /* AfterSaleListDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AfterSaleListDataModel.m; path = models/AfterSaleListDataModel.m; sourceTree = "<group>"; };
 		DD3DA08C1F792DC400FC839F /* AfterSaleListResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AfterSaleListResultModel.h; path = models/AfterSaleListResultModel.h; sourceTree = "<group>"; };
 		DD3DA08D1F792DC400FC839F /* AfterSaleListResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AfterSaleListResultModel.m; path = models/AfterSaleListResultModel.m; sourceTree = "<group>"; };
+		DD3DA08F1F7A061800FC839F /* ReportTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportTypeViewController.h; path = controllers/discover/ReportTypeViewController.h; sourceTree = "<group>"; };
+		DD3DA0901F7A061800FC839F /* ReportTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportTypeViewController.m; path = controllers/discover/ReportTypeViewController.m; sourceTree = "<group>"; };
+		DD3DA0911F7A061800FC839F /* ReportTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportTypeViewController.xib; path = controllers/discover/ReportTypeViewController.xib; sourceTree = "<group>"; };
 		DD40B7181F164CE000839748 /* HomePageMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomePageMainCell.h; path = cells/HomePageMainCell.h; sourceTree = "<group>"; };
 		DD40B7191F164CE000839748 /* HomePageMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomePageMainCell.m; path = cells/HomePageMainCell.m; sourceTree = "<group>"; };
 		DD40B71A1F164CE000839748 /* HomePageMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomePageMainCell.xib; path = cells/HomePageMainCell.xib; sourceTree = "<group>"; };
@@ -4891,6 +4896,9 @@
 				DD095FCC1F540E2D002F4AED /* CircleDetailConfigViewController.h */,
 				DD095FCD1F540E2D002F4AED /* CircleDetailConfigViewController.m */,
 				DD095FCE1F540E2D002F4AED /* CircleDetailConfigViewController.xib */,
+				DD3DA08F1F7A061800FC839F /* ReportTypeViewController.h */,
+				DD3DA0901F7A061800FC839F /* ReportTypeViewController.m */,
+				DD3DA0911F7A061800FC839F /* ReportTypeViewController.xib */,
 				DD095FDB1F54F8AA002F4AED /* AllCircleMemberViewController.h */,
 				DD095FDC1F54F8AA002F4AED /* AllCircleMemberViewController.m */,
 				DD095FDD1F54F8AA002F4AED /* AllCircleMemberViewController.xib */,
@@ -5217,6 +5225,7 @@
 				DD6287FF1F21F2F70030331D /* PersonalActivityRankFooterView.xib in Resources */,
 				DD3DA0871F790D6C00FC839F /* ApplyAfterSaleViewController.xib in Resources */,
 				DD095FD01F540E2D002F4AED /* CircleDetailConfigViewController.xib in Resources */,
+				DD3DA0931F7A061800FC839F /* ReportTypeViewController.xib in Resources */,
 				DD4CF0AF1F29A8FC0024156F /* AtSomeOneCell.xib in Resources */,
 				DD5AEE981F6A6D19002E4F49 /* ShareSDKUI.bundle in Resources */,
 				DDFB82991F1C6A8900AEAAA7 /* MoreProductList_HeaderView.xib in Resources */,
@@ -5913,6 +5922,7 @@
 				DD6287ED1F21E8C00030331D /* FailureReviewViewController.m in Sources */,
 				DD68980E1F302B03008B6A8F /* ClassifyListModel.m in Sources */,
 				DD6D7D471F6FA53B00F8FEF5 /* MessageResultModel.m in Sources */,
+				DD3DA0921F7A061800FC839F /* ReportTypeViewController.m in Sources */,
 				DDFB826B1F187A7900AEAAA7 /* SSCheckBoxView.m in Sources */,
 				DD58FF6A1F4D56CB009EC9F2 /* AddCommentTableViewCell.m in Sources */,
 				DDE0FD241F35D74E00269DBD /* AddToCollectionResultModel.m in Sources */,

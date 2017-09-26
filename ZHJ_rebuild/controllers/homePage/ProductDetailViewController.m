@@ -336,7 +336,7 @@
 #pragma mark - <客服>
 - (IBAction)btnSalesCenterAction:(UIButton *)sender
 {
-    [self jumpToSingleChatVCWithChatter:@"160"];//客服id为160；
+    [self jumpToSingleChatVCWithChatter:kZHJService];//客服id为160；
 }
 
 #pragma mark - <店铺>

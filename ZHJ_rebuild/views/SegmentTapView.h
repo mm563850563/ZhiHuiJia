@@ -62,4 +62,14 @@ Initialization
  */
 -(void)selectIndex:(NSInteger)index;
 
+
+
+
+
+
+
+
+#pragma mark - <添加未读数量>
+-(void)addUnreadCountWithCount:(NSString *)count index:(NSInteger)index;
+
 @end

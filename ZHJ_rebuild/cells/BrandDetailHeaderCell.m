@@ -9,6 +9,12 @@
 #import "BrandDetailHeaderCell.h"
 #import "BrandDetail_BrandDetailModel.h"
 
+#import "ZHJMessageViewController.h"
+
+@interface BrandDetailHeaderCell ()<EaseMessageViewControllerDelegate,EaseMessageViewControllerDataSource>
+
+@end
+
 @implementation BrandDetailHeaderCell
 
 - (void)awakeFromNib {
@@ -50,12 +56,56 @@
 }
 
 
+#pragma mark - <跳转“客服界面”>
+-(void)jumpToSingleChatVCWithChatter:(NSString *)chatter
+{
+    
+}
+
+
 
 
 #pragma mark - <点击在线客服按钮响应>
 - (IBAction)btnOnlineContactAction:(UIButton *)sender
 {
-    
+    //在当前当前控件遍历所在的viewcontroller
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            UIViewController *vc = (UIViewController *)nextResponder;
+            ZHJMessageViewController *singleChatVC = [[ZHJMessageViewController alloc]initWithConversationChatter:kZHJService conversationType:EMConversationTypeChat];
+            singleChatVC.delegate = self;
+            singleChatVC.dataSource = self;
+            singleChatVC.navigationItem.title = @"智惠加客服";
+            [vc.navigationController pushViewController:singleChatVC animated:YES];
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+#pragma mark - **** EaseMessageViewControllerDelegate,EaseMessageViewControllerDataSource ****
+-(id<IMessageModel>)messageViewController:(EaseMessageViewController *)viewController modelForMessage:(EMMessage *)message
+{
+    id<IMessageModel> model = nil;
+    model = [[EaseMessageModel alloc] initWithMessage:message];
+    if (model.isSender) {
+        NSString *headimg = kUserDefaultObject(kUserHeadimg);
+        model.avatarURLPath = headimg;
+        model.nickname = @"";
+    }else{
+        model.avatarImage = [UIImage imageNamed:@"appLogo"];
+        model.nickname = @"";
+    }
+    model.failImageName = @"huantu";
+    return model;
 }
 
 @end

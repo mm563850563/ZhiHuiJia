@@ -10,6 +10,7 @@
 
 //cells
 #import "AfterSalesCell.h"
+#import "NULLTableViewCell.h"
 
 //views
 #import "AfterSalesHeaderView.h"
@@ -118,6 +119,9 @@
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([AfterSalesCell class]) bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([AfterSalesCell class])];
     
+    UINib *nibNull = [UINib nibWithNibName:NSStringFromClass([NULLTableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
+    
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self getAfterSaleListDataWithHUD:nil];
     }];
@@ -139,6 +143,9 @@
 #pragma mark - **** UITableViewDelegate,UITableViewDataSource ****
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (self.afterSaleListArray.count == 0) {
+        return 1;
+    }
     return self.afterSaleListArray.count;
 }
 
@@ -147,21 +154,35 @@
     return 1;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.afterSaleListArray.count == 0) {
+        return self.view.frame.size.height;
+    }
+    return 100;
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (self.afterSaleListArray.count == 0) {
+        return 0.1f;
+    }
     return 50;
 }
 
-//-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    //    if (section == 4) {
-//    //        return 100;
-//    //    }
-//    return 10;
-//}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (self.afterSaleListArray.count == 0) {
+        return 0.1f;
+    }
+    return 5;
+}
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    if (self.afterSaleListArray.count == 0) {
+        return nil;
+    }
     AfterSalesHeaderView *headerView  = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([AfterSalesHeaderView class]) owner:nil options:nil].lastObject;
     AfterSaleListResultModel *modelAfterSaleResult = self.afterSaleListArray[section];
     headerView.modelAfterSaleResult = modelAfterSaleResult;
@@ -170,6 +191,10 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.afterSaleListArray.count == 0) {
+        NULLTableViewCell *cellNull = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NULLTableViewCell class])];
+        return cellNull;
+    }
     AfterSalesCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AfterSalesCell class])];
     AfterSaleListResultModel *modelAfterSaleResult = self.afterSaleListArray[indexPath.section];
     cell.modelAfterSaleResult = modelAfterSaleResult;

@@ -41,10 +41,12 @@
         [self getTalkLikeListData];
     }
     
-    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    
     if ([self.myFansOrMyFocus isEqualToString:@"fans"]) {
+        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
         [self getMyFansDataWithHUD:hud];
     }else if ([self.myFansOrMyFocus isEqualToString:@"focus"]){
+        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
         [self getMyFocusDataWithHUD:hud];
     }
     
@@ -186,7 +188,7 @@
     NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
                                     @"talk_id":self.talk_id};
     
-        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;

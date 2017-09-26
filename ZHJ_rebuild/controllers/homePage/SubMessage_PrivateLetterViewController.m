@@ -23,7 +23,7 @@
 #import "EaseUI.h"
 #import "ZHJMessageViewController.h"
 
-@interface SubMessage_PrivateLetterViewController ()<UITableViewDelegate,UITableViewDataSource,EaseMessageViewControllerDelegate,EaseMessageViewControllerDataSource>
+@interface SubMessage_PrivateLetterViewController ()<UITableViewDelegate,UITableViewDataSource,EaseMessageViewControllerDelegate,EaseMessageViewControllerDataSource,EMChatManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *privateLetterArray;
@@ -39,7 +39,13 @@
     // Do any additional setup after loading the view from its nib.
     
     [self settingTableView];
-    [self getConversationData];
+    MBProgressHUD *hud = [ProgressHUDManager showFullScreenProgressHUDAddTo:self.view animated:YES];
+    [self getConversationDataWithHUD:hud];
+    
+    //添加消息监听
+    [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
+    
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,9 +90,8 @@
 
 
 #pragma mark - <获取环信会话列表用户个人信息>
--(void)getUserInfoDataWithUser_ids:(NSString *)user_ids
+-(void)getUserInfoDataWithUser_ids:(NSString *)user_ids hud:(MBProgressHUD *)hud
 {
-    MBProgressHUD *hud = [ProgressHUDManager showFullScreenProgressHUDAddTo:self.view animated:YES];
     NSDictionary *dictParameter = @{@"user_ids":user_ids,
                                     @"user_id":kUserDefaultObject(kUserInfo)};
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetUserInfo];
@@ -143,7 +148,7 @@
 }
 
 #pragma mark - <获取会话数据>
--(void)getConversationData
+-(void)getConversationDataWithHUD:(MBProgressHUD *)hud
 {
     NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
     self.conversationArray = [NSMutableArray arrayWithArray:conversations];
@@ -172,7 +177,12 @@
     }
     
     //请求用户个人信息数据
-    [self getUserInfoDataWithUser_ids:user_ids];
+    if (![user_ids isEqualToString:@""]) {
+        [self getUserInfoDataWithUser_ids:user_ids hud:hud];
+    }else{
+        [hud hideAnimated:YES afterDelay:1.0];
+    }
+    
 }
 
 
@@ -187,6 +197,13 @@
     [self.navigationController pushViewController:singleChatVC animated:YES];
 }
 
+#pragma mark - <rac响应>
+-(void)respondWithRAC
+{
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshConversationList" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        [self getConversationDataWithHUD:nil];
+    }];
+}
 
 
 
@@ -194,6 +211,16 @@
 
 
 
+
+
+
+
+
+#pragma mark - **** EMChatManagerDelegate *****
+-(void)messagesDidReceive:(NSArray *)aMessages
+{
+    [self getConversationDataWithHUD:nil];
+}
 
 #pragma mark - ****** UITableViewDelegate,UITableViewDataSource *******
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -219,25 +246,25 @@
         EMMessage *lastMessage = conversation.latestMessage;
         
         //获取对方的昵称
-        cellPrivate.labelNickName.text = modelResult.nickname;
+//        cellPrivate.labelNickName.text = modelResult.nickname;
         //获取对方头像
-        NSString *imgStr = modelResult.headimg;
-        NSURL *imgURL = [NSURL URLWithString:imgStr];
-        [cellPrivate.imgViewPortrait sd_setImageWithURL:imgURL placeholderImage:kPlaceholder];
+//        NSString *imgStr = modelResult.headimg;
+//        NSURL *imgURL = [NSURL URLWithString:imgStr];
+//        [cellPrivate.imgViewPortrait sd_setImageWithURL:imgURL placeholderImage:kPlaceholder];
         //获取消息时间
-        double timeStamp = (double)lastMessage.timestamp;
-        NSTimeInterval timeInterval = timeStamp;
-        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-        [formatter setDateFormat:@"MM-dd HH:mm"];
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval/1000.0];
-        NSString *dateStr = [NSString stringWithFormat:@"%@",[formatter stringFromDate:date]];
-        cellPrivate.labelTime.text = dateStr;
+//        double timeStamp = (double)lastMessage.timestamp;
+//        NSTimeInterval timeInterval = timeStamp;
+//        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+//        [formatter setDateFormat:@"MM-dd HH:mm"];
+//        NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval/1000.0];
+//        NSString *dateStr = [NSString stringWithFormat:@"%@",[formatter stringFromDate:date]];
+//        cellPrivate.labelTime.text = dateStr;
         //获取未读消息数量
-        if (conversation.unreadMessagesCount>0) {
-            cellPrivate.btnUnread.badgeValue = [NSString stringWithFormat:@"%d",conversation.unreadMessagesCount];
-        }
-        cellPrivate.btnUnread.badgeFont = [UIFont systemFontOfSize:10];
-        cellPrivate.btnUnread.badgeOriginX = cellPrivate.btnUnread.frame.size.width-20;
+//        if (conversation.unreadMessagesCount>0) {
+//            cellPrivate.btnUnread.badgeValue = [NSString stringWithFormat:@"%d",conversation.unreadMessagesCount];
+//        }
+//        cellPrivate.btnUnread.badgeFont = [UIFont systemFontOfSize:10];
+//        cellPrivate.btnUnread.badgeOriginX = cellPrivate.btnUnread.frame.size.width-10;
         
         //获取最后一条信息的文本内容
         EMMessageBody *messageBody = lastMessage.body;
@@ -271,7 +298,14 @@
             default:
                 break;
         }
-        cellPrivate.labelContent.text = latestMessageTitle;
+//        cellPrivate.labelContent.text = latestMessageTitle;
+        
+        NSDictionary *dictMessage = @{@"nickName":modelResult.nickname,
+                                      @"headImg":modelResult.headimg,
+                                      @"timeStamp":[NSString stringWithFormat:@"%lld",lastMessage.timestamp],
+                                      @"unRead":[NSString stringWithFormat:@"%d",conversation.unreadMessagesCount],
+                                      @"content":latestMessageTitle};
+        cellPrivate.dictMessage = dictMessage;
         return cellPrivate;
     }
 }

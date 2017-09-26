@@ -10,9 +10,7 @@
 
 //tools
 #import "UIImage+Orientation.h"
-
-//controllers
-//#import <TZImagePickerController.h>
+#import <AFNetworking.h>
 
 @interface ActivityReportViewcontroller ()<UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -49,9 +47,124 @@
 }
 */
 
+#pragma mark - <提交举报>
+-(void)requestReportWithDataImg:(NSData *)dataImg
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kReportCenter];
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 20;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain",
+                                                          @"multipart/form-data",
+                                                          @"application/json",
+                                                          @"text/html",
+                                                          @"image/jpeg",
+                                                          @"image/png",
+                                                          @"application/octet-stream",
+                                                          @"text/json", nil];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"type":self.report_type,
+                                    @"content":self.feedbackView.text};
+    [manager POST:urlStr
+       parameters:dictParameter
+constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    if (dataImg) {
+        [formData appendPartWithFileData:dataImg name:@"headimg" fileName:@"report_img.jpg" mimeType:@"image/jpeg"];
+    }
+}
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if (responseObject) {
+                  NSDictionary *dataDict = (NSDictionary *)responseObject;
+                  NSNumber *code = (NSNumber *)dataDict[@"code"];
+                  if ([code isEqual:@200]) {
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          [hud hideAnimated:YES afterDelay:1.0];
+                          MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                          [hudWarning hideAnimated:YES afterDelay:1.0];
+                          hudWarning.completionBlock = ^{
+                              [self.navigationController popViewControllerAnimated:YES];
+                          };
+                      });
+                  }else{
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          [hud hideAnimated:YES afterDelay:1.0];
+                          MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                          [hudWarning hideAnimated:YES afterDelay:1.0];
+                      });
+                  }
+              }else{
+                  dispatch_async(dispatch_get_main_queue(), ^{
+                      [hud hideAnimated:YES afterDelay:1.0];
+                      MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                      [hudWarning hideAnimated:YES afterDelay:1.0];
+                  });
+              }
+          }
+          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  [hud hideAnimated:YES afterDelay:1.0];
+                  MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                  [hudWarning hideAnimated:YES afterDelay:1.0];
+              });
+          }];
+    
+    
+    /*
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kReportCenter];
+    
+    if (kUserDefaultObject(kUserInfo)) {
+        NSString *userID = kUserDefaultObject(kUserInfo);
+        NSDictionary *dictParameter = @{@"user_id":userID,
+                                        @"type":@"0",
+                                        @"content":self.feedbackView.text};
+        
+        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+        [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+            if (response) {
+                NSDictionary *dataDict = (NSDictionary *)response;
+                NSNumber *code = (NSNumber *)dataDict[@"code"];
+                
+                if ([code isEqual:@200]) {
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [hud hideAnimated:YES afterDelay:1.0];
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
+                        hudWarning.completionBlock = ^{
+                            [self.navigationController popViewControllerAnimated:YES];
+                        };
+                    });
+                }else{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [hud hideAnimated:YES afterDelay:1.0];
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
+                    });
+                    
+                }
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
+                });
+            }
+        } failBlock:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
+            });
+        }];
+    }*/
+}
+
 #pragma mark - <配置outlets>
 -(void)settingOutlets
 {
+    self.navigationItem.title = @"举报";
     //给imagViewReport 添加点击手势
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickImgViewReportActionWithGestureRecohnize:)];
     self.imgViewReport.userInteractionEnabled = YES;
@@ -119,8 +232,12 @@
 #pragma mark - <提交举报>
 - (IBAction)btnSubmitAction:(UIButton *)sender
 {
-    MBProgressHUD *hudWarnning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"提交"];
-    [hudWarnning hideAnimated:YES afterDelay:1.0];
+    if ([self.feedbackView.text isEqualToString:@""]) {
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入反馈意见"];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
+    }else{
+        [self requestReportWithDataImg:self.dataImg];
+    }
 }
 
 

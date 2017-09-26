@@ -146,6 +146,11 @@
     }
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MessageResultModel *modelResult = self.commentArray[indexPath.row];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToDynamicDetailVCFromMainMessageVC" object:modelResult];
+}
 
 
 

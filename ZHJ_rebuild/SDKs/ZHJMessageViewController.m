@@ -53,7 +53,10 @@
 }
 
 
-
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshConversationList" object:nil];
+}
 
 
 

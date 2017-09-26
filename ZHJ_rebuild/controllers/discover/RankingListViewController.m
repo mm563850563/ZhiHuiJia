@@ -21,6 +21,7 @@
 
 //controllers
 #import "DisclaimerViewController.h"
+#import "CircleDetailViewController.h"
 
 
 @interface RankingListViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -165,6 +166,14 @@
     [self.navigationController pushViewController:disclaimerVC animated:YES];
 }
 
+#pragma mark - <跳转“圈子详情”页面>
+-(void)jumpToCircleDetailVCWithCircleID:(NSString *)circle_id
+{
+    CircleDetailViewController *circleDetailVC = [[CircleDetailViewController alloc]initWithNibName:NSStringFromClass([CircleDetailViewController class]) bundle:nil];
+    circleDetailVC.navigationItem.title = @"圈子详情";
+    circleDetailVC.circle_id = circle_id;
+    [self.navigationController pushViewController:circleDetailVC animated:YES];
+}
 
 
 
@@ -177,7 +186,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.rankListArray.count;
+    return self.rankListArray.count+1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -204,7 +213,7 @@
         
     }else{
         ActivityRankNormalCell *cellNormal = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ActivityRankNormalCell class])];
-        RankList_circle_rank_infoModel *modelRankInfo = self.rankListArray[indexPath.row];
+        RankList_circle_rank_infoModel *modelRankInfo = self.rankListArray[indexPath.row-1];
         cellNormal.modelRankInfo = modelRankInfo;
         cell = cellNormal;
     }
@@ -216,7 +225,8 @@
     if (indexPath.row == 0) {
         [self jumpToDisclaimerVCWithDisclaimer:self.modelResult.circle_liveness_rule];
     }else{
-        
+        RankList_circle_rank_infoModel *modelRankInfo = self.rankListArray[indexPath.row-1];
+        [self jumpToCircleDetailVCWithCircleID:modelRankInfo.circle_id];
     }
 }
 

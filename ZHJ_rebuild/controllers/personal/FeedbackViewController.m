@@ -45,6 +45,68 @@
 }
 */
 
+#pragma mark - <提交意见反馈>
+-(void)requestFeedback
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kReportCenter];
+    
+    if (kUserDefaultObject(kUserInfo)) {
+        NSString *userID = kUserDefaultObject(kUserInfo);
+        NSDictionary *dictParameter = @{@"user_id":userID,
+                                        @"type":@"0",
+                                        @"content":self.feedbackView.text};
+        
+        MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+        [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+            if (response) {
+                NSDictionary *dataDict = (NSDictionary *)response;
+                NSNumber *code = (NSNumber *)dataDict[@"code"];
+                
+                if ([code isEqual:@200]) {
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [hud hideAnimated:YES afterDelay:1.0];
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
+                        hudWarning.completionBlock = ^{
+                            [self.navigationController popViewControllerAnimated:YES];
+                        };
+                    });
+                }else{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [hud hideAnimated:YES afterDelay:1.0];
+                        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                        [hudWarning hideAnimated:YES afterDelay:1.0];
+                    });
+                    
+                }
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES afterDelay:1.0];
+                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                    [hudWarning hideAnimated:YES afterDelay:1.0];
+                });
+            }
+        } failBlock:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES afterDelay:1.0];
+                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+                [hudWarning hideAnimated:YES afterDelay:1.0];
+            });
+        }];
+    }
+}
+
+- (IBAction)btnSubmitAction:(UIButton *)sender
+{
+    if ([self.feedbackView.text isEqualToString:@""]) {
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"请输入反馈意见"];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
+    }else{
+        [self requestFeedback];
+    }
+    
+}
 
 
 

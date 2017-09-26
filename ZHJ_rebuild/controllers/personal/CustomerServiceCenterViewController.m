@@ -110,7 +110,7 @@
     self.phoneStr = array[0];
 }
 
-#pragma mark - <跳转“聊天界面”>
+#pragma mark - <跳转“客服界面”>
 -(void)jumpToSingleChatVCWithChatter:(NSString *)chatter
 {
     ZHJMessageViewController *singleChatVC = [[ZHJMessageViewController alloc]initWithConversationChatter:chatter conversationType:EMConversationTypeChat];
@@ -132,7 +132,7 @@
 #pragma mark - <客服聊天>
 - (IBAction)btnChatAction:(UIButton *)sender
 {
-    [self jumpToSingleChatVCWithChatter:@"160"];//客服id为160；
+    [self jumpToSingleChatVCWithChatter:kZHJService];//客服id为160；
 }
 
 

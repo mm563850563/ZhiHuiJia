@@ -711,18 +711,6 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             </imageView>
-                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cq9-a4-ScC">
-                                                                <rect key="frame" x="25" y="60" width="90" height="90"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="90" id="0zF-jP-L3C"/>
-                                                                    <constraint firstAttribute="height" constant="90" id="yzw-zg-lmK"/>
-                                                                </constraints>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="45"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </button>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOt-CO-7fa">
                                                                 <rect key="frame" x="310" y="10" width="55" height="25"/>
                                                                 <constraints>
@@ -811,7 +799,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="XrS-gg-YaV" secondAttribute="trailing" id="7Re-Px-n2U"/>
                                                             <constraint firstAttribute="bottom" secondItem="XrS-gg-YaV" secondAttribute="bottom" id="7lL-FW-RGY"/>
-                                                            <constraint firstItem="cq9-a4-ScC" firstAttribute="leading" secondItem="nIN-kR-x2v" secondAttribute="leading" constant="25" id="8Ss-ue-8Mm"/>
+                                                            <constraint firstItem="DBB-XB-gpb" firstAttribute="centerY" secondItem="obL-oZ-L1c" secondAttribute="centerY" id="BV6-ra-aNh"/>
                                                             <constraint firstItem="QOt-CO-7fa" firstAttribute="leading" secondItem="Ys6-Z5-AJP" secondAttribute="trailing" constant="10" id="F8g-Qx-whY"/>
                                                             <constraint firstItem="QOt-CO-7fa" firstAttribute="centerY" secondItem="Ys6-Z5-AJP" secondAttribute="centerY" id="J2w-2l-ACx"/>
                                                             <constraint firstAttribute="trailing" secondItem="DBB-XB-gpb" secondAttribute="trailing" constant="20" id="JYJ-1e-nKD"/>
@@ -819,11 +807,9 @@
                                                             <constraint firstItem="QOt-CO-7fa" firstAttribute="top" secondItem="nIN-kR-x2v" secondAttribute="top" constant="10" id="MAP-5l-FQ6"/>
                                                             <constraint firstAttribute="bottom" secondItem="obL-oZ-L1c" secondAttribute="bottom" constant="30" id="MV3-ly-FDh"/>
                                                             <constraint firstItem="obL-oZ-L1c" firstAttribute="leading" secondItem="nIN-kR-x2v" secondAttribute="leading" constant="25" id="WEZ-7X-kfh"/>
+                                                            <constraint firstItem="DBB-XB-gpb" firstAttribute="leading" secondItem="obL-oZ-L1c" secondAttribute="trailing" constant="10" id="X99-GI-EJA"/>
                                                             <constraint firstItem="XrS-gg-YaV" firstAttribute="leading" secondItem="nIN-kR-x2v" secondAttribute="leading" id="YBr-VU-crf"/>
-                                                            <constraint firstItem="DBB-XB-gpb" firstAttribute="leading" secondItem="cq9-a4-ScC" secondAttribute="trailing" constant="10" id="Yqf-I5-W8u"/>
                                                             <constraint firstAttribute="height" constant="180" id="dlS-oP-dpJ"/>
-                                                            <constraint firstAttribute="bottom" secondItem="cq9-a4-ScC" secondAttribute="bottom" constant="30" id="gvp-h7-3FR"/>
-                                                            <constraint firstItem="DBB-XB-gpb" firstAttribute="centerY" secondItem="cq9-a4-ScC" secondAttribute="centerY" id="hDv-KK-2DR"/>
                                                             <constraint firstAttribute="trailing" secondItem="QOt-CO-7fa" secondAttribute="trailing" constant="10" id="yJM-14-4Bg"/>
                                                         </constraints>
                                                     </view>
@@ -1234,7 +1220,6 @@
                     <connections>
                         <outlet property="btnAfterSale" destination="dCM-8S-sQH" id="Q5B-dC-kvb"/>
                         <outlet property="btnMessage" destination="Ys6-Z5-AJP" id="sST-I9-Yom"/>
-                        <outlet property="btnPotrait" destination="cq9-a4-ScC" id="mEE-FU-TEA"/>
                         <outlet property="btnWaitToComment" destination="k29-fh-P20" id="0KI-1f-tFO"/>
                         <outlet property="btnWaitToPay" destination="wqg-TO-ySG" id="Hen-lt-dCd"/>
                         <outlet property="btnWaitToReceive" destination="CEn-QH-OwF" id="eeE-9o-nFJ"/>

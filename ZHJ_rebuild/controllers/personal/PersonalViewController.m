@@ -57,7 +57,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnWaitToComment;
 @property (weak, nonatomic) IBOutlet UIButton *btnAfterSale;
 @property (weak, nonatomic) IBOutlet UILabel *labelUserName;
-@property (weak, nonatomic) IBOutlet UIButton *btnPotrait;
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewPortrait;
 
 @end
@@ -464,7 +463,10 @@
 #pragma mark - <rac响应>
 -(void)respondWithRAC
 {
-    
+    //收到环信消息后刷新消息数据
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshMyMessage" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        [self getMessageCount];
+    }];
 }
 
 

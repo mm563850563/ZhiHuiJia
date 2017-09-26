@@ -10,4 +10,6 @@
 
 @interface ActivityReportViewcontroller : UIViewController
 
+@property (nonatomic, strong)NSString *report_type;
+
 @end

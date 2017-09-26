@@ -125,6 +125,8 @@
 
 
 
+
+
 #pragma mark - ****** UITableViewDelegate,UITableViewDataSource *******
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -146,6 +148,12 @@
         cellComment.modelMessageResult = model;
         return cellComment;
     }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MessageResultModel *modelResult = self.aboutMeArray[indexPath.row];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToDynamicDetailVCFromMainMessageVC" object:modelResult];
 }
 
 @end

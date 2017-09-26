@@ -175,43 +175,6 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                   [hudWarning hideAnimated:YES afterDelay:1.0];
               });
           }];
-//
-//    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
-//    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
-//        if (response) {
-//            NSDictionary *dataDict = (NSDictionary *)response;
-//            NSNumber *code = (NSNumber *)dataDict[@"code"];
-//            if ([code isEqual:@200]) {
-//                NSError *error = nil;
-//                PersonalInfoDataModel *modelData = [[PersonalInfoDataModel alloc]initWithDictionary:dataDict[@"data"] error:&error];
-//                self.modelResult = modelData.result;
-//                
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [hud hideAnimated:YES afterDelay:1.0];
-//                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-//                    [hudWarning hideAnimated:YES afterDelay:1.0];
-//                });
-//            }else{
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [hud hideAnimated:YES afterDelay:1.0];
-//                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-//                    [hudWarning hideAnimated:YES afterDelay:1.0];
-//                });
-//            }
-//        }else{
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [hud hideAnimated:YES afterDelay:1.0];
-//                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-//                [hudWarning hideAnimated:YES afterDelay:1.0];
-//            });
-//        }
-//    } failBlock:^(NSError *error) {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [hud hideAnimated:YES afterDelay:1.0];
-//            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-//            [hudWarning hideAnimated:YES afterDelay:1.0];
-//        });
-//    }];
 }
 
 #pragma mark - <填充数据>

@@ -36,7 +36,7 @@
 //IM SDK
 #import <Hyphenate/Hyphenate.h>
 
-@interface AppDelegate ()<WXApiDelegate>
+@interface AppDelegate ()<WXApiDelegate,EMChatManagerDelegate>
 
 @end
 
@@ -112,7 +112,7 @@
     [self presentMainTabVC];
     
     //****************微信支付*****************
-    [WXApi registerApp:kWeChatPay_AppID ];
+    [WXApi registerApp:kWeChatAppID];
     
     //**************注册环信SDK***************
     [self registerIM];
@@ -136,8 +136,8 @@
 #pragma mark - <注册环信SDK>
 -(void)registerIM
 {
-    EMOptions *options = [EMOptions optionsWithAppkey:@"1145170815178204#zhihuijia"];
-    options.apnsCertName = @"zhj_ios";
+    EMOptions *options = [EMOptions optionsWithAppkey:kEMAppKey];
+    options.apnsCertName = kEMApnsCert;
     [[EMClient sharedClient]initializeSDKWithOptions:options];
     
     //注册离线推送
@@ -178,13 +178,46 @@
         }];
     }
     
+    //监听在线消息
+    [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
+}
+
+- (void)messagesDidReceive:(NSArray *)aMessages {
+    for (EMMessage *msg in aMessages) {
+        UIApplicationState state = [[UIApplication sharedApplication] applicationState];
+        // App在后台
+        if (state == UIApplicationStateBackground) {
+            //发送本地推送
+            if (NSClassFromString(@"UNUserNotificationCenter")) { // ios 10
+                // 设置触发时间
+                UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:0.01 repeats:NO];
+                UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+                content.sound = [UNNotificationSound defaultSound];
+                // 提醒，可以根据需要进行弹出，比如显示消息详情，或者是显示“您有一条新消息”
+                content.body = @"您有一条新消息";
+                UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:msg.messageId content:content trigger:trigger];
+                [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:nil];
+            }else {
+                UILocalNotification *notification = [[UILocalNotification alloc] init];
+                notification.fireDate = [NSDate date]; //触发通知的时间
+                notification.alertBody = @"提醒内容";
+                notification.alertAction = @"Open";
+                notification.timeZone = [NSTimeZone defaultTimeZone];
+                notification.soundName = UILocalNotificationDefaultSoundName;
+                [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+            }
+        }else{
+            NSLog(@"SFHDJFKDGFLHJHGSAHDGJF");
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshMyMessage" object:nil];
+        }
+    }
 }
 
 #pragma mark - <注册第三方平台>
 -(void)registerApp
 {
-    [WXApi registerApp:@"wxd8b7051c3bd0f932"];
-    [WeiboSDK registerApp:@"4152357321"];
+    [WXApi registerApp:kWeChatAppID];
+    [WeiboSDK registerApp:kSinaAppKey];
 }
 
 
@@ -215,18 +248,18 @@
                           switch (platformType) {
                               case SSDKPlatformTypeSinaWeibo:
                                   //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
-                                  [appInfo SSDKSetupSinaWeiboByAppKey:@"4152357321"
-                                                            appSecret:@"cd648444ef6c5cc253c33e0fe5751d78"
-                                                          redirectUri:@"http://www.havshark.com/api/LoginApi/callback"
+                                  [appInfo SSDKSetupSinaWeiboByAppKey:kSinaAppKey
+                                                            appSecret:kSinaAppSecret
+                                                          redirectUri:kSinaWeiboCallBack
                                                              authType:SSDKAuthTypeSSO];
                                   break;
                               case SSDKPlatformTypeWechat:
-                                  [appInfo SSDKSetupWeChatByAppId:@"wxd8b7051c3bd0f932"
-                                                        appSecret:@"7890cc73b5085d7e14884d297ba4310d"];
+                                  [appInfo SSDKSetupWeChatByAppId:kWeChatAppID
+                                                        appSecret:kWeChatAppSecret];
                                   break;
                               case SSDKPlatformTypeQQ:
-                                  [appInfo SSDKSetupQQByAppId:@"1106054822"
-                                                       appKey:@"hfui5JGPp7tyVjrw"
+                                  [appInfo SSDKSetupQQByAppId:kQQAppID
+                                                       appKey:kQQAppSecret
                                                      authType:SSDKAuthTypeBoth];
                                   break;
                                   
@@ -307,6 +340,11 @@
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     NSLog(@"IM_Push_error:--%@--",error);
+}
+
+-(void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    [application registerForRemoteNotifications];
 }
 
 

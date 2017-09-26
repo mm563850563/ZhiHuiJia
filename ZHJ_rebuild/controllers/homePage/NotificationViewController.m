@@ -11,6 +11,7 @@
 //controllers
 #import "SubNotifi_MessageViewController.h"
 #import "SubNotifi_NotificationViewController.h"
+#import "DynamicDetailViewController.h"
 
 //views
 #import "SegmentTapView.h"
@@ -18,6 +19,7 @@
 
 //models
 #import "GetUserInfoResultModel.h"
+#import "MessageResultModel.h"
 
 //IM
 #import "EaseUI.h"
@@ -126,6 +128,18 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - <跳转dynamicDetailVC>
+-(void)jumpToDynamicDetailVCWithUserID:(NSString *)user_id talkID:(NSString *)talk_id messageID:(NSString *)message_id
+{
+    DynamicDetailViewController *dynamicDetailVC = [[DynamicDetailViewController alloc]initWithNibName:NSStringFromClass([DynamicDetailViewController class]) bundle:nil];
+    dynamicDetailVC.hidesBottomBarWhenPushed = YES;
+    dynamicDetailVC.user_id = user_id;
+    dynamicDetailVC.talk_id = talk_id;
+    dynamicDetailVC.message_id = message_id;
+    dynamicDetailVC.whereReuseFrom = @"notificationVC";
+    [self.navigationController pushViewController:dynamicDetailVC animated:YES];
+}
+
 #pragma mark - <跳转“私信聊天”页面>
 -(void)jumpToSingleChatVCWithModel:(GetUserInfoResultModel *)model
 {
@@ -145,6 +159,13 @@
         self.modelUserInfoResult = x.object;
         [self jumpToSingleChatVCWithModel:self.modelUserInfoResult];
     }];
+    
+    //跳转“动态详情”
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToDynamicDetailVCFromMainMessageVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        MessageResultModel *model = x.object;
+        [self jumpToDynamicDetailVCWithUserID:kUserDefaultObject(kUserInfo) talkID:model.talk_id messageID:model.message_id];
+    }];
+    
 }
 
 

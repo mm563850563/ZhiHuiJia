@@ -82,10 +82,24 @@
     [self.controllersArray addObject:subNotification_DiscountVC];
     [self.controllersArray addObject:subNotification_OtherVC];
     
-    self.flipTableView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 30, kSCREEN_WIDTH, self.view.frame.size.height-30) withArray:self.controllersArray];
+    self.flipTableView = [[FlipTableView alloc]initWithFrame:CGRectMake(0, 30, kSCREEN_WIDTH, self.view.frame.size.height-94) withArray:self.controllersArray];
     self.flipTableView.delegate = self;
     [self.view addSubview:self.flipTableView];
 }
+
+
+#pragma mark - <RAC响应>
+-(void)respondWithRAC
+{
+    //给segmentView添加未读消息数量
+    [[NSNotificationCenter defaultCenter]rac_addObserverForName:@"addUnreadCount_notification" object:nil];
+}
+
+
+
+
+
+
 
 
 
@@ -96,7 +110,6 @@
 -(void)selectedIndex:(NSInteger)index
 {
     [self.flipTableView selectIndex:index];
-    
 }
 
 #pragma mark - ******* FlipTableViewDelegate *******

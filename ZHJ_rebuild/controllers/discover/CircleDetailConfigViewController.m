@@ -14,7 +14,7 @@
 
 //controllers
 #import "AllCircleMemberViewController.h"
-#import "ActivityReportViewcontroller.h"
+#import "ReportTypeViewController.h"
 
 //tools
 #import "ShareTool.h"
@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    self.navigationItem.title = @"设置";
     [self settingTableView];
 }
 
@@ -77,12 +77,12 @@
 }
 
 #pragma mark - <跳转“举报”页面>
--(void)jumpToReportVC
+-(void)jumpToReportTypeVC
 {
-    ActivityReportViewcontroller *reportVC = [[ActivityReportViewcontroller alloc]initWithNibName:NSStringFromClass([ActivityReportViewcontroller class]) bundle:nil];
-    reportVC.hidesBottomBarWhenPushed = YES;
-    reportVC.navigationItem.title = @"举报";
-    [self.navigationController pushViewController:reportVC animated:YES];
+    ReportTypeViewController *reportTypeVC = [[ReportTypeViewController alloc]initWithNibName:NSStringFromClass([ReportTypeViewController class]) bundle:nil];
+    reportTypeVC.hidesBottomBarWhenPushed = YES;
+    reportTypeVC.navigationItem.title = @"选择举报类型";
+    [self.navigationController pushViewController:reportTypeVC animated:YES];
 }
 
 #pragma mark - <"退出圈子"请求>
@@ -206,7 +206,7 @@
         [self jumpToCheckAllMemberVCWithCircleID:self.circle_id];
     }else if (indexPath.row == 2){
         //举报
-        [self jumpToReportVC];
+        [self jumpToReportTypeVC];
     }else if (indexPath.row == 3){
         //退出圈子
         [self requestExitCircle];

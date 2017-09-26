@@ -40,8 +40,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self getMessageDetailCount];
     [self initSegmentView];
     [self initFlipTableView];
+    
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,6 +61,30 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - <获取详细消息数量>
+-(void)getMessageDetailCount
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetMessageDetailCount];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
+    [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                NSString *commentCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"review"]];
+                NSString *atCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"at"]];;
+                NSString *likeCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"like"]];;
+                //回到主线程刷新数据
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.segmentView addUnreadCountWithCount:commentCount index:0];
+                    [self.segmentView addUnreadCountWithCount:atCount index:1];
+                    [self.segmentView addUnreadCountWithCount:likeCount index:3];
+                });
+            }
+        }
+    } failBlock:nil];
+}
 
 #pragma mark - <初始化segmentView>
 -(void)initSegmentView
@@ -90,6 +117,24 @@
     [self.view addSubview:self.flipTableView];
 }
 
+
+#pragma mark - <RAC响应>
+-(void)respondWithRAC
+{
+    //给segmentView添加未读消息数量
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"addUnreadCount_message" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSDictionary *dict = (NSDictionary *)x.object;
+        NSString *count = dict[@"count"];
+        NSString *indexStr = dict[@"index"];
+        NSInteger index = [indexStr integerValue];
+        [self.segmentView addUnreadCountWithCount:count index:index];
+    }];
+    
+    //读取消息后刷新数据
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshNotificationVCAfterReadMessage" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        [self getMessageDetailCount];
+    }];
+}
 
 
 

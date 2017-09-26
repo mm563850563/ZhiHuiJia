@@ -104,11 +104,33 @@
     dispatch_group_async(group, queue, ^{
         [self getDynamicDetailCommentDataWithPage:@1];
     });
+    if ([self.whereReuseFrom isEqualToString:@"notificationVC"]) {
+        [self readMessage];
+    }
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
         [hud hideAnimated:YES afterDelay:1.0];
     });
+}
+
+#pragma mark - <读取消息>
+-(void)readMessage
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kReadMessage];
+    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
+                                    @"message_id":self.message_id};
+    [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+        if (response) {
+            NSDictionary *dataDict = (NSDictionary *)response;
+            NSNumber *code = (NSNumber *)dataDict[@"code"];
+            if ([code isEqual:@200]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshNotificationVCAfterReadMessage" object:nil];
+                });
+            }
+        }
+    } failBlock:nil];
 }
 
 #pragma mark - <动态详情数据>

@@ -75,9 +75,11 @@
 #define kRequestEmptyData @"数据为空"
 
 
-#pragma mark - <md5——盐>
+#pragma mark - <md5——盐>****************
 #define kSalt @"wz17zh"
 
+#pragma mark - <智惠加客服>*****************
+#define kZHJService @"160"
 
 #pragma mark - <导入头文件>********************
 //category
@@ -486,17 +488,38 @@
 #pragma mark - <123.退换货列表>
 #define kReturnGoodsList @"/User/returnGoodsList"
 
+#pragma mark - <124.举报>
+#define kReportCenter @"/User/reportCenter"
+
+#pragma mark - <125.获取消息的具体数量>
+#define kGetMessageDetailCount @"/Circle/getMessageDetailCount"
+
+#pragma mark - <126.已读>
+#define kReadMessage @"/Circle/readMessage"
 
 
 
 
 #pragma mark - <SDK_AppID>******************************
-#pragma mark - <微信支付AppID>
-#define kWeChatPay_AppID @"wxd8b7051c3bd0f932"
+#pragma mark - <新浪>
+#define kSinaAppKey @"4152357321"
+#define kSinaAppSecret @"cd648444ef6c5cc253c33e0fe5751d78"
+
+#pragma mark - <微信>
+#define kWeChatAppID @"wxd8b7051c3bd0f932"
+#define kWeChatAppSecret @"7890cc73b5085d7e14884d297ba4310d"
+
+#pragma mark - <QQ>
+#define kQQAppID @"1106054822"
+#define kQQAppSecret @"hfui5JGPp7tyVjrw"
+
+#pragma mark - <环信>
+#define kEMAppKey @"1145170815178204#zhihuijia"
+#define kEMApnsCert @"zhj_ios"
 
 #pragma mark - <第三方登录>*************************
 #pragma mark - <新浪回调>
-#define kSinaWeiboCallBack @"/LoginApi/callback"
+#define kSinaWeiboCallBack @"http://www.havshark.com/api/LoginApi/callback"
 
 #pragma mark - <三方登陆>
 #define kThirdLogin @"/User/thirdLogin"

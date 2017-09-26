@@ -10,10 +10,6 @@
 
 @interface PrivateLetterCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imgViewPortrait;
-@property (weak, nonatomic) IBOutlet UILabel *labelNickName;
-@property (weak, nonatomic) IBOutlet UILabel *labelContent;
-@property (weak, nonatomic) IBOutlet UILabel *labelTime;
-@property (weak, nonatomic) IBOutlet UIButton *btnUnread;
+@property (nonatomic, strong)NSDictionary *dictMessage;
 
 @end

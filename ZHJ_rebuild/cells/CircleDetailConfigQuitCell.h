@@ -10,4 +10,6 @@
 
 @interface CircleDetailConfigQuitCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIButton *btnConfirm;
+
 @end

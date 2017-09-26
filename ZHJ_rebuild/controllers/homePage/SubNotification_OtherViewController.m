@@ -8,7 +8,12 @@
 
 #import "SubNotification_OtherViewController.h"
 
-@interface SubNotification_OtherViewController ()
+//cells
+#import "NULLTableViewCell.h"
+
+@interface SubNotification_OtherViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -17,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self settingTableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +40,39 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+#pragma mark - <配置tableView>
+-(void)settingTableView
+{
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    UINib *nibNull = [UINib nibWithNibName:NSStringFromClass([NULLTableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
+}
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - ***** UITableViewDelegate,UITableViewDataSource ******
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NULLTableViewCell *cellNull = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NULLTableViewCell class])];
+    return cellNull;
+}
+
 
 @end

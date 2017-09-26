@@ -75,6 +75,11 @@
                 self.likeArray = [NSMutableArray arrayWithArray:modelData.result];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+//                    //设置未读消息
+//                    NSDictionary *dict = @{@"count":[NSString stringWithFormat:@"%lu",(unsigned long)self.likeArray.count],
+//                                           @"index":[NSString stringWithFormat:@"3"]};
+//                    [[NSNotificationCenter defaultCenter]postNotificationName:@"addUnreadCount_message" object:dict];
+                    
                     [self.tableView reloadData];
                     [hud hideAnimated:YES afterDelay:1.0];
                 });
@@ -153,7 +158,11 @@
     }
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MessageResultModel *modelResult = self.likeArray[indexPath.row];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToDynamicDetailVCFromMainMessageVC" object:modelResult];
+}
 
 
 

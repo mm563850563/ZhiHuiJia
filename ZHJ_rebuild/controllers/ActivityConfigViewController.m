@@ -16,7 +16,7 @@
 #import <ShareSDKUI/ShareSDKUI.h>
 
 //controllers
-#import "ActivityReportViewcontroller.h"
+#import "ReportTypeViewController.h"
 
 @interface ActivityConfigViewController ()
 
@@ -61,10 +61,10 @@
 #pragma mark - <举报按钮响应>
 - (IBAction)btnReportAction:(UIButton *)sender
 {
-    ActivityReportViewcontroller *reportVC = [[ActivityReportViewcontroller alloc]initWithNibName:NSStringFromClass([ActivityReportViewcontroller class]) bundle:nil];
-    reportVC.hidesBottomBarWhenPushed = YES;
-    reportVC.navigationItem.title = @"举报";
-    [self.navigationController pushViewController:reportVC animated:YES];
+    ReportTypeViewController *reportTypeVC = [[ReportTypeViewController alloc]initWithNibName:NSStringFromClass([ReportTypeViewController class]) bundle:nil];
+    reportTypeVC.hidesBottomBarWhenPushed = YES;
+    reportTypeVC.navigationItem.title = @"选择举报类型";
+    [self.navigationController pushViewController:reportTypeVC animated:YES];
 }
 
 #pragma mark - <退出活动>
