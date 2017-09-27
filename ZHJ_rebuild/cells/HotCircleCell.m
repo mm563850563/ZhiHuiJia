@@ -51,7 +51,16 @@
     self.labelMemberCount.text = [NSString stringWithFormat:@"%@个成员",modelJoinedCircle.members_count];
 }
 
-
+-(void)setModelSearchCircle:(SearchCircleResultModel *)modelSearchCircle
+{
+    _modelSearchCircle = modelSearchCircle;
+    NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelSearchCircle.logo];
+    NSURL *url = [NSURL URLWithString:imgStr];
+    [self.imgPotrait sd_setImageWithURL:url placeholderImage:kPlaceholder];
+    
+    self.labelCircleName.text = modelSearchCircle.circle_name;
+    self.labelMemberCount.text = [NSString stringWithFormat:@"%@个成员",modelSearchCircle.members_count];
+}
 
 
 

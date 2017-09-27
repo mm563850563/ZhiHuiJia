@@ -129,13 +129,14 @@
 }
 
 #pragma mark - <跳转dynamicDetailVC>
--(void)jumpToDynamicDetailVCWithUserID:(NSString *)user_id talkID:(NSString *)talk_id messageID:(NSString *)message_id
+-(void)jumpToDynamicDetailVCWithUserID:(NSString *)user_id talkID:(NSString *)talk_id messageID:(NSString *)message_id index:(NSString *)index
 {
     DynamicDetailViewController *dynamicDetailVC = [[DynamicDetailViewController alloc]initWithNibName:NSStringFromClass([DynamicDetailViewController class]) bundle:nil];
     dynamicDetailVC.hidesBottomBarWhenPushed = YES;
     dynamicDetailVC.user_id = user_id;
     dynamicDetailVC.talk_id = talk_id;
     dynamicDetailVC.message_id = message_id;
+    dynamicDetailVC.index = index;
     dynamicDetailVC.whereReuseFrom = @"notificationVC";
     [self.navigationController pushViewController:dynamicDetailVC animated:YES];
 }
@@ -162,8 +163,10 @@
     
     //跳转“动态详情”
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToDynamicDetailVCFromMainMessageVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        MessageResultModel *model = x.object;
-        [self jumpToDynamicDetailVCWithUserID:kUserDefaultObject(kUserInfo) talkID:model.talk_id messageID:model.message_id];
+        NSDictionary *dict = (NSDictionary *)x.object;
+        MessageResultModel *model = (MessageResultModel *)dict[@"data"];
+        NSString *index  = (NSString *)dict[@"index"];
+        [self jumpToDynamicDetailVCWithUserID:kUserDefaultObject(kUserInfo) talkID:model.talk_id messageID:model.message_id index:index];
     }];
     
 }

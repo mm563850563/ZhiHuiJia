@@ -36,6 +36,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:isAnimated];
     hud.mode = MBProgressHUDModeText;
     hud.label.text = warningMessage;
+    hud.label.numberOfLines = 0;
     hud.label.textColor = kColorFromRGB(kWhite);
     [hud setYOffset:230];
     hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;

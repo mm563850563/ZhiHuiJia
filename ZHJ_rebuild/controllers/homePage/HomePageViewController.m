@@ -569,16 +569,6 @@
     searchBar.delegate = self;
     [searchBGView addSubview:searchBar];
     
-//    UISearchBar *searchBar = [[UISearchBar alloc]initWithFrame:searchBGView.bounds];
-//    searchBar.delegate = self;
-//    searchBar.backgroundColor = kColorFromRGB(kWhite);
-//    UIColor *color = kColorFromRGBAndAlpha(kWhite, 0);
-//    UIImage *image = [UIImage imageWithColor:color height:30.0];
-//    [searchBar setSearchFieldBackgroundImage:image forState:UIControlStateNormal];
-//    searchBar.searchBarStyle = UISearchBarStyleMinimal;
-//    searchBar.placeholder = @"搜索                        ";
-//    [searchBGView addSubview:searchBar];
-    
     self.navigationItem.titleView = searchBGView;
     self.searchBarHomePage = searchBar;
 }

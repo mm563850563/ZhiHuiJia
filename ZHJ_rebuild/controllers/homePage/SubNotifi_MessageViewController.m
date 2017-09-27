@@ -24,6 +24,10 @@
 @property (nonatomic, strong)FlipTableView *flipTableView;
 @property (nonatomic, strong)NSMutableArray *controllersArray;
 
+@property (nonatomic, strong)NSString *commentCount;
+@property (nonatomic, strong)NSString *atCount;
+@property (nonatomic, strong)NSString *likeCount;
+
 @end
 
 @implementation SubNotifi_MessageViewController
@@ -73,8 +77,11 @@
             NSNumber *code = dataDict[@"code"];
             if ([code isEqual:@200]) {
                 NSString *commentCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"review"]];
-                NSString *atCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"at"]];;
-                NSString *likeCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"like"]];;
+                self.commentCount = commentCount;
+                NSString *atCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"at"]];
+                self.atCount = atCount;
+                NSString *likeCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"][@"like"]];
+                self.likeCount = likeCount;
                 //回到主线程刷新数据
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.segmentView addUnreadCountWithCount:commentCount index:0];
@@ -132,7 +139,26 @@
     
     //读取消息后刷新数据
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshNotificationVCAfterReadMessage" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self getMessageDetailCount];
+        NSDictionary *dict = (NSDictionary *)x.object;
+        NSString *indexStr = (NSString *)dict[@"index"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *count = [NSString string];
+            NSInteger index = [indexStr integerValue];
+            if ([indexStr isEqualToString:@"0"]) {
+                int temp = [self.commentCount intValue];
+                temp--;
+                count = [NSString stringWithFormat:@"%d",temp];
+            }else if ([indexStr isEqualToString:@"1"]){
+                int temp = [self.atCount intValue];
+                temp--;
+                count = [NSString stringWithFormat:@"%d",temp];
+            }else if ([indexStr isEqualToString:@"3"]){
+                int temp = [self.likeCount intValue];
+                temp--;
+                count = [NSString stringWithFormat:@"%d",temp];
+            }
+            [self.segmentView addUnreadCountWithCount:count index:index];
+        });
     }];
 }
 

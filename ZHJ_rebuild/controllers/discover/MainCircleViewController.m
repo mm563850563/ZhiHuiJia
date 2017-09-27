@@ -19,6 +19,7 @@
 #import "ApplyCircleViewController.h"
 #import "MoreCycleViewController.h"
 #import "CircleDetailViewController.h"
+#import "SearchCircleViewController.h"
 
 @interface MainCircleViewController ()<SegmentTapViewDelegate>
 
@@ -64,6 +65,21 @@
 -(void)settingSelf
 {
     self.view.backgroundColor = kColorFromRGB(kLightGray);
+    
+    UIButton *btnSearch = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnSearch.frame = CGRectMake(0, 0, 20, 20);
+    [btnSearch setImage:[UIImage imageNamed:@"search_black"] forState:UIControlStateNormal];
+    [btnSearch addTarget:self action:@selector(btnSearchAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *barBtnSearch = [[UIBarButtonItem alloc]initWithCustomView:btnSearch];
+    self.navigationItem.rightBarButtonItem = barBtnSearch;
+}
+
+#pragma mark - <搜索按钮响应>
+-(void)btnSearchAction:(UIButton *)sender
+{
+    SearchCircleViewController *searchCircleVC = [[SearchCircleViewController alloc]initWithNibName:NSStringFromClass([SearchCircleViewController class]) bundle:nil];
+    [self.navigationController pushViewController:searchCircleVC animated:YES];
 }
 
 #pragma mark - <初始化“申请圈子”按钮>

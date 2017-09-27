@@ -111,6 +111,8 @@
 //api
 #pragma mark - <Domain_Base>******************************
 #define kDomainBase @"http://www.havshark.com/api"
+//#define kDomainBase @"http://www.51zhihuijia.com/api"
+
 
 #pragma mark - <Domain_Image>
 //#define kDomainImage @"http://www.havshark.com"
@@ -496,6 +498,18 @@
 
 #pragma mark - <126.已读>
 #define kReadMessage @"/Circle/readMessage"
+
+#pragma mark - <127.分享成功后获得摇一摇机会>
+#define kGetChanceByShare @"/User/getChanceByShare"
+
+#pragma mark - <128.搜索圈子>
+#define kSearchCircle @"/Circle/searchCircle"
+
+#pragma mark - <129.搜索话题或用户>
+#define kSearchTopicOrUser @"/Circle/searchTopicOrUser"
+
+
+
 
 
 

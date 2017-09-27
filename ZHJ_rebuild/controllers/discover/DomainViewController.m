@@ -160,6 +160,9 @@
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    int page = [self.page intValue];
+                    page++;
+                    self.page = [NSNumber numberWithInt:page];
                     [self.tableView reloadData];
                     [self.tableView.mj_footer endRefreshing];
                 });
@@ -208,6 +211,7 @@
             if ([code isEqual:@200]) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    self.page = @1;
                     [self.circleDynamicArray removeAllObjects];
                     [self getMyDynamicDataWithPage:@1];
                     
@@ -259,6 +263,7 @@
             if ([code isEqual:@200]) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    self.page = @1;
                     [self.circleDynamicArray removeAllObjects];
                     [self getMyDynamicDataWithPage:@1];
                     
@@ -303,9 +308,7 @@
     [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
     
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        int page = [self.page intValue];
-        page++;
-        self.page = [NSNumber numberWithInt:page];
+        
         [self getMyDynamicDataWithPage:self.page];
     }];
 }
@@ -418,6 +421,8 @@
     
     //发新动态后刷新该页面
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshMyDomainVCAfterPostMessage" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+        self.page = @1;
+        [self.circleDynamicArray removeAllObjects];
         [self getMyDynamicDataWithPage:@1];
     }];
     

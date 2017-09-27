@@ -101,6 +101,9 @@
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    NSInteger page = [self.page integerValue];
+                    page++;
+                    self.page = [NSNumber numberWithInteger:page];
                     [hud hideAnimated:YES afterDelay:1.0];
                     [self.tableView reloadData];
                     [self.tableView.mj_footer endRefreshing];
@@ -151,6 +154,9 @@
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    NSInteger page = [self.page integerValue];
+                    page++;
+                    self.page = [NSNumber numberWithInteger:page];
                     [hud hideAnimated:YES afterDelay:1.0];
                     [self.tableView reloadData];
                     [self.tableView.mj_footer endRefreshing];
@@ -196,9 +202,7 @@
     [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
     
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        NSInteger page = [self.page integerValue];
-        page++;
-        self.page = [NSNumber numberWithInteger:page];
+        
         if ([self.moreType isEqualToString:@"moreHot"]) {
             [self getMoreHotCircleDataWithHUD:nil];
         }else if ([self.moreType isEqualToString:@"moreJoined"]){

@@ -18,40 +18,45 @@
 #import <ShareSDKUI/SSUIEditorViewStyle.h>
 //#import <ShareSDKUI/SSUIShareActionSheetCustomItem.h>
 
+#import "ShakeChanceAfterShare.h"
+
+
+
+
+//@interface ShareTool ()<UIAlertViewDelegate>{
+//    UIAlertView *alertSuccess;
+//}
+//
+//@end
+
 @implementation ShareTool
 
 +(void)shareWithParams:(NSMutableDictionary *)params
 {
-//    UIImage *imgQQ = [UIImage imageNamed:@"share_qq"];
-//    SSUIShareActionSheetCustomItem *itemQQ = [SSUIShareActionSheetCustomItem itemWithIcon:imgQQ label:@"腾讯QQ" onClick:^{
-//        
-//    }];
-//    
-//    UIImage *imgSina = [UIImage imageNamed:@"share_sina"];
-//    SSUIShareActionSheetCustomItem *itemSina = [SSUIShareActionSheetCustomItem itemWithIcon:<#(UIImage *)#> label:<#(NSString *)#> onClick:<#^(void)clickHandler#>]
-    
-    
-    
     [SSUIShareActionSheetStyle isCancelButtomHidden:YES];
-    
     
     //2.分享（可以弹出我们的分享菜单和编辑界面）
     [ShareSDK showShareActionSheet:nil
-                             items:@[@(SSDKPlatformSubTypeQQFriend),
-                                     @(SSDKPlatformTypeSinaWeibo),
+                             items:@[@(SSDKPlatformTypeSinaWeibo),
                                      @(SSDKPlatformSubTypeWechatSession),
-                                     @(SSDKPlatformSubTypeWechatTimeline)]
+                                     @(SSDKPlatformSubTypeWechatTimeline),
+                                     @(SSDKPlatformSubTypeQQFriend)]
                        shareParams:params
                onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
                    switch (state) {
                        case SSDKResponseStateSuccess:
                        {
-                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                           //分享成功后获得摇一摇机会
+                           //http://www.havshark.com/api/User/getChanceByShare
+                           [ShakeChanceAfterShare getShakeChanceAfterShare];
+                           
+                           UIAlertView *alertSuccess = [[UIAlertView alloc] initWithTitle:@"分享成功"
                                                                                message:nil
                                                                               delegate:nil
                                                                      cancelButtonTitle:@"确定"
                                                                      otherButtonTitles:nil];
-                           [alertView show];
+//                           alertSuccess.delegate = self;
+                           [alertSuccess show];
                            break;
                        }
                            
@@ -71,5 +76,48 @@
                    }
                }];
 }
+
+//#pragma mark - <分享成功后获得摇一摇机会>
+//-(void)getShakeChanceAfterShare
+//{
+//    NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetChanceByShare];
+//    NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
+//    
+//    [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
+//        if (response) {
+//            NSDictionary *dataDict = (NSDictionary *)response;
+//            NSNumber *code = dataDict[@"code"];
+//            if ([code isEqual:@200]) {
+//                //回到主线程刷新数据
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    
+//                });
+//            }
+//        }
+//    } failBlock:^(NSError *error) {
+////        dispatch_async(dispatch_get_main_queue(), ^{
+////            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+////            [hudWarning hideAnimated:YES afterDelay:1.0];
+////        });
+//        NSLog(@"%@",error);
+//    }];
+//}
+
+
+
+
+
+
+
+
+
+
+//#pragma mark - ******UIAlertViewDelegate********
+//-(void)willPresentAlertView:(UIAlertView *)alertView
+//{
+//    if (alertView == alertSuccess) {
+//        [self getShakeChanceAfterShare];
+//    }
+//}
 
 @end

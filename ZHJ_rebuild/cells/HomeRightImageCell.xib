@@ -70,11 +70,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某东价:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8H-jk-cb3">
-                                        <rect key="frame" x="44.5" y="42.5" width="87" height="15"/>
+                                        <rect key="frame" x="44.5" y="45" width="87" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="CE6-6t-YTm"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -92,8 +92,8 @@
                                     <constraint firstItem="18C-mM-9LO" firstAttribute="top" secondItem="1Yn-oG-0cp" secondAttribute="bottom" id="WkQ-vh-8Ht"/>
                                     <constraint firstItem="CXp-aK-6lR" firstAttribute="leading" secondItem="xSW-rd-bDz" secondAttribute="leading" id="Y31-2n-kVJ"/>
                                     <constraint firstItem="18C-mM-9LO" firstAttribute="leading" secondItem="FjN-DG-hek" secondAttribute="trailing" id="Yjw-Rb-1nO"/>
+                                    <constraint firstItem="f8H-jk-cb3" firstAttribute="bottom" secondItem="18C-mM-9LO" secondAttribute="bottom" id="c97-Yn-7cD"/>
                                     <constraint firstItem="CXp-aK-6lR" firstAttribute="top" secondItem="xSW-rd-bDz" secondAttribute="top" id="hdc-jC-Vod"/>
-                                    <constraint firstItem="f8H-jk-cb3" firstAttribute="centerY" secondItem="18C-mM-9LO" secondAttribute="centerY" id="m0Q-3V-UBW"/>
                                     <constraint firstAttribute="trailing" secondItem="f8H-jk-cb3" secondAttribute="trailing" constant="10" id="ozI-5m-oKT"/>
                                     <constraint firstItem="f8H-jk-cb3" firstAttribute="leading" secondItem="18C-mM-9LO" secondAttribute="trailing" constant="5" id="pzH-hj-Xwu"/>
                                 </constraints>

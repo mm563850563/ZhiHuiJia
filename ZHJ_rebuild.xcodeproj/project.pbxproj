@@ -183,6 +183,21 @@
 		DD3DA08E1F792DC400FC839F /* AfterSaleListResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA08D1F792DC400FC839F /* AfterSaleListResultModel.m */; };
 		DD3DA0921F7A061800FC839F /* ReportTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA0901F7A061800FC839F /* ReportTypeViewController.m */; };
 		DD3DA0931F7A061800FC839F /* ReportTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD3DA0911F7A061800FC839F /* ReportTypeViewController.xib */; };
+		DD3DA0961F7B866900FC839F /* ShakeChanceAfterShare.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA0951F7B866900FC839F /* ShakeChanceAfterShare.m */; };
+		DD3DA09A1F7BA45900FC839F /* SearchCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA0981F7BA45900FC839F /* SearchCircleViewController.m */; };
+		DD3DA09B1F7BA45900FC839F /* SearchCircleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD3DA0991F7BA45900FC839F /* SearchCircleViewController.xib */; };
+		DD3DA09F1F7BB52300FC839F /* SearchCircleDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA09E1F7BB52300FC839F /* SearchCircleDataModel.m */; };
+		DD3DA0A21F7BB53500FC839F /* SearchCircleResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA0A11F7BB53500FC839F /* SearchCircleResultModel.m */; };
+		DD3DA0A61F7BC14F00FC839F /* SearchTopicOrUserDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA0A51F7BC14F00FC839F /* SearchTopicOrUserDataModel.m */; };
+		DD3DA0A91F7BC16A00FC839F /* SearchTopicOrUserResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA0A81F7BC16A00FC839F /* SearchTopicOrUserResultModel.m */; };
+		DD3DA0AC1F7BC19200FC839F /* SearchTopicOrUserTopics_infoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA0AB1F7BC19200FC839F /* SearchTopicOrUserTopics_infoModel.m */; };
+		DD3DA0AF1F7BC1B300FC839F /* SearchTopicOrUserUsers_infoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA0AE1F7BC1B300FC839F /* SearchTopicOrUserUsers_infoModel.m */; };
+		DD3DA0B31F7BC2EA00FC839F /* SearchTopicOrUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA0B11F7BC2EA00FC839F /* SearchTopicOrUserViewController.m */; };
+		DD3DA0B41F7BC2EA00FC839F /* SearchTopicOrUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD3DA0B21F7BC2EA00FC839F /* SearchTopicOrUserViewController.xib */; };
+		DD3DA0B81F7BC44900FC839F /* SearchTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA0B61F7BC44900FC839F /* SearchTopicCell.m */; };
+		DD3DA0B91F7BC44900FC839F /* SearchTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD3DA0B71F7BC44900FC839F /* SearchTopicCell.xib */; };
+		DD3DA0C21F7BC48B00FC839F /* SearchUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3DA0C01F7BC48B00FC839F /* SearchUserCell.m */; };
+		DD3DA0C31F7BC48B00FC839F /* SearchUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD3DA0C11F7BC48B00FC839F /* SearchUserCell.xib */; };
 		DD40B71B1F164CE000839748 /* HomePageMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B7191F164CE000839748 /* HomePageMainCell.m */; };
 		DD40B71C1F164CE000839748 /* HomePageMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD40B71A1F164CE000839748 /* HomePageMainCell.xib */; };
 		DD40B71F1F17027E00839748 /* YouthColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40B71E1F17027E00839748 /* YouthColorCell.m */; };
@@ -1184,6 +1199,32 @@
 		DD3DA08F1F7A061800FC839F /* ReportTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportTypeViewController.h; path = controllers/discover/ReportTypeViewController.h; sourceTree = "<group>"; };
 		DD3DA0901F7A061800FC839F /* ReportTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportTypeViewController.m; path = controllers/discover/ReportTypeViewController.m; sourceTree = "<group>"; };
 		DD3DA0911F7A061800FC839F /* ReportTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportTypeViewController.xib; path = controllers/discover/ReportTypeViewController.xib; sourceTree = "<group>"; };
+		DD3DA0941F7B866900FC839F /* ShakeChanceAfterShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShakeChanceAfterShare.h; path = tools/ShakeChanceAfterShare.h; sourceTree = "<group>"; };
+		DD3DA0951F7B866900FC839F /* ShakeChanceAfterShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShakeChanceAfterShare.m; path = tools/ShakeChanceAfterShare.m; sourceTree = "<group>"; };
+		DD3DA0971F7BA45900FC839F /* SearchCircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchCircleViewController.h; path = controllers/discover/SearchCircleViewController.h; sourceTree = "<group>"; };
+		DD3DA0981F7BA45900FC839F /* SearchCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchCircleViewController.m; path = controllers/discover/SearchCircleViewController.m; sourceTree = "<group>"; };
+		DD3DA0991F7BA45900FC839F /* SearchCircleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchCircleViewController.xib; path = controllers/discover/SearchCircleViewController.xib; sourceTree = "<group>"; };
+		DD3DA09D1F7BB52300FC839F /* SearchCircleDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchCircleDataModel.h; path = models/SearchCircleDataModel.h; sourceTree = "<group>"; };
+		DD3DA09E1F7BB52300FC839F /* SearchCircleDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchCircleDataModel.m; path = models/SearchCircleDataModel.m; sourceTree = "<group>"; };
+		DD3DA0A01F7BB53500FC839F /* SearchCircleResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchCircleResultModel.h; path = models/SearchCircleResultModel.h; sourceTree = "<group>"; };
+		DD3DA0A11F7BB53500FC839F /* SearchCircleResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchCircleResultModel.m; path = models/SearchCircleResultModel.m; sourceTree = "<group>"; };
+		DD3DA0A41F7BC14F00FC839F /* SearchTopicOrUserDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTopicOrUserDataModel.h; path = models/SearchTopicOrUserDataModel.h; sourceTree = "<group>"; };
+		DD3DA0A51F7BC14F00FC839F /* SearchTopicOrUserDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTopicOrUserDataModel.m; path = models/SearchTopicOrUserDataModel.m; sourceTree = "<group>"; };
+		DD3DA0A71F7BC16A00FC839F /* SearchTopicOrUserResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTopicOrUserResultModel.h; path = models/SearchTopicOrUserResultModel.h; sourceTree = "<group>"; };
+		DD3DA0A81F7BC16A00FC839F /* SearchTopicOrUserResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTopicOrUserResultModel.m; path = models/SearchTopicOrUserResultModel.m; sourceTree = "<group>"; };
+		DD3DA0AA1F7BC19200FC839F /* SearchTopicOrUserTopics_infoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTopicOrUserTopics_infoModel.h; path = models/SearchTopicOrUserTopics_infoModel.h; sourceTree = "<group>"; };
+		DD3DA0AB1F7BC19200FC839F /* SearchTopicOrUserTopics_infoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTopicOrUserTopics_infoModel.m; path = models/SearchTopicOrUserTopics_infoModel.m; sourceTree = "<group>"; };
+		DD3DA0AD1F7BC1B300FC839F /* SearchTopicOrUserUsers_infoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTopicOrUserUsers_infoModel.h; path = models/SearchTopicOrUserUsers_infoModel.h; sourceTree = "<group>"; };
+		DD3DA0AE1F7BC1B300FC839F /* SearchTopicOrUserUsers_infoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTopicOrUserUsers_infoModel.m; path = models/SearchTopicOrUserUsers_infoModel.m; sourceTree = "<group>"; };
+		DD3DA0B01F7BC2EA00FC839F /* SearchTopicOrUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTopicOrUserViewController.h; path = controllers/discover/SearchTopicOrUserViewController.h; sourceTree = "<group>"; };
+		DD3DA0B11F7BC2EA00FC839F /* SearchTopicOrUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTopicOrUserViewController.m; path = controllers/discover/SearchTopicOrUserViewController.m; sourceTree = "<group>"; };
+		DD3DA0B21F7BC2EA00FC839F /* SearchTopicOrUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchTopicOrUserViewController.xib; path = controllers/discover/SearchTopicOrUserViewController.xib; sourceTree = "<group>"; };
+		DD3DA0B51F7BC44900FC839F /* SearchTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTopicCell.h; path = cells/SearchTopicCell.h; sourceTree = "<group>"; };
+		DD3DA0B61F7BC44900FC839F /* SearchTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTopicCell.m; path = cells/SearchTopicCell.m; sourceTree = "<group>"; };
+		DD3DA0B71F7BC44900FC839F /* SearchTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchTopicCell.xib; path = cells/SearchTopicCell.xib; sourceTree = "<group>"; };
+		DD3DA0BF1F7BC48B00FC839F /* SearchUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchUserCell.h; path = cells/SearchUserCell.h; sourceTree = "<group>"; };
+		DD3DA0C01F7BC48B00FC839F /* SearchUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchUserCell.m; path = cells/SearchUserCell.m; sourceTree = "<group>"; };
+		DD3DA0C11F7BC48B00FC839F /* SearchUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchUserCell.xib; path = cells/SearchUserCell.xib; sourceTree = "<group>"; };
 		DD40B7181F164CE000839748 /* HomePageMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomePageMainCell.h; path = cells/HomePageMainCell.h; sourceTree = "<group>"; };
 		DD40B7191F164CE000839748 /* HomePageMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomePageMainCell.m; path = cells/HomePageMainCell.m; sourceTree = "<group>"; };
 		DD40B71A1F164CE000839748 /* HomePageMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomePageMainCell.xib; path = cells/HomePageMainCell.xib; sourceTree = "<group>"; };
@@ -2826,6 +2867,32 @@
 			name = AfterSaleListModel;
 			sourceTree = "<group>";
 		};
+		DD3DA09C1F7BB4FF00FC839F /* SearchCircleModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD3DA09D1F7BB52300FC839F /* SearchCircleDataModel.h */,
+				DD3DA09E1F7BB52300FC839F /* SearchCircleDataModel.m */,
+				DD3DA0A01F7BB53500FC839F /* SearchCircleResultModel.h */,
+				DD3DA0A11F7BB53500FC839F /* SearchCircleResultModel.m */,
+			);
+			name = SearchCircleModel;
+			sourceTree = "<group>";
+		};
+		DD3DA0A31F7BC12500FC839F /* SearchTopicOrUserModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD3DA0A41F7BC14F00FC839F /* SearchTopicOrUserDataModel.h */,
+				DD3DA0A51F7BC14F00FC839F /* SearchTopicOrUserDataModel.m */,
+				DD3DA0A71F7BC16A00FC839F /* SearchTopicOrUserResultModel.h */,
+				DD3DA0A81F7BC16A00FC839F /* SearchTopicOrUserResultModel.m */,
+				DD3DA0AA1F7BC19200FC839F /* SearchTopicOrUserTopics_infoModel.h */,
+				DD3DA0AB1F7BC19200FC839F /* SearchTopicOrUserTopics_infoModel.m */,
+				DD3DA0AD1F7BC1B300FC839F /* SearchTopicOrUserUsers_infoModel.h */,
+				DD3DA0AE1F7BC1B300FC839F /* SearchTopicOrUserUsers_infoModel.m */,
+			);
+			name = SearchTopicOrUserModel;
+			sourceTree = "<group>";
+		};
 		DD4CD2FA1F70AE290002C3BD /* IM */ = {
 			isa = PBXGroup;
 			children = (
@@ -3691,6 +3758,8 @@
 			children = (
 				DD5AEEA61F6A847F002E4F49 /* ShareTool.h */,
 				DD5AEEA71F6A847F002E4F49 /* ShareTool.m */,
+				DD3DA0941F7B866900FC839F /* ShakeChanceAfterShare.h */,
+				DD3DA0951F7B866900FC839F /* ShakeChanceAfterShare.m */,
 			);
 			name = ShareTool;
 			sourceTree = "<group>";
@@ -4512,6 +4581,12 @@
 				DD3DA0741F78DF1C00FC839F /* LogisticsNormalTableViewCell.h */,
 				DD3DA0751F78DF1C00FC839F /* LogisticsNormalTableViewCell.m */,
 				DD3DA0761F78DF1C00FC839F /* LogisticsNormalTableViewCell.xib */,
+				DD3DA0B51F7BC44900FC839F /* SearchTopicCell.h */,
+				DD3DA0B61F7BC44900FC839F /* SearchTopicCell.m */,
+				DD3DA0B71F7BC44900FC839F /* SearchTopicCell.xib */,
+				DD3DA0BF1F7BC48B00FC839F /* SearchUserCell.h */,
+				DD3DA0C01F7BC48B00FC839F /* SearchUserCell.m */,
+				DD3DA0C11F7BC48B00FC839F /* SearchUserCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -4690,6 +4765,8 @@
 				DD80F5321F751E660036647C /* GetUserInfoModel */,
 				DD3DA0791F78E7A700FC839F /* LogisticsModel */,
 				DD3DA0881F792D8500FC839F /* AfterSaleListModel */,
+				DD3DA09C1F7BB4FF00FC839F /* SearchCircleModel */,
+				DD3DA0A31F7BC12500FC839F /* SearchTopicOrUserModel */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -4830,6 +4907,9 @@
 			children = (
 				EC4BA11D1F13771100B9BE1A /* DiscoverViewController.h */,
 				EC4BA11E1F13771100B9BE1A /* DiscoverViewController.m */,
+				DD3DA0B01F7BC2EA00FC839F /* SearchTopicOrUserViewController.h */,
+				DD3DA0B11F7BC2EA00FC839F /* SearchTopicOrUserViewController.m */,
+				DD3DA0B21F7BC2EA00FC839F /* SearchTopicOrUserViewController.xib */,
 				DD095FC71F5407E9002F4AED /* SelectTopicListViewController.h */,
 				DD095FC81F5407E9002F4AED /* SelectTopicListViewController.m */,
 				DD095FC91F5407E9002F4AED /* SelectTopicListViewController.xib */,
@@ -4878,6 +4958,9 @@
 				DD6287D81F21DE0C0030331D /* MyFocusViewController.xib */,
 				DD6287861F20B0B90030331D /* MainCircleViewController.h */,
 				DD6287871F20B0BA0030331D /* MainCircleViewController.m */,
+				DD3DA0971F7BA45900FC839F /* SearchCircleViewController.h */,
+				DD3DA0981F7BA45900FC839F /* SearchCircleViewController.m */,
+				DD3DA0991F7BA45900FC839F /* SearchCircleViewController.xib */,
 				DD58FF2D1F4A90CF009EC9F2 /* ApplyCircleViewController.h */,
 				DD58FF2E1F4A90CF009EC9F2 /* ApplyCircleViewController.m */,
 				DD58FF2F1F4A90CF009EC9F2 /* ApplyCircleViewController.xib */,
@@ -5158,6 +5241,7 @@
 				DD6287351F1F52BE0030331D /* Configuration_ButtonCell.xib in Resources */,
 				DD58FF811F4E8312009EC9F2 /* ReleaseActivityUploadImageCell.xib in Resources */,
 				DD62877B1F208CA40030331D /* MyCircleViewController.xib in Resources */,
+				DD3DA0B91F7BC44900FC839F /* SearchTopicCell.xib in Resources */,
 				DD5E86C41F613FBA00690729 /* SelectThemeAndClassifyViewController.xib in Resources */,
 				DDFB81F21F18686A00AEAAA7 /* CartProductListCell.xib in Resources */,
 				DD5AEEA01F6A6D19002E4F49 /* WeiboSDK.bundle in Resources */,
@@ -5193,6 +5277,7 @@
 				DD0939081F442E7400A75182 /* OrderListViewController_Four.xib in Resources */,
 				DDFB82671F187A7900AEAAA7 /* cb_mono_off@2x.png in Resources */,
 				DD58FF521F4C2D45009EC9F2 /* MyTrackTableViewCell.xib in Resources */,
+				DD3DA0C31F7BC48B00FC839F /* SearchUserCell.xib in Resources */,
 				DD6287D01F21C26C0030331D /* DomainViewController.xib in Resources */,
 				DD6287001F1E405A0030331D /* Discover_RecommendCell.xib in Resources */,
 				DD58FF6B1F4D56CB009EC9F2 /* AddCommentTableViewCell.xib in Resources */,
@@ -5305,6 +5390,7 @@
 				DD58FFBE1F511AFB009EC9F2 /* MyActivitySignUpListPassedViewController.xib in Resources */,
 				DD6287581F2049A10030331D /* ModifyPasswordViewController.xib in Resources */,
 				DD5AEE951F6A6D19002E4F49 /* ShareSDKConfigFile.bundle in Resources */,
+				DD3DA0B41F7BC2EA00FC839F /* SearchTopicOrUserViewController.xib in Resources */,
 				DD5AEE5D1F67AFD1002E4F49 /* PayTypeView.xib in Resources */,
 				DD40B7241F1705A000839748 /* HomeCollectCell1.xib in Resources */,
 				DD5AEE9E1F6A6D19002E4F49 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
@@ -5319,6 +5405,7 @@
 				DD0939171F4586F100A75182 /* WeChatAccountViewController.xib in Resources */,
 				DDFB82561F187A7900AEAAA7 /* cb_box_off.png in Resources */,
 				DD3DA06E1F78D68200FC839F /* LogisticsMessageCell.xib in Resources */,
+				DD3DA09B1F7BA45900FC839F /* SearchCircleViewController.xib in Resources */,
 				DD6287231F1F41BF0030331D /* DynamicWithoutCommentCell.xib in Resources */,
 				DD6287D51F21C9930030331D /* DomainHeaderView.xib in Resources */,
 				DD5AEE6E1F681C80002E4F49 /* SuccessPayRecommendMemberSingleCountCell.xib in Resources */,
@@ -5449,6 +5536,7 @@
 				DD4CF0AE1F29A8FC0024156F /* AtSomeOneCell.m in Sources */,
 				DD0DBB0A1F3431650098F5FA /* GetSpecPriceDataModel.m in Sources */,
 				DD58FFD21F516766009EC9F2 /* MyJoinedActivityViewController.m in Sources */,
+				DD3DA0961F7B866900FC839F /* ShakeChanceAfterShare.m in Sources */,
 				DD0939231F45918900A75182 /* UIButton+Badge.m in Sources */,
 				DD2ACB9E1F60EBA900EEFF8F /* HomePageRecommendHeaderView.m in Sources */,
 				DD0960FC1F5A7C03002F4AED /* TopicDetailDataModel.m in Sources */,
@@ -5469,11 +5557,14 @@
 				DD184E271F3D5658009BFF5B /* NULLTableViewCell.m in Sources */,
 				DDE0FCFE1F35653800269DBD /* CartListModel.m in Sources */,
 				DD80F51F1F725B9F0036647C /* ZHJMessageViewController.m in Sources */,
+				DD3DA09F1F7BB52300FC839F /* SearchCircleDataModel.m in Sources */,
 				DD4CF0311F2885660024156F /* ActivityApplyViewController.m in Sources */,
+				DD3DA0A21F7BB53500FC839F /* SearchCircleResultModel.m in Sources */,
 				DD09600C1F55512A002F4AED /* RankList_my_first_rank_infoModel.m in Sources */,
 				DD6898371F31903B008B6A8F /* LoginView.m in Sources */,
 				DD4CD47C1F70DE730002C3BD /* UIViewController+DismissKeyboard.m in Sources */,
 				DD4CD4351F70DE730002C3BD /* wav.mm in Sources */,
+				DD3DA0B81F7BC44900FC839F /* SearchTopicCell.m in Sources */,
 				DDE0FD071F35662400269DBD /* CartList_CartListModel.m in Sources */,
 				DD6287341F1F52BE0030331D /* Configuration_ButtonCell.m in Sources */,
 				EC4BA0C91F1359DF00B9BE1A /* FlipTableView.m in Sources */,
@@ -5562,6 +5653,7 @@
 				DDC52EAF1F41CFBF00ECF211 /* WXApiManager.m in Sources */,
 				DD3DA0721F78DA8B00FC839F /* LogisticsRealTimeLatestCell.m in Sources */,
 				DD4CD45E1F70DE730002C3BD /* MKAnnotationView+EMWebCache.m in Sources */,
+				DD3DA0A61F7BC14F00FC839F /* SearchTopicOrUserDataModel.m in Sources */,
 				DD09392A1F46C7B900A75182 /* MySlider.m in Sources */,
 				EC4BA25B1F15FDE400B9BE1A /* DiscoverDynamicViewController.m in Sources */,
 				DD4CD4861F70DE730002C3BD /* EaseConversationListViewController.m in Sources */,
@@ -5580,6 +5672,7 @@
 				DD40B7411F179C3100839748 /* SameHobbyCell.m in Sources */,
 				DDDD17C51F2C6C06006BE206 /* IndexCarouselModel.m in Sources */,
 				EC4BA1191F136DBB00B9BE1A /* MainTabBarViewController.m in Sources */,
+				DD3DA0C21F7BC48B00FC839F /* SearchUserCell.m in Sources */,
 				DD4CD4931F70DE730002C3BD /* EaseBubbleView+Image.m in Sources */,
 				DD0960E81F5989FA002F4AED /* ProductCommentResultModel.m in Sources */,
 				DD6288091F22EA510030331D /* SubMessage_AboutMeViewController.m in Sources */,
@@ -5676,7 +5769,9 @@
 				DD6897F61F2F0E88008B6A8F /* HomeGoodsBigImageModel.m in Sources */,
 				DD4CD46F1F70DE730002C3BD /* PSTCollectionViewUpdateItem.m in Sources */,
 				EC4BA2471F14DFE900B9BE1A /* BrandApplyViewController.m in Sources */,
+				DD3DA0AF1F7BC1B300FC839F /* SearchTopicOrUserUsers_infoModel.m in Sources */,
 				DD62877A1F208CA40030331D /* MyCircleViewController.m in Sources */,
+				DD3DA0AC1F7BC19200FC839F /* SearchTopicOrUserTopics_infoModel.m in Sources */,
 				DD4CD48F1F70DE730002C3BD /* EaseMessageCell.m in Sources */,
 				DD40B7391F176E8600839748 /* EqualSpaceFlowLayout.m in Sources */,
 				DD095FDE1F54F8AA002F4AED /* AllCircleMemberViewController.m in Sources */,
@@ -5831,6 +5926,7 @@
 				DD69B2F91F3AFD390036F368 /* STPickerViewUI.m in Sources */,
 				DD58FF8E1F4FAE92009EC9F2 /* NSDictionary+ToJson.m in Sources */,
 				DD6287431F1F8C1E0030331D /* MyAddressViewController.m in Sources */,
+				DD3DA09A1F7BA45900FC839F /* SearchCircleViewController.m in Sources */,
 				DD4CD47F1F70DE730002C3BD /* EaseConvertToCommonEmoticonsHelper.m in Sources */,
 				DD6288221F22EC7A0030331D /* SubNotification_DiscountViewController.m in Sources */,
 				DD52ECFF1F5D7B8E00B4CE96 /* MyFansAndMyFocusResultModel.m in Sources */,
@@ -5873,6 +5969,7 @@
 				DD0938E51F43E7D800A75182 /* OrderListModel.m in Sources */,
 				DD3DA0821F78E89C00FC839F /* LogisticsRealTimeModel.m in Sources */,
 				DD4CD4991F70DE730002C3BD /* EaseChatToolbar.m in Sources */,
+				DD3DA0B31F7BC2EA00FC839F /* SearchTopicOrUserViewController.m in Sources */,
 				DDFB82B61F1D931500AEAAA7 /* PYSearchSuggestionViewController.m in Sources */,
 				DD0960001F5550AC002F4AED /* RankListDataModel.m in Sources */,
 				DD80F53B1F753DA90036647C /* UIImageView+Rotation.m in Sources */,
@@ -5925,6 +6022,7 @@
 				DD3DA0921F7A061800FC839F /* ReportTypeViewController.m in Sources */,
 				DDFB826B1F187A7900AEAAA7 /* SSCheckBoxView.m in Sources */,
 				DD58FF6A1F4D56CB009EC9F2 /* AddCommentTableViewCell.m in Sources */,
+				DD3DA0A91F7BC16A00FC839F /* SearchTopicOrUserResultModel.m in Sources */,
 				DDE0FD241F35D74E00269DBD /* AddToCollectionResultModel.m in Sources */,
 				DD5AEE641F680762002E4F49 /* GetInterestingCircleResultModel.m in Sources */,
 				DD4CD4641F70DE730002C3BD /* UIImageView+EMHighlightedWebCache.m in Sources */,

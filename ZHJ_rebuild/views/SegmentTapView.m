@@ -147,9 +147,10 @@
     CGFloat position = (CGFloat)kSCREEN_WIDTH/self.buttonsArray.count;
     //写在第一句才起作用
     button.shouldHideBadgeAtZero = YES;
+//    button.badgeValue = @"";
     button.badgeValue = count;
     button.badgeFont = [UIFont systemFontOfSize:7];
-    button.badgeMinSize = 1;
+//    button.badgeMinSize = 1;
     button.badgeOriginX = position-30;
     button.badgeOriginY = 3;
 }

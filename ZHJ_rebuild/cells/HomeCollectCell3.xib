@@ -42,7 +42,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="ft9-GT-ywi"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="1" height="1.5"/>
@@ -76,7 +76,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="F6g-cX-kpj"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="1" height="1.5"/>
@@ -114,10 +114,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UG5-sF-4rI">
-                                <rect key="frame" x="0.0" y="130.5" width="204" height="132.5"/>
+                                <rect key="frame" x="0.0" y="132.5" width="204" height="130.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgbg" translatesAutoresizingMaskIntoConstraints="NO" id="PZJ-tG-ohg">
-                                        <rect key="frame" x="0.0" y="0.5" width="204" height="132"/>
+                                        <rect key="frame" x="0.0" y="0.5" width="204" height="130"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ba-G9-ec1">
                                         <rect key="frame" x="10" y="10.5" width="184" height="20"/>
@@ -134,7 +134,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="mIH-Fb-VMI"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="1" height="1.5"/>
@@ -168,13 +168,13 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="V5q-fB-5Fj"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="1" height="1.5"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0XH-To-6Ra">
-                                        <rect key="frame" x="0.0" y="0.5" width="204" height="132"/>
+                                        <rect key="frame" x="0.0" y="0.5" width="204" height="130"/>
                                         <connections>
                                             <action selector="btnSelectTwoAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="uGt-8f-6rd"/>
                                         </connections>
@@ -215,7 +215,7 @@
                             <constraint firstItem="UG5-sF-4rI" firstAttribute="leading" secondItem="RLx-kH-RaK" secondAttribute="leading" id="Jib-Tr-cLr"/>
                             <constraint firstAttribute="trailing" secondItem="7rD-lf-4ft" secondAttribute="trailing" id="iut-Jk-7ak"/>
                             <constraint firstItem="7rD-lf-4ft" firstAttribute="top" secondItem="RLx-kH-RaK" secondAttribute="top" id="m80-1d-4hU"/>
-                            <constraint firstItem="UG5-sF-4rI" firstAttribute="top" secondItem="7rD-lf-4ft" secondAttribute="bottom" id="sYH-5U-RU0"/>
+                            <constraint firstItem="UG5-sF-4rI" firstAttribute="top" secondItem="7rD-lf-4ft" secondAttribute="bottom" constant="2" id="sYH-5U-RU0"/>
                         </constraints>
                     </view>
                 </subviews>

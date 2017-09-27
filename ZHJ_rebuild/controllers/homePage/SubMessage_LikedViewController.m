@@ -28,8 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    [self getLikeData];
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [self getLikeDataWithHUD:hud];
     [self settingTableView];
 }
 
@@ -59,13 +59,12 @@
 
 
 #pragma mark - <获取点赞数据>
--(void)getLikeData
+-(void)getLikeDataWithHUD:(MBProgressHUD *)hud
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetMessage];
     NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
                                     @"msg_type":@"3"};
     
-    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
@@ -125,6 +124,16 @@
 }
 
 
+#pragma mark - <rac响应>
+-(void)respondWithRAC
+{
+    //读取消息后刷新列表
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshNotification_likeListVCAfterReadMessage" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        [self getLikeDataWithHUD:nil];
+    }];
+}
+
+
 
 
 
@@ -161,7 +170,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MessageResultModel *modelResult = self.likeArray[indexPath.row];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToDynamicDetailVCFromMainMessageVC" object:modelResult];
+    NSDictionary *dict = @{@"data":modelResult,
+                           @"index":@"3"};
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToDynamicDetailVCFromMainMessageVC" object:dict];
 }
 
 

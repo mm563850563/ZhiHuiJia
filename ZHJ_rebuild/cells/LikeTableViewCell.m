@@ -9,12 +9,16 @@
 #import "LikeTableViewCell.h"
 #import "MessageResultModel.h"
 
+//tools
+#import "UIButton+Badge.h"
+
 @interface LikeTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewPortrait;
 @property (weak, nonatomic) IBOutlet UILabel *labelNickName;
 //@property (weak, nonatomic) IBOutlet UILabel *labelContent;
 @property (weak, nonatomic) IBOutlet UILabel *labelTime;
+@property (weak, nonatomic) IBOutlet UIButton *btnUnread;
 
 @end
 
@@ -41,6 +45,23 @@
     self.labelNickName.text = modelMessageResult.nickname;
 //    self.labelContent.text = modelMessageResult.content;
     self.labelTime.text = modelMessageResult.addtime;
+    
+    if ([modelMessageResult.is_read isEqualToString:@"0"]) {
+        self.btnUnread.badgeValue = @" ";
+    }else{
+        self.btnUnread.shouldHideBadgeAtZero = YES;
+        self.btnUnread.badgeValue = @"0";
+    }
+    self.btnUnread.badgeFont = [UIFont systemFontOfSize:6];
+}
+
+
+
+
+
+-(void)drawRect:(CGRect)rect
+{
+    self.btnUnread.badgeOriginX = self.btnUnread.bounds.size.width-10;
 }
 
 @end

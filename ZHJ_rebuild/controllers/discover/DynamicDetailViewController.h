@@ -16,4 +16,8 @@
 
 @property (nonatomic, strong)NSString *whereReuseFrom;
 
+
+
+@property (nonatomic, strong)NSString *index;
+
 @end

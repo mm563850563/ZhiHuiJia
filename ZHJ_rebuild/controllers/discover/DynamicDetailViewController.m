@@ -105,7 +105,9 @@
         [self getDynamicDetailCommentDataWithPage:@1];
     });
     if ([self.whereReuseFrom isEqualToString:@"notificationVC"]) {
-        [self readMessage];
+        dispatch_group_async(group, queue, ^{
+            [self readMessage];
+        });
     }
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
@@ -126,7 +128,20 @@
             NSNumber *code = (NSNumber *)dataDict[@"code"];
             if ([code isEqual:@200]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshNotificationVCAfterReadMessage" object:nil];
+                    NSDictionary *dict = @{@"message_id":self.message_id,
+                                           @"index":self.index};
+                    //刷新消息详情数量
+                    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshNotificationVCAfterReadMessage" object:dict];
+                    
+                    //刷新消息列表
+                    if ([self.index isEqualToString:@"0"]) {
+                        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshNotification_commentListVCAfterReadMessage" object:self.index];
+                    }else if ([self.index isEqualToString:@"1"]){
+                        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshNotification_atListVCAfterReadMessage" object:self.index];
+                    }else if ([self.index isEqualToString:@"3"]){
+                        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshNotification_likeListVCAfterReadMessage" object:self.index];
+                    }
+                    
                 });
             }
         }

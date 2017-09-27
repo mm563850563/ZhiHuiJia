@@ -211,6 +211,9 @@
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    int page = [self.page intValue];
+                    page++;
+                    self.page = [NSNumber numberWithInt:page];
                     [self.tableView reloadData];
                     [self.tableView.mj_footer endRefreshing];
                 });
@@ -347,9 +350,7 @@
     [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
     
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        int page = [self.page intValue];
-        page++;
-        self.page = [NSNumber numberWithInt:page];
+        
         [self getMyCircleDynamicDataWithPage:self.page];
     }];
 }

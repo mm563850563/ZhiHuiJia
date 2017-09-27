@@ -110,7 +110,7 @@
 -(void)requestPostMessageWithDictParameter:(NSDictionary *)dictParameter imgDataArray:(NSArray *)imgDataArray atUserIDs:(NSArray *)atUserArray
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kPostMessage];
-    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.tabBarController.view animated:YES];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 20;
@@ -200,6 +200,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 #pragma mark - <发布按钮响应>
 -(void)btnPostAction:(UIButton *)sender
 {
+    [self.view endEditing:YES];
     NSMutableDictionary *dictParameter = [NSMutableDictionary dictionary];
     
     //topic_id

@@ -28,8 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    [self getAboutMeData];
+    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
+    [self getAboutMeDataWithHUD:hud];
     [self settingTableView];
 }
 
@@ -59,13 +59,12 @@
 
 
 #pragma mark - <获取@我数据>
--(void)getAboutMeData
+-(void)getAboutMeDataWithHUD:(MBProgressHUD *)hud
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetMessage];
     NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
                                     @"msg_type":@"1"};
     
-    MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         if (response) {
             NSDictionary *dataDict = (NSDictionary *)response;
@@ -116,7 +115,14 @@
     [self.tableView registerNib:nibComment forCellReuseIdentifier:NSStringFromClass([CommentAndAboutMeCell class])];
 }
 
-
+#pragma mark - <rac响应>
+-(void)respondWithRAC
+{
+    //读取消息后刷新列表
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshNotification_atListVCAfterReadMessage" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        [self getAboutMeDataWithHUD:nil];
+    }];
+}
 
 
 
@@ -153,7 +159,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MessageResultModel *modelResult = self.aboutMeArray[indexPath.row];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToDynamicDetailVCFromMainMessageVC" object:modelResult];
+    NSDictionary *dict = @{@"data":modelResult,
+                           @"index":@"1"};
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToDynamicDetailVCFromMainMessageVC" object:dict];
 }
 
 @end

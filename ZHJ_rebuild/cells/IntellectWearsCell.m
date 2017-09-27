@@ -45,9 +45,9 @@
     if (!_flowLayout) {
         _flowLayout = [[UICollectionViewFlowLayout alloc]init];
         _flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 5, 0);
-        _flowLayout.minimumLineSpacing = 5;
+        _flowLayout.minimumLineSpacing = 2;
         _flowLayout.minimumInteritemSpacing = 0;
-        CGFloat itemWidth = kSCREEN_WIDTH/2.02;
+        CGFloat itemWidth = kSCREEN_WIDTH/2.01;
         CGFloat itemHeight = itemWidth/2.0*3.0;
         
 //        NSLog(@"%f,%f",itemWidth,itemHeight);
@@ -100,7 +100,7 @@
 //        强制刷新界面高度
         [self.collectionView layoutIfNeeded];
         
-        CGFloat itemWidth = kSCREEN_WIDTH/2.02;
+        CGFloat itemWidth = kSCREEN_WIDTH/2.01;
         CGFloat itemHeight = itemWidth/2.0*3.0;
         if (itemHeight > (itemWidth+90)) {
             itemHeight = itemWidth+90;

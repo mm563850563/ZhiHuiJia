@@ -70,18 +70,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某东价:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQH-IX-vm6">
-                                        <rect key="frame" x="44.5" y="42.5" width="80.5" height="15"/>
+                                        <rect key="frame" x="44.5" y="45" width="80.5" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="5yL-UL-zuC"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="RQH-IX-vm6" firstAttribute="centerY" secondItem="DY6-ui-4cu" secondAttribute="centerY" id="3O9-Co-koW"/>
                                     <constraint firstItem="qob-hJ-hTm" firstAttribute="leading" secondItem="kxv-dA-jmz" secondAttribute="leading" id="4d9-2P-6gv"/>
                                     <constraint firstItem="23S-Uz-VuM" firstAttribute="top" secondItem="q1Y-ge-ZhZ" secondAttribute="bottom" id="9sb-4W-SBq"/>
                                     <constraint firstAttribute="trailing" secondItem="qob-hJ-hTm" secondAttribute="trailing" id="DWz-G9-fao"/>
@@ -91,6 +90,7 @@
                                     <constraint firstAttribute="height" constant="60" id="Leo-Mg-nY3"/>
                                     <constraint firstItem="DY6-ui-4cu" firstAttribute="leading" secondItem="23S-Uz-VuM" secondAttribute="trailing" id="XwB-1j-wr1"/>
                                     <constraint firstItem="qob-hJ-hTm" firstAttribute="top" secondItem="kxv-dA-jmz" secondAttribute="top" id="azS-gD-CgT"/>
+                                    <constraint firstItem="RQH-IX-vm6" firstAttribute="bottom" secondItem="DY6-ui-4cu" secondAttribute="bottom" id="fge-Jl-YHh"/>
                                     <constraint firstItem="DY6-ui-4cu" firstAttribute="top" secondItem="q1Y-ge-ZhZ" secondAttribute="bottom" id="h1P-EI-TfY"/>
                                     <constraint firstAttribute="trailing" secondItem="q1Y-ge-ZhZ" secondAttribute="trailing" id="my1-gX-qog"/>
                                     <constraint firstItem="RQH-IX-vm6" firstAttribute="leading" secondItem="DY6-ui-4cu" secondAttribute="trailing" constant="5" id="uf5-iz-A4x"/>
