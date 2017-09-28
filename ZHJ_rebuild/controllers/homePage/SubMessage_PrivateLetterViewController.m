@@ -111,22 +111,22 @@
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:1.0];
+//                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+//                    [hudWarning hideAnimated:YES afterDelay:1.0];
                 });
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:1.0];
+//                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+//                [hudWarning hideAnimated:YES afterDelay:1.0];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES afterDelay:1.0];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:1.0];
+//            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+//            [hudWarning hideAnimated:YES afterDelay:1.0];
         });
     }];
 }
@@ -202,6 +202,7 @@
 {
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshConversationList" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         [self getConversationDataWithHUD:nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshUnreadIMCount" object:nil];
     }];
 }
 
@@ -220,6 +221,10 @@
 -(void)messagesDidReceive:(NSArray *)aMessages
 {
     [self getConversationDataWithHUD:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshUnreadIMCount" object:nil];
+//    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+//        [self getConversationDataWithHUD:nil];
+//    }];
 }
 
 #pragma mark - ****** UITableViewDelegate,UITableViewDataSource *******

@@ -28,7 +28,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDKUI.h>
 
-@interface OrderListViewController_Three ()<UITableViewDelegate,UITableViewDataSource>
+@interface OrderListViewController_Three ()<UITableViewDelegate,UITableViewDataSource,OrderListFooterViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *orderListArray;
@@ -256,10 +256,11 @@
 #pragma mark - <rac响应>
 -(void)respondWithRAC
 {
-    //分享
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnShareFromWaitToSendoutVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self settingShareParameter];
-    }];
+//    //分享
+//    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnShareFromWaitToSendoutVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+//    
+//        [self settingShareParameter];
+//    }];
 }
 
 
@@ -343,6 +344,7 @@
     modelOrderList.order_status_desc = @"待发货";
     footerView.modelOrderList = modelOrderList;
     footerView.whereReuseFrom = @"waitToSendoutVC";
+    footerView.delegate = self;
     return footerView;
 }
 
@@ -356,8 +358,17 @@
     self.goodsArray = modelOrderList.goods;
     OrderListGoodsModel *modelGoods = self.goodsArray[indexPath.row];
     OrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OrderListCell class])];
+    cell.order_state = @"待发货";
+    cell.order_sn = modelOrderList.order_sn;
+    cell.order_id = modelOrderList.order_id;
     cell.modelGoods = modelGoods;
     return cell;
+}
+
+#pragma mark - ******OrderListFooterViewDelegate*******
+-(void)didClickBtnShare:(UIButton *)btnShare
+{
+    [self settingShareParameter];
 }
 
 @end

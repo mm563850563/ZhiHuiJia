@@ -45,6 +45,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+//    [self createShortCutItem];
+    
     //***********检查网络*************
 //    [SearchNetTool searchNet];
 
@@ -120,6 +122,16 @@
     return YES;
 }
 
+#warning ***************test_3DTouch******************
+-(void)createShortCutItem
+{
+    //创建系统风格的icon
+    UIApplicationShortcutIcon *icon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeShare];
+    //创建快捷选项
+    UIApplicationShortcutItem *item = [[UIApplicationShortcutItem alloc]initWithType:@"com.zhihuijia.share" localizedTitle:@"分享智惠加" localizedSubtitle:nil icon:icon userInfo:nil];
+    //添加到快捷选项数组
+    [UIApplication sharedApplication].shortcutItems = @[item];
+}
 
 #pragma mark - <navigationBar相关设置>
 -(void)settingNavigationBar
@@ -182,6 +194,7 @@
     [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
 }
 
+#pragma mark - <收到环信消息回调>
 - (void)messagesDidReceive:(NSArray *)aMessages {
     for (EMMessage *msg in aMessages) {
         UIApplicationState state = [[UIApplication sharedApplication] applicationState];

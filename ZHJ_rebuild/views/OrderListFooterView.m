@@ -174,6 +174,13 @@
             make.right.mas_equalTo(-10);
             make.size.mas_offset(CGSizeMake(50, 20));
         }];
+    }else if ([modelOrderList.order_status_desc isEqualToString:@"已作废"]){
+        self.btnCommit.hidden = YES;
+        self.btnCheckLogistic.hidden = YES;
+        self.btnConfirm.hidden = YES;
+        self.btnCancel.hidden = YES;
+        self.btnPay.hidden = YES;
+        self.btnShare.hidden = YES;
     }
 }
 
@@ -181,19 +188,24 @@
 
 - (IBAction)btnShareAction:(UIButton *)sender
 {
-    NSString *notifiName = [NSString string];
-    if ([self.whereReuseFrom isEqualToString:@"allOrderListVC"]) {
-        notifiName = @"clickBtnShareFromAllOrderVC";
-    }else if ([self.whereReuseFrom isEqualToString:@"waitToPayVC"]){
-        notifiName = @"clickBtnShareFromWaitToPayVC";
-    }else if ([self.whereReuseFrom isEqualToString:@"waitToSendoutVC"]){
-        notifiName = @"clickBtnShareFromWaitToSendoutVC";
-    }else if ([self.whereReuseFrom isEqualToString:@"sendedGoodsVC"]){
-        notifiName = @"clickBtnShareFromSendedGoodsVC";
-    }else if ([self.whereReuseFrom isEqualToString:@"waitToCommentVC"]){
-        notifiName = @"clickBtnShareFromWaitToCommentVC";
+//    NSString *notifiNameShare = [NSString string];
+//    notifiNameShare = @"clickBtnShareFromMyOrderVC";
+////    if ([self.whereReuseFrom isEqualToString:@"allOrderListVC"]) {
+////        notifiName = @"clickBtnShareFromAllOrderVC";
+////    }else if ([self.whereReuseFrom isEqualToString:@"waitToPayVC"]){
+////        notifiName = @"clickBtnShareFromWaitToPayVC";
+////    }else if ([self.whereReuseFrom isEqualToString:@"waitToSendoutVC"]){
+////        notifiName = @"clickBtnShareFromWaitToSendoutVC";
+////    }else if ([self.whereReuseFrom isEqualToString:@"sendedGoodsVC"]){
+////        notifiName = @"clickBtnShareFromSendedGoodsVC";
+////    }else if ([self.whereReuseFrom isEqualToString:@"waitToCommentVC"]){
+////        notifiName = @"clickBtnShareFromWaitToCommentVC";
+////    }
+//    [[NSNotificationCenter defaultCenter]postNotificationName:notifiNameShare object:self.modelOrderList];
+    
+    if ([self.delegate respondsToSelector:@selector(didClickBtnShare:)]) {
+        [self.delegate didClickBtnShare:sender];
     }
-    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelOrderList];
 }
 
 - (IBAction)btnCheckLogisticsAction:(UIButton *)sender

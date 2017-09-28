@@ -44,7 +44,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDKUI.h>
 
-@interface OrderListViewController_One ()<UITableViewDelegate,UITableViewDataSource,PayTypeViewDelegate>
+@interface OrderListViewController_One ()<UITableViewDelegate,UITableViewDataSource,PayTypeViewDelegate,OrderListFooterViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *orderListArray;
@@ -636,10 +636,10 @@
         [self verifyWXPayResult];
     }];
     
-    //分享
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnShareFromAllOrderVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self settingShareParameter];
-    }];
+//    //分享
+//    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnShareFromAllOrderVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+//        [self settingShareParameter];
+//    }];
 }
 
 
@@ -685,6 +685,10 @@
     if (self.orderListArray.count == 0) {
         return 0.1f;
     }
+    OrderList_OrderListModel *modelOrderList = self.orderListArray[section];
+    if ([modelOrderList.order_status_desc isEqualToString:@"已取消"] || [modelOrderList.order_status_desc isEqualToString:@"已作废"]) {
+        return 40;
+    }
     return 70;
 }
 
@@ -719,6 +723,7 @@
     OrderListFooterView *footerView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([OrderListFooterView class]) owner:nil options:nil].lastObject;
     footerView.modelOrderList = modelOrderList;
     footerView.whereReuseFrom = @"allOrderListVC";
+    footerView.delegate = self;
     return footerView;
 }
 
@@ -732,11 +737,16 @@
     self.goodsArray = modelOrderList.goods;
     OrderListGoodsModel *modelGoods = self.goodsArray[indexPath.row];
     OrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OrderListCell class])];
-    if ([modelOrderList.order_status_desc isEqualToString:@"待评价"]){
-        cell.whereReuseFrom = @"waitToCommentVC";
-        cell.order_sn = modelOrderList.order_sn;
-        cell.order_id = modelOrderList.order_id;
-    }
+//    if ([modelOrderList.order_status_desc isEqualToString:@"待评价"]){
+//        cell.whereReuseFrom = @"waitToCommentVC";
+//    }else if ([modelOrderList.order_status_desc isEqualToString:@"待发货"]){
+//        cell.whereReuseFrom = @"waitToSendoutVC";
+//    }else if ([modelOrderList.order_status_desc isEqualToString:@"待收货"]){
+//        cell.whereReuseFrom = @"sendedGoodsVC";
+//    }
+    cell.order_state = modelOrderList.order_status_desc;
+    cell.order_sn = modelOrderList.order_sn;
+    cell.order_id = modelOrderList.order_id;
     cell.modelGoods = modelGoods;
     return cell;
 }
@@ -770,4 +780,10 @@
     
 }
 
+
+#pragma mark - ******OrderListFooterViewDelegate*******
+-(void)didClickBtnShare:(UIButton *)btnShare
+{
+    [self settingShareParameter];
+}
 @end

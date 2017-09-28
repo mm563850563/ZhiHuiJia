@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CircleDetailResultModel;
 
 @interface CircleDetailConfigViewController : UIViewController
 
-@property (nonatomic, strong)NSString *circle_id;
+//@property (nonatomic, strong)NSString *circle_id;
+@property (nonatomic, strong)CircleDetailResultModel *modelResult;
 
 @end

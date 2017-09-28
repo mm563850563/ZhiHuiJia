@@ -119,7 +119,7 @@
 -(void)jumpToActivityConfigVC
 {
     ActivityConfigViewController *activityConfigVC = [[ActivityConfigViewController alloc]initWithNibName:NSStringFromClass([ActivityConfigViewController class]) bundle:nil];
-    activityConfigVC.activity_id = self.model.activity_id;
+    activityConfigVC.modelResult = self.model;
     [self.navigationController pushViewController:activityConfigVC animated:YES];
 }
 

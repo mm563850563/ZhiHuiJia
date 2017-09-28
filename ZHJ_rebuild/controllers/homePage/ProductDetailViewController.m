@@ -17,6 +17,7 @@
 #import "CommentListViewController.h"
 #import "OrderConfirmViewController.h"
 #import "MyOrderViewController.h"
+#import "BrandDetailViewController.h"
 
 //cells
 #import "ProductDetailImageCell.h"
@@ -113,20 +114,27 @@
 #pragma mark - <第三方分享-配置要分享的参数>
 -(void)settingShareParameter
 {
-    //1.创建分享参数 注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
-    UIImage *image = [UIImage imageNamed:@"appLogo"];
-    NSArray *imageArray = @[image];
-    
-    if (imageArray) {
-        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-        [shareParams SSDKSetupShareParamsByText:@"全球首个爆品推荐+智慧社交平台！1亿礼品库、注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
+    if (self.bannerArray.count>0) {
+        //1.创建分享参数 注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
+        //    UIImage *image = [UIImage imageNamed:@"appLogo"];
+        //    NSArray *imageArray = @[image];
+        NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,self.bannerArray.firstObject];
+        NSArray *imageArray = @[imgStr];
         
-        //有的平台要客户端分享需要加此方法，例如微博
-        [shareParams SSDKEnableUseClientShare];
-        
-        //2.分享（可以弹出我们的分享菜单和编辑界面）
-        [ShareTool shareWithParams:shareParams];
+        if (imageArray) {
+            NSString *remark = self.modelInfo.goods_remark;
+            NSString *name = self.modelInfo.goods_name;
+            NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+            [shareParams SSDKSetupShareParamsByText:remark images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:name type:SSDKContentTypeAuto];
+            
+            //有的平台要客户端分享需要加此方法，例如微博
+            [shareParams SSDKEnableUseClientShare];
+            
+            //2.分享（可以弹出我们的分享菜单和编辑界面）
+            [ShareTool shareWithParams:shareParams];
+        }
     }
+    
 }
 
 #pragma mark - <记录用户浏览内容>
@@ -143,7 +151,8 @@
 {
     if (self.goods_id) {
         MBProgressHUD *hud = [ProgressHUDManager showFullScreenProgressHUDAddTo:self.view animated:YES];
-        NSDictionary *dictParameter = @{@"goods_id":self.goods_id};
+        NSDictionary *dictParameter = @{@"goods_id":self.goods_id,
+                                        @"user_id":kUserDefaultObject(kUserInfo)};
         NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGoodsDetail];
         [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
             [hud hideAnimated:YES afterDelay:1.0];
@@ -333,6 +342,16 @@
     [self.navigationController pushViewController:singleChatVC animated:YES];
 }
 
+#pragma mark - <跳转品牌详情页面>
+-(void)jumpToBrandDetailVCWithBrandID:(NSString *)brand_id
+{
+    BrandDetailViewController *brandDetailVC = [[BrandDetailViewController alloc]initWithNibName:NSStringFromClass([BrandDetailViewController class]) bundle:nil];
+    brandDetailVC.brand_id = brand_id;
+    brandDetailVC.hidesBottomBarWhenPushed = YES;
+    brandDetailVC.navigationItem.title = @"品牌详情";
+    [self.navigationController pushViewController:brandDetailVC animated:YES];
+}
+
 #pragma mark - <客服>
 - (IBAction)btnSalesCenterAction:(UIButton *)sender
 {
@@ -342,8 +361,13 @@
 #pragma mark - <店铺>
 - (IBAction)btnStoreAction:(UIButton *)sender
 {
-    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"该商品为平台商品,没有商家"];
-    [hudWarning hideAnimated:YES afterDelay:1.0];
+    if ([self.modelInfo.brand_id isEqualToString:@"0"]) {
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"该商品为平台商品,没有商家"];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
+    }else{
+        [self jumpToBrandDetailVCWithBrandID:self.modelInfo.brand_id];
+    }
+    
 }
 
 #pragma mark - <收藏>
@@ -357,6 +381,8 @@
     }
     
 }
+
+
 
 #pragma mark - <加入购物车>
 - (IBAction)btnAddToCartAction:(UIButton *)sender
@@ -442,6 +468,11 @@
                 [self jumpToMyOrderVC];
             }
         }
+    }];
+    
+    //弹出“加入购物车”
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"selectProductCountAndCount_AddToCart" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        [self btnAddToCartAction:nil];
     }];
 }
 

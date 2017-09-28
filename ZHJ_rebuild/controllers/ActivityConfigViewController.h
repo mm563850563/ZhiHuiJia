@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ActivityDetailResultModel;
 
 @interface ActivityConfigViewController : UIViewController
 
-@property (nonatomic, strong)NSString *activity_id;
+@property (nonatomic, strong)ActivityDetailResultModel *modelResult;
+//@property (nonatomic, strong)NSString *activity_id;
 
 @end

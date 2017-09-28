@@ -16,5 +16,6 @@
 @property (nonatomic ,strong)NSString *whereReuseFrom;
 @property (nonatomic, strong)NSString *order_sn;
 @property (nonatomic, strong)NSString *order_id;
+@property (nonatomic, strong)NSString *order_state;
 
 @end

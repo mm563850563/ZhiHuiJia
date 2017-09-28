@@ -26,6 +26,13 @@
 #import "OrderList_OrderListModel.h"
 #import "OrderListGoodsModel.h"
 
+//tools
+#import "ShareTool.h"
+
+//SDKs
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDKUI.h>
+
 @interface MyOrderViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,MBProgressHUDDelegate>
 
 @property (nonatomic, strong)SegmentTapView *segmentView;
@@ -180,6 +187,25 @@
     [self.navigationController pushViewController:applyAfterSaleVC animated:YES];
 }
 
+#pragma mark - <第三方分享-配置要分享的参数>
+-(void)settingShareParameter
+{
+    //1.创建分享参数 注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
+    UIImage *image = [UIImage imageNamed:@"appLogo"];
+    NSArray *imageArray = @[image];
+    
+    if (imageArray) {
+        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+        [shareParams SSDKSetupShareParamsByText:@"全球首个爆品推荐+智慧社交平台！1亿礼品库、注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
+        
+        //有的平台要客户端分享需要加此方法，例如微博
+        [shareParams SSDKEnableUseClientShare];
+        
+        //2.分享（可以弹出我们的分享菜单和编辑界面）
+        [ShareTool shareWithParams:shareParams];
+    }
+}
+
 #pragma mark - <rac响应>
 -(void)respondWithRAC
 {
@@ -217,9 +243,12 @@
         NSString *order_id = dict[@"order_id"];
         [self jumpToApplyAfterSaleVCWithModel:model order_sn:order_sn order_id:order_id];
     }];
+    
+//    //分享
+//    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnShareFromMyOrderVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+//        [self settingShareParameter];
+//    }];
 }
-
-
 
 
 

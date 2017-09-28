@@ -36,7 +36,23 @@
 {
     _modelLogisticsResult = modelLogisticsResult;
     
-    self.labelLogisticsStatus.text = modelLogisticsResult.status;
+    NSString *state = [NSString string];
+    if ([modelLogisticsResult.state isEqualToString:@"0"]) {
+        state = @"运输中";
+    }else if ([modelLogisticsResult.state isEqualToString:@"1"]){
+        state = @"已揽件";
+    }else if ([modelLogisticsResult.state isEqualToString:@"2"]){
+        state = @"物流异常";
+    }else if ([modelLogisticsResult.state isEqualToString:@"3"]){
+        state = @"已签收";
+    }else if ([modelLogisticsResult.state isEqualToString:@"4"]){
+        state = @"已退签";
+    }else if ([modelLogisticsResult.state isEqualToString:@"5"]){
+        state = @"派件中";
+    }else if ([modelLogisticsResult.state isEqualToString:@"6"]){
+        state = @"退回中";
+    }
+    self.labelLogisticsStatus.text = state;
     self.labellogisticsCompany.text = modelLogisticsResult.com;
     self.labelLogisticsCode.text = modelLogisticsResult.nu;
     [self.btnMobile setTitle:@"020-34761998 (转305)" forState:UIControlStateNormal];

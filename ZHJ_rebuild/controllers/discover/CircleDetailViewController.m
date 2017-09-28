@@ -61,6 +61,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.page = @1;
+    [self.circleDynamicArray removeAllObjects];
+    [self getMyCircleDynamicDataWithPage:@1];
+}
+
 #pragma mark - <懒加载>
 -(NSMutableArray *)circleDynamicArray
 {
@@ -93,9 +100,9 @@
     dispatch_group_async(group, queue, ^{
         [self getCircleDetailData];
     });
-    dispatch_group_async(group, queue, ^{
-        [self getMyCircleDynamicDataWithPage:@1];
-    });
+//    dispatch_group_async(group, queue, ^{
+//        [self getMyCircleDynamicDataWithPage:@1];
+//    });
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
@@ -166,6 +173,9 @@
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    int page = [self.page intValue];
+                    page++;
+                    self.page = [NSNumber numberWithInt:page];
                     [self.tableView reloadData];
                     [self.tableView.mj_footer endRefreshing];
                 });
@@ -371,7 +381,7 @@
     //跳转“圈子设置页面”
 //    [[NSNotificationCenter defaultCenter]postNotificationName:@"jumpToCircleConfigureVC" object:nil];
     
-    [self jumpToCircleDetailConfigVCWithCircleID:self.modelResult.circle_id];
+    [self jumpToCircleDetailConfigVCWithModel:self.modelResult];
 }
 
 #pragma mark - <返回按钮响应>
@@ -391,16 +401,23 @@
 #pragma mark - <跳转发布新帖子页面>
 -(void)jumpToReleaseNewPostVC
 {
-    NewPostViewController *newPostVC = [[NewPostViewController alloc]initWithNibName:NSStringFromClass([NewPostViewController class]) bundle:nil];
-    newPostVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:newPostVC animated:YES];
+    if ([self.modelResult.is_attentioned isEqualToString:@"0"]) {
+        MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"您还没有加入该圈子"];
+        [hudWarning hideAnimated:YES afterDelay:1.0];
+    }else{
+        NewPostViewController *newPostVC = [[NewPostViewController alloc]initWithNibName:NSStringFromClass([NewPostViewController class]) bundle:nil];
+        newPostVC.hidesBottomBarWhenPushed = YES;
+        newPostVC.circle_id = self.circle_id;
+        [self.navigationController pushViewController:newPostVC animated:YES];
+    }
+    
 }
 
 #pragma mark - <跳转“圈子详情设置”页面>
--(void)jumpToCircleDetailConfigVCWithCircleID:(NSString *)circle_id
+-(void)jumpToCircleDetailConfigVCWithModel:(CircleDetailResultModel *)model
 {
     CircleDetailConfigViewController *circleDetailConfigVC = [[CircleDetailConfigViewController alloc]initWithNibName:NSStringFromClass([CircleDetailConfigViewController class]) bundle:nil];
-    circleDetailConfigVC.circle_id = circle_id;
+    circleDetailConfigVC.modelResult = model;
     [self.navigationController pushViewController:circleDetailConfigVC animated:YES];
 }
 
@@ -441,10 +458,14 @@
     UINib *nibNull = [UINib nibWithNibName:NSStringFromClass([NULLTableViewCell class]) bundle:nil];
     [self.tableView registerNib:nibNull forCellReuseIdentifier:NSStringFromClass([NULLTableViewCell class])];
     
+//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        self.page = @1;
+//        [self.circleDynamicArray removeAllObjects];
+//        [self getMyCircleDynamicDataWithPage:@1];
+//    }];
+    
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        int page = [self.page intValue];
-        page++;
-        self.page = [NSNumber numberWithInt:page];
+        
         [self getMyCircleDynamicDataWithPage:self.page];
     }];
 }

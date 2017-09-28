@@ -220,7 +220,7 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <inset key="titleEdgeInsets" minX="-10" minY="0.0" maxX="10" maxY="0.0"/>
-                                    <inset key="imageEdgeInsets" minX="5" minY="5" maxX="60" maxY="5"/>
+                                    <inset key="imageEdgeInsets" minX="5" minY="5" maxX="65" maxY="5"/>
                                     <state key="normal" title="新动态" image="00bi"/>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84x-nI-36R">

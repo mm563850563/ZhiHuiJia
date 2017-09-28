@@ -168,10 +168,12 @@
 #pragma mark - <选择产品颜色和数量>
 - (IBAction)btnSelectProductCountAndCountAction:(UIButton *)sender
 {
-    [[UIApplication sharedApplication].keyWindow addSubview:self.cloudGlassBGView];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.productMessageView.frame = CGRectMake(0, kSCREENH_HEIGHT-400, kSCREEN_WIDTH, 400);
-    }];
+//    [[UIApplication sharedApplication].keyWindow addSubview:self.cloudGlassBGView];
+//    [UIView animateWithDuration:0.3 animations:^{
+//        self.productMessageView.frame = CGRectMake(0, kSCREENH_HEIGHT-400, kSCREEN_WIDTH, 400);
+//    }];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"selectProductCountAndCount_AddToCart" object:nil];
 }
 
 #pragma mark - <收回商品规格view>

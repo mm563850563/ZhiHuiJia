@@ -18,6 +18,10 @@
 #import "SubMessage_LikedViewController.h"
 #import "SubMessage_PrivateLetterViewController.h"
 
+//IM
+#import "EaseUI.h"
+#import "ZHJMessageViewController.h"
+
 @interface SubNotifi_MessageViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate>
 
 @property (nonatomic, strong)SegmentTapView *segmentView;
@@ -47,6 +51,7 @@
     [self getMessageDetailCount];
     [self initSegmentView];
     [self initFlipTableView];
+    [self getIMUnreadCount];
     
     [self respondWithRAC];
 }
@@ -91,6 +96,18 @@
             }
         }
     } failBlock:nil];
+}
+
+#pragma mark - <获取环信消息数量>
+-(void)getIMUnreadCount
+{
+    int unreadIMCount = 0;
+    NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
+    for (EMConversation *conversation in conversations){
+        unreadIMCount += conversation.unreadMessagesCount;
+    }
+    NSString *unreadCount = [NSString stringWithFormat:@"%d",unreadIMCount];
+    [self.segmentView addUnreadCountWithCount:unreadCount index:2];
 }
 
 #pragma mark - <初始化segmentView>
@@ -159,6 +176,11 @@
             }
             [self.segmentView addUnreadCountWithCount:count index:index];
         });
+    }];
+    
+    //收到环信消息后刷新refreshUnreadIMCount
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshUnreadIMCount" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        [self getIMUnreadCount];
     }];
 }
 

@@ -264,7 +264,8 @@
         NSInteger count = self.topicListUserArray.count+self.userListUserArray.count;
         if (indexPath.row < self.topicListUserArray.count) {
             return 100;
-        }else if (self.topicListUserArray.count <= indexPath.row < count){
+        }
+        if (self.topicListUserArray.count <= indexPath.row < count){
             return 70;
         }
     }
@@ -285,7 +286,8 @@
             cellTopicList.modelTopic_info = modelTopic_info;
             cell = cellTopicList;
             
-        }else if (self.topicListUserArray.count <= indexPath.row < count){
+        }
+        if (self.topicListUserArray.count <= indexPath.row < count){
             SearchUserCell *cellUserList = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SearchUserCell class])];
             SearchTopicOrUserUsers_infoModel *modelUser_info = self.userListUserArray[indexPath.row-self.topicListUserArray.count];
             cellUserList.modelUser_info = modelUser_info;
@@ -302,7 +304,8 @@
         if (indexPath.row < self.topicListUserArray.count) {
             SearchTopicOrUserTopics_infoModel *modelTopic_info = self.topicListUserArray[indexPath.row];
             [self jumpToTopicDetailVCWithTopicID:modelTopic_info.topic_id];
-        }else if (self.topicListUserArray.count <= indexPath.row < count){
+        }
+        if (self.topicListUserArray.count <= indexPath.row < count){
             SearchTopicOrUserUsers_infoModel *modelUser_info = self.userListUserArray[indexPath.row-self.topicListUserArray.count];
             [self jumpToFocusPersonalFileVCWithFriendUserID:modelUser_info.user_id];
         }

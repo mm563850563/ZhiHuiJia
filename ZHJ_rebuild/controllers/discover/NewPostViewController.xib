@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewPostViewController">
             <connections>
+                <outlet property="SelectCircleBGView" destination="Veb-LM-bxz" id="IDb-8g-WEk"/>
                 <outlet property="collectionView" destination="oHT-uJ-0aF" id="65R-jV-KHD"/>
                 <outlet property="collectionViewAtSomeone" destination="CZb-Ib-p1K" id="Lbs-E1-pt8"/>
                 <outlet property="feedbackView" destination="4jj-bZ-dTx" id="Uwa-sj-4BN"/>

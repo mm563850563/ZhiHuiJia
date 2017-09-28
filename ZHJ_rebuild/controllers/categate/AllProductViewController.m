@@ -233,7 +233,9 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    BrandDetail_BrandGoodsModel *model = self.dataArray[indexPath.item];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"jumpToProductDetailVCFromBrandDetailVC" object:model.goods_id];
 }
 
 
@@ -255,10 +257,10 @@ typedef NS_ENUM(NSUInteger,LayoutCode){
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    BrandDetail_BrandGoodsModel *model = self.dataArray[indexPath.item];
-//    ProductDetailViewController *productDetailVC = [[ProductDetailViewController alloc]initWithNibName:NSStringFromClass([ProductDetailViewController class]) bundle:nil];
-//    productDetailVC.goods_id = model.goods_id;
-//    [self.navigationController pushViewController:productDetailVC animated:YES];
+    BrandDetail_BrandGoodsModel *model = self.dataArray[indexPath.item];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"jumpToProductDetailVCFromBrandDetailVC" object:model.goods_id];
+    
 }
 
 

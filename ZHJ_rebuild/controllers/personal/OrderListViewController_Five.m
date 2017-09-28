@@ -31,7 +31,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDKUI.h>
 
-@interface OrderListViewController_Five ()<UITableViewDelegate,UITableViewDataSource>
+@interface OrderListViewController_Five ()<UITableViewDelegate,UITableViewDataSource,OrderListFooterViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *orderListArray;
@@ -263,10 +263,10 @@
 #pragma mark - <rac响应>
 -(void)respondWithRAC
 {
-    //分享
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnShareFromWaitToCommentVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self settingShareParameter];
-    }];
+//    //分享
+//    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnShareFromWaitToCommentVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+//        [self settingShareParameter];
+//    }];
 }
 
 
@@ -355,6 +355,7 @@
     modelOrderList.order_status_desc = @"待评价";
     footerView.modelOrderList = modelOrderList;
     footerView.whereReuseFrom = @"waitToCommentVC";
+    footerView.delegate = self;
     return footerView;
 }
 
@@ -368,11 +369,17 @@
     self.goodsArray = modelOrderList.goods;
     OrderListGoodsModel *modelGoods = self.goodsArray[indexPath.row];
     OrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OrderListCell class])];
-    cell.whereReuseFrom = @"waitToCommentVC";
-    cell.modelGoods = modelGoods;
+    cell.order_state = @"待评价";
     cell.order_sn = modelOrderList.order_sn;
     cell.order_id = modelOrderList.order_id;
+    cell.modelGoods = modelGoods;
     return cell;
+}
+
+#pragma mark - ******OrderListFooterViewDelegate*******
+-(void)didClickBtnShare:(UIButton *)btnShare
+{
+    [self settingShareParameter];
 }
 
 @end

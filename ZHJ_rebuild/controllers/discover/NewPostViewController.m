@@ -30,6 +30,9 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForScrollView;
 
+//选择圈子BGView
+@property (weak, nonatomic) IBOutlet UIView *SelectCircleBGView;
+
 @property (weak, nonatomic) IBOutlet UILabel *labelCircle;
 @property (weak, nonatomic) IBOutlet UITextView *feedbackView;
 @property (weak, nonatomic) IBOutlet UILabel *limitLabel;
@@ -44,8 +47,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 
-//发布帖子所属圈子
-@property (nonatomic, strong)NSString *circle_id;
+
 //话题
 @property (nonatomic, strong)NSString *topic_id;
 //@
@@ -83,6 +85,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //
     
     [self settingOutlets];
     [self settingCollectionView];
@@ -183,6 +186,15 @@ constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 #pragma mark - <配置outlets>
 -(void)settingOutlets
 {
+    //根据是否传入cirlce_id判断
+    if (self.circle_id) {
+        [self.SelectCircleBGView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(1);
+        }];
+        self.SelectCircleBGView.hidden = YES;
+    }
+    
+    self.navigationItem.title = @"新帖子";
     self.feedbackView.delegate = self;
     self.placeholder.userInteractionEnabled = NO;
     

@@ -104,6 +104,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    int unreadIMCount = 0;
+    NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
+    for (EMConversation *conversation in conversations){
+        unreadIMCount += conversation.unreadMessagesCount;
+    }
+    [self getMessageCountWithUnreadIMCount:unreadIMCount];
+}
+
 /*
 #pragma mark - Navigation
 
@@ -163,7 +173,15 @@
         [self getSimilarUserData];
     });
     dispatch_group_async(group, queue, ^{
-        [self getMessageCount];
+        int unreadIMCount = 0;
+        NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
+        for (EMConversation *conversation in conversations){
+            unreadIMCount += conversation.unreadMessagesCount;
+        }
+        if (kUserDefaultObject(kUserInfo)) {
+            [self getMessageCountWithUnreadIMCount:unreadIMCount];
+        }
+        
     });
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
@@ -220,9 +238,10 @@
 }
 
 #pragma mark - <获取消息数量>
--(void)getMessageCount
+-(void)getMessageCountWithUnreadIMCount:(int)unreadIMCount
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetMessageCount];
+    
     NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
     [YQNetworking postWithUrl:urlStr refreshRequest:NO cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
         if (response) {
@@ -232,6 +251,10 @@
                 //回到主线程刷新数据
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSString *messageCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
+                    //加上环信未读消息
+                    int messageIntCount = [messageCount intValue];
+                    messageIntCount += unreadIMCount;
+                    messageCount = [NSString stringWithFormat:@"%d",messageIntCount];
                     //该方法写在第一句才起作用
                     self.btnMessage.shouldHideBadgeAtZero = YES;
                     self.btnMessage.badgeValue = [NSString stringWithFormat:@"%@",messageCount];
@@ -241,22 +264,22 @@
                     self.btnMessage.badgeOriginX = 12;
                 });
             }else{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:1.0];
-                });
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+//                    [hudWarning hideAnimated:YES afterDelay:1.0];
+//                });
             }
         }else{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:1.0];
-            });
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+//                [hudWarning hideAnimated:YES afterDelay:1.0];
+//            });
         }
     } failBlock:^(NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:1.0];
-        });
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+//            [hudWarning hideAnimated:YES afterDelay:1.0];
+//        });
     }];
 }
 
@@ -500,8 +523,6 @@
 -(void)settingNavigationBar
 {
     self.navigationController.delegate = self;
-//    self.navigationController.interactivePopGestureRecognizer.delegate = self;
-    //    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     UIView *leftButtonView = [self createLeftNavigationButton];
     UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithCustomView:leftButtonView];
@@ -520,6 +541,7 @@
     UIColor *color = [UIColor colorWithRed:0/255.f green:0/255.f blue:0/255.f alpha:0];
     UIImage *image = [UIImage imageWithColor:color height:1.0];
     [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc]init]];
 }
 
 #pragma mark - <创建左按钮>
@@ -680,7 +702,12 @@
     
     //收到环信消息后刷新消息数据
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshMyMessage" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self getMessageCount];
+        int unreadIMCount = 0;
+        NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
+        for (EMConversation *conversation in conversations){
+            unreadIMCount += conversation.unreadMessagesCount;
+        }
+        [self getMessageCountWithUnreadIMCount:unreadIMCount];
     }];
 }
 

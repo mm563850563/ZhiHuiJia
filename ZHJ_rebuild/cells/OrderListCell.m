@@ -55,9 +55,26 @@
     [self.imgProduct sd_setImageWithURL:url placeholderImage:kPlaceholder];
     
     //待评价中可以“申请售后”
-    if ([self.whereReuseFrom isEqualToString:@"waitToCommentVC"]) {
+    if ([self.order_state isEqualToString:@"待评价"]){
         self.btnApplyAfterSale.hidden = NO;
+    }else if ([self.order_state isEqualToString:@"待发货"]){
+        self.btnApplyAfterSale.hidden = NO;
+    }else if ([self.order_state isEqualToString:@"待收货"]){
+        self.btnApplyAfterSale.hidden = NO;
+    }else if ([self.order_state isEqualToString:@"已完成"]){
+        self.btnApplyAfterSale.hidden = NO;
+    }else{
+        self.btnApplyAfterSale.hidden = YES;
     }
+//    if ([self.whereReuseFrom isEqualToString:@"waitToCommentVC"]) {
+//        
+//    }else if ([self.whereReuseFrom isEqualToString:@"sendedGoodsVC"]) {
+//        self.btnApplyAfterSale.hidden = NO;
+//    }else if ([self.whereReuseFrom isEqualToString:@"waitToSendoutVC"]) {
+//        self.btnApplyAfterSale.hidden = NO;
+//    }else{
+//        self.btnApplyAfterSale.hidden = YES;
+//    }
 }
 
 

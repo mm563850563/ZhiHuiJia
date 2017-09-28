@@ -127,6 +127,7 @@
 {
     
     self.leftTableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.leftTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.leftTableView];
     [self.leftTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.bottom.mas_equalTo(0);

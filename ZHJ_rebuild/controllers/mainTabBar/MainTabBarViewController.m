@@ -8,6 +8,8 @@
 
 #import "MainTabBarViewController.h"
 
+#import "UIImage+Color.h"
+
 @interface MainTabBarViewController ()
 
 @end
@@ -27,6 +29,13 @@
 
 -(void)settingTabBarItem
 {
+    UIImage *image = [UIImage imageWithColor:kClearColor height:1];
+    UIImage *imageBG = [UIImage imageWithColor:kColorFromRGB(kWhite) height:1];
+    [self.tabBar setBackgroundImage:imageBG];
+    
+    [self.tabBar setShadowImage:image];
+    [[UITabBar appearance]setShadowImage:image];
+    
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} forState:UIControlStateNormal];
     
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:kColorFromRGB(kThemeYellow),NSFontAttributeName:[UIFont systemFontOfSize:12]} forState:UIControlStateSelected];

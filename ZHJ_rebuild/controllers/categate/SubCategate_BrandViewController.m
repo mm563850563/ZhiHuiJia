@@ -189,6 +189,7 @@
 -(void)initLeftSideSegmentView
 {
     self.leftTableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.leftTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.leftTableView];
     
     __weak typeof(self) weakSelf = self;

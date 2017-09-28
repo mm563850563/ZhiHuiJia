@@ -45,7 +45,7 @@
 #import <ShareSDKUI/ShareSDKUI.h>
 
 
-@interface OrderListViewController_Two ()<UITableViewDelegate,UITableViewDataSource,PayTypeViewDelegate>
+@interface OrderListViewController_Two ()<UITableViewDelegate,UITableViewDataSource,PayTypeViewDelegate,OrderListFooterViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *orderListArray;
@@ -638,10 +638,10 @@
         [self verifyWXPayResult];
     }];
     
-    //分享
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnShareFromWaitToPayVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self settingShareParameter];
-    }];
+//    //分享
+//    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickBtnShareFromWaitToPayVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+//        [self settingShareParameter];
+//    }];
 }
 
 
@@ -723,6 +723,7 @@
     modelOrderList.order_status_desc = @"待支付";
     footerView.modelOrderList = modelOrderList;
     footerView.whereReuseFrom = @"waitToPayVC";
+    footerView.delegate = self;
     return footerView;
 }
 
@@ -764,6 +765,12 @@
         [self getRepayOrderDataWithWechatWithPayParameter:self.payParameter];
     }
     
+}
+
+#pragma mark - ******OrderListFooterViewDelegate*******
+-(void)didClickBtnShare:(UIButton *)btnShare
+{
+    [self settingShareParameter];
 }
 
 @end

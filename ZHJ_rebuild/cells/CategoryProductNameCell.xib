@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,12 +23,22 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCx-uw-RwT">
+                        <rect key="frame" x="10" y="43" width="310" height="0.5"/>
+                        <color key="backgroundColor" red="0.81732855902777779" green="0.80938042534722221" blue="0.73350694444444442" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="k4i-Ca-HvY"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="K6Q-mg-OwS" secondAttribute="trailing" id="am9-KD-4Ms"/>
+                    <constraint firstAttribute="bottom" secondItem="hCx-uw-RwT" secondAttribute="bottom" id="esk-5e-ZwI"/>
+                    <constraint firstItem="hCx-uw-RwT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="hMP-Rp-9MR"/>
                     <constraint firstAttribute="bottom" secondItem="K6Q-mg-OwS" secondAttribute="bottom" id="kfd-tb-NKg"/>
                     <constraint firstItem="K6Q-mg-OwS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="q5C-8F-3IX"/>
+                    <constraint firstAttribute="trailing" secondItem="hCx-uw-RwT" secondAttribute="trailing" id="tBw-oQ-v1j"/>
                     <constraint firstItem="K6Q-mg-OwS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="v2c-Av-Ma5"/>
                 </constraints>
             </tableViewCellContentView>

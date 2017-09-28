@@ -37,6 +37,10 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDKUI.h>
 
+//IM
+#import "EaseUI.h"
+#import "ZHJMessageViewController.h"
+
 
 @interface PersonalViewController ()<UINavigationControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -102,7 +106,13 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
     dispatch_group_async(group, queue, ^{
-        [self getMessageCount];
+        int unreadIMCount = 0;
+        NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
+        for (EMConversation *conversation in conversations){
+            unreadIMCount += conversation.unreadMessagesCount;
+        }
+        [self getMessageCountWithUnreadIMCount:unreadIMCount];
+//        [self getMessageCount];
     });
     dispatch_group_async(group, queue, ^{
         [self getPersonalCenterDataWithHUD:nil];
@@ -114,7 +124,7 @@
 }
 
 #pragma mark - <获取消息数量>
--(void)getMessageCount
+-(void)getMessageCountWithUnreadIMCount:(int)unreadIMCount
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kGetMessageCount];
     NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo)};
@@ -126,32 +136,35 @@
                 //回到主线程刷新数据
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSString *messageCount = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
-                    if (![messageCount isEqualToString:@"0"]) {
-                        self.btnMessage.badgeValue = [NSString stringWithFormat:@"%@",dataDict[@"data"][@"result"]];
-                        self.btnMessage.badgeFont = [UIFont systemFontOfSize:8];
-                        self.btnMessage.badgeMinSize = 1;
-                        self.btnMessage.badgeOriginY = -5;
-                        self.btnMessage.badgeOriginX = 12;
-                    }
-                    
+                    //加上环信未读消息
+                    int messageIntCount = [messageCount intValue];
+                    messageIntCount += unreadIMCount;
+                    messageCount = [NSString stringWithFormat:@"%d",messageIntCount];
+                    //该方法写在第一句才起作用
+                    self.btnMessage.shouldHideBadgeAtZero = YES;
+                    self.btnMessage.badgeValue = [NSString stringWithFormat:@"%@",messageCount];
+                    self.btnMessage.badgeFont = [UIFont systemFontOfSize:8];
+                    self.btnMessage.badgeMinSize = 1;
+                    self.btnMessage.badgeOriginY = -5;
+                    self.btnMessage.badgeOriginX = 12;
                 });
             }else{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:1.0];
-                });
+                //                dispatch_async(dispatch_get_main_queue(), ^{
+                //                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+                //                    [hudWarning hideAnimated:YES afterDelay:1.0];
+                //                });
             }
         }else{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:1.0];
-            });
+            //            dispatch_async(dispatch_get_main_queue(), ^{
+            //                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+            //                [hudWarning hideAnimated:YES afterDelay:1.0];
+            //            });
         }
     } failBlock:^(NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:1.0];
-        });
+        //        dispatch_async(dispatch_get_main_queue(), ^{
+        //            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+        //            [hudWarning hideAnimated:YES afterDelay:1.0];
+        //        });
     }];
 }
 
@@ -179,24 +192,24 @@
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES afterDelay:1.0];
-                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
-                    [hudWarning hideAnimated:YES afterDelay:1.0];
+//                    MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
+//                    [hudWarning hideAnimated:YES afterDelay:1.0];
                     [self.scrollView.mj_header endRefreshing];
                 });
             }
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES afterDelay:1.0];
-                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-                [hudWarning hideAnimated:YES afterDelay:1.0];
+//                MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+//                [hudWarning hideAnimated:YES afterDelay:1.0];
                 [self.scrollView.mj_header endRefreshing];
             });
         }
     } failBlock:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hideAnimated:YES afterDelay:1.0];
-            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
-            [hudWarning hideAnimated:YES afterDelay:1.0];
+//            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:kRequestError];
+//            [hudWarning hideAnimated:YES afterDelay:1.0];
             [self.scrollView.mj_header endRefreshing];
         });
     }];
@@ -465,7 +478,12 @@
 {
     //收到环信消息后刷新消息数据
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshMyMessage" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        [self getMessageCount];
+        int unreadIMCount = 0;
+        NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
+        for (EMConversation *conversation in conversations){
+            unreadIMCount += conversation.unreadMessagesCount;
+        }
+        [self getMessageCountWithUnreadIMCount:unreadIMCount];
     }];
 }
 

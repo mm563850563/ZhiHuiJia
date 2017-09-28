@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface NewPostViewController : UIViewController
+//发布帖子所属圈子
+@property (nonatomic, strong)NSString *circle_id;
 
 @end

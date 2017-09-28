@@ -18,6 +18,9 @@
 //controllers
 #import "ReportTypeViewController.h"
 
+//models
+#import "ActivityDetailResultModel.h"
+
 @interface ActivityConfigViewController ()
 
 @end
@@ -77,12 +80,14 @@
 -(void)settingShareParameter
 {
     //1.创建分享参数 注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
-    UIImage *image = [UIImage imageNamed:@"appLogo"];
-    NSArray *imageArray = @[image];
+//    UIImage *image = [UIImage imageNamed:@"appLogo"];
+//    NSArray *imageArray = @[image];
+    NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,self.modelResult.image];
+    NSArray *imageArray = @[imgStr];
     
     if (imageArray) {
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-        [shareParams SSDKSetupShareParamsByText:@"全球首个爆品推荐+智慧社交平台！1亿礼品库、注册必送礼！" images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:@"智惠加" type:SSDKContentTypeAuto];
+        [shareParams SSDKSetupShareParamsByText:self.modelResult.content images:imageArray url:[NSURL URLWithString:kZHJAppStoreLink] title:self.modelResult.title type:SSDKContentTypeAuto];
         
         //有的平台要客户端分享需要加此方法，例如微博
         [shareParams SSDKEnableUseClientShare];
@@ -97,7 +102,7 @@
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kCancelActivity];
     NSDictionary *dictParameter = @{@"user_id":kUserDefaultObject(kUserInfo),
-                                    @"activity_id":self.activity_id};
+                                    @"activity_id":self.modelResult.activity_id};
     
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [YQNetworking postWithUrl:urlStr refreshRequest:YES cache:NO params:dictParameter progressBlock:nil successBlock:^(id response) {
