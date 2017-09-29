@@ -605,10 +605,10 @@
 #pragma mark - <跳转个人资料页面>
 -(void)jumpToPersonalFileVC
 {
-//    PersonalFileViewController *personalFileVC = [[PersonalFileViewController alloc]initWithNibName:NSStringFromClass([PersonalFileViewController class]) bundle:nil];
-//    personalFileVC.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:personalFileVC animated:YES];
-    [self jumpToUserBalanceSuccessPayVCWithModel:nil];
+    PersonalFileViewController *personalFileVC = [[PersonalFileViewController alloc]initWithNibName:NSStringFromClass([PersonalFileViewController class]) bundle:nil];
+    personalFileVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:personalFileVC animated:YES];
+//    [self jumpToUserBalanceSuccessPayVCWithModel:nil];
 }
 
 #pragma mark - <跳转“用户余额支付成功”页面>

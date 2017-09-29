@@ -12,5 +12,6 @@
 @interface CommentAndAboutMeCell : UITableViewCell
 
 @property (nonatomic, strong)MessageResultModel *modelMessageResult;
+//@property (weak, nonatomic) IBOutlet UIButton *btnUnread;
 
 @end

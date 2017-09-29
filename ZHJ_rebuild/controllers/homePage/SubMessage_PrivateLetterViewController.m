@@ -151,17 +151,42 @@
 -(void)getConversationDataWithHUD:(MBProgressHUD *)hud
 {
     NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
-    self.conversationArray = [NSMutableArray arrayWithArray:conversations];
+    [self.conversationArray removeAllObjects];
+    [self.userIDArray removeAllObjects];
     
+    NSMutableArray *timeStampArray = [NSMutableArray array];
     for (EMConversation *conversation in conversations) {
         //获取最新的消息
         EMMessage *lastMessage = conversation.latestMessage;
-        
-        //获取对方的ID存入id数组
-        if (lastMessage.direction == EMMessageDirectionSend) {
-            [self.userIDArray addObject:lastMessage.to];
-        }else if (lastMessage.direction == EMMessageDirectionReceive){
-            [self.userIDArray addObject:lastMessage.from];
+        NSNumber *timeStampNum = [NSNumber numberWithLongLong:lastMessage.timestamp];
+        [timeStampArray addObject:timeStampNum];
+//        //获取对方的ID存入id数组
+//        if (lastMessage.direction == EMMessageDirectionSend) {
+//            [self.userIDArray addObject:lastMessage.to];
+//        }else if (lastMessage.direction == EMMessageDirectionReceive){
+//            [self.userIDArray addObject:lastMessage.from];
+//        }
+    }
+    
+    [timeStampArray sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [obj2 compare:obj1];
+    }];
+    NSLog(@"%@",timeStampArray);
+    for (NSNumber *item in timeStampArray) {
+        long long timeStamp = [item longLongValue];
+        for (EMConversation *conversation in conversations) {
+            EMMessage *lastMessage = conversation.latestMessage;
+            if (timeStamp == conversation.latestMessage.timestamp) {
+                //获取对方的ID存入id数组
+                if (lastMessage.direction == EMMessageDirectionSend) {
+                    [self.userIDArray addObject:lastMessage.to];
+                }else if (lastMessage.direction == EMMessageDirectionReceive){
+                    [self.userIDArray addObject:lastMessage.from];
+                }
+                
+                //存好会话
+                [self.conversationArray addObject:conversation];
+            }
         }
     }
     
@@ -220,6 +245,7 @@
 #pragma mark - **** EMChatManagerDelegate *****
 -(void)messagesDidReceive:(NSArray *)aMessages
 {
+//    [self getConversationDataWithHUD:nil];
     [self getConversationDataWithHUD:nil];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshUnreadIMCount" object:nil];
 //    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {

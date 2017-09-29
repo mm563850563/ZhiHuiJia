@@ -9,14 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZHJ_rebuild/tools/ShareTool.m"
-            timestampString = "528189140.799673"
+            filePath = "ZHJ_rebuild/controllers/discover/DiscoverViewController.m"
+            timestampString = "528377150.208562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "@implementation ShareTool"
-            landmarkType = "3">
+            startingLineNumber = "497"
+            endingLineNumber = "497"
+            landmarkName = "-respondWithRAC"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -25,14 +25,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZHJ_rebuild/tools/ShareTool.m"
-            timestampString = "528189140.799673"
+            filePath = "ZHJ_rebuild/controllers/discover/DiscoverViewController.m"
+            timestampString = "528377150.208562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "@implementation ShareTool"
-            landmarkType = "3">
+            startingLineNumber = "507"
+            endingLineNumber = "507"
+            landmarkName = "-respondWithRAC"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -41,14 +41,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZHJ_rebuild/tools/ShareTool.m"
-            timestampString = "528189140.799673"
+            filePath = "ZHJ_rebuild/controllers/homePage/OrderConfirmViewController.m"
+            timestampString = "528379822.094102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "@implementation ShareTool"
-            landmarkType = "3">
+            startingLineNumber = "528"
+            endingLineNumber = "528"
+            landmarkName = "-verifyWXPayResult"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

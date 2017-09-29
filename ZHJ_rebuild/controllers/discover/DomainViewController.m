@@ -318,6 +318,13 @@
 {
     MyFocusViewController *myFocusVC = [[MyFocusViewController alloc]initWithNibName:NSStringFromClass([MyFocusViewController class]) bundle:nil];
     myFocusVC.myFansOrMyFocus = fansOrFocus;
+    
+    if ([fansOrFocus isEqualToString:@"focus"]) {
+        myFocusVC.navigationItem.title = @"关注列表";
+    }else if ([fansOrFocus isEqualToString:@"fans"]){
+        myFocusVC.navigationItem.title = @"粉丝列表";
+    }
+    
     [self.navigationController pushViewController:myFocusVC animated:YES];
 }
 
@@ -340,6 +347,7 @@
 -(void)jumpToMyActivitiesVC
 {
     ActivityViewController *activityVC = [[ActivityViewController alloc]initWithNibName:NSStringFromClass([ActivityViewController class]) bundle:nil];
+    activityVC.navigationItem.title = @"我的活动";
     [self.navigationController pushViewController:activityVC animated:YES];
 }
 
@@ -347,6 +355,7 @@
 -(void)jumpToMyJoinedActivityVC
 {
     MyJoinedActivityViewController *myJoinedActivityVC = [[MyJoinedActivityViewController alloc]init];
+    myJoinedActivityVC.navigationItem.title = @"参与的活动";
     [self.navigationController pushViewController:myJoinedActivityVC animated:YES];
 }
 
@@ -354,6 +363,7 @@
 -(void)jumpToPersonalRankVC
 {
     PersonalRankActivityViewController *personalRankVC = [[PersonalRankActivityViewController alloc]initWithNibName:NSStringFromClass([PersonalRankActivityViewController class]) bundle:nil];
+    personalRankVC.navigationItem.title = @"个人活跃度排名";
     [self.navigationController pushViewController:personalRankVC animated:YES];
 }
 
@@ -373,6 +383,7 @@
     dynamicDetailVC.talk_id = talk_id;
     dynamicDetailVC.user_id = user_id;
     dynamicDetailVC.whereReuseFrom = @"domainVC";
+    dynamicDetailVC.navigationItem.title = @"动态详情";
     [self.navigationController pushViewController:dynamicDetailVC animated:YES];
 }
 

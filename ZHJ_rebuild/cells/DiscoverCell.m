@@ -72,11 +72,11 @@
 //    }];
 }
 
--(void)scrollChangeToIndex:(NSInteger)index
-{
-    NSNumber *indexNum = [NSNumber numberWithInteger:index];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"Discover_Filp" object:indexNum];
-}
+//-(void)scrollChangeToIndex:(NSInteger)index
+//{
+//    NSNumber *indexNum = [NSNumber numberWithInteger:index];
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"Discover_Filp" object:indexNum];
+//}
 
 
 

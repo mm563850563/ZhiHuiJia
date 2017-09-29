@@ -299,6 +299,7 @@
     moreCircleVC.moreType = moreType;
     moreCircleVC.classify_id = classify_id;
     moreCircleVC.hidesBottomBarWhenPushed = YES;
+    moreCircleVC.navigationItem.title = @"已加入的圈子";
     [self.navigationController pushViewController:moreCircleVC animated:YES];
 }
 

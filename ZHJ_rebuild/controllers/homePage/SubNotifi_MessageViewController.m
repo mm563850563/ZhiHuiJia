@@ -163,18 +163,30 @@
             NSInteger index = [indexStr integerValue];
             if ([indexStr isEqualToString:@"0"]) {
                 int temp = [self.commentCount intValue];
-                temp--;
+                if (temp > 0) {
+                    temp--;
+                    self.commentCount = [NSString stringWithFormat:@"%d",temp];
+                }
                 count = [NSString stringWithFormat:@"%d",temp];
+                [self.segmentView addUnreadCountWithCount:count index:index];
             }else if ([indexStr isEqualToString:@"1"]){
                 int temp = [self.atCount intValue];
-                temp--;
+                if (temp > 0) {
+                    temp--;
+                    self.atCount = [NSString stringWithFormat:@"%d",temp];
+                }
                 count = [NSString stringWithFormat:@"%d",temp];
+                [self.segmentView addUnreadCountWithCount:count index:index];
             }else if ([indexStr isEqualToString:@"3"]){
                 int temp = [self.likeCount intValue];
-                temp--;
+                if (temp > 0) {
+                    temp--;
+                    self.likeCount = [NSString stringWithFormat:@"%d",temp];
+                }
                 count = [NSString stringWithFormat:@"%d",temp];
+                [self.segmentView addUnreadCountWithCount:count index:index];
             }
-            [self.segmentView addUnreadCountWithCount:count index:index];
+            
         });
     }];
     

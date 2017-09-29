@@ -31,6 +31,8 @@
     MBProgressHUD *hud = [ProgressHUDManager showProgressHUDAddTo:self.view animated:YES];
     [self getAboutMeDataWithHUD:hud];
     [self settingTableView];
+    
+    [self respondWithRAC];
 }
 
 - (void)didReceiveMemoryWarning {

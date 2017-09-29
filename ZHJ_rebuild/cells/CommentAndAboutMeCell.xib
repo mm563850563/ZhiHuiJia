@@ -27,21 +27,29 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vwE-vf-aRD">
                                         <rect key="frame" x="0.0" y="0.0" width="72" height="72"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tT-KX-hpZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="72"/>
+                                    <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tT-KX-hpZ">
+                                        <rect key="frame" x="66" y="-6" width="12" height="12"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="neW-Ri-klQ"/>
+                                            <constraint firstAttribute="width" constant="12" id="t6C-Al-8UD"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="2tT-KX-hpZ" firstAttribute="top" secondItem="jNL-Gk-Ij4" secondAttribute="top" id="4cd-6Y-r7k"/>
+                                    <constraint firstAttribute="trailing" secondItem="2tT-KX-hpZ" secondAttribute="trailing" constant="-6" id="5h8-HB-1e8"/>
                                     <constraint firstAttribute="bottom" secondItem="vwE-vf-aRD" secondAttribute="bottom" id="Al5-jo-kWH"/>
-                                    <constraint firstAttribute="bottom" secondItem="2tT-KX-hpZ" secondAttribute="bottom" id="EyT-H5-GeM"/>
                                     <constraint firstAttribute="width" secondItem="jNL-Gk-Ij4" secondAttribute="height" multiplier="1:1" id="GTf-ce-kAO"/>
+                                    <constraint firstItem="2tT-KX-hpZ" firstAttribute="top" secondItem="jNL-Gk-Ij4" secondAttribute="top" constant="-6" id="MbZ-Yb-oD3"/>
                                     <constraint firstItem="vwE-vf-aRD" firstAttribute="top" secondItem="jNL-Gk-Ij4" secondAttribute="top" id="MnJ-b3-tTQ"/>
                                     <constraint firstItem="vwE-vf-aRD" firstAttribute="leading" secondItem="jNL-Gk-Ij4" secondAttribute="leading" id="VZZ-sJ-ha5"/>
                                     <constraint firstAttribute="trailing" secondItem="vwE-vf-aRD" secondAttribute="trailing" id="W2Y-4G-Sne"/>
-                                    <constraint firstAttribute="trailing" secondItem="2tT-KX-hpZ" secondAttribute="trailing" id="WzJ-2X-bfG"/>
-                                    <constraint firstItem="2tT-KX-hpZ" firstAttribute="leading" secondItem="jNL-Gk-Ij4" secondAttribute="leading" id="euJ-Hf-TLY"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfg-4x-qgf">

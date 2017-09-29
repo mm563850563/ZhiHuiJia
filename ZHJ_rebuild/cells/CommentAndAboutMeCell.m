@@ -10,7 +10,7 @@
 #import "MessageResultModel.h"
 
 //tools
-#import "UIButton+Badge.h"
+//#import "UIButton+Badge.h"
 
 @interface CommentAndAboutMeCell ()
 
@@ -38,6 +38,8 @@
 
 -(void)setModelMessageResult:(MessageResultModel *)modelMessageResult
 {
+    _modelMessageResult = modelMessageResult;
+    
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelMessageResult.headimg];
     NSURL *imgURL = [NSURL URLWithString:imgStr];
     [self.imgViewPortrait sd_setImageWithURL:imgURL placeholderImage:kPlaceholder];
@@ -47,18 +49,14 @@
     self.labelTime.text = modelMessageResult.addtime;
     
     if ([modelMessageResult.is_read isEqualToString:@"0"]) {
-        self.btnUnread.badgeValue = @" ";
+        [self.btnUnread setHidden:NO];
     }else{
-        self.btnUnread.shouldHideBadgeAtZero = YES;
-        self.btnUnread.badgeValue = @"0";
+        [self.btnUnread setHidden:YES];
     }
-    self.btnUnread.badgeFont = [UIFont systemFontOfSize:6];
+//    self.btnUnread.badgeFont = [UIFont systemFontOfSize:6];
 }
 
--(void)drawRect:(CGRect)rect
-{
-    self.btnUnread.badgeOriginX = self.btnUnread.bounds.size.width-10;
-}
+
 
 
 @end

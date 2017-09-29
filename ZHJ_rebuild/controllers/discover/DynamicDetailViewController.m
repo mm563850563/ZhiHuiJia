@@ -469,6 +469,7 @@
 {
     MyFocusViewController *talkLikeListVC = [[MyFocusViewController alloc]initWithNibName:NSStringFromClass([MyFocusViewController class]) bundle:nil];
     talkLikeListVC.talk_id = talk_id;
+    talkLikeListVC.navigationItem.title = @"点赞列表";
     [self.navigationController pushViewController:talkLikeListVC animated:YES];
 }
 

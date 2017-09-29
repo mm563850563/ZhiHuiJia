@@ -16,6 +16,9 @@
 #import "MessageDataModel.h"
 #import "MessageResultModel.h"
 
+//tools
+#import "UIButton+Badge.h"
+
 @interface SubMessage_CommentViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -150,6 +153,7 @@
         CommentAndAboutMeCell *cellComment = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CommentAndAboutMeCell class])];
         MessageResultModel *model = self.commentArray[indexPath.row];
         cellComment.modelMessageResult = model;
+        
         return cellComment;
     }
 }

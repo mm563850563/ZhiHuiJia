@@ -28,8 +28,6 @@
 
 @property (strong, nonatomic) UIImageView *imgViewPortrait;
 @property (strong, nonatomic) UILabel *labelNickName;
-@property (nonatomic, strong)UIButton *btnOnFocus;
-@property (nonatomic, strong)UIButton *btnLike;
 @property (nonatomic, strong)UIButton *btnComment;
 @property (strong, nonatomic) UILabel *labelAddTime;
 @property (strong, nonatomic) UICollectionView *collectionView;
@@ -98,7 +96,7 @@
     
     if (sender.selected) {
         if ([self.whereReuseFrom isEqualToString:@"discover"]) {
-            notifiName = @"cancelLikeByClickFromDiscover";
+//            notifiName = @"cancelLikeByClickFromDiscover";
         }else if ([self.whereReuseFrom isEqualToString:@"dynamicDetail"]){
             notifiName = @"cancelLikeByClickFromDynamicDetail";
         }
@@ -107,13 +105,17 @@
 //        }
     }else{
         if ([self.whereReuseFrom isEqualToString:@"discover"]) {
-            notifiName = @"likeByClickFromDiscover";
+//            notifiName = @"likeByClickFromDiscover";
         }else if ([self.whereReuseFrom isEqualToString:@"dynamicDetail"]){
             notifiName = @"likeByClickFromDynamicDetail";
         }
 //        else if ([self.whereReuseFrom isEqualToString:@"focusPersonalVC"]){
 //            notifiName = @"likeByClickFromFocusPersonalVC";
 //        }
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(didClickBtnLike:index:talk_id:)]) {
+        [self.delegate didClickBtnLike:sender index:self.tag talk_id:self.modelCircleDynamicResult.talk_id];
     }
     
     
@@ -129,8 +131,20 @@
         notifiNameAttention = @"attentionFriendByDynamicDetail";
         notifiNameCancelAttention = @"cancelAttentionFriendByDynamicDetail";
     }else if ([self.whereReuseFrom isEqualToString:@"discover"]){
-        notifiNameAttention = @"attentionFriendByDiscover";
-        notifiNameCancelAttention = @"cancelAttentionFriendByDiscover";
+        
+        if ([self.delegate respondsToSelector:@selector(didClickBtnFocus:index:user_id:)]) {
+            [self.delegate didClickBtnFocus:button index:self.tag user_id:self.modelCircleDynamicResult.user_id];
+        }
+//        notifiNameAttention = @"attentionFriendByDiscover";
+//        notifiNameCancelAttention = @"cancelAttentionFriendByDiscover";
+//        
+//        NSDictionary *dict = @{@"data":self.modelCircleDynamicResult.user_id,
+//                               @"index":[NSString stringWithFormat:@"%ld",(long)self.tag]};
+//        if (!button.selected) {
+//            [[NSNotificationCenter defaultCenter]postNotificationName:notifiNameAttention object:dict];
+//        }else{
+//            [[NSNotificationCenter defaultCenter]postNotificationName:notifiNameCancelAttention object:dict];
+//        }
     }
 //    else if ([self.whereReuseFrom isEqualToString:@"focusPersonalVC"]){
 //        notifiNameAttention = @"attentionFriendByFocusPersonalVC";

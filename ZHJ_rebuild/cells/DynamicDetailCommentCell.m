@@ -57,19 +57,19 @@
 #pragma mark - <点击“赞”>
 -(void)btnLikeAction:(UIButton *)sender
 {
-//    NSString *notifiName = [NSString string];
-//    
-//    if (sender.selected) {
-//        if ([self.whereReuseFrom isEqualToString:@"dynamicDetailVC"]) {
-//            notifiName = @"cancelLikeCommentByClickFromDynamicDetailVC";
-//        }
-//    }else{
-//        if ([self.whereReuseFrom isEqualToString:@"dynamicDetailVC"]) {
-//            notifiName = @"likeCommentByClickFromDynamicDetailVC";
-//        }
-//    }
-//    
-//    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelDynamicCommentResult.talk_id];
+    NSString *notifiName = [NSString string];
+    
+    if (sender.selected) {
+        if ([self.whereReuseFrom isEqualToString:@"dynamicDetailVC"]) {
+            notifiName = @"cancelLikeCommentByClickFromDynamicDetailVC";
+        }
+    }else{
+        if ([self.whereReuseFrom isEqualToString:@"dynamicDetailVC"]) {
+            notifiName = @"likeCommentByClickFromDynamicDetailVC";
+        }
+    }
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelDynamicCommentResult.talk_id];
 }
 
 #pragma mark - <“更多”响应>
@@ -270,14 +270,13 @@
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelDynamicCommentResult.headimg];
     NSURL *url = [NSURL URLWithString:imgStr];
     [self.imgViewProtrait sd_setImageWithURL:url placeholderImage:kPlaceholder];
-    /*
+    
     //btnLike
     if ([modelDynamicCommentResult.is_liked isEqualToString:@"1"]) {
         self.btnLike.selected = YES;
     }else{
         self.btnLike.selected = NO;
     }
-    */
     
     //labelContent
     NSString *strContent = [NSString string];

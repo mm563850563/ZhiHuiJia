@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "加.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "关注公众号(1).jpg",
       "scale" : "2x"
     },
     {

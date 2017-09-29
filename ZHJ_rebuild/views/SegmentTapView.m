@@ -150,7 +150,8 @@
 //    button.badgeValue = @"";
     button.badgeValue = count;
     button.badgeFont = [UIFont systemFontOfSize:7];
-    button.badgeMinSize = 1;
+    
+    button.badgeMinSize = 0;
     button.badgeOriginX = position-30;
     button.badgeOriginY = 3;
 }

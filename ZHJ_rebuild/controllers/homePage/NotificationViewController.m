@@ -138,6 +138,7 @@
     dynamicDetailVC.message_id = message_id;
     dynamicDetailVC.index = index;
     dynamicDetailVC.whereReuseFrom = @"notificationVC";
+    dynamicDetailVC.navigationItem.title = @"动态详情";
     [self.navigationController pushViewController:dynamicDetailVC animated:YES];
 }
 

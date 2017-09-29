@@ -47,7 +47,7 @@
 
 #import "SearchTopicOrUserViewController.h"
 
-@interface DiscoverViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,SegmentTapViewDelegate,UINavigationControllerDelegate>
+@interface DiscoverViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,SegmentTapViewDelegate,UINavigationControllerDelegate,DiscoverDynamicCellDelegate>
 
 @property (nonatomic, strong)UITableView *mainTableView;
 @property (nonatomic, strong)NSMutableArray *circleDynamicArray;
@@ -175,7 +175,13 @@
             if ([code isEqual:@200]) {
                 NSError *error = nil;
                 MyCircleDynamicDataModel *modelData = [[MyCircleDynamicDataModel alloc]initWithDictionary:dataDict[@"data"] error:&error];
-                for (MyCircleDynamicResultModel *modelDynamicResult in modelData.result) {
+                NSArray *array = modelData.result;
+                
+//                for (int i = (int)array.count; i > 0; i--) {
+//                    [self.circleDynamicArray removeLastObject];
+//                }
+                
+                for (MyCircleDynamicResultModel *modelDynamicResult in array) {
                     [self.circleDynamicArray addObject:modelDynamicResult];
                 }
                 
@@ -211,7 +217,7 @@
 }
 
 #pragma mark - <关注／取消关注好友>
--(void)attentionOrCancelAttentionWithFriendUserID:(NSString *)friend_user_id attentionType:(NSString *)attention_type
+-(void)attentionOrCancelAttentionWithFriendUserID:(NSString *)friend_user_id attentionType:(NSString *)attention_type index:(NSInteger)index
 {
     NSString *urlStr = [NSString string];
     if ([attention_type isEqualToString:@"1"]) {
@@ -231,8 +237,11 @@
             if ([code isEqual:@200]) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.circleDynamicArray removeAllObjects];
-                    [self getBestDynamicDataWithPage:@1];
+                    
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:1];
+                    DiscoverDynamicCell *cell = (DiscoverDynamicCell *)[self.mainTableView cellForRowAtIndexPath:indexPath];
+                    cell.btnOnFocus.selected = !cell.btnOnFocus.selected;
+//                    [self getBestDynamicDataWithPage:self.page];
                     
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
@@ -263,7 +272,7 @@
 }
 
 #pragma mark - <点赞／取消点赞>
--(void)requestLikeOrCancelLikeWithTalkID:(NSString *)talk_id likeType:(NSString *)like_type
+-(void)requestLikeOrCancelLikeWithTalkID:(NSString *)talk_id likeType:(NSString *)like_type index:(NSInteger)index
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kLikeCancel];
     
@@ -283,8 +292,12 @@
             if ([code isEqual:@200]) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.circleDynamicArray removeAllObjects];
-                    [self getBestDynamicDataWithPage:@1];
+//                    [self.circleDynamicArray removeAllObjects];
+//                    [self getBestDynamicDataWithPage:@1];
+                    
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:1];
+                    DiscoverDynamicCell *cell = (DiscoverDynamicCell *)[self.mainTableView cellForRowAtIndexPath:indexPath];
+                    cell.btnLike.selected = !cell.btnLike.selected;
                     
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
@@ -342,7 +355,7 @@
 #pragma mark - <初始化mainTableView>
 -(void)initMianTableView
 {
-    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     self.mainTableView.delegate = self;
     self.mainTableView.dataSource = self;
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -455,13 +468,13 @@
 #pragma mark - <响应RAC>
 -(void)respondWithRAC
 {
-    //flipView滑动后segmentView跟着变化
-    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"Discover_Filp" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
-        NSNumber *num = x.object;
-        NSInteger index = [num integerValue];
-        [self.segmentView selectIndex:index];
-        
-    }];
+//    //flipView滑动后segmentView跟着变化
+//    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"Discover_Filp" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
+//        NSNumber *num = x.object;
+//        NSInteger index = [num integerValue];
+//        [self.segmentView selectIndex:index];
+//        
+//    }];
     
     //点击圈子
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"clickCircleAction" object:nil]subscribeNext:^(NSNotification * _Nullable x) {
@@ -480,18 +493,27 @@
     
     //关注好友
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"attentionFriendByDiscover" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        NSString *user_id = x.object;
-        [self attentionOrCancelAttentionWithFriendUserID:user_id attentionType:@"1"];
+        NSDictionary *dict = x.object;
+        NSString *user_id = dict[@"data"];
+        NSString *indexStr = dict[@"index"];
+        NSInteger index = [indexStr integerValue];
+        [self attentionOrCancelAttentionWithFriendUserID:user_id attentionType:@"1" index:index];
+//        self.mainTableView.contentOffset = offset;
     }];
     
     //取消关注好友
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"cancelAttentionFriendByDiscover" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        NSString *user_id = x.object;
-        [self attentionOrCancelAttentionWithFriendUserID:user_id attentionType:@"0"];
+        NSDictionary *dict = x.object;
+        NSString *user_id = dict[@"data"];
+        NSString *indexStr = dict[@"index"];
+        NSInteger index = [indexStr integerValue];
+        [self attentionOrCancelAttentionWithFriendUserID:user_id attentionType:@"0" index:index];
+//        self.mainTableView scr
     }];
     
     //动态详情里点击关注后刷新该页面
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"refreshDiscoverVCData" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        self.page = @1;
         [self.circleDynamicArray removeAllObjects];
         [self getBestDynamicDataWithPage:@1];
     }];
@@ -514,17 +536,17 @@
         [self jumpToTopicDetailVCWithTopicID:topic_id];
     }];
     
-    //点赞
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"likeByClickFromDiscover" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        NSString *talk_id = x.object;
-        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"0"];
-    }];
-    
-    //取消点赞
-    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"cancelLikeByClickFromDiscover" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
-        NSString *talk_id = x.object;
-        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"1"];
-    }];
+//    点赞
+//    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"likeByClickFromDiscover" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+//        NSString *talk_id = x.object;
+//        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"0"];
+//    }];
+//    
+//    //取消点赞
+//    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"cancelLikeByClickFromDiscover" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+//        NSString *talk_id = x.object;
+//        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"1"];
+//    }];
 }
 
 
@@ -644,6 +666,7 @@
     DiscoverDynamicCell *cell = [[DiscoverDynamicCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([DiscoverDynamicCell class])];
     MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
     cell.modelCircleDynamicResult = modelResult;
+    cell.tag = indexPath.row;
     return cell.cellHeight;
 }
 
@@ -653,6 +676,11 @@
         return 0.1f;
     }
     return 41;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1f;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -667,6 +695,8 @@
         MyCircleDynamicResultModel *modelResult = self.circleDynamicArray[indexPath.row];
         cell2.whereReuseFrom = @"discover";
         cell2.modelCircleDynamicResult = modelResult;
+        cell2.tag = indexPath.row;
+        cell2.delegate = self;
         cell = cell2;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -697,5 +727,25 @@
         [self jumpToDynamicDetailVCWithUserID:modelResult.user_id talkID:modelResult.talk_id];
     }
 }
+
+
+#pragma mark - ****** DiscoverDynamicCellDelegate *******
+-(void)didClickBtnFocus:(UIButton *)btnFocus index:(NSInteger)index user_id:(NSString *)user_id
+{
+    if (btnFocus.selected) {
+        [self attentionOrCancelAttentionWithFriendUserID:user_id attentionType:@"0" index:index];
+    }else{
+        [self attentionOrCancelAttentionWithFriendUserID:user_id attentionType:@"1" index:index];
+    }
+}
+-(void)didClickBtnLike:(UIButton *)btnLike index:(NSInteger)index talk_id:(NSString *)talk_id
+{
+    if (btnLike.selected) {
+        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"1" index:index];
+    }else{
+        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"0" index:index];
+    }
+}
+
 
 @end

@@ -426,6 +426,7 @@
 {
     CircleSigninListViewController *signinListVC = [[CircleSigninListViewController alloc]initWithNibName:NSStringFromClass([CircleSigninListViewController class]) bundle:nil];
     signinListVC.circle_id = circle_id;
+    signinListVC.navigationItem.title = @"签到列表";
     [self.navigationController pushViewController:signinListVC animated:YES];
 }
 
