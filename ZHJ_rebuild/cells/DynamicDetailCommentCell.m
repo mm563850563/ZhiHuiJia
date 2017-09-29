@@ -61,14 +61,13 @@
 //    
 //    if (sender.selected) {
 //        if ([self.whereReuseFrom isEqualToString:@"dynamicDetailVC"]) {
-//            notifiName = @"cancelLikeByClickFromDynamicDetailVC";
+//            notifiName = @"cancelLikeCommentByClickFromDynamicDetailVC";
 //        }
 //    }else{
 //        if ([self.whereReuseFrom isEqualToString:@"dynamicDetailVC"]) {
-//            notifiName = @"likeByClickFromDynamicDetailVC";
+//            notifiName = @"likeCommentByClickFromDynamicDetailVC";
 //        }
 //    }
-//    
 //    
 //    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelDynamicCommentResult.talk_id];
 }
@@ -104,8 +103,24 @@
         _imgViewProtrait.contentMode = UIViewContentModeScaleAspectFill;
         _imgViewProtrait.layer.cornerRadius = 15;
         _imgViewProtrait.layer.masksToBounds = YES;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickImgViewPortraitAction:)];
+        _imgViewProtrait.userInteractionEnabled = YES;
+        [_imgViewProtrait addGestureRecognizer:tap];
     }
     return _imgViewProtrait;
+}
+
+#pragma mark - <点击头像响应>
+-(void)clickImgViewPortraitAction:(UITapGestureRecognizer *)tap
+{
+    NSString *notifiName = [NSString string];
+    if ([self.whereReuseFrom isEqualToString:@"dynamicDetailVC"]) {
+        notifiName = @"jumpToFocusPersonalVCByPortraitFromDynamicDetail";
+    }
+    
+    //跳转查看好友详情
+    [[NSNotificationCenter defaultCenter]postNotificationName:notifiName object:self.modelDynamicCommentResult.user_id];
 }
 
 -(UILabel *)labelNickName
@@ -122,7 +137,7 @@
 {
     if (!_labelAddTime) {
         _labelAddTime = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
-        _labelAddTime.font = [UIFont systemFontOfSize:12];
+        _labelAddTime.font = [UIFont systemFontOfSize:10];
         _labelAddTime.textColor = kColorFromRGB(kDeepGray);
     }
     return _labelAddTime;
@@ -193,9 +208,9 @@
     
     __weak typeof(self) weakSelf = self;
     [self.mainBGView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(1);
+        make.top.mas_equalTo(0.5);
         make.left.right.mas_equalTo(0);
-        make.bottom.mas_equalTo(-0.5);
+        make.bottom.mas_equalTo(0);
     }];
     [self.peronalBGView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(0);
@@ -255,6 +270,14 @@
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelDynamicCommentResult.headimg];
     NSURL *url = [NSURL URLWithString:imgStr];
     [self.imgViewProtrait sd_setImageWithURL:url placeholderImage:kPlaceholder];
+    /*
+    //btnLike
+    if ([modelDynamicCommentResult.is_liked isEqualToString:@"1"]) {
+        self.btnLike.selected = YES;
+    }else{
+        self.btnLike.selected = NO;
+    }
+    */
     
     //labelContent
     NSString *strContent = [NSString string];

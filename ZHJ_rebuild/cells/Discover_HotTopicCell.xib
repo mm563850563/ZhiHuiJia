@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -136,8 +135,8 @@
             <size key="customSize" width="195" height="314"/>
             <connections>
                 <outlet property="imgViewProduct" destination="vnd-fb-s7Z" id="hTb-Rc-55W"/>
-                <outlet property="labelCommentCount" destination="4Ee-iX-6l3" id="PiJ-IT-aLI"/>
-                <outlet property="labelPraiseCount" destination="D7y-ZE-Zlu" id="hsP-AV-s72"/>
+                <outlet property="labelCommentCount" destination="D7y-ZE-Zlu" id="BN5-c4-xMc"/>
+                <outlet property="labelPraiseCount" destination="4Ee-iX-6l3" id="6Ze-4y-e57"/>
                 <outlet property="labelTopic" destination="fi7-gM-Pb4" id="jXb-57-slW"/>
             </connections>
             <point key="canvasLocation" x="-38.5" y="102"/>

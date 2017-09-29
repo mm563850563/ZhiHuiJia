@@ -83,6 +83,8 @@
     NSString *notifiName = [NSString string];
     if ([self.whereReuseFrom isEqualToString:@"discover"]) {
         notifiName = @"jumpToFocusPersonalVCByPortraitFromDiscover";
+    }else if ([self.whereReuseFrom isEqualToString:@"dynamicDetail"]) {
+        notifiName = @"jumpToFocusPersonalVCByPortraitFromDynamicDetail";
     }
     
     //跳转查看好友详情
@@ -322,7 +324,8 @@
     if (!_labelAddTime) {
         _labelAddTime = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
         _labelAddTime.font = [UIFont systemFontOfSize:11];
-        _labelAddTime.textAlignment = NSTextAlignmentRight;
+        _labelAddTime.textAlignment = NSTextAlignmentLeft;
+        _labelAddTime.textColor = kColorFromRGB(kDeepGray);
     }
     return _labelAddTime;
 }
@@ -350,6 +353,7 @@
     [self.contentView addSubview:self.BGView];
     [self.BGView addSubview:self.imgViewPortrait];
     [self.BGView addSubview:self.labelNickName];
+    [self.BGView addSubview:self.labelAddTime];
     [self.BGView addSubview:self.btnOnFocus];
     [self.BGView addSubview:self.labelContent];
     [self.BGView addSubview:self.collectionView];
@@ -358,14 +362,13 @@
     [self.commentBGView addSubview:self.btnComment];
     [self.commentBGView addSubview:self.labelPraiseCount];
     [self.commentBGView addSubview:self.labelCommentCount];
-    [self.commentBGView addSubview:self.labelAddTime];
     [self.BGView addSubview:self.tableView];
     
     __weak typeof(self) weakSelf = self;
     
     [self.BGView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(0.5);
-        make.bottom.mas_equalTo(-0.5);
+        make.bottom.mas_equalTo(0);
         make.left.right.mas_equalTo(0);
     }];
     [self.imgViewPortrait mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -373,10 +376,16 @@
         make.size.mas_offset(CGSizeMake(50, 50));
     }];
     [self.labelNickName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(weakSelf.imgViewPortrait.mas_right).with.offset(5);
+        make.left.mas_equalTo(weakSelf.imgViewPortrait.mas_right).with.offset(10);
         make.right.mas_equalTo(-70);
         make.height.mas_equalTo(20);
-        make.centerY.mas_equalTo(weakSelf.imgViewPortrait);
+        make.top.mas_equalTo(weakSelf.imgViewPortrait.mas_top).with.offset(5);
+    }];
+    [self.labelAddTime mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(weakSelf.imgViewPortrait.mas_right).with.offset(10);
+        make.right.mas_equalTo(-70);
+        make.height.mas_equalTo(20);
+        make.top.mas_equalTo(weakSelf.labelNickName.mas_bottom).with.offset(2);
     }];
     [self.btnOnFocus mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.labelNickName.mas_right);
@@ -422,11 +431,6 @@
         make.size.mas_offset(CGSizeMake(25, 20));
         make.centerY.mas_equalTo(0);
     }];
-    [self.labelAddTime mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-10);
-        make.size.mas_offset(CGSizeMake(120, 20));
-        make.centerY.mas_equalTo(0);
-    }];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(weakSelf.commentBGView.mas_bottom);
         make.left.mas_equalTo(10);
@@ -442,9 +446,13 @@
     _modelCircleDynamicResult = modelCircleDynamicResult;
     [self.atRangeArray removeAllObjects];
     
-    //隐藏“关注”按钮
+    //隐藏“关注”按钮 
     if ([self.whereReuseFrom isEqualToString:@"domainVC"]) {
         _btnOnFocus.hidden = YES;
+    }
+    //discover页面隐藏时间
+    if ([self.whereReuseFrom isEqualToString:@"discover"]) {
+        self.labelAddTime.hidden = YES;
     }
     
     //collectionView
@@ -629,6 +637,8 @@
         NSString *notifiName = [NSString string];
         if ([self.whereReuseFrom isEqualToString:@"discover"]) {
             notifiName = @"jumpToFocusPersonalVCByTopicFromDiscover";
+        }else if ([self.whereReuseFrom isEqualToString:@"dynamicDetail"]){
+            notifiName = @"jumpToFocusPersonalVCByTopicFromDynamicDetail";
         }
         
         //跳转话题详情
@@ -644,6 +654,8 @@
         NSString *notifiName = [NSString string];
         if ([self.whereReuseFrom isEqualToString:@"discover"]) {
             notifiName = @"jumpToFocusPersonalVCByAtSomeoneFromDiscover";
+        }else if ([self.whereReuseFrom isEqualToString:@"dynamicDetail"]){
+            notifiName = @"jumpToFocusPersonalVCByAtSomeoneFromDynamicDetail";
         }
         
         //跳转查看好友详情

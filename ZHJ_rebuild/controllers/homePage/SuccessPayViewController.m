@@ -54,6 +54,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+}
+
 #pragma mark - <懒加载>
 -(NSArray *)interestingCircleArray
 {

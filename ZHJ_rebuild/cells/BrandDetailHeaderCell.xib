@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +24,7 @@
                         <rect key="frame" x="0.0" y="159.5" width="324" height="40"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xx专营店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oi3-rl-39p">
-                                <rect key="frame" x="90" y="9.5" width="144" height="20"/>
+                                <rect key="frame" x="100" y="9.5" width="134" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="EW5-Bh-dg1"/>
                                 </constraints>
@@ -60,17 +59,18 @@
                             <constraint firstItem="I6t-A5-QC2" firstAttribute="leading" secondItem="Oi3-rl-39p" secondAttribute="trailing" constant="5" id="0pc-ST-EAA"/>
                             <constraint firstAttribute="height" constant="40" id="F4T-rS-hjT"/>
                             <constraint firstAttribute="trailing" secondItem="Oi3-rl-39p" secondAttribute="trailing" constant="90" id="Way-4F-tdb"/>
-                            <constraint firstItem="Oi3-rl-39p" firstAttribute="leading" secondItem="hQJ-Ea-KDv" secondAttribute="leading" constant="90" id="atY-CH-7a5"/>
+                            <constraint firstItem="Oi3-rl-39p" firstAttribute="leading" secondItem="hQJ-Ea-KDv" secondAttribute="leading" constant="100" id="atY-CH-7a5"/>
                             <constraint firstAttribute="trailing" secondItem="I6t-A5-QC2" secondAttribute="trailing" constant="5" id="cer-Ve-iyC"/>
                             <constraint firstItem="Oi3-rl-39p" firstAttribute="centerY" secondItem="hQJ-Ea-KDv" secondAttribute="centerY" id="sct-6T-Xdo"/>
                             <constraint firstItem="I6t-A5-QC2" firstAttribute="centerY" secondItem="hQJ-Ea-KDv" secondAttribute="centerY" id="tCp-QD-PGJ"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ta9-PU-Cfz">
-                        <rect key="frame" x="10" y="139.5" width="70" height="40"/>
+                        <rect key="frame" x="10" y="139.5" width="80" height="40"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="cUb-dH-yKC"/>
-                            <constraint firstAttribute="width" constant="70" id="mmn-Kx-tqF"/>
+                            <constraint firstAttribute="width" constant="80" id="mmn-Kx-tqF"/>
                         </constraints>
                     </imageView>
                 </subviews>

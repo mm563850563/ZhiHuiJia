@@ -39,22 +39,22 @@
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gou" translatesAutoresizingMaskIntoConstraints="NO" id="VqU-7D-nIz">
-                                        <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Ula-Dm-EEt" firstAttribute="top" secondItem="KXr-qK-A1L" secondAttribute="top" id="4D7-4B-eOw"/>
                                     <constraint firstAttribute="height" constant="70" id="5uH-VH-4JN"/>
-                                    <constraint firstAttribute="bottom" secondItem="VqU-7D-nIz" secondAttribute="bottom" constant="10" id="F1A-cD-9a1"/>
+                                    <constraint firstAttribute="bottom" secondItem="VqU-7D-nIz" secondAttribute="bottom" id="F1A-cD-9a1"/>
                                     <constraint firstItem="pks-MF-TLG" firstAttribute="leading" secondItem="KXr-qK-A1L" secondAttribute="leading" id="K0k-ye-ITr"/>
                                     <constraint firstAttribute="bottom" secondItem="pks-MF-TLG" secondAttribute="bottom" id="KfN-dg-Esd"/>
                                     <constraint firstAttribute="trailing" secondItem="Ula-Dm-EEt" secondAttribute="trailing" id="MEk-ee-NBa"/>
-                                    <constraint firstItem="VqU-7D-nIz" firstAttribute="leading" secondItem="KXr-qK-A1L" secondAttribute="leading" constant="10" id="Sq8-wg-8Wh"/>
+                                    <constraint firstItem="VqU-7D-nIz" firstAttribute="leading" secondItem="KXr-qK-A1L" secondAttribute="leading" id="Sq8-wg-8Wh"/>
                                     <constraint firstItem="pks-MF-TLG" firstAttribute="top" secondItem="KXr-qK-A1L" secondAttribute="top" id="UIB-Ho-g3C"/>
-                                    <constraint firstAttribute="trailing" secondItem="VqU-7D-nIz" secondAttribute="trailing" constant="10" id="XRj-dY-ptC"/>
+                                    <constraint firstAttribute="trailing" secondItem="VqU-7D-nIz" secondAttribute="trailing" id="XRj-dY-ptC"/>
                                     <constraint firstAttribute="width" constant="70" id="i1m-nR-nrO"/>
-                                    <constraint firstItem="VqU-7D-nIz" firstAttribute="top" secondItem="KXr-qK-A1L" secondAttribute="top" constant="10" id="kPa-ZN-EjN"/>
+                                    <constraint firstItem="VqU-7D-nIz" firstAttribute="top" secondItem="KXr-qK-A1L" secondAttribute="top" id="kPa-ZN-EjN"/>
                                     <constraint firstAttribute="bottom" secondItem="Ula-Dm-EEt" secondAttribute="bottom" id="lEc-JH-YMY"/>
                                     <constraint firstItem="Ula-Dm-EEt" firstAttribute="leading" secondItem="KXr-qK-A1L" secondAttribute="leading" id="wY1-f7-BWe"/>
                                     <constraint firstAttribute="trailing" secondItem="pks-MF-TLG" secondAttribute="trailing" id="zdH-n3-2IM"/>
@@ -126,7 +126,7 @@
     </objects>
     <resources>
         <image name="action_music" width="170" height="170"/>
-        <image name="gou" width="43" height="29"/>
+        <image name="gou" width="64" height="64"/>
         <image name="jia" width="22" height="22"/>
         <image name="yijia" width="22" height="22"/>
     </resources>

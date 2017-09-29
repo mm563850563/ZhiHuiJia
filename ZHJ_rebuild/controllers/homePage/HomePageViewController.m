@@ -605,10 +605,21 @@
 #pragma mark - <跳转个人资料页面>
 -(void)jumpToPersonalFileVC
 {
-    PersonalFileViewController *personalFileVC = [[PersonalFileViewController alloc]initWithNibName:NSStringFromClass([PersonalFileViewController class]) bundle:nil];
-    personalFileVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:personalFileVC animated:YES];
+//    PersonalFileViewController *personalFileVC = [[PersonalFileViewController alloc]initWithNibName:NSStringFromClass([PersonalFileViewController class]) bundle:nil];
+//    personalFileVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:personalFileVC animated:YES];
+    [self jumpToUserBalanceSuccessPayVCWithModel:nil];
 }
+
+#pragma mark - <跳转“用户余额支付成功”页面>
+-(void)jumpToUserBalanceSuccessPayVCWithModel:(PlaceOrderBalanceModel *)model
+{
+    SuccessPayViewController *successPayVC = [[SuccessPayViewController alloc]initWithNibName:NSStringFromClass([SuccessPayViewController class]) bundle:nil];
+    successPayVC.modelBlance = model;
+    BasicNavigationController *basenavivc = [[BasicNavigationController alloc]initWithRootViewController:successPayVC];
+    [self presentViewController:basenavivc animated:YES completion:nil];
+}
+
 #pragma mark - <跳转产品详情页面>
 -(void)jumpToProductDetailVCWithGoodsID:(NSString *)goods_id
 {

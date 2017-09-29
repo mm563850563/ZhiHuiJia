@@ -36,7 +36,7 @@
 #pragma mark - <配置outlets>
 -(void)settingOutlets
 {
-    [self.imgViewCircle startRotating];
+//    [self.imgViewCircle startRotating];
 }
 
 
@@ -48,7 +48,11 @@
     
     NSString *imgStr = [NSString stringWithFormat:@"%@%@",kDomainImage,modelInterestCircle.logo];
     NSURL *imgURL = [NSURL URLWithString:imgStr];
-    [self.imgViewCircle sd_setImageWithURL:imgURL placeholderImage:kPlaceholder];
+    [self.imgViewCircle sd_setImageWithURL:imgURL placeholderImage:kPlaceholder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.imgViewCircle startRotating];
+        });
+    }];
     
     self.labelName.text = modelInterestCircle.circle_name;
     self.labelMemberCount.text = [NSString stringWithFormat:@"%@人",modelInterestCircle.members_count];
@@ -66,11 +70,11 @@
 
 -(void)setRotationOrder:(NSString *)rotationOrder
 {
-    if ([rotationOrder isEqualToString:@"resume"]) {
-        [self.imgViewCircle resumeRotate];
-    }else if ([rotationOrder isEqualToString:@"pause"]){
-        [self.imgViewCircle stopRotating];
-    }
+//    if ([rotationOrder isEqualToString:@"resume"]) {
+//        [self.imgViewCircle resumeRotate];
+//    }else if ([rotationOrder isEqualToString:@"pause"]){
+//        [self.imgViewCircle stopRotating];
+//    }
 }
 
 #pragma mark - <加入圈子>

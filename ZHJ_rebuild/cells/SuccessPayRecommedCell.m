@@ -169,13 +169,13 @@
         SuccessPayRecommendMemberSingleCountCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SuccessPayRecommendMemberSingleCountCell class]) forIndexPath:indexPath];
         GetInterestingCircleResultModel *modelInterestCircle = self.interestingCircleArray[indexPath.item];
         cell.modelInterestCircle = modelInterestCircle;
-        cell.rotationOrder = self.rotationOrder;
+//        cell.rotationOrder = self.rotationOrder;
         return cell;
     }else{
         SuccessPayRecommendMemberCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SuccessPayRecommendMemberCell class]) forIndexPath:indexPath];
         GetInterestingCircleResultModel *modelInterestCircle = self.interestingCircleArray[indexPath.item];
         cell.modelInterestCircle = modelInterestCircle;
-        cell.rotationOrder = self.rotationOrder;
+//        cell.rotationOrder = self.rotationOrder;
         return cell;
     }
     

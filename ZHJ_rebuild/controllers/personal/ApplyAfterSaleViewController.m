@@ -203,7 +203,7 @@
 -(void)settingHeightForScrollView
 {
     if (self.view.frame.size.height > 360) {
-        self.heightForScrollView.constant = self.view.frame.size.height;
+        self.heightForScrollView.constant = kSCREENH_HEIGHT-64;
     }else{
         self.heightForScrollView.constant = 360;
     }

@@ -348,7 +348,8 @@
     if (!_labelAddTime) {
         _labelAddTime = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
         _labelAddTime.font = [UIFont systemFontOfSize:11];
-        _labelAddTime.textAlignment = NSTextAlignmentRight;
+        _labelAddTime.textAlignment = NSTextAlignmentLeft;
+        _labelAddTime.textColor = kColorFromRGB(kDeepGray);
     }
     return _labelAddTime;
 }
@@ -358,6 +359,7 @@
     [self.contentView addSubview:self.BGView];
     [self.BGView addSubview:self.imgViewPortrait];
     [self.BGView addSubview:self.labelNickName];
+    [self.BGView addSubview:self.labelAddTime];
     [self.BGView addSubview:self.btnDelete];
     [self.BGView addSubview:self.labelContent];
     [self.BGView addSubview:self.collectionView];
@@ -366,7 +368,6 @@
     [self.commentBGView addSubview:self.btnComment];
     [self.commentBGView addSubview:self.labelPraiseCount];
     [self.commentBGView addSubview:self.labelCommentCount];
-    [self.commentBGView addSubview:self.labelAddTime];
     
     __weak typeof(self) weakSelf = self;
     
@@ -380,10 +381,16 @@
         make.size.mas_offset(CGSizeMake(50, 50));
     }];
     [self.labelNickName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(weakSelf.imgViewPortrait.mas_right).with.offset(5);
-        make.right.mas_equalTo(10);
+        make.left.mas_equalTo(weakSelf.imgViewPortrait.mas_right).with.offset(10);
+        make.right.mas_equalTo(-50);
         make.height.mas_equalTo(20);
-        make.centerY.mas_equalTo(weakSelf.imgViewPortrait);
+        make.top.mas_equalTo(weakSelf.imgViewPortrait.mas_top).with.offset(5);
+    }];
+    [self.labelAddTime mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(weakSelf.imgViewPortrait.mas_right).with.offset(10);
+        make.right.mas_equalTo(-50);
+        make.height.mas_equalTo(20);
+        make.top.mas_equalTo(weakSelf.labelNickName.mas_bottom).with.offset(2);
     }];
     [self.btnDelete mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_offset(CGSizeMake(25, 25));
@@ -426,11 +433,6 @@
     [self.labelPraiseCount mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.btnLike.mas_right).with.offset(5);
         make.size.mas_offset(CGSizeMake(25, 20));
-        make.centerY.mas_equalTo(0);
-    }];
-    [self.labelAddTime mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-10);
-        make.size.mas_offset(CGSizeMake(120, 20));
         make.centerY.mas_equalTo(0);
     }];
 }

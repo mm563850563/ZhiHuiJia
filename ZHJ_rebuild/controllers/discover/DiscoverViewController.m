@@ -401,6 +401,7 @@
     dynamicDetailVC.hidesBottomBarWhenPushed = YES;
     dynamicDetailVC.user_id = user_id;
     dynamicDetailVC.talk_id = talk_id;
+    dynamicDetailVC.navigationItem.title = @"动态详情";
     [self.navigationController pushViewController:dynamicDetailVC animated:YES];
 }
 #pragma mark - <跳转mainCircleVC>
@@ -431,10 +432,15 @@
 #pragma mark - <跳转“个人好友”资料>
 -(void)jumpToFocusPersonalFileVCWithUserID:(NSString *)user_id
 {
-    FocusPersonFileViewController *focusPersonalFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
-    focusPersonalFileVC.friend_user_id = user_id;
-    focusPersonalFileVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:focusPersonalFileVC animated:YES];
+    if ([user_id isEqualToString:kUserDefaultObject(kUserInfo)]) {
+        [self jumpToDomainVC];
+    }else{
+        FocusPersonFileViewController *focusPersonalFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
+        focusPersonalFileVC.friend_user_id = user_id;
+        focusPersonalFileVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:focusPersonalFileVC animated:YES];
+    }
+    
 }
 
 #pragma mark - <跳转“话题详情”页面>

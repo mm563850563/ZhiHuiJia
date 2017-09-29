@@ -20,6 +20,7 @@
 
 //controllers
 #import "FocusPersonFileViewController.h"
+#import "DomainViewController.h"
 
 @interface MyFocusViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -306,14 +307,27 @@
     }];
 }
 
+#pragma mark - <跳转domainVC>
+-(void)jumpToDomainVC
+{
+    DomainViewController *domainVC = [[DomainViewController alloc]initWithNibName:NSStringFromClass([DomainViewController class]) bundle:nil];
+    domainVC.hidesBottomBarWhenPushed = YES;
+    domainVC.ownID = @"domainID";
+    [self.navigationController pushViewController:domainVC animated:YES];
+}
 
 #pragma mark - <跳转“好友主页”>
 -(void)jumpToPersonalFileVCWithFriendID:(NSString *)friend_user_id whereReuserFrom:(NSString *)whereReuserFrom
 {
-    FocusPersonFileViewController *personalFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
-    personalFileVC.friend_user_id = friend_user_id;
-    personalFileVC.whereReuseFrom = whereReuserFrom;
-    [self.navigationController pushViewController:personalFileVC animated:YES];
+    if ([friend_user_id isEqualToString:kUserDefaultObject(kUserInfo)]) {
+        [self jumpToDomainVC];
+    }else{
+        FocusPersonFileViewController *personalFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
+        personalFileVC.friend_user_id = friend_user_id;
+        personalFileVC.whereReuseFrom = whereReuserFrom;
+        [self.navigationController pushViewController:personalFileVC animated:YES];
+    }
+    
 }
 
 

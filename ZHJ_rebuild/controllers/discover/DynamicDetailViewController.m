@@ -25,6 +25,9 @@
 
 //controllers
 #import "MyFocusViewController.h"
+#import "FocusPersonFileViewController.h"
+#import "TopicDetailViewController.h"
+#import "DomainViewController.h"
 
 @interface DynamicDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
@@ -214,6 +217,9 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     //                    [hud hideAnimated:YES afterDelay:1.0];
+                    int page = [self.page intValue];
+                    page++;
+                    self.page = [NSNumber numberWithInt:page];
                     [self.tableView reloadData];
                     [self.tableView.mj_footer endRefreshing];
                 });
@@ -329,6 +335,7 @@
                     [self.tfComment resignFirstResponder];
                     self.tfComment.text = @"";
                     //清空数组，刷新评论列表
+                    self.at_user_id = nil;
                     [self.commentArray removeAllObjects];
                     [self getDynamicDetailCommentDataWithPage:@1];
                     
@@ -364,7 +371,7 @@
 
 
 #pragma mark - <点赞／取消点赞>
--(void)requestLikeOrCancelLikeWithTalkID:(NSString *)talk_id likeType:(NSString *)like_type
+-(void)requestLikeOrCancelLikeWithTalkID:(NSString *)talk_id likeType:(NSString *)like_type like_what:(NSString *)like_what
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kDomainBase,kLikeCancel];
     
@@ -384,7 +391,13 @@
             if ([code isEqual:@200]) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self getDynamicDetailData];
+                    if ([like_what isEqualToString:@"comment"]) {
+                        self.page = @1;
+                        [self.commentArray removeAllObjects];
+                        [self getDynamicDetailCommentDataWithPage:@1];
+                    }else if ([like_what isEqualToString:@"dynamic"]){
+                        [self getDynamicDetailData];
+                    }
                     
                     [hud hideAnimated:YES afterDelay:1.0];
                     MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:dataDict[@"msg"]];
@@ -435,9 +448,6 @@
     [self.tableView registerClass:[DynamicDetailCommentCell class] forCellReuseIdentifier:NSStringFromClass([DynamicDetailCommentCell class])];
     
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        int page = [self.page intValue];
-        page++;
-        self.page = [NSNumber numberWithInt:page];
         [self getDynamicDetailCommentDataWithPage:self.page];
     }];
 }
@@ -462,6 +472,37 @@
     [self.navigationController pushViewController:talkLikeListVC animated:YES];
 }
 
+#pragma mark - <跳转domainVC>
+-(void)jumpToDomainVC
+{
+    DomainViewController *domainVC = [[DomainViewController alloc]initWithNibName:NSStringFromClass([DomainViewController class]) bundle:nil];
+    domainVC.hidesBottomBarWhenPushed = YES;
+    domainVC.ownID = @"domainID";
+    [self.navigationController pushViewController:domainVC animated:YES];
+}
+
+#pragma mark - <跳转“个人好友”资料>
+-(void)jumpToFocusPersonalFileVCWithUserID:(NSString *)user_id
+{
+    if ([user_id isEqualToString:kUserDefaultObject(kUserInfo)]) {
+        [self jumpToDomainVC];
+    }else{
+        FocusPersonFileViewController *focusPersonalFileVC = [[FocusPersonFileViewController alloc]initWithNibName:NSStringFromClass([FocusPersonFileViewController class]) bundle:nil];
+        focusPersonalFileVC.friend_user_id = user_id;
+        focusPersonalFileVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:focusPersonalFileVC animated:YES];
+    }
+}
+
+#pragma mark - <跳转“话题详情”页面>
+-(void)jumpToTopicDetailVCWithTopicID:(NSString *)topic_id
+{
+    TopicDetailViewController *topicDetailVC = [[TopicDetailViewController alloc]initWithNibName:NSStringFromClass([TopicDetailViewController class]) bundle:nil];
+    topicDetailVC.topic_id = topic_id;
+    topicDetailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:topicDetailVC animated:YES];
+}
+
 #pragma mark - <rac响应>
 -(void)respondWithRAC
 {
@@ -477,16 +518,44 @@
         [self attentionOrCancelAttentionWithFriendUserID:friend_user_id attentionType:@"0"];
     }];
     
-    //点赞
+    //点赞动态
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"likeByClickFromDynamicDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         NSString *talk_id = x.object;
-        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"0"];
+        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"0" like_what:@"dynamic"];
     }];
-    
-    //取消点赞
+    //取消点赞动态
     [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"cancelLikeByClickFromDynamicDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
         NSString *talk_id = x.object;
-        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"1"];
+        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"1" like_what:@"dynamic"];
+    }];
+    
+    //点赞评论
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"likeCommentByClickFromDynamicDetailVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *talk_id = x.object;
+        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"0" like_what:@"comment"];
+    }];
+    //取消点赞评论
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"cancelLikeCommentByClickFromDynamicDetailVC" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *talk_id = x.object;
+        [self requestLikeOrCancelLikeWithTalkID:talk_id likeType:@"1" like_what:@"comment"];
+    }];
+    
+    //点击"@人"跳转到好友主页
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCByAtSomeoneFromDynamicDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *user_id = x.object;
+        [self jumpToFocusPersonalFileVCWithUserID:user_id];
+    }];
+    
+    //点击用户头像跳转到好友主页
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCByPortraitFromDynamicDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *user_id = x.object;
+        [self jumpToFocusPersonalFileVCWithUserID:user_id];
+    }];
+    
+    //点击富文本话题跳转话题详情
+    [[[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"jumpToFocusPersonalVCByTopicFromDynamicDetail" object:nil]takeUntil:self.rac_willDeallocSignal]subscribeNext:^(NSNotification * _Nullable x) {
+        NSString *topic_id = x.object;
+        [self jumpToTopicDetailVCWithTopicID:topic_id];
     }];
 }
 
@@ -558,16 +627,16 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section == 2) {
-        UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 30)];
+        UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 35)];
         headerView.backgroundColor = kColorFromRGB(kWhite);
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, headerView.frame.size.width, headerView.frame.size.height)];
         [headerView addSubview:label];
         label.text = [NSString stringWithFormat:@"全部评论(%@)",self.modelResult.reply_count];
         label.font = [UIFont systemFontOfSize:13];
         
-        UIView *line =[[ UIView alloc]initWithFrame:CGRectMake(0, headerView.frame.size.height-0.5, headerView.frame.size.width, 0.5)];
-        line.backgroundColor = kColorFromRGB( kLightGray);
-        [headerView addSubview:line];
+//        UIView *line =[[ UIView alloc]initWithFrame:CGRectMake(0, headerView.frame.size.height-0.5, headerView.frame.size.width, 0.5)];
+//        line.backgroundColor = kColorFromRGB( kLightGray);
+//        [headerView addSubview:line];
         return headerView;
     }
     return nil;
@@ -602,7 +671,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        
+//        self.at_user_id = self.user_id;
+        self.tfComment.placeholder = [NSString stringWithFormat:@"说点什么吧"];
+        if (![self.tfComment isFirstResponder]) {
+            [self.tfComment becomeFirstResponder];
+        }
     }else if (indexPath.section == 1){
         if (self.modelResult.like_info.count > 0) {
             [self jumpToTalkLikeListVCWithTalkID:self.modelResult.talk_id];
