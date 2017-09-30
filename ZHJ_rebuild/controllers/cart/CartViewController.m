@@ -263,12 +263,23 @@
                         for (UserFavoriteResultModel *modelResult in array) {
                             [self.userFavoriteArray addObject:modelResult];
                         }
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            int page_int = [self.page intValue];
+                            page_int++;
+                            self.page = [NSNumber numberWithInt:page_int];
+                            [self.tableView reloadData];
+                            [self.tableView.mj_footer endRefreshing];
+                        });
+                    }else{
+                        dispatch_async(dispatch_get_main_queue(), ^{
+//                            MBProgressHUD *hudWarning = [ProgressHUDManager showWarningProgressHUDAddTo:self.view animated:YES warningMessage:@"我们是有底线的"];
+//                            [hudWarning hideAnimated:YES afterDelay:1.0];
+//                            self.tableView.mj_footer
+                            [self.tableView.mj_footer endRefreshing];
+                        });
                     }
                     
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.tableView reloadData];
-                        [self.tableView.mj_footer endRefreshing];
-                    });
+                    
                 }else{
                     //                    [hud hideAnimated:YES afterDelay:1.0];
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -595,9 +606,7 @@
     }];
     
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        int page_int = [self.page intValue];
-        page_int++;
-        self.page = [NSNumber numberWithInt:page_int];
+        
         [self getMoreUserFavoriteWithPage:self.page];
     }];
 }
@@ -720,7 +729,7 @@
     }else{
         YouthColorCell *cell = [[YouthColorCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([YouthColorCell class])];
         cell.userFavoriteArray = self.userFavoriteArray;
-        return cell.cellHeight;
+        return cell.cellHeight+1;
     }
 }
 
@@ -730,6 +739,11 @@
         return 0.1f;
     }
     return 30;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1f;
 }
 
 

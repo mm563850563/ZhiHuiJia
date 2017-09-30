@@ -45,7 +45,7 @@
         //        强制刷新界面高度
         [self.collectionView layoutIfNeeded];
         
-        CGFloat itemWidth = kSCREEN_WIDTH/2.01;
+        CGFloat itemWidth = kSCREEN_WIDTH/2.02;
         CGFloat itemHeight = itemWidth/2.0*3.0;
         if (itemHeight > (itemWidth+90)) {
             itemHeight = itemWidth+90;
@@ -55,7 +55,7 @@
         if (self.dataArray.count%2 != 0) {
             lineCount++;
         }
-        self.cellHeight = itemHeight*lineCount + 5;
+        self.cellHeight = itemHeight*lineCount + (lineCount-1)*4 + 1;
     }
 }
 
@@ -89,7 +89,7 @@
         [self.collectionView reloadData];
         [self.collectionView layoutIfNeeded];
         
-        CGFloat itemWidth = kSCREEN_WIDTH/2.01;
+        CGFloat itemWidth = kSCREEN_WIDTH/2.02;
         CGFloat itemHeight = itemWidth/2.0*3.0;
         if (itemHeight > (itemWidth+90)) {
             itemHeight = itemWidth+90;
@@ -99,7 +99,7 @@
         if (userFavoriteArray.count%2 != 0) {
             lineCount++;
         }
-        self.cellHeight = itemHeight*lineCount + 5;
+        self.cellHeight = itemHeight*lineCount + lineCount*4;
 //    }
 }
 
@@ -109,9 +109,9 @@
     if (!_collectionView) {
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
         flowLayout.minimumInteritemSpacing = 0;
-        flowLayout.minimumLineSpacing = 2;
-        flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 5, 0);
-        CGFloat itemWidth = kSCREEN_WIDTH/2.01;
+        flowLayout.minimumLineSpacing = 4;
+        flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        CGFloat itemWidth = kSCREEN_WIDTH/2.02;
         CGFloat itemHeight = itemWidth/2.0*3.0;
 //        self.height = itemHeight * 8;
         if (itemHeight > (itemWidth+90)) {

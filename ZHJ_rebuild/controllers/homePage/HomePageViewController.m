@@ -549,10 +549,10 @@
 {
     UIView *BGView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, 40)];
     UIImageView *imgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"appLogo"]];
-    imgView.frame = CGRectMake(10, 0, 30, 30);
+    imgView.frame = CGRectMake(10, 0, 28, 28);
     [BGView addSubview:imgView];
     imgView.contentMode = UIViewContentModeScaleAspectFill;
-    imgView.layer.cornerRadius = 15;
+    imgView.layer.cornerRadius = 14;
     imgView.layer.masksToBounds = YES;
     
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 30, 50, 10)];
@@ -573,7 +573,7 @@
 #pragma mark - <添加searchBar到navigationBar>
 -(void)addSearchBarIntoNavigationBar
 {
-    UIView *searchBGView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH-80, 30)];
+    UIView *searchBGView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH-80, 35)];
     searchBGView.backgroundColor = kColorFromRGB(kWhite);
     searchBGView.layer.cornerRadius = 2;
     searchBGView.layer.masksToBounds = YES;

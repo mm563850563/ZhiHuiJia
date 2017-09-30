@@ -358,6 +358,8 @@
 //        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kSimpleCommentCellID];
         UINib *nib = [UINib nibWithNibName:NSStringFromClass([commentLabelCell class]) bundle:nil];
         [_tableView registerNib:nib forCellReuseIdentifier:NSStringFromClass([commentLabelCell class])];
+        
+        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"moreReply"];
     }
     return _tableView;
 }
@@ -613,7 +615,7 @@
     CGFloat rowHeight = 20;
     CGFloat tableViewHeight = 0;
     if (self.commentArray.count>=3) {
-        tableViewHeight = rowHeight * (self.commentArray.count+1);
+        tableViewHeight = rowHeight * 4;
     }else{
         tableViewHeight = rowHeight * self.commentArray.count;
     }
@@ -712,20 +714,25 @@
 #pragma mark - ***** UITableViewDelegate,UITableViewDataSource *****
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.commentArray.count;
+    if (self.commentArray.count>=3) {
+        return 4;
+    }else{
+        return self.commentArray.count;
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSimpleCommentCellID];
-    
     commentLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([commentLabelCell class])];
-    MyCircleDynamicReply_infoModel *modelReplyInfo = self.commentArray[indexPath.row];
-    cell.labelComment.text = [NSString stringWithFormat:@"%@:%@",modelReplyInfo.nickname,modelReplyInfo.content];
-//    cell.textLabel.text = [NSString stringWithFormat:@"%@:%@",modelReplyInfo.nickname,modelReplyInfo.content];
-//    cell.textLabel.font = [UIFont systemFontOfSize:12];
-//    cell.textLabel.textColor = kColorFromRGB(kDeepGray);
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (indexPath.row == 3) {
+        cell.labelComment.text = [NSString stringWithFormat:@"查看全部评论"];
+//        cell.labelComment.textColor = kColorFromRGB(0x777464);
+    }else{
+        MyCircleDynamicReply_infoModel *modelReplyInfo = self.commentArray[indexPath.row];
+        cell.labelComment.text = [NSString stringWithFormat:@"%@:%@",modelReplyInfo.nickname,modelReplyInfo.content];
+    }
     return cell;
 }
 
